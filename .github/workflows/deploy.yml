@@ -33,11 +33,32 @@ jobs:
         username: resetclub
         password: ${{ secrets.SSH_PASSWORD }}
         script: |
+          # Load Node.js environment
+          export PATH="$HOME/.nvm/versions/node/$(ls $HOME/.nvm/versions/node/ | tail -1)/bin:$PATH"
+          source ~/.bashrc || true
+          source ~/.profile || true
+          
+          # Navigate to project directory
           cd htdocs/resetclub.ma
+          
+          # Pull latest changes
           git pull origin main
+          
+          # Install dependencies and build
           npm ci
           npm run build
-          pm2 restart resetclub || npm start
+          
+          # Restart the application
+          if command -v pm2 >/dev/null 2>&1; then
+            pm2 restart resetclub || pm2 start npm --name "resetclub" -- start
+          else
+            # Install PM2 if not available
+            npm install -g pm2
+            pm2 start npm --name "resetclub" -- start
+          fi
+          
+          # Save PM2 configuration
+          pm2 save || true
           
     - name: Deployment notification
       if: success()
