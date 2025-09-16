@@ -284,28 +284,51 @@ function PromoCard({
 }
 
 function SocialIcon({ platform }: { platform: string }) {
-  const getIcon = () => {
+  const getIconAndBg = () => {
     switch (platform) {
       case 'instagram':
-        return <Instagram className="w-4 h-4 text-[#ccbaa8]" />;
+        return {
+          icon: <Instagram className="w-4 h-4 text-white" />,
+          bgClass: "bg-gradient-to-br from-purple-600 via-pink-600 to-orange-500 hover:from-purple-700 hover:via-pink-700 hover:to-orange-600"
+        };
       case 'facebook':
-        return <Facebook className="w-4 h-4 text-[#ccbaa8]" />;
+        return {
+          icon: <Facebook className="w-4 h-4 text-white" />,
+          bgClass: "bg-blue-600 hover:bg-blue-700"
+        };
       case 'tiktok':
-        return <div className="w-4 h-4 text-[#ccbaa8] font-bold text-xs flex items-center justify-center">T</div>;
+        return {
+          icon: <div className="w-4 h-4 text-[#ccbaa8] font-bold text-xs flex items-center justify-center">T</div>,
+          bgClass: "bg-white hover:bg-white/90"
+        };
       case 'youtube':
-        return <Youtube className="w-4 h-4 text-[#ccbaa8]" />;
+        return {
+          icon: <Youtube className="w-4 h-4 text-[#ccbaa8]" />,
+          bgClass: "bg-white hover:bg-white/90"
+        };
       case 'linkedin':
-        return <Linkedin className="w-4 h-4 text-[#ccbaa8]" />;
+        return {
+          icon: <Linkedin className="w-4 h-4 text-[#ccbaa8]" />,
+          bgClass: "bg-white hover:bg-white/90"
+        };
       case 'website':
-        return <Globe className="w-4 h-4 text-[#ccbaa8]" />;
+        return {
+          icon: <Globe className="w-4 h-4 text-[#ccbaa8]" />,
+          bgClass: "bg-white hover:bg-white/90"
+        };
       default:
-        return <Globe className="w-4 h-4 text-[#ccbaa8]" />;
+        return {
+          icon: <Globe className="w-4 h-4 text-white" />,
+          bgClass: "bg-gray-700 hover:bg-gray-800"
+        };
     }
   };
 
+  const { icon, bgClass } = getIconAndBg();
+
   return (
-    <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center hover:bg-white/90 transition-all duration-200 cursor-pointer shadow-lg border-2 border-white/20">
-      {getIcon()}
+    <div className={`w-10 h-10 ${bgClass} rounded-full flex items-center justify-center transition-all duration-200 cursor-pointer shadow-lg border-2 border-white/20`}>
+      {icon}
     </div>
   );
 }
