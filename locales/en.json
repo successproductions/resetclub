@@ -1,0 +1,34 @@
+{
+  "HomePage": {
+    "title": "",
+    "description": ""
+  },
+  "LinktreePage": {
+    "title": "ResetClub™️",
+    "fullName": "ResetClub™️ Rabat – Holistic & Biohacking Center",
+    "slogan": "Hack your body. Reveal your potential.",
+    "links": {
+      "freeBilan": " Book your Free Assessment (-25% opening offer)",
+      "discover": " Discover ResetClub™️",
+      "booking": " Book Online Appointment",
+      "offers": " Special Opening Offers",
+      "whatsapp": " Chat with Us on WhatsApp",
+      "reviews": " Read our Client Reviews",
+      "location": " Find Us – Location & Directions"
+    },
+    "contact": " Direct contact: +212 6 XX XX XX XX",
+    "newsletter": "Subscribe to our VIP Newsletter"
+  },
+  "AboutPage": {
+    "title": "",
+    "description": ""
+  },
+  "ContactPage": {
+    "title": "",
+    "description": ""
+  },
+  "TeamPage": {
+    "title": "",
+    "description": ""
+  }
+}
