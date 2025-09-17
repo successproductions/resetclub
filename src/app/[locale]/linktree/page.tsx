@@ -20,16 +20,28 @@ export default function LinktreePage() {
   const logoScale = Math.max(0.7, 1 - scrollY / 300);
 
   return (
-    <div
-      className="min-h-screen text-white relative"
-      style={{
-        background: `
-          radial-gradient(circle at 30% 70%, rgba(204, 186, 168, 0.3) 0%, transparent 50%),
-          linear-gradient(135deg, rgba(204, 186, 168, 0.2) 0%, transparent 40%, rgba(184, 163, 148, 0.2) 100%),
-          linear-gradient(to bottom right, #ccbaa8, #ccbaa8, #b8a394)
-        `
-      }}
-    >
+    <div className="min-h-screen text-white relative">
+      {/* Background Images */}
+      <div className="absolute inset-0">
+        {/* Mobile Background */}
+        <Image
+          src="/PALMSBACKGORUNDMOBILE.jpg"
+          alt="Reset Club Background Mobile"
+          fill
+          className="object-cover md:hidden"
+          priority
+        />
+        {/* Desktop Background */}
+        <Image
+          src="/PALMSBACKGROUND.jpg"
+          alt="Reset Club Background Desktop"
+          fill
+          className="object-cover hidden md:block"
+          priority
+        />
+        {/* Overlay for better text readability */}
+        <div className="absolute inset-0 bg-black/30"></div>
+      </div>
       {/* Background Logo */}
       <div className="absolute inset-0 flex items-center justify-center opacity-10">
         <Image
@@ -69,12 +81,12 @@ export default function LinktreePage() {
           <div className="w-64 h-44 md:h-56 mx-auto "></div>
 
           {/* Title and verified badge */}
-          <div className="flex items-center justify-center mb-3">
+          {/* <div className="flex items-center justify-center mb-3">
             <h1 className="text-2xl font-bold">{t('title')}</h1>
             <div className="ml-2 w-6 h-6 bg-blue-500 rounded-full flex items-center justify-center">
               <span className="text-sm text-white font-bold">✓</span>
             </div>
-          </div>
+          </div> */}
 
           {/* Social Media Icons */}
           <div className="flex justify-center space-x-2 mb-4">
@@ -85,12 +97,12 @@ export default function LinktreePage() {
             <SocialIcon platform="linkedin" />
             <SocialIcon platform="website" />
           </div>
-
+ <p className="text-sm opacity-90 pb-2 px-4 font-bold leading-relaxed">2.4M Total Flollowers</p>
           {/* Full name */}
           <p className="text-sm opacity-90 mb-2 font-medium">{t('fullName')}</p>
 
           {/* Mission/Slogan */}
-          <p className="text-sm opacity-80 px-4 leading-relaxed">{t('slogan')}</p>
+         
                   <div className="text-center text-sm opacity-80">
           <p className="mb-2">{t('contact')}</p>
 
@@ -99,7 +111,7 @@ export default function LinktreePage() {
         </div>
 
         {/* Links as Image Cards */}
-        <div className="space-y-3 mb-6 bg-gradient-to-br from-[#ccbaa8] via-[#ccbaa8] to-[#b8a394]">
+        <div className="space-y-3 mb-6 ">
           <PromoCard
             href="#"
             text={t('links.freeBilan')}
@@ -109,22 +121,22 @@ export default function LinktreePage() {
             hoverEffect="pulse"
           />
 
-          <div className="grid grid-cols-2 gap-3">
+
             <PromoCard
               href="#"
               text={t('links.discover')}
               imageUrl="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-              height="medium"
-              hoverEffect="flip"
+            height="regular"
+            hoverEffect="zoom"
             />
             <PromoCard
               href="#"
               text={t('links.booking')}
               imageUrl="https://images.unsplash.com/photo-1551601651-2a8555f1a136?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-              height="medium"
-              hoverEffect="slide"
+            height="regular"
+            hoverEffect="zoom"
             />
-          </div>
+
 
           <PromoCard
             href="#"
@@ -134,23 +146,21 @@ export default function LinktreePage() {
             // priority={true}
             hoverEffect="glow"
           />
-
-          <div className="grid grid-cols-2 gap-3">
             <PromoCard
               href="#"
               text={t('links.whatsapp')}
               imageUrl="https://images.unsplash.com/photo-1611224923853-80b023f02d71?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-              height="small"
-              hoverEffect="bounce"
+            height="regular"
+            hoverEffect="zoom"
             />
             <PromoCard
               href="#"
               text={t('links.reviews')}
               imageUrl="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-              height="small"
-              hoverEffect="shake"
+            height="regular"
+            hoverEffect="zoom"
             />
-          </div>
+
 
           <PromoCard
             href="#"
@@ -194,7 +204,7 @@ function PromoCard({
 
   const getBorderGlow = () => {
     if (priority) {
-      return "ring-2 ring-yellow-400/50 ring-offset-2 ring-offset-transparent";
+      return "ring-2 ring-white ring-offset-2 ring-offset-transparent";
     }
     return "";
   };
@@ -253,7 +263,7 @@ function PromoCard({
         {/* Priority badge */}
         {priority && (
           <div className="absolute top-3 left-3 z-10">
-            <div className="bg-yellow-400 text-black px-2 py-1 rounded-full text-xs font-bold">
+            <div className="bg-yellow-50 text-black px-2 py-1 rounded-full text-xs font-bold">
               ⭐ PRIORITY
             </div>
           </div>
@@ -298,23 +308,23 @@ function SocialIcon({ platform }: { platform: string }) {
         };
       case 'tiktok':
         return {
-          icon: <div className="w-4 h-4 text-[#ccbaa8] font-bold text-xs flex items-center justify-center">T</div>,
-          bgClass: "bg-white hover:bg-white/90"
+          icon: <div className="w-4 h-4 text-white font-bold text-xs flex items-center justify-center">T</div>,
+          bgClass: "bg-black hover:bg-gray-900"
         };
       case 'youtube':
         return {
-          icon: <Youtube className="w-4 h-4 text-[#ccbaa8]" />,
-          bgClass: "bg-white hover:bg-white/90"
+          icon: <Youtube className="w-4 h-4 text-white" />,
+          bgClass: "bg-red-600 hover:bg-red-700"
         };
       case 'linkedin':
         return {
-          icon: <Linkedin className="w-4 h-4 text-[#ccbaa8]" />,
-          bgClass: "bg-white hover:bg-white/90"
+          icon: <Linkedin className="w-4 h-4 text-white" />,
+          bgClass: "bg-blue-700 hover:bg-blue-800"
         };
       case 'website':
         return {
-          icon: <Globe className="w-4 h-4 text-[#ccbaa8]" />,
-          bgClass: "bg-white hover:bg-white/90"
+          icon: <Globe className="w-4 h-4 text-white" />,
+          bgClass: "bg-gray-700 hover:bg-gray-800"
         };
       default:
         return {

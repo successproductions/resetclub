@@ -1,14 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Montserrat:wght@100..900&family=Playfair+Display:wght@400..900&display=swap');
 @import "tailwindcss";
 
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --font-inter: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+  --font-montserrat: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-playfair: 'Playfair Display', serif;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
+  --font-sans: var(--font-inter);
   --font-mono: var(--font-geist-mono);
 }
 
@@ -19,8 +23,118 @@
   }
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-inter);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-montserrat);
+  font-weight: 600;
+}
+
+.font-inter {
+  font-family: var(--font-inter);
+}
+
+.font-montserrat {
+  font-family: var(--font-montserrat);
+}
+
+.font-playfair {
+  font-family: var(--font-playfair);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #d4af37;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #b8941f;
+}
+
+/* Container utility */
+.container {
+  max-width: 1200px;
+}
+
+/* Text gradient utility */
+.text-gradient {
+  background: linear-gradient(135deg, #fbbf24 0%, #d97706 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Backdrop blur utilities */
+.backdrop-blur-sm {
+  backdrop-filter: blur(4px);
+}
+
+.backdrop-blur-md {
+  backdrop-filter: blur(8px);
+}
+
+/* Animation utilities */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fadeInUp {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+/* SVG Border Button */
+.svg-border-button {
+  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='248' height='66' viewBox='0 0  248 36' fill='none'><path d='M3.47489 18.3083C3.18767 18.195 2.90547 18.0917 2.62881 17.9996C2.90429 17.9077 3.18523 17.8046 3.47111 17.6916C4.74653 17.1874 6.15445 16.4719 7.66242 15.6232C9.62181 14.5205 11.7816 13.1743 14.0649 11.7511C15.2861 10.9899 16.5426 10.2067 17.8226 9.42702C25.2255 4.91764 33.4604 0.5 40.9 0.5H206.5C210.181 0.5 214.085 1.59822 218.01 3.27241C221.933 4.9455 225.845 7.1804 229.54 9.42721C230.811 10.1999 232.059 10.9759 233.272 11.7305C235.573 13.1614 237.75 14.5153 239.724 15.6235C241.236 16.4722 242.647 17.1876 243.925 17.6917C244.212 17.805 244.495 17.9083 244.771 18.0004C244.496 18.0923 244.215 18.1954 243.929 18.3084C242.653 18.8126 241.246 19.5281 239.738 20.3768C237.778 21.4795 235.618 22.8258 233.335 24.249C232.114 25.0101 230.857 25.7933 229.577 26.573C222.174 31.0824 213.94 35.5 206.5 35.5H40.9C37.2194 35.5 33.315 34.4018 29.3899 32.7276C25.4675 31.0545 21.5546 28.8196 17.8598 26.5728C16.5892 25.8001 15.3414 25.0241 14.128 24.2695C11.8272 22.8386 9.65021 21.4847 7.67599 20.3765C6.16413 19.5278 4.75275 18.8124 3.47489 18.3083Z' stroke='white' stroke-opacity='1'/></svg>");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100% 100%;
+  min-width: 160px;
+  height: 66px;
+  border: none;
+  transition: all 0.3s ease;
+}
+
+.svg-border-button:hover {
+  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='268' height='60' viewBox='0 0 248 36' fill='white'><path d='M3.47489 18.3083C3.18767 18.195 2.90547 18.0917 2.62881 17.9996C2.90429 17.9077 3.18523 17.8046 3.47111 17.6916C4.74653 17.1874 6.15445 16.4719 7.66242 15.6232C9.62181 14.5205 11.7816 13.1743 14.0649 11.7511C15.2861 10.9899 16.5426 10.2067 17.8226 9.42702C25.2255 4.91764 33.4604 0.5 40.9 0.5H206.5C210.181 0.5 214.085 1.59822 218.01 3.27241C221.933 4.9455 225.845 7.1804 229.54 9.42721C230.811 10.1999 232.059 10.9759 233.272 11.7305C235.573 13.1614 237.75 14.5153 239.724 15.6235C241.236 16.4722 242.647 17.1876 243.925 17.6917C244.212 17.805 244.495 17.9083 244.771 18.0004C244.496 18.0923 244.215 18.1954 243.929 18.3084C242.653 18.8126 241.246 19.5281 239.738 20.3768C237.778 21.4795 235.618 22.8258 233.335 24.249C232.114 25.0101 230.857 25.7933 229.577 26.573C222.174 31.0824 213.94 35.5 206.5 35.5H40.9C37.2194 35.5 33.315 34.4018 29.3899 32.7276C25.4675 31.0545 21.5546 28.8196 17.8598 26.5728C16.5892 25.8001 15.3414 25.0241 14.128 24.2695C11.8272 22.8386 9.65021 21.4847 7.67599 20.3765C6.16413 19.5278 4.75275 18.8124 3.47489 18.3083Z' fill='white' stroke='white' stroke-opacity='1'/></svg>");
+}
+
+/* Scrolled navbar button styles */
+.scrolled-navbar.svg-border-button {
+  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='248' height='36' viewBox='0 0 248 36' fill='none'><path d='M3.47489 18.3083C3.18767 18.195 2.90547 18.0917 2.62881 17.9996C2.90429 17.9077 3.18523 17.8046 3.47111 17.6916C4.74653 17.1874 6.15445 16.4719 7.66242 15.6232C9.62181 14.5205 11.7816 13.1743 14.0649 11.7511C15.2861 10.9899 16.5426 10.2067 17.8226 9.42702C25.2255 4.91764 33.4604 0.5 40.9 0.5H206.5C210.181 0.5 214.085 1.59822 218.01 3.27241C221.933 4.9455 225.845 7.1804 229.54 9.42721C230.811 10.1999 232.059 10.9759 233.272 11.7305C235.573 13.1614 237.75 14.5153 239.724 15.6235C241.236 16.4722 242.647 17.1876 243.925 17.6917C244.212 17.805 244.495 17.9083 244.771 18.0004C244.496 18.0923 244.215 18.1954 243.929 18.3084C242.653 18.8126 241.246 19.5281 239.738 20.3768C237.778 21.4795 235.618 22.8258 233.335 24.249C232.114 25.0101 230.857 25.7933 229.577 26.573C222.174 31.0824 213.94 35.5 206.5 35.5H40.9C37.2194 35.5 33.315 34.4018 29.3899 32.7276C25.4675 31.0545 21.5546 28.8196 17.8598 26.5728C16.5892 25.8001 15.3414 25.0241 14.128 24.2695C11.8272 22.8386 9.65021 21.4847 7.67599 20.3765C6.16413 19.5278 4.75275 18.8124 3.47489 18.3083Z' stroke='black' stroke-opacity='0.2'/></svg>");
+  color: #374151;
+}
+
+.scrolled-navbar.svg-border-button:hover {
+  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='248' height='36' viewBox='0 0 248 36' fill='none'><path d='M3.47489 18.3083C3.18767 18.195 2.90547 18.0917 2.62881 17.9996C2.90429 17.9077 3.18523 17.8046 3.47111 17.6916C4.74653 17.1874 6.15445 16.4719 7.66242 15.6232C9.62181 14.5205 11.7816 13.1743 14.0649 11.7511C15.2861 10.9899 16.5426 10.2067 17.8226 9.42702C25.2255 4.91764 33.4604 0.5 40.9 0.5H206.5C210.181 0.5 214.085 1.59822 218.01 3.27241C221.933 4.9455 225.845 7.1804 229.54 9.42721C230.811 10.1999 232.059 10.9759 233.272 11.7305C235.573 13.1614 237.75 14.5153 239.724 15.6235C241.236 16.4722 242.647 17.1876 243.925 17.6917C244.212 17.805 244.495 17.9083 244.771 18.0004C244.496 18.0923 244.215 18.1954 243.929 18.3084C242.653 18.8126 241.246 19.5281 239.738 20.3768C237.778 21.4795 235.618 22.8258 233.335 24.249C232.114 25.0101 230.857 25.7933 229.577 26.573C222.174 31.0824 213.94 35.5 206.5 35.5H40.9C37.2194 35.5 33.315 34.4018 29.3899 32.7276C25.4675 31.0545 21.5546 28.8196 17.8598 26.5728C16.5892 25.8001 15.3414 25.0241 14.128 24.2695C11.8272 22.8386 9.65021 21.4847 7.67599 20.3765C6.16413 19.5278 4.75275 18.8124 3.47489 18.3083Z' fill='%23595141' stroke='%23595141' stroke-opacity='1'/></svg>");
+  color: white;
+}
+
+.custom-button-shape {
+  clip-path: polygon(10px 0, calc(100% - 10px) 0, 100% 50%, calc(100% - 10px) 100%, 10px 100%, 0 50%);
 }
