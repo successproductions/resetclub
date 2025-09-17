@@ -7,7 +7,7 @@ import Button from '../ui/Button';
 const Hero: React.FC = () => {
   const t = useTranslations('Hero');
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <section className="relative h-[87vh] flex items-center justify-center overflow-hidden">
       {/* Video Background */}
       <div className="absolute inset-0 z-0">
         <video
@@ -39,11 +39,16 @@ const Hero: React.FC = () => {
         </h1>
 
 
-        {/* Scroll Indicator */}
-        <div className="absolute  left-1/2 transform -translate-x-1/2 animate-bounce">
-          <div className="w-6 h-10 border-2 border-white rounded-full flex justify-center">
-            <div className="w-1 h-3 bg-white rounded-full mt-2 animate-pulse" />
-          </div>
+        {/* CTA Button */}
+        <div className="absolute top-28 md:top-36 left-1/2 transform -translate-x-1/2">
+          <Button
+            variant="primary"
+
+            href="/contact"
+            className="min-w-64 text-sm md:text-lg whitespace-nowrap"
+          >
+            {t('cta')}
+          </Button>
         </div>
       </div>
 

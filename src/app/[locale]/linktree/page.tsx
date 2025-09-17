@@ -143,8 +143,8 @@ export default function LinktreePage() {
             text={t('links.offers')}
             imageUrl="https://images.unsplash.com/photo-1607083206869-4c7672e72a8a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
             height="regular"
-            // priority={true}
-            hoverEffect="glow"
+
+            hoverEffect="zoom"
           />
             <PromoCard
               href="#"
@@ -212,7 +212,7 @@ function PromoCard({
   const getHoverEffect = () => {
     switch (hoverEffect) {
       case "pulse":
-        return "hover:animate-pulse hover:scale-[1.05] hover:shadow-2xl hover:shadow-yellow-400/30";
+        return "hover:animate-pulse hover:scale-[1.05] hover:shadow-2xl hover:shadow-yellow-100/30";
       case "flip":
         return "hover:rotate-y-12 hover:scale-[1.02] hover:-translate-y-2 hover:shadow-lg";
       case "slide":
