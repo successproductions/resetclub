@@ -1,4 +1,16 @@
 {
+  "Navigation": {
+    "home": "Home",
+    "about": "Our Story",
+    "team": "Our Team",
+    "careers": "We're Hiring",
+    "contact": "Contact",
+    "reserve": "Book Now"
+  },
+  "Hero": {
+    "title": "Morocco's first premium holistic transformation center",
+    "subtitle": "Reset Club™"
+  },
   "HomePage": {
     "title": "",
     "description": ""

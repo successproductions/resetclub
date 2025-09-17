@@ -1,11 +1,23 @@
 {
+  "Navigation": {
+    "home": "Accueil",
+    "about": "Notre histoire",
+    "team": "Notre équipe",
+    "careers": "Nous recrutons",
+    "contact": "Contact",
+    "reserve": "Réserver"
+  },
+  "Hero": {
+    "title": "le premier centre premium de transformation holistique au Maroc",
+    "subtitle": "Reset Club™"
+  },
   "HomePage": {
     "title": "",
     "description": ""
   },
   "LinktreePage": {
     "title": "ResetClub™️",
-    "fullName": "ResetClub™️ Rabat – Holistic & Biohacking Center",
+    "fullName": "ResetClub : l’effet WOW qui transforme votre corps, libère vos émotions et recharge votre énergie.",
     "slogan": "Hackez votre corps. Révélez votre potentiel.",
     "links": {
       "freeBilan": " Réservez votre Bilan Gratuit (-25% ouverture)",
