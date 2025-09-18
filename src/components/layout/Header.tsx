@@ -91,7 +91,7 @@ const Header: React.FC = () => {
           <div className="hidden md:block ml-6">
             <Button
               variant="primary"
-              size="sm"
+              size="lg"
               href="/contact"
               className={isScrolled ? 'scrolled-navbar' : ''}
             >
