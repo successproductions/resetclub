@@ -91,7 +91,7 @@ const Header: React.FC = () => {
           <div className="hidden md:block ml-6">
             <Button
               variant="primary"
-              size="sm"
+              size="lg"
               href="/contact"
               className={isScrolled ? 'scrolled-navbar' : ''}
             >
@@ -175,7 +175,7 @@ const Header: React.FC = () => {
           </nav>
 
           {/* Mobile CTA Button */}
-          <div className="p-6 border-t border-gray-200">
+          <div className="p-6 border-t border-gray-200 ">
             <Button
               variant="primary"
               size="lg"
