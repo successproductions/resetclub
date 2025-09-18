@@ -175,7 +175,7 @@ const Header: React.FC = () => {
           </nav>
 
           {/* Mobile CTA Button */}
-          <div className="p-6 border-t border-gray-200">
+          <div className="p-6 border-t border-gray-200 ">
             <Button
               variant="primary"
               size="lg"
