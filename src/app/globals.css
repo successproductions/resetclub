@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Montserrat:wght@100..900&family=Playfair+Display:wght@400..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Montserrat:wght@100..900&family=Playfair+Display:wght@400..900&family=Crimson+Text:wght@400;600;700&display=swap');
 @import "tailwindcss";
 
 :root {
@@ -8,6 +8,7 @@
   --font-poppins: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   --font-playfair: 'Playfair Display', serif;
   --font-cormorant: 'Cormorant Garamond', serif;
+  --font-le-jour-serif: 'Crimson Text', 'Times New Roman', serif;
 }
 
 @theme inline {
@@ -31,13 +32,13 @@ html {
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-inter);
+  font-family: 'Futura', 'Avenir Next', 'Avenir', 'Century Gothic', system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-playfair);
+  font-family: var(--font-le-jour-serif);
   font-weight: 600;
 }
 
@@ -55,6 +56,14 @@ h1, h2, h3, h4, h5, h6 {
 
 .font-cormorant {
   font-family: var(--font-cormorant);
+}
+
+.font-le-jour-serif {
+  font-family: var(--font-le-jour-serif);
+}
+
+.font-futura-family {
+  font-family: 'Futura', 'Avenir Next', 'Avenir', 'Century Gothic', system-ui, sans-serif;
 }
 
 /* Custom scrollbar */

@@ -1,4 +1,4 @@
-import { Inter, Poppins, Playfair_Display, Cormorant_Garamond } from 'next/font/google';
+import { Inter, Poppins, Playfair_Display, Cormorant_Garamond, Crimson_Text } from 'next/font/google';
 
 // Modern body text font - clean and readable
 export const inter = Inter({
@@ -31,4 +31,12 @@ export const cormorant = Cormorant_Garamond({
   variable: '--font-cormorant',
 });
 
-export const fontVariables = `${inter.variable} ${poppins.variable} ${playfair.variable} ${cormorant.variable}`;
+// Le Jour Serif alternative - elegant serif for headings
+export const leJourSerif = Crimson_Text({
+  subsets: ['latin'],
+  weight: ['400', '600', '700'],
+  display: 'swap',
+  variable: '--font-le-jour-serif',
+});
+
+export const fontVariables = `${inter.variable} ${poppins.variable} ${playfair.variable} ${cormorant.variable} ${leJourSerif.variable}`;
