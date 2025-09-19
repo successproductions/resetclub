@@ -41,7 +41,67 @@
     "description": ""
   },
   "TeamPage": {
-    "title": "",
-    "description": ""
+    "title": "Notre Équipe",
+    "description": "Une équipe d'experts dédiés à votre transformation",
+    "video": {
+      "title": "Derrière Reset Club",
+      "subtitle": "une équipe formée dans notre académie interne – la première au Maroc dédiée à l'excellence thérapeutique et au coaching transformationnel."
+    },
+    "nahed": {
+      "name": "Nahed Rachad",
+      "title": "Compassionate Guide to",
+      "subtitle": "Holistic Wellness",
+      "bio1": "Nahed Rachad, fondateur de RESET CLUB avec plus de 15 années d'expertise, s'est consacré à la spécialisation en transformation personnelle et optimisation de la santé. Il a développé une pratique enracinée dans le bien-être holistique, mettant l'accent sur les approches holistiques de la nutrition et du mouvement intentionnel.",
+      "bio2": "En tant qu'instructeur certifié avec plus de 5000 transformations réussies, Nahed intègre ses principes de bien-être dans sa vie quotidienne, démontrant son engagement envers la santé et le bien-être. Il croit à l'établissement d'objectifs réalistes avec ses clients, les guidant vers des changements de comportement durables à long terme.",
+      "bio3": "Au-delà de sa vie professionnelle, Nahed embrasse chaque moment de sa plénitude. Qu'il s'agisse de voyages, d'exploration de nouvelles expériences ou simplement de savourer les plaisirs simples, il trouve de la joie et du bonheur purs."
+    },
+    "team": {
+      "title": "Notre Équipe d'Experts",
+      "subtitle": "Une équipe pluridisciplinaire de spécialistes dédiés à votre transformation",
+      "expertsTitle": "Nos Experts",
+      "members": {
+        "sarah": {
+          "name": "Dr. Sarah Martinez",
+          "role": "Médecin Nutritionniste",
+          "specialty": "Métabolisme & Perte de Poids",
+          "description": "Spécialiste en optimisation métabolique et nutrition personnalisée pour des résultats durables. Après avoir terminé ses masters en médecine nutritionnelle, Dr. Sarah a pratiqué pendant plus de 12 ans dans des hôpitaux renommés et des retraites de bien-être."
+        },
+        "marc": {
+          "name": "Marc Dubois",
+          "role": "Coach Sportif Elite",
+          "specialty": "Transformation Physique",
+          "description": "Marc est un professionnel dynamique avec plus de 10 ans d'expérience multiculturelle riche englobant les centres de villégiature et les retraites de bien-être. Il se spécialise dans les programmes d'entraînement personnalisés."
+        },
+        "amina": {
+          "name": "Dr. Amina Hassan",
+          "role": "Psychologue Clinicienne",
+          "specialty": "Comportement & Habitudes",
+          "description": "Dr. Amina a plus de 8 années d'expérience diverse dans l'accompagnement psychologique des transformations de vie. Elle est spécialisée dans l'art de guider les changements de comportement durables."
+        },
+        "thomas": {
+          "name": "Thomas Laurent",
+          "role": "Chef Wellness",
+          "specialty": "Cuisine Santé",
+          "description": "Chef Thomas a plus de 15 années d'expérience dans l'art culinaire wellness. Il est bien versé dans les cuisines modernes européennes, avec un fort accent sur la santé et prépare des plats simples mais sophistiqués."
+        },
+        "fatima": {
+          "name": "Dr. Fatima Al-Zahra",
+          "role": "Endocrinologue",
+          "specialty": "Hormones & Longévité",
+          "description": "Experte en optimisation hormonale et médecine anti-âge pour la longévité. Dr. Fatima se spécialise dans l'accompagnement des clients vers une santé optimale grâce à l'équilibre hormonal."
+        },
+        "alexandre": {
+          "name": "Alexandre Moreau",
+          "role": "Thérapeute Holistique",
+          "specialty": "Bien-être Global",
+          "description": "Praticien en thérapies alternatives et accompagnement holistique du bien-être. Alexandre combine différentes approches thérapeutiques pour créer des programmes de guérison personnalisés."
+        }
+      }
+    }
+  },
+  "BeforeAfter": {
+    "title": "Témoignages avant/après",
+    "subtitle": "La preuve la plus forte : celles et ceux qui ont vécu la transformation",
+    "quote": "Chaque transformation commence par une décision. Rejoignez-nous et découvrez votre potentiel."
   }
 }
