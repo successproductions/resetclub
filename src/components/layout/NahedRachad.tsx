@@ -18,9 +18,9 @@ const NahedRachad: React.FC = () => {
                 {t('name')}
               </div>
               <h1 className="text-3xl md:text-5xl font-bold text-gray-900 mb-4 leading-tight">
-                {t('title')}
+                {t('title').toUpperCase()}
                 <br />
-                {t('subtitle')}
+                {t('subtitle').toUpperCase()}
               </h1>
             </div>
 

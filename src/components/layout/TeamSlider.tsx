@@ -78,7 +78,7 @@ const TeamSlider: React.FC = () => {
         {/* Header Section */}
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-5xl font-bold text-gray-900">
-            {t('expertsTitle')}
+            {t('expertsTitle').toUpperCase()}
           </h2>
         </div>
 
