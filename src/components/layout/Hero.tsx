@@ -34,7 +34,7 @@ const Hero: React.FC = () => {
             {t('title')}
           </div>
           <div className="text-4xl md:text-6xl lg:text-7xl xl:text-8xl font-bold tracking-tight text-white">
-            {t('subtitle')}
+            {t('subtitle').toUpperCase()}
           </div>
         </h1>
 
