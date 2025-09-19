@@ -103,5 +103,60 @@
     "title": "Before/After Testimonials",
     "subtitle": "The strongest proof: those who have lived the transformation",
     "quote": "Every transformation begins with a decision. Join us and discover your potential."
+  },
+  "KeyFigures": {
+    "title": "The results speak for themselves",
+    "stats": {
+      "weightLoss": {
+        "number": "10.599",
+        "unit": "kg",
+        "label": "lost since opening"
+      },
+      "satisfaction": {
+        "number": "95",
+        "unit": "%",
+        "label": "client satisfaction"
+      },
+      "objectives": {
+        "number": "90",
+        "unit": "%",
+        "label": "achieve their personalized goals"
+      }
+    }
+  },
+  "PracticeComparison": {
+    "title": "Why choose RESET CLUB?",
+    "subtitle": "Discover what sets us apart from traditional wellness approaches",
+    "comparisons": {
+      "approach": {
+        "criteria": "PERSONALIZED SUPPORT & DEDICATED COMMUNICATION",
+        "traditional": "Fragmented and isolated",
+        "resetClub": "Holistic and integrated"
+      },
+      "duration": {
+        "criteria": "CERTIFIED EXPERT TEAM WITH 15+ YEARS EXPERIENCE",
+        "traditional": "Short programs",
+        "resetClub": "Long-term personalized follow-up"
+      },
+      "method": {
+        "criteria": "TRANSPARENT COST STRUCTURE & CLEAR BILLING",
+        "traditional": "Generic solutions",
+        "resetClub": "Exclusive In-Out-Reset method"
+      },
+      "team": {
+        "criteria": "DEDICATED NUTRITION & WELLNESS SPECIALISTS",
+        "traditional": "Single specialist",
+        "resetClub": "Multidisciplinary team of experts"
+      },
+      "results": {
+        "criteria": "24/7 ACCESS TO MEDICAL TEAM",
+        "traditional": "Temporary and superficial",
+        "resetClub": "Lasting and deep transformation"
+      }
+    },
+    "cta": {
+      "title": "Ready for authentic transformation?",
+      "subtitle": "Discover why RESET CLUB makes the difference in your wellness journey."
+    }
   }
 }

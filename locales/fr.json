@@ -103,5 +103,60 @@
     "title": "Témoignages avant/après",
     "subtitle": "La preuve la plus forte : celles et ceux qui ont vécu la transformation",
     "quote": "Chaque transformation commence par une décision. Rejoignez-nous et découvrez votre potentiel."
+  },
+  "KeyFigures": {
+    "title": "Les résultats parlent d'eux-mêmes",
+    "stats": {
+      "weightLoss": {
+        "number": "10.599",
+        "unit": "kg",
+        "label": "perdus depuis l'ouverture"
+      },
+      "satisfaction": {
+        "number": "95",
+        "unit": "%",
+        "label": "de satisfaction clients"
+      },
+      "objectives": {
+        "number": "90",
+        "unit": "%",
+        "label": "atteignent leurs objectifs personnalisés"
+      }
+    }
+  },
+  "PracticeComparison": {
+    "title": "Pourquoi choisir RESET CLUB ?",
+    "subtitle": "Découvrez ce qui nous distingue des approches traditionnelles du bien-être",
+    "comparisons": {
+      "approach": {
+        "criteria": "SUPPORT PERSONNALISÉ & COMMUNICATION DÉDIÉE",
+        "traditional": "Fragmentée et isolée",
+        "resetClub": "Holistique et intégrée"
+      },
+      "duration": {
+        "criteria": "ÉQUIPE D'EXPERTS CERTIFIÉS AVEC 15+ ANNÉES D'EXPÉRIENCE",
+        "traditional": "Programmes courts",
+        "resetClub": "Suivi personnalisé à long terme"
+      },
+      "method": {
+        "criteria": "STRUCTURE DE COÛTS TRANSPARENTE & FACTURATION CLAIRE",
+        "traditional": "Solutions génériques",
+        "resetClub": "Méthode In-Out-Reset exclusive"
+      },
+      "team": {
+        "criteria": "SPÉCIALISTES EN NUTRITION & BIEN-ÊTRE DÉDIÉS",
+        "traditional": "Spécialiste unique",
+        "resetClub": "Équipe pluridisciplinaire d'experts"
+      },
+      "results": {
+        "criteria": "ACCÈS À L'ÉQUIPE MÉDICALE 24H/24",
+        "traditional": "Temporaires et superficiels",
+        "resetClub": "Transformation durable et profonde"
+      }
+    },
+    "cta": {
+      "title": "Prêt pour une transformation authentique ?",
+      "subtitle": "Découvrez pourquoi RESET CLUB fait la différence dans votre parcours de bien-être."
+    }
   }
 }

@@ -47,28 +47,28 @@ const WhyResetClub: React.FC = () => {
   const cards = [
     {
       id: 1,
-      title: "Éducationnel & Transformateur",
+      title: "Nos valeurs signatures",
       description: "Nous vous donnons le pouvoir de façonner votre santé avec les connaissances et les conseils, en veillant à ce que vous deveniez l'architecte ultime de votre bien-être.",
       image: "https://shawellness.com/wp-content/uploads/2025/01/5.png",
       iconUrl: "https://shawellness.com/wp-content/uploads/2025/01/1-01.svg"
     },
     {
       id: 2,
-      title: "Standards les Plus Élevés",
+      title: "Innovation",
       description: "Découvrez l'excellence à travers des destinations de rêve, des installations de pointe, une hospitalité exceptionnelle et des soins chaleureux de l'équipe dédiée RESET CLUB™.",
       image: "https://shawellness.com/wp-content/uploads/2025/01/4.png",
       iconUrl: "https://shawellness.com/wp-content/uploads/2025/01/1-02.svg"
     },
     {
       id: 3,
-      title: "Pionniers",
+      title: "Transformation",
       description: "Leaders mondiaux en optimisation de la santé et de la longévité depuis près de deux décennies, servant 100 000 clients dans le monde avec innovation et reconnaissance prestigieuse.",
       image: "https://shawellness.com/wp-content/uploads/2025/01/6.png",
       iconUrl: "https://shawellness.com/wp-content/uploads/2025/01/1-03.svg"
     },
     {
       id: 4,
-      title: "Résultats Basés sur les Données",
+      title: "Excellence",
       description: "Technologies de pointe et analyses avancées pour fournir des diagnostics, mesurer les biomarqueurs pour identifier les opportunités d'optimisation et prévenir les maladies.",
       image: "https://shawellness.com/wp-content/uploads/2025/01/2.png",
       iconUrl: "https://shawellness.com/wp-content/uploads/2025/01/1-04.svg"
@@ -186,8 +186,8 @@ const WhyResetClub: React.FC = () => {
             {cards.map((card, index) => (
               <div
                 key={`second-${card.id}`}
-                className="flex-none w-[60%] md:w-[80%] sm:w-1/2 lg:w-2/12 relative group"
-                style={{ minHeight: '450px' }}
+                className="flex-none w-[40%] md:w-[80%] sm:w-1/2 lg:w-2/12 relative group"
+                style={{ minHeight: '410px' }}
               >
                 {/* Background Image */}
                 <div className="absolute inset-0">
