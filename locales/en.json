@@ -9,7 +9,7 @@
   },
   "Hero": {
     "title": "Morocco's first premium holistic transformation center",
-    "subtitle": "Reset Club™",
+    "subtitle": "Reset Club",
     "cta": "Book my assessment"
   },
   "HomePage": {
@@ -17,12 +17,12 @@
     "description": ""
   },
   "LinktreePage": {
-    "title": "ResetClub™️",
-    "fullName": "ResetClub™️ Rabat – Holistic & Biohacking Center",
+    "title": "ResetClub",
+    "fullName": "ResetClub Rabat – Holistic & Biohacking Center",
     "slogan": "Hack your body. Reveal your potential.",
     "links": {
       "freeBilan": " Book your Free Assessment (-25% opening offer)",
-      "discover": " Discover ResetClub™️",
+      "discover": " Discover ResetClub",
       "booking": " Book Online Appointment",
       "offers": " Special Opening Offers",
       "whatsapp": " Chat with Us on WhatsApp",
@@ -41,7 +41,122 @@
     "description": ""
   },
   "TeamPage": {
-    "title": "",
-    "description": ""
+    "title": "Our Team",
+    "description": "A team of experts dedicated to your transformation",
+    "video": {
+      "title": "Behind Reset Club",
+      "subtitle": "a team trained in our internal academy – the first in Morocco dedicated to therapeutic excellence and transformational coaching."
+    },
+    "nahed": {
+      "name": "Nahed Rachad",
+      "title": "Compassionate Guide to",
+      "subtitle": "Holistic Wellness",
+      "bio1": "Nahed Rachad, founder of RESET CLUB with over 15 years of expertise, has dedicated himself to specializing in personal transformation and health optimization. He has developed a practice rooted in holistic wellness, emphasizing holistic approaches to nutrition and intentional movement.",
+      "bio2": "As a certified instructor with over 5000 successful transformations, Nahed integrates his wellness principles into his daily life, demonstrating his commitment to health and well-being. He believes in setting realistic goals with his clients, guiding them towards sustainable long-term behavioral changes.",
+      "bio3": "Beyond his professional life, Nahed embraces every moment of his fulfillment. Whether it's traveling, exploring new experiences, or simply savoring simple pleasures, he finds pure joy and happiness."
+    },
+    "team": {
+      "title": "Our Expert Team",
+      "subtitle": "A multidisciplinary team of specialists dedicated to your transformation",
+      "expertsTitle": "Our Experts",
+      "members": {
+        "sarah": {
+          "name": "Dr. Sarah Martinez",
+          "role": "Nutritionist Physician",
+          "specialty": "Metabolism & Weight Loss",
+          "description": "Specialist in metabolic optimization and personalized nutrition for lasting results. After completing her masters in nutritional medicine, Dr. Sarah has practiced for over 12 years in renowned hospitals and wellness retreats."
+        },
+        "marc": {
+          "name": "Marc Dubois",
+          "role": "Elite Sports Coach",
+          "specialty": "Physical Transformation",
+          "description": "Marc is a dynamic professional with over 10 years of rich multicultural experience encompassing resorts and wellness retreats. He specializes in personalized training programs."
+        },
+        "amina": {
+          "name": "Dr. Amina Hassan",
+          "role": "Clinical Psychologist",
+          "specialty": "Behavior & Habits",
+          "description": "Dr. Amina has over 8 years of diverse experience in psychological support for life transformations. She specializes in the art of guiding sustainable behavioral changes."
+        },
+        "thomas": {
+          "name": "Thomas Laurent",
+          "role": "Wellness Chef",
+          "specialty": "Health Cuisine",
+          "description": "Chef Thomas has over 15 years of experience in wellness culinary arts. He is well-versed in modern European cuisines, with a strong focus on health and prepares simple yet sophisticated dishes."
+        },
+        "fatima": {
+          "name": "Dr. Fatima Al-Zahra",
+          "role": "Endocrinologist",
+          "specialty": "Hormones & Longevity",
+          "description": "Expert in hormonal optimization and anti-aging medicine for longevity. Dr. Fatima specializes in guiding clients towards optimal health through hormonal balance."
+        },
+        "alexandre": {
+          "name": "Alexandre Moreau",
+          "role": "Holistic Therapist",
+          "specialty": "Global Wellness",
+          "description": "Practitioner in alternative therapies and holistic wellness support. Alexandre combines different therapeutic approaches to create personalized healing programs."
+        }
+      }
+    }
+  },
+  "BeforeAfter": {
+    "title": "Before/After Testimonials",
+    "subtitle": "The strongest proof: those who have lived the transformation",
+    "quote": "Every transformation begins with a decision. Join us and discover your potential."
+  },
+  "KeyFigures": {
+    "title": "The results speak for themselves",
+    "stats": {
+      "weightLoss": {
+        "number": "10.599",
+        "unit": "kg",
+        "label": "lost since opening"
+      },
+      "satisfaction": {
+        "number": "95",
+        "unit": "%",
+        "label": "client satisfaction"
+      },
+      "objectives": {
+        "number": "90",
+        "unit": "%",
+        "label": "achieve their personalized goals"
+      }
+    }
+  },
+  "PracticeComparison": {
+    "title": "Why choose RESET CLUB?",
+    "subtitle": "Discover what sets us apart from traditional wellness approaches",
+    "comparisons": {
+      "approach": {
+        "criteria": "PERSONALIZED SUPPORT & DEDICATED COMMUNICATION",
+        "traditional": "Fragmented and isolated",
+        "resetClub": "Holistic and integrated"
+      },
+      "duration": {
+        "criteria": "CERTIFIED EXPERT TEAM WITH 15+ YEARS EXPERIENCE",
+        "traditional": "Short programs",
+        "resetClub": "Long-term personalized follow-up"
+      },
+      "method": {
+        "criteria": "TRANSPARENT COST STRUCTURE & CLEAR BILLING",
+        "traditional": "Generic solutions",
+        "resetClub": "Exclusive In-Out-Reset method"
+      },
+      "team": {
+        "criteria": "DEDICATED NUTRITION & WELLNESS SPECIALISTS",
+        "traditional": "Single specialist",
+        "resetClub": "Multidisciplinary team of experts"
+      },
+      "results": {
+        "criteria": "24/7 ACCESS TO MEDICAL TEAM",
+        "traditional": "Temporary and superficial",
+        "resetClub": "Lasting and deep transformation"
+      }
+    },
+    "cta": {
+      "title": "Ready for authentic transformation?",
+      "subtitle": "Discover why RESET CLUB makes the difference in your wellness journey."
+    }
   }
 }
