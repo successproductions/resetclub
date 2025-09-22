@@ -17,7 +17,7 @@ const NahedRachad: React.FC = () => {
               <div className="text-[#ccbaa8] font-medium mb-2 uppercase tracking-wider text-lg">
                 {t('name')}
               </div>
-              <h1 className="text-3xl md:text-5xl font-bold text-gray-900 mb-4 leading-tight">
+              <h1 className="text-3xl md:text-3xl lg:text-4xl font-bold text-gray-900 mb-4 leading-tight">
                 {t('title').toUpperCase()}
                 <br />
                 {t('subtitle').toUpperCase()}
@@ -25,7 +25,7 @@ const NahedRachad: React.FC = () => {
             </div>
 
             {/* Description */}
-            <div className="space-y-4 text-gray-700 leading-relaxed">
+            <div className="space-y-4 text-gray-700 text-sm md:text-lg leading-relaxed">
               <p>
                 {t('bio1')}
               </p>

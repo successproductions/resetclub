@@ -33,10 +33,10 @@ export default function TeamPage() {
 
         <h1 className="text-white mb-8">
 
-          <div className="text-3xl md:text-6xl lg:text-7xl xl:text-8xl font-bold tracking-tight text-white">
-            {t('video.title')}
+          <div className="text-3xl md:text-4xl lg:text-6xl xl:text-7xl font-normal tracking-tight text-white">
+            {t('video.title').toUpperCase()}
           </div>
-          <div className="text-sm md:text-xl lg:text-2xl font-light mb-4 tracking-wide text-white">
+          <div className="text-sm md:text-xl lg:text-1xl font-light mb-4 tracking-wide text-white">
             {t('video.subtitle')}
           </div>
         </h1>

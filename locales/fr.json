@@ -18,7 +18,7 @@
   },
   "LinktreePage": {
     "title": "ResetClub",
-    "fullName": "ResetClub : l’effet WOW qui transforme votre corps, libère vos émotions et recharge votre énergie.",
+    "fullName": "Reset club: «Le premier centre où ta silhouette, ton énergie et ton équilibre mental sont reprogrammés, de l’intérieur comme de l’extérieur, grâce à la méthode exclusive IN–OUT–RESET.»",
     "slogan": "Hackez votre corps. Révélez votre potentiel.",
     "links": {
       "freeBilan": " Réservez votre Bilan Gratuit (-25% ouverture)",
@@ -29,7 +29,7 @@
       "reviews": " Lisez nos Avis Clients",
       "location": " Nous Trouver – Localisation & Itinéraire"
     },
-    "contact": " Contact direct : +212 6 XX XX XX XX",
+    "contact": "  +212 6 XX XX XX XX",
     "newsletter": "Inscrivez-vous à notre Newsletter VIP"
   },
   "AboutPage": {
@@ -37,8 +37,67 @@
     "description": ""
   },
   "ContactPage": {
-    "title": "",
-    "description": ""
+    "title": "Contact & Réservations",
+    "subtitle": "Prêt à commencer votre transformation ? Contactez-nous pour réserver votre bilan gratuit ou obtenir plus d'informations sur nos programmes.",
+    "form": {
+      "title": "Envoyez-nous un message",
+      "firstName": "Prénom",
+      "lastName": "Nom",
+      "email": "Email",
+      "phone": "Téléphone",
+      "subject": "Sujet",
+      "message": "Message",
+      "firstNamePlaceholder": "Votre prénom",
+      "lastNamePlaceholder": "Votre nom",
+      "emailPlaceholder": "votre@email.com",
+      "phonePlaceholder": "+212 6 XX XX XX XX",
+      "subjectPlaceholder": "Sélectionnez un sujet",
+      "messagePlaceholder": "Décrivez votre demande...",
+      "subjects": {
+        "assessment": "Bilan gratuit",
+        "programs": "Programmes de transformation",
+        "pricing": "Tarifs et offres",
+        "partnership": "Partenariat",
+        "other": "Autre"
+      },
+      "submit": "Envoyer le message",
+      "sending": "Envoi en cours...",
+      "successMessage": "Votre message a été envoyé avec succès ! Nous vous recontacterons dans les plus brefs délais.",
+      "errorMessage": "Une erreur s'est produite lors de l'envoi. Veuillez réessayer.",
+      "errors": {
+        "required": "Ce champ est requis",
+        "invalidEmail": "Veuillez entrer une adresse email valide"
+      }
+    },
+    "info": {
+      "title": "Informations de contact",
+      "address": {
+        "title": "Adresse",
+        "value": "123 Avenue Mohammed V\\nCasablanca 20000\\nMaroc"
+      },
+      "phone": {
+        "title": "Téléphone",
+        "value": "+212 6 XX XX XX XX"
+      },
+      "email": {
+        "title": "Email",
+        "value": "contact@resetclub.ma"
+      },
+      "hours": {
+        "title": "Horaires d'ouverture",
+        "weekdays": "Lundi - Vendredi : 8h00 - 20h00",
+        "saturday": "Samedi : 9h00 - 18h00",
+        "sunday": "Dimanche : 10h00 - 16h00"
+      }
+    },
+    "map": {
+      "title": "Nous trouver",
+      "placeholder": "Carte interactive à venir"
+    },
+    "cta": {
+      "title": "Réserver mon bilan",
+      "subtitle": "Commencez votre transformation dès aujourd'hui"
+    }
   },
   "TeamPage": {
     "title": "Notre Équipe",

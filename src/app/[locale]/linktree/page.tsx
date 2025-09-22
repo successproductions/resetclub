@@ -39,18 +39,6 @@ export default function LinktreePage() {
           className="object-cover hidden md:block"
           priority
         />
-        {/* Overlay for better text readability */}
-        <div className="absolute inset-0 bg-black/30"></div>
-      </div>
-      {/* Background Logo */}
-      <div className="absolute inset-0 flex items-center justify-center opacity-10">
-        <Image
-          src="/LOGO.png"
-          alt="ResetClub Logo Background"
-          width={600}
-          height={580}
-          className="object-contain"
-        />
       </div>
 
       {/* Fixed Header Logo */}
@@ -97,7 +85,7 @@ export default function LinktreePage() {
             <SocialIcon platform="linkedin" />
             <SocialIcon platform="website" />
           </div>
- <p className="text-sm opacity-90 pb-2 px-4 font-bold leading-relaxed">2.4M Total Flollowers</p>
+ <p className="text-lg md:text-lg opacity-90 pb-2 px-4 font-le-jour-serif font-bold leading-relaxed">2.4M Total Flollowers </p>
           {/* Full name */}
           <p className="text-sm opacity-90 mb-2 font-medium">{t('fullName')}</p>
 
@@ -111,7 +99,7 @@ export default function LinktreePage() {
         </div>
 
         {/* Links as Image Cards */}
-        <div className="space-y-3 mb-6 ">
+        <div className="space-y-3 mb-6 font-le-jour-serif ">
           <PromoCard
             href="#"
             text={t('links.freeBilan')}
@@ -272,7 +260,7 @@ function PromoCard({
         {/* Text overlay with better positioning */}
         <div className="absolute inset-0 flex items-end justify-center text-center text-white p-4">
           <div className="transform transition-transform duration-300 group-hover:scale-105">
-            <p className={`font-bold leading-tight drop-shadow-lg
+            <p className={`font-bold leading-tight drop-shadow-lg font-le-jour-serif  text-2xl
               ${height === 'small' ? 'text-sm' : height === 'tall' ? 'text-lg' : 'text-base'}
             `}>
               {text}
