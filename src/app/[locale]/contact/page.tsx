@@ -123,24 +123,24 @@ export default function ContactPage() {
           backgroundRepeat: 'no-repeat'
         }}
       >
-        <div className="container mx-auto px-6 text-center relative z-10">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl text-white mb-6 drop-shadow-lg">
-            {t('title')}
+        <div className="container mx-auto px-2 md:px-6 text-center relative z-10">
+          <h1 className="text-3xl md:text-4xl lg:text-6xl text-white mb-1 md:mb-6 drop-shadow-lg">
+            {t('title').toUpperCase()}
           </h1>
-          <p className="text-xl md:text-2xl text-white max-w-3xl mx-auto leading-relaxed drop-shadow-lg">
+          <p className="text-sm md:text-2xl text-white max-w-3xl mx-auto leading-relaxed drop-shadow-lg">
             {t('subtitle')}
           </p>
         </div>
       </div>
 
       {/* Contact Form Section - Different Background */}
-      <div className="bg-gray-50 py-16">
+      <div className="bg-gray-50 py-4 md:py-16">
         <div className="container mx-auto px-6">
         <div className="grid lg:grid-cols-2 gap-16">
           {/* Contact Form */}
           <div className="bg-white rounded-2xl shadow-lg p-8">
             <h2 className="text-3xl text-gray-900 mb-8">
-              {t('form.title')}
+              {t('form.title').toUpperCase()}
             </h2>
 
             {submitStatus === 'success' && (
@@ -289,7 +289,7 @@ export default function ContactPage() {
             {/* Contact Details */}
             <div className="bg-white rounded-2xl shadow-lg p-8">
               <h2 className="text-3xl text-gray-900 mb-8">
-                {t('info.title')}
+                {t('info.title').toUpperCase()}
               </h2>
 
               <div className="space-y-6">
