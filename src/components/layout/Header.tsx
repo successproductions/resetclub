@@ -88,7 +88,7 @@ const Header: React.FC = () => {
           </div>
 
           {/* CTA Button */}
-          <div className="hidden md:block ml-6">
+          <div className="hidden md:block ml-6 font-le-jour-serif">
             <Button
               variant="primary"
               size="lg"

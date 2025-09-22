@@ -29,11 +29,11 @@ const Hero: React.FC = () => {
       {/* Content */}
       <div className="relative z-10 text-center px-6 max-w-4xl mx-auto">
         {/* Main Heading */}
-        <h1 className="text-white mb-8">
-          <div className="text-lg md:text-xl lg:text-2xl font-light mb-4 tracking-wide text-white">
+        <h1 className="text-white mb-8 font-normal">
+          <div className="text-lg md:text-xl lg:text-2xl mb-4 tracking-wide text-white ">
             {t('title')}
           </div>
-          <div className="text-4xl md:text-6xl lg:text-7xl xl:text-8xl font-bold tracking-tight text-white">
+          <div className="text-4xl md:text-6xl lg:text-7xl xl:text-8xl tracking-tight  text-white">
             {t('subtitle').toUpperCase()}
           </div>
         </h1>
@@ -45,7 +45,7 @@ const Hero: React.FC = () => {
             variant="primary"
 
             href="/contact"
-            className="min-w-64 text-sm md:text-lg whitespace-nowrap"
+            className="min-w-64 font-le-jour-serif text-sm lg:text-2xl md:text-lg whitespace-nowrap"
           >
             {t('cta')}
           </Button>

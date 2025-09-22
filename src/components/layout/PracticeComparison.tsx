@@ -48,13 +48,13 @@ const PracticeComparison: React.FC = () => {
             {/* Table Header */}
             <div className="grid grid-cols-3 bg-gradient-to-r from-gray-900 to-gray-800 text-white">
               <div className="p-3 md:p-6 text-center min-w-[200px]">
-                <span className="text-sm md:text-lg font-semibold">Critères</span>
+                <span className="text-sm md:text-lg ">Critères</span>
               </div>
               <div className="p-3 md:p-6 text-center border-l border-gray-700 min-w-[200px]">
-                <span className="text-xs md:text-lg font-semibold">Pratiques Traditionnelles</span>
+                <span className="text-xs md:text-lg ">Pratiques Traditionnelles</span>
               </div>
               <div className="p-3 md:p-6 text-center border-l border-[#ccbaa8] bg-gradient-to-r from-[#ccbaa8] to-[#ccbaa8]/80 min-w-[200px]">
-                <span className="text-sm md:text-lg font-bold text-white">RESET CLUB™</span>
+                <span className="text-sm md:text-lg  text-white">RESET CLUB™</span>
               </div>
             </div>
 
@@ -67,7 +67,7 @@ const PracticeComparison: React.FC = () => {
                 } hover:bg-gray-100 transition-colors duration-200`}
               >
                 {/* Criteria */}
-                <div className="p-3 md:p-6 font-semibold text-gray-900 border-b border-gray-200 min-w-[200px]">
+                <div className="p-3 md:p-6  text-gray-900 border-b border-gray-200 min-w-[200px]">
                   <span className="text-xs md:text-base leading-tight">{t(`comparisons.${item.key}.criteria`)}</span>
                 </div>
 
@@ -91,7 +91,7 @@ const PracticeComparison: React.FC = () => {
                         <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                       </svg>
                     </div>
-                    <span className="font-semibold text-xs md:text-base leading-tight">{t(`comparisons.${item.key}.resetClub`)}</span>
+                    <span className=" text-xs md:text-base leading-tight">{t(`comparisons.${item.key}.resetClub`)}</span>
                   </div>
                 </div>
               </div>

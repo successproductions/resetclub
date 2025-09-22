@@ -61,8 +61,8 @@ const AnimatedCounter: React.FC<CounterProps> = ({ end, duration = 2000, decimal
   const formatNumber = (num: number) => {
     if (decimals) {
       return num.toLocaleString('fr-FR', {
-        minimumFractionDigits: 3,
-        maximumFractionDigits: 3
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2
       });
     }
     return Math.floor(num).toLocaleString();
