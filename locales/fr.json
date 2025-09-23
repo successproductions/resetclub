@@ -217,5 +217,48 @@
       "title": "Prêt pour une transformation authentique ?",
       "subtitle": "Découvrez pourquoi RESET CLUB fait la différence dans votre parcours de bien-être."
     }
+  },
+  "RecrutonsPage": {
+    "title": "Nous recrutons",
+    "subtitle": "Rejoins notre équipe féminine et contribue à transformer des vies",
+    "mainTitle": "Rejoignez le mouvement ResetClub™",
+    "qualities": {
+      "title": "Tu es...",
+      "list": {
+        "passionate": "Passionnée par le bien-être et la transformation personnelle",
+        "motivated": "Motivée par l'accompagnement et l'aide aux autres",
+        "dynamic": "Dynamique et énergique dans ton approche",
+        "teamwork": "Capable de travailler en équipe et de façon autonome",
+        "communicator": "Excellente communicatrice",
+        "flexible": "Flexible et adaptable aux changements",
+        "creative": "Créative et innovante dans tes solutions",
+        "determined": "Déterminée à atteindre tes objectifs"
+      }
+    },
+    "upload": {
+      "title": "📌 Envoie-nous ton CV",
+      "subtitle": "Rejoins notre équipe féminine et fais partie de la révolution du bien-être !",
+      "dragText": "Cliquer pour sélectionner votre CV",
+      "fileTypes": "PDF, DOC, DOCX (max 5MB)",
+      "buttonText": "Envoyer mon CV",
+      "uploading": "Envoi en cours...",
+      "successMessage": "CV envoyé avec succès ! Nous vous contacterons bientôt.",
+      "errorMessage": "Erreur lors de l'envoi. Veuillez réessayer."
+    },
+    "contact": {
+      "question": "Des questions ? Contactez-nous à",
+      "email": "contact@resetclub.ma"
+    }
+  },
+  "WhatsApp": {
+    "tooltip": "Contactez-nous sur WhatsApp",
+    "defaultMessage": "Bonjour ! Je suis intéressée par vos services de transformation ResetClub. Pouvez-vous me donner plus d'informations ?",
+    "aria-label": "Contacter sur WhatsApp",
+    "buttonText": "WhatsApp",
+    "startChat": "Commencer la conversation",
+    "welcomeTitle": "Bienvenue chez RESET CLUB.",
+    "welcomeMessage": "Cliquez ci-dessous pour parler directement avec nous.",
+    "helpMessage": "Si vous avez des questions, notre équipe est là pour vous aider.",
+    "subtitle": "Pour rendez-vous & questions"
   }
 }

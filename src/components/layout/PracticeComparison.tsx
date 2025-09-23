@@ -44,7 +44,7 @@ const PracticeComparison: React.FC = () => {
 
         {/* Comparison Table */}
         <div className="overflow-x-auto scrollbar-thin scrollbar-track-gray-100 scrollbar-thumb-[#ccbaa8] scrollbar-thumb-rounded-full">
-          <div className="bg-white rounded-2xl md:rounded-3xl shadow-lg overflow-hidden min-w-[600px]">
+          <div className=" rounded-2xl md:rounded-3xl shadow-lg overflow-hidden min-w-[600px]">
             {/* Table Header */}
             <div className="grid grid-cols-3 bg-gradient-to-r from-gray-900 to-gray-800 text-white">
               <div className="p-3 md:p-6 text-center min-w-[200px]">
@@ -54,7 +54,7 @@ const PracticeComparison: React.FC = () => {
                 <span className="text-xs md:text-lg ">Pratiques Traditionnelles</span>
               </div>
               <div className="p-3 md:p-6 text-center border-l border-[#ccbaa8] bg-gradient-to-r from-[#ccbaa8] to-[#ccbaa8]/80 min-w-[200px]">
-                <span className="text-sm md:text-lg  text-white">RESET CLUB™</span>
+                <span className="text-sm md:text-lg  text-white">RESET CLUB</span>
               </div>
             </div>
 

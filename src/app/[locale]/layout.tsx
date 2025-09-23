@@ -3,6 +3,7 @@ import { getMessages } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import { routing } from '../../i18n/routing';
 import { fontVariables } from '../fonts';
+import WhatsAppButton from '../../components/ui/WhatsAppButton';
 import '../globals.css';
 
 export function generateStaticParams() {
@@ -29,6 +30,7 @@ export default async function LocaleLayout({
       <body className="font-futura-family antialiased">
         <NextIntlClientProvider messages={messages}>
           {children}
+          <WhatsAppButton phoneNumber="+212600000000" />
         </NextIntlClientProvider>
       </body>
     </html>
