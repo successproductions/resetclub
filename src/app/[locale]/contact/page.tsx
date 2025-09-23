@@ -10,6 +10,7 @@ interface FormData {
   firstName: string;
   lastName: string;
   email: string;
+  countryCode: string;
   phone: string;
   subject: string;
   message: string;
@@ -19,6 +20,7 @@ interface FormErrors {
   firstName?: string;
   lastName?: string;
   email?: string;
+  countryCode?: string;
   phone?: string;
   subject?: string;
   message?: string;
@@ -30,6 +32,7 @@ export default function ContactPage() {
     firstName: '',
     lastName: '',
     email: '',
+    countryCode: '+212',
     phone: '',
     subject: '',
     message: ''
@@ -99,6 +102,7 @@ export default function ContactPage() {
         firstName: '',
         lastName: '',
         email: '',
+        countryCode: '+212',
         phone: '',
         subject: '',
         message: ''
@@ -168,10 +172,9 @@ export default function ContactPage() {
                     name="firstName"
                     value={formData.firstName}
                     onChange={handleInputChange}
-                    className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:border-transparent transition-colors placeholder:text-gray-300 ${
+                    className={`w-full px-4 py-3 border rounded-lg focus:outline-none focus:border-[#ccbaa8] text-gray-900 transition-colors placeholder:text-gray-300 ${
                       errors.firstName ? 'border-red-500' : 'border-gray-300'
                     }`}
-                    style={{ '--tw-ring-color': '#ccbaa8' } as React.CSSProperties}
                     placeholder={t('form.firstNamePlaceholder')}
                   />
                   {errors.firstName && (
@@ -189,10 +192,9 @@ export default function ContactPage() {
                     name="lastName"
                     value={formData.lastName}
                     onChange={handleInputChange}
-                    className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:border-transparent transition-colors placeholder:text-gray-300 ${
+                    className={`w-full px-4 text-gray-900 py-3 border rounded-lg focus:outline-none focus:border-[#ccbaa8] transition-colors placeholder:text-gray-300 ${
                       errors.lastName ? 'border-red-500' : 'border-gray-300'
                     }`}
-                    style={{ '--tw-ring-color': '#ccbaa8' } as React.CSSProperties}
                     placeholder={t('form.lastNamePlaceholder')}
                   />
                   {errors.lastName && (
@@ -212,10 +214,9 @@ export default function ContactPage() {
                   name="email"
                   value={formData.email}
                   onChange={handleInputChange}
-                  className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:border-transparent transition-colors placeholder:text-gray-300 ${
+                  className={`w-full px-4 text-gray-900 py-3 border rounded-lg focus:outline-none focus:border-[#ccbaa8] transition-colors placeholder:text-gray-300 ${
                     errors.email ? 'border-red-500' : 'border-gray-300'
                   }`}
-                  style={{ '--tw-ring-color': '#ccbaa8' } as React.CSSProperties}
                   placeholder={t('form.emailPlaceholder')}
                 />
                 {errors.email && (
@@ -228,20 +229,40 @@ export default function ContactPage() {
                 <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-2">
                   {t('form.phone')} *
                 </label>
-                <input
-                  type="tel"
-                  id="phone"
-                  name="phone"
-                  value={formData.phone}
-                  onChange={handleInputChange}
-                  className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:border-transparent transition-colors placeholder:text-gray-300 ${
-                    errors.phone ? 'border-red-500' : 'border-gray-300'
-                  }`}
-                  style={{ '--tw-ring-color': '#ccbaa8' } as React.CSSProperties}
-                  placeholder={t('form.phonePlaceholder')}
-                />
-                {errors.phone && (
-                  <p className="text-red-500 text-sm mt-1">{errors.phone}</p>
+                <div className="flex gap-2">
+                  <select
+                    name="countryCode"
+                    value={formData.countryCode}
+                    onChange={handleInputChange}
+                    className={`px-3 py-3 border rounded-lg focus:outline-none focus:border-[#ccbaa8] transition-colors ${
+                      errors.countryCode ? 'border-red-500' : 'border-gray-300'
+                    }`}
+                  >
+                    <option value="+212">🇲🇦 +212</option>
+                    <option value="+33">🇫🇷 +33</option>
+                    <option value="+1">🇺🇸 +1</option>
+                    <option value="+44">🇬🇧 +44</option>
+                    <option value="+49">🇩🇪 +49</option>
+                    <option value="+34">🇪🇸 +34</option>
+                    <option value="+39">🇮🇹 +39</option>
+                    <option value="+31">🇳🇱 +31</option>
+                    <option value="+32">🇧🇪 +32</option>
+                    <option value="+41">🇨🇭 +41</option>
+                  </select>
+                  <input
+                    type="tel"
+                    id="phone"
+                    name="phone"
+                    value={formData.phone}
+                    onChange={handleInputChange}
+                    className={`flex-1 px-4 py-3 border text-gray-900  rounded-lg focus:outline-none focus:border-[#ccbaa8] transition-colors placeholder:text-gray-300 ${
+                      errors.phone ? 'border-red-500' : 'border-gray-300'
+                    }`}
+                    placeholder={t('form.phonePlaceholder')}
+                  />
+                </div>
+                {(errors.countryCode || errors.phone) && (
+                  <p className="text-red-500 text-sm mt-1">{errors.countryCode || errors.phone}</p>
                 )}
               </div>
 
@@ -257,10 +278,9 @@ export default function ContactPage() {
                   rows={5}
                   value={formData.message}
                   onChange={handleInputChange}
-                  className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:border-transparent transition-colors resize-vertical placeholder:text-gray-300 ${
+                  className={`w-full px-4 py-3 border text-gray-900 rounded-lg focus:outline-none focus:border-[#ccbaa8] transition-colors resize-vertical placeholder:text-gray-300 ${
                     errors.message ? 'border-red-500' : 'border-gray-300'
                   }`}
-                  style={{ '--tw-ring-color': '#ccbaa8' } as React.CSSProperties}
                   placeholder={t('form.messagePlaceholder')}
                 />
                 {errors.message && (

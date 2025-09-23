@@ -24,7 +24,7 @@ const Header: React.FC = () => {
     { label: t('home'), href: '/' },
     { label: t('about'), href: '/about' },
     { label: t('team'), href: '/team' },
-    { label: t('careers'), href: '/careers' },
+    { label: t('careers'), href: '/recrutons' },
     { label: t('contact'), href: '/contact' },
   ];
 

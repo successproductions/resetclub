@@ -217,5 +217,48 @@
       "title": "Ready for authentic transformation?",
       "subtitle": "Discover why RESET CLUB makes the difference in your wellness journey."
     }
+  },
+  "RecrutonsPage": {
+    "title": "We're Hiring",
+    "subtitle": "Join our female team and help transform lives",
+    "mainTitle": "Join the ResetClub™ movement",
+    "qualities": {
+      "title": "You are...",
+      "list": {
+        "passionate": "Passionate about wellness and personal transformation",
+        "motivated": "Motivated by support and helping others",
+        "dynamic": "Dynamic and energetic in your approach",
+        "teamwork": "Able to work in a team and independently",
+        "communicator": "Excellent communicator",
+        "flexible": "Flexible and adaptable to change",
+        "creative": "Creative and innovative in your solutions",
+        "determined": "Determined to achieve your goals"
+      }
+    },
+    "upload": {
+      "title": "📌 Send us your CV",
+      "subtitle": "Join our female team and be part of the wellness revolution!",
+      "dragText": "Click to select your CV",
+      "fileTypes": "PDF, DOC, DOCX (max 5MB)",
+      "buttonText": "Send my CV",
+      "uploading": "Uploading...",
+      "successMessage": "CV sent successfully! We will contact you soon.",
+      "errorMessage": "Error sending. Please try again."
+    },
+    "contact": {
+      "question": "Questions? Contact us at",
+      "email": "contact@resetclub.ma"
+    }
+  },
+  "WhatsApp": {
+    "tooltip": "Contact us on WhatsApp",
+    "defaultMessage": "Hello! I'm interested in your ResetClub transformation services. Can you give me more information?",
+    "aria-label": "Contact on WhatsApp",
+    "buttonText": "WhatsApp Us",
+    "startChat": "Start Chat",
+    "welcomeTitle": "Welcome to RESET CLUB.",
+    "welcomeMessage": "Click below to speak directly with us.",
+    "helpMessage": "If you have any questions, our team is here to help you.",
+    "subtitle": "For appointments & questions"
   }
 }
