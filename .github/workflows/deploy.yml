@@ -33,7 +33,7 @@ jobs:
         username: resetclub
         password: ${{ secrets.SSH_PASSWORD }}
         script: |
-          # Load Node.js environment
+          # Load Node.js 
           export PATH="$HOME/.nvm/versions/node/$(ls $HOME/.nvm/versions/node/ | tail -1)/bin:$PATH"
           source ~/.bashrc || true
           source ~/.profile || true
