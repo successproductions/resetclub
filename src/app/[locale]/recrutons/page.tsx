@@ -41,7 +41,7 @@ export default function RecrutonsPage() {
     <>
       <Header />
 
-      {/* Hero Section */}
+      {/* Hero Section - Updated with Reset Club™ branding */}
       <div
         className="relative pt-32 pb-20 min-h-[50vh] flex items-center justify-center"
         style={{
@@ -53,10 +53,10 @@ export default function RecrutonsPage() {
       >
         <div className="container mx-auto px-2 md:px-6 text-center relative z-10">
           <h1 className="text-3xl md:text-4xl lg:text-6xl text-white mb-1 md:mb-6 drop-shadow-lg">
-            {t('title').toUpperCase()}
+            {t('hero.title')}
           </h1>
           <p className="text-sm md:text-2xl text-white max-w-3xl mx-auto leading-relaxed drop-shadow-lg">
-{t('subtitle')}
+            {t('hero.subtitle')}
           </p>
         </div>
       </div>
@@ -68,73 +68,78 @@ export default function RecrutonsPage() {
 
             {/* Main Content */}
             <div className="bg-white rounded-2xl shadow-lg p-6 md:p-12">
-              <h2 className="text-2xl md:text-4xl text-gray-900 mb-2 md:mb-8 text-center">
-{t('mainTitle').toUpperCase()}
-              </h2>
+              
+              {/* Intro Text - Updated with copywriting style */}
+              <div className="mb-12 text-center">
+                <h2 className="text-2xl md:text-4xl text-gray-900 mb-6">
+                  {t('qualities.title')}
+                </h2>
+                <p className="text-lg text-gray-600 leading-relaxed max-w-3xl mx-auto mb-8" dangerouslySetInnerHTML={{__html: t('qualities.intro')}} />
 
-              {/* Qualities Section */}
+                <div className="w-24 h-1 bg-[#ccbaa8] mx-auto"></div>
+              </div>
+
+              {/* Qualities Section - Updated format */}
               <div className="mb-12">
-                <p className="text-lg md:text-xl text-gray-700 leading-relaxed mb-6">
-                  <strong>{t('qualities.title')}</strong>
-                </p>
-
-                <div className="grid md:grid-cols-2 gap-6">
-                  <div className="space-y-4">
-                    <div className="flex items-start space-x-3">
-                      <div className="flex-shrink-0 w-2 h-2 bg-[#ccbaa8] rounded-full mt-3"></div>
-                      <p className="text-gray-700">{t('qualities.list.passionate')}</p>
+                <div className="grid md:grid-cols-2 gap-8">
+                  <div className="space-y-6">
+                    <div className="flex items-start space-x-4">
+                      <div className="flex-shrink-0 w-3 h-3 bg-[#ccbaa8] rounded-full mt-2"></div>
+                      <p className="text-gray-700 leading-relaxed" dangerouslySetInnerHTML={{__html: t('qualities.list.passionate')}} />
                     </div>
-                    <div className="flex items-start space-x-3">
-                      <div className="flex-shrink-0 w-2 h-2 bg-[#ccbaa8] rounded-full mt-3"></div>
-                      <p className="text-gray-700">{t('qualities.list.motivated')}</p>
+                    <div className="flex items-start space-x-4">
+                      <div className="flex-shrink-0 w-3 h-3 bg-[#ccbaa8] rounded-full mt-2"></div>
+                      <p className="text-gray-700 leading-relaxed" dangerouslySetInnerHTML={{__html: t('qualities.list.motivated')}} />
                     </div>
-                    <div className="flex items-start space-x-3">
-                      <div className="flex-shrink-0 w-2 h-2 bg-[#ccbaa8] rounded-full mt-3"></div>
-                      <p className="text-gray-700">{t('qualities.list.dynamic')}</p>
+                    <div className="flex items-start space-x-4">
+                      <div className="flex-shrink-0 w-3 h-3 bg-[#ccbaa8] rounded-full mt-2"></div>
+                      <p className="text-gray-700 leading-relaxed" dangerouslySetInnerHTML={{__html: t('qualities.list.dynamic')}} />
                     </div>
-                    <div className="flex items-start space-x-3">
-                      <div className="flex-shrink-0 w-2 h-2 bg-[#ccbaa8] rounded-full mt-3"></div>
-                      <p className="text-gray-700">{t('qualities.list.teamwork')}</p>
+                    <div className="flex items-start space-x-4">
+                      <div className="flex-shrink-0 w-3 h-3 bg-[#ccbaa8] rounded-full mt-2"></div>
+                      <p className="text-gray-700 leading-relaxed" dangerouslySetInnerHTML={{__html: t('qualities.list.teamwork')}} />
                     </div>
                   </div>
 
-                  <div className="space-y-4">
-                    <div className="flex items-start space-x-3">
-                      <div className="flex-shrink-0 w-2 h-2 bg-[#ccbaa8] rounded-full mt-3"></div>
-                      <p className="text-gray-700">{t('qualities.list.communicator')}</p>
+                  <div className="space-y-6">
+                    <div className="flex items-start space-x-4">
+                      <div className="flex-shrink-0 w-3 h-3 bg-[#ccbaa8] rounded-full mt-2"></div>
+                      <p className="text-gray-700 leading-relaxed" dangerouslySetInnerHTML={{__html: t('qualities.list.communicator')}} />
                     </div>
-                    <div className="flex items-start space-x-3">
-                      <div className="flex-shrink-0 w-2 h-2 bg-[#ccbaa8] rounded-full mt-3"></div>
-                      <p className="text-gray-700">{t('qualities.list.flexible')}</p>
+                    <div className="flex items-start space-x-4">
+                      <div className="flex-shrink-0 w-3 h-3 bg-[#ccbaa8] rounded-full mt-2"></div>
+                      <p className="text-gray-700 leading-relaxed" dangerouslySetInnerHTML={{__html: t('qualities.list.flexible')}} />
                     </div>
-                    <div className="flex items-start space-x-3">
-                      <div className="flex-shrink-0 w-2 h-2 bg-[#ccbaa8] rounded-full mt-3"></div>
-                      <p className="text-gray-700">{t('qualities.list.creative')}</p>
+                    <div className="flex items-start space-x-4">
+                      <div className="flex-shrink-0 w-3 h-3 bg-[#ccbaa8] rounded-full mt-2"></div>
+                      <p className="text-gray-700 leading-relaxed" dangerouslySetInnerHTML={{__html: t('qualities.list.creative')}} />
                     </div>
-                    <div className="flex items-start space-x-3">
-                      <div className="flex-shrink-0 w-2 h-2 bg-[#ccbaa8] rounded-full mt-3"></div>
-                      <p className="text-gray-700">{t('qualities.list.determined')}</p>
+                    <div className="flex items-start space-x-4">
+                      <div className="flex-shrink-0 w-3 h-3 bg-[#ccbaa8] rounded-full mt-2"></div>
+                      <p className="text-gray-700 leading-relaxed" dangerouslySetInnerHTML={{__html: t('qualities.list.determined')}} />
                     </div>
                   </div>
                 </div>
               </div>
 
-              {/* CV Upload Section */}
-              <div className="bg-gray-50 rounded-xl p-8">
+              {/* CV Upload Section - Enhanced */}
+              <div className="bg-gradient-to-br from-[#ccbaa8]/10 to-[#ccbaa8]/5 rounded-xl p-8 border border-[#ccbaa8]/20">
                 <div className="text-center">
                   <div className="mb-6">
-                    <div className="w-16 h-16 bg-[#ccbaa8] rounded-full flex items-center justify-center mx-auto mb-4">
-                      <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <div className="w-20 h-20 bg-gradient-to-br from-[#ccbaa8] to-[#b8a695] rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg">
+                      <svg className="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
                       </svg>
                     </div>
-                    <h3 className="text-2xl text-gray-900 mb-2">{t('upload.title').toUpperCase()}</h3>
-                    <p className="text-gray-600 mb-6">
-{t('upload.subtitle')}
+                    <h3 className="text-2xl md:text-3xl text-gray-900 mb-3 font-bold">
+                      {t('upload.title')}
+                    </h3>
+                    <p className="text-gray-600 mb-6 text-lg leading-relaxed">
+                      {t('upload.subtitle')}
                     </p>
                   </div>
 
-                  {/* File Upload */}
+                  {/* File Upload - Enhanced styling */}
                   <div className="mb-6">
                     <input
                       type="file"
@@ -145,53 +150,65 @@ export default function RecrutonsPage() {
                     />
                     <label
                       htmlFor="cv-upload"
-                      className="inline-block px-8 py-4 bg-white border-2 border-dashed border-[#ccbaa8] rounded-lg cursor-pointer hover:bg-gray-50 transition-colors"
+                      className="inline-block px-12 py-6 bg-white border-2 border-dashed border-[#ccbaa8] rounded-xl cursor-pointer hover:bg-[#ccbaa8]/5 hover:border-[#ccbaa8] transition-all duration-300 shadow-sm"
                     >
                       <div className="text-center">
-                        <svg className="w-12 h-12 text-[#ccbaa8] mx-auto mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg className="w-16 h-16 text-[#ccbaa8] mx-auto mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
                         </svg>
-                        <p className="text-[#ccbaa8] font-medium">
+                        <p className="text-[#ccbaa8] font-semibold text-lg mb-2">
                           {selectedFile ? selectedFile.name : t('upload.dragText')}
                         </p>
-                        <p className="text-sm text-gray-500 mt-1">{t('upload.fileTypes')}</p>
+                        <p className="text-sm text-gray-500">{t('upload.fileTypes')}</p>
                       </div>
                     </label>
                   </div>
 
                   {/* Upload Status */}
                   {uploadStatus === 'success' && (
-                    <div className="mb-6 p-4 bg-green-50 border border-green-200 rounded-lg">
-                      <p className="text-green-800">{t('upload.successMessage')}</p>
+                    <div className="mb-6 p-4 bg-green-50 border-l-4 border-green-400 rounded-lg">
+                      <p className="text-green-800 font-medium">
+                        {t('upload.successMessage')}
+                      </p>
                     </div>
                   )}
 
                   {uploadStatus === 'error' && (
-                    <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-lg">
-                      <p className="text-red-800">{t('upload.errorMessage')}</p>
+                    <div className="mb-6 p-4 bg-red-50 border-l-4 border-red-400 rounded-lg">
+                      <p className="text-red-800">
+                        {t('upload.errorMessage')}
+                      </p>
                     </div>
                   )}
 
-                  {/* Upload Button */}
+                  {/* Upload Button - Enhanced */}
                   {selectedFile && (
-                    <SubmitButton
-                      onClick={handleUpload}
-                      disabled={isUploading}
-                      variant="secondary"
-                      className="min-w-64 font-le-jour-serif text-sm lg:text-1xl md:text-lg"
-                    >
-                      {isUploading ? t('upload.uploading') : t('upload.buttonText')}
-                    </SubmitButton>
+                    <div className="mt-8">
+                      <SubmitButton
+                        onClick={handleUpload}
+                        disabled={isUploading}
+                        variant="secondary"
+                        className="min-w-72 font-bold text-lg py-4 px-8"
+                      >
+                        {isUploading ? t('upload.uploading') : t('upload.buttonText')}
+                      </SubmitButton>
+                    </div>
                   )}
                 </div>
               </div>
 
-              {/* Contact Info */}
-              <div className="mt-8 text-center">
-                <p className="text-gray-600">
+              {/* Contact Info - Updated */}
+              <div className="mt-12 text-center bg-white rounded-lg p-6">
+                <p className="text-gray-600 text-lg">
                   {t('contact.question')}{' '}
-                  <a href={`mailto:${t('contact.email')}`} className="text-[#ccbaa8] hover:underline">
+                  <a href="mailto:recrutement@resetclub.ma" className="text-[#ccbaa8] hover:underline font-semibold">
                     {t('contact.email')}
+                  </a>
+                </p>
+                <p className="text-sm text-gray-500 mt-2">
+                  {t('contact.phoneLabel')}{' '}
+                  <a href="tel:+212537123456" className="text-[#ccbaa8] hover:underline">
+                    {t('contact.phone')}
                   </a>
                 </p>
               </div>
