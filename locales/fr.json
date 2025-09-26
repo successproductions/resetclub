@@ -221,33 +221,39 @@
   "RecrutonsPage": {
     "title": "Nous recrutons",
     "subtitle": "Rejoins notre équipe féminine et contribue à transformer des vies",
-    "mainTitle": "Rejoignez le mouvement ResetClub™",
+    "hero": {
+      "title": "REJOIGNEZ LE MOUVEMENT RESETCLUB",
+      "subtitle": "Rejoignez notre équipe féminine et aidez à transformer des vies"
+    },
     "qualities": {
-      "title": "Tu es...",
+      "title": "TU ES...",
+      "intro": "Passionné(e) par le bien-être, la transformation, la relation client premium ?<br/>Tu aimes créer du lien, vendre avec authenticité, et accompagner dans la durée ?<br/>Tu rêves de rejoindre une aventure unique et de créer un mouvement ?",
       "list": {
-        "passionate": "Passionnée par le bien-être et la transformation personnelle",
-        "motivated": "Motivée par l'accompagnement et l'aide aux autres",
-        "dynamic": "Dynamique et énergique dans ton approche",
-        "teamwork": "Capable de travailler en équipe et de façon autonome",
-        "communicator": "Excellente communicatrice",
-        "flexible": "Flexible et adaptable aux changements",
-        "creative": "Créative et innovante dans tes solutions",
-        "determined": "Déterminée à atteindre tes objectifs"
+        "passionate": "<strong>Passionné(e) par le bien-être</strong> et la transformation personnelle",
+        "motivated": "<strong>Motivé(e) par l'accompagnement</strong> et l'aide aux autres",
+        "dynamic": "<strong>Dynamique et énergique</strong> dans ton approche",
+        "teamwork": "<strong>Capable de travailler</strong> en équipe et de façon autonome",
+        "communicator": "<strong>Excellente communicante</strong> avec un sens relationnel développé",
+        "flexible": "<strong>Flexible et adaptable</strong> aux changements",
+        "creative": "<strong>Créative et innovante</strong> dans tes solutions",
+        "determined": "<strong>Déterminée</strong> à atteindre tes objectifs"
       }
     },
     "upload": {
-      "title": "📌 Envoie-nous ton CV",
-      "subtitle": "Rejoins notre équipe féminine et fais partie de la révolution du bien-être !",
-      "dragText": "Cliquer pour sélectionner votre CV",
+      "title": "📌 DÉPOSE TON CV ICI",
+      "subtitle": "Rejoignez Reset Club. Nous t'attendons pour créer ensemble une révolution du bien-être !",
+      "dragText": "Clique pour sélectionner ton CV",
       "fileTypes": "PDF, DOC, DOCX (max 5MB)",
-      "buttonText": "Envoyer mon CV",
-      "uploading": "Envoi en cours...",
-      "successMessage": "CV envoyé avec succès ! Nous vous contacterons bientôt.",
-      "errorMessage": "Erreur lors de l'envoi. Veuillez réessayer."
+      "buttonText": "🚀 ENVOYER MON CV",
+      "uploading": "⏳ Envoi en cours...",
+      "successMessage": "🎉 CV envoyé avec succès ! Nous te contactons sous 48h.",
+      "errorMessage": "❌ Erreur lors de l'envoi. Merci de réessayer."
     },
     "contact": {
-      "question": "Des questions ? Contactez-nous à",
-      "email": "contact@resetclub.ma"
+      "question": "Des questions sur le poste ?",
+      "email": "recrutement@resetclub.ma",
+      "phone": "+212 6 XX XX XX",
+      "phoneLabel": "Ou contactez-nous directement au"
     }
   },
   "WhatsApp": {

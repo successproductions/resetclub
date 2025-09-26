@@ -221,33 +221,39 @@
   "RecrutonsPage": {
     "title": "We're Hiring",
     "subtitle": "Join our female team and help transform lives",
-    "mainTitle": "Join the ResetClub™ movement",
+    "hero": {
+      "title": "JOIN THE RESETCLUB MOVEMENT",
+      "subtitle": "Join our female team and help transform lives"
+    },
     "qualities": {
-      "title": "You are...",
+      "title": "YOU ARE...",
+      "intro": "Passionate about wellness, transformation, premium customer relations?<br/>Do you like to create connections, sell with authenticity, and provide long-term support?<br/>Do you dream of joining a unique adventure and creating a movement?",
       "list": {
-        "passionate": "Passionate about wellness and personal transformation",
-        "motivated": "Motivated by support and helping others",
-        "dynamic": "Dynamic and energetic in your approach",
-        "teamwork": "Able to work in a team and independently",
-        "communicator": "Excellent communicator",
-        "flexible": "Flexible and adaptable to change",
-        "creative": "Creative and innovative in your solutions",
-        "determined": "Determined to achieve your goals"
+        "passionate": "<strong>Passionate about wellness</strong> and personal transformation",
+        "motivated": "<strong>Motivated by support</strong> and helping others",
+        "dynamic": "<strong>Dynamic and energetic</strong> in your approach",
+        "teamwork": "<strong>Able to work</strong> in a team and independently",
+        "communicator": "<strong>Excellent communicator</strong> with developed relationship skills",
+        "flexible": "<strong>Flexible and adaptable</strong> to changes",
+        "creative": "<strong>Creative and innovative</strong> in your solutions",
+        "determined": "<strong>Determined</strong> to achieve your goals"
       }
     },
     "upload": {
-      "title": "📌 Send us your CV",
-      "subtitle": "Join our female team and be part of the wellness revolution!",
+      "title": "📌 SUBMIT YOUR CV HERE",
+      "subtitle": "Join Reset Club. We're waiting for you to create a wellness revolution together!",
       "dragText": "Click to select your CV",
       "fileTypes": "PDF, DOC, DOCX (max 5MB)",
-      "buttonText": "Send my CV",
-      "uploading": "Uploading...",
-      "successMessage": "CV sent successfully! We will contact you soon.",
-      "errorMessage": "Error sending. Please try again."
+      "buttonText": "🚀 SEND MY CV",
+      "uploading": "⏳ Uploading...",
+      "successMessage": "🎉 CV sent successfully! We will contact you within 48h.",
+      "errorMessage": "❌ Error sending. Please try again."
     },
     "contact": {
-      "question": "Questions? Contact us at",
-      "email": "contact@resetclub.ma"
+      "question": "Questions about the position?",
+      "email": "recrutement@resetclub.ma",
+      "phone": "+212 6 XX XX XX",
+      "phoneLabel": "Or contact us directly at"
     }
   },
   "WhatsApp": {
