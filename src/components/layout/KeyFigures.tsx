@@ -103,12 +103,8 @@ const KeyFigures: React.FC = () => {
       <div className="max-w-7xl mx-auto px-6 relative">
         {/* Header */}
         <div className="text-center mb-4 md:mb-6">
-          <div className="inline-block bg-[#ccbaa8]/10 px-6 py-2 rounded-full mb-6">
-            <span className="text-[#ccbaa8] font-semibold text-sm uppercase tracking-wider">
-              Nos Résultats
-            </span>
-          </div>
-          <h2 className="text-3xl md:text-5xl font-bold text-gray-900 mb-6">
+
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
             {t('title').toUpperCase()}
           </h2>
           <div className="w-20 h-1 bg-[#ccbaa8] mx-auto rounded-full"></div>
@@ -139,7 +135,7 @@ const KeyFigures: React.FC = () => {
                         decimals={stat.decimals}
                         duration={2500}
                       />
-                      <span className="text-[#ccbaa8]">
+                      <span className="">
                         {t(`stats.${stat.key}.unit`)}
                       </span>
                     </div>

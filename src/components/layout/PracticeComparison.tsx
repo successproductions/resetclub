@@ -25,16 +25,12 @@ const PracticeComparison: React.FC = () => {
   ];
 
   return (
-    <section className="pb-16 bg-gray-50">
+    <section className="pb-16 bg-white">
       <div className="max-w-7xl mx-auto px-6">
         {/* Header */}
         <div className="text-center mb-8 md:mb-16">
-          <div className="inline-block bg-[#ccbaa8]/10 px-6 py-2 rounded-full mb-6">
-            <span className="text-[#ccbaa8] font-semibold text-sm uppercase tracking-wider">
-              Comparaison
-            </span>
-          </div>
-          <h2 className="text-2xl md:text-3xl lg:text-5xl font-bold text-gray-900 mb-4 md:mb-6">
+         
+          <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 mb-4 md:mb-6">
             {t('title').toUpperCase()}
           </h2>
           <p className="text-base md:text-lg text-gray-600 max-w-3xl mx-auto px-4">

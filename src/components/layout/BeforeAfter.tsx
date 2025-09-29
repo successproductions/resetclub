@@ -54,15 +54,13 @@ const BeforeAfter: React.FC = () => {
   };
 
   return (
-    <section className="py-16 bg-gray-50">
+    <section className="py-16 bg-white">
       {/* Header Section */}
       <div className="max-w-7xl mx-auto px-6 mb-16">
-        <h2 className="text-3xl md:text-5xl font-bold text-gray-900 mb-6 text-center ">
-          {t('title').toUpperCase()}
+        <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6 text-center ">
+          {t('subtitle').toUpperCase()}
         </h2>
-        <p className="text-lg text-gray-600 max-w-4xl mx-auto  text-center ">
-          {t('subtitle')}
-        </p>
+        
       </div>
 
       {/* Desktop Grid */}

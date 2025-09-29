@@ -8,7 +8,7 @@
     "reserve": "Réserver"
   },
   "Hero": {
-    "title": "le premier centre premium de transformation holistique au Maroc",
+    "title": "Le premier centre premium de transformation holistique au Maroc",
     "subtitle": "Reset Club",
     "cta": "Réserver mon bilan"
   },
@@ -37,10 +37,10 @@
     "description": ""
   },
   "ContactPage": {
-    "title": "Contact & Réservations",
-    "subtitle": "Prêt à commencer votre transformation ? Contactez-nous pour réserver votre bilan gratuit ou obtenir plus d'informations sur nos programmes.",
+    "title": "Prêt à commencer votre transformation ?",
+    "subtitle": "Contactez-nous pour réserver votre bilan gratuit ou obtenir plus d'informations sur nos programmes.",
     "form": {
-      "title": "Envoyez-nous un message",
+      "title": "Au plaisir de vous servir",
       "firstName": "Prénom",
       "lastName": "Nom",
       "email": "Email",
@@ -85,9 +85,7 @@
       },
       "hours": {
         "title": "Horaires d'ouverture",
-        "weekdays": "Lundi - Vendredi : 8h00 - 20h00",
-        "saturday": "Samedi : 9h00 - 18h00",
-        "sunday": "Dimanche : 10h00 - 16h00"
+        "weekdays": "Lundi - Samedi : 8h00 - 20h00"
       }
     },
     "map": {
@@ -226,18 +224,7 @@
       "subtitle": "Rejoignez notre équipe féminine et aidez à transformer des vies"
     },
     "qualities": {
-      "title": "TU ES...",
-      "intro": "Passionné(e) par le bien-être, la transformation, la relation client premium ?<br/>Tu aimes créer du lien, vendre avec authenticité, et accompagner dans la durée ?<br/>Tu rêves de rejoindre une aventure unique et de créer un mouvement ?",
-      "list": {
-        "passionate": "<strong>Passionné(e) par le bien-être</strong> et la transformation personnelle",
-        "motivated": "<strong>Motivé(e) par l'accompagnement</strong> et l'aide aux autres",
-        "dynamic": "<strong>Dynamique et énergique</strong> dans ton approche",
-        "teamwork": "<strong>Capable de travailler</strong> en équipe et de façon autonome",
-        "communicator": "<strong>Excellente communicante</strong> avec un sens relationnel développé",
-        "flexible": "<strong>Flexible et adaptable</strong> aux changements",
-        "creative": "<strong>Créative et innovante</strong> dans tes solutions",
-        "determined": "<strong>Déterminée</strong> à atteindre tes objectifs"
-      }
+      "intro": "Vous êtes passionné(e) par le bien-être, la transformation, la relation client premium ?<br/>Vous aimez créer du lien, vendre avec authenticité, et accompagner dans la durée ?<br/>Vous rêvez de rejoindre une aventure unique et de créer un mouvement ?"
     },
     "upload": {
       "title": "📌 DÉPOSE TON CV ICI",

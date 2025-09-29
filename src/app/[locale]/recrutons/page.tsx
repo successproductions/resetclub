@@ -43,7 +43,7 @@ export default function RecrutonsPage() {
 
       {/* Hero Section - Updated with Reset Club™ branding */}
       <div
-        className="relative pt-32 pb-20 min-h-[50vh] flex items-center justify-center"
+        className="relative pt-32 pb-20 min-h-[28vh] flex items-center justify-center"
         style={{
           backgroundImage: `url('/PALMSBACKGROUND.jpg')`,
           backgroundSize: 'cover',
@@ -51,11 +51,11 @@ export default function RecrutonsPage() {
           backgroundRepeat: 'no-repeat'
         }}
       >
-        <div className="container mx-auto px-2 md:px-6 text-center relative z-10">
-          <h1 className="text-3xl md:text-4xl lg:text-6xl text-white mb-1 md:mb-6 drop-shadow-lg">
+        <div className="container mx-auto px-2 pt-6 md:px-6 text-center relative z-10">
+          <h1 className="text-2xl md:text-3xl lg:text-5xl text-white mb-1 md:mb-6 drop-shadow-lg">
             {t('hero.title')}
           </h1>
-          <p className="text-sm md:text-2xl text-white max-w-3xl mx-auto leading-relaxed drop-shadow-lg">
+          <p className="text-sm md:text-1xl text-white max-w-4xl mx-auto leading-relaxed drop-shadow-lg">
             {t('hero.subtitle')}
           </p>
         </div>
@@ -67,60 +67,16 @@ export default function RecrutonsPage() {
           <div className="max-w-4xl mx-auto">
 
             {/* Main Content */}
-            <div className="bg-white rounded-2xl shadow-lg p-6 md:p-12">
+            <div className="bg-white rounded-2xl shadow-lg   p-6 md:p-12">
               
               {/* Intro Text - Updated with copywriting style */}
               <div className="mb-12 text-center">
-                <h2 className="text-2xl md:text-4xl text-gray-900 mb-6">
-                  {t('qualities.title')}
-                </h2>
                 <p className="text-lg text-gray-600 leading-relaxed max-w-3xl mx-auto mb-8" dangerouslySetInnerHTML={{__html: t('qualities.intro')}} />
 
                 <div className="w-24 h-1 bg-[#ccbaa8] mx-auto"></div>
               </div>
 
-              {/* Qualities Section - Updated format */}
-              <div className="mb-12">
-                <div className="grid md:grid-cols-2 gap-8">
-                  <div className="space-y-6">
-                    <div className="flex items-start space-x-4">
-                      <div className="flex-shrink-0 w-3 h-3 bg-[#ccbaa8] rounded-full mt-2"></div>
-                      <p className="text-gray-700 leading-relaxed" dangerouslySetInnerHTML={{__html: t('qualities.list.passionate')}} />
-                    </div>
-                    <div className="flex items-start space-x-4">
-                      <div className="flex-shrink-0 w-3 h-3 bg-[#ccbaa8] rounded-full mt-2"></div>
-                      <p className="text-gray-700 leading-relaxed" dangerouslySetInnerHTML={{__html: t('qualities.list.motivated')}} />
-                    </div>
-                    <div className="flex items-start space-x-4">
-                      <div className="flex-shrink-0 w-3 h-3 bg-[#ccbaa8] rounded-full mt-2"></div>
-                      <p className="text-gray-700 leading-relaxed" dangerouslySetInnerHTML={{__html: t('qualities.list.dynamic')}} />
-                    </div>
-                    <div className="flex items-start space-x-4">
-                      <div className="flex-shrink-0 w-3 h-3 bg-[#ccbaa8] rounded-full mt-2"></div>
-                      <p className="text-gray-700 leading-relaxed" dangerouslySetInnerHTML={{__html: t('qualities.list.teamwork')}} />
-                    </div>
-                  </div>
 
-                  <div className="space-y-6">
-                    <div className="flex items-start space-x-4">
-                      <div className="flex-shrink-0 w-3 h-3 bg-[#ccbaa8] rounded-full mt-2"></div>
-                      <p className="text-gray-700 leading-relaxed" dangerouslySetInnerHTML={{__html: t('qualities.list.communicator')}} />
-                    </div>
-                    <div className="flex items-start space-x-4">
-                      <div className="flex-shrink-0 w-3 h-3 bg-[#ccbaa8] rounded-full mt-2"></div>
-                      <p className="text-gray-700 leading-relaxed" dangerouslySetInnerHTML={{__html: t('qualities.list.flexible')}} />
-                    </div>
-                    <div className="flex items-start space-x-4">
-                      <div className="flex-shrink-0 w-3 h-3 bg-[#ccbaa8] rounded-full mt-2"></div>
-                      <p className="text-gray-700 leading-relaxed" dangerouslySetInnerHTML={{__html: t('qualities.list.creative')}} />
-                    </div>
-                    <div className="flex items-start space-x-4">
-                      <div className="flex-shrink-0 w-3 h-3 bg-[#ccbaa8] rounded-full mt-2"></div>
-                      <p className="text-gray-700 leading-relaxed" dangerouslySetInnerHTML={{__html: t('qualities.list.determined')}} />
-                    </div>
-                  </div>
-                </div>
-              </div>
 
               {/* CV Upload Section - Enhanced */}
               <div className="bg-gradient-to-br from-[#ccbaa8]/10 to-[#ccbaa8]/5 rounded-xl p-8 border border-[#ccbaa8]/20">
@@ -197,21 +153,6 @@ export default function RecrutonsPage() {
                 </div>
               </div>
 
-              {/* Contact Info - Updated */}
-              <div className="mt-12 text-center bg-white rounded-lg p-6">
-                <p className="text-gray-600 text-lg">
-                  {t('contact.question')}{' '}
-                  <a href="mailto:recrutement@resetclub.ma" className="text-[#ccbaa8] hover:underline font-semibold">
-                    {t('contact.email')}
-                  </a>
-                </p>
-                <p className="text-sm text-gray-500 mt-2">
-                  {t('contact.phoneLabel')}{' '}
-                  <a href="tel:+212537123456" className="text-[#ccbaa8] hover:underline">
-                    {t('contact.phone')}
-                  </a>
-                </p>
-              </div>
             </div>
           </div>
         </div>

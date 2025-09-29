@@ -37,10 +37,10 @@
     "description": ""
   },
   "ContactPage": {
-    "title": "Contact & Reservations",
+    "title": "Ready to start your transformation?",
     "subtitle": "Ready to start your transformation? Contact us to book your free assessment or get more information about our programs.",
     "form": {
-      "title": "Send us a message",
+      "title": "A pleasure to serve you",
       "firstName": "First Name",
       "lastName": "Last Name",
       "email": "Email",
@@ -85,9 +85,7 @@
       },
       "hours": {
         "title": "Opening hours",
-        "weekdays": "Monday - Friday: 8:00 AM - 8:00 PM",
-        "saturday": "Saturday: 9:00 AM - 6:00 PM",
-        "sunday": "Sunday: 10:00 AM - 4:00 PM"
+        "weekdays": "Monday - Saturday: 8:00 AM - 8:00 PM"
       }
     },
     "map": {
@@ -226,18 +224,7 @@
       "subtitle": "Join our female team and help transform lives"
     },
     "qualities": {
-      "title": "YOU ARE...",
-      "intro": "Passionate about wellness, transformation, premium customer relations?<br/>Do you like to create connections, sell with authenticity, and provide long-term support?<br/>Do you dream of joining a unique adventure and creating a movement?",
-      "list": {
-        "passionate": "<strong>Passionate about wellness</strong> and personal transformation",
-        "motivated": "<strong>Motivated by support</strong> and helping others",
-        "dynamic": "<strong>Dynamic and energetic</strong> in your approach",
-        "teamwork": "<strong>Able to work</strong> in a team and independently",
-        "communicator": "<strong>Excellent communicator</strong> with developed relationship skills",
-        "flexible": "<strong>Flexible and adaptable</strong> to changes",
-        "creative": "<strong>Creative and innovative</strong> in your solutions",
-        "determined": "<strong>Determined</strong> to achieve your goals"
-      }
+      "intro": "Passionate about wellness, transformation, premium customer relations?<br/>Do you like to create connections, sell with authenticity, and provide long-term support?<br/>Do you dream of joining a unique adventure and creating a movement?"
     },
     "upload": {
       "title": "📌 SUBMIT YOUR CV HERE",
