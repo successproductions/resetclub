@@ -119,7 +119,7 @@ export default function ContactPage() {
       <Header />
       {/* Hero Section with Palm Background */}
       <div
-        className="relative pt-32 pb-20 min-h-[60vh] flex items-center justify-center"
+        className="relative pt-32 pb-20 min-h-[25vh] flex items-center justify-center"
         style={{
           backgroundImage: `url('/PALMSBACKGROUND.jpg')`,
           backgroundSize: 'cover',
@@ -127,11 +127,11 @@ export default function ContactPage() {
           backgroundRepeat: 'no-repeat'
         }}
       >
-        <div className="container mx-auto px-2 md:px-6 text-center relative z-10">
-          <h1 className="text-3xl md:text-4xl lg:text-6xl text-white mb-1 md:mb-6 drop-shadow-lg">
+        <div className="container mx-auto px-2 pt-6 md:px-6 text-center relative z-10">
+          <h1 className="text-2xl md:text-3xl lg:text-5xl text-white mb-1 md:mb-6 drop-shadow-lg">
             {t('title').toUpperCase()}
           </h1>
-          <p className="text-sm md:text-2xl text-white max-w-3xl mx-auto leading-relaxed drop-shadow-lg">
+          <p className="text-sm md:text-1xl text-white max-w-4xl mx-auto leading-relaxed drop-shadow-lg">
             {t('subtitle')}
           </p>
         </div>
@@ -368,8 +368,6 @@ export default function ContactPage() {
                     <h3 className="font-medium text-gray-900 mb-1">{t('info.hours.title')}</h3>
                     <div className="text-gray-600 space-y-1">
                       <p>{t('info.hours.weekdays')}</p>
-                      <p>{t('info.hours.saturday')}</p>
-                      <p>{t('info.hours.sunday')}</p>
                     </div>
                   </div>
                 </div>

@@ -93,10 +93,10 @@ const WhyResetClub: React.FC = () => {
     <section className="pt-16 bg-white">
       {/* Header Section */}
       <div className="max-w-7xl mx-auto px-6 mb-16">
-        <h2 className="text-3xl md:text-5xl font-bold text-gray-900 mb-6">
+        <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
           POURQUOI RESET CLUB EST UNIQUE ?
         </h2>
-        <p className="text-lg text-gray-600 max-w-4xl">
+        <p className="text-sm md:text-lg text-gray-600 max-w-4xl">
           Vous avez tout essayé… Ici, vous découvrez vos vraies limites & solutions avec la méthode signature In—Out—Reset
         </p>
       </div>
