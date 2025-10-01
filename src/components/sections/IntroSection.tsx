@@ -84,17 +84,17 @@ const IntroSection: React.FC = () => {
   }, []);
 
   return (
-    <section ref={sectionRef} className="relative py-8 md:py-12 overflow-hidden bg-gradient-to-br from-[#1a3a52] via-[#2d5875] to-[#1a3a52]">
+    <section ref={sectionRef} className="relative py-8 md:py-12 overflow-hidden bg-white">
       {/* Decorative top notch */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-24 h-12 bg-gradient-to-b from-[#ccbaa8] to-transparent rounded-b-full" />
+ 
 
       {/* Main container with border */}
       <div className="container mx-auto px-6 relative">
-        <div className="relative max-w-7xl mx-auto border-2 border-[#4a6b85] rounded-[3rem] p-6 md:p-6">
+        <div className="relative max-w-7xl mx-auto border-2 border-[#ccbaa8] rounded-[3rem] p-6 md:p-6">
 
           {/* Header */}
           <div className="text-center mb-8">
-            <h2 ref={titleRef} className="text-3xl md:text-4xl lg:text-5xl font-normal text-[#ccbaa8] mb-8">
+            <h2 ref={titleRef} className="text-3xl md:text-3xl lg:text-4xl font-normal text-gray-950 mb-8">
               {t('hook')}
             </h2>
           </div>
@@ -105,8 +105,8 @@ const IntroSection: React.FC = () => {
 
               {/* Card 1: IN */}
               <div ref={card1Ref} className="relative">
-                <div className="bg-[#2d5875] rounded-3xl p-8 text-center border border-[#4a6b85] hover:border-[#ccbaa8] transition-all duration-300">
-                  <div className="text-white/60 text-sm mb-4">1</div>
+                <div className="bg-[#5c432a] rounded-3xl p-8 text-center border border-[#a0a9b0] hover:border-[#ccbaa8] transition-all duration-300">
+                  <div className="text-white text-sm mb-4">1</div>
                   <h3 className="text-2xl font-semibold text-white mb-6">In</h3>
                   <div className="w-20 h-20 mx-auto mb-6 relative">
                     <Image
@@ -121,7 +121,7 @@ const IntroSection: React.FC = () => {
                   </p>
                 </div>
                 {/* Right Arrow */}
-                <div ref={arrow1Ref} className="hidden md:flex absolute top-1/2 -right-4 -translate-y-1/2 z-10 items-center justify-center">
+                <div ref={arrow1Ref} className="hidden md:flex absolute top-1/2 -right-12  -translate-y-1/2 z-10 items-center justify-center">
                   <div className="relative">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 60" fill="none" className="w-24 h-14">
                       <path d="M10 30 L70 30" stroke="#ccbaa8" strokeWidth="4" strokeLinecap="round" opacity="0.8"/>
@@ -133,8 +133,8 @@ const IntroSection: React.FC = () => {
 
               {/* Card 2: OUT */}
               <div ref={card2Ref} className="relative">
-                <div className="bg-[#2d5875] rounded-3xl p-8 text-center border border-[#4a6b85] hover:border-[#ccbaa8] transition-all duration-300">
-                  <div className="text-white/60 text-sm mb-4">2</div>
+                <div className="bg-[#5c432a] rounded-3xl p-8 text-center border border-[#4a6b85] hover:border-[#ccbaa8] transition-all duration-300">
+                  <div className="text-white text-sm mb-4">2</div>
                   <h3 className="text-2xl font-semibold text-white mb-6">Out</h3>
                   <div className="w-20 h-20 mx-auto mb-6 relative">
                     <Image
@@ -149,7 +149,7 @@ const IntroSection: React.FC = () => {
                   </p>
                 </div>
                 {/* Right Arrow */}
-                <div ref={arrow2Ref} className="hidden md:flex absolute top-1/2 -right-4 -translate-y-1/2 z-10 items-center justify-center">
+                <div ref={arrow2Ref} className="hidden md:flex absolute top-1/2 -right-12 -translate-y-1/2 z-10 items-center justify-center">
                   <div className="relative">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 60" fill="none" className="w-24 h-14">
                       <path d="M10 30 L70 30" stroke="#ccbaa8" strokeWidth="4" strokeLinecap="round" opacity="0.8"/>
@@ -161,9 +161,9 @@ const IntroSection: React.FC = () => {
 
               {/* Card 3: RESET */}
               <div ref={card3Ref} className="relative">
-                <div className="bg-[#2d5875] rounded-3xl p-8 text-center border border-[#4a6b85] hover:border-[#ccbaa8] transition-all duration-300">
-                  <div className="text-white/60 text-sm mb-4">3</div>
-                  <h3 className="text-2xl font-semibold text-white mb-6">Reset™</h3>
+                <div className="bg-[#5c432a] rounded-3xl p-8 text-center border border-[#4a6b85] hover:border-[#ccbaa8] transition-all duration-300">
+                  <div className="text-white text-sm mb-4">3</div>
+                  <h3 className="text-2xl font-semibold text-white mb-6">Reset</h3>
                   <div className="w-20 h-20 mx-auto mb-6 relative">
                     <Image
                       src="/images/reset.svg"
@@ -183,7 +183,7 @@ const IntroSection: React.FC = () => {
 
           {/* CTA Button */}
           <div className="text-center">
-            <button ref={buttonRef} className="px-12 py-4 bg-gradient-to-r from-[#ccbaa8] to-[#b8a695] text-white text-lg font-medium rounded-full hover:shadow-2xl hover:scale-105 transition-all duration-300">
+            <button ref={buttonRef} className="px-12 py-4 bg-gradient-to-r from-[#5c432a] to-[#b8a695] text-white text-lg font-medium rounded-full hover:shadow-2xl hover:scale-105 transition-all duration-300">
               {t('cta')}
             </button>
           </div>

@@ -7,7 +7,7 @@ export default function ContactInfo() {
     <div className="space-y-8">
       {/* Contact Details */}
       <div className="bg-white rounded-2xl shadow-lg p-4 md:p-6 lg:p-8">
-        <h2 className="text-3xl text-gray-900 mb-8">
+        <h2 className="text-2xl md:text-3xl text-gray-900 mb-8">
           {t('info.title').toUpperCase()}
         </h2>
 
@@ -77,7 +77,7 @@ export default function ContactInfo() {
       <div className="bg-white rounded-2xl shadow-lg p-2 md:p-4">
         <div className="aspect-video rounded-lg overflow-hidden">
           <iframe
-            src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d874.4915847008423!2d-6.82753702406556!3d33.94756903071269!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xda715395e27e587%3A0xde465c943b6a331b!2sSpamassage!5e1!3m2!1sfr!2sma!4v1758558857320!5m2!1sfr!2sma"
+            src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d1134.002295986668!2d-6.8780724126678034!3d33.95305643512945!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e1!3m2!1sfr!2sma!4v1759336647515!5m2!1sfr!2sma"
             width="100%"
             height="100%"
             style={{ border: 0 }}

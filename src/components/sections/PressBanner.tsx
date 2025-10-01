@@ -28,7 +28,7 @@ const PressBanner: React.FC = () => {
   }, []);
 
   return (
-    <section className="py-8 md:py-14 bg-white relative overflow-hidden">
+    <section className="py-2 md:py-14 bg-white relative overflow-hidden">
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-5">
         <div className="absolute inset-0 bg-[linear-gradient(45deg,#ccbaa8_1px,transparent_1px),linear-gradient(-45deg,#ccbaa8_1px,transparent_1px)] bg-[length:20px_20px]" />
@@ -36,7 +36,7 @@ const PressBanner: React.FC = () => {
 
       <div className="container mx-auto px-6 relative z-10">
         {/* Section Header */}
-        <div className="text-center mb-12 max-w-4xl mx-auto">
+        <div className="text-center mb-4 md:mb-10 max-w-4xl mx-auto">
           <h2 className="text-3xl md:text-3xl lg:text-4xl  text-gray-900 mb-4">
             {t('title')}
           </h2>
@@ -46,7 +46,7 @@ const PressBanner: React.FC = () => {
         </div>
 
         {/* Decorative Line */}
-        <div className="w-24 h-1 bg-gradient-to-r from-[#ccbaa8] to-[#b8a695] mx-auto mb-12" />
+        <div className="w-24 h-1 bg-gradient-to-r from-[#ccbaa8] to-[#b8a695] mx-auto mb-4 md:mb-12" />
 
         {/* Press Logos Carousel */}
         <div className="relative">
@@ -70,7 +70,7 @@ const PressBanner: React.FC = () => {
           </div>
 
           {/* Mobile: Carousel */}
-          <div className="md:hidden relative h-32 overflow-hidden">
+          <div className="md:hidden relative h-48 overflow-hidden">
             <div
               className="flex transition-transform duration-500 ease-in-out"
               style={{ transform: `translateX(-${currentIndex * 100}%)` }}
@@ -78,15 +78,18 @@ const PressBanner: React.FC = () => {
               {PRESS_LOGOS.map((press, index) => (
                 <div
                   key={index}
-                  className="min-w-full flex items-center justify-center p-8"
+                  className="min-w-full flex items-center justify-center px-6"
                 >
-                  <div className="relative w-full h-24 bg-white rounded-xl shadow-md p-6">
-                    <Image
-                      src={press.logo}
-                      alt={press.name}
-                      fill
-                      className="object-contain opacity-80"
-                    />
+                  <div className="relative w-full max-w-sm h-32 bg-white rounded-xl shadow-md border-2 border-gray-200">
+                    <div className="absolute inset-4">
+                      <Image
+                        src={press.logo}
+                        alt={press.name}
+                        fill
+                        className="object-contain opacity-80"
+                        sizes="(max-width: 768px) 300px"
+                      />
+                    </div>
                   </div>
                 </div>
               ))}
