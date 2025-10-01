@@ -21,6 +21,18 @@ const Header: React.FC = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  useEffect(() => {
+    if (isMobileMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [isMobileMenuOpen]);
+
   const navItems = NAV_ITEMS.map((item) => ({
     label: t(item.labelKey),
     href: item.href,
@@ -30,7 +42,9 @@ const Header: React.FC = () => {
     <header
       className={`
         fixed top-0 left-0 right-0 z-50 transition-all duration-700 ease-in-out
-        ${isScrolled
+        ${isMobileMenuOpen
+          ? 'bg-white shadow-lg py-2'
+          : isScrolled
           ? 'bg-white/95 backdrop-blur-md shadow-lg py-2'
           : 'bg-transparent py-6'
         }
@@ -42,14 +56,14 @@ const Header: React.FC = () => {
           <div className="flex items-center">
             <Link href="/" className="flex items-center">
               <Image
-                src={isScrolled ? "/logobrawon.png" : "/LOGO.png"}
+                src={isScrolled || isMobileMenuOpen ? "/logobrawon.png" : "/LOGO.png"}
                 alt="Reset Club™ - Premier centre de transformation holistique au Maroc"
                 width={180}
                 height={72}
                 priority
                 className={`
                   w-auto transition-all duration-700 ease-in-out hover:opacity-80
-                  ${isScrolled ? 'h-16' : 'h-20'}
+                  ${isScrolled || isMobileMenuOpen ? 'h-16' : 'h-20'}
                 `}
                 sizes="(max-width: 768px) 140px, 180px"
               />
@@ -65,7 +79,7 @@ const Header: React.FC = () => {
                 className={`
                   relative px-6 py-3 text-sm font-medium transition-all duration-300 ease-in-out
                   group
-                  ${isScrolled
+                  ${isScrolled || isMobileMenuOpen
                     ? 'text-gray-700 hover:text-gray-900'
                     : 'text-white hover:text-white'
                   }
@@ -78,7 +92,7 @@ const Header: React.FC = () => {
                     absolute bottom-0 left-1/2 transform -translate-x-1/2 h-0.5 w-0
                     transition-all duration-300 ease-in-out
                     group-hover:w-8
-                    ${isScrolled ? 'bg-gray-900' : 'bg-white'}
+                    ${isScrolled || isMobileMenuOpen ? 'bg-gray-900' : 'bg-white'}
                   `}
                 />
               </Link>
@@ -91,7 +105,7 @@ const Header: React.FC = () => {
               variant="primary"
               size="lg"
               href="/contact"
-              className={isScrolled ? 'scrolled-navbar' : ''}
+              className={isScrolled || isMobileMenuOpen ? 'scrolled-navbar' : ''}
             >
               {t('reserve')}
             </Button>
@@ -102,7 +116,7 @@ const Header: React.FC = () => {
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               className={`relative p-2 rounded-md transition-colors duration-300 ${
-                isScrolled ? 'text-gray-900' : 'text-white'
+                isScrolled || isMobileMenuOpen ? 'text-gray-900' : 'text-white'
               }`}
               aria-label="Toggle mobile menu"
             >
@@ -127,6 +141,14 @@ const Header: React.FC = () => {
           </div>
         </div>
       </nav>
+
+      {/* Mobile Menu Overlay */}
+      {isMobileMenuOpen && (
+        <div
+          className="fixed inset-0 bg-black/50 z-40 md:hidden"
+          onClick={() => setIsMobileMenuOpen(false)}
+        />
+      )}
 
       {/* Mobile Menu Panel */}
       <div
