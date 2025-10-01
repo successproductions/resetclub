@@ -5,7 +5,7 @@ export default function RecruitmentsHero() {
 
   return (
     <div
-      className="relative pt-32 pb-20 min-h-[28vh] flex items-center justify-center"
+      className="relative pt-32 pb-12 md:pb-20  min-h-[20dvh] md:min-h-[28dvh] flex items-center justify-center"
       style={{
         backgroundImage: `url('/PALMSBACKGROUND.jpg')`,
         backgroundSize: 'cover',
@@ -13,7 +13,7 @@ export default function RecruitmentsHero() {
         backgroundRepeat: 'no-repeat'
       }}
     >
-      <div className="container mx-auto px-2 pt-6 md:px-6 text-center relative z-10">
+      <div className="container mx-auto px-2 mt-4 md:px-6 text-center relative z-10">
         <h1 className="text-2xl md:text-3xl lg:text-5xl text-white mb-1 md:mb-6 drop-shadow-lg">
           {t('hero.title')}
         </h1>
