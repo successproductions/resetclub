@@ -105,7 +105,7 @@ const IntroSection: React.FC = () => {
 
               {/* Card 1: IN */}
               <div ref={card1Ref} className="relative">
-                <div className="bg-[#5c432a] rounded-3xl p-8 text-center border border-[#a0a9b0] hover:border-[#ccbaa8] transition-all duration-300">
+                <div className="bg-[#9c948b] rounded-3xl p-8 text-center border border-[#5a3d0e] hover:border-[#ccbaa8] transition-all duration-300">
                   <div className="text-white text-sm mb-4">1</div>
                   <h3 className="text-2xl font-semibold text-white mb-6">In</h3>
                   <div className="w-20 h-20 mx-auto mb-6 relative">
@@ -133,7 +133,7 @@ const IntroSection: React.FC = () => {
 
               {/* Card 2: OUT */}
               <div ref={card2Ref} className="relative">
-                <div className="bg-[#5c432a] rounded-3xl p-8 text-center border border-[#4a6b85] hover:border-[#ccbaa8] transition-all duration-300">
+                <div className="bg-[#9c948b] rounded-3xl p-8 text-center border border-[#5a3d0e] hover:border-[#ccbaa8] transition-all duration-300">
                   <div className="text-white text-sm mb-4">2</div>
                   <h3 className="text-2xl font-semibold text-white mb-6">Out</h3>
                   <div className="w-20 h-20 mx-auto mb-6 relative">
@@ -161,7 +161,7 @@ const IntroSection: React.FC = () => {
 
               {/* Card 3: RESET */}
               <div ref={card3Ref} className="relative">
-                <div className="bg-[#5c432a] rounded-3xl p-8 text-center border border-[#4a6b85] hover:border-[#ccbaa8] transition-all duration-300">
+                <div className="bg-[#9c948b] rounded-3xl p-8 text-center border border-[#5a3d0e] hover:border-[#ccbaa8] transition-all duration-300">
                   <div className="text-white text-sm mb-4">3</div>
                   <h3 className="text-2xl font-semibold text-white mb-6">Reset</h3>
                   <div className="w-20 h-20 mx-auto mb-6 relative">
@@ -183,7 +183,7 @@ const IntroSection: React.FC = () => {
 
           {/* CTA Button */}
           <div className="text-center">
-            <button ref={buttonRef} className="px-12 py-4 bg-gradient-to-r from-[#5c432a] to-[#b8a695] text-white text-lg font-medium rounded-full hover:shadow-2xl hover:scale-105 transition-all duration-300">
+            <button ref={buttonRef} className="px-12 py-4 bg-gradient-to-r from-[#9c948b] to-[#b8a695] text-white text-lg font-medium rounded-full hover:shadow-2xl hover:scale-105 transition-all duration-300">
               {t('cta')}
             </button>
           </div>
