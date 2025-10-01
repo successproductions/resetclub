@@ -253,5 +253,21 @@
     "welcomeMessage": "Click below to speak directly with us.",
     "helpMessage": "If you have any questions, our team is here to help you.",
     "subtitle": "For appointments & questions"
+  },
+  "PressBanner": {
+    "title": "They talk about innovation, we talk about revolution.",
+    "description": "Reset Club™ doesn't just appear in the media: it redefines how we experience health, body shape, and emotional balance",
+    "cta": "Book my assessment"
+  },
+  "IntroSection": {
+    "hook": "What if your body, mind, and emotions could be reset in one place?",
+    "title": "Reset Club™ – Morocco's first premium holistic transformation center.",
+    "description": "You've tried everything: diets, exercise, treatments... Nothing has ever lasted. Here, you will discover an exclusive method – In • Out • Reset™ – that combines neuroscience, biohacking, and transformational coaching to unlock your blockages, reboot your energy, and reveal your potential.",
+    "cta": "Book my assessment",
+    "trust": {
+      "certified": "Certified experts",
+      "proven": "Proven method",
+      "experts": "Multidisciplinary team"
+    }
   }
 }

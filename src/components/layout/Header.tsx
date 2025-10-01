@@ -4,7 +4,8 @@ import React, { useState, useEffect } from 'react';
 import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 import Link from 'next/link';
-import Button from '../ui/Button';
+import Button from '@/components/ui/Button';
+import { NAV_ITEMS } from '@/constants';
 
 const Header: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -20,13 +21,10 @@ const Header: React.FC = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const navItems = [
-    { label: t('home'), href: '/' },
-    { label: t('about'), href: '/about' },
-    { label: t('team'), href: '/team' },
-    { label: t('careers'), href: '/recrutons' },
-    { label: t('contact'), href: '/contact' },
-  ];
+  const navItems = NAV_ITEMS.map((item) => ({
+    label: t(item.labelKey),
+    href: item.href,
+  }));
 
   return (
     <header

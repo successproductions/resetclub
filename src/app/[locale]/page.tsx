@@ -1,12 +1,14 @@
 // import { useTranslations } from 'next-intl';
-import Header from '../../components/layout/Header';
-import Hero from '../../components/layout/Hero';
-import LogoBanner from '../../components/layout/LogoBanner';
-import WhyResetClub from '../../components/layout/WhyResetClub';
-import KeyFigures from '../../components/layout/KeyFigures';
-import BeforeAfter from '../../components/layout/BeforeAfter';
-import PracticeComparison from '../../components/layout/PracticeComparison';
-import Footer from '../../components/layout/Footer';
+import Header from '@/components/layout/Header';
+import Footer from '@/components/layout/Footer';
+import Hero from '@/components/sections/Hero';
+import LogoBanner from '@/components/sections/LogoBanner';
+import PressBanner from '@/components/sections/PressBanner';
+import IntroSection from '@/components/sections/IntroSection';
+import WhyResetClub from '@/components/sections/WhyResetClub';
+import KeyFigures from '@/components/sections/KeyFigures';
+import BeforeAfter from '@/components/sections/BeforeAfter';
+import PracticeComparison from '@/components/sections/PracticeComparison';
 
 export default function HomePage() {
   // const t = useTranslations('HomePage');
@@ -17,6 +19,8 @@ export default function HomePage() {
       <main>
         <Hero />
         <LogoBanner />
+        <PressBanner />
+        <IntroSection />
         <WhyResetClub />
         <KeyFigures />
         <BeforeAfter />

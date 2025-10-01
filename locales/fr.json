@@ -253,5 +253,21 @@
     "welcomeMessage": "Cliquez ci-dessous pour parler directement avec nous.",
     "helpMessage": "Si vous avez des questions, notre équipe est là pour vous aider.",
     "subtitle": "Pour rendez-vous & questions"
+  },
+  "PressBanner": {
+    "title": "Ils parlent d'innovation, nous parlons de révolution",
+    "description": "Reset Club™ ne se contente pas d'apparaître dans les médias : il redéfinit la manière dont on vit la santé, la silhouette et l'équilibre émotionnel",
+    "cta": "Réserver mon bilan"
+  },
+  "IntroSection": {
+    "hook": "Et si votre corps, votre esprit et vos émotions pouvaient être réinitialisés en un seul lieu ?",
+    "title": "Reset Club™ – le premier centre premium de transformation holistique au Maroc.",
+    "description": "Vous avez tout essayé : régimes, sport, soins… Rien n'a jamais tenu dans la durée. Ici, vous allez découvrir une méthode exclusive – In • Out • Reset™ – qui combine neurosciences, biohacking et coaching transformationnel pour libérer vos blocages, relancer votre énergie et révéler votre potentiel.",
+    "cta": "Réserver mon bilan",
+    "trust": {
+      "certified": "Experts certifiés",
+      "proven": "Méthode éprouvée",
+      "experts": "Équipe pluridisciplinaire"
+    }
   }
 }
