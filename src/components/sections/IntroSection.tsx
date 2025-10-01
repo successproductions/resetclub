@@ -21,108 +21,62 @@ const IntroSection: React.FC = () => {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Title animation
-      gsap.from(titleRef.current, {
+      // Animation to show cards when entering intro section
+      const showTimeline = gsap.timeline({
         scrollTrigger: {
           trigger: sectionRef.current,
           start: 'top 80%',
-          end: 'top 50%',
-          toggleActions: 'play none none reverse',
-        },
-        opacity: 0,
-        y: 50,
-        duration: 1,
-        ease: 'power3.out',
+          toggleActions: 'play none none none',
+        }
       });
 
-      // Card 1 animation
-      gsap.from(card1Ref.current, {
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: 'top 70%',
-          end: 'top 40%',
-          toggleActions: 'play none none reverse',
-        },
-        opacity: 0,
-        x: -100,
-        duration: 0.8,
-        delay: 0.2,
-        ease: 'power3.out',
-      });
+      showTimeline.fromTo(titleRef.current,
+        { opacity: 0, y: 50 },
+        { opacity: 1, y: 0, duration: 1, ease: 'power3.out' },
+        0
+      )
+      .fromTo(card1Ref.current,
+        { opacity: 0, x: -100 },
+        { opacity: 1, x: 0, duration: 0.8, ease: 'power3.out' },
+        0.2
+      )
+      .fromTo(arrow1Ref.current,
+        { opacity: 0, x: -20 },
+        { opacity: 1, x: 0, duration: 0.6, ease: 'power3.out' },
+        0.8
+      )
+      .fromTo(card2Ref.current,
+        { opacity: 0, y: 100 },
+        { opacity: 1, y: 0, duration: 0.8, ease: 'power3.out' },
+        1.2
+      )
+      .fromTo(arrow2Ref.current,
+        { opacity: 0, x: -20 },
+        { opacity: 1, x: 0, duration: 0.6, ease: 'power3.out' },
+        1.8
+      )
+      .fromTo(card3Ref.current,
+        { opacity: 0, x: 100 },
+        { opacity: 1, x: 0, duration: 0.8, ease: 'power3.out' },
+        2.2
+      )
+      .fromTo(buttonRef.current,
+        { opacity: 0, y: 30 },
+        { opacity: 1, y: 0, duration: 0.8, ease: 'power3.out' },
+        2.8
+      );
 
-      // Arrow 1 animation
-      gsap.from(arrow1Ref.current, {
+      // Animation to hide cards when entering key figures section
+      gsap.to([titleRef.current, card1Ref.current, card2Ref.current, card3Ref.current, arrow1Ref.current, arrow2Ref.current, buttonRef.current], {
         scrollTrigger: {
-          trigger: sectionRef.current,
-          start: 'top 70%',
-          end: 'top 40%',
-          toggleActions: 'play none none reverse',
+          trigger: '#key-figures-section',
+          start: 'top 80%',
+          end: 'top 20%',
+          toggleActions: 'play reverse play reverse',
         },
         opacity: 0,
-        x: -20,
-        duration: 0.6,
-        delay: 0.5,
-        ease: 'power3.out',
-      });
-
-      // Card 2 animation
-      gsap.from(card2Ref.current, {
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: 'top 70%',
-          end: 'top 40%',
-          toggleActions: 'play none none reverse',
-        },
-        opacity: 0,
-        y: 100,
-        duration: 0.8,
-        delay: 0.4,
-        ease: 'power3.out',
-      });
-
-      // Arrow 2 animation
-      gsap.from(arrow2Ref.current, {
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: 'top 70%',
-          end: 'top 40%',
-          toggleActions: 'play none none reverse',
-        },
-        opacity: 0,
-        x: -20,
-        duration: 0.6,
-        delay: 0.7,
-        ease: 'power3.out',
-      });
-
-      // Card 3 animation
-      gsap.from(card3Ref.current, {
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: 'top 70%',
-          end: 'top 40%',
-          toggleActions: 'play none none reverse',
-        },
-        opacity: 0,
-        x: 100,
-        duration: 0.8,
-        delay: 0.6,
-        ease: 'power3.out',
-      });
-
-      // Button animation
-      gsap.from(buttonRef.current, {
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: 'top 60%',
-          end: 'top 30%',
-          toggleActions: 'play none none reverse',
-        },
-        opacity: 0,
-        y: 30,
-        duration: 0.8,
-        delay: 0.8,
-        ease: 'power3.out',
+        duration: 0.5,
+        ease: 'power2.out',
       });
     }, sectionRef);
 
@@ -168,10 +122,12 @@ const IntroSection: React.FC = () => {
                 </div>
                 {/* Right Arrow */}
                 <div ref={arrow1Ref} className="hidden md:flex absolute top-1/2 -right-4 -translate-y-1/2 z-10 items-center justify-center">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="w-8 h-8 text-[#ccbaa8]">
-                    <line x1="5" y1="12" x2="19" y2="12"/>
-                    <polyline points="12 5 19 12 12 19"/>
-                  </svg>
+                  <div className="relative">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 60" fill="none" className="w-24 h-14">
+                      <path d="M10 30 L70 30" stroke="#ccbaa8" strokeWidth="4" strokeLinecap="round" opacity="0.8"/>
+                      <path d="M55 15 L80 30 L55 45" stroke="#ccbaa8" strokeWidth="5" strokeLinecap="round" strokeLinejoin="round" fill="none"/>
+                    </svg>
+                  </div>
                 </div>
               </div>
 
@@ -194,10 +150,12 @@ const IntroSection: React.FC = () => {
                 </div>
                 {/* Right Arrow */}
                 <div ref={arrow2Ref} className="hidden md:flex absolute top-1/2 -right-4 -translate-y-1/2 z-10 items-center justify-center">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="w-8 h-8 text-[#ccbaa8]">
-                    <line x1="5" y1="12" x2="19" y2="12"/>
-                    <polyline points="12 5 19 12 12 19"/>
-                  </svg>
+                  <div className="relative">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 60" fill="none" className="w-24 h-14">
+                      <path d="M10 30 L70 30" stroke="#ccbaa8" strokeWidth="4" strokeLinecap="round" opacity="0.8"/>
+                      <path d="M55 15 L80 30 L55 45" stroke="#ccbaa8" strokeWidth="5" strokeLinecap="round" strokeLinejoin="round" fill="none"/>
+                    </svg>
+                  </div>
                 </div>
               </div>
 
