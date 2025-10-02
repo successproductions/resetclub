@@ -4,22 +4,13 @@ import React from 'react';
 import Image from 'next/image';
 import { useTranslations } from 'next-intl';
 
-interface NahedRachadProps {
-  translationKey?: string;
-  imageUrl?: string;
-  imageAlt?: string;
-}
+const Director: React.FC = () => {
+  const t = useTranslations('TeamPage.director');
 
-const NahedRachad: React.FC<NahedRachadProps> = ({
-  translationKey = 'TeamPage.nahed',
-  imageUrl = '/Nahed.jpg',
-  imageAlt = 'Nahed Rachad - Fondateur RESET CLUB'
-}) => {
-  const t = useTranslations(translationKey);
   return (
-    <section className="py-4 md:py-16 bg-white ">
+    <section className="py-4 md:py-10 bg-white ">
       <div className="max-w-7xl mx-auto px-6">
-        <div className="grid lg:grid-cols-2 gap-12  items-center">
+        <div className="grid lg:grid-cols-2 gap-12  items-start">
           {/* Content Section */}
           <div className="space-y-6  ">
             {/* Header */}
@@ -52,10 +43,10 @@ const NahedRachad: React.FC<NahedRachadProps> = ({
 
           {/* Image Section */}
           <div className="relative">
-            <div className="relative h-[425px] md:h-[700px]  w-full rounded-2xl overflow-hidden">
+            <div className="relative h-[425px] md:h-[600px]  w-full rounded-2xl overflow-hidden">
               <Image
-                src={imageUrl}
-                alt={imageAlt}
+                src="https://images.unsplash.com/photo-1607746882042-944635dfe10e?w=800&h=1200&fit=crop&q=80"
+                alt="Sarah Martinez - Directrice Générale RESET CLUB"
                 fill
                 className="object-cover md:object-fill "
                 sizes="(max-width: 1024px) 100vw, 50vw"
@@ -68,4 +59,4 @@ const NahedRachad: React.FC<NahedRachadProps> = ({
   );
 };
 
-export default NahedRachad;
+export default Director;

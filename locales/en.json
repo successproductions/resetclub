@@ -38,7 +38,7 @@
   },
   "ContactPage": {
     "title": "Ready to start your transformation?",
-    "subtitle": "Ready to start your transformation? Contact us to book your free assessment or get more information about our programs.",
+    "subtitle": "Ready to start your transformation? Contact us to book your assessment or get more information about our programs.",
     "form": {
       "title": "A pleasure to serve you",
       "firstName": "First Name",
@@ -111,6 +111,14 @@
       "bio1": "Nahed Rachad, founder of RESET CLUB with over 15 years of expertise, has dedicated himself to specializing in personal transformation and health optimization. He has developed a practice rooted in holistic wellness, emphasizing holistic approaches to nutrition and intentional movement.",
       "bio2": "As a certified instructor with over 5000 successful transformations, Nahed integrates his wellness principles into his daily life, demonstrating his commitment to health and well-being. He believes in setting realistic goals with his clients, guiding them towards sustainable long-term behavioral changes.",
       "bio3": "Beyond his professional life, Nahed embraces every moment of his fulfillment. Whether it's traveling, exploring new experiences, or simply savoring simple pleasures, he finds pure joy and happiness."
+    },
+    "director": {
+      "name": "Sarah Martinez",
+      "title": "General Director",
+      "subtitle": "Reset Club™",
+      "bio1": "Sarah Martinez brings over 15 years of experience in managing premium wellness centers across Europe and the Middle East.",
+      "bio2": "A graduate in hospitality management from École Hôtelière de Lausanne and certified in wellness management, she has led several luxury establishments before joining Reset Club™. Her strategic vision and customer excellence-focused approach have enabled the creation of a unique holistic transformation experience.",
+      "bio3": "Passionate about innovation in the wellness sector, Sarah firmly believes that sustainable transformation requires a global approach combining cutting-edge technology, human expertise, and personalized support."
     },
     "team": {
       "title": "Our Expert Team",
@@ -268,6 +276,20 @@
       "certified": "Certified experts",
       "proven": "Proven method",
       "experts": "Multidisciplinary team"
+    }
+  },
+  "NotreHistoirePage": {
+    "hero": {
+      "title": "OUR STORY",
+      "subtitle": "The quest that gave birth to a movement"
+    },
+    "nahed": {
+      "name": "Nahed Rachad",
+      "title": "Founder & Visionary",
+      "subtitle": "Reset Club™",
+      "bio1": "It all started with a personal quest.",
+      "bio2": "Nahed Rachad, entrepreneur and coach, experienced what her clients experience: work overload, stress, loss of health and confidence. She searched. She tested. She traveled to the world's biggest shows. She discovered the best technologies, the best approaches in neuroscience, biohacking and transformational coaching.",
+      "bio3": "From this quest was born a method, and today, a movement: Reset Club™."
     }
   }
 }

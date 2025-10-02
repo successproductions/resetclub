@@ -18,7 +18,7 @@
   },
   "LinktreePage": {
     "title": "ResetClub",
-    "fullName": "Reset club: «Le premier centre où ta silhouette, ton énergie et ton équilibre mental sont reprogrammés, de l’intérieur comme de l’extérieur, grâce à la méthode exclusive IN–OUT–RESET.»",
+    "fullName": "Reset club: Le premier centre où ta silhouette, ton énergie et ton équilibre mental sont reprogrammés, de l’intérieur comme de l’extérieur, grâce à la méthode exclusive IN–OUT–RESET",
     "slogan": "Hackez votre corps. Révélez votre potentiel.",
     "links": {
       "freeBilan": " Réservez votre Bilan Gratuit (-25% ouverture)",
@@ -38,7 +38,7 @@
   },
   "ContactPage": {
     "title": "Prêt à commencer votre transformation ?",
-    "subtitle": "Contactez-nous pour réserver votre bilan gratuit ou obtenir plus d'informations sur nos programmes.",
+    "subtitle": "Contactez-nous pour réserver votre bilan ou obtenir plus d'informations sur nos programmes.",
     "form": {
       "title": "Au plaisir de vous servir",
       "firstName": "Prénom",
@@ -111,6 +111,14 @@
       "bio1": "Nahed Rachad, fondateur de RESET CLUB avec plus de 15 années d'expertise, s'est consacré à la spécialisation en transformation personnelle et optimisation de la santé. Il a développé une pratique enracinée dans le bien-être holistique, mettant l'accent sur les approches holistiques de la nutrition et du mouvement intentionnel.",
       "bio2": "En tant qu'instructeur certifié avec plus de 5000 transformations réussies, Nahed intègre ses principes de bien-être dans sa vie quotidienne, démontrant son engagement envers la santé et le bien-être. Il croit à l'établissement d'objectifs réalistes avec ses clients, les guidant vers des changements de comportement durables à long terme.",
       "bio3": "Au-delà de sa vie professionnelle, Nahed embrasse chaque moment de sa plénitude. Qu'il s'agisse de voyages, d'exploration de nouvelles expériences ou simplement de savourer les plaisirs simples, il trouve de la joie et du bonheur purs."
+    },
+    "director": {
+      "name": "Sarah Martinez",
+      "title": "Directrice Générale",
+      "subtitle": "Reset Club™",
+      "bio1": "Sarah Martinez apporte plus de 15 ans d'expérience en gestion de centres de bien-être premium à travers l'Europe et le Moyen-Orient.",
+      "bio2": "Diplômée en management hôtelier de l'École Hôtelière de Lausanne et certifiée en wellness management, elle a dirigé plusieurs établissements de luxe avant de rejoindre Reset Club™. Sa vision stratégique et son approche centrée sur l'excellence client ont permis de créer une expérience unique de transformation holistique.",
+      "bio3": "Passionnée par l'innovation dans le secteur du bien-être, Sarah croit fermement que la transformation durable nécessite une approche globale alliant technologie de pointe, expertise humaine et accompagnement personnalisé."
     },
     "team": {
       "title": "Notre Équipe d'Experts",
@@ -268,6 +276,20 @@
       "certified": "Experts certifiés",
       "proven": "Méthode éprouvée",
       "experts": "Équipe pluridisciplinaire"
+    }
+  },
+  "NotreHistoirePage": {
+    "hero": {
+      "title": "NOTRE HISTOIRE",
+      "subtitle": "La quête qui a donné naissance à un mouvement"
+    },
+    "nahed": {
+      "name": "Nahed Rachad",
+      "title": "Fondatrice & Visionnaire",
+      "subtitle": "Reset Club™",
+      "bio1": "Tout a commencé par une quête personnelle.",
+      "bio2": "Nahed Rachad, entrepreneure et coach, a vécu ce que vivent ses clientes : surcharge de travail, stress, perte de santé et de confiance. Elle a cherché. Elle a testé. Elle a voyagé à travers les plus grands salons du monde. Elle a découvert les meilleures technologies, les meilleures approches en neurosciences, en biohacking et en coaching transformationnel.",
+      "bio3": "De cette quête est née une méthode, et aujourd'hui, un mouvement : Reset Club™."
     }
   }
 }

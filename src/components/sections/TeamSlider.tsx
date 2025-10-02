@@ -76,7 +76,7 @@ const TeamSlider: React.FC = () => {
     <section className="py-6  md:pb-12 bg-white">
       <div className="max-w-7xl mx-auto px-6">
         {/* Header Section */}
-        <div className="text-center mb-12">
+        <div className="text-center mb-4 md:mb-12">
           <h2 className="text-3xl md:text-5xl font-bold text-gray-900">
             {t('expertsTitle').toUpperCase()}
           </h2>
@@ -189,9 +189,9 @@ const TeamSlider: React.FC = () => {
                 </div>
 
                 {/* Description */}
-                <p className="text-gray-700 text-sm leading-relaxed px-4">
+                {/* <p className="text-gray-700 text-sm leading-relaxed px-4">
                   {t(`members.${member.key}.description`)}
-                </p>
+                </p> */}
               </div>
             ))}
           </div>

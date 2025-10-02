@@ -94,7 +94,7 @@ const IntroSection: React.FC = () => {
 
           {/* Header */}
           <div className="text-center mb-8">
-            <h2 ref={titleRef} className="text-3xl md:text-3xl lg:text-4xl font-normal text-gray-950 mb-8">
+            <h2 ref={titleRef} className="text-2xl md:text-3xl lg:text-4xl font-normal text-gray-950 mb-8">
               {t('hook')}
             </h2>
           </div>
@@ -183,8 +183,8 @@ const IntroSection: React.FC = () => {
 
           {/* CTA Button */}
           <div className="text-center">
-            <button ref={buttonRef} className="px-12 py-4 bg-gradient-to-r from-[#9c948b] to-[#b8a695] text-white text-lg font-medium rounded-full hover:shadow-2xl hover:scale-105 transition-all duration-300">
-              {t('cta')}
+            <button ref={buttonRef} className="px-12 py-4 bg-transparent border border-[#ccbaa8] text-black hover:text-white hover:bg-[#ccbaa8] text-lg font-medium  hover:shadow-2xl hover:scale-105 transition-all duration-300">
+              {t('cta').toUpperCase()}
             </button>
           </div>
 
