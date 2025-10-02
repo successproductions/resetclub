@@ -19,7 +19,7 @@
   "LinktreePage": {
     "title": "ResetClub",
     "fullName": "Reset club: Le premier centre où ta silhouette, ton énergie et ton équilibre mental sont reprogrammés, de l’intérieur comme de l’extérieur, grâce à la méthode exclusive IN–OUT–RESET",
-    "slogan": "Hackez votre corps. Révélez votre potentiel.",
+    "slogan": "Hackez votre corps. Révélez votre potentiel",
     "links": {
       "freeBilan": " Réservez votre Bilan Gratuit (-25% ouverture)",
       "discover": " Découvrez ResetClub",
@@ -38,7 +38,7 @@
   },
   "ContactPage": {
     "title": "Prêt à commencer votre transformation ?",
-    "subtitle": "Contactez-nous pour réserver votre bilan ou obtenir plus d'informations sur nos programmes.",
+    "subtitle": "Contactez-nous pour réserver votre bilan ou obtenir plus d'informations sur nos programmes",
     "form": {
       "title": "Au plaisir de vous servir",
       "firstName": "Prénom",
@@ -62,8 +62,8 @@
       },
       "submit": "Envoyer le message",
       "sending": "Envoi en cours...",
-      "successMessage": "Votre message a été envoyé avec succès ! Nous vous recontacterons dans les plus brefs délais.",
-      "errorMessage": "Une erreur s'est produite lors de l'envoi. Veuillez réessayer.",
+      "successMessage": "Votre message a été envoyé avec succès ! Nous vous recontacterons dans les plus brefs délais",
+      "errorMessage": "Une erreur s'est produite lors de l'envoi. Veuillez réessayer",
       "errors": {
         "required": "Ce champ est requis",
         "invalidEmail": "Veuillez entrer une adresse email valide"
@@ -102,7 +102,7 @@
     "description": "Une équipe d'experts dédiés à votre transformation",
     "video": {
       "title": "Derrière Reset Club",
-      "subtitle": "une équipe formée dans notre académie interne – la première au Maroc dédiée à l'excellence thérapeutique et au coaching transformationnel."
+      "subtitle": "une équipe formée dans notre académie interne – la première au Maroc dédiée à l'excellence thérapeutique et au coaching transformationnel"
     },
     "nahed": {
       "name": "Nahed Rachad",
