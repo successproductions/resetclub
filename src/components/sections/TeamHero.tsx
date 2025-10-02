@@ -4,7 +4,7 @@ export default function TeamHero() {
   const t = useTranslations('TeamPage');
 
   return (
-    <section className="relative h-[60vh] flex items-center justify-center overflow-hidden">
+    <section className="relative h-[38vh] flex items-center justify-center overflow-hidden">
       {/* Video Background */}
       <div className="absolute inset-0 z-0">
         <video
@@ -22,7 +22,7 @@ export default function TeamHero() {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 mt-14 md:mt-0 text-center px-6 max-w-4xl mx-auto">
+      <div className="relative z-10 mt-28 md:mt-18 text-center px-6 max-w-4xl mx-auto">
         <h1 className="text-white mb-8">
           <div className="text-3xl md:text-4xl lg:text-6xl xl:text-7xl font-normal tracking-tight text-white">
             {t('video.title').toUpperCase()}

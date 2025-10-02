@@ -27,28 +27,31 @@ const Hero: React.FC = () => {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 text-center px-6 max-w-4xl mx-auto">
+      <div className="relative z-10 mt-96 md:mt-0 text-center px-6 max-w-4xl mx-auto">
         {/* Main Heading */}
         <h1 className="text-white mb-8 font-normal">
-          <div className="text-lg md:text-xl lg:text-2xl mb-4 tracking-wide text-white ">
+          <div className="text-sm md:text-xl lg:text-2xl mb-2 md:mb-4 tracking-wide text-white ">
             {t('title')}
           </div>
-          <div className="text-4xl md:text-6xl lg:text-7xl xl:text-8xl tracking-tight  text-white">
+          <div className="text-2xl md:text-6xl lg:text-7xl xl:text-8xl tracking-tight  text-white">
             {t('subtitle').toUpperCase()}
           </div>
         </h1>
 
 
         {/* CTA Button */}
-        <div className="absolute top-28 md:top-36 left-1/2 transform -translate-x-1/2">
-          <Button
+        <div className="absolute top-20 md:top-36 left-1/2 transform -translate-x-1/2">
+          {/* <Button
             variant="primary"
 
             href="/contact"
             className="min-w-64 font-le-jour-serif text-sm lg:text-2xl md:text-lg whitespace-nowrap"
           >
             {t('cta')}
-          </Button>
+          </Button> */}
+          <button className="bg-transparent text-xs md:text-2xl px-4 py-2 border mt-4 hover:bg-white hover:text-gray-800 cursor-pointer border-white">
+            {t('cta').toUpperCase()}
+          </button>
         </div>
       </div>
 

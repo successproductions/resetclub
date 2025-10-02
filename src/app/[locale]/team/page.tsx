@@ -1,7 +1,7 @@
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import TeamHero from '@/components/sections/TeamHero';
-import NahedRachad from '@/components/sections/NahedRachad';
+import Director from '@/components/sections/Director';
 import TeamSlider from '@/components/sections/TeamSlider';
 
 export default function TeamPage() {
@@ -10,7 +10,7 @@ export default function TeamPage() {
       <Header />
       <main>
         <TeamHero />
-        <NahedRachad />
+        <Director />
         <TeamSlider />
       </main>
       <Footer />

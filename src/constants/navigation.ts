@@ -5,7 +5,7 @@ export interface NavItem {
 
 export const NAV_ITEMS: NavItem[] = [
   { labelKey: 'home', href: '/' },
-  { labelKey: 'about', href: '/about' },
+  { labelKey: 'about', href: '/notre-histoire' },
   { labelKey: 'team', href: '/team' },
   { labelKey: 'careers', href: '/recrutons' },
   { labelKey: 'contact', href: '/contact' },
