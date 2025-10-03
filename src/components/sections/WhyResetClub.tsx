@@ -2,8 +2,10 @@
 
 import React, { useRef, useState, useEffect } from 'react';
 import Image from 'next/image';
+import { useTranslations } from 'next-intl';
 
 const WhyResetClub: React.FC = () => {
+  const t = useTranslations('WhyResetClub');
   const scrollRef = useRef<HTMLDivElement>(null);
   const [isHovered, setIsHovered] = useState(false);
   const [isDragging, setIsDragging] = useState(false);
@@ -47,43 +49,43 @@ const WhyResetClub: React.FC = () => {
   const cards = [
     {
       id: 1,
-      title: "Nos valeurs signatures",
-      description: "Nous vous donnons le pouvoir de façonner votre santé avec les connaissances et les conseils, en veillant à ce que vous deveniez l'architecte ultime de votre bien-être.",
+      titleKey: "cards.values.title",
+      descriptionKey: "cards.values.description",
       image: "https://shawellness.com/wp-content/uploads/2025/01/5.png",
       iconUrl: "https://shawellness.com/wp-content/uploads/2025/01/1-01.svg"
     },
     {
       id: 2,
-      title: "Innovation",
-      description: "Découvrez l'excellence à travers des destinations de rêve, des installations de pointe, une hospitalité exceptionnelle et des soins chaleureux de l'équipe dédiée RESET CLUB™.",
+      titleKey: "cards.innovation.title",
+      descriptionKey: "cards.innovation.description",
       image: "https://shawellness.com/wp-content/uploads/2025/01/4.png",
       iconUrl: "https://shawellness.com/wp-content/uploads/2025/01/1-02.svg"
     },
     {
       id: 3,
-      title: "Transformation",
-      description: "Leaders mondiaux en optimisation de la santé et de la longévité depuis près de deux décennies, servant 100 000 clients dans le monde avec innovation et reconnaissance prestigieuse.",
+      titleKey: "cards.transformation.title",
+      descriptionKey: "cards.transformation.description",
       image: "https://shawellness.com/wp-content/uploads/2025/01/6.png",
       iconUrl: "https://shawellness.com/wp-content/uploads/2025/01/1-03.svg"
     },
     {
       id: 4,
-      title: "Excellence",
-      description: "Technologies de pointe et analyses avancées pour fournir des diagnostics, mesurer les biomarqueurs pour identifier les opportunités d'optimisation et prévenir les maladies.",
+      titleKey: "cards.excellence.title",
+      descriptionKey: "cards.excellence.description",
       image: "https://shawellness.com/wp-content/uploads/2025/01/2.png",
       iconUrl: "https://shawellness.com/wp-content/uploads/2025/01/1-04.svg"
     },
     {
       id: 5,
-      title: "Approche Holistique",
-      description: "Une méthode complète qui intègre le corps, l'esprit et l'âme pour une transformation durable et profonde de votre bien-être global.",
+      titleKey: "cards.holistic.title",
+      descriptionKey: "cards.holistic.description",
       image: "https://shawellness.com/wp-content/uploads/2025/01/3.png",
       iconUrl: "https://shawellness.com/wp-content/uploads/2025/01/1-05.svg"
     },
     {
       id: 6,
-      title: "Méthode Signature",
-      description: "Notre approche unique In-Out-Reset vous aide à découvrir vos vraies limites et solutions pour une transformation authentique et durable.",
+      titleKey: "cards.method.title",
+      descriptionKey: "cards.method.description",
       image: "https://shawellness.com/wp-content/uploads/2025/01/1.png",
       iconUrl: "https://shawellness.com/wp-content/uploads/2025/01/1-06.svg"
     }
@@ -94,10 +96,10 @@ const WhyResetClub: React.FC = () => {
       {/* Header Section */}
       <div className="max-w-7xl mx-auto px-6 mb-16">
         <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
-          POURQUOI RESET CLUB EST UNIQUE ?
+          {t('title')}
         </h2>
         <p className="text-sm md:text-lg text-gray-600 max-w-4xl">
-          Vous avez tout essayé… Ici, vous découvrez vos vraies limites & solutions avec la méthode signature In—Out—Reset
+          {t('subtitle')}
         </p>
       </div>
 
@@ -128,7 +130,7 @@ const WhyResetClub: React.FC = () => {
                 <div className="absolute inset-0">
                   <Image
                     src={card.image}
-                    alt={card.title}
+                    alt={t(card.titleKey)}
                     fill
                     className="object-cover"
                     sizes="16.67vw"
@@ -160,7 +162,7 @@ const WhyResetClub: React.FC = () => {
                     <div className="w-12 h-12 sm:w-16 sm:h-16 lg:w-20 lg:h-20 flex items-center justify-start">
                       <Image
                         src={card.iconUrl}
-                        alt={card.title}
+                        alt={t(card.titleKey)}
                         width={64}
                         height={64}
                         className="w-10 h-10 sm:w-12 sm:h-12 lg:w-16 lg:h-16"
@@ -172,10 +174,10 @@ const WhyResetClub: React.FC = () => {
                   {/* Content - Title and description below icon */}
                   <div>
                     <h3 className="text-2xl font-bold mb-4 leading-tight break-words">
-                      {card.title}
+                      {t(card.titleKey)}
                     </h3>
                     <p className="text-sm md:text-base leading-relaxed opacity-90 break-words">
-                      {card.description}
+                      {t(card.descriptionKey)}
                     </p>
                   </div>
                 </div>
@@ -193,7 +195,7 @@ const WhyResetClub: React.FC = () => {
                 <div className="absolute inset-0">
                   <Image
                     src={card.image}
-                    alt={card.title}
+                    alt={t(card.titleKey)}
                     fill
                     className="object-cover"
                     sizes="16.67vw"
@@ -225,7 +227,7 @@ const WhyResetClub: React.FC = () => {
                     <div className="w-12 h-12 sm:w-16 sm:h-16 lg:w-20 lg:h-20 flex items-center justify-start">
                       <Image
                         src={card.iconUrl}
-                        alt={card.title}
+                        alt={t(card.titleKey)}
                         width={64}
                         height={64}
                         className="w-10 h-10 sm:w-12 sm:h-12 lg:w-16 lg:h-16"
@@ -237,10 +239,10 @@ const WhyResetClub: React.FC = () => {
                   {/* Content - Title and description below icon */}
                   <div>
                     <h3 className="text-2xl font-bold mb-4 leading-tight break-words">
-                      {card.title}
+                      {t(card.titleKey)}
                     </h3>
                     <p className="text-sm md:text-base leading-relaxed opacity-90 break-words">
-                      {card.description}
+                      {t(card.descriptionKey)}
                     </p>
                   </div>
                 </div>

@@ -14,6 +14,7 @@ export default function NotreHistoireSection() {
   const videoRef = useRef<HTMLDivElement>(null);
   const textRef = useRef<HTMLDivElement>(null);
   const buttonRef = useRef<HTMLAnchorElement>(null);
+  const videoElementRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -65,6 +66,37 @@ export default function NotreHistoireSection() {
     return () => ctx.revert();
   }, []);
 
+  useEffect(() => {
+    const videoElement = videoElementRef.current;
+    if (!videoElement) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            // Video is in view, play it
+            videoElement.play().catch((error) => {
+              // Autoplay might be blocked by browser, that's okay
+              console.log('Autoplay prevented:', error);
+            });
+          } else {
+            // Video is out of view, pause it
+            videoElement.pause();
+          }
+        });
+      },
+      {
+        threshold: 0.5, // Trigger when 50% of video is visible
+      }
+    );
+
+    observer.observe(videoElement);
+
+    return () => {
+      observer.disconnect();
+    };
+  }, []);
+
   return (
     <section ref={sectionRef} className="py-4 md:py-8 bg-white">
       <div className="container mx-auto px-4">
@@ -96,11 +128,13 @@ export default function NotreHistoireSection() {
           {/* Video Section */}
           <div ref={videoRef} className="relative rounded-2xl overflow-hidden shadow-2xl md:order-last">
             <div className="aspect-video bg-gray-900">
-              {/* Video placeholder - replace with actual video */}
               <video
+                ref={videoElementRef}
                 className="w-full h-full object-cover"
-                poster="/images/video-placeholder.jpg"
                 controls
+                preload="metadata"
+                playsInline
+                muted
               >
                 <source src="/videos/notre-histoire.mp4" type="video/mp4" />
                 Your browser does not support the video tag.

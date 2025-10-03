@@ -14,7 +14,6 @@ export default function ScratchCard({ discount, onScratched, isScratched }: Scra
   const cardRef = useRef<HTMLDivElement>(null);
   const confettiContainerRef = useRef<HTMLDivElement>(null);
   const [isDrawing, setIsDrawing] = useState(false);
-  const [scratchPercentage, setScratchPercentage] = useState(0);
   const [hasAnimated, setHasAnimated] = useState(false);
 
   useEffect(() => {
@@ -97,7 +96,6 @@ export default function ScratchCard({ discount, onScratched, isScratched }: Scra
     }
 
     const percentage = (transparentPixels / (pixels.length / 4)) * 100;
-    setScratchPercentage(percentage);
 
     if (percentage > 50 && !isScratched) {
       onScratched();

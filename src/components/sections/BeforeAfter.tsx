@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import { useTranslations } from 'next-intl';
 
 const BeforeAfter: React.FC = () => {
@@ -263,7 +264,16 @@ const BeforeAfter: React.FC = () => {
         <blockquote className="text-xl md:text-2xl font-light text-gray-700 italic">
           &ldquo;{t('quote')}&rdquo;
         </blockquote>
-        
+
+        {/* CTA Button */}
+        <div className="mt-8">
+          <Link
+            href="/contact"
+            className="inline-block bg-[#ccbaa8] text-white px-8 py-4 rounded-full font-semibold text-lg hover:bg-[#b8a593] transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl"
+          >
+            {t('cta')}
+          </Link>
+        </div>
       </div>
     </section>
   );

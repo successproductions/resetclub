@@ -41,11 +41,11 @@ export default function LegalPage() {
             <section>
               <h2 className="text-2xl font-serif text-gray-900 mb-4">Propriété intellectuelle</h2>
               <p className="text-gray-700 leading-relaxed">
-                L'ensemble de ce site relève de la législation marocaine et internationale sur le droit d'auteur et la propriété intellectuelle.
+                L&apos;ensemble de ce site relève de la législation marocaine et internationale sur le droit d&apos;auteur et la propriété intellectuelle.
                 Tous les droits de reproduction sont réservés, y compris pour les documents téléchargeables et les représentations iconographiques et photographiques.
               </p>
               <p className="text-gray-700 leading-relaxed mt-4">
-                La reproduction de tout ou partie de ce site sur un support électronique ou autre quel qu'il soit est formellement interdite
+                La reproduction de tout ou partie de ce site sur un support électronique ou autre quel qu&apos;il soit est formellement interdite
                 sauf autorisation expresse du directeur de la publication.
               </p>
             </section>
@@ -53,11 +53,11 @@ export default function LegalPage() {
             <section>
               <h2 className="text-2xl font-serif text-gray-900 mb-4">Données personnelles</h2>
               <p className="text-gray-700 leading-relaxed">
-                Conformément à la loi marocaine n° 09-08 relative à la protection des personnes physiques à l'égard du traitement des données à caractère personnel,
-                vous disposez d'un droit d'accès, de rectification et de suppression des données vous concernant.
+                Conformément à la loi marocaine n° 09-08 relative à la protection des personnes physiques à l&apos;égard du traitement des données à caractère personnel,
+                vous disposez d&apos;un droit d&apos;accès, de rectification et de suppression des données vous concernant.
               </p>
               <p className="text-gray-700 leading-relaxed mt-4">
-                Pour exercer ce droit, veuillez nous contacter à l'adresse : contact@resetclub.ma
+                Pour exercer ce droit, veuillez nous contacter à l&apos;adresse : contact@resetclub.ma
               </p>
             </section>
 
@@ -68,8 +68,8 @@ export default function LegalPage() {
                 mais peut toutefois contenir des inexactitudes, des omissions ou des lacunes.
               </p>
               <p className="text-gray-700 leading-relaxed mt-4">
-                Reset Club™ ne pourra être tenu responsable des dommages directs ou indirects qui pourraient résulter de l'accès au site
-                ou de l'utilisation des informations qui y sont contenues.
+                Reset Club™ ne pourra être tenu responsable des dommages directs ou indirects qui pourraient résulter de l&apos;accès au site
+                ou de l&apos;utilisation des informations qui y sont contenues.
               </p>
             </section>
           </div>

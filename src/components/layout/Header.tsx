@@ -5,6 +5,7 @@ import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 import Link from 'next/link';
 import Button from '@/components/ui/Button';
+import LanguageSwitcher from '@/components/ui/LanguageSwitcher';
 import { NAV_ITEMS } from '@/constants';
 
 const Header: React.FC = () => {
@@ -97,6 +98,11 @@ const Header: React.FC = () => {
                 />
               </Link>
             ))}
+
+            {/* Language Switcher */}
+            <div className="ml-2">
+              <LanguageSwitcher isScrolled={isScrolled || isMobileMenuOpen} />
+            </div>
           </div>
 
           {/* CTA Button */}
@@ -178,6 +184,11 @@ const Header: React.FC = () => {
 
         {/* Mobile Menu Content */}
         <div className="flex flex-col h-full">
+          {/* Language Switcher - Mobile */}
+          <div className="px-6 py-4 border-b border-gray-200">
+            <LanguageSwitcher variant="mobile" />
+          </div>
+
           {/* Navigation Links */}
           <nav className="flex-1 px-6 py-8">
             <div className="space-y-4">

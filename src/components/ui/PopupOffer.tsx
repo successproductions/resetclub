@@ -84,9 +84,9 @@ export default function PopupOffer() {
           <p className="text-gray-700 mb-1 md:mb-2 text-base md:text-lg">
             {t('subtitle')}
           </p>
-          <p className="text-gray-600 mb-3 md:mb-6 text-sm md:text-base">
+          {/* <p className="text-gray-600 mb-3 md:mb-6 text-sm md:text-base">
             {t('description')}
-          </p>
+          </p> */}
 
           {/* Card instruction */}
           <p className="text-sm md:text-base  text-[#4b3d2f] mb-3 md:mb-4">
@@ -120,19 +120,19 @@ export default function PopupOffer() {
 
           {/* Show result message */}
           {allCardsScratched && (
-            <div className="mb-4 p-4 md:p-2 rounded-lg text-center bg-gradient-to-br from-yellow-50 via-amber-50 to-yellow-100 border-4 border-double border-amber-400 shadow-lg">
-              <div className="flex items-center justify-center mb-2">
+            <div className="mb-2 py-2 md:p-2 rounded-lg text-center bg-gradient-to-br from-yellow-50 via-amber-50 to-yellow-100 border-4 border-double border-amber-400 shadow-lg">
+              {/* <div className="flex items-center justify-center mb-2">
                 <div className="text-1xl md:text-3xl">🎉</div>
                 <div className="mx-2 text-sm md:text-xl font-black text-amber-600">WINNER!</div>
                 <div className="text-1xl md:text-3xl">🎉</div>
-              </div>
-              <p className="text-xs md:text-base font-bold text-amber-800 mb-1">
+              </div> */}
+              {/* <p className="text-xs md:text-base font-bold text-amber-800 mb-1">
                 {t('congratulations') || 'Félicitations !'} {t('youWon') || 'Vous avez gagné'}
-              </p>
-              <div className="text-1xl md:text-3xl font-black text-amber-600 my-2" style={{ textShadow: '2px 2px 0px rgba(217, 119, 6, 0.2)' }}>
+              </p> */}
+              <div className="text-1xl md:text-3xl font-black text-amber-600 " style={{ textShadow: '2px 2px 0px rgba(217, 119, 6, 0.2)' }}>
                 {bestDiscount}% {t('discount') || 'de réduction'}
               </div>
-              <p className="text-xs md:text-sm text-amber-700 mt-2 font-semibold">
+              <p className="text-xs md:text-sm text-amber-700 ">
                 {t('enterEmail') || 'Entrez votre email pour recevoir votre code promo'} 
               </p>
             </div>

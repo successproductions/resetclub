@@ -72,10 +72,10 @@ export default function PrivacyPage() {
                 Conformément à la loi marocaine n° 09-08, vous disposez des droits suivants :
               </p>
               <ul className="list-disc list-inside text-gray-700 leading-relaxed mt-4 space-y-2">
-                <li>Droit d'accès à vos données personnelles</li>
+                <li>Droit d&apos;accès à vos données personnelles</li>
                 <li>Droit de rectification de vos données</li>
                 <li>Droit de suppression de vos données</li>
-                <li>Droit d'opposition au traitement de vos données</li>
+                <li>Droit d&apos;opposition au traitement de vos données</li>
                 <li>Droit à la portabilité de vos données</li>
               </ul>
               <p className="text-gray-700 leading-relaxed mt-4">
