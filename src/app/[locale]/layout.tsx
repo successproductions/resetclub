@@ -4,6 +4,7 @@ import { notFound } from 'next/navigation';
 import { routing } from '../../i18n/routing';
 import { fontVariables } from '../fonts';
 import WhatsAppButton from '../../components/ui/WhatsAppButton';
+import PopupOffer from '../../components/ui/PopupOffer';
 import '../globals.css';
 
 export function generateStaticParams() {
@@ -31,6 +32,7 @@ export default async function LocaleLayout({
         <NextIntlClientProvider messages={messages}>
           {children}
           <WhatsAppButton phoneNumber="+212600000000" />
+          <PopupOffer />
         </NextIntlClientProvider>
       </body>
     </html>
