@@ -3,8 +3,10 @@
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useTranslations } from 'next-intl';
 
 const Footer: React.FC = () => {
+  const t = useTranslations('Footer');
   const [currentYear, setCurrentYear] = useState<number>(2025);
 
   useEffect(() => {
@@ -13,28 +15,28 @@ const Footer: React.FC = () => {
 
   const footerLinks = {
     company: {
-      title: 'Reset Club™',
+      titleKey: 'company.title',
       links: [
-        { label: 'Notre histoire', href: '/about' },
-        { label: 'Notre équipe', href: '/team' },
-        { label: 'Contact', href: '/contact' },
+        { labelKey: 'company.ourStory', href: '/about' },
+        { labelKey: 'company.ourTeam', href: '/team' },
+        { labelKey: 'company.contact', href: '/contact' },
       ],
     },
     services: {
-      title: 'Nos Services',
+      titleKey: 'services.title',
       links: [
-        { label: 'Programmes holistiques', href: '/programs' },
-        { label: 'Coaching personnel', href: '/coaching' },
-        { label: 'Consultation en ligne', href: '/online' },
+        { labelKey: 'services.programs', href: '/programs' },
+        { labelKey: 'services.coaching', href: '/coaching' },
+        { labelKey: 'services.online', href: '/online' },
       ],
     },
     support: {
-      title: 'Support',
+      titleKey: 'support.title',
       links: [
-        { label: 'FAQ', href: '/faq' },
-        { label: 'Réservations', href: '/contac' },
-        { label: 'Témoignages clients', href: '/testimonials' },
-        { label: 'Partenariats', href: '/partners' },
+        { labelKey: 'support.faq', href: '/faq' },
+        { labelKey: 'support.bookings', href: '/contac' },
+        { labelKey: 'support.testimonials', href: '/testimonials' },
+        { labelKey: 'support.partnerships', href: '/partners' },
       ],
     },
   };
@@ -126,7 +128,7 @@ const Footer: React.FC = () => {
           {Object.entries(footerLinks).map(([key, section]) => (
             <div key={key}>
               <h4 className="text-xl font-bold mb-6 text-[#ccbaa8] font-playfair">
-                {section.title}
+                {t(section.titleKey)}
               </h4>
               <ul className="space-y-3">
                 {section.links.map((link, index) => (
@@ -135,7 +137,7 @@ const Footer: React.FC = () => {
                       href={link.href}
                       className="text-gray-300 hover:text-[#ccbaa8] transition-colors duration-300 text-sm hover:underline font-poppins"
                     >
-                      {link.label}
+                      {t(link.labelKey)}
                     </Link>
                   </li>
                 ))}
@@ -149,17 +151,17 @@ const Footer: React.FC = () => {
         <div className="border-t border-gray-800  pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="text-gray-400 text-sm">
-              © {currentYear} Reset Club™. Tous droits réservés.
+              © {currentYear} Reset Club™. {t('rights')}.
             </div>
             <div className="flex space-x-6 mt-4 md:mt-0">
               <Link href="/legal" className="text-gray-400 hover:text-[#ccbaa8] text-sm transition-colors duration-300">
-                Mentions légales
+                {t('legal')}
               </Link>
               <Link href="/privacy" className="text-gray-400 hover:text-[#ccbaa8] text-sm transition-colors duration-300">
-                Confidentialité
+                {t('privacy')}
               </Link>
               <Link href="/cookies" className="text-gray-400 hover:text-[#ccbaa8] text-sm transition-colors duration-300">
-                Cookies
+                {t('cookies')}
               </Link>
             </div>
           </div>

@@ -39,11 +39,11 @@ export default function CVUploadForm() {
     <div className="bg-gradient-to-br from-[#ccbaa8]/10 to-[#ccbaa8]/5 rounded-xl p-8 border border-[#ccbaa8]/20">
       <div className="text-center">
         <div className="mb-6">
-          <div className="w-20 h-20 bg-gradient-to-br from-[#ccbaa8] to-[#b8a695] rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg">
+          {/* <div className="w-20 h-20 bg-gradient-to-br from-[#ccbaa8] to-[#b8a695] rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg">
             <svg className="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
             </svg>
-          </div>
+          </div> */}
           <h3 className="text-2xl md:text-3xl text-gray-900 mb-3 font-bold">
             {t('upload.title')}
           </h3>

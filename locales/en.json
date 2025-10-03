@@ -167,7 +167,8 @@
   "BeforeAfter": {
     "title": "Before/After Testimonials",
     "subtitle": "The strongest proof: those who have lived the transformation",
-    "quote": "Every transformation begins with a decision. Join us and discover your potential."
+    "quote": "Every transformation begins with a decision. Join us and discover your potential.",
+    "cta": "Book my assessment"
   },
   "KeyFigures": {
     "title": "The results speak for themselves",
@@ -291,6 +292,61 @@
       "bio2": "Nahed Rachad, entrepreneur and coach, experienced what her clients experience: work overload, stress, loss of health and confidence. She searched. She tested. She traveled to the world's biggest shows. She discovered the best technologies, the best approaches in neuroscience, biohacking and transformational coaching.",
       "bio3": "From this quest was born a method, and today, a movement: Reset Club.",
       "seeMore": "Learn more"
+    }
+  },
+  "WhyResetClub": {
+    "title": "WHY IS RESET CLUB UNIQUE?",
+    "subtitle": "You've tried everything... Here, you discover your true limits & solutions with the signature In—Out—Reset method",
+    "cards": {
+      "values": {
+        "title": "Our Signature Values",
+        "description": "We empower you to shape your health with knowledge and guidance, ensuring you become the ultimate architect of your well-being."
+      },
+      "innovation": {
+        "title": "Innovation",
+        "description": "Discover excellence through dream destinations, cutting-edge facilities, exceptional hospitality, and warm care from the dedicated RESET CLUB™ team."
+      },
+      "transformation": {
+        "title": "Transformation",
+        "description": "Global leaders in health optimization and longevity for nearly two decades, serving 100,000 clients worldwide with innovation and prestigious recognition."
+      },
+      "excellence": {
+        "title": "Excellence",
+        "description": "Cutting-edge technologies and advanced analytics to provide diagnostics, measure biomarkers to identify optimization opportunities and prevent diseases."
+      },
+      "holistic": {
+        "title": "Holistic Approach",
+        "description": "A comprehensive method that integrates body, mind, and soul for lasting and profound transformation of your overall well-being."
+      },
+      "method": {
+        "title": "Signature Method",
+        "description": "Our unique In-Out-Reset approach helps you discover your true limits and solutions for an authentic and lasting transformation."
+      }
+    }
+  },
+  "Footer": {
+    "rights": "All rights reserved",
+    "legal": "Legal Notice",
+    "privacy": "Privacy Policy",
+    "cookies": "Cookies",
+    "company": {
+      "title": "Reset Club™",
+      "ourStory": "Our Story",
+      "ourTeam": "Our Team",
+      "contact": "Contact"
+    },
+    "services": {
+      "title": "Our Services",
+      "programs": "Holistic Programs",
+      "coaching": "Personal Coaching",
+      "online": "Online Consultation"
+    },
+    "support": {
+      "title": "Support",
+      "faq": "FAQ",
+      "bookings": "Bookings",
+      "testimonials": "Client Testimonials",
+      "partnerships": "Partnerships"
     }
   },
   "PopupOffer": {
