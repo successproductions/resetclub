@@ -2,7 +2,6 @@
 
 import React from 'react';
 import { useTranslations } from 'next-intl';
-import Button from '@/components/ui/Button';
 
 const Hero: React.FC = () => {
   const t = useTranslations('Hero');

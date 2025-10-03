@@ -13,11 +13,11 @@ export default function CookiesPage() {
 
           <div className="prose prose-lg max-w-none space-y-8">
             <section>
-              <h2 className="text-2xl font-serif text-gray-900 mb-4">Qu'est-ce qu'un cookie ?</h2>
+              <h2 className="text-2xl font-serif text-gray-900 mb-4">Qu&apos;est-ce qu&apos;un cookie ?</h2>
               <p className="text-gray-700 leading-relaxed">
-                Un cookie est un petit fichier texte déposé sur votre ordinateur ou appareil mobile lors de la visite d'un site web.
+                Un cookie est un petit fichier texte déposé sur votre ordinateur ou appareil mobile lors de la visite d&apos;un site web.
                 Les cookies permettent au site de mémoriser vos actions et préférences pendant une période donnée,
-                afin que vous n'ayez pas à les ressaisir lors de chaque visite ou navigation entre les pages.
+                afin que vous n&apos;ayez pas à les ressaisir lors de chaque visite ou navigation entre les pages.
               </p>
             </section>
 
@@ -28,7 +28,7 @@ export default function CookiesPage() {
                 <h3 className="text-xl font-semibold text-gray-900 mb-2">Cookies essentiels</h3>
                 <p className="text-gray-700 leading-relaxed">
                   Ces cookies sont nécessaires au fonctionnement du site. Ils vous permettent de naviguer sur le site
-                  et d'utiliser ses fonctionnalités de base. Sans ces cookies, certaines parties du site ne fonctionneront pas correctement.
+                  et d&apos;utiliser ses fonctionnalités de base. Sans ces cookies, certaines parties du site ne fonctionneront pas correctement.
                 </p>
               </div>
 
@@ -36,7 +36,7 @@ export default function CookiesPage() {
                 <h3 className="text-xl font-semibold text-gray-900 mb-2">Cookies de performance</h3>
                 <p className="text-gray-700 leading-relaxed">
                   Ces cookies collectent des informations sur la façon dont les visiteurs utilisent notre site,
-                  comme les pages les plus visitées et les messages d'erreur reçus. Ces cookies nous aident à améliorer
+                  comme les pages les plus visitées et les messages d&apos;erreur reçus. Ces cookies nous aident à améliorer
                   le fonctionnement de notre site.
                 </p>
               </div>
@@ -52,9 +52,9 @@ export default function CookiesPage() {
               <div className="mt-4">
                 <h3 className="text-xl font-semibold text-gray-900 mb-2">Cookies publicitaires</h3>
                 <p className="text-gray-700 leading-relaxed">
-                  Ces cookies sont utilisés pour diffuser des publicités plus pertinentes pour vous et vos centres d'intérêt.
+                  Ces cookies sont utilisés pour diffuser des publicités plus pertinentes pour vous et vos centres d&apos;intérêt.
                   Ils sont également utilisés pour limiter le nombre de fois que vous voyez une publicité
-                  et pour mesurer l'efficacité des campagnes publicitaires.
+                  et pour mesurer l&apos;efficacité des campagnes publicitaires.
                 </p>
               </div>
             </section>
@@ -65,8 +65,8 @@ export default function CookiesPage() {
                 Nous utilisons également des services tiers qui peuvent placer des cookies sur votre appareil, notamment :
               </p>
               <ul className="list-disc list-inside text-gray-700 leading-relaxed mt-4 space-y-2">
-                <li><strong>Google Analytics :</strong> Pour analyser l'utilisation de notre site</li>
-                <li><strong>Facebook Pixel :</strong> Pour mesurer l'efficacité de nos campagnes publicitaires</li>
+                <li><strong>Google Analytics :</strong> Pour analyser l&apos;utilisation de notre site</li>
+                <li><strong>Facebook Pixel :</strong> Pour mesurer l&apos;efficacité de nos campagnes publicitaires</li>
                 <li><strong>YouTube :</strong> Si vous regardez des vidéos intégrées sur notre site</li>
               </ul>
             </section>
@@ -75,7 +75,7 @@ export default function CookiesPage() {
               <h2 className="text-2xl font-serif text-gray-900 mb-4">Gestion des cookies</h2>
               <p className="text-gray-700 leading-relaxed">
                 Vous pouvez contrôler et/ou supprimer les cookies comme vous le souhaitez. Vous pouvez supprimer tous les cookies
-                déjà présents sur votre ordinateur et configurer la plupart des navigateurs pour qu'ils les bloquent.
+                déjà présents sur votre ordinateur et configurer la plupart des navigateurs pour qu&apos;ils les bloquent.
               </p>
               <p className="text-gray-700 leading-relaxed mt-4">
                 Toutefois, si vous bloquez les cookies, vous devrez peut-être ajuster manuellement certaines préférences
@@ -103,7 +103,7 @@ export default function CookiesPage() {
               </p>
               <ul className="list-disc list-inside text-gray-700 leading-relaxed mt-4 space-y-2">
                 <li><strong>Cookies de session :</strong> Supprimés à la fermeture de votre navigateur</li>
-                <li><strong>Cookies persistants :</strong> Restent sur votre appareil jusqu'à leur expiration ou jusqu'à ce que vous les supprimiez</li>
+                <li><strong>Cookies persistants :</strong> Restent sur votre appareil jusqu&apos;à leur expiration ou jusqu&apos;à ce que vous les supprimiez</li>
               </ul>
             </section>
 
