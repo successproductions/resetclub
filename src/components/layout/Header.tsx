@@ -11,6 +11,7 @@ import { NAV_ITEMS } from '@/constants';
 const Header: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
   const t = useTranslations('Navigation');
 
   useEffect(() => {
@@ -18,8 +19,19 @@ const Header: React.FC = () => {
       setIsScrolled(window.scrollY > 50);
     };
 
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    // Check on mount
+    handleResize();
+
     window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener('resize', handleResize);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('resize', handleResize);
+    };
   }, []);
 
   useEffect(() => {
@@ -43,7 +55,7 @@ const Header: React.FC = () => {
     <header
       className={`
         fixed top-0 left-0 right-0 z-50 transition-all duration-700 ease-in-out
-        ${isMobileMenuOpen
+        ${isMobileMenuOpen || isMobile
           ? 'bg-white shadow-lg py-2'
           : isScrolled
           ? 'bg-white/95 backdrop-blur-md shadow-lg py-2'
@@ -57,14 +69,14 @@ const Header: React.FC = () => {
           <div className="flex items-center">
             <Link href="/" className="flex items-center">
               <Image
-                src={isScrolled || isMobileMenuOpen ? "/logobrawon.png" : "/LOGO.png"}
+                src={isScrolled || isMobileMenuOpen || isMobile ? "/logobrawon.png" : "/LOGO.png"}
                 alt="Reset Club™ - Premier centre de transformation holistique au Maroc"
                 width={180}
                 height={72}
                 priority
                 className={`
                   w-auto transition-all duration-700 ease-in-out hover:opacity-80
-                  ${isScrolled || isMobileMenuOpen ? 'h-16' : 'h-20'}
+                  ${isScrolled || isMobileMenuOpen || isMobile ? 'h-16' : 'h-20'}
                 `}
                 sizes="(max-width: 768px) 140px, 180px"
               />
@@ -122,7 +134,7 @@ const Header: React.FC = () => {
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               className={`relative p-2 rounded-md transition-colors duration-300 ${
-                isScrolled || isMobileMenuOpen ? 'text-gray-900' : 'text-white'
+                isScrolled || isMobileMenuOpen || isMobile ? 'text-gray-900' : 'text-white'
               }`}
               aria-label="Toggle mobile menu"
             >
