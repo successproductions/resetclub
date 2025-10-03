@@ -54,9 +54,9 @@ const BeforeAfter: React.FC = () => {
   };
 
   return (
-    <section className="py-16 bg-white">
+    <section className="py-8 bg-white">
       {/* Header Section */}
-      <div className="max-w-7xl mx-auto px-6 mb-16">
+      <div className="max-w-7xl mx-auto px-6 mb-10">
         <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6 text-center ">
           {t('subtitle').toUpperCase()}
         </h2>

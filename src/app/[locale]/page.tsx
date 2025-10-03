@@ -7,6 +7,7 @@ import PressBanner from '@/components/sections/PressBanner';
 import IntroSection from '@/components/sections/IntroSection';
 import WhyResetClub from '@/components/sections/WhyResetClub';
 import KeyFigures from '@/components/sections/KeyFigures';
+import NotreHistoireSection from '@/components/sections/NotreHistoireSection';
 import BeforeAfter from '@/components/sections/BeforeAfter';
 import PracticeComparison from '@/components/sections/PracticeComparison';
 
@@ -23,6 +24,7 @@ export default function HomePage() {
         <WhyResetClub />
         <KeyFigures />
          <IntroSection />
+        <NotreHistoireSection />
         <BeforeAfter />
         <PracticeComparison />
       </main>

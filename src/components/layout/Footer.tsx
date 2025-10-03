@@ -17,9 +17,7 @@ const Footer: React.FC = () => {
       links: [
         { label: 'Notre histoire', href: '/about' },
         { label: 'Notre équipe', href: '/team' },
-        { label: 'Carrières', href: '/careers' },
         { label: 'Contact', href: '/contact' },
-        { label: 'Blog & Actualités', href: '/blog' },
       ],
     },
     services: {
@@ -27,17 +25,14 @@ const Footer: React.FC = () => {
       links: [
         { label: 'Programmes holistiques', href: '/programs' },
         { label: 'Coaching personnel', href: '/coaching' },
-        { label: 'Formations & Certifications', href: '/training' },
-        { label: 'Ateliers & Événements', href: '/workshops' },
         { label: 'Consultation en ligne', href: '/online' },
       ],
     },
     support: {
       title: 'Support',
       links: [
-        { label: 'Centre d\'aide', href: '/help' },
         { label: 'FAQ', href: '/faq' },
-        { label: 'Réservations', href: '/bookings' },
+        { label: 'Réservations', href: '/contac' },
         { label: 'Témoignages clients', href: '/testimonials' },
         { label: 'Partenariats', href: '/partners' },
       ],
@@ -151,7 +146,7 @@ const Footer: React.FC = () => {
 
       
         {/* Bottom Section */}
-        <div className="border-t border-gray-800 mt-12 pt-8">
+        <div className="border-t border-gray-800  pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="text-gray-400 text-sm">
               © {currentYear} Reset Club™. Tous droits réservés.
