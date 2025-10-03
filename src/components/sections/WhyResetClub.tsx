@@ -121,8 +121,8 @@ const WhyResetClub: React.FC = () => {
             {cards.map((card, index) => (
               <div
                 key={`first-${card.id}`}
-                className="flex-none w-[60%] md:w-[80%] sm:w-1/2 lg:w-2/12 relative group"
-                style={{ minHeight: '450px' }}
+                className="flex-none w-[60%] md:w-[80%] min-h-[250px] md:min-h-[450px] sm:w-1/2 lg:w-2/12 relative group"
+
               >
                 {/* Background Image */}
                 <div className="absolute inset-0">

@@ -166,7 +166,7 @@
   },
   "BeforeAfter": {
     "title": "Témoignages avant/après",
-    "subtitle": "La preuve la plus forte : celles et ceux qui ont vécu la transformation",
+    "subtitle": "La preuve la plus forte : celles qui ont vécu la transformation",
     "quote": "Chaque transformation commence par une décision. Rejoignez-nous et découvrez votre potentiel."
   },
   "KeyFigures": {
@@ -289,7 +289,8 @@
       "subtitle": "Reset Club",
       "bio1": "Tout a commencé par une quête personnelle.",
       "bio2": "Nahed Rachad, entrepreneure et coach, a vécu ce que vivent ses clientes : surcharge de travail, stress, perte de santé et de confiance. Elle a cherché. Elle a testé. Elle a voyagé à travers les plus grands salons du monde. Elle a découvert les meilleures technologies, les meilleures approches en neurosciences, en biohacking et en coaching transformationnel.",
-      "bio3": "De cette quête est née une méthode, et aujourd'hui, un mouvement : Reset Club."
+      "bio3": "De cette quête est née une méthode, et aujourd'hui, un mouvement : Reset Club.",
+      "seeMore": "En savoir plus"
     }
   },
   "PopupOffer": {

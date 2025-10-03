@@ -50,7 +50,7 @@ export default function PopupOffer() {
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm p-4">
-      <div className="relative bg-white max-w-lg w-full rounded-lg shadow-2xl overflow-hidden max-h-[90vh] overflow-y-auto">
+      <div className="relative bg-white max-w-lg w-full rounded-lg shadow-2xl overflow-hidden max-h-[70vdh] md:max-h-[90vdh] overflow-y-auto">
         {/* Close Button */}
         <button
           onClick={() => setIsOpen(false)}
@@ -61,7 +61,7 @@ export default function PopupOffer() {
         </button>
 
         {/* Content */}
-        <div className="p-4 md:p-8 text-center">
+        <div className="p-3 md:p-8 text-center">
           {/* Title */}
           <h2 className="text-2xl md:text-4xl font-serif mb-3 md:mb-6 text-gray-800 tracking-wide">
             {t('title')}

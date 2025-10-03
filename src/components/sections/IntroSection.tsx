@@ -100,7 +100,7 @@ const IntroSection: React.FC = () => {
           </div>
 
           {/* 3 Cards with Arrows */}
-          <div className="relative mb-16">
+          <div className="relative mb-8">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
 
               {/* Card 1: IN */}
@@ -183,7 +183,7 @@ const IntroSection: React.FC = () => {
 
           {/* CTA Button */}
           <div className="text-center">
-            <button ref={buttonRef} className="px-12 py-4 bg-transparent border border-[#ccbaa8] text-black hover:text-white hover:bg-[#ccbaa8] text-lg font-medium  hover:shadow-2xl hover:scale-105 transition-all duration-300">
+            <button ref={buttonRef} className="px-12 py-4 bg-transparent border border-[#ccbaa8] text-black hover:text-white hover:bg-[#ccbaa8] text-sm md:text-lg font-medium  hover:shadow-2xl hover:scale-105 transition-all duration-300">
               {t('cta').toUpperCase()}
             </button>
           </div>
