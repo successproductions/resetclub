@@ -55,7 +55,7 @@ const Header: React.FC = () => {
     <header
       className={`
         fixed top-0 left-0 right-0 z-50 transition-all duration-700 ease-in-out
-        ${isMobileMenuOpen || isMobile
+        ${isMobileMenuOpen
           ? 'bg-white shadow-lg py-2'
           : isScrolled
           ? 'bg-white/95 backdrop-blur-md shadow-lg py-2'
