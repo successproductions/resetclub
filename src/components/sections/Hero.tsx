@@ -27,7 +27,7 @@ const Hero: React.FC = () => {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 mt-96 md:mt-0 text-center px-6 max-w-4xl mx-auto">
+      <div className="relative z-10 mt-96 md:mt-96 lg:mt-[60vh] text-center px-6 max-w-4xl mx-auto">
         {/* Main Heading */}
         <h1 className="text-white mb-8 font-normal">
           <div className="text-sm md:text-xl lg:text-2xl mb-2 md:mb-4 tracking-wide text-white ">

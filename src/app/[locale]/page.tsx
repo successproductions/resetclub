@@ -20,9 +20,9 @@ export default function HomePage() {
         <Hero />
         <LogoBanner />
         <PressBanner />
-        <IntroSection />
         <WhyResetClub />
         <KeyFigures />
+         <IntroSection />
         <BeforeAfter />
         <PracticeComparison />
       </main>

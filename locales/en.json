@@ -286,10 +286,26 @@
     "nahed": {
       "name": "Nahed Rachad",
       "title": "Founder & Visionary",
-      "subtitle": "Reset Club™",
+      "subtitle": "Reset Club",
       "bio1": "It all started with a personal quest.",
       "bio2": "Nahed Rachad, entrepreneur and coach, experienced what her clients experience: work overload, stress, loss of health and confidence. She searched. She tested. She traveled to the world's biggest shows. She discovered the best technologies, the best approaches in neuroscience, biohacking and transformational coaching.",
-      "bio3": "From this quest was born a method, and today, a movement: Reset Club™."
+      "bio3": "From this quest was born a method, and today, a movement: Reset Club."
     }
+  },
+  "PopupOffer": {
+    "title": "What if your transformation started here?",
+    "imageAlt": "Reset Club",
+    "subtitle": "Reset Club – Morocco's first premium holistic transformation center",
+    "description": "Scratch to discover your exclusive discount on your personalized assessment",
+    "cardInstruction": "Scratch all 3 cards to reveal your discount!",
+    "cardsScratched": "cards scratched",
+    "congratulations": "Congratulations!",
+    "youWon": "You won",
+    "discount": "discount",
+    "enterEmail": "Enter your email to book your personalized assessment",
+    "emailPlaceholder": "YOUR EMAIL",
+    "ctaButton": "BOOK MY ASSESSMENT",
+    "privacyText": "By participating, you agree to receive our communications by email, in accordance with our",
+    "privacyLink": "Privacy Policy"
   }
 }
