@@ -1,55 +1,72 @@
+
 'use client';
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useTranslations } from 'next-intl';
+import Image from 'next/image';
 
 const Hero: React.FC = () => {
   const t = useTranslations('Hero');
-  return (
-    <section className="relative h-[87vh] flex items-center justify-center overflow-hidden">
-      {/* Video Background */}
-      <div className="absolute inset-0 z-0">
-        <video
-          autoPlay
-          muted
-          loop
-          playsInline
-          className="w-full h-full object-cover"
-        >
-          <source src="https://rakxawellness.com/wp-content/uploads/2025/08/website-banner-vdo.mp4" type="video/mp4" />
-          {/* Fallback image if video doesn't load */}
-          <div className="w-full h-full bg-gradient-to-br from-amber-50 to-amber-100" />
-        </video>
+  const [currentImage, setCurrentImage] = useState(0);
 
-        {/* Video Overlay */}
-        <div className="absolute inset-0 bg-black/40" />
+  const images = [
+    '/images/image1.jpeg',
+    '/images/image2.jpeg',
+    '/images/image3.jpeg',
+    '/images/image4.jpeg',
+    '/images/image5.jpeg',
+  ];
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentImage((prev) => (prev + 1) % images.length);
+    }, 5000); // Change image every 5 seconds
+
+    return () => clearInterval(interval);
+  }, [images.length]);
+
+  return (
+    <section className="relative h-[87vh] flex items-center justify-center lg:justify-start overflow-hidden">
+      {/* Image Carousel Background */}
+      <div className="absolute inset-0 z-0">
+        {images.map((image, index) => (
+          <div
+            key={image}
+            className={`absolute inset-0 transition-opacity duration-1000 ${
+              index === currentImage ? 'opacity-100' : 'opacity-0'
+            }`}
+          >
+            <Image
+              src={image}
+              alt={`Hero image ${index + 1}`}
+              fill
+              priority={index === 0}
+              className="object-cover"
+              sizes="100vw"
+            />
+          </div>
+        ))}
+
+        <div className="absolute inset-0 bg-white/10" />
       </div>
 
       {/* Content */}
-      <div className="relative z-10 mt-96 md:mt-96 lg:mt-[60vh] text-center px-6 max-w-4xl mx-auto">
+      <div className="relative z-10 left-0 md:left-24 mx-2 px-3 pt-4 max-w-4xl bg-white/10 md:bg-white/30 backdrop-blur-sm rounded-lg shadow-lg ">
         {/* Main Heading */}
-        <h1 className="text-white mb-8 font-normal">
-          <div className="text-sm md:text-xl lg:text-2xl mb-2 md:mb-4 tracking-wide text-white ">
+        <h1 className="text-white mb-3 md:mb-8 font-normal">
+          <div className="text-2xl md:text-xl lg:text-6xl mb-2 md:mb-4 tracking-wide font-playfair - text-[#524029] ">
             {t('title')}
           </div>
-          <div className="text-2xl md:text-6xl lg:text-7xl xl:text-8xl tracking-tight  text-white">
-            {t('subtitle').toUpperCase()}
+          <div className="text-xs md:text-xl lg:text-1xl xl:text-1xl tracking-tight  text-[#52422e]">
+            {t('subtitle')}
           </div>
         </h1>
 
 
         {/* CTA Button */}
-        <div className="absolute top-20 md:top-36 left-1/2 transform -translate-x-1/2">
-          {/* <Button
-            variant="primary"
-
-            href="/contact"
-            className="min-w-64 font-le-jour-serif text-sm lg:text-2xl md:text-lg whitespace-nowrap"
-          >
+        <div className="absolute left-[120px] md:left-48 transform -translate-x-1/2">
+          <button className="bg-[#2b8a7c] text-xs md:text-xl px-4 py-2 mt-2 md:mt-4 rounded-full hover:bg-[#31766a] cursor-pointer transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl">
             {t('cta')}
-          </Button> */}
-          <button className="bg-transparent text-xs md:text-2xl px-4 py-2 border mt-4 hover:bg-white hover:text-gray-800 cursor-pointer border-white">
-            {t('cta').toUpperCase()}
           </button>
         </div>
       </div>

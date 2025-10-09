@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   title: "ResetClub™️ - Holistic & Biohacking Center",
   description: "Le premier centre premium de transformation holistique au Maroc.",
   icons: {
-    icon: "/LOGO.png",
+    icon: "/images/logograstab.png",
     apple: "/LOGO.png",
   },
 };

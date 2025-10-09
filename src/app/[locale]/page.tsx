@@ -9,6 +9,7 @@ import WhyResetClub from '@/components/sections/WhyResetClub';
 import KeyFigures from '@/components/sections/KeyFigures';
 import NotreHistoireSection from '@/components/sections/NotreHistoireSection';
 import BeforeAfter from '@/components/sections/BeforeAfter';
+import Trustpilot from '@/components/sections/Trustpilot';
 import PracticeComparison from '@/components/sections/PracticeComparison';
 
 export default function HomePage() {
@@ -26,6 +27,7 @@ export default function HomePage() {
          <IntroSection />
         <NotreHistoireSection />
         <BeforeAfter />
+        <Trustpilot />
         <PracticeComparison />
       </main>
       <Footer />

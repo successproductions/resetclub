@@ -30,7 +30,7 @@ const Button: React.FC<ButtonProps> = ({
   const variantClasses = {
     primary: `
       text-white bg-transparent border-0 relative
-      hover:text-yellow-800
+      hover:text-[#2b8a7c]
       focus:ring-amber-500 focus:ring-opacity-50
       svg-border-button group
     `,
