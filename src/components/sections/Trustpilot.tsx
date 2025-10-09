@@ -8,7 +8,7 @@ const Trustpilot: React.FC = () => {
   const totalReviews = 147;
 
   return (
-    <section className="py-4 md:py-8 bg-white">
+    <section className="py-4 pb-6 md:py-8 md:pb-14 bg-white">
       <div className="container mx-auto px-6">
         <div className="max-w-2xl mx-auto text-center">
           {/* Trustpilot Logo */}
@@ -20,7 +20,7 @@ const Trustpilot: React.FC = () => {
               height={40}
               className="w-10 h-10"
             />
-            <span className="text-4xl font-bold text-gray-900">Trustpilot</span>
+            <span className="text-4xl  text-gray-900">Trustpilot</span>
           </div>
 
           {/* Star Rating */}
@@ -42,8 +42,8 @@ const Trustpilot: React.FC = () => {
           </div>
 
           {/* TrustScore */}
-          <div className="text-2xl md:text-3xl text-gray-600 font-medium">
-            TrustScore <span className="font-bold text-gray-900">{trustScore}</span> |{' '}
+          <div className="text-2xl md:text-3xl text-gray-600 ">
+            TrustScore <span className=" text-gray-900">{trustScore}</span> |{' '}
             <a
               href="#"
               target="_blank"
