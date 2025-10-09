@@ -112,14 +112,14 @@ export default function NotreHistoireSection() {
               {t('bio1')}
             </h2>
 
-            <p className="text-base md:text-lg text-gray-700 leading-relaxed line-clamp-3">
+            <p className="text-base md:text-lg text-gray-700 leading-relaxed ">
               {t('bio2')}
             </p>
 
             <Link
               ref={buttonRef}
-              href="/notre-histoire"
-              className="inline-block bg-transparent text-gray-900 border border-[#ccbaa8] px-8 py-3 rounded-full hover:text-white hover:bg-[#ccbaa8] transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl"
+              href="/contact"
+              className="inline-block bg-transparent text-gray-900 border border-[#c26d4c] px-8 py-3 rounded-full hover:text-white hover:bg-[#2b8a7c] transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl"
             >
               {t('seeMore')}
             </Link>
@@ -144,15 +144,15 @@ export default function NotreHistoireSection() {
 
           {/* Text and Button - Mobile only */}
           <div className="md:hidden space-y-6">
-            <p className="text-base text-gray-700 leading-relaxed line-clamp-3">
+            <p className="text-base text-gray-700 leading-relaxed">
               {t('bio2')}
             </p>
 
             <div className="text-center">
               <Link
                 ref={buttonRef}
-                href="/notre-histoire"
-                className="inline-block bg-transparent text-gray-900 border border-[#ccbaa8] px-8 py-3 rounded-full hover:text-white hover:bg-[#ccbaa8] transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl"
+                href="/contact"
+                className="inline-block bg-transparent text-gray-900 border border-[#c26d4c] px-8 py-3 rounded-full hover:text-white hover:bg-[#2b8a7c] transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl"
               >
                 {t('seeMore')}
               </Link>

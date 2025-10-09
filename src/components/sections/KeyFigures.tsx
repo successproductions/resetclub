@@ -107,7 +107,7 @@ const KeyFigures: React.FC = () => {
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
             {t('title').toUpperCase()}
           </h2>
-          <div className="w-20 h-1 bg-[#ccbaa8] mx-auto rounded-full"></div>
+          <div className="w-20 h-1 bg-[#c26d4c] mx-auto rounded-full"></div>
         </div>
 
         {/* Stats Container */}
@@ -125,7 +125,7 @@ const KeyFigures: React.FC = () => {
                 {/* Content */}
                 <div className="relative text-center py-6 md:py-12">
                   {/* Top Line */}
-                  <div className="w-12 md:w-16 h-px bg-[#ccbaa8] mx-auto mb-4 md:mb-8"></div>
+                  <div className="w-12 md:w-16 h-px bg-[#c26d4c] mx-auto mb-4 md:mb-8"></div>
 
                   {/* Animated Number */}
                   <div className="mb-4 md:mb-6">
@@ -149,10 +149,10 @@ const KeyFigures: React.FC = () => {
                   </div>
 
                   {/* Bottom Line */}
-                  <div className="w-12 md:w-16 h-px bg-[#ccbaa8] mx-auto mt-4 md:mt-8"></div>
+                  <div className="w-12 md:w-16 h-px bg-[#c26d4c] mx-auto mt-4 md:mt-8"></div>
 
                   {/* Dot indicator */}
-                  <div className="absolute -bottom-1 md:-bottom-2 left-1/2 transform -translate-x-1/2 w-3 md:w-4 h-3 md:h-4 bg-[#ccbaa8] rounded-full border-2 md:border-4 border-white shadow-lg"></div>
+                  <div className="absolute -bottom-1 md:-bottom-2 left-1/2 transform -translate-x-1/2 w-3 md:w-4 h-3 md:h-4 bg-[#c26d4c] rounded-full border-2 md:border-4 border-white shadow-lg"></div>
                 </div>
               </div>
             ))}

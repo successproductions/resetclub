@@ -1,16 +1,15 @@
 {
   "Navigation": {
     "home": "Accueil",
-    "about": "Notre histoire",
     "team": "Notre équipe",
     "careers": "Nous recrutons",
     "contact": "Contact",
     "reserve": "Réserver"
   },
   "Hero": {
-    "title": "Le premier centre premium de transformation holistique au Maroc",
-    "subtitle": "Reset Club",
-    "cta": "Réserver mon bilan"
+    "title": "Réinitialisez votre corps, votre esprit et vos émotions",
+    "subtitle": "Le protocole signature In-Out-Reset™ allie neurosciences, biohacking et coaching transformationnel pour un changement durable et mesurable",
+    "cta": "Réservez votre bilan transformationnel"
   },
   "HomePage": {
     "title": "",
@@ -289,9 +288,9 @@
       "title": "Fondatrice & Visionnaire",
       "subtitle": "Reset Club",
       "bio1": "Tout a commencé par une quête personnelle.",
-      "bio2": "Nahed Rachad, entrepreneure et coach, a vécu ce que vivent ses clientes : surcharge de travail, stress, perte de santé et de confiance. Elle a cherché. Elle a testé. Elle a voyagé à travers les plus grands salons du monde. Elle a découvert les meilleures technologies, les meilleures approches en neurosciences, en biohacking et en coaching transformationnel.",
+      "bio2": "Nahed Rachad, fondateur de RESET CLUB avec plus de 15 années d'expertise, s'est consacré à la spécialisation en transformation personnelle et optimisation de la santé. Il a développé une pratique enracinée dans le bien-être holistique, mettant l'accent sur les approches holistiques de la nutrition et du mouvement intentionnel.",
       "bio3": "De cette quête est née une méthode, et aujourd'hui, un mouvement : Reset Club.",
-      "seeMore": "En savoir plus"
+      "seeMore": "Je découvre l’expérience RESET"
     }
   },
   "WhyResetClub": {

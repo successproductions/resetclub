@@ -269,7 +269,7 @@ const BeforeAfter: React.FC = () => {
         <div className="mt-8">
           <Link
             href="/contact"
-            className="inline-block bg-[#ccbaa8] text-white px-8 py-4 rounded-full font-semibold text-lg hover:bg-[#b8a593] transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl"
+            className="inline-block bg-[#c26d4c] text-white px-8 py-4 rounded-full font-semibold text-lg hover:bg-[#2b8a7c] cursor-pointer transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl"
           >
             {t('cta')}
           </Link>

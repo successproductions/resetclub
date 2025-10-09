@@ -7,6 +7,7 @@ import Link from 'next/link';
 import Button from '@/components/ui/Button';
 import LanguageSwitcher from '@/components/ui/LanguageSwitcher';
 import { NAV_ITEMS } from '@/constants';
+import { Phone, Menu } from 'lucide-react';
 
 const Header: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -65,22 +66,48 @@ const Header: React.FC = () => {
     >
       <nav className="container mx-auto px-6">
         <div className="flex items-center justify-between">
-          {/* Logo */}
-          <div className="flex items-center">
+          {/* Mobile Menu Button - Left */}
+          <div className="md:hidden">
+            <button
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              className={`p-2 rounded-md transition-colors duration-300 ${
+                isScrolled || isMobileMenuOpen ? 'text-gray-900' : 'text-white'
+              }`}
+              aria-label="Toggle mobile menu"
+            >
+              <Menu className="w-6 h-6" />
+            </button>
+          </div>
+
+          {/* Logo - Center on mobile, Left on desktop */}
+          <div className="flex items-center md:flex-none flex-1 justify-center md:justify-start">
             <Link href="/" className="flex items-center">
               <Image
-                src={isScrolled || isMobileMenuOpen || isMobile ? "/logobrawon.png" : "/LOGO.png"}
+                src={isScrolled || isMobileMenuOpen ? "/images/logogras.png" : "/images/LOGOBLANC.png"}
                 alt="Reset Club™ - Premier centre de transformation holistique au Maroc"
                 width={180}
-                height={72}
+                height={82}
                 priority
                 className={`
                   w-auto transition-all duration-700 ease-in-out hover:opacity-80
-                  ${isScrolled || isMobileMenuOpen || isMobile ? 'h-16' : 'h-20'}
+                  ${isScrolled || isMobileMenuOpen ? 'h-18' : 'h-24'}
                 `}
                 sizes="(max-width: 768px) 140px, 180px"
               />
             </Link>
+          </div>
+
+          {/* Call Icon - Right on mobile, Hidden on desktop */}
+          <div className="md:hidden">
+            <a
+              href="tel:+212000000000"
+              className={`p-2 rounded-md transition-colors duration-300 ${
+                isScrolled || isMobileMenuOpen ? 'text-gray-900' : 'text-white'
+              }`}
+              aria-label="Call us"
+            >
+              <Phone className="w-6 h-6" />
+            </a>
           </div>
 
           {/* Navigation Links */}
@@ -128,35 +155,6 @@ const Header: React.FC = () => {
               {t('reserve')}
             </Button>
           </div>
-
-          {/* Mobile Menu Button */}
-          <div className="md:hidden">
-            <button
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className={`relative p-2 rounded-md transition-colors duration-300 ${
-                isScrolled || isMobileMenuOpen || isMobile ? 'text-gray-900' : 'text-white'
-              }`}
-              aria-label="Toggle mobile menu"
-            >
-              <div className="w-6 h-6 flex flex-col justify-center items-center">
-                <span
-                  className={`block h-0.5 w-6 bg-current transition-all duration-300 ${
-                    isMobileMenuOpen ? 'rotate-45 translate-y-1.5' : ''
-                  }`}
-                />
-                <span
-                  className={`block h-0.5 w-6 bg-current transition-all duration-300 mt-1 ${
-                    isMobileMenuOpen ? 'opacity-0' : ''
-                  }`}
-                />
-                <span
-                  className={`block h-0.5 w-6 bg-current transition-all duration-300 mt-1 ${
-                    isMobileMenuOpen ? '-rotate-45 -translate-y-1.5' : ''
-                  }`}
-                />
-              </div>
-            </button>
-          </div>
         </div>
       </nav>
 
@@ -175,13 +173,13 @@ const Header: React.FC = () => {
         }`}
       >
         {/* Mobile Menu Header */}
-        <div className="flex items-center justify-between p-6 border-b border-gray-200">
+        <div className="flex items-center justify-between px-4 py-2 border-b border-gray-200">
           <Image
-            src="/logobrawon.png"
+            src="/images/logogras.png"
             alt="Reset Club™"
             width={120}
             height={48}
-            className="h-12 w-auto"
+            className="h-20 w-14"
           />
           <button
             onClick={() => setIsMobileMenuOpen(false)}

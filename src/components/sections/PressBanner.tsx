@@ -46,7 +46,7 @@ const PressBanner: React.FC = () => {
         </div>
 
         {/* Decorative Line */}
-        <div className="w-24 h-1 bg-gradient-to-r from-[#ccbaa8] to-[#b8a695] mx-auto mb-4 md:mb-12" />
+        <div className="w-24 h-1 bg-gradient-to-r from-[#c26d4c] to-[#c26d4c] mx-auto mb-4 md:mb-12" />
 
         {/* Press Logos Carousel */}
         <div className="relative">
