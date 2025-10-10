@@ -50,7 +50,7 @@ export default function LanguageSwitcher({ variant = 'header', isScrolled = fals
               onClick={() => switchLanguage(lang.code)}
               className={`flex-1 px-4 py-3 rounded-lg text-sm font-medium transition-all duration-200 ${
                 lang.code === locale
-                  ? 'bg-[#ccbaa8] text-white shadow-md'
+                  ? 'bg-[#c26d4c] text-white shadow-md'
                   : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
               }`}
             >

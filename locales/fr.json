@@ -9,7 +9,7 @@
   "Hero": {
     "title": "Réinitialisez votre corps, votre esprit et vos émotions",
     "subtitle": "Le protocole signature In-Out-Reset™ allie neurosciences, biohacking et coaching transformationnel pour un changement durable et mesurable",
-    "cta": "Réservez votre bilan transformationnel"
+    "cta": "Book your transformational report"
   },
   "HomePage": {
     "title": "",
@@ -165,12 +165,14 @@
   },
   "BeforeAfter": {
     "title": "Témoignages avant/après",
+        "description": "Elles ont osé dire oui à leur transformation. Et vous ?",
     "subtitle": "La preuve la plus forte : celles qui ont vécu la transformation",
     "quote": "Chaque transformation commence par une décision. Rejoignez-nous et découvrez votre potentiel.",
     "cta": "Réserver mon bilan"
   },
   "KeyFigures": {
     "title": "Les résultats parlent d'eux-mêmes",
+    "description": "Parce qu’ici, chaque transformation se voit et se mesure",
     "stats": {
       "weightLoss": {
         "number": "10.599",
@@ -191,7 +193,7 @@
   },
   "PracticeComparison": {
     "title": "Pourquoi choisir RESET CLUB ?",
-    "subtitle": "Découvrez ce qui nous distingue des approches traditionnelles du bien-être",
+    "subtitle": "Parce que vous méritez plus qu’un simple soin. Reset Club, c’est la première expérience où la science rencontre la transformation. Chaque protocole est conçu pour rééquilibrer le corps, l’esprit, les émotions et durablement",
     "comparisons": {
       "approach": {
         "criteria": "SUPPORT PERSONNALISÉ & COMMUNICATION DÉDIÉE",
@@ -298,28 +300,28 @@
     "subtitle": "Vous avez tout essayé… Ici, vous découvrez vos vraies limites & solutions avec la méthode signature In—Out—Reset",
     "cards": {
       "values": {
-        "title": "Nos valeurs signatures",
-        "description": "Nous vous donnons le pouvoir de façonner votre santé avec les connaissances et les conseils, en veillant à ce que vous deveniez l'architecte ultime de votre bien-être."
+        "title": "Transformation mesurable",
+        "description": "Des résultats visibles, concrets et mesurables. Grâce à nos technologies (InBody, OligoCheck™), chaque évolution est suivie scientifiquement — pour une transformation durable et quantifiable."
       },
       "innovation": {
-        "title": "Innovation",
-        "description": "Découvrez l'excellence à travers des destinations de rêve, des installations de pointe, une hospitalité exceptionnelle et des soins chaleureux de l'équipe dédiée RESET CLUB™."
+        "title": "Innovation & science",
+        "description": "Science & Biohacking — Des protocoles de pointe issus des neurosciences et de la recherche en longévité. Des technologies avancées au service du mieux-être mesurable et de la performance cellulaire."
       },
       "transformation": {
-        "title": "Transformation",
-        "description": "Leaders mondiaux en optimisation de la santé et de la longévité depuis près de deux décennies, servant 100 000 clients dans le monde avec innovation et reconnaissance prestigieuse."
+        "title": "Empowerment féminin",
+        "description": "Leadership féminin — Révélez votre pouvoir personnel : Reset Club™ vous guide vers votre plein potentiel. Une approche de transformation intérieure pour reprendre le leadership sur sa vie."
       },
       "excellence": {
         "title": "Excellence",
-        "description": "Technologies de pointe et analyses avancées pour fournir des diagnostics, mesurer les biomarqueurs pour identifier les opportunités d'optimisation et prévenir les maladies."
+        "description": "Standards premium, rigueur protocolaire et équipe formée & certifiée selon les meilleurs référentiels internationaux. Chaque détail incarne la précision, la fiabilité et le luxe bienveillant du Reset Club™."
       },
       "holistic": {
-        "title": "Approche Holistique",
-        "description": "Une méthode complète qui intègre le corps, l'esprit et l'âme pour une transformation durable et profonde de votre bien-être global."
+        "title": "Bienveillance & sécurité",
+        "description": "Un cadre protecteur, professionnel et humain. Nos praticiens certifiés garantissent un accompagnement holistique et rassurant, dans un environnement hautement éthique."
       },
       "method": {
-        "title": "Méthode Signature",
-        "description": "Notre approche unique In-Out-Reset vous aide à découvrir vos vraies limites et solutions pour une transformation authentique et durable."
+        "title": "Beauté intégrale",
+        "description": "Révélez l’équilibre entre votre beauté intérieure et votre éclat naturel — une beauté authentique, durable et sans filtre. La beauté devient un alignement entre le corps, l’esprit et les émotions."
       }
     }
   },
@@ -328,6 +330,9 @@
     "legal": "Mentions légales",
     "privacy": "Confidentialité",
     "cookies": "Cookies",
+    "tagline": "Science · Transformation · Renaissance",
+    "mobileTagline": "La première expérience où la science rencontre la transformation.",
+    "mobileCtaButton": "Réservez votre bilan personnalisé",
     "company": {
       "title": "Reset Club™",
       "ourStory": "Notre histoire",
@@ -348,10 +353,21 @@
       "partnerships": "Partenariats"
     }
   },
+  "VideoCarousel": {
+    "title": "Vivez l'expérience Reset",
+    "subtitle": "Découvrez comment la science rencontre la transformation dans notre centre premium de bien-être",
+    "cta": "Je découvre l'expérience RESET™",
+    "videos": {
+      "video1": "Parcours de transformation",
+      "video2": "La science rencontre le bien-être",
+      "video3": "Votre histoire Reset",
+      "video4": "La science rencontre le bien-être"
+    }
+  },
   "PopupOffer": {
-    "title": "Et si votre transformation commençait ici ?",
+    "title": "Et si tout commençait par un RESET ?",
     "imageAlt": "Reset Club",
-    "subtitle": "Reset Club – Premier centre premium de transformation holistique au Maroc",
+    "subtitle": "Réservez votre bilan transformationnel et commencez votre métamorphose dès aujourd’hui",
     "description": "Grattez pour découvrir votre réduction exclusive sur votre bilan personnalisé",
     "cardInstruction": "Grattez les 3 cartes pour révéler votre réduction !",
     "cardsScratched": "cartes grattées",
@@ -360,7 +376,7 @@
     "discount": "de réduction",
     "enterEmail": "Entrez votre email pour réserver votre bilan personnalisé",
     "emailPlaceholder": "VOTRE E-MAIL",
-    "ctaButton": "RÉSERVER MON BILAN",
+    "ctaButton": "Réserver mon bilan",
     "privacyText": "En participant, vous acceptez de recevoir nos communications par e-mail, conformément à notre",
     "privacyLink": "Politique de confidentialité"
   }

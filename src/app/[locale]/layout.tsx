@@ -32,7 +32,7 @@ export default async function LocaleLayout({
         <NextIntlClientProvider messages={messages}>
           {children}
           <WhatsAppButton phoneNumber="+212600000000" />
-          {/* <PopupOffer /> */}
+          <PopupOffer />
         </NextIntlClientProvider>
       </body>
     </html>

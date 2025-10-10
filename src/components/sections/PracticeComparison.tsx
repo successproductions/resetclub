@@ -28,12 +28,12 @@ const PracticeComparison: React.FC = () => {
     <section className="pb-16 bg-white">
       <div className="max-w-7xl mx-auto px-6">
         {/* Header */}
-        <div className="text-center mb-8 md:mb-16">
+        <div className=" mb-8 md:mb-16">
          
-          <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 mb-4 md:mb-6">
+          <h2 className="text-2xl text-center md:text-3xl lg:text-4xl font-bold text-gray-900 mb-4 md:mb-6">
             {t('title').toUpperCase()}
           </h2>
-          <p className="text-base md:text-lg text-gray-600 max-w-3xl mx-auto px-4">
+          <p className="text-base md:text-center md:text-lg text-gray-600 max-w-3xl mx-auto px-4">
             {t('subtitle')}
           </p>
         </div>

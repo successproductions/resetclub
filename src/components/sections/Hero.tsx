@@ -51,7 +51,7 @@ const Hero: React.FC = () => {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 left-0 md:left-24 mx-2 px-3 pt-4 max-w-4xl bg-white/10 md:bg-white/30 backdrop-blur-sm rounded-lg shadow-lg ">
+      <div className="relative z-10 top-42 lg:top-36 xl:top-80 left-0 md:left-24 mx-2 px-3 pt-4 max-w-4xl bg-white/10 md:bg-white/30 backdrop-blur-sm rounded-lg shadow-lg ">
         {/* Main Heading */}
         <h1 className="text-white mb-3 md:mb-8 font-normal">
           <div className="text-2xl md:text-xl lg:text-6xl mb-2 md:mb-4 tracking-wide font-playfair - text-[#524029] ">
@@ -64,7 +64,7 @@ const Hero: React.FC = () => {
 
 
         {/* CTA Button */}
-        <div className="absolute left-[120px] md:left-48 transform -translate-x-1/2">
+        <div className="absolute left-[108px] md:left-48 transform -translate-x-1/2">
           <button className="bg-[#2b8a7c] text-xs md:text-xl px-4 py-2 mt-2 md:mt-4 rounded-full hover:bg-[#31766a] cursor-pointer transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl">
             {t('cta')}
           </button>

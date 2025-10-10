@@ -61,6 +61,7 @@ const BeforeAfter: React.FC = () => {
         <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6 text-center ">
           {t('subtitle').toUpperCase()}
         </h2>
+        <p className='text-gray-900  text-sm md:text-xl'>{t('description')}</p>
         
       </div>
 
@@ -250,7 +251,7 @@ const BeforeAfter: React.FC = () => {
               onClick={() => setCurrentIndex(index)}
               className={`w-2 h-2 rounded-full transition-all duration-200 ${
                 index === currentIndex
-                  ? 'bg-[#ccbaa8] w-6'
+                  ? 'bg-[#c26d4c] w-6'
                   : 'bg-gray-300 hover:bg-gray-400'
               }`}
               aria-label={`Go to testimonial ${index + 1}`}
@@ -260,7 +261,7 @@ const BeforeAfter: React.FC = () => {
       </div>
 
       {/* Success Quote */}
-      <div className="max-w-4xl mx-auto px-6 mt-16 text-center">
+      <div className="max-w-4xl mx-auto px-6 mt-4 md:mt-10 text-center">
         <blockquote className="text-xl md:text-2xl font-light text-gray-700 italic">
           &ldquo;{t('quote')}&rdquo;
         </blockquote>
@@ -269,7 +270,7 @@ const BeforeAfter: React.FC = () => {
         <div className="mt-8">
           <Link
             href="/contact"
-            className="inline-block bg-[#c26d4c] text-white px-8 py-4 rounded-full font-semibold text-lg hover:bg-[#2b8a7c] cursor-pointer transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl"
+            className="inline-block bg-[#c26d4c] text-white px-8 py-4 rounded-full border hover:border-[#c26d4c] font-semibold text-lg hover:bg-[#2b8a7c] cursor-pointer transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl"
           >
             {t('cta')}
           </Link>
