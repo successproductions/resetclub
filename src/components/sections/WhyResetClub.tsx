@@ -51,50 +51,50 @@ const WhyResetClub: React.FC = () => {
       id: 1,
       titleKey: "cards.values.title",
       descriptionKey: "cards.values.description",
-      image: "https://shawellness.com/wp-content/uploads/2025/01/5.png",
+      image: "/images/card1.png",
       iconUrl: "https://shawellness.com/wp-content/uploads/2025/01/1-01.svg"
     },
     {
       id: 2,
       titleKey: "cards.innovation.title",
       descriptionKey: "cards.innovation.description",
-      image: "https://shawellness.com/wp-content/uploads/2025/01/4.png",
+      image: "/images/card3.png",
       iconUrl: "https://shawellness.com/wp-content/uploads/2025/01/1-02.svg"
     },
     {
       id: 3,
       titleKey: "cards.transformation.title",
       descriptionKey: "cards.transformation.description",
-      image: "https://shawellness.com/wp-content/uploads/2025/01/6.png",
+      image: "/images/card2.png",
       iconUrl: "https://shawellness.com/wp-content/uploads/2025/01/1-03.svg"
     },
     {
       id: 4,
       titleKey: "cards.excellence.title",
       descriptionKey: "cards.excellence.description",
-      image: "https://shawellness.com/wp-content/uploads/2025/01/2.png",
+      image: "/images/card4.png",
       iconUrl: "https://shawellness.com/wp-content/uploads/2025/01/1-04.svg"
     },
     {
       id: 5,
       titleKey: "cards.holistic.title",
       descriptionKey: "cards.holistic.description",
-      image: "https://shawellness.com/wp-content/uploads/2025/01/3.png",
+      image: "/images/card5.png",
       iconUrl: "https://shawellness.com/wp-content/uploads/2025/01/1-05.svg"
     },
     {
       id: 6,
       titleKey: "cards.method.title",
       descriptionKey: "cards.method.description",
-      image: "https://shawellness.com/wp-content/uploads/2025/01/1.png",
+      image: "/images/card6.png",
       iconUrl: "https://shawellness.com/wp-content/uploads/2025/01/1-06.svg"
     }
   ];
 
   return (
-    <section className="pt-16 bg-white">
+    <section className="md:pt-16 pt-4 bg-white">
       {/* Header Section */}
-      <div className="max-w-7xl mx-auto px-6 mb-16">
+      <div className="max-w-7xl mx-auto px-6 mb-6 md:mb-16">
         <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
           {t('title')}
         </h2>
@@ -137,7 +137,7 @@ const WhyResetClub: React.FC = () => {
                     draggable={false}
                   />
                   {/* Overlay */}
-                  <div
+                  {/* <div
                     className="absolute inset-0"
                     style={{
                       background: index === 0
@@ -152,7 +152,7 @@ const WhyResetClub: React.FC = () => {
                         ? 'rgba(74, 85, 104, 0.8)'
                         : 'rgba(113, 128, 150, 0.8)'
                     }}
-                  />
+                  /> */}
                 </div>
 
                 {/* Content */}

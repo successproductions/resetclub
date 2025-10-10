@@ -104,9 +104,10 @@ const KeyFigures: React.FC = () => {
         {/* Header */}
         <div className="text-center mb-4 md:mb-6">
 
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-2">
             {t('title').toUpperCase()}
           </h2>
+          <p className='text-gray-900 mb-6'>{t('description')}</p>
           <div className="w-20 h-1 bg-[#c26d4c] mx-auto rounded-full"></div>
         </div>
 

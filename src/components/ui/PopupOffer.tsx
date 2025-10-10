@@ -50,11 +50,11 @@ export default function PopupOffer() {
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm p-4">
-      <div className="relative bg-white max-w-lg w-full rounded-lg shadow-2xl overflow-hidden max-h-[70vdh] md:max-h-[90vdh] overflow-y-auto">
+      <div className="relative bg-white max-w-lg w-full rounded-lg shadow-2xl overflow-hidden max-h-[70vdh] md:max-h-[80vdh] overflow-y-auto">
         {/* Close Button */}
         <button
           onClick={() => setIsOpen(false)}
-          className="absolute top-3 right-3 md:top-4 md:right-4 z-10 text-gray-600 hover:text-gray-900 transition-colors"
+          className="absolute top-1 right-3 md:top-4 md:right-4 z-10 text-gray-600 hover:text-gray-900 transition-colors"
           aria-label="Close"
         >
           <X size={24} className="md:w-7 md:h-7" />
@@ -156,7 +156,7 @@ export default function PopupOffer() {
                 w-full py-2.5 md:py-3 px-6 rounded-md font-medium transition-colors uppercase tracking-wider text-sm md:text-base
                 ${!allCardsScratched
                   ? 'bg-gray-400 text-gray-200 cursor-not-allowed'
-                  : 'bg-black text-white hover:bg-gray-800'}
+                  : 'bg-black text-white hover:bg-[#c26d4c] cursor-pointer hover:scale-105 shadow-lg hover:shadow-xl'}
               `}
             >
               {t('ctaButton')}

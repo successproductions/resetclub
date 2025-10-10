@@ -7,8 +7,8 @@
     "reserve": "Book Now"
   },
   "Hero": {
-    "title": "Morocco's first premium holistic transformation center",
-    "subtitle": "Reset Club",
+    "title": "Reset your body, mind and emotions",
+    "subtitle": "Le protocole signature In-Out-ResetTM allie neurosciences, biohacking et coaching transformationnel pour un changement durable et mesurable",
     "cta": "Book my assessment"
   },
   "HomePage": {
@@ -165,12 +165,14 @@
   },
   "BeforeAfter": {
     "title": "Before/After Testimonials",
+    "description": "They dared to say yes to their transformation. And you ?",
     "subtitle": "The strongest proof: those who have lived the transformation",
     "quote": "Every transformation begins with a decision. Join us and discover your potential.",
     "cta": "Book my assessment"
   },
   "KeyFigures": {
     "title": "The results speak for themselves",
+    "description": "Because here, each transformation is seen and measured",
     "stats": {
       "weightLoss": {
         "number": "10.599",
@@ -191,7 +193,7 @@
   },
   "PracticeComparison": {
     "title": "Why choose RESET CLUB?",
-    "subtitle": "Discover what sets us apart from traditional wellness approaches",
+    "subtitle": "Because you deserve more than just a treatment. Reset Club is the first experience where science meets transformation. Each protocol is designed to rebalance the body, mind, emotions and sustainably",
     "comparisons": {
       "approach": {
         "criteria": "PERSONALIZED SUPPORT & DEDICATED COMMUNICATION",
@@ -298,28 +300,28 @@
     "subtitle": "You've tried everything... Here, you discover your true limits & solutions with the signature In—Out—Reset method",
     "cards": {
       "values": {
-        "title": "Our Signature Values",
-        "description": "We empower you to shape your health with knowledge and guidance, ensuring you become the ultimate architect of your well-being."
+        "title": "Measurable Transformation",
+        "description": "Visible, concrete and measurable results. Thanks to our technologies (InBody, OligoCheck™), every evolution is scientifically tracked — for a lasting and quantifiable transformation."
       },
       "innovation": {
-        "title": "Innovation",
-        "description": "Discover excellence through dream destinations, cutting-edge facilities, exceptional hospitality, and warm care from the dedicated RESET CLUB™ team."
+        "title": "Innovation & Science",
+        "description": "Science & Biohacking — Cutting-edge protocols from neuroscience and longevity research. Advanced technologies serving measurable well-being and cellular performance."
       },
       "transformation": {
-        "title": "Transformation",
-        "description": "Global leaders in health optimization and longevity for nearly two decades, serving 100,000 clients worldwide with innovation and prestigious recognition."
+        "title": "Women's Empowerment",
+        "description": "Female Leadership — Reveal your personal power: Reset Club™ guides you towards your full potential. An inner transformation approach to reclaim leadership over your life."
       },
       "excellence": {
         "title": "Excellence",
-        "description": "Cutting-edge technologies and advanced analytics to provide diagnostics, measure biomarkers to identify optimization opportunities and prevent diseases."
+        "description": "Premium standards, rigorous protocols and a team trained & certified according to the best international benchmarks. Every detail embodies the precision, reliability and caring luxury of Reset Club™."
       },
       "holistic": {
-        "title": "Holistic Approach",
-        "description": "A comprehensive method that integrates body, mind, and soul for lasting and profound transformation of your overall well-being."
+        "title": "Care & Safety",
+        "description": "A protective, professional and human environment. Our certified practitioners guarantee holistic and reassuring support in a highly ethical environment."
       },
       "method": {
-        "title": "Signature Method",
-        "description": "Our unique In-Out-Reset approach helps you discover your true limits and solutions for an authentic and lasting transformation."
+        "title": "Integral Beauty",
+        "description": "Reveal the balance between your inner beauty and your natural radiance — authentic, lasting and unfiltered beauty. Beauty becomes an alignment between body, mind and emotions."
       }
     }
   },
@@ -328,6 +330,9 @@
     "legal": "Legal Notice",
     "privacy": "Privacy Policy",
     "cookies": "Cookies",
+    "tagline": "Science · Transformation · Renaissance",
+    "mobileTagline": "The first experience where science meets transformation.",
+    "mobileCtaButton": "Book your personalized assessment",
     "company": {
       "title": "Reset Club™",
       "ourStory": "Our Story",
@@ -346,6 +351,17 @@
       "bookings": "Bookings",
       "testimonials": "Client Testimonials",
       "partnerships": "Partnerships"
+    }
+  },
+  "VideoCarousel": {
+    "title": "Experience the Reset",
+    "subtitle": "Discover how science meets transformation in our premium wellness center",
+    "cta": "Discover the RESET™ experience",
+    "videos": {
+      "video1": "Transformation Journey",
+      "video2": "Science Meets Wellness",
+      "video3": "Your Reset Story",
+      "video4": "Science Meets Wellness"
     }
   },
   "PopupOffer": {
