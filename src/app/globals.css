@@ -190,6 +190,7 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 body {
@@ -198,6 +199,8 @@ body {
   font-family: var(--font-graphik);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  width: 100%;
 }
 
 /* Base text styles for all text elements - Mobile first */

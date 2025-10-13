@@ -28,7 +28,7 @@ export default async function LocaleLayout({
 
   return (
     <html lang={locale} className={fontVariables}>
-      <body className="font-futura-family antialiased">
+      <body className="font-futura-family antialiased overflow-x-hidden">
         <NextIntlClientProvider messages={messages}>
           {children}
           <WhatsAppButton phoneNumber="+212600000000" />
