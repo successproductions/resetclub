@@ -104,14 +104,14 @@ const VideoCarousel: React.FC = () => {
   }, [currentIndex, isAnimating]);
 
   return (
-    <section className="bg-white py-4 md:py-4 overflow-hidden">
+    <section className="bg-white py-4 md:py-10 overflow-hidden">
       <div className="max-w-7xl mx-auto px-6">
         {/* Section Title */}
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4 font-playfair">
+        <div className="md:text-center mb-5 md:mb-6">
+          <h2 className="text-3xl md:text-4xl font-normal lg:text-5xl uppercase text-gray-700 mb-1 md:mb-4 ">
             {t('title')}
           </h2>
-          <p className="text-gray-800 text-lg md:text-xl max-w-3xl mx-auto">
+          <p className="text-gray-500 text-lg md:text-xl max-w-3xl font-graphik mx-auto">
             {t('subtitle')}
           </p>
         </div>
@@ -146,7 +146,7 @@ const VideoCarousel: React.FC = () => {
 
                 {/* Video Title Overlay */}
                 <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-8">
-                  <h3 className="text-white text-2xl md:text-3xl font-bold font-playfair">
+                  <h3 className="text-white text-sm md:text-3xl font-normal">
                     {t(video.titleKey)}
                   </h3>
                 </div>
@@ -157,7 +157,7 @@ const VideoCarousel: React.FC = () => {
             <button
               onClick={prevSlide}
               disabled={isAnimating}
-              className="absolute left-4 top-1/2 -translate-y-1/2 z-20 bg-[#c26d4c] hover:bg-[#a05a3d] disabled:opacity-50 disabled:cursor-not-allowed text-white p-3 rounded-full transition-all duration-300 hover:scale-110 shadow-lg"
+              className="absolute left-4 top-1/2 -translate-y-1/2 z-20 bg-white/90 hover:bg-white/60 disabled:opacity-50 disabled:cursor-not-allowed text-gray-600 p-3 rounded-full transition-all duration-300 hover:scale-110 shadow-lg"
               aria-label="Previous video"
             >
               <ChevronLeft className="w-6 h-6" />
@@ -166,7 +166,7 @@ const VideoCarousel: React.FC = () => {
             <button
               onClick={nextSlide}
               disabled={isAnimating}
-              className="absolute right-4 top-1/2 -translate-y-1/2 z-20 bg-[#c26d4c] hover:bg-[#a05a3d] disabled:opacity-50 disabled:cursor-not-allowed text-white p-3 rounded-full transition-all duration-300 hover:scale-110 shadow-lg"
+              className="absolute right-4 top-1/2 -translate-y-1/2 z-20 bg-white/90 hover:bg-white/60 disabled:opacity-50 disabled:cursor-not-allowed text-gray-600 p-3 rounded-full transition-all duration-300 hover:scale-110 shadow-lg"
               aria-label="Next video"
             >
               <ChevronRight className="w-6 h-6" />
@@ -191,10 +191,10 @@ const VideoCarousel: React.FC = () => {
           </div>
 
           {/* CTA Button */}
-          <div className="flex justify-center mt-12">
+          <div className="flex justify-center mt-6">
             <Link
               href="/contact"
-              className="bg-[#c26d4c] text-white px-8 py-4 rounded-full font-medium text-lg hover:bg-[#a05a3d] transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl"
+              className="bg-transparent text-gray-700 px-4 md:px-8 py-4 font-graphik rounded-full font-medium text-lg border hover:bg-gray-950 hover:text-white transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl"
             >
               {t('cta')}
             </Link>

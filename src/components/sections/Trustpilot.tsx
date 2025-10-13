@@ -12,7 +12,7 @@ const Trustpilot: React.FC = () => {
       <div className="container mx-auto px-6">
         <div className="max-w-2xl mx-auto text-center">
           {/* Trustpilot Logo */}
-          <div className="flex items-center justify-center gap-3 mb-6">
+          <div className="flex items-center justify-center gap-1 md:gap-2 mb-1">
             <Image
               src="/images/trustpilot-2.svg"
               alt="Trustpilot"
@@ -20,30 +20,23 @@ const Trustpilot: React.FC = () => {
               height={40}
               className="w-10 h-10"
             />
-            <span className="text-4xl  text-gray-900">Trustpilot</span>
+            <span className="md:text-4xl text-3xl font-graphik text-gray-700">Trustpilot</span>
           </div>
 
-          {/* Star Rating */}
-          <div className="flex justify-center gap-2 mb-6">
-            {[1, 2, 3, 4, 5].map((star) => (
-              <div
-                key={star}
-                className="w-16 h-16 md:w-20 md:h-20 bg-[#00b67a] flex items-center justify-center"
-              >
-                <Image
-                  src="/images/trustpilot-2.svg"
-                  alt="Star"
-                  width={48}
-                  height={48}
-                  className="w-10 h-10 md:w-12 md:h-12 brightness-0 invert"
-                />
-              </div>
-            ))}
+          {/* Trustpilot Rating Image */}
+          <div className="flex justify-center ">
+            <Image
+              src="/images/trustpilot-5.png"
+              alt="Trustpilot 5 Stars"
+              width={230}
+              height={60}
+              className="w-auto h-12 md:h-20"
+            />
           </div>
 
           {/* TrustScore */}
-          <div className="text-2xl md:text-3xl text-gray-600 ">
-            TrustScore <span className=" text-gray-900">{trustScore}</span> |{' '}
+          <div className="text-lg md:text-3xl font-graphik text-gray-500 ">
+            TrustScore <span className=" text-gray-800">{trustScore}</span> |{' '}
             <a
               href="#"
               target="_blank"

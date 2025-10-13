@@ -89,7 +89,7 @@ const Header: React.FC = () => {
                 height={82}
                 priority
                 className={`
-                  w-auto transition-all duration-700 ease-in-out hover:opacity-80
+                  w-auto transition-all  duration-700 ease-in-out hover:opacity-80
                   ${isScrolled || isMobileMenuOpen ? 'h-18' : 'h-24'}
                 `}
                 sizes="(max-width: 768px) 140px, 180px"
@@ -117,10 +117,10 @@ const Header: React.FC = () => {
                 key={index}
                 href={item.href}
                 className={`
-                  relative px-6 py-3 text-sm font-medium transition-all duration-300 ease-in-out
+                  relative px-6 py-3 text-sm font-graphik  uppercase transition-all duration-300 ease-in-out
                   group
                   ${isScrolled || isMobileMenuOpen
-                    ? 'text-gray-700 hover:text-gray-900'
+                    ? 'text-gray-600 hover:text-gray-900'
                     : 'text-white hover:text-white'
                   }
                 `}
@@ -132,7 +132,7 @@ const Header: React.FC = () => {
                     absolute bottom-0 left-1/2 transform -translate-x-1/2 h-0.5 w-0
                     transition-all duration-300 ease-in-out
                     group-hover:w-8
-                    ${isScrolled || isMobileMenuOpen ? 'bg-gray-900' : 'bg-white'}
+                    ${isScrolled || isMobileMenuOpen ? 'bg-gray-600' : 'bg-white'}
                   `}
                 />
               </Link>
@@ -206,7 +206,7 @@ const Header: React.FC = () => {
                 <Link
                   key={index}
                   href={item.href}
-                  className="block py-3 px-4 text-lg font-medium text-gray-800 hover:text-amber-600 hover:bg-amber-50 rounded-lg transition-colors duration-200"
+                  className="block py-3 px-4 text-lg font-graphik  uppercase text-gray-700 hover:text-amber-600 hover:bg-amber-50 rounded-lg transition-colors duration-200"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   {item.label}

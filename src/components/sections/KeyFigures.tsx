@@ -102,12 +102,12 @@ const KeyFigures: React.FC = () => {
 
       <div className="max-w-7xl mx-auto px-6 relative">
         {/* Header */}
-        <div className="text-center mb-4 md:mb-6">
+        <div className="md:text-center mb-1 md:mb-6">
 
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-2">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl text-gray-700 mb-1 md:mb-2">
             {t('title').toUpperCase()}
           </h2>
-          <p className='text-gray-900 mb-6'>{t('description')}</p>
+          <p className='text-gray-500 text-lg mb-6 md:text-xl font-graphik '>{t('description')}</p>
           <div className="w-20 h-1 bg-[#c26d4c] mx-auto rounded-full"></div>
         </div>
 
@@ -130,7 +130,7 @@ const KeyFigures: React.FC = () => {
 
                   {/* Animated Number */}
                   <div className="mb-4 md:mb-6">
-                    <div className="text-3xl md:text-6xl lg:text-7xl font-light text-gray-900 mb-2">
+                    <div className="text-3xl md:text-6xl lg:text-6xl font-light text-gray-700 mb-2">
                       <AnimatedCounter
                         end={stat.value}
                         decimals={stat.decimals}
@@ -143,8 +143,8 @@ const KeyFigures: React.FC = () => {
                   </div>
 
                   {/* Label */}
-                  <div className="max-w-48 mx-auto">
-                    <p className="text-gray-600 text-sm md:text-base leading-relaxed">
+                  <div className="md:max-w-34  mx-auto">
+                    <p className="text-gray-500 text-lg md:text-base font-graphik  leading-relaxed">
                       {t(`stats.${stat.key}.label`)}
                     </p>
                   </div>
