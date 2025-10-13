@@ -92,13 +92,13 @@ const WhyResetClub: React.FC = () => {
   ];
 
   return (
-    <section className="md:pt-16 pt-4 bg-white">
+    <section className="md:pt-2 pt-4 bg-white">
       {/* Header Section */}
       <div className="max-w-7xl mx-auto px-6 mb-6 md:mb-16">
-        <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+        <h2 className="text-3xl md:text-4xl lg:text-5xl  text-gray-700 mb-1 ">
           {t('title')}
         </h2>
-        <p className="text-sm md:text-lg text-gray-600 max-w-4xl">
+        <p className="text-lg md:text-lg font-normal font-graphik text-gray-500 max-w-4xl">
           {t('subtitle')}
         </p>
       </div>
@@ -133,6 +133,7 @@ const WhyResetClub: React.FC = () => {
                     alt={t(card.titleKey)}
                     fill
                     className="object-cover"
+                    style={{ filter: 'grayscale(30%)' }}
                     sizes="16.67vw"
                     draggable={false}
                   />
@@ -173,10 +174,10 @@ const WhyResetClub: React.FC = () => {
 
                   {/* Content - Title and description below icon */}
                   <div>
-                    <h3 className="text-2xl font-bold mb-4 leading-tight break-words">
+                    <h3 className="text-2xl font-bold mb-4 lg:text-3xl leading-tight break-words">
                       {t(card.titleKey)}
                     </h3>
-                    <p className="text-sm md:text-base leading-relaxed opacity-90 break-words">
+                    <p className="text-lg md:text-base font-graphik lg:text-xl leading-relaxed opacity-90 break-words">
                       {t(card.descriptionKey)}
                     </p>
                   </div>
@@ -198,6 +199,7 @@ const WhyResetClub: React.FC = () => {
                     alt={t(card.titleKey)}
                     fill
                     className="object-cover"
+                    style={{ filter: 'grayscale(30%)' }}
                     sizes="16.67vw"
                     draggable={false}
                   />

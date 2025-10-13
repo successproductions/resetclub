@@ -254,7 +254,7 @@ const Footer: React.FC = () => {
         {/* CTA Button */}
         <Link
           href="/contact"
-          className="bg-[#c26d4c] text-white px-8 py-4 rounded-full font-medium border border-[#c26d4c] hover:border-[#c26d4c] hover:bg-[#2b8a7c] hover:text-white transition-all duration-300 inline-block cursor-pointer hover:scale-105 shadow-lg hover:shadow-xl"
+          className="bg-transparent text-white text-lg font-graphik px-4 font-medium py-4  rounded-full font-fraphik border border-gray-900 hover:border-gray-700 hover:bg-gray-950 hover:text-white transition-all duration-300 inline-block cursor-pointer hover:scale-105 shadow-lg hover:shadow-xl"
         >
           {t('mobileCtaButton')}
         </Link>

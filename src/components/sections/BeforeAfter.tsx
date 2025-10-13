@@ -55,13 +55,13 @@ const BeforeAfter: React.FC = () => {
   };
 
   return (
-    <section className="py-8 bg-white">
+    <section className="md:py-8 py-4 bg-white">
       {/* Header Section */}
-      <div className="max-w-7xl mx-auto px-6 mb-10">
-        <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6 text-center ">
+      <div className="max-w-7xl mx-auto px-6 mb-5 md:mb-10">
+        <h2 className="text-3xl md:text-4xl lg:text-5xl text-gray-700 md:mb-6 md:text-center ">
           {t('subtitle').toUpperCase()}
         </h2>
-        <p className='text-gray-900  text-sm md:text-xl'>{t('description')}</p>
+        <p className='text-gray-500 text-lg font-graphik md:text-xl'>{t('description')}</p>
         
       </div>
 
@@ -86,8 +86,8 @@ const BeforeAfter: React.FC = () => {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
 
                 {/* Before/After Labels */}
-                <div className="absolute top-4 left-4">
-                  <div className="bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-xs font-semibold text-gray-800">
+                <div className="absolute top-4  left-4">
+                  <div className="bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-xs font-medium font-graphik  text-gray-700">
                     AVANT
                   </div>
                 </div>
@@ -165,12 +165,12 @@ const BeforeAfter: React.FC = () => {
 
               {/* Before/After Labels */}
               <div className="absolute top-4 left-4">
-                <div className="bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-xs font-semibold text-gray-800">
+                <div className="bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-xs font-medium font-graphik  text-gray-800">
                   AVANT
                 </div>
               </div>
               <div className="absolute top-4 right-4">
-                <div className="bg-green-500/90 backdrop-blur-sm px-3 py-1 rounded-full text-xs font-semibold text-white">
+                <div className="bg-green-500/90 backdrop-blur-sm px-3 py-1 rounded-full text-xs font-medium font-graphik  text-white">
                   APRÈS
                 </div>
               </div>
@@ -181,7 +181,7 @@ const BeforeAfter: React.FC = () => {
               {/* Stats Row */}
               <div className="grid grid-cols-3 gap-4 mb-4">
                 <div className="text-center">
-                  <div className="text-2xl font-bold text-gray-900">
+                  <div className="text-2xl font-medium font-graphik  text-gray-900">
                     {testimonials[currentIndex].beforeWeight}
                   </div>
                   <div className="text-xs text-gray-500 uppercase tracking-wide">
@@ -189,7 +189,7 @@ const BeforeAfter: React.FC = () => {
                   </div>
                 </div>
                 <div className="text-center">
-                  <div className="text-2xl font-bold text-green-600">
+                  <div className="text-2xl font-medium font-graphik  text-green-600">
                     -{testimonials[currentIndex].weightLoss}
                   </div>
                   <div className="text-xs text-gray-500 uppercase tracking-wide">
@@ -197,10 +197,10 @@ const BeforeAfter: React.FC = () => {
                   </div>
                 </div>
                 <div className="text-center">
-                  <div className="text-2xl font-bold text-gray-900">
+                  <div className="text-2xl font-medium font-graphik  text-gray-900">
                     {testimonials[currentIndex].afterWeight}
                   </div>
-                  <div className="text-xs text-gray-500 uppercase tracking-wide">
+                  <div className="text-xs text-gray-500  uppercase tracking-wide">
                     Après
                   </div>
                 </div>
@@ -211,10 +211,10 @@ const BeforeAfter: React.FC = () => {
 
               {/* Client Info */}
               <div className="text-center">
-                <h3 className="text-lg font-semibold text-gray-900 mb-1">
+                <h3 className="text-lg font-medium font-graphik  text-gray-700 mb-1">
                   {testimonials[currentIndex].name}
                 </h3>
-                <p className="text-sm text-gray-600">
+                <p className="text-sm font-medium font-graphik text-gray-600">
                   {testimonials[currentIndex].age} ans • Transformation en {testimonials[currentIndex].timeframe}
                 </p>
               </div>
@@ -261,16 +261,16 @@ const BeforeAfter: React.FC = () => {
       </div>
 
       {/* Success Quote */}
-      <div className="max-w-4xl mx-auto px-6 mt-4 md:mt-10 text-center">
-        <blockquote className="text-xl md:text-2xl font-light text-gray-700 italic">
+      <div className="max-w-4xl mx-auto px-6 mt-4  md:mt-10 text-center">
+        <blockquote className="text-lg md:text-2xl font-normal font-graphik  text-gray-700 italic">
           &ldquo;{t('quote')}&rdquo;
         </blockquote>
 
         {/* CTA Button */}
-        <div className="mt-8">
+        <div className="mt-4 md:mt-8">
           <Link
             href="/contact"
-            className="inline-block bg-[#c26d4c] text-white px-8 py-4 rounded-full border hover:border-[#c26d4c] font-semibold text-lg hover:bg-[#2b8a7c] cursor-pointer transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl"
+            className="inline-block bg-transparent font-medium font-graphik text-gray-700 hover:text-white px-8 py-4 rounded-full border hover:border-gray-800  text-lg hover:bg-gray-950 cursor-pointer transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl"
           >
             {t('cta')}
           </Link>

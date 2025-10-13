@@ -90,11 +90,11 @@ const IntroSection: React.FC = () => {
 
       {/* Main container with border */}
       <div className="container mx-auto px-6 relative">
-        <div className="relative max-w-7xl mx-auto border-2 border-[#c26d4c] rounded-[3rem] p-6 md:p-6">
+        <div className="relative max-w-7xl mx-auto border-2 border-[#c26d4c] rounded-[3rem] p-3 md:p-6">
 
           {/* Header */}
           <div className="text-center mb-8">
-            <h2 ref={titleRef} className="text-2xl md:text-3xl lg:text-4xl font-normal text-gray-950 mb-8">
+            <h2 ref={titleRef} className="text-3xl md:text-3xl lg:text-5xl uppercase text-gray-700 mb-1 md:mb-8">
               {t('hook')}
             </h2>
           </div>
@@ -116,7 +116,7 @@ const IntroSection: React.FC = () => {
                       className="object-contain"
                     />
                   </div>
-                  <p className="text-white/80 text-sm leading-relaxed">
+                  <p className="text-white/80 text-sm font-graphik font-normal leading-relaxed">
                     Neurosciences & Biohacking pour reprogrammer votre métabolisme de l&apos;intérieur
                   </p>
                 </div>
@@ -183,8 +183,8 @@ const IntroSection: React.FC = () => {
 
           {/* CTA Button */}
           <div className="text-center">
-            <button ref={buttonRef} className="px-12 py-4 bg-transparent border border-[#c26d4c] text-black hover:text-white hover:bg-[#2b8a7c] text-sm md:text-lg font-medium  hover:shadow-2xl hover:scale-105 transition-all duration-300">
-              {t('cta').toUpperCase()}
+            <button ref={buttonRef} className="px-12 py-4 bg-transparent border border-gray-800 text-gray-700 hover:text-white hover:bg-gray-950 text-lg md:text-lg font-medium font-graphik hover:shadow-2xl hover:scale-105 rounded-full transition-all duration-300">
+              {t('cta')}
             </button>
           </div>
 

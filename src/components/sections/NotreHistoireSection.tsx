@@ -101,25 +101,25 @@ export default function NotreHistoireSection() {
     <section ref={sectionRef} className="py-4 md:py-8 bg-white">
       <div className="container mx-auto px-4">
         {/* Mobile: Title */}
-        <h2 ref={textRef} className="text-3xl md:hidden font-serif text-gray-900 leading-tight mb-6 text-center">
+        <h2 ref={textRef} className="text-3xl md:hidden uppercase text-gray-700 leading-tight mb-3 md:mb-6 md:text-center">
           {t('bio1')}
         </h2>
 
-        <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
+        <div className="grid md:grid-cols-2 gap-4 md:gap-12 items-center">
           {/* Text Section - Desktop */}
           <div className="hidden md:block space-y-6">
-            <h2 className="text-3xl md:text-4xl font-serif text-gray-900 leading-tight">
+            <h2 className="text-3xl md:text-4xl  text-gray-700 leading-tight">
               {t('bio1')}
             </h2>
 
-            <p className="text-base md:text-lg text-gray-700 leading-relaxed ">
+            <p className="text-lg md:text-lg font-graphik text-gray-500 leading-relaxed ">
               {t('bio2')}
             </p>
 
             <Link
               ref={buttonRef}
               href="/contact"
-              className="inline-block bg-transparent text-gray-900 border border-[#c26d4c] px-8 py-3 rounded-full hover:text-white hover:bg-[#2b8a7c] transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl"
+              className="inline-block bg-transparent font-graphik text-gray-900 border border-[#c26d4c] px-8 py-3 rounded-full hover:text-white hover:bg-[#2b8a7c] transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl"
             >
               {t('seeMore')}
             </Link>
@@ -144,7 +144,7 @@ export default function NotreHistoireSection() {
 
           {/* Text and Button - Mobile only */}
           <div className="md:hidden space-y-6">
-            <p className="text-base text-gray-700 leading-relaxed">
+            <p className="text-lg text-gray-500 mb-2 font-graphik leading-relaxed">
               {t('bio2')}
             </p>
 
@@ -152,7 +152,7 @@ export default function NotreHistoireSection() {
               <Link
                 ref={buttonRef}
                 href="/contact"
-                className="inline-block bg-transparent text-gray-900 border border-[#c26d4c] px-8 py-3 rounded-full hover:text-white hover:bg-[#2b8a7c] transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl"
+                className="inline-block bg-transparent font-graphik font-medium text-lg text-gray-700 border border-gray-800 px-8 py-3 rounded-full hover:text-white hover:bg-gray-950 transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl"
               >
                 {t('seeMore')}
               </Link>

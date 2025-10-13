@@ -33,9 +33,139 @@
   font-display: swap;
 }
 
+/* Graphik Font Family */
+@font-face {
+  font-family: 'Graphik';
+  src: url('/font/Graphik Family/Graphik-Thin-Trial.otf') format('opentype');
+  font-weight: 100;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Graphik';
+  src: url('/font/Graphik Family/Graphik-ThinItalic-Trial.otf') format('opentype');
+  font-weight: 100;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Graphik';
+  src: url('/font/Graphik Family/Graphik-Extralight-Trial.otf') format('opentype');
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Graphik';
+  src: url('/font/Graphik Family/Graphik-ExtralightItalic-Trial.otf') format('opentype');
+  font-weight: 200;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Graphik';
+  src: url('/font/Graphik Family/Graphik-Light-Trial.otf') format('opentype');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Graphik';
+  src: url('/font/Graphik Family/Graphik-LightItalic-Trial.otf') format('opentype');
+  font-weight: 300;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Graphik';
+  src: url('/font/Graphik Family/Graphik-Regular-Trial.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Graphik';
+  src: url('/font/Graphik Family/Graphik-RegularItalic-Trial.otf') format('opentype');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Graphik';
+  src: url('/font/Graphik Family/Graphik-Medium-Trial.otf') format('opentype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Graphik';
+  src: url('/font/Graphik Family/Graphik-MediumItalic-Trial.otf') format('opentype');
+  font-weight: 500;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Graphik';
+  src: url('/font/Graphik Family/Graphik-Semibold-Trial.otf') format('opentype');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Graphik';
+  src: url('/font/Graphik Family/Graphik-SemiboldItalic-Trial.otf') format('opentype');
+  font-weight: 600;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Graphik';
+  src: url('/font/Graphik Family/Graphik-Bold-Trial.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Graphik';
+  src: url('/font/Graphik Family/Graphik-BoldItalic-Trial.otf') format('opentype');
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Graphik';
+  src: url('/font/Graphik Family/Graphik-Black-Trial.otf') format('opentype');
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Graphik';
+  src: url('/font/Graphik Family/Graphik-BlackItalic-Trial.otf') format('opentype');
+  font-weight: 900;
+  font-style: italic;
+  font-display: swap;
+}
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --font-graphik: 'Graphik', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
   --font-inter: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
   --font-poppins: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   --font-playfair: 'Playfair Display', serif;
@@ -47,7 +177,7 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-inter);
+  --font-sans: var(--font-graphik);
   --font-mono: var(--font-geist-mono);
 }
 
@@ -65,18 +195,56 @@ html {
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-le-jour-script);
+  font-family: var(--font-graphik);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-h2, h3, h4, h5, h6 {
-  font-family: var(--font-playfair);
-  font-weight: 300;
+/* Base text styles for all text elements - Mobile first */
+p span, td, th, label, input, textarea, button {
+  font-size: 1.125rem; /* text-lg - 18px */
+  line-height: 1.75rem;
+}
+
+/* Headings - Mobile: text-3xl, MD: text-4xl, LG: text-5xl */
+ h2, h4, h5, h6 {
+  font-family: var(--font-graphik);
+  font-weight: 400;
+  font-size: 1.995rem; /* text-3xl - 30px */
+  line-height: 2.25rem;
+
+}
+h3{
+    font-family: var(--font-graphik);
+  font-weight: 400;
+  font-size: 1.575rem; 
+  line-height: 2.25rem;
+}
+
+@media (min-width: 768px) {
+ h2, h3, h4, h5, h6 {
+    font-size: 2.25rem; /* text-4xl - 36px */
+    line-height: 2.5rem;
+  }
 
 }
 
+@media (min-width: 1024px) {
+ h2, h4, h5, h6 {
+    font-size: 3rem; /* text-5xl - 48px */
+    line-height: 1;
 
+  }
+
+  h3{
+    font-size: 2rem;
+  }
+}
+
+
+.font-graphik {
+  font-family: var(--font-graphik);
+}
 
 .font-inter {
   font-family: var(--font-inter);
