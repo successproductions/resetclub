@@ -8,7 +8,7 @@ const Trustpilot: React.FC = () => {
   const totalReviews = 147;
 
   return (
-    <section className="py-4 pb-6 md:py-8 md:pb-14 bg-white">
+    <section className="py-4 pb-6 md:py-0 md:pb-10 bg-white">
       <div className="container mx-auto px-6">
         <div className="max-w-2xl mx-auto text-center">
           {/* Trustpilot Logo */}
@@ -26,7 +26,7 @@ const Trustpilot: React.FC = () => {
           {/* Trustpilot Rating Image */}
           <div className="flex justify-center ">
             <Image
-              src="/images/trustpilot-5.png"
+              src="/images/trustpilot-stars.png"
               alt="Trustpilot 5 Stars"
               width={230}
               height={60}

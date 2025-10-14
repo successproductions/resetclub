@@ -105,7 +105,7 @@ const KeyFigures: React.FC = () => {
         <div className="md:text-center mb-1 md:mb-6">
 
           <h2 className="text-3xl md:text-4xl lg:text-5xl text-gray-700 mb-1 md:mb-2">
-            {t('title').toUpperCase()}
+            {t('title')}
           </h2>
           <p className='text-gray-500 text-lg mb-6 md:text-xl font-graphik '>{t('description')}</p>
           <div className="w-20 h-1 bg-[#c26d4c] mx-auto rounded-full"></div>

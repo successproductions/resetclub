@@ -166,7 +166,7 @@
   "BeforeAfter": {
     "title": "Témoignages avant/après",
         "description": "Elles ont osé dire oui à leur transformation. Et vous ?",
-    "subtitle": "La preuve la plus forte : celles qui ont vécu la transformation",
+    "subtitle": "La preuve la plus forte: celles qui ont vécu la transformation",
     "quote": "Chaque transformation commence par une décision. Rejoignez-nous et découvrez votre potentiel.",
     "cta": "Réserver mon bilan"
   },
@@ -192,7 +192,7 @@
     }
   },
   "PracticeComparison": {
-    "title": "Pourquoi choisir RESET CLUB ?",
+    "title": "Pourquoi choisir Reset Club ?",
     "subtitle": "Parce que vous méritez plus qu’un simple soin. Reset Club, c’est la première expérience où la science rencontre la transformation. Chaque protocole est conçu pour rééquilibrer le corps, l’esprit, les émotions et durablement",
     "comparisons": {
       "approach": {
@@ -278,6 +278,26 @@
       "certified": "Experts certifiés",
       "proven": "Méthode éprouvée",
       "experts": "Équipe pluridisciplinaire"
+    },
+    "cards": {
+      "in": {
+        "title": "IN — Réveillez votre énergie cellulaire",
+        "subtitle": "Rechargez vos cellules. Réactivez votre métabolisme. Reconnectez-vous à votre vitalité profonde.",
+        "tagline": "Là où la transformation commence, de l'intérieur.",
+        "emoji": "⚡"
+      },
+      "out": {
+        "title": "OUT — Libérez ce qui vous retient",
+        "subtitle": "Détoxifiez. Drainez. Respirez. Chaque soin sculpte votre corps et allège votre esprit.",
+        "tagline": "Votre légèreté devient votre nouvelle puissance.",
+        "emoji": "🌬"
+      },
+      "reset": {
+        "title": "RESET — Réinitialisez votre pouvoir intérieur",
+        "subtitle": "Libérez vos blocages émotionnels. Réveillez votre équilibre intérieur. Réinitialisez. Rayonnez. Renaissez.",
+        "tagline": "Parce que la vraie beauté commence à l'intérieur.",
+        "emoji": "🌿"
+      }
     }
   },
   "NotreHistoirePage": {
@@ -296,7 +316,7 @@
     }
   },
   "WhyResetClub": {
-    "title": "POURQUOI RESET CLUB EST UNIQUE ?",
+    "title": "Pourquoi Reset Club est unique ?",
     "subtitle": "Vous avez tout essayé… Ici, vous découvrez vos vraies limites & solutions avec la méthode signature In—Out—Reset",
     "cards": {
       "values": {
@@ -356,7 +376,7 @@
   "VideoCarousel": {
     "title": "Vivez l'expérience Reset",
     "subtitle": "Découvrez comment la science rencontre la transformation dans notre centre premium de bien-être",
-    "cta": "Je découvre l'expérience RESET™",
+    "cta": "Je découvre l'expérience RESET",
     "videos": {
       "video1": "Parcours de transformation",
       "video2": "La science rencontre le bien-être",
@@ -367,7 +387,7 @@
   "PopupOffer": {
     "title": "Et si tout commençait par un RESET ?",
     "imageAlt": "Reset Club",
-    "subtitle": "Réservez votre bilan transformationnel et commencez votre métamorphose dès aujourd’hui",
+    "subtitle": "Réservez votre bilan transformationnel et commencez votre métamorphose dès aujourd'hui",
     "description": "Grattez pour découvrir votre réduction exclusive sur votre bilan personnalisé",
     "cardInstruction": "Grattez les 3 cartes pour révéler votre réduction !",
     "cardsScratched": "cartes grattées",
@@ -379,5 +399,9 @@
     "ctaButton": "Réserver mon bilan",
     "privacyText": "En participant, vous acceptez de recevoir nos communications par e-mail, conformément à notre",
     "privacyLink": "Politique de confidentialité"
+  },
+  "NotificationWidget": {
+    "message": "Il y a 3 minutes, Laila a réservé son Bilan Transformationnel.",
+    "brand": "RESET CLUB"
   }
 }

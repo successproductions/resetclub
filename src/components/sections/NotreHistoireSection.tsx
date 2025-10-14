@@ -101,7 +101,7 @@ export default function NotreHistoireSection() {
     <section ref={sectionRef} className="py-4 md:py-8 bg-white">
       <div className="container mx-auto px-4">
         {/* Mobile: Title */}
-        <h2 ref={textRef} className="text-3xl md:hidden uppercase text-gray-700 leading-tight mb-3 md:mb-6 md:text-center">
+        <h2 ref={textRef} className="text-3xl md:hidden  text-gray-700 leading-tight mb-3 md:mb-6 md:text-center">
           {t('bio1')}
         </h2>
 

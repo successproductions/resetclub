@@ -59,7 +59,7 @@ const BeforeAfter: React.FC = () => {
       {/* Header Section */}
       <div className="max-w-7xl mx-auto px-6 mb-5 md:mb-10">
         <h2 className="text-3xl md:text-4xl lg:text-5xl text-gray-700 md:mb-6 md:text-center ">
-          {t('subtitle').toUpperCase()}
+          {t('subtitle')}
         </h2>
         <p className='text-gray-500 text-lg font-graphik md:text-xl'>{t('description')}</p>
         

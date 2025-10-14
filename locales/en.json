@@ -278,6 +278,26 @@
       "certified": "Certified experts",
       "proven": "Proven method",
       "experts": "Multidisciplinary team"
+    },
+    "cards": {
+      "in": {
+        "title": "IN — Awaken Your Cellular Energy",
+        "subtitle": "Recharge your cells. Reactivate your metabolism. Reconnect with your deep vitality.",
+        "tagline": "Where transformation begins, from within.",
+        "emoji": "⚡"
+      },
+      "out": {
+        "title": "OUT — Release What Holds You Back",
+        "subtitle": "Detoxify. Drain. Breathe. Each treatment sculpts your body and lightens your mind.",
+        "tagline": "Your lightness becomes your new power.",
+        "emoji": "🌬"
+      },
+      "reset": {
+        "title": "RESET — Reboot Your Inner Power",
+        "subtitle": "Release your emotional blockages. Awaken your inner balance. Reset. Radiate. Rebirth.",
+        "tagline": "Because true beauty begins from within.",
+        "emoji": "🌿"
+      }
     }
   },
   "NotreHistoirePage": {
@@ -379,5 +399,9 @@
     "ctaButton": "BOOK MY ASSESSMENT",
     "privacyText": "By participating, you agree to receive our communications by email, in accordance with our",
     "privacyLink": "Privacy Policy"
+  },
+  "NotificationWidget": {
+    "message": "3 minutes ago, Laila booked her Transformational Assessment.",
+    "brand": "RESET CLUB"
   }
 }

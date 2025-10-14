@@ -54,21 +54,21 @@ export default function PopupOffer() {
         {/* Close Button */}
         <button
           onClick={() => setIsOpen(false)}
-          className="absolute top-1 right-3 md:top-4 md:right-4 z-10 text-gray-600 hover:text-gray-900 transition-colors"
+          className="absolute top-1 right-3 md:top-4 md:right-2 z-10 text-gray-600 hover:text-gray-900 transition-colors"
           aria-label="Close"
         >
           <X size={24} className="md:w-7 md:h-7" />
         </button>
 
         {/* Content */}
-        <div className="p-3 md:p-8 text-center">
+        <div className="p-3 md:p-4 text-center">
           {/* Title */}
-          <h2 className="text-2xl md:text-4xl font-serif mb-3 md:mb-6 text-gray-800 tracking-wide">
+          <h3 className="text-1xl md:text-2xl lg:text-2xl font-graphik font-medium mb-1 md:mb-2 lg:mb-4 text-gray-700 tracking-wide">
             {t('title')}
-          </h2>
+          </h3>
 
           {/* Image */}
-          <div className="mb-3 md:mb-6 rounded-lg overflow-hidden bg-gradient-to-br from-blue-400 to-blue-600 relative">
+          <div className="mb-1 md:mb-2 rounded-lg overflow-hidden bg-gradient-to-br from-blue-400 to-blue-600 relative">
             <Image
               src="/images/woman-put.jpg"
               alt={t('imageAlt')}
@@ -76,12 +76,12 @@ export default function PopupOffer() {
               height={400}
               quality={85}
               priority
-              className="w-full h-40 md:h-64 object-cover"
+              className="w-full h-40 md:h-52 object-cover"
             />
           </div>
 
           {/* Description */}
-          <p className="text-gray-700 mb-1 md:mb-2 text-base md:text-lg">
+          <p className="text-gray-500 font-graphik  mb-1 md:mb-1 text-sm font-normal md:text-lg">
             {t('subtitle')}
           </p>
           {/* <p className="text-gray-600 mb-3 md:mb-6 text-sm md:text-base">
@@ -89,12 +89,12 @@ export default function PopupOffer() {
           </p> */}
 
           {/* Card instruction */}
-          <p className="text-sm md:text-base  text-[#4b3d2f] mb-3 md:mb-4">
+          <p className="text-xs md:text-base font-graphik  text-gray-700 mb-3 md:mb-1">
             {t('cardInstruction')}
           </p>
 
           {/* Scratch-off cards */}
-          <div className="flex justify-center gap-2 md:gap-3 mb-2 md:mb-4 p-4 pb-6 bg-gradient-to-b from-gray-50 to-gray-100 rounded-lg border border-gray-200 shadow-inner">
+          <div className="flex justify-center gap-2 md:gap-3 mb-2 md:mb-2 p-4 pb-6 bg-gradient-to-b from-gray-50 to-gray-100 rounded-lg border border-gray-200 shadow-inner">
             {cards.map((discount, index) => (
               <div
                 key={index}
@@ -129,10 +129,10 @@ export default function PopupOffer() {
               {/* <p className="text-xs md:text-base font-bold text-amber-800 mb-1">
                 {t('congratulations') || 'Félicitations !'} {t('youWon') || 'Vous avez gagné'}
               </p> */}
-              <div className="text-1xl md:text-3xl font-black text-amber-600 " style={{ textShadow: '2px 2px 0px rgba(217, 119, 6, 0.2)' }}>
+              <div className="text-1xl md:text-2xl font-graphik font-black text-amber-600 " style={{ textShadow: '2px 2px 0px rgba(217, 119, 6, 0.2)' }}>
                 {bestDiscount}% {t('discount') || 'de réduction'}
               </div>
-              <p className="text-xs md:text-sm text-amber-700 ">
+              <p className="text-xs md:text-sm font-graphik font-medium text-amber-700 ">
                 {t('enterEmail') || 'Entrez votre email pour recevoir votre code promo'} 
               </p>
             </div>
@@ -146,14 +146,14 @@ export default function PopupOffer() {
               onChange={(e) => setEmail(e.target.value)}
               placeholder={t('emailPlaceholder')}
               required
-              className="w-full px-4 py-2.5 md:py-3 border text-gray-900 border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-black text-sm md:text-base"
+              className="w-full px-4 py-2.5 md:py-3 border font-graphik text-gray-900 border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-black text-sm md:text-base"
             />
 
             <button
               type="submit"
               disabled={!allCardsScratched}
               className={`
-                w-full py-2.5 md:py-3 px-6 rounded-md font-medium transition-colors uppercase tracking-wider text-sm md:text-base
+                w-full py-2.5 md:py-3 px-6 rounded-md font-graphik font-medium transition-colors uppercase tracking-wider text-sm md:text-base
                 ${!allCardsScratched
                   ? 'bg-gray-400 text-gray-200 cursor-not-allowed'
                   : 'bg-black text-white hover:bg-[#c26d4c] cursor-pointer hover:scale-105 shadow-lg hover:shadow-xl'}
@@ -164,7 +164,7 @@ export default function PopupOffer() {
           </form>
 
           {/* Privacy Policy */}
-          <p className="text-[10px] md:text-xs text-gray-500 mt-3 md:mt-4">
+          <p className="text-[10px] md:text-xs text-gray-500 mt-3 md:mt-1">
             {t('privacyText')}{' '}
             <a href="#" className="underline hover:text-gray-700">
               {t('privacyLink')}

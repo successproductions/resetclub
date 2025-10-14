@@ -90,35 +90,44 @@ const IntroSection: React.FC = () => {
 
       {/* Main container with border */}
       <div className="container mx-auto px-6 relative">
-        <div className="relative max-w-7xl mx-auto border-2 border-[#c26d4c] rounded-[3rem] p-3 md:p-6">
+        <div className="relative max-w-7xl mx-auto border-2 border-gray-500 rounded-[3rem] p-3 md:p-6">
 
           {/* Header */}
           <div className="text-center mb-8">
-            <h2 ref={titleRef} className="text-3xl md:text-3xl lg:text-5xl uppercase text-gray-700 mb-1 md:mb-8">
+            <h2 ref={titleRef} className="text-3xl md:text-3xl lg:text-5xl  text-gray-700 mb-1 md:mb-8">
               {t('hook')}
             </h2>
           </div>
 
           {/* 3 Cards with Arrows */}
           <div className="relative mb-8">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">
 
               {/* Card 1: IN */}
-              <div ref={card1Ref} className="relative">
-                <div className="bg-[#9c948b] rounded-3xl p-8 text-center border border-[#c26d4c] hover:border-[#ccbaa8] transition-all duration-300">
-                  <div className="text-white text-sm mb-4">1</div>
-                  <h3 className="text-2xl font-semibold text-white mb-6">In</h3>
-                  <div className="w-20 h-20 mx-auto mb-6 relative">
+              <div ref={card1Ref} className="relative h-full">
+                <div className="bg-white rounded-3xl overflow-hidden border-2 border-gray-500 hover:border-[#c26d4c] transition-all duration-300 shadow-lg hover:shadow-xl group h-full flex flex-col">
+                  {/* Image */}
+                  <div className="relative h-64 overflow-hidden flex-shrink-0">
                     <Image
-                      src="/images/in.svg"
-                      alt="In"
+                      src="/images/IN.jpg"
+                      alt="Cellular Energy"
                       fill
-                      className="object-contain"
+                      className="object-cover group-hover:scale-110 transition-transform duration-500"
                     />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
                   </div>
-                  <p className="text-white/80 text-sm font-graphik font-normal leading-relaxed">
-                    Neurosciences & Biohacking pour reprogrammer votre métabolisme de l&apos;intérieur
-                  </p>
+                  {/* Content */}
+                  <div className="px-6 py-2  flex-grow flex flex-col">
+                    <h3 className="text-xl font-normal text-gray-700 mb-3 font-graphik">
+                      {t('cards.in.title')}
+                    </h3>
+                    <p className="text-gray-500 text-sm leading-relaxed mb-4 font-graphik flex-grow">
+                      {t('cards.in.subtitle')}
+                    </p>
+                    <p className="text-[#c26d4c] text-xs italic font-graphik">
+                      💬 {t('cards.in.tagline')}
+                    </p>
+                  </div>
                 </div>
                 {/* Right Arrow */}
                 <div ref={arrow1Ref} className="hidden md:flex absolute top-1/2 -right-12  -translate-y-1/2 z-10 items-center justify-center">
@@ -132,21 +141,30 @@ const IntroSection: React.FC = () => {
               </div>
 
               {/* Card 2: OUT */}
-              <div ref={card2Ref} className="relative">
-                <div className="bg-[#9c948b] rounded-3xl p-8 text-center border border-[#c26d4c] hover:border-[#ccbaa8] transition-all duration-300">
-                  <div className="text-white text-sm mb-4">2</div>
-                  <h3 className="text-2xl font-semibold text-white mb-6">Out</h3>
-                  <div className="w-20 h-20 mx-auto mb-6 relative">
+              <div ref={card2Ref} className="relative h-full">
+                <div className="bg-white rounded-3xl overflow-hidden border-2 border-gray-500 hover:border-[#c26d4c] transition-all duration-300 shadow-lg hover:shadow-xl group h-full flex flex-col">
+                  {/* Image */}
+                  <div className="relative h-64 overflow-hidden flex-shrink-0">
                     <Image
-                      src="/images/out.svg"
-                      alt="Out"
+                      src="/images/OUT.jpg"
+                      alt="Body Detox"
                       fill
-                      className="object-contain"
+                      className="object-cover group-hover:scale-110 transition-transform duration-500"
                     />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
                   </div>
-                  <p className="text-white/80 text-sm leading-relaxed">
-                    Techniques avancées pour sculpter votre silhouette et révéler votre potentiel physique
-                  </p>
+                  {/* Content */}
+                  <div className="px-6 py-2 flex-grow flex flex-col">
+                    <h3 className="text-xl font-normal text-gray-700 mb-3 font-graphik">
+                      {t('cards.out.title')}
+                    </h3>
+                    <p className="text-gray-700 text-sm leading-relaxed mb-4 font-graphik flex-grow">
+                      {t('cards.out.subtitle')}
+                    </p>
+                    <p className="text-[#c26d4c] text-xs italic font-graphik">
+                      💬 {t('cards.out.tagline')}
+                    </p>
+                  </div>
                 </div>
                 {/* Right Arrow */}
                 <div ref={arrow2Ref} className="hidden md:flex absolute top-1/2 -right-12 -translate-y-1/2 z-10 items-center justify-center">
@@ -160,21 +178,30 @@ const IntroSection: React.FC = () => {
               </div>
 
               {/* Card 3: RESET */}
-              <div ref={card3Ref} className="relative">
-                <div className="bg-[#9c948b] rounded-3xl p-8 text-center border border-[#c26d4c] hover:border-[#ccbaa8] transition-all duration-300">
-                  <div className="text-white text-sm mb-4">3</div>
-                  <h3 className="text-2xl font-semibold text-white mb-6">Reset</h3>
-                  <div className="w-20 h-20 mx-auto mb-6 relative">
+              <div ref={card3Ref} className="relative h-full">
+                <div className="bg-white rounded-3xl overflow-hidden border-2 border-gray-500 hover:border-[#c26d4c] transition-all duration-300 shadow-lg hover:shadow-xl group h-full flex flex-col">
+                  {/* Image */}
+                  <div className="relative h-64 overflow-hidden flex-shrink-0">
                     <Image
-                      src="/images/reset.svg"
-                      alt="Reset"
+                      src="/images/REST.jpg"
+                      alt="Inner Balance"
                       fill
-                      className="object-contain"
+                      className="object-cover group-hover:scale-110 transition-transform duration-500"
                     />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
                   </div>
-                  <p className="text-white/80 text-sm leading-relaxed">
-                    Coaching transformationnel pour libérer vos blocages émotionnels et mentaux
-                  </p>
+                  {/* Content */}
+                  <div className="px-6 py-2  flex-grow flex flex-col">
+                    <h3 className="text-xl font-normal text-gray-700 mb-3 font-graphik">
+                      {t('cards.reset.title')}
+                    </h3>
+                    <p className="text-gray-700 text-sm leading-relaxed mb-4 font-graphik flex-grow">
+                      {t('cards.reset.subtitle')}
+                    </p>
+                    <p className="text-[#c26d4c] text-xs italic font-graphik">
+                      💬 {t('cards.reset.tagline')}
+                    </p>
+                  </div>
                 </div>
               </div>
 

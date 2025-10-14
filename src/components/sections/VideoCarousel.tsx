@@ -108,7 +108,7 @@ const VideoCarousel: React.FC = () => {
       <div className="max-w-7xl mx-auto px-6">
         {/* Section Title */}
         <div className="md:text-center mb-5 md:mb-6">
-          <h2 className="text-3xl md:text-4xl font-normal lg:text-5xl uppercase text-gray-700 mb-1 md:mb-4 ">
+          <h2 className="text-3xl md:text-4xl font-normal lg:text-5xl  text-gray-700 mb-1 md:mb-4 ">
             {t('title')}
           </h2>
           <p className="text-gray-500 text-lg md:text-xl max-w-3xl font-graphik mx-auto">
@@ -121,7 +121,7 @@ const VideoCarousel: React.FC = () => {
           {/* Video Display */}
           <div
             ref={carouselRef}
-            className="relative w-full h-[500px] md:h-[700px] lg:h-[800px] rounded-2xl overflow-hidden shadow-2xl"
+            className="relative w-full h-[500px] md:h-[700px] lg:h-[600px] rounded-2xl overflow-hidden shadow-2xl"
           >
             {videos.map((video, index) => (
               <div
@@ -145,11 +145,11 @@ const VideoCarousel: React.FC = () => {
                 </video>
 
                 {/* Video Title Overlay */}
-                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-8">
+                {/* <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-8">
                   <h3 className="text-white text-sm md:text-3xl font-normal">
                     {t(video.titleKey)}
                   </h3>
-                </div>
+                </div> */}
               </div>
             ))}
 

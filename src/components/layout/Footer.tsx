@@ -35,8 +35,7 @@ const Footer: React.FC = () => {
       links: [
         { labelKey: 'support.faq', href: '/faq' },
         { labelKey: 'support.bookings', href: '/contac' },
-        { labelKey: 'support.testimonials', href: '/testimonials' },
-        { labelKey: 'support.partnerships', href: '/partners' },
+        { labelKey: 'support.testimonials', href: '/testimonials' }
       ],
     },
   };
@@ -46,7 +45,7 @@ const Footer: React.FC = () => {
       {/* Desktop Footer - Hidden on Mobile */}
       <div className="hidden md:block max-w-7xl mx-auto px-6 py-12">
         {/* Main Footer Content */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6 lg:gap-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6 lg:gap-2">
           {/* Brand Section - Takes 2 columns on large screens */}
           <div className="lg:col-span-2">
             <div className="mb-6">
@@ -128,9 +127,9 @@ const Footer: React.FC = () => {
           {/* Footer Links - Each section takes 1 column */}
           {Object.entries(footerLinks).map(([key, section]) => (
             <div key={key}>
-              <h4 className="text-xl font-bold mb-6 text-[#c26d4c] font-playfair">
+              <p className="text-xl md:text-2xl font-normal mb-6 text-[#c26d4c] font-graphik">
                 {t(section.titleKey)}
-              </h4>
+              </p>
               <ul className="space-y-3">
                 {section.links.map((link, index) => (
                   <li key={index}>
