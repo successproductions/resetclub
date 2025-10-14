@@ -93,7 +93,7 @@ const IntroSection: React.FC = () => {
         <div className="relative max-w-7xl mx-auto border-2 border-gray-500 rounded-[3rem] p-3 md:p-6">
 
           {/* Header */}
-          <div className="text-center mb-8">
+          <div className="text-center mt-1 mb-6 md:mb-8">
             <h2 ref={titleRef} className="text-3xl md:text-3xl lg:text-5xl  text-gray-700 mb-1 md:mb-8">
               {t('hook')}
             </h2>
@@ -118,10 +118,10 @@ const IntroSection: React.FC = () => {
                   </div>
                   {/* Content */}
                   <div className="px-6 py-2  flex-grow flex flex-col">
-                    <h3 className="text-xl font-normal text-gray-700 mb-3 font-graphik">
+                    <h3 className="text-xl font-normal text-gray-700 mb-2 font-graphik">
                       {t('cards.in.title')}
                     </h3>
-                    <p className="text-gray-500 text-sm leading-relaxed mb-4 font-graphik flex-grow">
+                    <p className="text-gray-500 text-lg leading-5.5 mb-2 font-graphik flex-grow">
                       {t('cards.in.subtitle')}
                     </p>
                     <p className="text-[#c26d4c] text-xs italic font-graphik">
@@ -155,10 +155,10 @@ const IntroSection: React.FC = () => {
                   </div>
                   {/* Content */}
                   <div className="px-6 py-2 flex-grow flex flex-col">
-                    <h3 className="text-xl font-normal text-gray-700 mb-3 font-graphik">
+                    <h3 className="text-xl font-normal text-gray-700 mb-2 font-graphik">
                       {t('cards.out.title')}
                     </h3>
-                    <p className="text-gray-700 text-sm leading-relaxed mb-4 font-graphik flex-grow">
+                    <p className="text-gray-500 text-lg leading-5.5 mb-2 font-graphik flex-grow">
                       {t('cards.out.subtitle')}
                     </p>
                     <p className="text-[#c26d4c] text-xs italic font-graphik">
@@ -192,10 +192,10 @@ const IntroSection: React.FC = () => {
                   </div>
                   {/* Content */}
                   <div className="px-6 py-2  flex-grow flex flex-col">
-                    <h3 className="text-xl font-normal text-gray-700 mb-3 font-graphik">
+                    <h3 className="text-xl font-normal text-gray-700 md:mb-2 leading-1.5 font-graphik">
                       {t('cards.reset.title')}
                     </h3>
-                    <p className="text-gray-700 text-sm leading-relaxed mb-4 font-graphik flex-grow">
+                    <p className="text-gray-500 text-lg leading-5.5 mb-2 font-graphik flex-grow">
                       {t('cards.reset.subtitle')}
                     </p>
                     <p className="text-[#c26d4c] text-xs italic font-graphik">

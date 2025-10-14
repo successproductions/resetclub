@@ -61,7 +61,7 @@ const BeforeAfter: React.FC = () => {
         <h2 className="text-3xl md:text-4xl lg:text-5xl text-gray-700 md:mb-6 md:text-center ">
           {t('subtitle')}
         </h2>
-        <p className='text-gray-500 text-lg font-graphik md:text-xl'>{t('description')}</p>
+        <p className='text-gray-500 text-lg md:text-center font-graphik md:text-xl'>{t('description')}</p>
         
       </div>
 

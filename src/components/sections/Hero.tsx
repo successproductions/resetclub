@@ -51,7 +51,7 @@ const Hero: React.FC = () => {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 top-26 lg:top-36 xl:top-80 left-0 md:left-24 mx-2 px-3 pt-4 max-w-4xl bg-white/10 md:bg-white/30 backdrop-blur-sm rounded-lg shadow-lg ">
+      <div className="relative z-10 top-26 lg:top-36 xl:top-0 left-0 md:left-24 mx-2 px-3 pt-4 max-w-4xl bg-white/10 md:bg-white/30 backdrop-blur-sm rounded-lg shadow-lg ">
         {/* Main Heading */}
         <h1 className="text-white mb-3 md:mb-8 font-graphik font-normal">
           <div className="text-3xl md:text-xl lg:text-6xl mb-2 md:mb-4 uppercase tracking-wide text-[#524029] ">
