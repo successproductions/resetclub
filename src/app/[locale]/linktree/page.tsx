@@ -129,7 +129,7 @@ export default function LinktreePage() {
           <PromoCard
             href="#"
             text={t('links.offers')}
-            imageUrl="https://images.unsplash.com/photo-1607083206869-4c7672e72a8a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+            imageUrl="/images/offerLinktree.png"
             height="regular"
 
             hoverEffect="zoom"
@@ -137,14 +137,14 @@ export default function LinktreePage() {
             <PromoCard
               href="#"
               text={t('links.whatsapp')}
-              imageUrl="https://images.unsplash.com/photo-1611224923853-80b023f02d71?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+              imageUrl="/images/WhatsappLinktree.jpg"
             height="regular"
             hoverEffect="zoom"
             />
             <PromoCard
               href="#"
               text={t('links.reviews')}
-              imageUrl="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+              imageUrl="/images/image14.png"
             height="regular"
             hoverEffect="zoom"
             />
