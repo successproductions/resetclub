@@ -3,9 +3,7 @@ import { getMessages } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import { routing } from '../../i18n/routing';
 import { fontVariables } from '../fonts';
-import WhatsAppButton from '../../components/ui/WhatsAppButton';
-import PopupOffer from '../../components/ui/PopupOffer';
-import NotificationWidget from '../../components/ui/NotificationWidget';
+import ConditionalComponents from '../../components/layout/ConditionalComponents';
 import '../globals.css';
 
 export function generateStaticParams() {
@@ -32,9 +30,7 @@ export default async function LocaleLayout({
       <body className="font-futura-family antialiased overflow-x-hidden">
         <NextIntlClientProvider messages={messages}>
           {children}
-          <WhatsAppButton phoneNumber="+212600000000" />
-          <PopupOffer />
-          <NotificationWidget />
+          <ConditionalComponents />
         </NextIntlClientProvider>
       </body>
     </html>

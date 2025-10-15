@@ -145,7 +145,7 @@ const Header: React.FC = () => {
           </div>
 
           {/* CTA Button */}
-          <div className="hidden md:block ml-6 font-le-jour-serif">
+          <div className="hidden md:block ml-6">
             <Button
               variant="primary"
               size="lg"
@@ -221,7 +221,7 @@ const Header: React.FC = () => {
               variant="primary"
               size="lg"
               href="/contact"
-              className="w-full"
+              className="w-full scrolled-navbar"
               onClick={() => setIsMobileMenuOpen(false)}
             >
               {t('reserve')}

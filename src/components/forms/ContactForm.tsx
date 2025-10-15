@@ -18,8 +18,8 @@ export default function ContactForm() {
   } = useContactForm();
 
   return (
-    <div className="bg-white rounded-2xl shadow-lg p-4 md:p-6 lg:p-8">
-      <p className="text-xs md:text-xl text-center  text-gray-700 mb-4">
+    <div className="bg-white rounded-2xl shadow-lg p-4 md:p-6 font-graphik lg:p-8">
+      <p className="text-lg md:text-xl text-center  text-gray-700 mb-4">
         {t('subtitle').toUpperCase()}
       </p>
 
@@ -48,8 +48,8 @@ export default function ContactForm() {
               name="firstName"
               value={formData.firstName}
               onChange={handleInputChange}
-              className={`w-full px-4 py-3 border rounded-lg focus:outline-none focus:border-[#ccbaa8] text-gray-900 transition-colors placeholder:text-gray-300 ${
-                errors.firstName ? 'border-red-500' : 'border-gray-300'
+              className={`w-full px-4 py-3 border rounded-lg focus:outline-none focus:border-[#ccbaa8] text-gray-900 transition-colors placeholder:text-gray-400 ${
+                errors.firstName ? 'border-red-500' : 'border-gray-900'
               }`}
               placeholder={t('form.firstNamePlaceholder')}
             />
@@ -68,8 +68,8 @@ export default function ContactForm() {
               name="lastName"
               value={formData.lastName}
               onChange={handleInputChange}
-              className={`w-full px-4 text-gray-900 py-3 border rounded-lg focus:outline-none focus:border-[#ccbaa8] transition-colors placeholder:text-gray-300 ${
-                errors.lastName ? 'border-red-500' : 'border-gray-300'
+              className={`w-full px-4 text-gray-900 py-3 border rounded-lg focus:outline-none focus:border-[#ccbaa8] transition-colors placeholder:text-gray-400 ${
+                errors.lastName ? 'border-red-500' : 'border-gray-900'
               }`}
               placeholder={t('form.lastNamePlaceholder')}
             />
@@ -90,8 +90,8 @@ export default function ContactForm() {
             name="email"
             value={formData.email}
             onChange={handleInputChange}
-            className={`w-full px-4 text-gray-900 py-3 border rounded-lg focus:outline-none focus:border-[#ccbaa8] transition-colors placeholder:text-gray-300 ${
-              errors.email ? 'border-red-500' : 'border-gray-300'
+            className={`w-full px-4 text-gray-900 py-3 border rounded-lg focus:outline-none focus:border-[#ccbaa8] transition-colors placeholder:text-gray-400 ${
+              errors.email ? 'border-red-500' : 'border-gray-900'
             }`}
             placeholder={t('form.emailPlaceholder')}
           />
@@ -111,7 +111,7 @@ export default function ContactForm() {
               value={formData.countryCode}
               onChange={handleInputChange}
               className={`px-3 py-3 border rounded-lg focus:outline-none focus:border-[#ccbaa8] transition-colors ${
-                errors.countryCode ? 'border-red-500' : 'border-gray-300'
+                errors.countryCode ? 'border-red-500' : 'border-gray-900'
               }`}
             >
               {COUNTRIES.map((country) => (
@@ -126,8 +126,8 @@ export default function ContactForm() {
               name="phone"
               value={formData.phone}
               onChange={handleInputChange}
-              className={`flex-1 px-4 py-3 border text-gray-900  rounded-lg focus:outline-none focus:border-[#ccbaa8] transition-colors placeholder:text-gray-300 ${
-                errors.phone ? 'border-red-500' : 'border-gray-300'
+              className={`flex-1 px-4 py-3 border text-gray-900  rounded-lg focus:outline-none focus:border-[#ccbaa8] transition-colors placeholder:text-gray-400 ${
+                errors.phone ? 'border-red-500' : 'border-gray-900'
               }`}
               placeholder={t('form.phonePlaceholder')}
             />
@@ -148,8 +148,8 @@ export default function ContactForm() {
             rows={5}
             value={formData.message}
             onChange={handleInputChange}
-            className={`w-full px-4 py-3 border text-gray-900 rounded-lg focus:outline-none focus:border-[#ccbaa8] transition-colors resize-vertical placeholder:text-gray-300 ${
-              errors.message ? 'border-red-500' : 'border-gray-300'
+            className={`w-full px-4 py-3 border text-gray-900 rounded-lg focus:outline-none focus:border-[#ccbaa8] transition-colors resize-vertical placeholder:text-gray-400 ${
+              errors.message ? 'border-red-500' : 'border-gray-900'
             }`}
             placeholder={t('form.messagePlaceholder')}
           />
@@ -158,12 +158,12 @@ export default function ContactForm() {
           )}
         </div>
 
-        <div className='flex justify-center '>
+        <div className='flex justify-center  '>
           <SubmitButton
             type="submit"
             variant="secondary"
             disabled={isSubmitting}
-            className="min-w-64 center font-le-jour-serif text-sm lg:text-1xl md:text-lg whitespace-nowrap"
+            className="min-w-64 center font-graphik text-sm lg:text-1xl md:text-lg whitespace-nowrap"
           >
             {isSubmitting ? t('form.sending') : t('form.submit')}
           </SubmitButton>

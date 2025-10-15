@@ -20,7 +20,7 @@ export default function LinktreePage() {
   const logoScale = Math.max(0.7, 1 - scrollY / 300);
 
   return (
-    <div className="min-h-screen text-white relative">
+    <div className="min-h-screen text-white relative font-graphik ">
       {/* Background Images */}
       <div className="absolute inset-0">
         {/* Mobile Background */}
@@ -51,11 +51,11 @@ export default function LinktreePage() {
           }}
         >
           <Image
-            src="/LOGO.png"
+            src="/images/logogras.png"
             alt="ResetClub Logo"
             width={320}
             height={256}
-            className="object-contain"
+            className="object-contain h-44  md:h-60"
           />
         </div>
       </div>
@@ -85,7 +85,7 @@ export default function LinktreePage() {
             <SocialIcon platform="linkedin" />
             <SocialIcon platform="website" />
           </div>
- <p className="text-lg md:text-lg opacity-90 pb-2 px-4 font-le-jour-serif font-bold leading-relaxed">2.4M Total Flollowers </p>
+ <p className="text-lg md:text-lg opacity-90 pb-2 px-4 font-graphik font-normal leading-relaxed">2.4M Total Flollowers </p>
           {/* Full name */}
           <p className="text-sm opacity-90 mb-2 font-medium">{t('fullName')}</p>
 
@@ -99,11 +99,11 @@ export default function LinktreePage() {
         </div>
 
         {/* Links as Image Cards */}
-        <div className="space-y-3 mb-6 font-le-jour-serif ">
+        <div className="space-y-3 mb-6 font-graphik ">
           <PromoCard
             href="#"
             text={t('links.freeBilan')}
-            imageUrl="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+            imageUrl="/images/linktree1.png"
             height="tall"
             priority={true}
             hoverEffect="pulse"
@@ -113,14 +113,14 @@ export default function LinktreePage() {
             <PromoCard
               href="#"
               text={t('links.discover')}
-              imageUrl="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+              imageUrl="/images/REST.jpg"
             height="regular"
             hoverEffect="zoom"
             />
             <PromoCard
               href="#"
               text={t('links.booking')}
-              imageUrl="https://images.unsplash.com/photo-1551601651-2a8555f1a136?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+              imageUrl="/images/linktree2.jpg"
             height="regular"
             hoverEffect="zoom"
             />

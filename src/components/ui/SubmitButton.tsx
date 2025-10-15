@@ -31,56 +31,48 @@ const Button: React.FC<ButtonProps> = ({
 
   const variantClasses = {
     primary: `
-      text-gray-900 border border-gray-300 bg-white
+      text-gray-900 border border-gray-300 bg-white rounded-full
       hover:bg-gray-50 hover:border-gray-400
       focus:ring-gray-500
+      shadow-md
       group
+  
     `,
     secondary: `
-     text-white bg-transparent border-0 relative
-      hover:text-yellow-800
-      focus:ring-amber-500 focus:ring-opacity-50
-      svg-border-button1 group
+      text-gray-700 bg-transparent border border-gray-800 rounded-full
+      hover:bg-gray-900 hover:text-white
+      focus:ring-gray-500 focus:ring-opacity-50
+      shadow-md
+      group
     `,
     outline: `
-      text-white border border-white bg-transparent
+      text-white border border-white bg-transparent rounded-full
       hover:bg-white hover:text-gray-900
       focus:ring-white focus:ring-opacity-50
+      shadow-md
       group
     `,
   };
 
   const sizeClasses = {
-    sm: 'px-10 py-3 text-sm font-semibold',
-    md: 'px-12 py-4 text-base font-semibold',
-    lg: 'px-16 py-5 text-lg font-semibold',
+    sm: 'px-10 py-3 text-sm font-medium',
+    md: 'px-12 py-4 text-base font-medium',
+    lg: 'px-16 py-5 text-lg font-medium',
   };
 
   const classes = `${baseClasses} ${variantClasses[variant]} ${sizeClasses[size]} ${className}`.trim();
 
-  const content = variant === 'primary' ? (
-    <span className="relative z-10">{children}</span>
-  ) : (
-    <>
-      <span className="relative z-10">{children}</span>
-      {/* Left angled edge */}
-      <span className="absolute top-0 left-[-12px] h-full w-6 border-t border-b border-l border-white transform -skew-x-12 group-hover:bg-white"></span>
-      {/* Right angled edge */}
-      <span className="absolute top-0 right-[-12px] h-full w-6 border-t border-b border-r border-white transform skew-x-12 group-hover:bg-white"></span>
-    </>
-  );
-
   if (href) {
     return (
       <a href={href} className={classes}>
-        {content}
+        {children}
       </a>
     );
   }
 
   return (
     <button type={type} onClick={onClick} disabled={disabled} className={classes}>
-      {content}
+      {children}
     </button>
   );
 };

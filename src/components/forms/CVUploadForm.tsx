@@ -44,10 +44,10 @@ export default function CVUploadForm() {
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
             </svg>
           </div> */}
-          <h3 className="text-2xl md:text-3xl text-gray-900 mb-3 font-bold">
+          <h3 className="text-3xl md:text-3xl text-gray-700  mb-3 font-graphik font-normal">
             {t('upload.title')}
           </h3>
-          <p className="text-gray-800 mb-6 text-sm md:text-lg leading-relaxed">
+          <p className="text-gray-500 mb-6 text-lg md:text-xl font-graphik leading-relaxed">
             {t('upload.subtitle')}
           </p>
         </div>
@@ -63,16 +63,16 @@ export default function CVUploadForm() {
           />
           <label
             htmlFor="cv-upload"
-            className="inline-block px-12 py-6 bg-white border-2 border-dashed border-[#ccbaa8] rounded-xl cursor-pointer hover:bg-[#ccbaa8]/5 hover:border-[#ccbaa8] transition-all duration-300 shadow-sm"
+            className="inline-block px-12 py-6 bg-white border-2 border-dashed border-[#c26d4c] rounded-xl cursor-pointer hover:bg-[#ccbaa8]/5 hover:border-[#ccbaa8] transition-all duration-300 shadow-sm"
           >
             <div className="text-center">
-              <svg className="w-16 h-16 text-[#ccbaa8] mx-auto mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="w-16 h-16 text-[#c26d4c] mx-auto mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
               </svg>
-              <p className="text-[#ccbaa8] font-semibold text-lg mb-2">
+              <p className="text-[#c26d4c] font-normal font-graphik text-lg mb-2">
                 {selectedFile ? selectedFile.name : t('upload.dragText')}
               </p>
-              <p className="text-sm text-gray-500">{t('upload.fileTypes')}</p>
+              <p className="text-sm text-gray-500 font-graphik">{t('upload.fileTypes')}</p>
             </div>
           </label>
         </div>

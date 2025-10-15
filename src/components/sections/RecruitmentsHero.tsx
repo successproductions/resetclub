@@ -13,11 +13,11 @@ export default function RecruitmentsHero() {
         backgroundRepeat: 'no-repeat'
       }}
     >
-      <div className="container mx-auto px-2 mt-4 md:px-6 text-center relative z-10">
-        <h1 className="text-2xl md:text-3xl lg:text-5xl text-white mb-1 md:mb-6 drop-shadow-lg">
+      <div className="container mx-auto px-2 mt-4 md:px-6 text-center relative font-graphik z-10">
+        <h1 className="text-2xl md:text-3xl lg:text-5xl uppercase text-white mb-1 md:mb-3 drop-shadow-lg">
           {t('hero.title')}
         </h1>
-        <p className="text-sm md:text-1xl text-white max-w-4xl mx-auto leading-relaxed drop-shadow-lg">
+        <p className="text-sm md:text-xl text-white max-w-4xl mx-auto leading-relaxed drop-shadow-lg">
           {t('hero.subtitle')}
         </p>
       </div>

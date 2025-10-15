@@ -57,7 +57,7 @@ const Hero: React.FC = () => {
           <div className="text-3xl md:text-xl lg:text-6xl mb-2 md:mb-4 uppercase tracking-wide text-[#524029] ">
             {t('title')}
           </div>
-          <div className="text-lg md:text-xl lg:text-1xl xl:text-1xl tracking-tight font-normal  text-[#52422e]">
+          <div className="text-lg md:text-xl  xl:text-1xl tracking-tight font-normal  text-[#52422e]">
             {t('subtitle')}
           </div>
         </h1>
