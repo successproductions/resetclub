@@ -12,21 +12,21 @@ const Director: React.FC = () => {
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid lg:grid-cols-2 gap-12  items-start">
           {/* Content Section */}
-          <div className="space-y-6  ">
+          <div className="space-y-1  ">
             {/* Header */}
             <div>
-              <div className="text-[#ccbaa8] font-medium mb-2 uppercase tracking-wider text-lg">
+              <div className="text-[#c26d4c] font-normal md:mb-2 uppercase tracking-wider text-lg">
                 {t('name')}
               </div>
-              <h1 className="text-3xl md:text-3xl lg:text-4xl font-bold text-gray-900 mb-4 leading-tight">
-                {t('title').toUpperCase()}
+              <h1 className="text-3xl md:text-3xl lg:text-4xl font-graphik font-normal text-gray-700 md:mb-4 leading-tight">
+                {t('title')}
                 <br />
-                {t('subtitle').toUpperCase()}
-              </h1>
+                {t('subtitle')}
+              </h1> 
             </div>
 
             {/* Description */}
-            <div className="space-y-4 text-gray-700 text-sm md:text-lg leading-relaxed">
+            <div className="md:space-y-4 space-y-2 text-gray-500 font-normal font-graphik text-lg md:text-xl xl:text-1xl leading-relaxed">
               <p>
                 {t('bio1')}
               </p>

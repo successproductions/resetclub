@@ -18,12 +18,12 @@ export default function RecrutonsPage() {
             <div className="bg-white rounded-2xl shadow-lg p-4 md:p-8 lg:p-12">
 
               {/* Intro Text */}
-              <div className="mb-12 text-center">
+              <div className="mb-10 text-center">
                 <p
-                  className="text-sm md:text-lg text-gray-800 leading-relaxed max-w-3xl mx-auto mb-8"
+                  className="text-lg md:text-xl text-gray-700 font-graphik leading-relaxed max-w-4xl mx-auto mb-8"
                   dangerouslySetInnerHTML={{__html: t('qualities.intro')}}
                 />
-                <div className="w-24 h-1 bg-[#ccbaa8] mx-auto"></div>
+                <div className="w-24 h-1 bg-[#c26d4c] mx-auto"></div>
               </div>
 
               <CVUploadForm />
