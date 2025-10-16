@@ -153,7 +153,7 @@ export default function LinktreePage() {
           <PromoCard
             href="#"
             text={t('links.location')}
-            imageUrl="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+            imageUrl="/images/locationLinktree.png"
             height="regular"
             hoverEffect="zoom"
           />
@@ -260,7 +260,7 @@ function PromoCard({
         {/* Text overlay with better positioning */}
         <div className="absolute inset-0 flex items-end justify-center text-center text-white p-4">
           <div className="transform transition-transform duration-300 group-hover:scale-105">
-            <p className={`font-bold leading-tight drop-shadow-lg font-le-jour-serif  text-2xl
+            <p className={`font-medium leading-tight drop-shadow-lg font-graphik  text-2xl
               ${height === 'small' ? 'text-sm' : height === 'tall' ? 'text-lg' : 'text-base'}
             `}>
               {text}
