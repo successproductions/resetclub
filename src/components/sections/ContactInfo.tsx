@@ -21,7 +21,7 @@ export default function ContactInfo() {
               </svg>
             </div>
             <div>
-              <h3 className="font-medium md:text-sm  text-gray-700 mb-1">{t('info.address.title')}</h3>
+              <p className="font-medium md:text-2xl  text-gray-700 ">{t('info.address.title')}</p>
               <p className="text-gray-600 font-normal leading-relaxed">{t('info.address.value')}</p>
             </div>
           </div>
@@ -34,7 +34,7 @@ export default function ContactInfo() {
               </svg>
             </div>
             <div>
-              <h3 className="font-medium text-gray-700 mb-1">{t('info.phone.title')}</h3>
+              <p className="font-medium md:text-2xl text-gray-700 ">{t('info.phone.title')}</p>
               <a href={`tel:${t('info.phone.value')}`} className="text-gray-600 font-normal hover:text-amber-700 transition-colors">
                 {t('info.phone.value')}
               </a>
@@ -49,7 +49,7 @@ export default function ContactInfo() {
               </svg>
             </div>
             <div>
-              <h3 className="font-medium text-gray-700 mb-1">{t('info.email.title')}</h3>
+              <p className="font-medium md:text-2xl text-gray-700 ">{t('info.email.title')}</p>
               <a href={`mailto:${t('info.email.value')}`} className="text-gray-600 font-normal hover:text-amber-700 transition-colors">
                 {t('info.email.value')}
               </a>
@@ -64,7 +64,7 @@ export default function ContactInfo() {
               </svg>
             </div>
             <div>
-              <h3 className="font-medium text-gray-700 mb-1">{t('info.hours.title')}</h3>
+              <p className="font-medium md:text-2xl text-gray-700 ">{t('info.hours.title')}</p>
               <div className="text-gray-600 font-normal space-y-1">
                 <p>{t('info.hours.weekdays')}</p>
               </div>
