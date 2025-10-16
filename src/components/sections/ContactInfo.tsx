@@ -7,9 +7,9 @@ export default function ContactInfo() {
     <div className="space-y-8 font-graphik">
       {/* Contact Details */}
       <div className="bg-white rounded-2xl shadow-lg p-4 md:p-6 lg:p-8">
-        <h4 className="text-2xl md:text-3xl text-gray-700 mb-8">
+        <h3 className="text-2xl md:text-3xl text-gray-700 mb-8">
           {t('info.title')}
-        </h4>
+        </h3>
 
         <div className="space-y-6">
           {/* Address */}
@@ -21,7 +21,7 @@ export default function ContactInfo() {
               </svg>
             </div>
             <div>
-              <p className="font-medium md:text-2xl  text-gray-700 ">{t('info.address.title')}</p>
+              <p className="font-medium md:text-xl  text-gray-700 ">{t('info.address.title')}</p>
               <p className="text-gray-600 font-normal leading-relaxed">{t('info.address.value')}</p>
             </div>
           </div>
@@ -34,7 +34,7 @@ export default function ContactInfo() {
               </svg>
             </div>
             <div>
-              <p className="font-medium md:text-2xl text-gray-700 ">{t('info.phone.title')}</p>
+              <p className="font-medium md:text-xl text-gray-700 ">{t('info.phone.title')}</p>
               <a href={`tel:${t('info.phone.value')}`} className="text-gray-600 font-normal hover:text-amber-700 transition-colors">
                 {t('info.phone.value')}
               </a>
@@ -49,7 +49,7 @@ export default function ContactInfo() {
               </svg>
             </div>
             <div>
-              <p className="font-medium md:text-2xl text-gray-700 ">{t('info.email.title')}</p>
+              <p className="font-medium md:text-xl text-gray-700 ">{t('info.email.title')}</p>
               <a href={`mailto:${t('info.email.value')}`} className="text-gray-600 font-normal hover:text-amber-700 transition-colors">
                 {t('info.email.value')}
               </a>
@@ -64,7 +64,7 @@ export default function ContactInfo() {
               </svg>
             </div>
             <div>
-              <p className="font-medium md:text-2xl text-gray-700 ">{t('info.hours.title')}</p>
+              <p className="font-medium md:text-xl text-gray-700 ">{t('info.hours.title')}</p>
               <div className="text-gray-600 font-normal space-y-1">
                 <p>{t('info.hours.weekdays')}</p>
               </div>
