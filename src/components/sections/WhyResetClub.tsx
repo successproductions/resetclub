@@ -98,7 +98,7 @@ const WhyResetClub: React.FC = () => {
         <h2 className="text-3xl md:text-4xl lg:text-5xl  text-gray-700 mb-1 ">
           {t('title')}
         </h2>
-        <p className="text-lg md:text-lg font-normal font-graphik text-gray-500 max-w-4xl">
+        <p className="text-lg md:text-lg xl:text-xl font-normal font-graphik text-gray-500 max-w-4xl">
           {t('subtitle')}
         </p>
       </div>

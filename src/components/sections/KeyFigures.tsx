@@ -143,8 +143,8 @@ const KeyFigures: React.FC = () => {
                   </div>
 
                   {/* Label */}
-                  <div className="md:max-w-34  mx-auto">
-                    <p className="text-gray-500 text-lg md:text-base font-graphik  leading-relaxed">
+                  <div className="  mx-auto">
+                    <p className="text-gray-500 text-lg md:text-base xl:text-xl font-graphik  leading-relaxed">
                       {t(`stats.${stat.key}.label`)}
                     </p>
                   </div>

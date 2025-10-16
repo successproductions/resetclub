@@ -133,8 +133,8 @@ const IntroSection: React.FC = () => {
                 <div ref={arrow1Ref} className="hidden md:flex absolute top-1/2 -right-12  -translate-y-1/2 z-10 items-center justify-center">
                   <div className="relative">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 60" fill="none" className="w-24 h-14">
-                      <path d="M10 30 L70 30" stroke="#ccbaa8" strokeWidth="4" strokeLinecap="round" opacity="0.8"/>
-                      <path d="M55 15 L80 30 L55 45" stroke="#ccbaa8" strokeWidth="5" strokeLinecap="round" strokeLinejoin="round" fill="none"/>
+                      <path d="M10 30 L70 30" stroke="#c26d4c" strokeWidth="4" strokeLinecap="round" opacity="0.8"/>
+                      <path d="M55 15 L80 30 L55 45" stroke="#c26d4c" strokeWidth="5" strokeLinecap="round" strokeLinejoin="round" fill="none"/>
                     </svg>
                   </div>
                 </div>
@@ -170,8 +170,8 @@ const IntroSection: React.FC = () => {
                 <div ref={arrow2Ref} className="hidden md:flex absolute top-1/2 -right-12 -translate-y-1/2 z-10 items-center justify-center">
                   <div className="relative">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 60" fill="none" className="w-24 h-14">
-                      <path d="M10 30 L70 30" stroke="#ccbaa8" strokeWidth="4" strokeLinecap="round" opacity="0.8"/>
-                      <path d="M55 15 L80 30 L55 45" stroke="#ccbaa8" strokeWidth="5" strokeLinecap="round" strokeLinejoin="round" fill="none"/>
+                      <path d="M10 30 L70 30" stroke="#c26d4c" strokeWidth="4" strokeLinecap="round" opacity="0.8"/>
+                      <path d="M55 15 L80 30 L55 45" stroke="#c26d4c" strokeWidth="5" strokeLinecap="round" strokeLinejoin="round" fill="none"/>
                     </svg>
                   </div>
                 </div>
@@ -210,7 +210,7 @@ const IntroSection: React.FC = () => {
 
           {/* CTA Button */}
           <div className="text-center">
-            <button ref={buttonRef} className="px-12 py-4 bg-transparent border border-gray-800 text-gray-700 hover:text-white hover:bg-gray-950 text-lg md:text-lg font-medium font-graphik hover:shadow-2xl hover:scale-105 rounded-full transition-all duration-300">
+            <button ref={buttonRef} className="px-12 py-4 bg-transparent border border-gray-800 text-gray-700 hover:text-white hover:bg-gray-950 text-lg md:text-lg font-medium font-graphik  rounded-full transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl cursor-pointer">
               {t('cta')}
             </button>
           </div>

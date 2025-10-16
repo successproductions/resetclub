@@ -119,7 +119,7 @@ export default function NotreHistoireSection() {
             <Link
               ref={buttonRef}
               href="/contact"
-              className="inline-block bg-transparent font-graphik text-gray-900 border border-[#c26d4c] px-8 py-3 rounded-full hover:text-white hover:bg-[#2b8a7c] transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl"
+              className="inline-block text-lg bg-transparent font-graphik text-gray-700 border border-gray-900 px-8 py-3 rounded-full hover:text-white hover:bg-gray-900 font-medium transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl"
             >
               {t('seeMore')}
             </Link>
