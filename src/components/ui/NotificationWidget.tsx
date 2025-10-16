@@ -59,7 +59,8 @@ export default function NotificationWidget() {
     }
   }, [isVisible]);
 
-  const handleClose = () => {
+  const handleClose = (e: React.MouseEvent) => {
+    e.stopPropagation();
     if (notificationRef.current) {
       const isDesktop = window.innerWidth >= 768;
       gsap.to(notificationRef.current, {

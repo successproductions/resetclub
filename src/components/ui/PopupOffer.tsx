@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useTranslations } from 'next-intl';
 import { X } from 'lucide-react';
 import Image from 'next/image';
@@ -12,6 +12,7 @@ export default function PopupOffer() {
   const [cards, setCards] = useState<number[]>([]);
   const [scratchedCards, setScratchedCards] = useState<boolean[]>([false, false, false]);
   const t = useTranslations('PopupOffer');
+  const popupRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     // Initialize cards with discounts - always guarantee wins
@@ -48,9 +49,19 @@ export default function PopupOffer() {
 
   if (!isOpen) return null;
 
+  const handleBackdropClick = (e: React.MouseEvent<HTMLDivElement>) => {
+    // Only close if clicking the backdrop itself, not its children
+    if (e.target === e.currentTarget) {
+      setIsOpen(false);
+    }
+  };
+
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm p-4">
-      <div className="relative bg-white max-w-lg w-full rounded-lg shadow-2xl overflow-hidden max-h-[70vdh] md:max-h-[80vdh] overflow-y-auto">
+    <div
+      onClick={handleBackdropClick}
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm p-4"
+    >
+      <div ref={popupRef} className="relative bg-white max-w-lg w-full rounded-lg shadow-2xl overflow-hidden max-h-[70vdh] md:max-h-[80vdh] overflow-y-auto">
         {/* Close Button */}
         <button
           onClick={() => setIsOpen(false)}

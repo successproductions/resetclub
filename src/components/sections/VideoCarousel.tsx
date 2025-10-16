@@ -104,7 +104,7 @@ const VideoCarousel: React.FC = () => {
   }, [currentIndex, isAnimating]);
 
   return (
-    <section className="bg-white py-4 md:py-10 overflow-hidden">
+    <section className="bg-gray-50 py-4 md:py-10 overflow-hidden ">
       <div className="max-w-7xl mx-auto px-6">
         {/* Section Title */}
         <div className="md:text-center mb-5 md:mb-6">

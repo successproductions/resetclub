@@ -64,7 +64,7 @@ const Hero: React.FC = () => {
 
 
         {/* CTA Button */}
-        <div className="absolute left-[125px] md:left-48 lg:left-42 transform -translate-x-1/2">
+        <div className="absolute left-[125px] md:left-48 lg:left-32 transform -translate-x-1/2">
           <button className="text-white font-normal bg-transparent border text-lg md:text-xl font-graphik px-2 md:px-4 py-2 mt-2 md:mt-4 rounded-full hover:bg-white hover:text-gray-700 hover:border-gray-200 cursor-pointer transition-all duration-300 hover:scale-105 shadow-lg  hover:shadow-xl">
             {t('cta')}
           </button>
