@@ -401,7 +401,8 @@
     "privacyLink": "Privacy Policy"
   },
   "NotificationWidget": {
-    "message": "3 minutes ago, Laila booked her Transformational Assessment.",
+    "message1": "3 minutes ago, Laila booked her Transformational Assessment.",
+    "message2": "5 minutes ago, Amina started her Reset transformation journey.",
     "brand": "RESET CLUB"
   }
 }

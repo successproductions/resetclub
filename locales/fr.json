@@ -401,7 +401,8 @@
     "privacyLink": "Politique de confidentialité"
   },
   "NotificationWidget": {
-    "message": "Il y a 3 minutes, Laila a réservé son Bilan Transformationnel.",
+    "message1": "Il y a 3 minutes, Laila a réservé son Bilan Transformationnel.",
+    "message2": "Il y a 5 minutes, Amina a commencé son parcours de transformation Reset.",
     "brand": "RESET CLUB"
   }
 }
