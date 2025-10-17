@@ -41,7 +41,7 @@ export default function NotificationWidget() {
     // Show second notification after 2 minutes (120000ms)
     const timer2 = setTimeout(() => {
       setVisibleNotifications((prev) => [...prev, 1]);
-    }, 7000);
+    }, 15000);
 
     return () => {
       clearTimeout(timer1);
