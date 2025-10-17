@@ -65,7 +65,7 @@ export default function PopupOffer() {
         {/* Close Button */}
         <button
           onClick={() => setIsOpen(false)}
-          className="absolute top-1 right-3 md:top-4 md:right-2 z-10 text-gray-600 hover:text-gray-900 transition-colors"
+          className="absolute top-1 right-3 md:top-0 md:right-1 z-10 text-gray-600 hover:text-gray-900 transition-colors"
           aria-label="Close"
         >
           <X size={24} className="md:w-7 md:h-7" />
@@ -74,7 +74,7 @@ export default function PopupOffer() {
         {/* Content */}
         <div className="p-3 md:p-4 text-center">
           {/* Title */}
-          <h3 className="text-1xl md:text-2xl lg:text-2xl font-graphik font-medium mb-1 md:mb-2 lg:mb-4 text-gray-700 tracking-wide">
+          <h3 className="text-1xl md:text-2xl uppercase lg:text-2xl font-graphik font-medium mb-1 md:mb-2 lg:mb-4 text-gray-700 tracking-wide">
             {t('title')}
           </h3>
 
