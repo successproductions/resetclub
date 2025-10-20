@@ -90,11 +90,11 @@ const IntroSection: React.FC = () => {
 
       {/* Main container with border */}
       <div className="container mx-auto px-6 relative">
-        <div className="relative max-w-7xl mx-auto border-2 border-gray-500 rounded-[3rem] p-3 md:p-6">
+        <div className="relative max-w-7xl mx-auto  p-3 md:p-6">
 
           {/* Header */}
           <div className="text-center mt-1 mb-6 md:mb-8">
-            <h2 ref={titleRef} className="text-3xl md:text-3xl lg:text-5xl  text-gray-700 mb-1 md:mb-8">
+            <h2 ref={titleRef} className="text-3xl md:text-3xl lg:text-5xl  text-[#524029] mb-1 md:mb-8">
               {t('hook')}
             </h2>
           </div>
@@ -105,7 +105,7 @@ const IntroSection: React.FC = () => {
 
               {/* Card 1: IN */}
               <div ref={card1Ref} className="relative h-full">
-                <div className="bg-white rounded-3xl overflow-hidden border-2 border-gray-500 hover:border-[#c26d4c] transition-all duration-300 shadow-lg hover:shadow-xl group h-full flex flex-col">
+                <div className="bg-white  overflow-hidden border-1 border-gray-500 hover:border-[#c26d4c] transition-all duration-300 shadow-lg hover:shadow-xl group h-full flex flex-col">
                   {/* Image */}
                   <div className="relative h-64 overflow-hidden flex-shrink-0">
                     <Image
@@ -118,15 +118,13 @@ const IntroSection: React.FC = () => {
                   </div>
                   {/* Content */}
                   <div className="px-6 py-2  flex-grow flex flex-col">
-                    <h3 className="text-xl font-normal text-gray-700 mb-2 font-graphik">
+                    <h3 className="text-xl font-normal text-[#524029] mb-2 font-graphik">
                       {t('cards.in.title')}
                     </h3>
-                    <p className="text-gray-500 text-lg leading-5.5 mb-2 font-graphik flex-grow">
+                    <p className="text-[#524029] text-lg leading-5.5 mb-2 font-graphik flex-grow">
                       {t('cards.in.subtitle')}
                     </p>
-                    <p className="text-[#c26d4c] text-xs italic font-graphik">
-                      💬 {t('cards.in.tagline')}
-                    </p>
+                    
                   </div>
                 </div>
                 {/* Right Arrow */}
@@ -142,11 +140,11 @@ const IntroSection: React.FC = () => {
 
               {/* Card 2: OUT */}
               <div ref={card2Ref} className="relative h-full">
-                <div className="bg-white rounded-3xl overflow-hidden border-2 border-gray-500 hover:border-[#c26d4c] transition-all duration-300 shadow-lg hover:shadow-xl group h-full flex flex-col">
+                <div className="bg-white  overflow-hidden border-1 border-gray-500 hover:border-[#c26d4c] transition-all duration-300 shadow-lg hover:shadow-xl group h-full flex flex-col">
                   {/* Image */}
                   <div className="relative h-64 overflow-hidden flex-shrink-0">
                     <Image
-                      src="/images/OUT.jpg"
+                      src="/images/linktree1.png"
                       alt="Body Detox"
                       fill
                       className="object-cover group-hover:scale-110 transition-transform duration-500"
@@ -155,15 +153,13 @@ const IntroSection: React.FC = () => {
                   </div>
                   {/* Content */}
                   <div className="px-6 py-2 flex-grow flex flex-col">
-                    <h3 className="text-xl font-normal text-gray-700 mb-2 font-graphik">
+                    <h3 className="text-xl font-normal text-[#524029] mb-2 font-graphik">
                       {t('cards.out.title')}
                     </h3>
-                    <p className="text-gray-500 text-lg leading-5.5 mb-2 font-graphik flex-grow">
+                    <p className="text-[#524029] text-lg leading-5.5 mb-2 font-graphik flex-grow">
                       {t('cards.out.subtitle')}
                     </p>
-                    <p className="text-[#c26d4c] text-xs italic font-graphik">
-                      💬 {t('cards.out.tagline')}
-                    </p>
+
                   </div>
                 </div>
                 {/* Right Arrow */}
@@ -179,27 +175,24 @@ const IntroSection: React.FC = () => {
 
               {/* Card 3: RESET */}
               <div ref={card3Ref} className="relative h-full">
-                <div className="bg-white rounded-3xl overflow-hidden border-2 border-gray-500 hover:border-[#c26d4c] transition-all duration-300 shadow-lg hover:shadow-xl group h-full flex flex-col">
+                <div className="bg-white  overflow-hidden border-1 border-gray-500 hover:border-[#c26d4c] transition-all duration-300 shadow-lg hover:shadow-xl group h-full flex flex-col">
                   {/* Image */}
                   <div className="relative h-64 overflow-hidden flex-shrink-0">
                     <Image
-                      src="/images/REST.jpg"
+                      src="/images/OUT.jpg"
                       alt="Inner Balance"
                       fill
-                      className="object-cover group-hover:scale-110 transition-transform duration-500"
+                      className=" object-center group-hover:scale-110 transition-transform duration-500"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
                   </div>
                   {/* Content */}
                   <div className="px-6 py-2  flex-grow flex flex-col">
-                    <h3 className="text-xl font-normal text-gray-700 md:mb-2 leading-1.5 font-graphik">
+                    <h3 className="text-xl font-normal text-[#524029] md:mb-2 leading-1.5 font-graphik">
                       {t('cards.reset.title')}
                     </h3>
-                    <p className="text-gray-500 text-lg leading-5.5 mb-2 font-graphik flex-grow">
+                    <p className="text-[#524029] text-lg leading-5.5 mb-2 font-graphik flex-grow">
                       {t('cards.reset.subtitle')}
-                    </p>
-                    <p className="text-[#c26d4c] text-xs italic font-graphik">
-                      💬 {t('cards.reset.tagline')}
                     </p>
                   </div>
                 </div>
@@ -210,7 +203,7 @@ const IntroSection: React.FC = () => {
 
           {/* CTA Button */}
           <div className="text-center">
-            <button ref={buttonRef} className="px-12 py-4 bg-transparent border border-gray-800 text-gray-700 hover:text-white hover:bg-gray-950 text-lg md:text-lg font-medium font-graphik  rounded-full transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl cursor-pointer">
+            <button ref={buttonRef} className="md:px-12 px-10 py-4 bg-transparent border border-gray-800 text-[#524029] hover:text-white hover:bg-gray-950 text-lg md:text-lg font-medium font-graphik   transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl cursor-pointer">
               {t('cta')}
             </button>
           </div>

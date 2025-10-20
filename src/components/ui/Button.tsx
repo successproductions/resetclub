@@ -20,7 +20,7 @@ const Button: React.FC<ButtonProps> = ({
   type = 'button',
 }) => {
   const baseClasses = `
-    relative inline-flex items-center justify-center
+    relative inline-flex items-center justify-center 
     font-medium transition-all duration-300 ease-in-out
     cursor-pointer uppercase tracking-wide
     focus:outline-none focus:ring-2 focus:ring-offset-2
@@ -29,19 +29,19 @@ const Button: React.FC<ButtonProps> = ({
 
   const variantClasses = {
     primary: `
-      text-white bg-transparent border border-white rounded-full
+      text-white bg-transparent border border-white 
       hover:bg-white hover:text-gray-700
-      focus:ring-amber-500 focus:ring-opacity-50
+      focus:ring-amber-500 focus:ring-opacity-50 
       group
     `,
     secondary: `
-      text-gray-900 border border-gray-300 bg-white rounded-full
+      text-gray-900 border border-gray-300 bg-white 
       hover:bg-gray-900 hover:border-gray-400
       focus:ring-gray-500
       group
     `,
     outline: `
-      text-white border border-white bg-transparent rounded-full
+      text-white border border-white bg-transparent 
       hover:bg-white hover:text-gray-900
       focus:ring-white focus:ring-opacity-50
       group
@@ -50,8 +50,8 @@ const Button: React.FC<ButtonProps> = ({
 
   const sizeClasses = {
     sm: 'px-10 py-3 text-sm font-semibold',
-    md: 'px-12 py-4 text-base font-semibold',
-    lg: 'px-8 py-4 text-lg font-normal ',
+    md: 'px-7 py-4 text-base font-semibold',
+    lg: 'px-7 py-3 text-lg  ',
   };
 
   const classes = `${baseClasses} ${variantClasses[variant]} ${sizeClasses[size]} ${className}`.trim();

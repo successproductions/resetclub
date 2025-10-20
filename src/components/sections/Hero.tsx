@@ -51,7 +51,7 @@ const Hero: React.FC = () => {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 top-26 lg:top-36 xl:top-0 left-0 md:left-24 mx-2 px-3 pt-4 max-w-4xl bg-white/10 md:bg-white/30 backdrop-blur-sm rounded-lg shadow-lg ">
+      <div className="relative z-10 top-26 lg:top-36 xl:top-0 left-0 md:left-24 mx-2 px-3 pt-4 max-w-4xl bg-white/10 md:bg-white/30 backdrop-blur-sm rounded-sm shadow-lg ">
         {/* Main Heading */}
         <h1 className="text-white mb-3 md:mb-8 font-graphik font-normal">
           <div className="text-3xl md:text-xl lg:text-6xl mb-2 md:mb-4 uppercase tracking-wide text-[#524029] ">
@@ -64,8 +64,8 @@ const Hero: React.FC = () => {
 
 
         {/* CTA Button */}
-        <div className="absolute left-[125px] md:left-48 lg:left-32 transform -translate-x-1/2">
-          <button className="text-white font-normal bg-transparent border text-lg md:text-xl font-graphik px-2 md:px-4 py-2 mt-2 md:mt-4 rounded-full hover:bg-white hover:text-gray-700 hover:border-gray-200 cursor-pointer transition-all duration-300 hover:scale-105 shadow-lg  hover:shadow-xl">
+        <div className="absolute left-[150px] md:left-48 lg:left-40 transform -translate-x-1/2">
+          <button className="text-white font-normal bg-transparent border-2 text-lg md:text-xl font-graphik px-2 md:px-4 py-2 mt-2 md:mt-4 hover:border-1 hover:border-gray-200 cursor-pointer transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl whitespace-nowrap">
             {t('cta')}
           </button>
         </div>

@@ -21,12 +21,12 @@ export default function NotificationWidget() {
   // Define notifications with different images and translation keys
   const notifications: NotificationData[] = [
     {
-      image: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=100&h=100&fit=crop',
+      image: '/images/widgetWoman.jpg',
       messageKey: 'message1',
       brandKey: 'brand',
     },
     {
-      image: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop',
+      image: '/images/widgetWoman2.jpg',
       messageKey: 'message2',
       brandKey: 'brand',
     },
@@ -172,10 +172,10 @@ export default function NotificationWidget() {
 
           {/* Text content */}
           <div className="flex-1 min-w-0">
-            <p className="text-gray-700 text-base font-graphik font-medium leading-relaxed">
+            <p className="text-[#524029] text-base font-graphik font-medium leading-relaxed">
               {t(notification.messageKey)}
             </p>
-            <p className="text-gray-500 text-sm mt-1 uppercase tracking-wider font-light">
+            <p className="text-[#524029] text-sm mt-1 uppercase tracking-wider font-light">
               {t(notification.brandKey)}
             </p>
           </div>

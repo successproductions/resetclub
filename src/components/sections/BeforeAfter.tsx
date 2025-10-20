@@ -55,13 +55,13 @@ const BeforeAfter: React.FC = () => {
   };
 
   return (
-    <section className="md:py-8 py-4 bg-white">
+    <section className="md:py-8 py-4 bg-[#fffbf6]">
       {/* Header Section */}
       <div className="max-w-7xl mx-auto px-6 mb-5 md:mb-10">
-        <h2 className="text-3xl md:text-4xl lg:text-5xl text-gray-700 md:mb-6 md:text-center ">
+        <h2 className="text-3xl md:text-4xl lg:text-5xl text-[#524029] md:mb-6 md:text-center ">
           {t('subtitle')}
         </h2>
-        <p className='text-gray-500 text-lg md:text-center font-graphik md:text-xl'>{t('description')}</p>
+        <p className='text-[#524029] text-lg md:text-center font-graphik md:text-xl'>{t('description')}</p>
         
       </div>
 
@@ -92,7 +92,7 @@ const BeforeAfter: React.FC = () => {
                   </div>
                 </div>
                 <div className="absolute top-4 right-4">
-                  <div className="bg-green-500/90 backdrop-blur-sm px-3 py-1 rounded-full text-xs font-semibold text-white">
+                  <div className="bg-[#98d1d2] backdrop-blur-sm px-3 py-1 rounded-full text-xs font-semibold text-white">
                     APRÈS
                   </div>
                 </div>
@@ -111,7 +111,7 @@ const BeforeAfter: React.FC = () => {
                     </div>
                   </div>
                   <div className="text-center">
-                    <div className="text-2xl font-bold text-green-600">
+                    <div className="text-2xl font-bold text-[#98d1d2]">
                       -{testimonial.weightLoss}
                     </div>
                     <div className="text-xs text-gray-500 uppercase tracking-wide">
@@ -262,7 +262,7 @@ const BeforeAfter: React.FC = () => {
 
       {/* Success Quote */}
       <div className="max-w-4xl mx-auto px-6 mt-4  md:mt-10 text-center">
-        <blockquote className="text-lg md:text-2xl font-normal font-graphik  text-gray-700 italic">
+        <blockquote className="text-lg md:text-2xl font-normal font-graphik  text-[#524029] italic">
           &ldquo;{t('quote')}&rdquo;
         </blockquote>
 
@@ -270,7 +270,7 @@ const BeforeAfter: React.FC = () => {
         <div className="mt-4 md:mt-8">
           <Link
             href="/contact"
-            className="inline-block bg-transparent font-medium font-graphik text-gray-700 hover:text-white px-8 py-4 rounded-full border hover:border-gray-800  text-lg hover:bg-gray-950 cursor-pointer transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl"
+            className="inline-block bg-transparent font-medium font-graphik text-[#524029] hover:text-white px-8 py-4  border hover:border-gray-800  text-lg hover:bg-gray-950 cursor-pointer transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl"
           >
             {t('cta')}
           </Link>

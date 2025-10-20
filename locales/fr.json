@@ -9,7 +9,7 @@
   "Hero": {
     "title": "Réinitialisez votre corps, votre esprit et vos émotions",
     "subtitle": "Le protocole signature In-Out-Reset™ allie neurosciences, biohacking et coaching transformationnel pour un changement durable et mesurable",
-    "cta": "Book your transformational"
+    "cta": "Réservez votre bilan personnalisé"
   },
   "HomePage": {
     "title": "",
@@ -273,7 +273,7 @@
     "hook": "Et si votre corps, votre esprit et vos émotions pouvaient être réinitialisés en un seul lieu ?",
     "title": "Reset Club™ – le premier centre premium de transformation holistique au Maroc.",
     "description": "Vous avez tout essayé : régimes, sport, soins… Rien n'a jamais tenu dans la durée. Ici, vous allez découvrir une méthode exclusive – In • Out • Reset™ – qui combine neurosciences, biohacking et coaching transformationnel pour libérer vos blocages, relancer votre énergie et révéler votre potentiel.",
-    "cta": "Réserver mon bilan",
+    "cta": "Je veux ma transformation",
     "trust": {
       "certified": "Experts certifiés",
       "proven": "Méthode éprouvée",
@@ -282,21 +282,15 @@
     "cards": {
       "in": {
         "title": "IN — Réveillez votre énergie cellulaire",
-        "subtitle": "Rechargez vos cellules. Réactivez votre métabolisme. Reconnectez-vous à votre vitalité profonde.",
-        "tagline": "Là où la transformation commence, de l'intérieur.",
-        "emoji": "⚡"
+        "subtitle": "Rechargez vos cellules. Réactivez votre métabolisme. Reconnectez-vous à votre vitalité profonde. Là où la transformation commence, de l'intérieur."
       },
       "out": {
         "title": "OUT — Libérez ce qui vous retient",
-        "subtitle": "Détoxifiez. Drainez. Respirez. Chaque soin sculpte votre corps et allège votre esprit.",
-        "tagline": "Votre légèreté devient votre nouvelle puissance.",
-        "emoji": "🌬"
+        "subtitle": "Détoxifiez. Drainez. Respirez. Chaque soin sculpte votre corps et allège votre esprit. Votre légèreté devient votre nouvelle puissance."
       },
       "reset": {
         "title": "RESET — Réinitialisez votre pouvoir intérieur",
-        "subtitle": "Libérez vos blocages émotionnels. Réveillez votre équilibre intérieur. Réinitialisez. Rayonnez. Renaissez.",
-        "tagline": "Parce que la vraie beauté commence à l'intérieur.",
-        "emoji": "🌿"
+        "subtitle": "Libérez vos blocages émotionnels. Réveillez votre équilibre intérieur. Réinitialisez. Rayonnez. Renaissez. Parce que la vraie beauté commence à l'intérieur."
       }
     }
   },
@@ -328,8 +322,8 @@
         "description": "Science & Biohacking — Des protocoles de pointe issus des neurosciences et de la recherche en longévité. Des technologies avancées au service du mieux-être mesurable et de la performance cellulaire."
       },
       "transformation": {
-        "title": "Empowerment féminin",
-        "description": "Leadership féminin — Révélez votre pouvoir personnel : Reset Club™ vous guide vers votre plein potentiel. Une approche de transformation intérieure pour reprendre le leadership sur sa vie."
+        "title": "Leadership féminin",
+        "description": " Révélez votre pouvoir personnel : Reset Club™ vous guide vers votre plein potentiel. Une approche de transformation intérieure pour reprendre le leadership sur sa vie."
       },
       "excellence": {
         "title": "Excellence",

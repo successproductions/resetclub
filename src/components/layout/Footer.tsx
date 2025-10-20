@@ -41,38 +41,38 @@ const Footer: React.FC = () => {
   };
 
   return (
-    <footer className="bg-gray-800 text-white">
+    <footer className="bg-[#e4ded5] text-white">
       {/* Desktop Footer - Hidden on Mobile */}
-      <div className="hidden md:block max-w-7xl mx-auto px-6 py-12">
+      <div className="hidden md:block max-w-7xl mx-auto px-6 py-8">
         {/* Main Footer Content */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6 lg:gap-2">
           {/* Brand Section - Takes 2 columns on large screens */}
           <div className="lg:col-span-2">
-            <div className="mb-6">
+            <div className="mb-4">
               <Image
-                src="/images/logogras.png"
+                src="/images/LOGORESETCLUBBEIGE.png"
                 alt="Reset Club™ - Premier centre de transformation holistique au Maroc"
                 width={180}
                 height={72}
-                className="h-24 w-16 mb-6"
+                className="h-34 w-28 mb-1"
                 sizes="180px"
               />
               {/* Contact Info */}
-              <div className="space-y-3 mb-8">
-                <div className="flex items-center text-gray-300">
+              <div className="space-y-3 mb-4">
+                <div className="flex items-center text-[#524029]">
                   <svg className="w-5 h-5 mr-3 text-[#c26d4c]" fill="currentColor" viewBox="0 0 20 20">
                     <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
                     <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
                   </svg>
                   contact@resetclub.ma
                 </div>
-                <div className="flex items-center text-gray-300">
+                <div className="flex items-center text-[#524029]">
                   <svg className="w-5 h-5 mr-3 text-[#c26d4c]" fill="currentColor" viewBox="0 0 20 20">
                     <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
                   </svg>
                   +212 6 XX XX XX XX
                 </div>
-                <div className="flex items-center text-gray-300">
+                <div className="flex items-center text-[#524029]">
                   <svg className="w-5 h-5 mr-3 text-[#c26d4c]" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" />
                   </svg>
@@ -81,10 +81,10 @@ const Footer: React.FC = () => {
               </div>
 
               {/* Social Media Icons */}
-              <div className="flex space-x-4">
+              <div className="flex space-x-3">
                 <a
                   href="#"
-                  className="w-12 h-12 bg-gray-800 rounded-full flex items-center justify-center transition-all duration-300 hover:bg-[#c26d4c] hover:transform hover:scale-110"
+                  className="w-12 h-12 bg-[#524029] rounded-full flex items-center justify-center transition-all duration-300 hover:bg-[#c26d4c] hover:transform hover:scale-110"
                   aria-label="Facebook"
                 >
                   <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
@@ -93,7 +93,7 @@ const Footer: React.FC = () => {
                 </a>
                 <a
                   href="#"
-                  className="w-12 h-12 bg-gray-800 rounded-full flex items-center justify-center transition-all duration-300 hover:bg-[#c26d4c] hover:transform hover:scale-110"
+                  className="w-12 h-12 bg-[#524029] rounded-full flex items-center justify-center transition-all duration-300 hover:bg-[#c26d4c] hover:transform hover:scale-110"
                   aria-label="Instagram"
                 >
                   <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
@@ -104,7 +104,7 @@ const Footer: React.FC = () => {
                 </a>
                 <a
                   href="#"
-                  className="w-12 h-12 bg-gray-800 rounded-full flex items-center justify-center transition-all duration-300 hover:bg-[#c26d4c] hover:transform hover:scale-110"
+                  className="w-12 h-12 bg-[#524029] rounded-full flex items-center justify-center transition-all duration-300 hover:bg-[#c26d4c] hover:transform hover:scale-110"
                   aria-label="LinkedIn"
                 >
                   <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
@@ -113,7 +113,7 @@ const Footer: React.FC = () => {
                 </a>
                 <a
                   href="#"
-                  className="w-12 h-12 bg-gray-800 rounded-full flex items-center justify-center transition-all duration-300 hover:bg-[#c26d4c] hover:transform hover:scale-110"
+                  className="w-12 h-12 bg-[#524029] rounded-full flex items-center justify-center transition-all duration-300 hover:bg-[#c26d4c] hover:transform hover:scale-110"
                   aria-label="YouTube"
                 >
                   <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
@@ -124,10 +124,9 @@ const Footer: React.FC = () => {
             </div>
           </div>
 
-          {/* Footer Links - Each section takes 1 column */}
           {Object.entries(footerLinks).map(([key, section]) => (
             <div key={key}>
-              <p className="text-xl md:text-2xl font-normal mb-6 text-[#c26d4c] font-graphik">
+              <p className="text-xl mt-12 md:text-2xl font-normal mb-10 text-[#c26d4c] font-graphik">
                 {t(section.titleKey)}
               </p>
               <ul className="space-y-3">
@@ -135,7 +134,7 @@ const Footer: React.FC = () => {
                   <li key={index}>
                     <Link
                       href={link.href}
-                      className="text-gray-300 hover:text-[#c26d4c] transition-colors duration-300 text-sm hover:underline font-poppins"
+                      className="text-[#524029] hover:text-[#c26d4c] transition-colors duration-300 text-sm hover:underline font-poppins"
                     >
                       {t(link.labelKey)}
                     </Link>
@@ -144,23 +143,24 @@ const Footer: React.FC = () => {
               </ul>
             </div>
           ))}
+
         </div>
 
       
         {/* Bottom Section */}
-        <div className="border-t border-gray-800  pt-8">
+        <div className="border-t border-[#e4ded5]  pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center">
-            <div className="text-gray-400 text-sm">
+            <div className="text-[#524029] text-sm">
               © {currentYear} Reset Club™. {t('rights')}.
             </div>
             <div className="flex space-x-6 mt-4 md:mt-0">
-              <Link href="/legal" className="text-gray-400 hover:text-[#c26d4c] text-sm transition-colors duration-300">
+              <Link href="/legal" className="text-[#524029] hover:text-[#c26d4c] text-sm transition-colors duration-300">
                 {t('legal')}
               </Link>
-              <Link href="/privacy" className="text-gray-400 hover:text-[#c26d4c] text-sm transition-colors duration-300">
+              <Link href="/privacy" className="text-[#524029] hover:text-[#c26d4c] text-sm transition-colors duration-300">
                 {t('privacy')}
               </Link>
-              <Link href="/cookies" className="text-gray-400 hover:text-[#c26d4c] text-sm transition-colors duration-300">
+              <Link href="/cookies" className="text-[#524029] hover:text-[#c26d4c] text-sm transition-colors duration-300">
                 {t('cookies')}
               </Link>
             </div>
@@ -169,37 +169,37 @@ const Footer: React.FC = () => {
       </div>
 
       {/* Mobile Footer - Hidden on Desktop */}
-      <div className="md:hidden flex flex-col items-center justify-center px-6 py-4 text-center bg-[#1e293b] min-h-screen">
+      <div className="md:hidden flex flex-col items-center justify-center px-6 py-8 text-center bg-[#e4ded5] ">
         {/* Logo and Tagline */}
         <div className="">
           <Image
-            src="/images/logogras.png"
+            src="/images/LOGORESETCLUBBEIGE.png"
             alt="Reset Club™"
             width={100}
             height={100}
             className="mx-auto mb-2"
           />
-          <p className="text-gray-300 text-sm tracking-wide font-poppins">
+          <p className="text-[#524029] text-sm tracking-wide font-poppins">
             {t('tagline')}
           </p>
         </div>
 
         {/* Contact Information */}
         <div className="space-y-4 mb-8">
-          <div className="flex items-center justify-center text-gray-300">
+          <div className="flex items-center justify-center text-[#524029]">
             <svg className="w-5 h-5 mr-3" fill="currentColor" viewBox="0 0 20 20">
               <path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" />
             </svg>
             Rabat, Maroc
           </div>
-          <div className="flex items-center justify-center text-gray-300">
+          <div className="flex items-center justify-center text-[#524029]">
             <svg className="w-5 h-5 mr-3" fill="currentColor" viewBox="0 0 20 20">
               <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
               <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
             </svg>
             contact@resetclub.ma
           </div>
-          <div className="flex items-center justify-center text-gray-300">
+          <div className="flex items-center justify-center text-[#524029]">
             <svg className="w-5 h-5 mr-3" fill="currentColor" viewBox="0 0 20 20">
               <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
             </svg>
@@ -212,7 +212,7 @@ const Footer: React.FC = () => {
           
           <a
             href="#"
-            className="w-12 h-12 bg-gray-700 rounded-full flex items-center justify-center transition-all duration-300"
+            className="w-12 h-12 bg-[#524029] rounded-full flex items-center justify-center transition-all duration-300"
             aria-label="Facebook"
           >
             <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
@@ -221,7 +221,7 @@ const Footer: React.FC = () => {
           </a>
           <a
             href="#"
-            className="w-12 h-12 bg-gray-700 rounded-full flex items-center justify-center transition-all duration-300"
+            className="w-12 h-12 bg-[#524029] rounded-full flex items-center justify-center transition-all duration-300"
             aria-label="LinkedIn"
           >
             <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
@@ -230,7 +230,7 @@ const Footer: React.FC = () => {
           </a>
           <a
             href="#"
-            className="w-12 h-12 bg-gray-700 rounded-full flex items-center justify-center transition-all duration-300"
+            className="w-12 h-12 bg-[#524029] rounded-full flex items-center justify-center transition-all duration-300"
             aria-label="YouTube"
           >
             <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
@@ -241,19 +241,19 @@ const Footer: React.FC = () => {
 
         {/* Copyright and Rights */}
         <div className="mb-6">
-          <p className="text-sm font-medium mb-2">© {currentYear} RESET CLUB™</p>
-          <p className="text-sm text-gray-400">{t('rights')}</p>
+          <p className="text-sm text-[#524029] font-medium mb-2">© {currentYear} RESET CLUB™</p>
+          <p className="text-sm text-[#524029]">{t('rights')}</p>
         </div>
 
         {/* Tagline */}
-        <p className="text-gray-300 mb-8 max-w-sm text-sm font-poppins">
+        <p className="text-[#524029] mb-8 max-w-sm text-sm font-poppins">
           {t('mobileTagline')}
         </p>
 
         {/* CTA Button */}
         <Link
           href="/contact"
-          className="bg-transparent text-white text-lg font-graphik px-4 font-medium py-4  rounded-full font-fraphik border border-gray-900 hover:border-gray-700 hover:bg-gray-950 hover:text-white transition-all duration-300 inline-block cursor-pointer hover:scale-105 shadow-lg hover:shadow-xl"
+          className="bg-transparent text-[#524029] text-lg font-graphik px-4 font-medium py-4   font-fraphik border border-[#524029] hover:border-[#] hover:bg-gray-950 hover:text-white transition-all duration-300 inline-block cursor-pointer hover:scale-105 shadow-lg hover:shadow-xl"
         >
           {t('mobileCtaButton')}
         </Link>

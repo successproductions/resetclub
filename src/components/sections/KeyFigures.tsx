@@ -11,14 +11,15 @@ interface CounterProps {
 
 const AnimatedCounter: React.FC<CounterProps> = ({ end, duration = 2000, decimals = false }) => {
   const [count, setCount] = useState(0);
-  const [hasAnimated, setHasAnimated] = useState(false);
   const counterRef = useRef<HTMLSpanElement>(null);
+  const animationFrameRef = useRef<number | null>(null);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting && !hasAnimated) {
-          setHasAnimated(true);
+        if (entry.isIntersecting) {
+          // Reset to 0 when entering viewport
+          setCount(0);
 
           const startTime = Date.now();
           const startValue = 0;
@@ -34,13 +35,23 @@ const AnimatedCounter: React.FC<CounterProps> = ({ end, duration = 2000, decimal
             setCount(currentValue);
 
             if (progress < 1) {
-              requestAnimationFrame(animate);
+              animationFrameRef.current = requestAnimationFrame(animate);
             } else {
               setCount(end);
             }
           };
 
-          requestAnimationFrame(animate);
+          // Cancel any ongoing animation before starting new one
+          if (animationFrameRef.current) {
+            cancelAnimationFrame(animationFrameRef.current);
+          }
+
+          animationFrameRef.current = requestAnimationFrame(animate);
+        } else {
+          // Cancel animation when leaving viewport
+          if (animationFrameRef.current) {
+            cancelAnimationFrame(animationFrameRef.current);
+          }
         }
       },
       { threshold: 0.5 }
@@ -55,8 +66,11 @@ const AnimatedCounter: React.FC<CounterProps> = ({ end, duration = 2000, decimal
       if (currentRef) {
         observer.unobserve(currentRef);
       }
+      if (animationFrameRef.current) {
+        cancelAnimationFrame(animationFrameRef.current);
+      }
     };
-  }, [end, duration, hasAnimated]);
+  }, [end, duration]);
 
   const formatNumber = (num: number) => {
     if (decimals) {
@@ -93,7 +107,7 @@ const KeyFigures: React.FC = () => {
   ];
 
   return (
-    <section id="key-figures-section" className=" py-4 md:pt-8 bg-gradient-to-b from-gray-50 to-white relative overflow-hidden">
+    <section id="key-figures-section" className=" py-2 md:pt-8 bg-gradient-to-b from-gray-50 to-white relative overflow-hidden">
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-5">
         <div className="absolute top-0 left-0 w-72 h-72 bg-[#ccbaa8] rounded-full blur-3xl -translate-x-36 -translate-y-36"></div>
@@ -102,13 +116,13 @@ const KeyFigures: React.FC = () => {
 
       <div className="max-w-7xl mx-auto px-6 relative">
         {/* Header */}
-        <div className="md:text-center mb-1 md:mb-6">
+        <div className="md:text-center mb-2 md:mb-6">
 
-          <h2 className="text-3xl md:text-4xl lg:text-5xl text-gray-700 mb-1 md:mb-2">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl text-[#524029] mb-1 md:mb-2">
             {t('title')}
           </h2>
-          <p className='text-gray-500 text-lg mb-6 md:text-xl font-graphik '>{t('description')}</p>
-          <div className="w-20 h-1 bg-[#c26d4c] mx-auto rounded-full"></div>
+          <p className='text-[#524029] text-lg mb-3 md:mb-6 md:text-xl font-graphik '>{t('description')}</p>
+          {/* <div className="w-20 h-1 bg-[#c26d4c] mx-auto rounded-full"></div> */}
         </div>
 
         {/* Stats Container */}
@@ -124,13 +138,13 @@ const KeyFigures: React.FC = () => {
                 <div className="absolute inset-0 bg-[#ccbaa8]/5 rounded-full scale-90 group-hover:scale-100 transition-transform duration-500"></div>
 
                 {/* Content */}
-                <div className="relative text-center py-6 md:py-12">
+                <div className="relative text-center py-3 md:py-12">
                   {/* Top Line */}
-                  <div className="w-12 md:w-16 h-px bg-[#c26d4c] mx-auto mb-4 md:mb-8"></div>
+                  {/* <div className="w-12 md:w-16 h-px bg-[#c26d4c] mx-auto mb-4 md:mb-8"></div> */}
 
                   {/* Animated Number */}
-                  <div className="mb-4 md:mb-6">
-                    <div className="text-3xl md:text-6xl lg:text-6xl font-light text-gray-700 mb-2">
+                  <div className="mb-2 md:mb-6">
+                    <div className="text-3xl md:text-6xl lg:text-6xl font-light text-[#524029] mb-2">
                       <AnimatedCounter
                         end={stat.value}
                         decimals={stat.decimals}
@@ -144,16 +158,17 @@ const KeyFigures: React.FC = () => {
 
                   {/* Label */}
                   <div className="  mx-auto">
-                    <p className="text-gray-500 text-lg md:text-base xl:text-xl font-graphik  leading-relaxed">
+                    <p className="text-[#524029] text-lg md:text-base xl:text-xl font-graphik  leading-relaxed">
                       {t(`stats.${stat.key}.label`)}
                     </p>
                   </div>
 
                   {/* Bottom Line */}
-                  <div className="w-12 md:w-16 h-px bg-[#c26d4c] mx-auto mt-4 md:mt-8"></div>
+                  <div className="w-14 h-0.5 md:h-1 md:w-16 rounded-full  bg-[#524029] mx-auto mt-1 md:mt-8"></div>
+                   {/* <div className="w-20 h-1 bg-[#c26d4c] mx-auto rounded-full"></div> */}
 
                   {/* Dot indicator */}
-                  <div className="absolute -bottom-1 md:-bottom-2 left-1/2 transform -translate-x-1/2 w-3 md:w-4 h-3 md:h-4 bg-[#c26d4c] rounded-full border-2 md:border-4 border-white shadow-lg"></div>
+                  {/* <div className="absolute -bottom-1 md:-bottom-2 left-1/2 transform -translate-x-1/2 w-3 md:w-4 h-3 md:h-4 bg-[#c26d4c] rounded-full border-2 md:border-4 border-white shadow-lg"></div> */}
                 </div>
               </div>
             ))}

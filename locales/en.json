@@ -282,21 +282,18 @@
     "cards": {
       "in": {
         "title": "IN — Awaken Your Cellular Energy",
-        "subtitle": "Recharge your cells. Reactivate your metabolism. Reconnect with your deep vitality.",
-        "tagline": "Where transformation begins, from within.",
-        "emoji": "⚡"
+        "subtitle": "Recharge your cells. Reactivate your metabolism. Reconnect with your deep vitality. Where transformation begins, from within."
+
       },
       "out": {
         "title": "OUT — Release What Holds You Back",
-        "subtitle": "Detoxify. Drain. Breathe. Each treatment sculpts your body and lightens your mind.",
-        "tagline": "Your lightness becomes your new power.",
-        "emoji": "🌬"
+        "subtitle": "Detoxify. Drain. Breathe. Each treatment sculpts your body and lightens your mind. Your lightness becomes your new power."
+
       },
       "reset": {
         "title": "RESET — Reboot Your Inner Power",
-        "subtitle": "Release your emotional blockages. Awaken your inner balance. Reset. Radiate. Rebirth.",
-        "tagline": "Because true beauty begins from within.",
-        "emoji": "🌿"
+        "subtitle": "Release your emotional blockages. Awaken your inner balance. Reset. Radiate. Rebirth. Because true beauty begins from within."
+
       }
     }
   },
@@ -328,8 +325,8 @@
         "description": "Science & Biohacking — Cutting-edge protocols from neuroscience and longevity research. Advanced technologies serving measurable well-being and cellular performance."
       },
       "transformation": {
-        "title": "Women's Empowerment",
-        "description": "Female Leadership — Reveal your personal power: Reset Club™ guides you towards your full potential. An inner transformation approach to reclaim leadership over your life."
+        "title": "Female Leadership",
+        "description": "Reveal your personal power: Reset Club™ guides you towards your full potential. An inner transformation approach to reclaim leadership over your life."
       },
       "excellence": {
         "title": "Excellence",

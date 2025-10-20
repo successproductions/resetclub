@@ -98,28 +98,28 @@ export default function NotreHistoireSection() {
   }, []);
 
   return (
-    <section ref={sectionRef} className="py-4 md:py-8 bg-white">
+    <section ref={sectionRef} className="py-4 md:py-8 bg-[#fffbf6]">
       <div className="container mx-auto px-4">
         {/* Mobile: Title */}
-        <h2 ref={textRef} className="text-3xl md:hidden  text-gray-700 leading-tight mb-3 md:mb-6 md:text-center">
+        <h2 ref={textRef} className="text-3xl md:hidden  text-[#524029] leading-tight mb-3 md:mb-6 md:text-center">
           {t('bio1')}
         </h2>
 
         <div className="grid md:grid-cols-2 gap-4 md:gap-12 items-center">
           {/* Text Section - Desktop */}
           <div className="hidden md:block space-y-6">
-            <h2 className="text-3xl md:text-4xl  text-gray-700 leading-tight">
+            <h2 className="text-3xl md:text-4xl  text-[#524029] leading-tight">
               {t('bio1')}
             </h2>
 
-            <p className="text-lg md:text-lg font-graphik text-gray-500 leading-relaxed ">
+            <p className="text-lg md:text-lg font-graphik text-[#524029] leading-relaxed ">
               {t('bio2')}
             </p>
 
             <Link
               ref={buttonRef}
               href="/contact"
-              className="inline-block text-lg bg-transparent font-graphik text-gray-700 border border-gray-900 px-8 py-3 rounded-full hover:text-white hover:bg-gray-900 font-medium transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl"
+              className="inline-block text-lg bg-transparent font-graphik text-[#524029] border border-gray-900 px-8 py-3  hover:text-white hover:bg-gray-900 font-medium transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl"
             >
               {t('seeMore')}
             </Link>
@@ -152,7 +152,7 @@ export default function NotreHistoireSection() {
               <Link
                 ref={buttonRef}
                 href="/contact"
-                className="inline-block bg-transparent font-graphik font-medium text-lg text-gray-700 border border-gray-800 px-8 py-3 rounded-full hover:text-white hover:bg-gray-950 transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl"
+                className="inline-block bg-transparent font-graphik font-medium text-lg text-gray-700 border border-gray-800 px-8 py-3  hover:text-white hover:bg-gray-950 transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl"
               >
                 {t('seeMore')}
               </Link>

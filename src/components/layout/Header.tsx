@@ -117,7 +117,7 @@ const Header: React.FC = () => {
                 key={index}
                 href={item.href}
                 className={`
-                  relative px-6 py-3 text-sm font-graphik  uppercase transition-all duration-300 ease-in-out
+                  relative px-6 py-3 text-sm font-graphik font-medium  uppercase transition-all duration-300 ease-in-out
                   group
                   ${isScrolled || isMobileMenuOpen
                     ? 'text-gray-600 hover:text-gray-900'
@@ -145,7 +145,7 @@ const Header: React.FC = () => {
           </div>
 
           {/* CTA Button */}
-          <div className="hidden md:block ml-6">
+          <div className="hidden md:block ml-6   ">
             <Button
               variant="primary"
               size="lg"

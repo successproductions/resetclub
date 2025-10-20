@@ -4,54 +4,75 @@ import React, { useRef, useEffect, useState } from 'react';
 import Link from 'next/link';
 import { useTranslations } from 'next-intl';
 import { gsap } from 'gsap';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Play } from 'lucide-react';
+import Image from 'next/image';
 
 const VideoCarousel: React.FC = () => {
   const t = useTranslations('VideoCarousel');
   const carouselRef = useRef<HTMLDivElement>(null);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isAnimating, setIsAnimating] = useState(false);
+  const [isPlaying, setIsPlaying] = useState<boolean[]>([false, false, false, false]);
 
   const videos = [
     {
       id: 1,
       src: '/videos/carousellevideo1.mp4',
       titleKey: 'videos.video1',
+      thumbnail: '/images/thumbail.png',
     },
     {
       id: 2,
       src: '/videos/carousellevideo2.mp4',
       titleKey: 'videos.video2',
+      thumbnail: '/images/thumbail.png',
     },
     {
       id: 3,
       src: '/videos/carousellevideo3.mp4',
       titleKey: 'videos.video3',
+      thumbnail: '/images/thumbail.png',
     },
     {
       id: 4,
       src: '/videos/carousellevideo4.mp4',
       titleKey: 'videos.video4',
+      thumbnail: '/images/thumbail.png',
     }
   ];
 
   const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
 
-  useEffect(() => {
-    // Play the current video when it becomes active
-    if (videoRefs.current[currentIndex]) {
-      videoRefs.current[currentIndex]?.play().catch(() => {
+  const handleThumbnailClick = (index: number) => {
+    const newIsPlaying = [...isPlaying];
+    newIsPlaying[index] = true;
+    setIsPlaying(newIsPlaying);
+
+    if (videoRefs.current[index]) {
+      videoRefs.current[index]?.play().catch(() => {
         // Handle autoplay restrictions
       });
     }
+  };
 
-    // Pause other videos
+  const handleVideoPause = (index: number) => {
+    const newIsPlaying = [...isPlaying];
+    newIsPlaying[index] = false;
+    setIsPlaying(newIsPlaying);
+  };
+
+  useEffect(() => {
+    // When changing slides, pause all videos and reset playing state
     videoRefs.current.forEach((video, index) => {
       if (index !== currentIndex && video) {
         video.pause();
         video.currentTime = 0;
       }
     });
+
+    const newIsPlaying = [...isPlaying];
+    newIsPlaying[currentIndex] = false;
+    setIsPlaying(newIsPlaying);
   }, [currentIndex]);
 
   const goToSlide = (index: number) => {
@@ -92,26 +113,17 @@ const VideoCarousel: React.FC = () => {
     goToSlide(prevIndex);
   };
 
-  // Auto-advance carousel
-  useEffect(() => {
-    const interval = setInterval(() => {
-      if (!isAnimating) {
-        nextSlide();
-      }
-    }, 8000);
-
-    return () => clearInterval(interval);
-  }, [currentIndex, isAnimating]);
+  // Removed auto-advance carousel - user controls via thumbnails
 
   return (
     <section className="bg-gray-50 py-4 md:py-10 overflow-hidden ">
       <div className="max-w-7xl mx-auto px-6">
         {/* Section Title */}
         <div className="md:text-center mb-5 md:mb-6">
-          <h2 className="text-3xl md:text-4xl font-normal lg:text-5xl  text-gray-700 mb-1 md:mb-4 ">
+          <h2 className="text-3xl md:text-4xl font-normal lg:text-5xl  text-[#524029] mb-1 md:mb-4 ">
             {t('title')}
           </h2>
-          <p className="text-gray-500 text-lg md:text-xl max-w-3xl font-graphik mx-auto">
+          <p className="text-[#524029] text-lg md:text-xl max-w-3xl font-graphik mx-auto">
             {t('subtitle')}
           </p>
         </div>
@@ -121,7 +133,7 @@ const VideoCarousel: React.FC = () => {
           {/* Video Display */}
           <div
             ref={carouselRef}
-            className="relative w-full h-[500px] md:h-[700px] lg:h-[600px] rounded-2xl overflow-hidden shadow-2xl"
+            className="relative w-full h-[500px] md:h-[700px] lg:h-[600px]  overflow-hidden shadow-2xl"
           >
             {videos.map((video, index) => (
               <div
@@ -139,17 +151,30 @@ const VideoCarousel: React.FC = () => {
                   muted
                   playsInline
                   preload="metadata"
+                  onPause={() => handleVideoPause(index)}
+                  controls={isPlaying[index]}
                 >
                   <source src={video.src} type="video/mp4" />
                   Your browser does not support the video tag.
                 </video>
 
-                {/* Video Title Overlay */}
-                {/* <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-8">
-                  <h3 className="text-white text-sm md:text-3xl font-normal">
-                    {t(video.titleKey)}
-                  </h3>
-                </div> */}
+                {/* Thumbnail Overlay - shown when video is not playing */}
+                {!isPlaying[index] && (
+                  <button
+                    onClick={() => handleThumbnailClick(index)}
+                    className="absolute inset-0 z-20 cursor-pointer group"
+                    aria-label={`Play ${t(video.titleKey)}`}
+                  >
+                    <Image
+                      src={video.thumbnail}
+                      alt={t(video.titleKey)}
+                      fill
+                      className="object-cover w-full h-full"
+                      sizes="100vw"
+                      priority={index === 0}
+                    />
+                  </button>
+                )}
               </div>
             ))}
 
@@ -182,7 +207,7 @@ const VideoCarousel: React.FC = () => {
                 disabled={isAnimating}
                 className={`transition-all duration-300 rounded-full ${
                   index === currentIndex
-                    ? 'bg-[#c26d4c] w-12 h-3'
+                    ? 'bg-[#524029] w-12 h-3'
                     : 'bg-gray-500 w-3 h-3 hover:bg-gray-400'
                 }`}
                 aria-label={`Go to video ${index + 1}`}
@@ -194,7 +219,7 @@ const VideoCarousel: React.FC = () => {
           <div className="flex justify-center mt-6">
             <Link
               href="/contact"
-              className="bg-transparent text-gray-700 px-4 md:px-8 py-4 font-graphik rounded-full font-medium text-lg border hover:bg-gray-950 hover:text-white transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl"
+              className="bg-transparent text-[#524029] px-4 md:px-8 py-4 font-graphik  font-medium text-lg border hover:bg-gray-950 hover:text-white transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl"
             >
               {t('cta')}
             </Link>
