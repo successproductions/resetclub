@@ -21,12 +21,13 @@ const IntroSection: React.FC = () => {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Animation to show cards when entering intro section
+      // Animation only when scrolling DOWN (entering from top)
       const showTimeline = gsap.timeline({
         scrollTrigger: {
           trigger: sectionRef.current,
           start: 'top 80%',
-          toggleActions: 'play none none none',
+          end: 'bottom 20%',
+          toggleActions: 'play reverse play reverse',
         }
       });
 
@@ -84,16 +85,13 @@ const IntroSection: React.FC = () => {
   }, []);
 
   return (
-    <section ref={sectionRef} className="relative py-8 md:py-12 overflow-hidden bg-white">
-      {/* Decorative top notch */}
- 
-
+    <section ref={sectionRef} className="relative py-8 md:py-12 overflow-hidden bg-[#fffbf6]">
       {/* Main container with border */}
       <div className="container mx-auto px-6 relative">
         <div className="relative max-w-7xl mx-auto  p-3 md:p-6">
 
           {/* Header */}
-          <div className="text-center mt-1 mb-6 md:mb-8">
+          <div className="md:text-center mt-1 mb-6 md:mb-8">
             <h2 ref={titleRef} className="text-3xl md:text-3xl lg:text-5xl  text-[#524029] mb-1 md:mb-8">
               {t('hook')}
             </h2>

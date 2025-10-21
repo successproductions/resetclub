@@ -18,7 +18,7 @@ export default function ConditionalComponents() {
   return (
     <>
       <WhatsAppButton phoneNumber="+212600000000" />
-      <PopupOffer />
+      {/* <PopupOffer /> */}
       <NotificationWidget />
     </>
   );

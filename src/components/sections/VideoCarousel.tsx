@@ -19,25 +19,29 @@ const VideoCarousel: React.FC = () => {
       id: 1,
       src: '/videos/carousellevideo1.mp4',
       titleKey: 'videos.video1',
-      thumbnail: '/images/thumbail.png',
+      thumbnail: '/images/thumbail1.png',
+      mobileThumbnail: '/images/thumbail1mobile.png',
     },
     {
       id: 2,
       src: '/videos/carousellevideo2.mp4',
       titleKey: 'videos.video2',
-      thumbnail: '/images/thumbail.png',
+      thumbnail: '/images/thumbail2.png',
+      mobileThumbnail: '/images/thumbail2mobile.png',
     },
     {
       id: 3,
       src: '/videos/carousellevideo3.mp4',
       titleKey: 'videos.video3',
-      thumbnail: '/images/thumbail.png',
+      thumbnail: '/images/thumbail5.png',
+      mobileThumbnail: '/images/thumbail5mobile.png',
     },
     {
       id: 4,
       src: '/videos/carousellevideo4.mp4',
       titleKey: 'videos.video4',
-      thumbnail: '/images/thumbail.png',
+      thumbnail: '/images/thumbail4.png',
+      mobileThumbnail: '/images/thumbail4mobile.png',
     }
   ];
 
@@ -133,7 +137,7 @@ const VideoCarousel: React.FC = () => {
           {/* Video Display */}
           <div
             ref={carouselRef}
-            className="relative w-full h-[500px] md:h-[700px] lg:h-[600px]  overflow-hidden shadow-2xl"
+            className="relative w-full h-[500px] md:h-[700px] lg:h-[760px] overflow-hidden md:shadow-2xl"
           >
             {videos.map((video, index) => (
               <div
@@ -146,7 +150,7 @@ const VideoCarousel: React.FC = () => {
                   ref={(el) => {
                     videoRefs.current[index] = el;
                   }}
-                  className="w-full h-full object-cover md:object-none"
+                  className="w-full h-full object-contain md:object-cover"
                   loop
                   muted
                   playsInline
@@ -165,11 +169,21 @@ const VideoCarousel: React.FC = () => {
                     className="absolute inset-0 z-20 cursor-pointer group"
                     aria-label={`Play ${t(video.titleKey)}`}
                   >
+                    {/* Mobile Thumbnail */}
+                    <Image
+                      src={video.mobileThumbnail}
+                      alt={t(video.titleKey)}
+                      fill
+                      className="block md:hidden object-contain w-full h-full"
+                      sizes="100vw"
+                      priority={index === 0}
+                    />
+                    {/* Desktop Thumbnail */}
                     <Image
                       src={video.thumbnail}
                       alt={t(video.titleKey)}
                       fill
-                      className="object-cover w-full h-full"
+                      className="hidden md:block object-cover w-full h-full"
                       sizes="100vw"
                       priority={index === 0}
                     />
@@ -182,7 +196,7 @@ const VideoCarousel: React.FC = () => {
             <button
               onClick={prevSlide}
               disabled={isAnimating}
-              className="absolute left-4 top-1/2 -translate-y-1/2 z-20 bg-white/90 hover:bg-white/60 disabled:opacity-50 disabled:cursor-not-allowed text-gray-600 p-3 rounded-full transition-all duration-300 hover:scale-110 shadow-lg"
+              className="absolute  md:left-4 top-1/2 -translate-y-1/2 z-20 bg-white/90 hover:bg-white/60 disabled:opacity-50 disabled:cursor-not-allowed text-gray-600 p-3 rounded-full transition-all duration-300 hover:scale-110 shadow-lg"
               aria-label="Previous video"
             >
               <ChevronLeft className="w-6 h-6" />
@@ -191,7 +205,7 @@ const VideoCarousel: React.FC = () => {
             <button
               onClick={nextSlide}
               disabled={isAnimating}
-              className="absolute right-4 top-1/2 -translate-y-1/2 z-20 bg-white/90 hover:bg-white/60 disabled:opacity-50 disabled:cursor-not-allowed text-gray-600 p-3 rounded-full transition-all duration-300 hover:scale-110 shadow-lg"
+              className="absolute right-0 md:right-4 top-1/2 -translate-y-1/2 z-20 bg-white/90 hover:bg-white/60 disabled:opacity-50 disabled:cursor-not-allowed text-gray-600 p-3 rounded-full transition-all duration-300 hover:scale-110 shadow-lg"
               aria-label="Next video"
             >
               <ChevronRight className="w-6 h-6" />

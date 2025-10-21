@@ -173,7 +173,7 @@ const Footer: React.FC = () => {
         {/* Logo and Tagline */}
         <div className="">
           <Image
-            src="/images/LOGORESETCLUBBEIGE.png"
+            src="/images/LOGORESETCLUBNOIR.png"
             alt="Reset Club™"
             width={100}
             height={100}
@@ -246,17 +246,17 @@ const Footer: React.FC = () => {
         </div>
 
         {/* Tagline */}
-        <p className="text-[#524029] mb-8 max-w-sm text-sm font-poppins">
+        {/* <p className="text-[#524029] mb-8 max-w-sm text-sm font-poppins">
           {t('mobileTagline')}
-        </p>
+        </p> */}
 
         {/* CTA Button */}
-        <Link
+        {/* <Link
           href="/contact"
           className="bg-transparent text-[#524029] text-lg font-graphik px-4 font-medium py-4   font-fraphik border border-[#524029] hover:border-[#] hover:bg-gray-950 hover:text-white transition-all duration-300 inline-block cursor-pointer hover:scale-105 shadow-lg hover:shadow-xl"
         >
           {t('mobileCtaButton')}
-        </Link>
+        </Link> */}
       </div>
     </footer>
   );

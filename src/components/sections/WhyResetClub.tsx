@@ -58,7 +58,7 @@ const WhyResetClub: React.FC = () => {
       id: 2,
       titleKey: "cards.innovation.title",
       descriptionKey: "cards.innovation.description",
-      image: "/images/card3.png",
+      image: "https://shawellness.com/wp-content/uploads/2025/01/6.png",
       iconUrl: "https://shawellness.com/wp-content/uploads/2025/01/1-02.svg"
     },
     {
@@ -161,14 +161,14 @@ const WhyResetClub: React.FC = () => {
                   {/* Icon - Large on the left */}
                   <div className="flex-shrink-0 mb-3 sm:mb-4 lg:mb-6">
                     <div className="w-12 h-12 sm:w-16 sm:h-16 lg:w-20 lg:h-20 flex items-center justify-start">
-                      <Image
+                      {/* <Image
                         src={card.iconUrl}
                         alt={t(card.titleKey)}
                         width={64}
                         height={64}
                         className="w-10 h-10 sm:w-12 sm:h-12 lg:w-16 lg:h-16"
                         draggable={false}
-                      />
+                      /> */}
                     </div>
                   </div>
 

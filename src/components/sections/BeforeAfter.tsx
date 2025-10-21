@@ -170,7 +170,7 @@ const BeforeAfter: React.FC = () => {
                 </div>
               </div>
               <div className="absolute top-4 right-4">
-                <div className="bg-green-500/90 backdrop-blur-sm px-3 py-1 rounded-full text-xs font-medium font-graphik  text-white">
+                <div className="bg-[#98d1d2] backdrop-blur-sm px-3 py-1 rounded-full text-xs font-medium font-graphik  text-white">
                   APRÈS
                 </div>
               </div>
@@ -189,7 +189,7 @@ const BeforeAfter: React.FC = () => {
                   </div>
                 </div>
                 <div className="text-center">
-                  <div className="text-2xl font-medium font-graphik  text-green-600">
+                  <div className="text-2xl font-medium font-graphik  text-[#98d1d2]">
                     -{testimonials[currentIndex].weightLoss}
                   </div>
                   <div className="text-xs text-gray-500 uppercase tracking-wide">
@@ -251,7 +251,7 @@ const BeforeAfter: React.FC = () => {
               onClick={() => setCurrentIndex(index)}
               className={`w-2 h-2 rounded-full transition-all duration-200 ${
                 index === currentIndex
-                  ? 'bg-[#c26d4c] w-6'
+                  ? 'bg-[#524029] w-6'
                   : 'bg-gray-300 hover:bg-gray-400'
               }`}
               aria-label={`Go to testimonial ${index + 1}`}
