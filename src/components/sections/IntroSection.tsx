@@ -85,7 +85,7 @@ const IntroSection: React.FC = () => {
   }, []);
 
   return (
-    <section ref={sectionRef} className="relative py-8 md:py-12 overflow-hidden bg-[#fffbf6]">
+    <section ref={sectionRef} className="relative py-8 md:py-12 overflow-hidden bg-white">
       {/* Main container with border */}
       <div className="container mx-auto px-6 relative">
         <div className="relative max-w-7xl mx-auto  p-3 md:p-6">

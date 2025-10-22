@@ -85,13 +85,12 @@ export default function NotreHistoireSection() {
               console.log('Autoplay prevented:', error);
             });
           } else {
-            // Video is out of view, pause it
             videoElement.pause();
           }
         });
       },
       {
-        threshold: 0.5, // Trigger when 50% of video is visible
+        threshold: 0.5, 
       }
     );
 
@@ -121,7 +120,7 @@ export default function NotreHistoireSection() {
   };
 
   return (
-    <section ref={sectionRef} className="py-4 md:py-1 bg-[#fffbf6]">
+    <section ref={sectionRef} className="py-4 md:py-1 bg-white">
       <div className="container mx-auto px-4">
         <div className="grid md:grid-cols-2 gap-4 md:gap-12 items-center">
           {/* Text Section - Desktop */}

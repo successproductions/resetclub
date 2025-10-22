@@ -55,7 +55,7 @@ const BeforeAfter: React.FC = () => {
   };
 
   return (
-    <section className="md:py-8 py-4 bg-[#fffbf6]">
+    <section className="md:py-8 py-4 bg-white">
       {/* Header Section */}
       <div className="max-w-7xl mx-auto px-6 mb-5 md:mb-10">
         <h2 className="text-3xl md:text-4xl lg:text-5xl text-[#524029] md:mb-6 md:text-center ">
@@ -71,7 +71,7 @@ const BeforeAfter: React.FC = () => {
           {testimonials.map((testimonial) => (
             <div
               key={testimonial.id}
-              className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2"
+              className="bg-white  shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2"
             >
               {/* Image Container */}
               <div className="relative h-80 overflow-hidden">
