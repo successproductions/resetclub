@@ -259,6 +259,7 @@
     "aria-label": "Contact on WhatsApp",
     "buttonText": "WhatsApp Us",
     "startChat": "Start Chat",
+    "chatWithNahed": "Chat with Nahed AI",
     "welcomeTitle": "Welcome to RESET CLUB.",
     "welcomeMessage": "Click below to speak directly with us.",
     "helpMessage": "If you have any questions, our team is here to help you.",
@@ -401,5 +402,62 @@
     "message1": "3 minutes ago, Laila booked her Transformational Assessment.",
     "message2": "11 people are reserving their transformational report at the moment",
     "brand": "RESET CLUB"
+  },
+  "ChatBot": {
+    "subtitle": "Your holistic coach",
+    "bookingMessage": "Hello! I would like to book my Reset™ Assessment. Can you help me choose a time slot?",
+    "advisorMessage": "Hello! I would like to speak with an advisor to learn more about the Reset Club™ programs.",
+    "phase1": {
+      "greeting": "Hello 🌿\n\nI'm Nahed, founder of Reset Club™.\n\nHere, we don't try to transform you.\nWe help you find yourself.\n\nTake a deep breath…\nand take this moment for you.",
+      "question": "Tell me simply… today, do you want to:",
+      "weightLoss": "Lose weight",
+      "energy": "Regain your energy",
+      "balance": "Rebalance your body and mind"
+    },
+    "phase2": {
+      "weightLoss": "Okay 🌿\n\nMany women come to Reset Club™ for that.\nIt's not just about your silhouette,\nit's about energy, inflammation, and inner balance.\n\nAnd it all starts with a precise assessment to understand your body.",
+      "energy": "Perfect ⚡\n\nYour energy is your vital essence.\nReset Club™ will help you find it, stabilize it,\nand feel your inner fire reborn.",
+      "balance": "Very good choice 🌸\n\nYou want to find your alignment — inner, physical, emotional.\nThat's exactly the Reset™ philosophy: In – Out – Reset."
+    },
+    "phase3": {
+      "intro": "Whatever your goal, it always starts here:\nthe Reset™ Assessment.",
+      "details": "In thirty minutes, we read your body, your energy, your deficiencies,\nthanks to InBody + OligoCheck technology.\n\nIt's a real inner mapping —\nto understand before acting.\n\nAnd right now, we're offering an exclusive bonus\nfor each online booking.",
+      "bonus": "Want me to tell you more? 💫"
+    },
+    "phase4": {
+      "presentation": "Let me introduce myself 🌿\n\nMy name is Nahed, I'm a holistic coach,\nand I created Reset Club™ to help women\nreconnect with their natural energy.",
+      "philosophy": "Because your body knows.\nYour mind knows.\n\nIt just needs to be given the opportunity\nto breathe, to free itself,\nand to start again.\n\nThat's what Reset Club™ does."
+    },
+    "phase5": {
+      "intro": "Now, you have several options 🌸",
+      "bookNow": "🟩 Book my Reset™ Assessment now",
+      "talkToAdvisor": "🟧 Talk to an advisor",
+      "learnMore": "💭 I have questions",
+      "bookResponse": "Perfect! I'm opening our booking calendar for you.\n\nSee you very soon for your Reset! 💫",
+      "talkResponse": "With pleasure 💬\n\nI'll connect you with one of our Reset™ advisors.\nShe'll help you choose your ideal protocol."
+    },
+    "phase6": {
+      "intro": "Tell me what concerns you ",
+      "hesitation": "😊 I'm not sure...",
+      "price": "💰 What's the price?",
+      "distance": "📍 I'm not in Rabat",
+      "backToOptions": "↩️ Back to options",
+      "hesitationResponse": "I understand 💛\n\nThis doubt is often a sign that real change is coming.\nBreathe... your body already knows if it's the right time.\n\nIf you want, I can send you a free preview\nof our Mini Reset at Home™ so you can feel it for yourself.",
+      "priceResponse": "I understand 🌿\n\nWhat you invest here isn't just a treatment…\nit's your clarity, your sleep, your lasting well-being.\n\nReset Club™ is a deep transformation.\nNot a promise. An experience.",
+      "distanceResponse": "You're not in Rabat?\nNo problem ✈️\n\nWe also support remotely\nwith our Digital Mini Reset™.\nThe same rituals, the same energy, from your home."
+    },
+    "phase7": {
+      "intro": "I can offer you something to get started 🎁",
+      "getMiniReset": "✨ Get the Mini Reset at Home™",
+      "gift": "Congratulations 💫\n\nYour Reset starts now.",
+      "program": "Here's your exclusive gift:\nthe Mini Reset at Home™.\n\nA 3-day program with rituals and affirmations,\nto reconnect your body and mind before your assessment.\n\nDay 1: Breathe clarity.\nDay 2: Awaken your energy.\nDay 3: Calm your mind.\n\nYou'll receive the guide by email 📧"
+    },
+    "phase10": {
+      "closing": "Hey 🌸\n\nIt's Nahed.\nI just wanted to say well done.\n\nYou just took a step towards yourself.\nTowards your balance.\nTowards your true energy.\n\nYou'll see…\nYour Reset starts right now."
+    },
+    "options": {
+      "yes": "Yes, please 💫",
+      "no": "No thanks, I want to book directly"
+    }
   }
 }
