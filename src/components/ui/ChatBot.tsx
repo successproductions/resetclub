@@ -111,21 +111,21 @@ export default function ChatBot({ onClose, phoneNumber = '+212600000000' }: Chat
       case 5:
         // Phase 5 actions
         if (choice === 'book') {
+          // Open WhatsApp immediately to avoid popup blocker
+          const bookingMessage = t('bookingMessage');
+          const whatsappUrl = `https://wa.me/${phoneNumber.replace(/\D/g, '')}?text=${encodeURIComponent(bookingMessage)}`;
+          window.open(whatsappUrl, '_blank');
+
+          // Then show response message
           addMessage(t('phase5.bookResponse'), 'bot');
-          setTimeout(() => {
-            // Open WhatsApp for booking
-            const bookingMessage = t('bookingMessage');
-            const whatsappUrl = `https://wa.me/${phoneNumber.replace(/\D/g, '')}?text=${encodeURIComponent(bookingMessage)}`;
-            window.open(whatsappUrl, '_blank');
-          }, 1500);
         } else if (choice === 'talk') {
+          // Open WhatsApp immediately to avoid popup blocker
+          const advisorMessage = t('advisorMessage');
+          const whatsappUrl = `https://wa.me/${phoneNumber.replace(/\D/g, '')}?text=${encodeURIComponent(advisorMessage)}`;
+          window.open(whatsappUrl, '_blank');
+
+          // Then show response message
           addMessage(t('phase5.talkResponse'), 'bot');
-          setTimeout(() => {
-            // Open WhatsApp to talk to advisor
-            const advisorMessage = t('advisorMessage');
-            const whatsappUrl = `https://wa.me/${phoneNumber.replace(/\D/g, '')}?text=${encodeURIComponent(advisorMessage)}`;
-            window.open(whatsappUrl, '_blank');
-          }, 1500);
         } else if (choice === 'learn') {
           // Show objection handling options
           addMessage(t('phase6.intro'), 'bot', [
@@ -176,13 +176,13 @@ export default function ChatBot({ onClose, phoneNumber = '+212600000000' }: Chat
             }, 2000);
           }, 1500);
         } else if (choice === 'book') {
+          // Open WhatsApp immediately to avoid popup blocker
+          const bookingMessage = t('bookingMessage');
+          const whatsappUrl = `https://wa.me/${phoneNumber.replace(/\D/g, '')}?text=${encodeURIComponent(bookingMessage)}`;
+          window.open(whatsappUrl, '_blank');
+
+          // Then show response message
           addMessage(t('phase5.bookResponse'), 'bot');
-          setTimeout(() => {
-            // Open WhatsApp for booking
-            const bookingMessage = t('bookingMessage');
-            const whatsappUrl = `https://wa.me/${phoneNumber.replace(/\D/g, '')}?text=${encodeURIComponent(bookingMessage)}`;
-            window.open(whatsappUrl, '_blank');
-          }, 1500);
         }
         break;
 
