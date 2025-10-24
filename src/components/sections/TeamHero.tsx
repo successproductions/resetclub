@@ -22,15 +22,15 @@ export default function TeamHero() {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 mt-28 md:mt-18 text-center px-6 max-w-4xl mx-auto">
-        <h1 className="text-white mb-8">
-          <div className="text-3xl md:text-4xl lg:text-6xl uppercase xl:text-7xl font-normal font-graphik tracking-tight text-white">
+      <div className="relative z-10 mt-4 md:mt-18 text-center px-6 max-w-4xl mx-auto">
+        <h3 className="text-white mb-8">
+          <div className="text-3xl md:text-4xl lg:text-5xl uppercase xl:text-5xl font-normal font-graphik tracking-tight text-white">
             {t('video.title')}
           </div>
-          <div className="text-sm md:text-xl lg:text-1xl  font-graphik  mb-4 tracking-wide text-white">
+          <div className="text-sm md:text-xl lg:text-1xl font-graphik  md:mb-4 tracking-wide text-white">
             {t('video.subtitle')}
           </div>
-        </h1>
+        </h3>
       </div>
 
       {/* Background Pattern Overlay */}

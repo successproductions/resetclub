@@ -94,11 +94,11 @@ const WhyResetClub: React.FC = () => {
   return (
     <section className="md:pt-2 pt-4 bg-white">
       {/* Header Section */}
-      <div className="max-w-7xl mx-auto px-6 mb-6 md:mb-16">
+      <div className="max-w-7xl mx-auto px-6 md:text-center mb-6 md:mb-16">
         <h2 className="text-3xl md:text-4xl lg:text-5xl  text-[#524029] mb-1 ">
           {t('title')}
         </h2>
-        <p className="text-lg md:text-lg xl:text-xl font-normal font-graphik text-[#524029] max-w-4xl">
+        <p className="text-lg md:text-lg xl:text-xl font-normal  font-graphik text-[#524029] ">
           {t('subtitle')}
         </p>
       </div>
@@ -123,7 +123,7 @@ const WhyResetClub: React.FC = () => {
             {cards.map((card, index) => (
               <div
                 key={`first-${card.id}`}
-                className="flex-none w-[60%] md:w-[80%] min-h-[250px] md:min-h-[450px] sm:w-1/2 lg:w-2/12 relative group"
+                className="flex-none w-[60%]  md:w-[80%] min-h-[480px] md:min-h-[580px] sm:w-1/2 lg:w-2/12 relative group"
 
               >
                 {/* Background Image */}
@@ -157,27 +157,13 @@ const WhyResetClub: React.FC = () => {
                 </div>
 
                 {/* Content */}
-                <div className="relative z-10 h-full flex flex-col p-4 sm:p-6 lg:p-8 text-white">
-                  {/* Icon - Large on the left */}
-                  <div className="flex-shrink-0 mb-3 sm:mb-4 lg:mb-6">
-                    <div className="w-12 h-12 sm:w-16 sm:h-16 lg:w-20 lg:h-20 flex items-center justify-start">
-                      {/* <Image
-                        src={card.iconUrl}
-                        alt={t(card.titleKey)}
-                        width={64}
-                        height={64}
-                        className="w-10 h-10 sm:w-12 sm:h-12 lg:w-16 lg:h-16"
-                        draggable={false}
-                      /> */}
-                    </div>
-                  </div>
-
-                  {/* Content - Title and description below icon */}
+                <div className="relative z-10 h-full flex flex-col justify-end p-4 sm:p-6 lg:p-8 text-white">
+                  {/* Content - Title and description at bottom */}
                   <div>
-                    <h3 className="text-2xl font-bold mb-4 lg:text-3xl  leading-tight break-words">
+                    <h3 className="text-2xl font-bold mb-2 md:mb-4 lg:text-3xl text-white leading-tight break-words">
                       {t(card.titleKey)}
                     </h3>
-                    <p className="text-lg md:text-base font-graphik lg:text-xl leading-relaxed opacity-90 break-words">
+                    <p className="text-lg md:text-base font-graphik text-white lg:text-xl leading-relaxed opacity-90 break-words">
                       {t(card.descriptionKey)}
                     </p>
                   </div>
@@ -189,7 +175,7 @@ const WhyResetClub: React.FC = () => {
             {cards.map((card, index) => (
               <div
                 key={`second-${card.id}`}
-                className="flex-none w-[40%] md:w-[80%] sm:w-1/2 lg:w-2/12 relative group"
+                className="flex-none w-[60%] md:w-[80%] sm:w-1/2 lg:w-2/12 relative group"
                 style={{ minHeight: '410px' }}
               >
                 {/* Background Image */}
@@ -223,27 +209,13 @@ const WhyResetClub: React.FC = () => {
                 </div>
 
                 {/* Content */}
-                <div className="relative z-10 h-full flex flex-col p-4 sm:p-6 lg:p-8 text-white">
-                  {/* Icon - Large on the left */}
-                  <div className="flex-shrink-0 mb-3 sm:mb-4 lg:mb-6">
-                    <div className="w-12 h-12 sm:w-16 sm:h-16 lg:w-20 lg:h-20 flex items-center justify-start">
-                      <Image
-                        src={card.iconUrl}
-                        alt={t(card.titleKey)}
-                        width={64}
-                        height={64}
-                        className="w-10 h-10 sm:w-12 sm:h-12 lg:w-16 lg:h-16"
-                        draggable={false}
-                      />
-                    </div>
-                  </div>
-
-                  {/* Content - Title and description below icon */}
+                <div className="relative z-10 h-full flex flex-col justify-end p-4 sm:p-6 lg:p-8 text-white">
+                  {/* Content - Title and description at bottom */}
                   <div>
-                    <h3 className="text-2xl font-bold mb-4 leading-tight break-words">
+                    <h3 className="text-2xl font-bold mb-2 md:mb-4 lg:text-3xl text-white leading-tight break-words">
                       {t(card.titleKey)}
                     </h3>
-                    <p className="text-lg md:text-xl font-graphik leading-relaxed opacity-90 break-words">
+                    <p className="text-lg md:text-base font-graphik text-white lg:text-xl leading-relaxed opacity-90 break-words">
                       {t(card.descriptionKey)}
                     </p>
                   </div>

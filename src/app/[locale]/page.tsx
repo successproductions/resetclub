@@ -13,6 +13,9 @@ import VideoCarousel from '@/components/sections/VideoCarousel';
 import BeforeAfter from '@/components/sections/BeforeAfter';
 import Trustpilot from '@/components/sections/Trustpilot';
 import PracticeComparison from '@/components/sections/PracticeComparison';
+import TeamHero from '@/components/sections/TeamHero';
+import Director from '@/components/sections/Director';
+import TeamSlider from '@/components/sections/TeamSlider';
 
 export default function HomePage() {
   // const t = useTranslations('HomePage');
@@ -24,15 +27,19 @@ export default function HomePage() {
         <Hero />
         <LogoBanner />
         {/* <PressBanner /> */}
+            <PracticeComparison />
         <WhyResetClub />
         <VideoCarousel />
         <KeyFigures />
         <ExperienceClient />
         <IntroSection />
+        <TeamHero />
+        <Director />
+        <TeamSlider />
         <NotreHistoireSection />
         <BeforeAfter />
-        <PracticeComparison />
-                <Trustpilot />
+    
+        <Trustpilot />
       </main>
       <Footer />
     </>

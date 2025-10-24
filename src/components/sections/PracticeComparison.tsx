@@ -25,7 +25,7 @@ const PracticeComparison: React.FC = () => {
   ];
 
   return (
-    <section className="md:pb-10 pb-4  pt-3 bg-white">
+    <section className="md:pb-1 pb-4  pt-3 bg-white">
       <div className="max-w-7xl mx-auto px-6">
         {/* Header */}
         <div className=" mb-4 md:mb-16">
@@ -36,11 +36,10 @@ const PracticeComparison: React.FC = () => {
             {t('subtitle')}
           </p>
         </div>
-
         {/* Comparison Table */}
-        <div className="overflow-x-auto scrollbar-thin scrollbar-track-gray-100 scrollbar-thumb-[#ccbaa8] scrollbar-thumb-rounded-full">
+        {/* <div className="overflow-x-auto scrollbar-thin scrollbar-track-gray-100 scrollbar-thumb-[#ccbaa8] scrollbar-thumb-rounded-full">
           <div className=" shadow-lg overflow-hidden min-w-[600px]">
-            {/* Table Header */}
+
             <div className="grid grid-cols-3 bg-white font-graphik font-medium text-gray-700">
               <div className="p-3 md:p-6 text-center border-b border-gray-200 min-w-[200px] ">
                 <span className="text-lg md:text-lg  ">Critères</span>
@@ -53,7 +52,7 @@ const PracticeComparison: React.FC = () => {
               </div>
             </div>
 
-            {/* Comparison Rows */}
+
             {comparisons.map((item, index) => (
               <div
                 key={item.key}
@@ -61,12 +60,12 @@ const PracticeComparison: React.FC = () => {
                   index % 2 === 0 ? 'bg-white' : 'bg-white'
                 } hover:bg-gray-100 transition-colors duration-200`}
               >
-                {/* Criteria */}
+                
                 <div className="p-3 md:p-6  text-gray-900 border-b border-gray-200 min-w-[200px]">
                   <span className="text-xs md:text-base font-graphik text-gray-500 font-medium  leading-tight">{t(`comparisons.${item.key}.criteria`)}</span>
                 </div>
 
-                {/* Traditional */}
+               
                 <div className="p-3 md:p-6 text-gray-700 border-b border-l border-gray-200 relative min-w-[200px]">
                   <div className="flex items-start md:items-center">
                     <div className="w-3 h-3 md:w-4 md:h-4 rounded-full bg-[#98d1d2] mr-2 md:mr-3 flex-shrink-0 flex items-center justify-center mt-0.5 md:mt-0">
@@ -78,7 +77,7 @@ const PracticeComparison: React.FC = () => {
                   </div>
                 </div>
 
-                {/* Reset Club */}
+               
                 <div className="p-3 md:p-6 text-gray-700 border-b border-l border-[#ccbaa8]/30 bg-gradient-to-r from-[#ccbaa8]/5 to-transparent relative min-w-[200px]">
                   <div className="flex items-start md:items-center">
                     <div className="w-3 h-3 md:w-4 md:h-4 rounded-full bg-[#98d1d2] mr-2 md:mr-3 flex-shrink-0 flex items-center justify-center mt-0.5 md:mt-0">
@@ -92,7 +91,7 @@ const PracticeComparison: React.FC = () => {
               </div>
             ))}
           </div>
-        </div>
+        </div> */}
       </div>
     </section>
   );

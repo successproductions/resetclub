@@ -61,7 +61,7 @@ export default function PopupOffer() {
       onClick={handleBackdropClick}
       className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm p-4"
     >
-      <div ref={popupRef} className="relative bg-white max-w-lg w-full rounded-lg shadow-2xl overflow-hidden max-h-[70vdh] md:max-h-[80vdh] overflow-y-auto">
+      <div ref={popupRef} className="relative bg-white max-w-lg w-full shadow-2xl overflow-hidden max-h-[70vdh] md:max-h-[80vdh] overflow-y-auto">
         {/* Close Button */}
         <button
           onClick={() => setIsOpen(false)}

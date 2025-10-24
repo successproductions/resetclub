@@ -4,23 +4,37 @@ export default function RecruitmentsHero() {
   const t = useTranslations('RecrutonsPage');
 
   return (
-    <div
-      className="relative pt-32 pb-12 md:pb-20  min-h-[20dvh] md:min-h-[28dvh] flex items-center justify-center"
-      style={{
-        backgroundImage: `url('/PALMSBACKGROUND.jpg')`,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        backgroundRepeat: 'no-repeat'
-      }}
-    >
-      <div className="container mx-auto px-2 mt-4 md:px-6 text-center relative font-graphik z-10">
-        <h1 className="text-2xl md:text-3xl lg:text-5xl uppercase text-white mb-1 md:mb-3 drop-shadow-lg">
+    <section className="relative h-[38vh] flex items-center justify-center overflow-hidden">
+      {/* Video Background */}
+      <div className="absolute inset-0 z-0">
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          className="w-full h-full object-cover"
+        >
+          <source src="https://rakxawellness.com/wp-content/uploads/2025/08/website-banner-vdo.mp4" type="video/mp4" />
+        </video>
+
+        {/* Video Overlay */}
+        <div className="absolute inset-0 bg-black/40" />
+      </div>
+
+      {/* Content */}
+      <div className="relative z-10 mt-28 md:mt-18 text-center px-6 max-w-4xl mx-auto">
+        <h1 className="text-3xl md:text-4xl lg:text-5xl uppercase text-white mb-4 font-normal font-graphik tracking-tight">
           {t('hero.title')}
         </h1>
-        <p className="text-sm md:text-xl text-white max-w-4xl mx-auto leading-relaxed drop-shadow-lg">
+        <p className="text-sm md:text-xl lg:text-1xl text-white font-graphik tracking-wide">
           {t('hero.subtitle')}
         </p>
       </div>
-    </div>
+
+      {/* Background Pattern Overlay */}
+      <div className="absolute inset-0 z-5 opacity-10">
+        <div className="absolute inset-0 bg-gradient-to-br from-transparent via-amber-500/20 to-transparent" />
+      </div>
+    </section>
   );
 }

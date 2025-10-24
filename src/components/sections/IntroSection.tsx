@@ -86,26 +86,26 @@ const IntroSection: React.FC = () => {
 
   return (
     <section ref={sectionRef} className="relative py-8 md:py-12 overflow-hidden bg-white">
-      {/* Main container with border */}
-      <div className="container mx-auto px-6 relative">
-        <div className="relative max-w-7xl mx-auto  p-3 md:p-6">
+      {/* Main container - Full width */}
+      <div className="w-full relative">
+        <div className="relative w-full">
 
           {/* Header */}
-          <div className="md:text-center mt-1 mb-6 md:mb-8">
-            <h2 ref={titleRef} className="text-3xl md:text-3xl lg:text-5xl  text-[#524029] mb-1 md:mb-8">
+          <div className="text-center mx-auto md:max-w-5xl mt-1 mb-6 md:mb-8 px-6">
+            <h2 ref={titleRef} className="text-3xl md:text-3xl lg:text-5xl text-[#524029] mb-1 md:mb-8">
               {t('hook')}
             </h2>
           </div>
 
-          {/* 3 Cards with Arrows */}
+          {/* 3 Cards with Arrows - Full Width */}
           <div className="relative mb-8">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-0 items-stretch">
 
               {/* Card 1: IN */}
               <div ref={card1Ref} className="relative h-full">
-                <div className="bg-white  overflow-hidden border-1 border-gray-500 hover:border-[#c26d4c] transition-all duration-300 shadow-lg hover:shadow-xl group h-full flex flex-col">
-                  {/* Image */}
-                  <div className="relative h-64 overflow-hidden flex-shrink-0">
+                <div className="bg-white overflow-hidden hover:border-[#c26d4c] transition-all duration-300 hover:shadow-xl group h-full flex flex-col">
+                  {/* Image - Increased height */}
+                  <div className="relative h-96 md:h-96 lg:h-[700px] overflow-hidden flex-shrink-0">
                     <Image
                       src="/images/IN.jpg"
                       alt="Cellular Energy"
@@ -115,32 +115,22 @@ const IntroSection: React.FC = () => {
                     <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
                   </div>
                   {/* Content */}
-                  <div className="px-6 py-2  flex-grow flex flex-col">
+                  <div className="px-6 py-4 flex-grow flex flex-col">
                     <h3 className="text-xl font-normal text-[#524029] mb-2 font-graphik">
                       {t('cards.in.title')}
                     </h3>
                     <p className="text-[#524029] text-lg leading-5.5 mb-2 font-graphik flex-grow">
                       {t('cards.in.subtitle')}
                     </p>
-                    
-                  </div>
-                </div>
-                {/* Right Arrow */}
-                <div ref={arrow1Ref} className="hidden md:flex absolute top-1/2 -right-12  -translate-y-1/2 z-10 items-center justify-center">
-                  <div className="relative">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 60" fill="none" className="w-24 h-14">
-                      <path d="M10 30 L70 30" stroke="#c26d4c" strokeWidth="4" strokeLinecap="round" opacity="0.8"/>
-                      <path d="M55 15 L80 30 L55 45" stroke="#c26d4c" strokeWidth="5" strokeLinecap="round" strokeLinejoin="round" fill="none"/>
-                    </svg>
                   </div>
                 </div>
               </div>
 
               {/* Card 2: OUT */}
               <div ref={card2Ref} className="relative h-full">
-                <div className="bg-white  overflow-hidden border-1 border-gray-500 hover:border-[#c26d4c] transition-all duration-300 shadow-lg hover:shadow-xl group h-full flex flex-col">
-                  {/* Image */}
-                  <div className="relative h-64 overflow-hidden flex-shrink-0">
+                <div className="bg-white overflow-hidden hover:border-[#c26d4c] transition-all duration-300 hover:shadow-xl group h-full flex flex-col">
+                  {/* Image - Increased height */}
+                  <div className="relative h-96 md:h-96 lg:h-[700px] overflow-hidden flex-shrink-0">
                     <Image
                       src="/images/linktree1.png"
                       alt="Body Detox"
@@ -150,43 +140,33 @@ const IntroSection: React.FC = () => {
                     <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
                   </div>
                   {/* Content */}
-                  <div className="px-6 py-2 flex-grow flex flex-col">
+                  <div className="px-6 py-4 flex-grow flex flex-col">
                     <h3 className="text-xl font-normal text-[#524029] mb-2 font-graphik">
                       {t('cards.out.title')}
                     </h3>
                     <p className="text-[#524029] text-lg leading-5.5 mb-2 font-graphik flex-grow">
                       {t('cards.out.subtitle')}
                     </p>
-
-                  </div>
-                </div>
-                {/* Right Arrow */}
-                <div ref={arrow2Ref} className="hidden md:flex absolute top-1/2 -right-12 -translate-y-1/2 z-10 items-center justify-center">
-                  <div className="relative">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 60" fill="none" className="w-24 h-14">
-                      <path d="M10 30 L70 30" stroke="#c26d4c" strokeWidth="4" strokeLinecap="round" opacity="0.8"/>
-                      <path d="M55 15 L80 30 L55 45" stroke="#c26d4c" strokeWidth="5" strokeLinecap="round" strokeLinejoin="round" fill="none"/>
-                    </svg>
                   </div>
                 </div>
               </div>
 
               {/* Card 3: RESET */}
               <div ref={card3Ref} className="relative h-full">
-                <div className="bg-white  overflow-hidden border-1 border-gray-500 hover:border-[#c26d4c] transition-all duration-300 shadow-lg hover:shadow-xl group h-full flex flex-col">
-                  {/* Image */}
-                  <div className="relative h-64 overflow-hidden flex-shrink-0">
+                <div className="bg-white overflow-hidden hover:border-[#c26d4c] transition-all duration-300 hover:shadow-xl group h-full flex flex-col">
+                  {/* Image - Increased height */}
+                  <div className="relative h-96 md:h-96 lg:h-[700px] overflow-hidden flex-shrink-0">
                     <Image
                       src="/images/OUT.jpg"
                       alt="Inner Balance"
                       fill
-                      className=" object-center group-hover:scale-110 transition-transform duration-500"
+                      className="object-cover object-center group-hover:scale-110 transition-transform duration-500"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
                   </div>
                   {/* Content */}
-                  <div className="px-6 py-2  flex-grow flex flex-col">
-                    <h3 className="text-xl font-normal text-[#524029] md:mb-2 leading-1.5 font-graphik">
+                  <div className="px-6 py-4 flex-grow flex flex-col">
+                    <h3 className="text-xl font-normal text-[#524029] mb-2 leading-1.5 font-graphik">
                       {t('cards.reset.title')}
                     </h3>
                     <p className="text-[#524029] text-lg leading-5.5 mb-2 font-graphik flex-grow">
@@ -200,8 +180,8 @@ const IntroSection: React.FC = () => {
           </div>
 
           {/* CTA Button */}
-          <div className="text-center">
-            <button ref={buttonRef} className="md:px-12 px-10 py-4 bg-transparent border border-gray-800 text-[#524029] hover:text-white hover:bg-gray-950 text-lg md:text-lg font-medium font-graphik   transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl cursor-pointer">
+          <div className="text-center px-6">
+            <button ref={buttonRef} className="md:px-12 px-10 py-4 bg-transparent border border-gray-800 text-[#524029] hover:text-white hover:bg-gray-950 text-lg md:text-lg font-medium font-graphik transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl cursor-pointer">
               {t('cta')}
             </button>
           </div>

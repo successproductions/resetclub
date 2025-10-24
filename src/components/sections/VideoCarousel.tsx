@@ -120,11 +120,11 @@ const VideoCarousel: React.FC = () => {
   // Removed auto-advance carousel - user controls via thumbnails
 
   return (
-    <section className="bg-gray-50 py-4 md:py-10 overflow-hidden ">
-      <div className="max-w-7xl mx-auto px-6">
+    <section className="bg-gray-50 py-4 md:py-10 overflow-hidden">
+      <div className="md:max-w-7xl md:mx-auto md:px-6">
         {/* Section Title */}
-        <div className="md:text-center mb-5 md:mb-6">
-          <h2 className="text-3xl md:text-4xl font-normal lg:text-5xl  text-[#524029] mb-1 md:mb-4 ">
+        <div className="md:text-center mb-5 md:mb-6 px-6 md:px-0">
+          <h2 className="text-3xl md:text-4xl font-normal lg:text-5xl text-[#524029] mb-1 md:mb-4">
             {t('title')}
           </h2>
           <p className="text-[#524029] text-lg md:text-xl max-w-3xl font-graphik mx-auto">
@@ -134,7 +134,7 @@ const VideoCarousel: React.FC = () => {
 
         {/* Carousel Container */}
         <div className="relative">
-          {/* Video Display */}
+          {/* Video Display - Full Width on Mobile */}
           <div
             ref={carouselRef}
             className="relative w-full h-[500px] md:h-[700px] lg:h-[760px] overflow-hidden md:shadow-2xl"
@@ -213,7 +213,7 @@ const VideoCarousel: React.FC = () => {
           </div>
 
           {/* Dots Navigation */}
-          <div className="flex justify-center gap-3 mt-8">
+          <div className="flex justify-center gap-3 mt-8 px-6 md:px-0">
             {videos.map((video, index) => (
               <button
                 key={video.id}
@@ -230,10 +230,10 @@ const VideoCarousel: React.FC = () => {
           </div>
 
           {/* CTA Button */}
-          <div className="flex justify-center mt-6">
+          <div className="flex justify-center mt-6 px-6 md:px-0">
             <Link
               href="/contact"
-              className="bg-transparent text-[#524029] px-4 md:px-8 py-4 font-graphik  font-medium text-lg border hover:bg-gray-950 hover:text-white transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl"
+              className="bg-transparent text-[#524029] px-4 md:px-8 py-4 font-graphik font-medium text-lg border hover:bg-gray-950 hover:text-white transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl"
             >
               {t('cta')}
             </Link>

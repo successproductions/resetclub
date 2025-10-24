@@ -150,7 +150,7 @@ const BeforeAfter: React.FC = () => {
       <div className="md:hidden max-w-sm mx-auto px-6">
         <div className="relative">
           {/* Single Card */}
-          <div className="bg-white rounded-2xl shadow-lg overflow-hidden">
+          <div className="bg-white  shadow-lg overflow-hidden">
             {/* Image Container */}
             <div className="relative h-80 overflow-hidden">
               <Image

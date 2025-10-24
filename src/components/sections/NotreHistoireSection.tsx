@@ -121,7 +121,7 @@ export default function NotreHistoireSection() {
 
   return (
     <section ref={sectionRef} className="py-4 md:py-1 bg-white">
-      <div className="container mx-auto px-4">
+      <div className="md:container md:mx-auto md:px-4">
         <div className="grid md:grid-cols-2 gap-4 md:gap-12 items-center">
           {/* Text Section - Desktop */}
           <div className="hidden md:block space-y-6">
@@ -144,7 +144,7 @@ export default function NotreHistoireSection() {
 
           {/* Video Section - Desktop */}
           <div ref={videoRef} className="hidden md:block relative overflow-hidden shadow-2xl md:order-last">
-            <div className="h-[600px] lg:h-[700px] bg-gray-900 relative">
+            <div className="h-[600px] lg:h-[750px] bg-gray-900 relative">
               {!isPlaying ? (
                 // Thumbnail with Play Button
                 <div className="relative w-full h-full">
@@ -186,7 +186,7 @@ export default function NotreHistoireSection() {
           {/* Video Section - Mobile with Custom Thumbnail */}
           <div className="md:hidden w-full">
             {/* Text Section - Above Thumbnail */}
-            <div className=" mb-6 px-4">
+            <div className="mb-6 px-4">
               <h2 className="text-3xl text-[#524029] leading-tight mb-1">
                 Et si ce que vous<br />
                 cherchez n&apos;était pas<br />
@@ -197,8 +197,8 @@ export default function NotreHistoireSection() {
               </p>
             </div>
 
-            {/* Thumbnail or Video */}
-            <div className="relative w-full h-[500px]">
+            {/* Thumbnail or Video - Full Width */}
+            <div className="relative w-full h-[500px] ">
               {!isPlayingMobile ? (
                 // Thumbnail with Play Button
                 <div className="relative w-full h-full">
@@ -242,12 +242,12 @@ export default function NotreHistoireSection() {
           </div>
 
           {/* Text and Button - Mobile only */}
-          <div className="md:hidden space-y-6">
+          <div className="md:hidden space-y-6 px-4">
             <div className="text-center">
               <Link
                 ref={buttonRef}
                 href="/contact"
-                className="inline-block bg-transparent font-graphik font-medium text-lg text-[#524029] border border-gray-800 px-8 py-3  hover:text-white hover:bg-gray-950 transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl"
+                className="inline-block bg-transparent font-graphik font-medium text-lg text-[#524029] border border-gray-800 px-8 py-3 hover:text-white hover:bg-gray-950 transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl"
               >
                 {t('seeMore')}
               </Link>

@@ -83,7 +83,7 @@ const Header: React.FC = () => {
           <div className="flex items-center md:flex-none flex-1 justify-center md:justify-start">
             <Link href="/" className="flex items-center">
               <Image
-                src={isScrolled || isMobileMenuOpen ? "/images/logogras.png" : "/images/LOGOBLANC.png"}
+                src={isScrolled || isMobileMenuOpen ? "/images/LOGORESETCLUBNOIR.png" : "/images/LOGOBLANC.png"}
                 alt="Reset Club™ - Premier centre de transformation holistique au Maroc"
                 width={180}
                 height={82}
