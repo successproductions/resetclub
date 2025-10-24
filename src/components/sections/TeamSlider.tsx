@@ -184,7 +184,7 @@ const TeamSlider: React.FC = () => {
                 </h3>
 
                 {/* Role */}
-                <div className="text-gray-500 font-medium px-6">
+                <div className="text-[#524029] font-medium px-6">
                   {t(`members.${member.key}.role`)}
                 </div>
 
