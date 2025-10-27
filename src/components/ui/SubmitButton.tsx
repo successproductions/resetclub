@@ -31,7 +31,7 @@ const Button: React.FC<ButtonProps> = ({
 
   const variantClasses = {
     primary: `
-      text-gray-900 border border-gray-300 bg-white rounded-full
+      text-[#524029] border border-gray-300 bg-white 
       hover:bg-gray-50 hover:border-gray-400
       focus:ring-gray-500
       shadow-md
@@ -39,14 +39,14 @@ const Button: React.FC<ButtonProps> = ({
   
     `,
     secondary: `
-      text-gray-700 bg-transparent border border-gray-800 rounded-full
+      text-[#524029] bg-transparent border border-gray-800 
       hover:bg-gray-900 hover:text-white
       focus:ring-gray-500 focus:ring-opacity-50
       shadow-md
       group
     `,
     outline: `
-      text-white border border-white bg-transparent rounded-full
+      text-white border border-white bg-transparent 
       hover:bg-white hover:text-gray-900
       focus:ring-white focus:ring-opacity-50
       shadow-md
