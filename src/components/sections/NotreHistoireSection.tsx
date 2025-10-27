@@ -135,7 +135,7 @@ export default function NotreHistoireSection() {
 
             <Link
               ref={buttonRef}
-              href="/contact"
+              href="/payment"
               className="inline-block text-lg bg-transparent font-graphik text-[#524029] border border-gray-900 px-8 py-3  hover:text-white hover:bg-gray-900 font-medium transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl"
             >
               {t('seeMore')}
@@ -246,7 +246,7 @@ export default function NotreHistoireSection() {
             <div className="text-center">
               <Link
                 ref={buttonRef}
-                href="/contact"
+                href="/payment"
                 className="inline-block bg-transparent font-graphik font-medium text-lg text-[#524029] border border-gray-800 px-8 py-3 hover:text-white hover:bg-gray-950 transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl"
               >
                 {t('seeMore')}

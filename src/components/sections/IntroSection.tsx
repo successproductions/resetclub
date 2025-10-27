@@ -91,7 +91,7 @@ const IntroSection: React.FC = () => {
         <div className="relative w-full">
 
           {/* Header */}
-          <div className="text-center mx-auto md:max-w-5xl mt-1 mb-6 md:mb-8 px-6">
+          <div className="md:text-center mx-auto md:max-w-5xl mt-1 mb-6 md:mb-8 px-6">
             <h2 ref={titleRef} className="text-3xl md:text-3xl lg:text-5xl text-[#524029] mb-1 md:mb-8">
               {t('hook')}
             </h2>
@@ -112,7 +112,7 @@ const IntroSection: React.FC = () => {
                       fill
                       className="object-cover group-hover:scale-110 transition-transform duration-500"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+                    {/* <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div> */}
                   </div>
                   {/* Content */}
                   <div className="px-6 py-4 flex-grow flex flex-col">
@@ -137,7 +137,7 @@ const IntroSection: React.FC = () => {
                       fill
                       className="object-cover group-hover:scale-110 transition-transform duration-500"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+                    {/* <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div> */}
                   </div>
                   {/* Content */}
                   <div className="px-6 py-4 flex-grow flex flex-col">
@@ -162,7 +162,7 @@ const IntroSection: React.FC = () => {
                       fill
                       className="object-cover object-center group-hover:scale-110 transition-transform duration-500"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+                    {/* <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div> */}
                   </div>
                   {/* Content */}
                   <div className="px-6 py-4 flex-grow flex flex-col">

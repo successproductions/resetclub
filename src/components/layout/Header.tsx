@@ -55,12 +55,12 @@ const Header: React.FC = () => {
   return (
     <header
       className={`
-        fixed top-0 left-0 right-0 z-50 transition-all duration-700 ease-in-out
+        fixed top-0 left-0 right-0 z-50 ease-in-out
         ${isMobileMenuOpen
-          ? 'bg-white shadow-lg py-2'
+          ? 'bg-white shadow-lg py-2 transition-none'
           : isScrolled
-          ? 'bg-white/95 backdrop-blur-md shadow-lg py-2'
-          : 'bg-transparent py-6'
+          ? 'bg-white/95 backdrop-blur-md shadow-lg py-2 transition-all duration-700'
+          : 'bg-transparent py-6 transition-all duration-700'
         }
       `}
     >
@@ -149,7 +149,7 @@ const Header: React.FC = () => {
             <Button
               variant="primary"
               size="lg"
-              href="/contact"
+              href="/payment"
               className={isScrolled || isMobileMenuOpen ? 'scrolled-navbar' : ''}
             >
               {t('reserve')}
@@ -175,11 +175,11 @@ const Header: React.FC = () => {
         {/* Mobile Menu Header */}
         <div className="flex items-center justify-between px-4 py-2 border-b border-gray-200">
           <Image
-            src="/images/logogras.png"
+            src="/images/LOGORESETCLUBNOIR.png"
             alt="Reset Club™"
             width={120}
             height={48}
-            className="h-20 w-14"
+            className="h-20 w-16"
           />
           <button
             onClick={() => setIsMobileMenuOpen(false)}
@@ -220,7 +220,7 @@ const Header: React.FC = () => {
             <Button
               variant="primary"
               size="lg"
-              href="/contact"
+              href="/payment"
               className="w-full scrolled-navbar"
               onClick={() => setIsMobileMenuOpen(false)}
             >

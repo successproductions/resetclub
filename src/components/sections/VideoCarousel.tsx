@@ -232,7 +232,7 @@ const VideoCarousel: React.FC = () => {
           {/* CTA Button */}
           <div className="flex justify-center mt-6 px-6 md:px-0">
             <Link
-              href="/contact"
+              href="/payment"
               className="bg-transparent text-[#524029] px-4 md:px-8 py-4 font-graphik font-medium text-lg border hover:bg-gray-950 hover:text-white transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl"
             >
               {t('cta')}

@@ -20,6 +20,7 @@ interface ChatBotProps {
 export default function ChatBot({ onClose, phoneNumber = '+212600000000' }: ChatBotProps) {
   const t = useTranslations('ChatBot');
   const tWhatsApp = useTranslations('WhatsApp');
+  const [messageIdCounter, setMessageIdCounter] = useState(2);
   const [messages, setMessages] = useState<Message[]>([
     {
       id: 1,
@@ -33,14 +34,17 @@ export default function ChatBot({ onClose, phoneNumber = '+212600000000' }: Chat
   const [userChoice, setUserChoice] = useState<string>('');
 
   const addMessage = (text: string, type: 'bot' | 'user', options?: { label: string; value: string }[]) => {
-    const newMessage: Message = {
-      id: messages.length + 1,
-      type,
-      text,
-      options,
-      timestamp: new Date(),
-    };
-    setMessages((prev) => [...prev, newMessage]);
+    setMessages((prev) => {
+      const newMessage: Message = {
+        id: messageIdCounter,
+        type,
+        text,
+        options,
+        timestamp: new Date(),
+      };
+      setMessageIdCounter((prevId) => prevId + 1);
+      return [...prev, newMessage];
+    });
   };
 
   const handleUserChoice = (choice: string, label: string) => {
@@ -185,9 +189,9 @@ export default function ChatBot({ onClose, phoneNumber = '+212600000000' }: Chat
   return (
     <div className="flex flex-col h-full bg-white font-graphik">
       {/* Header */}
-      <div className="bg-[#c26d4c] text-white px-6 py-4 flex items-center justify-between">
+      <div className="bg-white text-[#52422e] px-6 py-4 flex items-center justify-between border-b border-gray-200">
         <div className="flex items-center space-x-3">
-          <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center">
+          <div className="w-10 h-10 bg-white flex items-center justify-center">
             <Image
                                 src="/images/logogras.png"
                                 alt="Reset Club Logo"
@@ -197,14 +201,14 @@ export default function ChatBot({ onClose, phoneNumber = '+212600000000' }: Chat
                               />
           </div>
           <div>
-            <p className="font-graphik font-medium text-xl">Nahed - Reset Club</p>
-            <p className="text-sm text-gray-100 font-graphik">{t('subtitle')}</p>
+            <p className="font-graphik font-medium text-xl text-[#52422e]">Nahed - Reset Club</p>
+            <p className="text-sm text-[#52422e] font-graphik">{t('subtitle')}</p>
           </div>
         </div>
         {onClose && (
           <button
             onClick={onClose}
-            className="text-white hover:text-gray-200 transition-colors"
+            className="text-[#52422e] hover:text-gray-600 transition-colors"
           >
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -214,17 +218,17 @@ export default function ChatBot({ onClose, phoneNumber = '+212600000000' }: Chat
       </div>
 
       {/* Messages Container */}
-      <div className="flex-1 overflow-y-auto p-6 space-y-4 bg-gray-50">
+      <div className="flex-1 overflow-y-auto p-6 space-y-4 bg-white">
         {messages.map((message) => (
           <div
             key={message.id}
             className={`flex ${message.type === 'user' ? 'justify-end' : 'justify-start'}`}
           >
             <div
-              className={`max-w-[80%] rounded-2xl px-4 py-3 ${
+              className={`max-w-[80%] px-4 py-3 ${
                 message.type === 'user'
-                  ? 'bg-[#c26d4c] text-white rounded-br-sm'
-                  : 'bg-white text-gray-800 shadow-sm rounded-bl-sm'
+                  ? 'bg-white text-[#52422e] border border-[#52422e]'
+                  : 'bg-white text-[#52422e] border border-gray-200'
               }`}
             >
               <p className="text-sm whitespace-pre-line font-graphik">{message.text}</p>
@@ -236,7 +240,7 @@ export default function ChatBot({ onClose, phoneNumber = '+212600000000' }: Chat
                     <button
                       key={index}
                       onClick={() => handleUserChoice(option.value, option.label)}
-                      className="w-full text-left px-4 py-2 bg-gray-50 hover:bg-gray-100 text-[#c26d4c] rounded-lg transition-colors text-sm font-medium border border-gray-200 font-graphik"
+                      className="w-full text-left px-4 py-2 bg-white hover:bg-gray-50 text-[#52422e] transition-colors text-sm font-medium border border-[#52422e] font-graphik"
                     >
                       {option.label}
                     </button>
@@ -250,7 +254,7 @@ export default function ChatBot({ onClose, phoneNumber = '+212600000000' }: Chat
         {/* Typing Indicator */}
         {showTyping && (
           <div className="flex justify-start">
-            <div className="bg-white rounded-2xl rounded-bl-sm px-4 py-3 shadow-sm">
+            <div className="bg-white px-4 py-3 border border-gray-200">
               <div className="flex items-center space-x-1">
                 <div className="typing-dots">
                   <div className="dot dot1"></div>
@@ -266,22 +270,22 @@ export default function ChatBot({ onClose, phoneNumber = '+212600000000' }: Chat
       {/* Initial Options */}
       {currentPhase === 1 && messages.length === 1 && (
         <div className="p-6 bg-white border-t border-gray-200 space-y-2">
-          <p className="text-sm text-gray-600 mb-3 font-graphik">{t('phase1.question')}</p>
+          <p className="text-sm text-[#52422e] mb-3 font-graphik">{t('phase1.question')}</p>
           <button
             onClick={() => handleUserChoice('weightLoss', t('phase1.weightLoss'))}
-            className="w-full px-4 py-3 bg-[#c26d4c] hover:bg-[#b05d3c] text-white rounded-lg transition-colors text-sm font-medium font-graphik"
+            className="w-full px-4 py-3 bg-white hover:bg-gray-50 text-[#52422e] border border-[#52422e] transition-colors text-sm font-medium font-graphik"
           >
             {t('phase1.weightLoss')}
           </button>
           <button
             onClick={() => handleUserChoice('energy', t('phase1.energy'))}
-            className="w-full px-4 py-3 bg-[#c26d4c] hover:bg-[#b05d3c] text-white rounded-lg transition-colors text-sm font-medium font-graphik"
+            className="w-full px-4 py-3 bg-white hover:bg-gray-50 text-[#52422e] border border-[#52422e] transition-colors text-sm font-medium font-graphik"
           >
             {t('phase1.energy')}
           </button>
           <button
             onClick={() => handleUserChoice('balance', t('phase1.balance'))}
-            className="w-full px-4 py-3 bg-[#c26d4c] hover:bg-[#b05d3c] text-white rounded-lg transition-colors text-sm font-medium font-graphik"
+            className="w-full px-4 py-3 bg-white hover:bg-gray-50 text-[#52422e] border border-[#52422e] transition-colors text-sm font-medium font-graphik"
           >
             {t('phase1.balance')}
           </button>

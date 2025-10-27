@@ -4,7 +4,7 @@ export default function RecruitmentsHero() {
   const t = useTranslations('RecrutonsPage');
 
   return (
-    <section className="relative h-[38vh] flex items-center justify-center overflow-hidden">
+    <section className="relative h-[38vh]  flex items-center justify-center overflow-hidden">
       {/* Video Background */}
       <div className="absolute inset-0 z-0">
         <video

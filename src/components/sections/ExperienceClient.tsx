@@ -10,7 +10,7 @@ const ExperienceClient: React.FC = () => {
 
   //  VIDEO VERSION - COMMENTED OUT FOR TESTING
   return (
-    <section className="relative h-[70vh] md:h-[60vh] flex items-center overflow-hidden">
+    <section className="relative h-[60vh] md:h-[70vh] flex items-center overflow-hidden">
       <div className="absolute inset-0 z-0">
         <video
           autoPlay
@@ -24,53 +24,31 @@ const ExperienceClient: React.FC = () => {
         <div className="absolute inset-0 bg-black/10"></div>
       </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-6 w-full">
-        <div className="flex flex-col lg:grid lg:grid-cols-2 gap-1 lg:gap-12 items-center">
-          <div className="text-center lg:hidden w-full order-1">
-            <h2 className="text-3xl md:text-4xl font-normal text-white mb-1">
+      <div className="relative z-10 w-full">
+        <div className="flex flex-col gap-4 lg:gap-8 items-center justify-center">
+          {/* Title - Always at the top */}
+          <div className="text-center w-full px-6">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-normal text-white">
               L&apos;expérience client
             </h2>
           </div>
 
-          <div className="relative w-full h-[360px] md:h-[350px] lg:h-[750px] order-2 lg:order-none">
+          {/* Image - In the middle */}
+          <div className="relative w-full h-[320px] md:h-[350px] lg:h-[600px] md:max-w-7xl md:mx-auto md:px-6">
               <Image
                 src="/images/lexperienceClient4.png"
                 alt="L'expérience client"
                 fill
-                className="object-contain "
+                className="object-contain"
                 sizes=""
                 priority
               />
           </div>
 
-          <div className="hidden lg:block absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-[60%]">
-            <svg
-              width="2"
-              height="100%"
-              viewBox="0 0 2 400"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-              className="opacity-30"
-            >
-              <line
-                x1="1"
-                y1="0"
-                x2="1"
-                y2="400"
-                stroke="white"
-                strokeWidth="2"
-                strokeDasharray="10 10"
-              />
-            </svg>
-          </div>
-
-          <div className="text-center lg:text-left order-3 lg:order-none">
-            <h2 className="hidden lg:block text-3xl md:text-4xl lg:text-5xl font-normal text-white mb-2 md:mb-8">
-              L&apos;expérience client
-            </h2>
-
+          {/* Call to Action - At the bottom */}
+          <div className="text-center px-6">
             <Link
-              href="/contact"
+              href="/payment"
               className="inline-block bg-transparent text-white px-8 py-4 font-graphik font-medium text-lg border border-white hover:bg-white hover:text-[#524029] transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl"
             >
               Réserver mon Bilan

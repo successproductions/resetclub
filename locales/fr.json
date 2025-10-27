@@ -115,9 +115,9 @@
       "name": "Sarah Martinez",
       "title": "Directrice Générale",
       "subtitle": "Reset Club™",
-      "bio1": "Sarah Martinez apporte plus de 15 ans d'expérience en gestion de centres de bien-être premium à travers l'Europe et le Moyen-Orient.",
-      "bio2": "Diplômée en management hôtelier de l'École Hôtelière de Lausanne et certifiée en wellness management, elle a dirigé plusieurs établissements de luxe avant de rejoindre Reset Club™. Sa vision stratégique et son approche centrée sur l'excellence client ont permis de créer une expérience unique de transformation holistique.",
-      "bio3": "Passionnée par l'innovation dans le secteur du bien-être, Sarah croit fermement que la transformation durable nécessite une approche globale alliant technologie de pointe, expertise humaine et accompagnement personnalisé."
+      "bio1": "Nahed Rachad, entrepreneure et coach, a vécu ce que vivent ses clientes : surcharge de travail, stress, perte de santé et de confiance. Elle a cherché. Elle a testé.",
+      "bio2": "Elle a voyagé à travers les plus grands salons du monde. Elle a découvert les meilleures technologies, les meilleures approches en neurosciences, en biohacking et en coaching transformationnel.",
+      "bio3": "De cette quête est née une méthode, et aujourd’hui, un mouvement : Reset Club™"
     },
     "team": {
       "title": "Notre Équipe d'Experts",
@@ -456,5 +456,33 @@
       "yes": "Oui, s'il te plaît 💫",
       "no": "Non merci, je veux réserver directement"
     }
+  },
+  "PaymentPage": {
+    "warning": "Ne fermez pas cette page — votre réservation n'est pas encore finalisée.",
+    "step": "Étape 2 sur 3 — Paiement sécurisé",
+    "title": "Vous êtes à un clic de votre transformation.",
+    "subtitle": "Finalisez votre réservation pour confirmer votre bilan personnalisé RESET™.",
+    "availableSlots": "Il ne reste que deux créneaux cette semaine",
+    "form": {
+      "fullName": "Nom complet",
+      "email": "E-mail",
+      "phone": "Téléphone",
+      "submit": "Je réserve ce créneau"
+    },
+    "securePayment": "PAIEMENT SÉCURISÉ"
+  },
+  "ConfirmationPage": {
+    "title": "Bravo — votre transformation commence maintenant.",
+    "subtitle": "Votre bilan RESET™ est confirmé avec succès.",
+    "duration": {
+      "label": "Durée du bilan",
+      "value": "45 minutes"
+    },
+    "amount": {
+      "label": "Montant payé",
+      "value": "300 MAD"
+    },
+    "followUp": "Dans les prochaines 24 heures (hors week-end), notre équipe vous contactera personnellement pour fixer votre rendez-vous au centre.",
+    "backToHome": "Retour à l'accueil"
   }
 }

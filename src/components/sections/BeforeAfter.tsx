@@ -147,12 +147,12 @@ const BeforeAfter: React.FC = () => {
       </div>
 
       {/* Mobile Slider */}
-      <div className="md:hidden max-w-sm mx-auto px-6">
+      <div className="md:hidden w-full">
         <div className="relative">
           {/* Single Card */}
-          <div className="bg-white  shadow-lg overflow-hidden">
+          <div className="bg-white shadow-lg overflow-hidden">
             {/* Image Container */}
-            <div className="relative h-80 overflow-hidden">
+            <div className="relative h-96 overflow-hidden">
               <Image
                 src={testimonials[currentIndex].beforeImage}
                 alt={`Transformation de ${testimonials[currentIndex].name}`}
@@ -269,7 +269,7 @@ const BeforeAfter: React.FC = () => {
         {/* CTA Button */}
         <div className="mt-4 md:mt-8">
           <Link
-            href="/contact"
+            href="/payment"
             className="inline-block bg-transparent font-medium font-graphik text-[#524029] hover:text-white px-8 py-4  border hover:border-gray-800  text-lg hover:bg-gray-950 cursor-pointer transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl"
           >
             {t('cta')}

@@ -55,7 +55,7 @@ const StickyBookingCTA: React.FC = () => {
         <Button
           variant="primary"
           size="lg"
-          href="/contact"
+          href="/payment"
           className="whitespace-nowrap"
         >
           {t('cta.title')}

@@ -21,7 +21,7 @@ const Director: React.FC = () => {
           </div>
 
           {/* Title - Desktop */}
-          <div className="hidden lg:block space-y-1">
+          <div className="hidden lg:block mt-24 space-y-1">
             <div>
               <h1 className="text-3xl md:text-3xl lg:text-5xl font-graphik font-normal text-[#524029] md:mb-4 leading-tight">
                 {t('title')}
@@ -48,20 +48,20 @@ const Director: React.FC = () => {
 
           {/* Image Section - Full Width on Mobile */}
           <div className="relative lg:order-last">
-            <div className="relative h-[425px] md:h-[600px] w-full overflow-hidden">
+            <div className="relative h-[478px] md:h-[750px] xl:h-[650px] w-full overflow-hidden">
               <Image
-                src="https://images.unsplash.com/photo-1607746882042-944635dfe10e?w=800&h=1200&fit=crop&q=80"
+                src="/Nahed.jpg"
                 alt="Sarah Martinez - Directrice Générale RESET CLUB"
                 fill
                 className="object-cover md:object-fill"
-                sizes="(max-width: 1024px) 100vw, 50vw"
+                sizes="(max-width: 1000px) 100vw, 50vw"
               />
             </div>
           </div>
 
           {/* Description - Mobile Last */}
           <div className="lg:hidden px-6">
-            <div className="space-y-2 text-[#524029] font-normal font-graphik text-lg leading-relaxed">
+            <div className="space-y-2 text-[#524029] font-normal mt-2 font-graphik text-lg leading-relaxed">
               <p>
                 {t('bio1')}
               </p>

@@ -190,7 +190,7 @@ const WhyResetClub: React.FC = () => {
                     draggable={false}
                   />
                   {/* Overlay */}
-                  <div
+                  {/* <div
                     className="absolute inset-0"
                     style={{
                       background: index === 0
@@ -205,7 +205,7 @@ const WhyResetClub: React.FC = () => {
                         ? 'rgba(74, 85, 104, 0.8)'
                         : 'rgba(113, 128, 150, 0.8)'
                     }}
-                  />
+                  /> */}
                 </div>
 
                 {/* Content */}

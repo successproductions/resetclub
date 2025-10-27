@@ -459,5 +459,33 @@
       "yes": "Yes, please 💫",
       "no": "No thanks, I want to book directly"
     }
+  },
+  "PaymentPage": {
+    "warning": "Do not close this page — your reservation is not yet finalized.",
+    "step": "Step 2 of 3 — Secure Payment",
+    "title": "You are one click away from your transformation.",
+    "subtitle": "Finalize your reservation to confirm your personalized RESET™ assessment.",
+    "availableSlots": "Only two slots left this week",
+    "form": {
+      "fullName": "Full Name",
+      "email": "Email",
+      "phone": "Phone",
+      "submit": "I book this slot"
+    },
+    "securePayment": "SECURE PAYMENT"
+  },
+  "ConfirmationPage": {
+    "title": "Bravo — your transformation starts now.",
+    "subtitle": "Your RESET™ assessment is successfully confirmed.",
+    "duration": {
+      "label": "Assessment duration",
+      "value": "45 minutes"
+    },
+    "amount": {
+      "label": "Amount paid",
+      "value": "300 MAD"
+    },
+    "followUp": "Within the next 24 hours (excluding weekends), our team will contact you personally to schedule your appointment at the center.",
+    "backToHome": "Back to Home"
   }
 }

@@ -5,7 +5,7 @@ export default function ContactHero() {
 
   return (
     <div
-      className="relative pt-30 pb-10 md:pb-20 min-h-[22vh] flex items-center justify-center"
+      className="relative pt-30 pb-10 md:pb-20 min-h-[38vh] flex items-center justify-center"
       style={{
         backgroundImage: `url('/PALMSBACKGROUND.jpg')`,
         backgroundSize: 'cover',
