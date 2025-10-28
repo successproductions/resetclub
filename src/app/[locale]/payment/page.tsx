@@ -67,7 +67,7 @@ export default function PaymentPage() {
           </h1>
         </div>
           {/* Warning Message */}
-          <div className="bg-white border border-[#3c3c3c] p-4 mb-2 md:mb-6 flex items-start gap-3">
+          <div className="bg-white  mb-2 md:mb-6 flex items-start gap-3">
             <div className="flex-shrink-0 mt-1">
               <svg
                 className="w-6 h-6 text-[#524029]"
@@ -80,7 +80,7 @@ export default function PaymentPage() {
                 <circle cx="12" cy="16" r="0.5" fill="currentColor" stroke="none"/>
               </svg>
             </div>
-            <p className="text-[#524029] text-base font-graphik">
+            <p className="text-[#524029] text-lg font-graphik">
               {t('warning')}
             </p>
           </div>
@@ -98,13 +98,13 @@ export default function PaymentPage() {
 
           {/* Main Content */}
           <div className="text-center mb-2 md:mb-8">
-            <h2 className="text-4xl md:text-5xl font-serif font-normal text-[#524029] mb-2 md:mb-6 leading-tight">
+            <h2 className="text-3xl md:text-5xl font-serif font-normal text-[#524029] mb-2 md:mb-6 leading-tight">
               {t('title')}
             </h2>
-            <p className="text-xl text-[#524029] mb-2 md:mb-6 font-graphik">
+            <p className="text-lg text-[#524029] font-normal mb-2 md:mb-6 font-graphik">
               {t('subtitle')}
             </p>
-            <p className="text-lg text-[#524029] font-medium mb-2 md:mb-8 font-graphik">
+            <p className="text-lg text-[#524029] font-normal mb-2 md:mb-8 font-graphik">
               {t('availableSlots')}
             </p>
           </div>

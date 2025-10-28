@@ -179,7 +179,7 @@ const BeforeAfter: React.FC = () => {
             {/* Content */}
             <div className="p-6">
               {/* Stats Row */}
-              <div className="grid grid-cols-3 gap-4 mb-4">
+              {/* <div className="grid grid-cols-3 gap-4 mb-4">
                 <div className="text-center">
                   <div className="text-2xl font-medium font-graphik  text-gray-900">
                     {testimonials[currentIndex].beforeWeight}
@@ -204,10 +204,7 @@ const BeforeAfter: React.FC = () => {
                     Après
                   </div>
                 </div>
-              </div>
-
-              {/* Divider */}
-              <div className="h-px bg-gray-200 mb-4" />
+              </div> */}
 
               {/* Client Info */}
               <div className="text-center">

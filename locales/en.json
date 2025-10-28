@@ -237,11 +237,11 @@
       "intro": "Passionate about wellness, transformation, premium customer relations?<br/>Do you like to create connections, sell with authenticity, and provide long-term support?<br/>Do you dream of joining a unique adventure and creating a movement?"
     },
     "upload": {
-      "title": "📌 SUBMIT YOUR CV HERE",
+      "title": "SUBMIT YOUR CV HERE",
       "subtitle": "Join Reset Club. We're waiting for you to create a wellness revolution together!",
       "dragText": "Click to select your CV",
       "fileTypes": "PDF, DOC, DOCX (max 5MB)",
-      "buttonText": "🚀 SEND MY CV",
+      "buttonText": " SEND MY CV",
       "uploading": "⏳ Uploading...",
       "successMessage": "🎉 CV sent successfully! We will contact you within 48h.",
       "errorMessage": "❌ Error sending. Please try again."

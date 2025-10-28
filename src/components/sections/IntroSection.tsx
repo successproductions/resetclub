@@ -107,7 +107,7 @@ const IntroSection: React.FC = () => {
                   {/* Image - Increased height */}
                   <div className="relative h-96 md:h-96 lg:h-[700px] overflow-hidden flex-shrink-0">
                     <Image
-                      src="/images/IN.jpg"
+                      src="/images/IN1.png"
                       alt="Cellular Energy"
                       fill
                       className="object-cover group-hover:scale-110 transition-transform duration-500"
@@ -132,7 +132,7 @@ const IntroSection: React.FC = () => {
                   {/* Image - Increased height */}
                   <div className="relative h-96 md:h-96 lg:h-[700px] overflow-hidden flex-shrink-0">
                     <Image
-                      src="/images/linktree1.png"
+                      src="/images/OUT1.png"
                       alt="Body Detox"
                       fill
                       className="object-cover group-hover:scale-110 transition-transform duration-500"
@@ -157,7 +157,7 @@ const IntroSection: React.FC = () => {
                   {/* Image - Increased height */}
                   <div className="relative h-96 md:h-96 lg:h-[700px] overflow-hidden flex-shrink-0">
                     <Image
-                      src="/images/OUT.jpg"
+                      src="/images/RESET1.png"
                       alt="Inner Balance"
                       fill
                       className="object-cover object-center group-hover:scale-110 transition-transform duration-500"

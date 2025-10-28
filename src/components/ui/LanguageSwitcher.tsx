@@ -42,15 +42,15 @@ export default function LanguageSwitcher({ variant = 'header', isScrolled = fals
   if (variant === 'mobile') {
     return (
       <div className="space-y-2">
-        <p className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2">Langue</p>
+        <p className="text-xs font-normal text-[#524029] uppercase tracking-wider mb-2">Langue</p>
         <div className="flex gap-2">
           {languages.map((lang) => (
             <button
               key={lang.code}
               onClick={() => switchLanguage(lang.code)}
-              className={`flex-1 px-4 py-3 rounded-lg text-sm font-medium transition-all duration-200 ${
+              className={`flex-1 px-4 py-3  text-sm font-medium transition-all duration-200 ${
                 lang.code === locale
-                  ? 'bg-[#c26d4c] text-white shadow-md'
+                  ? 'bg-gray-950 text-white shadow-md'
                   : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
               }`}
             >
@@ -91,9 +91,9 @@ export default function LanguageSwitcher({ variant = 'header', isScrolled = fals
             <button
               key={lang.code}
               onClick={() => switchLanguage(lang.code)}
-              className={`w-full px-4 py-3 text-left flex items-center gap-3 transition-colors ${
+              className={`w-full px-4 py-3 text-left  flex items-center gap-3 transition-colors ${
                 lang.code === locale
-                  ? 'bg-[#ccbaa8]/10 text-[#ccbaa8] font-semibold'
+                  ? 'bg-[#ccbaa8]/10 text-[#ccbaa8] font-graphik font-semibold'
                   : 'text-gray-700 hover:bg-gray-50'
               }`}
             >

@@ -51,42 +51,42 @@ const WhyResetClub: React.FC = () => {
       id: 1,
       titleKey: "cards.values.title",
       descriptionKey: "cards.values.description",
-      image: "/images/card1.png",
+      image: "/images/bg1.jpg",
       iconUrl: "https://shawellness.com/wp-content/uploads/2025/01/1-01.svg"
     },
     {
       id: 2,
       titleKey: "cards.innovation.title",
       descriptionKey: "cards.innovation.description",
-      image: "https://shawellness.com/wp-content/uploads/2025/01/6.png",
+      image: "/images/bg2.jpg",
       iconUrl: "https://shawellness.com/wp-content/uploads/2025/01/1-02.svg"
     },
     {
       id: 3,
       titleKey: "cards.transformation.title",
       descriptionKey: "cards.transformation.description",
-      image: "/images/card2.png",
+      image: "/images/bg3.jpg",
       iconUrl: "https://shawellness.com/wp-content/uploads/2025/01/1-03.svg"
     },
     {
       id: 4,
       titleKey: "cards.excellence.title",
       descriptionKey: "cards.excellence.description",
-      image: "/images/card4.png",
+      image: "/images/bg4.jpg",
       iconUrl: "https://shawellness.com/wp-content/uploads/2025/01/1-04.svg"
     },
     {
       id: 5,
       titleKey: "cards.holistic.title",
       descriptionKey: "cards.holistic.description",
-      image: "/images/card5.png",
+      image: "/images/bg5.jpg",
       iconUrl: "https://shawellness.com/wp-content/uploads/2025/01/1-05.svg"
     },
     {
       id: 6,
       titleKey: "cards.method.title",
       descriptionKey: "cards.method.description",
-      image: "/images/card6.png",
+      image: "/images/bg6.jpg",
       iconUrl: "https://shawellness.com/wp-content/uploads/2025/01/1-06.svg"
     }
   ];
@@ -133,27 +133,13 @@ const WhyResetClub: React.FC = () => {
                     alt={t(card.titleKey)}
                     fill
                     className="object-cover"
-                    style={{ filter: 'grayscale(30%)' }}
-                    sizes="16.67vw"
+                    sizes="(max-width: 640px) 60vw, (max-width: 1024px) 50vw, 16.67vw"
+                    quality={95}
+                    priority={index < 3}
                     draggable={false}
                   />
                   {/* Overlay */}
-                  {/* <div
-                    className="absolute inset-0"
-                    style={{
-                      background: index === 0
-                        ? 'rgba(0, 0, 0, 0.6)'
-                        : index === 1
-                        ? 'rgba(108, 117, 125, 0.8)'
-                        : index === 2
-                        ? 'rgba(139, 115, 85, 0.8)'
-                        : index === 3
-                        ? 'rgba(52, 73, 85, 0.8)'
-                        : index === 4
-                        ? 'rgba(74, 85, 104, 0.8)'
-                        : 'rgba(113, 128, 150, 0.8)'
-                    }}
-                  /> */}
+                  <div className="absolute inset-0 bg-black opacity-15"></div>
                 </div>
 
                 {/* Content */}
@@ -185,27 +171,13 @@ const WhyResetClub: React.FC = () => {
                     alt={t(card.titleKey)}
                     fill
                     className="object-cover"
-                    style={{ filter: 'grayscale(30%)' }}
-                    sizes="16.67vw"
+                    sizes="(max-width: 640px) 60vw, (max-width: 1024px) 50vw, 16.67vw"
+                    quality={95}
+                    priority={index < 3}
                     draggable={false}
                   />
                   {/* Overlay */}
-                  {/* <div
-                    className="absolute inset-0"
-                    style={{
-                      background: index === 0
-                        ? 'rgba(0, 0, 0, 0.6)'
-                        : index === 1
-                        ? 'rgba(108, 117, 125, 0.8)'
-                        : index === 2
-                        ? 'rgba(139, 115, 85, 0.8)'
-                        : index === 3
-                        ? 'rgba(52, 73, 85, 0.8)'
-                        : index === 4
-                        ? 'rgba(74, 85, 104, 0.8)'
-                        : 'rgba(113, 128, 150, 0.8)'
-                    }}
-                  /> */}
+                  <div className="absolute inset-0 bg-black opacity-15"></div>
                 </div>
 
                 {/* Content */}

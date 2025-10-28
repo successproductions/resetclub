@@ -54,6 +54,26 @@ export default function NotificationWidget() {
         duration: 0.3,
         ease: 'bounce.out',
       });
+
+      // Auto-hide after 8 seconds
+      const autoHideTimer = setTimeout(() => {
+        if (notificationRef.current) {
+          gsap.to(notificationRef.current, {
+            x: isDesktop ? 400 : -400,
+            opacity: 0,
+            scale: 0.8,
+            duration: 0.5,
+            ease: 'back.in(1.7)',
+            onComplete: () => {
+              setIsVisible(false);
+            },
+          });
+        }
+      }, 8000);
+
+      return () => {
+        clearTimeout(autoHideTimer);
+      };
     }
   }, [isVisible]);
 

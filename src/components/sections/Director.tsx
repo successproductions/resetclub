@@ -8,7 +8,7 @@ const Director: React.FC = () => {
   const t = useTranslations('TeamPage.director');
 
   return (
-    <section className="py-4 md:py-10 bg-white">
+    <section className="pt-4 md:py-10 bg-white">
       <div className="md:max-w-7xl md:mx-auto md:px-6">
         <div className="grid lg:grid-cols-2 md:gap-12 items-start">
           {/* Title - Mobile First */}
@@ -21,7 +21,7 @@ const Director: React.FC = () => {
           </div>
 
           {/* Title - Desktop */}
-          <div className="hidden lg:block mt-24 space-y-1">
+          <div className="hidden lg:block  space-y-1">
             <div>
               <h1 className="text-3xl md:text-3xl lg:text-5xl font-graphik font-normal text-[#524029] md:mb-4 leading-tight">
                 {t('title')}
@@ -48,9 +48,9 @@ const Director: React.FC = () => {
 
           {/* Image Section - Full Width on Mobile */}
           <div className="relative lg:order-last">
-            <div className="relative h-[478px] md:h-[750px] xl:h-[650px] w-full overflow-hidden">
+            <div className="relative h-[478px] md:h-[750px] xl:h-[640px] w-full overflow-hidden">
               <Image
-                src="/Nahed.jpg"
+                src="/images/nahed2.png"
                 alt="Sarah Martinez - Directrice Générale RESET CLUB"
                 fill
                 className="object-cover md:object-fill"

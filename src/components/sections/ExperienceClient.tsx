@@ -10,37 +10,47 @@ const ExperienceClient: React.FC = () => {
 
   //  VIDEO VERSION - COMMENTED OUT FOR TESTING
   return (
-    <section className="relative h-[60vh] md:h-[70vh] flex items-center overflow-hidden">
+    <section className="relative h-[64vh] lg:[90vh] xl:h-[70vh] flex items-center overflow-hidden">
       <div className="absolute inset-0 z-0">
         <video
           autoPlay
           loop
           muted
           playsInline
-          className="absolute inset-0 w-full h-full object-cover opacity-40 blur-sm"
+          className="absolute inset-0 w-full h-full object-cover "
         >
           <source src="/videos/videobg.mp4" type="video/mp4" />
         </video>
-        <div className="absolute inset-0 bg-black/10"></div>
+      <div className="absolute inset-0 bg-black opacity-10"></div>
       </div>
 
       <div className="relative z-10 w-full">
         <div className="flex flex-col gap-4 lg:gap-8 items-center justify-center">
           {/* Title - Always at the top */}
           <div className="text-center w-full px-6">
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-normal text-white">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-normal text-[#524029]">
               L&apos;expérience client
             </h2>
           </div>
 
           {/* Image - In the middle */}
           <div className="relative w-full h-[320px] md:h-[350px] lg:h-[600px] md:max-w-7xl md:mx-auto md:px-6">
+              {/* Mobile Image */}
               <Image
-                src="/images/lexperienceClient4.png"
+                src="/images/LOGO+INFO-02.png"
                 alt="L'expérience client"
                 fill
-                className="object-contain"
-                sizes=""
+                className="object-contain md:hidden"
+                sizes="100vw"
+                priority
+              />
+              {/* Desktop Image */}
+              <Image
+                src="/images/LOGO+INFO.png"
+                alt="L'expérience client"
+                fill
+                className="object-contain hidden md:block"
+                sizes="(min-width: 768px) 100vw"
                 priority
               />
           </div>
@@ -49,7 +59,7 @@ const ExperienceClient: React.FC = () => {
           <div className="text-center px-6">
             <Link
               href="/payment"
-              className="inline-block bg-transparent text-white px-8 py-4 font-graphik font-medium text-lg border border-white hover:bg-white hover:text-[#524029] transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl"
+              className="inline-block bg-transparent text-[#524029] px-8 py-4 font-graphik font-medium text-lg border border-[#524029] hover:bg-gray-950 hover:text-white transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl"
             >
               Réserver mon Bilan
             </Link>

@@ -36,7 +36,7 @@ const Button: React.FC<ButtonProps> = ({
     `,
     secondary: `
       text-gray-900 border border-gray-300 bg-white 
-      hover:bg-gray-900 hover:border-gray-400
+      hover:bg-gray-150 hover:border-gray-400
       focus:ring-gray-500
       group
     `,
