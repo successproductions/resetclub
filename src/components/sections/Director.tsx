@@ -8,17 +8,17 @@ const Director: React.FC = () => {
   const t = useTranslations('TeamPage.director');
 
   return (
-    <section className="pt-4 md:py-10 bg-white">
+    <section className=" md:py-10 bg-white">
       <div className="md:max-w-7xl md:mx-auto md:px-6">
         <div className="grid lg:grid-cols-2 md:gap-12 items-start">
           {/* Title - Mobile First */}
-          <div className="lg:hidden px-6">
+          {/* <div className="lg:hidden px-6">
             <h1 className="text-3xl font-graphik font-normal text-[#524029] leading-tight mb-3">
               {t('title')}
               <br />
               {t('subtitle')}
             </h1>
-          </div>
+          </div> */}
 
           {/* Title - Desktop */}
           <div className="hidden lg:block  space-y-1">
@@ -61,6 +61,11 @@ const Director: React.FC = () => {
 
           {/* Description - Mobile Last */}
           <div className="lg:hidden px-6">
+             <h1 className="text-3xl font-graphik font-normal text-[#524029] leading-tight mt-2">
+              {t('title')}
+              <br />
+              {t('subtitle')}
+            </h1>
             <div className="space-y-2 text-[#524029] font-normal mt-2 font-graphik text-lg leading-relaxed">
               <p>
                 {t('bio1')}
