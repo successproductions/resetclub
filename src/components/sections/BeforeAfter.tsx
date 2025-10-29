@@ -101,7 +101,7 @@ const BeforeAfter: React.FC = () => {
               {/* Content */}
               <div className="p-6">
                 {/* Stats Row */}
-                <div className="grid grid-cols-3 gap-4 mb-4">
+                {/* <div className="grid grid-cols-3 gap-4 mb-4">
                   <div className="text-center">
                     <div className="text-2xl font-bold text-gray-900">
                       {testimonial.beforeWeight}
@@ -126,17 +126,17 @@ const BeforeAfter: React.FC = () => {
                       Après
                     </div>
                   </div>
-                </div>
+                </div> */}
 
                 {/* Divider */}
-                <div className="h-px bg-gray-200 mb-4" />
+                {/* <div className="h-px bg-gray-200 mb-4" /> */}
 
                 {/* Client Info */}
                 <div className="text-center">
-                  <h3 className="text-lg font-semibold text-gray-900 mb-1">
+                  <h3 className="text-lg font-semibold text-[#524029] mb-1">
                     {testimonial.name}
                   </h3>
-                  <p className="text-sm text-gray-600">
+                  <p className="text-sm text-[#524029]">
                     {testimonial.age} ans • Transformation en {testimonial.timeframe}
                   </p>
                 </div>
