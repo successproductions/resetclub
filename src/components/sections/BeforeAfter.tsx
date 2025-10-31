@@ -12,7 +12,7 @@ const BeforeAfter: React.FC = () => {
   const testimonials = [
     {
       id: 1,
-      beforeImage: "https://revealweightlossmd.com/wp-content/uploads/2025/04/before-after-case-2.png",
+      beforeImage: "/images/beforeAfter1.png",
       beforeWeight: "95 kg",
       afterWeight: "68 kg",
       weightLoss: "27 kg",
@@ -22,17 +22,17 @@ const BeforeAfter: React.FC = () => {
     },
     {
       id: 2,
-      beforeImage: "https://revealweightlossmd.com/wp-content/uploads/2025/04/before-after-case-3.png",
+      beforeImage: "/images/beforeAfter2.png",
       beforeWeight: "88 kg",
       afterWeight: "63 kg",
       weightLoss: "25 kg",
       timeframe: "5 mois",
-      name: "Hamza L.",
+      name: "Fati L.",
       age: 28
     },
     {
       id: 3,
-      beforeImage: "https://revealweightlossmd.com/wp-content/uploads/2025/04/before-after-case-1.png",
+      beforeImage: "/images/beforeAfter3.png",
       beforeWeight: "102 kg",
       afterWeight: "72 kg",
       weightLoss: "30 kg",
@@ -71,10 +71,10 @@ const BeforeAfter: React.FC = () => {
           {testimonials.map((testimonial) => (
             <div
               key={testimonial.id}
-              className="bg-white  shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2"
+              className="bg-white shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 flex flex-col"
             >
               {/* Image Container */}
-              <div className="relative h-80 overflow-hidden">
+              <div className="relative flex-1 overflow-hidden min-h-[500px]">
                 <Image
                   src={testimonial.beforeImage}
                   alt={`Transformation de ${testimonial.name}`}
@@ -99,7 +99,7 @@ const BeforeAfter: React.FC = () => {
               </div>
 
               {/* Content */}
-              <div className="p-6">
+              <div className="p-6 flex-shrink-0">
                 {/* Stats Row */}
                 {/* <div className="grid grid-cols-3 gap-4 mb-4">
                   <div className="text-center">
@@ -150,9 +150,9 @@ const BeforeAfter: React.FC = () => {
       <div className="md:hidden w-full">
         <div className="relative">
           {/* Single Card */}
-          <div className="bg-white shadow-lg overflow-hidden">
+          <div className="bg-white shadow-lg overflow-hidden flex flex-col min-h-[600px]">
             {/* Image Container */}
-            <div className="relative h-96 overflow-hidden">
+            <div className="relative flex-1 overflow-hidden">
               <Image
                 src={testimonials[currentIndex].beforeImage}
                 alt={`Transformation de ${testimonials[currentIndex].name}`}
@@ -177,7 +177,7 @@ const BeforeAfter: React.FC = () => {
             </div>
 
             {/* Content */}
-            <div className="p-6">
+            <div className="p-6 flex-shrink-0">
               {/* Stats Row */}
               {/* <div className="grid grid-cols-3 gap-4 mb-4">
                 <div className="text-center">
