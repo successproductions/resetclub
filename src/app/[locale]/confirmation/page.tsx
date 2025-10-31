@@ -41,7 +41,7 @@ export default function ConfirmationPage() {
           </p>
 
           {/* Details Box */}
-          <div className="bg-gray-50 p-6 md:p-8 mb-4 md:mb-8 md:text-left">
+          <div className="bg-gray-50 p-6 md:p-8 mb-4 md:mb-8 ">
             <p className="text-lg text-[#524029] mb-4 font-graphik">
               <span className="font-medium">{t('duration.label')}:</span> {t('duration.value')}
             </p>
