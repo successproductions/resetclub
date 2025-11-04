@@ -107,7 +107,7 @@ const KeyFigures: React.FC = () => {
   ];
 
   return (
-    <section id="key-figures-section" className=" py-2 md:pt-8 bg-gradient-to-b from-gray-50 to-white relative overflow-hidden">
+    <section id="key-figures-section" className=" py-2 md:pt-8 bg-white relative overflow-hidden">
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-5">
         <div className="absolute top-0 left-0 w-72 h-72 bg-[#ccbaa8] rounded-full blur-3xl -translate-x-36 -translate-y-36"></div>

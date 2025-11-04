@@ -28,16 +28,16 @@ export default function HomePage() {
         {/* <PressBanner /> */}
             <PracticeComparison />
         <WhyResetClub />
-        <VideoCarousel />
+                <BeforeAfter />
+                {/* <VideoCarousel /> */}
         <KeyFigures />
         <ExperienceClient />
         <IntroSection />
+        <NotreHistoireSection />
         <TeamHero />
         <Director />
         <TeamSlider />
-        <NotreHistoireSection />
-        <BeforeAfter />
-    
+        
         <Trustpilot />
       </main>
       <Footer />

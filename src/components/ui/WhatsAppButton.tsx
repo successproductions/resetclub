@@ -57,7 +57,7 @@ export default function WhatsAppButton({
       <div className={`fixed bottom-6 right-6 z-50 ${className}`}>
         {/* Chat Widget with ChatBot - Positioned absolutely to not affect button position */}
         {isOpen && !showChatBot && (
-          <div className="absolute bottom-16 right-0 w-80 md:w-96 bg-white rounded-2xl shadow-2xl overflow-hidden animate-fade-in">
+          <div className="absolute bottom-16 right-0 w-80 md:w-96 bg-white rounded-xs shadow-2xl overflow-hidden animate-fade-in">
             {/* Header */}
             <div className="bg-gray-950 text-white px-6 py-4 flex items-center justify-between">
               <div className="flex items-center space-x-3">
@@ -165,7 +165,7 @@ export default function WhatsAppButton({
 
         {/* ChatBot Modal */}
         {showChatBot && (
-          <div className="absolute bottom-16 right-0 w-80 md:w-96 h-[600px] bg-white rounded-2xl shadow-2xl overflow-hidden animate-fade-in">
+          <div className="absolute bottom-16 right-0 w-80 md:w-96 h-[600px] bg-white rounded-sm shadow-2xl overflow-hidden animate-fade-in">
             <ChatBot
               onClose={() => {
                 setShowChatBot(false);
