@@ -8,7 +8,7 @@ import WhyResetClub from '@/components/sections/WhyResetClub';
 import KeyFigures from '@/components/sections/KeyFigures';
 import ExperienceClient from '@/components/sections/ExperienceClient';
 import NotreHistoireSection from '@/components/sections/NotreHistoireSection';
-import VideoCarousel from '@/components/sections/VideoCarousel';
+// import VideoCarousel from '@/components/sections/VideoCarousel';
 import BeforeAfter from '@/components/sections/BeforeAfter';
 import Trustpilot from '@/components/sections/Trustpilot';
 import PracticeComparison from '@/components/sections/PracticeComparison';

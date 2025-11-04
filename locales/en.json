@@ -176,7 +176,7 @@
     "stats": {
       "weightLoss": {
         "number": "10.599",
-        "unit": "kg",
+        "unit": "cm",
         "label": "lost since opening"
       },
       "satisfaction": {
