@@ -16,7 +16,7 @@ export default function MembershipCTA() {
     <section id="membership-cta" className="relative min-h-[70vh] md:min-h-screen  flex flex-col bg-white overflow-hidden">
       {/* Background Orb Image */}
       <div className="absolute inset-0 flex items-center justify-center">
-        <div className="relative w-[350px] h-[350px] md:w-[800px] md:h-[800px] lg:w-[1000px] lg:h-[1000px]">
+        <div className="relative w-[350px] h-[350px] md:w-[800px] md:h-[800px] lg:w-[850px] lg:h-[850px]">
           <Image
             src="/images/orberesetclub.png"
             alt="Reset Club"
@@ -28,7 +28,7 @@ export default function MembershipCTA() {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 flex-1 flex items-center justify-center px-6 py-20">
+      <div className="relative z-10 flex-1 flex items-center justify-center  px-6 py-20">
         <div className="text-center max-w-3xl md:max-w-4xl mt-24 md:mt-0">
           <p className="text-[12px] md:text-sm uppercase tracking-[0.2em] md:tracking-[0.3em] text-white mb-4 md:mb-6 font-graphik">
             EXPERIENCE A NEW STANDARD IN WELLNESS.
@@ -51,7 +51,7 @@ export default function MembershipCTA() {
       </div>
 
       {/* Footer */}
-      <div className="relative z-10 px-6 md:px-12 py-8 flex items-center justify-between border-t border-white/10">
+      <div className="relative z-10 px-6 md:px-12 py-8  flex items-center justify-between border-t border-white/10">
 
        {/* Center - Logo */}
         <div className="absolute left-1/2 -translate-x-1/2">

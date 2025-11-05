@@ -1161,6 +1161,8 @@ export default function SplashCursor({
       updatePointerMoveData(pointer, posX, posY, color);
     });
 
+    let animationStarted = false;
+
     function handleFirstMouseMove(e: MouseEvent) {
       if (!isWithinBounds(e.clientX, e.clientY)) return;
 
@@ -1168,13 +1170,16 @@ export default function SplashCursor({
       const posX = scaleByPixelRatio(e.clientX);
       const posY = scaleByPixelRatio(e.clientY);
       const color = generateColor();
-      updateFrame();
+
+      if (!animationStarted) {
+        animationStarted = true;
+        updateFrame();
+      }
+
       updatePointerMoveData(pointer, posX, posY, color);
       document.body.removeEventListener('mousemove', handleFirstMouseMove);
     }
     document.body.addEventListener('mousemove', handleFirstMouseMove);
-
-    multipleSplats(parseInt((Math.random() * 20).toString()) + 5);
   }, [
     SIM_RESOLUTION,
     DYE_RESOLUTION,

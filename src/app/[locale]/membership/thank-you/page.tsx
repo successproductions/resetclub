@@ -38,7 +38,7 @@ export default function ThankYouPage() {
           </svg>
         </div>
 
-        <h1 className="text-4xl md:text-5xl lg:text-6xl font-light mb-6">
+        <h1 className="text-4xl md:text-4xl lg:text-5xl font-light mb-6">
           Merci pour votre demande !
         </h1>
 

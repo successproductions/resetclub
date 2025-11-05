@@ -178,6 +178,8 @@ Et tu bénéficieras d'un plan sur mesure basé sur ta biologie.
         setCollectingInfo(true);
         setInfoStep(0);
         addMessage(infoQuestions[0], 'bot');
+      } else if (option.includes('Je préfère d\'abord poser une question')) {
+        addMessage(' Bien sûr ! Pour toute question, notre équipe est disponible sur WhatsApp pour t\'accompagner personnellement. 💬', 'bot', ['Contacter sur WhatsApp']);
       } else if (option.includes('conseillère')) {
         addMessage(' Parfait ! Un membre de notre équipe va te contacter très bientôt. Tu peux aussi nous joindre directement sur WhatsApp.', 'bot', ['Contacter sur WhatsApp']);
       } else if (option.includes('Contacter sur WhatsApp')) {

@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { X } from 'lucide-react';
-import { useRouter } from 'next/navigation';
+import { useRouter, usePathname } from 'next/navigation';
 
 interface MembershipApplicationFormProps {
   isOpen: boolean;
@@ -11,6 +11,9 @@ interface MembershipApplicationFormProps {
 
 export default function MembershipApplicationForm({ isOpen, onClose }: MembershipApplicationFormProps) {
   const router = useRouter();
+  const pathname = usePathname();
+  const locale = pathname.split('/')[1] || 'fr';
+
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -36,12 +39,21 @@ export default function MembershipApplicationForm({ isOpen, onClose }: Membershi
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 1000));
+    try {
+      // TODO: Send form data to your backend/API
+      // await fetch('/api/membership', { method: 'POST', body: JSON.stringify(formData) });
 
-    // Close modal and redirect to thank you page
-    onClose();
-    router.push('/membership/thank-you');
+      // Short delay for smooth transition
+      await new Promise(resolve => setTimeout(resolve, 300));
+
+      // Close modal and redirect to thank you page with locale
+      onClose();
+      router.push(`/${locale}/membership/thank-you`);
+    } catch (error) {
+      console.error('Form submission error:', error);
+      setIsSubmitting(false);
+      // TODO: Show error message to user
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
@@ -79,6 +91,16 @@ export default function MembershipApplicationForm({ isOpen, onClose }: Membershi
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm p-2 md:p-4 font-graphik">
+      {/* Loading Overlay */}
+      {isSubmitting && (
+        <div className="absolute inset-0 z-60 flex items-center justify-center bg-black/90 backdrop-blur-md">
+          <div className="text-center">
+            <div className="inline-block animate-spin rounded-full h-16 w-16 border-t-2 border-b-2 border-white mb-4"></div>
+            <p className="text-white text-lg font-graphik">Envoi en cours...</p>
+          </div>
+        </div>
+      )}
+
       <div className="relative bg-white text-black max-w-2xl w-full max-h-[90vh] overflow-y-auto rounded-lg">
         {/* Close Button */}
         <button
