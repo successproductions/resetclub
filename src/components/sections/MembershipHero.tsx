@@ -203,7 +203,7 @@ export default function MembershipHero() {
           {/* Logo */}
           <div className="relative w-44 h-24 md:w-40 lg:w-64 lg:h-28 md:h-14">
             <Image
-              src="/images/logoresetclubnoir.png"
+              src="/images/LOGORESETCLUBNOIR.png"
               alt="Reset Club Logo"
               fill
               className="object-contain"
