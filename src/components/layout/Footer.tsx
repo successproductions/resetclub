@@ -17,25 +17,25 @@ const Footer: React.FC = () => {
     company: {
       titleKey: 'company.title',
       links: [
-        { labelKey: 'company.ourStory', href: '/about' },
-        { labelKey: 'company.ourTeam', href: '/team' },
+        { labelKey: 'company.ourStory', href: '/#notre-histoire' },
+        { labelKey: 'company.ourTeam', href: '/#notre-equipe' },
         { labelKey: 'company.contact', href: '/contact' },
       ],
     },
     services: {
       titleKey: 'services.title',
       links: [
-        { labelKey: 'services.programs', href: '/programs' },
-        { labelKey: 'services.coaching', href: '/coaching' },
-        { labelKey: 'services.online', href: '/online' },
+        { labelKey: 'services.programs', href: '/#programmes-holistiques' },
+        { labelKey: 'services.coaching', href: '/contact' },
+        { labelKey: 'services.online', href: '/contact' },
       ],
     },
     support: {
       titleKey: 'support.title',
       links: [
-        { labelKey: 'support.faq', href: '/faq' },
-        { labelKey: 'support.bookings', href: '/contac' },
-        { labelKey: 'support.testimonials', href: '/testimonials' }
+        { labelKey: 'support.faq', href: '/contact' },
+        { labelKey: 'support.bookings', href: '/contact' },
+        { labelKey: 'support.testimonials', href: '/#temoignages-clients' }
       ],
     },
   };

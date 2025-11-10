@@ -120,7 +120,7 @@ export default function NotreHistoireSection() {
   };
 
   return (
-    <section ref={sectionRef} className="py-4 md:py-1 bg-white">
+    <section id="notre-histoire" ref={sectionRef} className="py-4 md:py-1 bg-white">
       <div className="md:container md:mx-auto md:px-4">
         <div className="grid md:grid-cols-2 gap-4 md:gap-12 items-center">
           {/* Text Section - Desktop */}

@@ -73,7 +73,7 @@ const TeamSlider: React.FC = () => {
   };
 
   return (
-    <section className="py-6 md:pb-12 bg-white">
+    <section id="notre-equipe" className="py-6 md:pb-12 bg-white">
       <div className="md:max-w-7xl md:mx-auto md:px-6">
         {/* Header Section */}
         <div className="text-center mb-4 md:mb-12 px-6 md:px-0">

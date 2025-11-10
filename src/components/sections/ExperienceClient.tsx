@@ -10,7 +10,7 @@ const ExperienceClient: React.FC = () => {
 
   //  VIDEO VERSION - COMMENTED OUT FOR TESTING
   return (
-    <section className="relative h-[65vh] md:h-[65vh] lg:h-[80vh] xl:h-[85vh] flex items-center overflow-hidden">
+    <section id="programmes-holistiques" className="relative h-[65vh] md:h-[65vh] lg:h-[80vh] xl:h-[85vh] flex items-center overflow-hidden">
       <div className="absolute inset-0 z-0">
         <video
           autoPlay
