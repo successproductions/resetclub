@@ -83,7 +83,7 @@ const BeforeAfter: React.FC = () => {
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 />
                 {/* Gradient Overlay for better text readability */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                {/* <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" /> */}
 
                 {/* Before/After Labels */}
                 <div className="absolute top-4  left-4">
@@ -150,7 +150,7 @@ const BeforeAfter: React.FC = () => {
       <div className="md:hidden w-full">
         <div className="relative">
           {/* Single Card */}
-          <div className="bg-white shadow-lg overflow-hidden flex flex-col min-h-[600px]">
+          <div className="bg-white shadow-lg overflow-hidden flex flex-col min-h-[620px]">
             {/* Image Container */}
             <div className="relative flex-1 overflow-hidden">
               <Image
@@ -177,7 +177,7 @@ const BeforeAfter: React.FC = () => {
             </div>
 
             {/* Content */}
-            <div className="p-6 flex-shrink-0">
+            <div className="p-4 flex-shrink-0">
               {/* Stats Row */}
               {/* <div className="grid grid-cols-3 gap-4 mb-4">
                 <div className="text-center">
