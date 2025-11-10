@@ -18,7 +18,7 @@ export default function ContactForm() {
   } = useContactForm();
 
   return (
-    <div className="bg-white rounded-2xl shadow-lg p-4 md:p-6 font-graphik lg:p-8">
+    <div className="bg-white rounded-sm shadow-lg p-4 md:p-6 font-graphik lg:p-8">
       <p className="text-lg md:text-3xl   text-[#524029] mb-4">
         {t('subtitle')}
       </p>

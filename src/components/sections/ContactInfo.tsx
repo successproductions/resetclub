@@ -6,7 +6,7 @@ export default function ContactInfo() {
   return (
     <div className="space-y-8 font-graphik">
       {/* Contact Details */}
-      <div className="bg-white rounded-2xl shadow-lg p-4 md:p-6 lg:p-8">
+      <div className="bg-white rounded-sm shadow-lg p-4 md:p-6 lg:p-8">
         <h3 className="text-2xl md:text-3xl text-[#524029] mb-8">
           {t('info.title')}
         </h3>
@@ -74,8 +74,8 @@ export default function ContactInfo() {
       </div>
 
       {/* Map */}
-      <div className="bg-white rounded-2xl shadow-lg p-2 md:p-4">
-        <div className="aspect-video rounded-lg overflow-hidden">
+      <div className="bg-white rounded-sm shadow-lg p-2 md:p-4">
+        <div className="aspect-video rounded-sm overflow-hidden">
           <iframe
             src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d1134.002295986668!2d-6.8780724126678034!3d33.95305643512945!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e1!3m2!1sfr!2sma!4v1759336647515!5m2!1sfr!2sma"
             width="100%"
