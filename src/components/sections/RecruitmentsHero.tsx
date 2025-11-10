@@ -23,10 +23,10 @@ export default function RecruitmentsHero() {
 
       {/* Content */}
       <div className="relative z-10 mt-28 md:mt-18 text-center px-6 max-w-4xl mx-auto">
-        <h1 className="text-3xl md:text-4xl lg:text-5xl uppercase text-white mb-4 font-normal font-graphik tracking-tight">
+        <h1 className="text-2xl md:text-4xl lg:text-5xl uppercase text-white mb-4 font-normal font-graphik tracking-tight">
           {t('hero.title')}
         </h1>
-        <p className="text-sm md:text-xl lg:text-1xl text-white font-graphik tracking-wide">
+        <p className="text-lg md:text-xl lg:text-1xl text-white font-graphik tracking-wide">
           {t('hero.subtitle')}
         </p>
       </div>

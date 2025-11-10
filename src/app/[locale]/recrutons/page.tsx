@@ -13,7 +13,7 @@ export default function RecrutonsPage() {
       <Header />
       <RecruitmentsHero />
 
-      <div className="bg-white py-8 md:py-20 overflow-x-hidden">
+      <div className="bg-white pb-8 md:py-20 overflow-x-hidden">
         <div className="container mx-auto  md:px-6 max-w-7xl">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
 

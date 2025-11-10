@@ -63,7 +63,7 @@ export default function CVUploadForm() {
           />
           <label
             htmlFor="cv-upload"
-            className="inline-block px-12 py-6 bg-white border-2 border-dashed border-[#524029] cursor-pointer hover:bg-[#ccbaa8]/5 hover:border-[#ccbaa8] transition-all duration-300 shadow-sm"
+            className="inline-block px-6 md:px-12 py-6 bg-white border-2 border-dashed border-[#524029] cursor-pointer hover:bg-[#ccbaa8]/5 hover:border-[#ccbaa8] transition-all duration-300 shadow-sm"
           >
             <div className="text-center">
               {/* <svg className="w-16 h-16 text-[#c26d4c] mx-auto mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
