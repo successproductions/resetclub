@@ -16,15 +16,13 @@ export default function MembershipCTA() {
     <section id="membership-cta" className="relative min-h-[70vh] md:min-h-screen  flex flex-col bg-white overflow-hidden">
       {/* Background Orb Image */}
       <div className="absolute inset-0 flex items-center justify-center">
-        <div className="relative w-[350px] h-[360px] md:w-[800px] md:h-[800px] lg:w-[850px] lg:h-[850px]">
-          <Image
-            src="/images/orberesetclub.png"
-            alt="Reset Club"
-            fill
-            className="object-contain"
-            priority
-          />
-        </div>
+        <Image
+          src="/images/orberesetclub.png"
+          alt="Reset Club"
+          fill
+          className="object-contain"
+          priority
+        />
       </div>
 
       {/* Content */}

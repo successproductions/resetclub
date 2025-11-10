@@ -143,8 +143,8 @@ export default function NotreHistoireSection() {
           </div>
 
           {/* Video Section - Desktop */}
-          <div ref={videoRef} className="hidden md:block relative overflow-hidden shadow-2xl md:order-last">
-            <div className="h-[600px] lg:h-[750px] bg-gray-900 relative">
+          <div ref={videoRef} className="hidden md:block relative overflow-hidden md:mb-8 shadow-2xl md:order-last">
+            <div className="h-[600px] lg:h-[770px]  bg-gray-900 relative">
               {!isPlaying ? (
                 // Thumbnail with Play Button
                 <div className="relative w-full h-full">
