@@ -84,7 +84,7 @@ const Footer: React.FC = () => {
               <div className="flex space-x-3">
                 <a
                   href="#"
-                  className="w-12 h-12 bg-gray-950 rounded-full flex items-center justify-center transition-all duration-300 hover:bg-[#c26d4c] hover:transform hover:scale-110"
+                  className="w-12 h-12 bg-gray-950 rounded-full flex items-center justify-center transition-all duration-300 hover:bg-[#f5efe8] hover:transform hover:scale-110"
                   aria-label="Facebook"
                 >
                   <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
@@ -93,7 +93,7 @@ const Footer: React.FC = () => {
                 </a>
                 <a
                   href="#"
-                  className="w-12 h-12 bg-gray-950 rounded-full flex items-center justify-center transition-all duration-300 hover:bg-[#c26d4c] hover:transform hover:scale-110"
+                  className="w-12 h-12 bg-gray-950 rounded-full flex items-center justify-center transition-all duration-300 hover:bg-[#f5efe8] hover:transform hover:scale-110"
                   aria-label="Instagram"
                 >
                   <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
@@ -104,7 +104,7 @@ const Footer: React.FC = () => {
                 </a>
                 <a
                   href="#"
-                  className="w-12 h-12 bg-gray-950 rounded-full flex items-center justify-center transition-all duration-300 hover:bg-[#c26d4c] hover:transform hover:scale-110"
+                  className="w-12 h-12 bg-gray-950 rounded-full flex items-center justify-center transition-all duration-300 hover:bg-[#f5efe8] hover:transform hover:scale-110"
                   aria-label="LinkedIn"
                 >
                   <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
@@ -113,7 +113,7 @@ const Footer: React.FC = () => {
                 </a>
                 <a
                   href="#"
-                  className="w-12 h-12 bg-gray-950 rounded-full flex items-center justify-center transition-all duration-300 hover:bg-[#c26d4c] hover:transform hover:scale-110"
+                  className="w-12 h-12 bg-gray-950 rounded-full flex items-center justify-center transition-all duration-300 hover:bg-[#f5efe8] hover:transform hover:scale-110"
                   aria-label="YouTube"
                 >
                   <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
@@ -134,7 +134,7 @@ const Footer: React.FC = () => {
                   <li key={index}>
                     <Link
                       href={link.href}
-                      className="text-gray-950 hover:text-[#c26d4c] transition-colors duration-300 text-sm hover:underline font-poppins"
+                      className="text-gray-950 hover:text-gray-700 transition-colors duration-300 text-sm hover:underline font-poppins"
                     >
                       {t(link.labelKey)}
                     </Link>
@@ -154,13 +154,13 @@ const Footer: React.FC = () => {
               © {currentYear} Reset Club™. {t('rights')}.
             </div>
             <div className="flex space-x-6 mt-4 md:mt-0">
-              <Link href="/legal" className="text-gray-950 hover:text-[#c26d4c] text-sm transition-colors duration-300">
+              <Link href="/legal" className="text-gray-950 hover:text-gray-700 text-sm transition-colors duration-300">
                 {t('legal')}
               </Link>
-              <Link href="/privacy" className="text-gray-950 hover:text-[#c26d4c] text-sm transition-colors duration-300">
+              <Link href="/privacy" className="text-gray-950 hover:text-gray-700 text-sm transition-colors duration-300">
                 {t('privacy')}
               </Link>
-              <Link href="/cookies" className="text-gray-950 hover:text-[#c26d4c] text-sm transition-colors duration-300">
+              <Link href="/cookies" className="text-gray-950 hover:text-gray-700 text-sm transition-colors duration-300">
                 {t('cookies')}
               </Link>
             </div>

@@ -72,10 +72,10 @@ export default function MembershipBenefits() {
   };
 
   return (
-    <section className="relative min-h-[70dvh] flex items-center justify-center bg-white py-20 px-6">
+    <section className="relative min-h-[70dvh] flex items-center justify-center bg-white py-10 md:py-20 px-6">
       <div className="max-w-4xl mx-auto w-full">
         {/* Header */}
-        <div className="text-center ">
+        <div className="text-center mb-4 ">
           <p className="text-sm md:text-base uppercase tracking-[0.3em] text-black/60 mb-4 font-graphik">
             THE RESET CLUB EXPERIENCE
           </p>
