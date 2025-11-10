@@ -54,7 +54,7 @@ const Footer: React.FC = () => {
                 alt="Reset Club™ - Premier centre de transformation holistique au Maroc"
                 width={180}
                 height={72}
-                className="h-34 w-28 mb-1"
+                className="h-30 w-24 mb-1"
                 sizes="180px"
               />
               {/* Contact Info */}

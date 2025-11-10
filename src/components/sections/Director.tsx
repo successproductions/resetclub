@@ -48,13 +48,13 @@ const Director: React.FC = () => {
 
           {/* Image Section - Full Width on Mobile */}
           <div className="relative lg:order-last">
-            <div className="relative h-[478px] md:h-[750px] xl:h-[640px] w-full overflow-hidden">
+            <div className="relative h-[478px] md:h-[750px] xl:h-[640px]  w-[89%] overflow-hidden">
               <Image
                 src="/images/nahed2.png"
                 alt="Sarah Martinez - Directrice Générale RESET CLUB"
                 fill
                 className="object-cover md:object-fill"
-                sizes="(max-width: 1000px) 100vw, 50vw"
+                sizes="(max-width: 900px) 100vw, 50vw"
               />
             </div>
           </div>

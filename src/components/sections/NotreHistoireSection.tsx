@@ -149,7 +149,7 @@ export default function NotreHistoireSection() {
                 // Thumbnail with Play Button
                 <div className="relative w-full h-full">
                   <Image
-                    src="/images/thumnbnialNahed2.png"
+                    src="/images/nahed1.png"
                     alt="Notre Histoire"
                     fill
                     className="object-cover"
