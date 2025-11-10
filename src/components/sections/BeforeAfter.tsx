@@ -208,10 +208,10 @@ const BeforeAfter: React.FC = () => {
 
               {/* Client Info */}
               <div className="text-center">
-                <h3 className="text-lg font-medium font-graphik  text-gray-700 mb-1">
+                <h3 className="text-lg font-medium font-graphik  text-[#524029] mb-1">
                   {testimonials[currentIndex].name}
                 </h3>
-                <p className="text-sm font-medium font-graphik text-gray-600">
+                <p className="text-sm font-medium font-graphik text-[#524029]">
                   {testimonials[currentIndex].age} ans • Transformation en {testimonials[currentIndex].timeframe}
                 </p>
               </div>
