@@ -37,7 +37,7 @@ const ExperienceClient: React.FC = () => {
           <div className="relative w-full h-[320px] md:h-[350px] lg:h-[600px] md:max-w-7xl md:mx-auto md:px-6">
               {/* Mobile Image */}
               <Image
-                src="/images/LOGO+INFO-02.png"
+                src="/images/shema.png"
                 alt="L'expérience client"
                 fill
                 className="object-contain md:hidden"
@@ -46,7 +46,7 @@ const ExperienceClient: React.FC = () => {
               />
               {/* Desktop Image */}
               <Image
-                src="/images/LOGO+INFO.png"
+                src="/images/shema_mobile.png"
                 alt="L'expérience client"
                 fill
                 className="object-contain hidden md:block"

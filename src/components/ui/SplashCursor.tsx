@@ -76,6 +76,9 @@ export default function SplashCursor({
     const canvas = canvasRef.current;
     if (!canvas) return;
 
+    let isPageVisible = true;
+    let animationFrameId: number | null = null;
+
     const pointers: Pointer[] = [pointerPrototype()];
 
     const config = {
@@ -96,8 +99,23 @@ export default function SplashCursor({
       TRANSPARENT
     };
 
+    // Pause animation when page is not visible
+    const handleVisibilityChange = () => {
+      isPageVisible = !document.hidden;
+      if (!isPageVisible && animationFrameId !== null) {
+        cancelAnimationFrame(animationFrameId);
+        animationFrameId = null;
+      }
+    };
+
+    document.addEventListener('visibilitychange', handleVisibilityChange);
+
     const { gl, ext } = getWebGLContext(canvas);
-    if (!gl || !ext) return;
+    if (!gl || !ext) {
+      // Cleanup if WebGL fails
+      document.removeEventListener('visibilitychange', handleVisibilityChange);
+      return;
+    }
 
     if (!ext.supportLinearFiltering) {
       config.DYE_RESOLUTION = 256;
@@ -869,13 +887,15 @@ export default function SplashCursor({
     let colorUpdateTimer = 0.0;
 
     function updateFrame() {
+      if (!isPageVisible) return;
+
       const dt = calcDeltaTime();
       if (resizeCanvas()) initFramebuffers();
       updateColors(dt);
       applyInputs();
       step(dt);
       render(null);
-      requestAnimationFrame(updateFrame);
+      animationFrameId = requestAnimationFrame(updateFrame);
     }
 
     function calcDeltaTime() {
@@ -1180,6 +1200,25 @@ export default function SplashCursor({
       document.body.removeEventListener('mousemove', handleFirstMouseMove);
     }
     document.body.addEventListener('mousemove', handleFirstMouseMove);
+
+    // Cleanup function
+    return () => {
+      isPageVisible = false;
+      if (animationFrameId !== null) {
+        cancelAnimationFrame(animationFrameId);
+      }
+      document.removeEventListener('visibilitychange', handleVisibilityChange);
+      document.body.removeEventListener('mousemove', handleFirstMouseMove);
+
+      // Clean up WebGL resources
+      if (gl) {
+        try {
+          gl.getExtension('WEBGL_lose_context')?.loseContext();
+        } catch (e) {
+          console.warn('Error cleaning up WebGL context:', e);
+        }
+      }
+    };
   }, [
     SIM_RESOLUTION,
     DYE_RESOLUTION,
@@ -1199,8 +1238,8 @@ export default function SplashCursor({
   ]);
 
   return (
-    <div className="fixed top-0 left-0 z-50 pointer-events-none w-full h-full">
-      <canvas ref={canvasRef} id="fluid" className="w-screen h-screen block"></canvas>
+    <div className="absolute inset-0 pointer-events-none">
+      <canvas ref={canvasRef} id="fluid" className="w-full h-full block"></canvas>
     </div>
   );
 }

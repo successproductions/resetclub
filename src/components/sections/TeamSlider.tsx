@@ -12,7 +12,7 @@ const TeamSlider: React.FC = () => {
     {
       id: 1,
       key: 'sarah',
-      image: "https://media.sixsenses.com/B60H3R33/at/59kb6f3rfrq76gn8fb9gng7/Alphinah_Ashinai.jpg?format=webp&width=680&height=900&fit=crop"
+      image: "/images/sara.jpg"
     },
     {
       id: 2,
