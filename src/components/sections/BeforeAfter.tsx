@@ -58,10 +58,10 @@ const BeforeAfter: React.FC = () => {
     <section id="temoignages-clients" className="md:py-8 py-4 bg-white">
       {/* Header Section */}
       <div className="max-w-7xl mx-auto px-6 mb-5 md:mb-10">
-        <h2 className="text-3xl md:text-4xl lg:text-5xl text-[#524029] md:mb-6 md:text-center ">
+        <h2 className="text-3xl md:text-4xl lg:text-5xl text-gray-900 md:mb-6 md:text-center ">
           {t('subtitle')}
         </h2>
-        <p className='text-[#524029] text-lg md:text-center font-graphik md:text-xl'>{t('description')}</p>
+        <p className='text-gray-900 text-lg md:text-center font-graphik md:text-xl'>{t('description')}</p>
         
       </div>
 
@@ -133,10 +133,10 @@ const BeforeAfter: React.FC = () => {
 
                 {/* Client Info */}
                 <div className="text-center">
-                  <h3 className="text-lg font-semibold text-[#524029] mb-1">
+                  <h3 className="text-lg font-semibold text-gray-900 mb-1">
                     {testimonial.name}
                   </h3>
-                  <p className="text-sm text-[#524029]">
+                  <p className="text-sm text-gray-900">
                     {testimonial.age} ans • Transformation en {testimonial.timeframe}
                   </p>
                 </div>
@@ -208,10 +208,10 @@ const BeforeAfter: React.FC = () => {
 
               {/* Client Info */}
               <div className="text-center">
-                <h3 className="text-lg font-medium font-graphik  text-[#524029] mb-1">
+                <h3 className="text-lg font-medium font-graphik  text-gray-900 mb-1">
                   {testimonials[currentIndex].name}
                 </h3>
-                <p className="text-sm font-medium font-graphik text-[#524029]">
+                <p className="text-sm font-medium font-graphik text-gray-900">
                   {testimonials[currentIndex].age} ans • Transformation en {testimonials[currentIndex].timeframe}
                 </p>
               </div>
@@ -259,7 +259,7 @@ const BeforeAfter: React.FC = () => {
 
       {/* Success Quote */}
       <div className="max-w-4xl mx-auto px-6 mt-4  md:mt-10 text-center">
-        <blockquote className="text-lg md:text-2xl font-normal font-graphik  text-[#524029] italic">
+        <blockquote className="text-lg md:text-2xl font-normal font-graphik  text-gray-900 italic">
           &ldquo;{t('quote')}&rdquo;
         </blockquote>
 
@@ -267,7 +267,7 @@ const BeforeAfter: React.FC = () => {
         <div className="mt-4 md:mt-8">
           <Link
             href="/payment"
-            className="inline-block bg-transparent font-medium font-graphik text-[#524029] hover:text-white px-8 py-4  border hover:border-gray-800  text-lg hover:bg-gray-950 cursor-pointer transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl"
+            className="inline-block bg-transparent font-medium font-graphik text-gray-900 hover:text-white px-8 py-4  border hover:border-gray-800  text-lg hover:bg-gray-950 cursor-pointer transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl"
           >
             {t('cta')}
           </Link>

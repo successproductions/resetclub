@@ -282,15 +282,18 @@
     },
     "cards": {
       "in": {
-        "title": "IN — Réveillez votre énergie cellulaire",
+        "title": "IN",
+        "title2" :"Réveillez votre énergie cellulaire",
         "subtitle": "Rechargez vos cellules. Réactivez votre métabolisme. Reconnectez-vous à votre vitalité profonde. Là où la transformation commence, de l'intérieur."
       },
       "out": {
-        "title": "OUT — Libérez ce qui vous retient",
+        "title": "OUT ",
+        "title2" :"Libérez ce qui vous retient",
         "subtitle": "Détoxifiez. Drainez. Respirez. Chaque soin sculpte votre corps et allège votre esprit. Votre légèreté devient votre nouvelle puissance."
       },
       "reset": {
-        "title": "RESET — Réinitialisez votre pouvoir intérieur",
+        "title": "RESET ",
+        "title2": "Réinitialisez votre pouvoir intérieur",
         "subtitle": "Libérez vos blocages émotionnels. Réveillez votre équilibre intérieur. Réinitialisez. Rayonnez. Renaissez. Parce que la vraie beauté commence à l'intérieur."
       }
     }
@@ -304,7 +307,7 @@
       "name": "Nahed Rachad",
       "title": "Fondatrice & Visionnaire",
       "subtitle": "Reset Club",
-      "bio1": "Et si ce que vous cherchez n'était pasun régime…",
+      "bio1": "Et si ce que vous cherchez n'était pas un régime…",
       "bio2": "MAIS UNE RENAISSANCE ? ",
       "bio3": "De cette quête est née une méthode, et aujourd'hui, un mouvement : Reset Club.",
       "seeMore": "Je découvre l’expérience RESET"

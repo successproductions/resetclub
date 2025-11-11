@@ -19,7 +19,7 @@ export default function ContactForm() {
 
   return (
     <div className="bg-white rounded-sm shadow-lg p-4 md:p-6 font-graphik lg:p-8">
-      <p className="text-lg md:text-3xl   text-[#524029] mb-4">
+      <p className="text-lg md:text-3xl   text-gray-900 mb-4">
         {t('subtitle')}
       </p>
 
@@ -39,7 +39,7 @@ export default function ContactForm() {
         {/* Name Fields */}
         <div className="grid md:grid-cols-2 gap-4">
           <div>
-            <label htmlFor="firstName" className="block text-sm font-medium text-[#524029] mb-2">
+            <label htmlFor="firstName" className="block text-sm font-medium text-gray-900 mb-2">
               {t('form.firstName')} *
             </label>
             <input
@@ -59,7 +59,7 @@ export default function ContactForm() {
           </div>
 
           <div>
-            <label htmlFor="lastName" className="block text-sm font-medium text-[#524029] mb-2">
+            <label htmlFor="lastName" className="block text-sm font-medium text-gray-900 mb-2">
               {t('form.lastName')} *
             </label>
             <input
@@ -81,7 +81,7 @@ export default function ContactForm() {
 
         {/* Email */}
         <div>
-          <label htmlFor="email" className="block text-sm font-medium text-[#524029] mb-2">
+          <label htmlFor="email" className="block text-sm font-medium text-gray-900 mb-2">
             {t('form.email')} *
           </label>
           <input
@@ -102,7 +102,7 @@ export default function ContactForm() {
 
         {/* Phone */}
         <div>
-          <label htmlFor="phone" className="block text-sm font-medium text-[#524029] mb-2">
+          <label htmlFor="phone" className="block text-sm font-medium text-gray-900 mb-2">
             {t('form.phone')} *
           </label>
           <div className="flex gap-2">
@@ -139,7 +139,7 @@ export default function ContactForm() {
 
         {/* Message */}
         <div>
-          <label htmlFor="message" className="block text-sm font-medium text-[#524029] mb-2">
+          <label htmlFor="message" className="block text-sm font-medium text-gray-900 mb-2">
             {t('form.message')} *
           </label>
           <textarea

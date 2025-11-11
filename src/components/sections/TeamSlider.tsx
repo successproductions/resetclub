@@ -77,7 +77,7 @@ const TeamSlider: React.FC = () => {
       <div className="md:max-w-7xl md:mx-auto md:px-6">
         {/* Header Section */}
         <div className="text-center mb-4 md:mb-12 px-6 md:px-0">
-          <h2 className="text-3xl md:text-5xl font-normal text-[#524029]">
+          <h2 className="text-3xl md:text-5xl font-normal text-gray-900">
             {t('expertsTitle')}
           </h2>
         </div>
@@ -89,7 +89,7 @@ const TeamSlider: React.FC = () => {
             className="w-12 h-12 rounded-full border border-[#524029] bg-white flex items-center justify-center hover:bg-gray-50 transition-colors disabled:opacity-50 shadow-lg"
             disabled={currentIndex === 0}
           >
-            <svg className="w-5 h-5 text-[#524029]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="w-5 h-5 text-gray-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
             </svg>
           </button>
@@ -112,7 +112,7 @@ const TeamSlider: React.FC = () => {
             className="flex-shrink-0 w-12 h-12 rounded-full border border-[#524029] bg-white flex items-center justify-center hover:bg-gray-50 transition-colors disabled:opacity-50 shadow-lg"
             disabled={currentIndex === 0}
           >
-            <svg className="w-5 h-5 text-[#524029]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="w-5 h-5 text-gray-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
             </svg>
           </button>
@@ -133,12 +133,12 @@ const TeamSlider: React.FC = () => {
                 </div>
 
                 {/* Name */}
-                <h3 className="text-xl font-semibold font-graphik text-[#524029] m-2">
+                <h3 className="text-xl font-semibold font-graphik text-gray-900 m-2">
                   {t(`members.${member.key}.name`)}
                 </h3>
 
                 {/* Role */}
-                <div className="text-[#524029] font-graphik font-medium m-2">
+                <div className="text-gray-900 font-graphik font-medium m-2">
                   {t(`members.${member.key}.role`)}
                 </div>
 
@@ -156,7 +156,7 @@ const TeamSlider: React.FC = () => {
             className="flex-shrink-0 w-12 h-12 rounded-full border border-[#524029] bg-white flex items-center justify-center hover:bg-gray-50 transition-colors disabled:opacity-50 shadow-lg"
             disabled={currentIndex === totalPages - 1}
           >
-            <svg className="w-5 h-5 text-[#524029]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="w-5 h-5 text-gray-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
             </svg>
           </button>
@@ -179,17 +179,17 @@ const TeamSlider: React.FC = () => {
                 </div>
 
                 {/* Name */}
-                <h3 className="text-lg font-bold text-[#524029] px-6">
+                <h3 className="text-lg font-bold text-gray-900 px-6">
                   {t(`members.${member.key}.name`)}
                 </h3>
 
                 {/* Role */}
-                <div className="text-[#524029] font-medium px-6">
+                <div className="text-gray-900 font-medium px-6">
                   {t(`members.${member.key}.role`)}
                 </div>
 
                 {/* Description */}
-                {/* <p className="text-[#524029] text-sm leading-relaxed px-4">
+                {/* <p className="text-gray-900 text-sm leading-relaxed px-4">
                   {t(`members.${member.key}.description`)}
                 </p> */}
               </div>

@@ -13,7 +13,7 @@ const Director: React.FC = () => {
         <div className="grid lg:grid-cols-2 md:gap-12 items-start">
           {/* Title - Mobile First */}
           {/* <div className="lg:hidden px-6">
-            <h1 className="text-3xl font-graphik font-normal text-[#524029] leading-tight mb-3">
+            <h1 className="text-3xl font-graphik font-normal text-gray-900 leading-tight mb-3">
               {t('title')}
               <br />
               {t('subtitle')}
@@ -23,7 +23,7 @@ const Director: React.FC = () => {
           {/* Title - Desktop */}
           <div className="hidden lg:block  space-y-1">
             <div>
-              <h1 className="text-3xl md:text-3xl lg:text-5xl font-graphik font-normal text-[#524029] md:mb-4 leading-tight">
+              <h1 className="text-3xl md:text-3xl lg:text-5xl font-graphik font-normal text-gray-900 md:mb-4 leading-tight">
                 {t('title')}
                 <br />
                 {t('subtitle')}
@@ -31,7 +31,7 @@ const Director: React.FC = () => {
             </div>
 
             {/* Description - Desktop */}
-            <div className="md:space-y-4 space-y-2 text-[#524029] font-normal font-graphik text-lg md:text-xl xl:text-1xl leading-relaxed">
+            <div className="md:space-y-4 space-y-2 text-gray-900 font-normal font-graphik text-lg md:text-xl xl:text-1xl leading-relaxed">
               <p>
                 {t('bio1')}
               </p>
@@ -61,12 +61,12 @@ const Director: React.FC = () => {
 
           {/* Description - Mobile Last */}
           <div className="lg:hidden px-6">
-             <h1 className="text-3xl font-graphik font-normal text-[#524029] leading-tight mt-2">
+             <h1 className="text-3xl font-graphik font-normal text-gray-900 leading-tight mt-2">
               {t('title')}
               <br />
               {t('subtitle')}
             </h1>
-            <div className="space-y-2 text-[#524029] font-normal mt-2 font-graphik text-lg leading-relaxed">
+            <div className="space-y-2 text-gray-900 font-normal mt-2 font-graphik text-lg leading-relaxed">
               <p>
                 {t('bio1')}
               </p>

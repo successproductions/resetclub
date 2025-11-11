@@ -29,10 +29,10 @@ const PracticeComparison: React.FC = () => {
       <div className="max-w-7xl mx-auto px-6">
         {/* Header */}
         <div className=" mb-4 md:mb-16">
-          <h2 className="text-3xl md:text-center md:text-3xl lg:text-5xl text-[#524029] mb-2 md:mb-6">
+          <h2 className="text-3xl md:text-center md:text-3xl lg:text-5xl text-gray-900 mb-2 md:mb-6">
             {t('title')}
           </h2>
-          <p className="text-lg md:text-center md:text-lg font-graphik text-[#524029] max-w-3xl mx-auto ">
+          <p className="text-lg md:text-center md:text-lg font-graphik text-gray-900 max-w-3xl mx-auto ">
             {t('subtitle')}
           </p>
         </div>

@@ -73,12 +73,12 @@ export default function PopupOfferV2() {
           {/* Right Side - Form */}
           <div className="p-4 md:p-10 flex flex-col justify-center">
             {/* Title */}
-            <h3 className="text-3xl md:text-4xl font-graphik font-medium mb-2 text-[#524029] tracking-wide">
+            <h3 className="text-3xl md:text-4xl font-graphik font-medium mb-2 text-gray-900 tracking-wide">
               {t('title')}
             </h3>
 
             {/* Subtitle */}
-            <p className="text-[#524029] font-graphik mb-3 md:mb-6 text-lg md:text-lg">
+            <p className="text-gray-900 font-graphik mb-3 md:mb-6 text-lg md:text-lg">
               {t('subtitle')}
             </p>
 
@@ -90,7 +90,7 @@ export default function PopupOfferV2() {
                 onChange={(e) => setFullName(e.target.value)}
                 placeholder="Nom complet"
                 required
-                className="w-full px-4 md:px-6 py-2 md:py-3 border border-[#524029] text-sm md:text-base focus:outline-none focus:border-gray-400 bg-white text-[#524029] placeholder-gray-400 font-graphik"
+                className="w-full px-4 md:px-6 py-2 md:py-3 border  border-[#040404] text-sm md:text-base focus:outline-none focus:border-gray-400 bg-white text-gray-900 placeholder-gray-400 font-graphik"
               />
 
               <input
@@ -99,12 +99,12 @@ export default function PopupOfferV2() {
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="E-mail"
                 required
-                className="w-full px-4 md:px-6 py-2 md:py-3 border border-[#524029] text-sm md:text-base focus:outline-none focus:border-gray-400 bg-white text-[#524029] placeholder-gray-400 font-graphik"
+                className="w-full px-4 md:px-6 py-2 md:py-3 border border-[#040404] text-sm md:text-base focus:outline-none focus:border-gray-400 bg-white text-gray-900 placeholder-gray-400 font-graphik"
               />
 
               <button
                 type="submit"
-                className="w-full bg-[#2c2c2c] text-white py-3 md:py-4 text-base md:text-lg font-medium hover:bg-[#3c3c3c] transition-colors duration-300 font-graphik"
+                className="w-full bg-black text-white py-3 md:py-4 text-base md:text-lg font-medium hover:bg-[#1f1e1e] transition-colors duration-300 font-graphik"
               >
                 {t('ctaButton')}
               </button>

@@ -62,7 +62,7 @@ export default function PaymentPage() {
       <main className="min-h-[80vh] bg-white py-8 md:py-8 px-6">
         <div className="max-w-2xl mx-auto">
  <div className="relative z-10 text-center px-6">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-graphik font-normal tracking-wide mb-4 text-[#524029] drop-shadow-lg">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-graphik font-normal tracking-wide mb-4 text-gray-900 drop-shadow-lg">
             RESET CLUB
           </h1>
         </div>
@@ -70,7 +70,7 @@ export default function PaymentPage() {
           <div className="bg-white  mb-2 md:mb-6 flex items-start gap-3">
             <div className="flex-shrink-0 mt-1">
               <svg
-                className="w-6 h-6 text-[#524029]"
+                className="w-6 h-6 text-gray-900"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -80,14 +80,14 @@ export default function PaymentPage() {
                 <circle cx="12" cy="16" r="0.5" fill="currentColor" stroke="none"/>
               </svg>
             </div>
-            <p className="text-[#524029] text-lg font-graphik">
+            <p className="text-gray-900 text-lg font-graphik">
               {t('warning')}
             </p>
           </div>
 
           {/* Step Indicator */}
           <div className="mb-3 md:mb-8 ">
-            <p className="text-center text-[#524029] text-lg md:text-xl mb-2 md:mb-4 font-graphik">
+            <p className="text-center text-gray-900 text-lg md:text-xl mb-2 md:mb-4 font-graphik">
               {t('step')}
             </p>
             <div className="flex items-center gap-2 max-w-md mx-auto">
@@ -98,13 +98,13 @@ export default function PaymentPage() {
 
           {/* Main Content */}
           <div className="text-center mb-2 md:mb-8">
-            <h2 className="text-3xl md:text-5xl font-serif font-normal text-[#524029] mb-2 md:mb-6 leading-tight">
+            <h2 className="text-3xl md:text-5xl font-serif font-normal text-gray-900 mb-2 md:mb-6 leading-tight">
               {t('title')}
             </h2>
-            <p className="text-lg text-[#524029] font-normal mb-2 md:mb-6 font-graphik">
+            <p className="text-lg text-gray-900 font-normal mb-2 md:mb-6 font-graphik">
               {t('subtitle')}
             </p>
-            <p className="text-lg text-[#524029] font-normal mb-2 md:mb-8 font-graphik">
+            <p className="text-lg text-gray-900 font-normal mb-2 md:mb-8 font-graphik">
               {t('availableSlots')}
             </p>
           </div>
@@ -118,7 +118,7 @@ export default function PaymentPage() {
               onChange={handleChange}
               placeholder={t('form.fullName')}
               required
-              className="w-full px-6 py-3 md:py-4 border border-[#3c3c3c] text-base focus:outline-none focus:border-gray-400 bg-white text-[#524029] placeholder-gray-400 font-graphik"
+              className="w-full px-6 py-3 md:py-4 border border-[#3c3c3c] text-base focus:outline-none focus:border-gray-400 bg-white text-gray-900 placeholder-gray-400 font-graphik"
             />
             <input
               type="email"
@@ -127,7 +127,7 @@ export default function PaymentPage() {
               onChange={handleChange}
               placeholder={t('form.email')}
               required
-              className="w-full px-6 py-3 md:py-4 border border-[#3c3c3c] text-base focus:outline-none focus:border-gray-400 bg-white text-[#524029] placeholder-gray-400 font-graphik"
+              className="w-full px-6 py-3 md:py-4 border border-[#3c3c3c] text-base focus:outline-none focus:border-gray-400 bg-white text-gray-900 placeholder-gray-400 font-graphik"
             />
 
             <input
@@ -137,13 +137,13 @@ export default function PaymentPage() {
               onChange={handleChange}
               placeholder={t('form.phone')}
               required
-              className="w-full px-6 py-3 md:py-4 border border-[#3c3c3c] text-base focus:outline-none focus:border-gray-400 bg-white text-[#524029] placeholder-gray-400 font-graphik"
+              className="w-full px-6 py-3 md:py-4 border border-[#3c3c3c] text-base focus:outline-none focus:border-gray-400 bg-white text-gray-900 placeholder-gray-400 font-graphik"
             />
 
             {/* Submit Button */}
             <button
               type="submit"
-              className="w-full bg-[#3c3c3c] border border-[#3c3c3c] text-white py-5 text-lg font-medium hover:bg-[#4a4848] hover:text-gray-200 transition-colors duration-300 mt-1 md:mt-8 font-graphik"
+              className="w-full bg-black border border-[#3c3c3c] text-white py-5 text-lg font-medium hover:bg-[#1d1c1c] hover:text-gray-200 transition-colors duration-300 mt-1 md:mt-8 font-graphik"
             >
               {t('form.submit')}
             </button>

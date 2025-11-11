@@ -125,18 +125,18 @@ export default function NotreHistoireSection() {
         <div className="grid md:grid-cols-2 gap-4 md:gap-12 items-center">
           {/* Text Section - Desktop */}
           <div className="hidden md:block space-y-6">
-            <h2 className="text-3xl md:text-4xl  text-[#524029] leading-tight">
+            <h2 className="text-3xl md:text-4xl  text-gray-900 leading-tight">
               {t('bio1')}
             </h2>
 
-            <p className="text-lg md:text-lg font-graphik text-[#524029] leading-relaxed ">
+            <p className="text-lg md:text-lg font-graphik text-gray-900 leading-relaxed ">
               {t('bio2')}
             </p>
 
             <Link
               ref={buttonRef}
               href="/payment"
-              className="inline-block text-lg bg-transparent font-graphik text-[#524029] border border-gray-900 px-8 py-3  hover:text-white hover:bg-gray-900 font-medium transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl"
+              className="inline-block text-lg bg-transparent font-graphik text-gray-900 border border-gray-900 px-8 py-3  hover:text-white hover:bg-gray-900 font-medium transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl"
             >
               {t('seeMore')}
             </Link>
@@ -162,7 +162,7 @@ export default function NotreHistoireSection() {
                       className="w-24 h-24 rounded-full bg-white/80 flex items-center justify-center hover:bg-white transition-all duration-300 shadow-lg"
                       aria-label="Play video"
                     >
-                      <Play className="w-12 h-12 text-[#524029] ml-1" fill="currentColor" />
+                      <Play className="w-12 h-12 text-gray-900 ml-1" fill="currentColor" />
                     </button>
                   </div>
                 </div>
@@ -187,7 +187,7 @@ export default function NotreHistoireSection() {
           <div className="md:hidden w-full">
             {/* Text Section - Above Thumbnail */}
             <div className="mb-6 px-4">
-              <h2 className="text-3xl text-[#524029] leading-tight mb-1">
+              <h2 className="text-3xl text-gray-900 leading-tight mb-1">
                 Et si ce que vous<br />
                 cherchez n&apos;était pas<br />
                 un régime…
@@ -217,7 +217,7 @@ export default function NotreHistoireSection() {
                       className="w-20 h-20 rounded-full bg-white/80 flex items-center justify-center hover:bg-white transition-all duration-300 shadow-lg"
                       aria-label="Play video"
                     >
-                      <Play className="w-10 h-10 text-[#524029] ml-1" fill="currentColor" />
+                      <Play className="w-10 h-10 text-gray-900 ml-1" fill="currentColor" />
                     </button>
                   </div>
                 </div>
@@ -247,7 +247,7 @@ export default function NotreHistoireSection() {
               <Link
                 ref={buttonRef}
                 href="/payment"
-                className="inline-block bg-transparent font-graphik font-medium text-lg text-[#524029] border border-gray-800 px-8 py-3 hover:text-white hover:bg-gray-950 transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl"
+                className="inline-block bg-transparent font-graphik font-medium text-lg text-gray-900 border border-gray-800 px-8 py-3 hover:text-white hover:bg-gray-950 transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl"
               >
                 {t('seeMore')}
               </Link>

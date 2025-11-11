@@ -120,7 +120,7 @@ const Header: React.FC = () => {
                   relative px-6 py-3 text-sm font-graphik font-medium  uppercase transition-all duration-300 ease-in-out
                   group
                   ${isScrolled || isMobileMenuOpen
-                    ? 'text-[#524029] hover:text-gray-900'
+                    ? 'text-gray-900 hover:text-gray-900'
                     : 'text-white hover:text-white'
                   }
                 `}
@@ -183,7 +183,7 @@ const Header: React.FC = () => {
           />
           <button
             onClick={() => setIsMobileMenuOpen(false)}
-            className="p-2 rounded-md text-[#524029] hover:text-gray-900 transition-colors"
+            className="p-2 rounded-md text-gray-900 hover:text-gray-900 transition-colors"
             aria-label="Close menu"
           >
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -206,7 +206,7 @@ const Header: React.FC = () => {
                 <Link
                   key={index}
                   href={item.href}
-                  className="block py-3 px-4 text-lg font-graphik  uppercase text-[#524029] hover:text-gray-950 hover:bg-amber-50 rounded-lg transition-colors duration-200"
+                  className="block py-3 px-4 text-lg font-graphik  uppercase text-gray-900 hover:text-gray-950 hover:bg-amber-50 rounded-lg transition-colors duration-200"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   {item.label}

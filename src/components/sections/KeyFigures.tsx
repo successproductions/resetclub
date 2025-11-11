@@ -118,10 +118,10 @@ const KeyFigures: React.FC = () => {
         {/* Header */}
         <div className="md:text-center mb-2 md:mb-6">
 
-          <h2 className="text-3xl md:text-4xl lg:text-5xl text-[#524029] mb-1 md:mb-2">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl text-gray-900 mb-1 md:mb-2">
             {t('title')}
           </h2>
-          <p className='text-[#524029] text-lg mb-3 md:mb-6 md:text-xl font-graphik '>{t('description')}</p>
+          <p className='text-gray-900 text-lg mb-3 md:mb-6 md:text-xl font-graphik '>{t('description')}</p>
           {/* <div className="w-20 h-1 bg-[#c26d4c] mx-auto rounded-full"></div> */}
         </div>
 
@@ -144,7 +144,7 @@ const KeyFigures: React.FC = () => {
 
                   {/* Animated Number */}
                   <div className="mb-2 md:mb-6">
-                    <div className="text-3xl md:text-6xl lg:text-6xl font-light text-[#524029] mb-2">
+                    <div className="text-3xl md:text-6xl lg:text-6xl font-light text-gray-900 mb-2">
                       <AnimatedCounter
                         end={stat.value}
                         decimals={stat.decimals}
@@ -158,13 +158,13 @@ const KeyFigures: React.FC = () => {
 
                   {/* Label */}
                   <div className="  mx-auto">
-                    <p className="text-[#524029] text-lg md:text-base xl:text-xl font-graphik  leading-relaxed">
+                    <p className="text-gray-900 text-lg md:text-base xl:text-xl font-graphik  leading-relaxed">
                       {t(`stats.${stat.key}.label`)}
                     </p>
                   </div>
 
                   {/* Bottom Line */}
-                  <div className="w-14 h-0.5 md:h-1 md:w-16 rounded-full  bg-[#524029] mx-auto mt-1 md:mt-8"></div>
+                  <div className="w-14 h-0.5 md:h-1 md:w-16 rounded-full  bg-[#0a0a09] mx-auto mt-1 md:mt-8"></div>
                    {/* <div className="w-20 h-1 bg-[#c26d4c] mx-auto rounded-full"></div> */}
 
                   {/* Dot indicator */}

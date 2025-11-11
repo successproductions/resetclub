@@ -92,7 +92,7 @@ const IntroSection: React.FC = () => {
 
           {/* Header */}
           <div className="md:text-center mx-auto md:max-w-5xl mt-1 mb-6 md:mb-8 px-6">
-            <h2 ref={titleRef} className="text-3xl md:text-3xl lg:text-5xl text-[#524029] mb-1 md:mb-8">
+            <h2 ref={titleRef} className="text-3xl md:text-3xl lg:text-5xl text-gray-900 mb-1 md:mb-8">
               {t('hook')}
             </h2>
           </div>
@@ -116,10 +116,13 @@ const IntroSection: React.FC = () => {
                   </div>
                   {/* Content */}
                   <div className="px-6 py-4 flex-grow flex flex-col">
-                    <h3 className="text-xl font-normal text-[#524029] mb-2 font-graphik">
+                    <h3 className="text-xl font-normal text-gray-900 md:mb-2 font-graphik">
                       {t('cards.in.title')}
                     </h3>
-                    <p className="text-[#524029] text-lg leading-5.5 mb-2 font-graphik flex-grow">
+                    <h3 className="text-xl font-normal text-gray-900 mb-1 font-graphik">
+                      {t('cards.in.title2')}
+                    </h3>
+                    <p className="text-gray-900 text-lg leading-5.5 mb-2 font-graphik flex-grow">
                       {t('cards.in.subtitle')}
                     </p>
                   </div>
@@ -141,10 +144,13 @@ const IntroSection: React.FC = () => {
                   </div>
                   {/* Content */}
                   <div className="px-6 py-4 flex-grow flex flex-col">
-                    <h3 className="text-xl font-normal text-[#524029] mb-2 font-graphik">
+                    <h3 className="text-xl font-normal text-gray-900 md:mb-2 font-graphik">
                       {t('cards.out.title')}
                     </h3>
-                    <p className="text-[#524029] text-lg leading-5.5 mb-2 font-graphik flex-grow">
+                     <h3 className="text-xl font-normal text-gray-900 md:b-1 font-graphik">
+                      {t('cards.out.title2')}
+                    </h3>
+                    <p className="text-gray-900 text-lg leading-5.5 mb-2 font-graphik flex-grow">
                       {t('cards.out.subtitle')}
                     </p>
                   </div>
@@ -166,10 +172,13 @@ const IntroSection: React.FC = () => {
                   </div>
                   {/* Content */}
                   <div className="px-6 py-4 flex-grow flex flex-col">
-                    <h3 className="text-xl font-normal text-[#524029] mb-2 leading-1.5 font-graphik">
+                    <h3 className="text-xl font-normal text-gray-900 md:mb-2 leading-1.5 font-graphik">
                       {t('cards.reset.title')}
                     </h3>
-                    <p className="text-[#524029] text-lg leading-5.5 mb-2 font-graphik flex-grow">
+                    <h3 className="text-xl font-normal text-gray-900 mb-1 leading-1.5 font-graphik">
+                      {t('cards.reset.title2')}
+                    </h3>
+                    <p className="text-gray-900 text-lg leading-5.5 mb-2 font-graphik flex-grow">
                       {t('cards.reset.subtitle')}
                     </p>
                   </div>
@@ -181,7 +190,7 @@ const IntroSection: React.FC = () => {
 
           {/* CTA Button */}
           <div className="text-center px-6">
-            <button ref={buttonRef} className="md:px-12 px-10 py-4 bg-transparent border border-gray-800 text-[#524029] hover:text-white hover:bg-gray-950 text-lg md:text-lg font-medium font-graphik transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl cursor-pointer">
+            <button ref={buttonRef} className="md:px-12 px-10 py-4 bg-transparent border border-gray-800 text-gray-900 hover:text-white hover:bg-gray-950 text-lg md:text-lg font-medium font-graphik transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl cursor-pointer">
               {t('cta')}
             </button>
           </div>

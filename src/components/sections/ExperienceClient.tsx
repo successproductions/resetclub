@@ -28,7 +28,7 @@ const ExperienceClient: React.FC = () => {
         <div className="flex flex-col gap-4 lg:gap-8 items-center justify-center">
           {/* Title - Always at the top */}
           <div className="text-center w-full px-6">
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-normal text-[#524029]">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-normal text-gray-900">
               L&apos;expérience client
             </h2>
           </div>
@@ -59,7 +59,7 @@ const ExperienceClient: React.FC = () => {
           <div className="text-center px-6">
             <Link
               href="/payment"
-              className="inline-block bg-transparent text-[#524029] px-8 py-4 font-graphik font-medium text-lg border border-[#524029] hover:bg-gray-950 hover:text-white transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl"
+              className="inline-block bg-transparent text-gray-900 px-8 py-4 font-graphik font-medium text-lg border border-[#524029] hover:bg-gray-950 hover:text-white transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl"
             >
               Réserver mon Bilan
             </Link>
@@ -139,7 +139,7 @@ const ExperienceClient: React.FC = () => {
 
             <Link
               href="/contact"
-              className="inline-block bg-transparent text-white px-8 py-4 font-graphik font-medium text-lg border border-white hover:bg-white hover:text-[#524029] transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl"
+              className="inline-block bg-transparent text-white px-8 py-4 font-graphik font-medium text-lg border border-white hover:bg-white hover:text-gray-900 transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl"
             >
               Réserver mon Bilan
             </Link>

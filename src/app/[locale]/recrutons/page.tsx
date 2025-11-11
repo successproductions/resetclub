@@ -22,7 +22,7 @@ export default function RecrutonsPage() {
               {/* Intro Text */}
               <div className="mb-8">
                 <p
-                  className="text-lg md:text-xl text-[#524029] text-center font-graphik leading-relaxed"
+                  className="text-lg md:text-xl text-gray-900 text-center font-graphik leading-relaxed"
                   dangerouslySetInnerHTML={{__html: t('qualities.intro')}}
                 />
               </div>

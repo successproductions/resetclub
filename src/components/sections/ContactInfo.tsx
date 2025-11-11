@@ -7,7 +7,7 @@ export default function ContactInfo() {
     <div className="space-y-8 font-graphik">
       {/* Contact Details */}
       <div className="bg-white rounded-sm shadow-lg p-4 md:p-6 lg:p-8">
-        <h3 className="text-2xl md:text-3xl text-[#524029] mb-8">
+        <h3 className="text-2xl md:text-3xl text-gray-900 mb-8">
           {t('info.title')}
         </h3>
 
@@ -21,8 +21,8 @@ export default function ContactInfo() {
               </svg>
             </div>
             <div>
-              <p className="font-medium md:text-xl  text-[#524029] ">{t('info.address.title')}</p>
-              <p className="text-[#524029] font-normal leading-relaxed">{t('info.address.value')}</p>
+              <p className="font-medium md:text-xl  text-gray-900 ">{t('info.address.title')}</p>
+              <p className="text-gray-900 font-normal leading-relaxed">{t('info.address.value')}</p>
             </div>
           </div>
 
@@ -34,8 +34,8 @@ export default function ContactInfo() {
               </svg>
             </div>
             <div>
-              <p className="font-medium md:text-xl text-[#524029] ">{t('info.phone.title')}</p>
-              <a href={`tel:${t('info.phone.value')}`} className="text-[#524029] font-normal hover:text-amber-700 transition-colors">
+              <p className="font-medium md:text-xl text-gray-900 ">{t('info.phone.title')}</p>
+              <a href={`tel:${t('info.phone.value')}`} className="text-gray-900 font-normal hover:text-amber-700 transition-colors">
                 {t('info.phone.value')}
               </a>
             </div>
@@ -49,8 +49,8 @@ export default function ContactInfo() {
               </svg>
             </div>
             <div>
-              <p className="font-medium md:text-xl text-[#524029] ">{t('info.email.title')}</p>
-              <a href={`mailto:${t('info.email.value')}`} className="text-[#524029] font-normal hover:text-amber-700 transition-colors">
+              <p className="font-medium md:text-xl text-gray-900 ">{t('info.email.title')}</p>
+              <a href={`mailto:${t('info.email.value')}`} className="text-gray-900 font-normal hover:text-amber-700 transition-colors">
                 {t('info.email.value')}
               </a>
             </div>
@@ -64,8 +64,8 @@ export default function ContactInfo() {
               </svg>
             </div>
             <div>
-              <p className="font-medium md:text-xl text-[#524029] ">{t('info.hours.title')}</p>
-              <div className="text-[#524029] font-normal space-y-1">
+              <p className="font-medium md:text-xl text-gray-900 ">{t('info.hours.title')}</p>
+              <div className="text-gray-900 font-normal space-y-1">
                 <p>{t('info.hours.weekdays')}</p>
               </div>
             </div>

@@ -125,10 +125,10 @@ export default function NotificationWidget() {
 
         {/* Text content */}
         <div className="flex-1 min-w-0">
-          <p className="text-[#524029] text-base font-graphik font-medium leading-relaxed">
+          <p className="text-gray-900 text-base font-graphik font-medium leading-relaxed">
             {t('message2')}
           </p>
-          <p className="text-[#524029] text-sm mt-1 uppercase tracking-wider font-light">
+          <p className="text-gray-900 text-sm mt-1 uppercase tracking-wider font-light">
             {t('brand')}
           </p>
         </div>
