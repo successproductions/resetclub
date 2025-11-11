@@ -69,7 +69,7 @@ export default function CVUploadForm() {
               {/* <svg className="w-16 h-16 text-[#c26d4c] mx-auto mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
               </svg> */}
-              <p className="text-gray-900 font-normal font-graphik text-xl! mb-2">
+              <p className="text-gray-900 font-normal font-graphik text-lg md:text-xl! ">
                 {selectedFile ? selectedFile.name : t('upload.dragText')}
               </p>
               {/* <p className="text-sm text-gray-900 font-graphik">{t('upload.fileTypes')}</p> */}
@@ -101,7 +101,7 @@ export default function CVUploadForm() {
               onClick={handleUpload}
               disabled={isUploading}
               variant="secondary"
-              className="min-w-72 font-bold text-lg py-4 px-8"
+              className="min-w-72 font-bold  md:text-lg py-4 px-8"
             >
               {isUploading ? t('upload.uploading') : t('upload.buttonText')}
             </SubmitButton>

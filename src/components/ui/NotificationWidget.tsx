@@ -102,11 +102,11 @@ export default function NotificationWidget() {
       className="fixed top-20 left-4 md:left-auto md:right-4 z-50"
       style={{ opacity: 0 }}
     >
-      <div className="bg-white rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.12)] px-6 py-4 flex items-center gap-4 max-w-md relative">
+      <div className="bg-white rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.12)] px-6 py-4 flex items-center gap-8 md:gap-4 max-w-md relative">
         {/* Close button */}
         <button
           onClick={handleClose}
-          className="absolute -top-2 -right-2 bg-gray-100 hover:bg-gray-200 rounded-full p-1.5 transition-colors"
+          className="absolute -top-2 -right-0  md:-right-2 bg-gray-100 hover:bg-gray-200 rounded-full p-1.5 transition-colors"
           aria-label="Close notification"
         >
           <X className="w-4 h-4 text-gray-600" />

@@ -27,7 +27,7 @@ export default function TeamHero() {
           <div className="text-3xl md:text-4xl lg:text-5xl uppercase xl:text-5xl font-normal font-graphik tracking-tight text-white">
             {t('video.title')}
           </div>
-          <div className="text-sm md:text-xl lg:text-1xl font-graphik  md:mb-4 tracking-wide text-white">
+          <div className="text-lg md:text-xl mt-4 md:mt-0 lg:text-1xl font-graphik  md:mb-4 tracking-wide text-white">
             {t('video.subtitle')}
           </div>
         </h3>

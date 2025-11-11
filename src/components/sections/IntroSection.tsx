@@ -1,8 +1,9 @@
 'use client';
 
 import React, { useEffect, useRef } from 'react';
-import { useTranslations } from 'next-intl';
+import { useTranslations, useLocale } from 'next-intl';
 import Image from 'next/image';
+import Link from 'next/link';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -10,6 +11,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 const IntroSection: React.FC = () => {
   const t = useTranslations('IntroSection');
+  const locale = useLocale();
   const sectionRef = useRef<HTMLDivElement>(null);
   const titleRef = useRef<HTMLHeadingElement>(null);
   const card1Ref = useRef<HTMLDivElement>(null);
@@ -17,7 +19,7 @@ const IntroSection: React.FC = () => {
   const card3Ref = useRef<HTMLDivElement>(null);
   const arrow1Ref = useRef<HTMLDivElement>(null);
   const arrow2Ref = useRef<HTMLDivElement>(null);
-  const buttonRef = useRef<HTMLButtonElement>(null);
+  const buttonRef = useRef<HTMLAnchorElement>(null);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -190,9 +192,13 @@ const IntroSection: React.FC = () => {
 
           {/* CTA Button */}
           <div className="text-center px-6">
-            <button ref={buttonRef} className="md:px-12 px-10 py-4 bg-transparent border border-gray-800 text-gray-900 hover:text-white hover:bg-gray-950 text-lg md:text-lg font-medium font-graphik transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl cursor-pointer">
+            <Link
+              href={`/${locale}/payment`}
+              ref={buttonRef}
+              className="inline-block md:px-12 px-10 py-4 bg-transparent border border-gray-800 text-gray-900 hover:text-white hover:bg-gray-950 text-lg md:text-lg font-medium font-graphik transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl cursor-pointer"
+            >
               {t('cta')}
-            </button>
+            </Link>
           </div>
 
         </div>
