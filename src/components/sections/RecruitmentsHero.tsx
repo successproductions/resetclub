@@ -26,9 +26,9 @@ export default function RecruitmentsHero() {
         <h1 className="text-2xl md:text-4xl lg:text-5xl uppercase text-white mb-4 font-normal font-graphik tracking-tight">
           {t('hero.title')}
         </h1>
-        <p className="text-lg md:text-xl lg:text-1xl text-white font-graphik tracking-wide">
+        {/* <p className="text-lg md:text-xl lg:text-1xl text-white font-graphik tracking-wide">
           {t('hero.subtitle')}
-        </p>
+        </p> */}
       </div>
 
       {/* Background Pattern Overlay */}

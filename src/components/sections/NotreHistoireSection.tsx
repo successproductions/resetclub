@@ -190,11 +190,10 @@ export default function NotreHistoireSection() {
               <h2 className="text-3xl text-gray-900 leading-tight mb-1">
                 Et si ce que vous<br />
                 cherchez n&apos;était pas<br />
-                un régime…
+                un régime… <br/>
+                mais une renaissance ?
               </h2>
-              <p className="text-2xl text-[#876b49] font-normal mb-1">
-                MAIS UNE RENAISSANCE ?
-              </p>
+              
             </div>
 
             {/* Thumbnail or Video - Full Width */}

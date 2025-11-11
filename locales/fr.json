@@ -113,7 +113,7 @@
     },
     "director": {
       "name": "Sarah Martinez",
-      "title": "Directrice Générale",
+      "title": "Fondatrice Générale",
       "subtitle": "Reset Club™",
       "bio1": "Nahed Rachad, entrepreneure et coach, a vécu ce que vivent ses clientes : surcharge de travail, stress, perte de santé et de confiance. Elle a cherché. Elle a testé.",
       "bio2": "Elle a voyagé à travers les plus grands salons du monde. Elle a découvert les meilleures technologies, les meilleures approches en neurosciences, en biohacking et en coaching transformationnel.",
@@ -475,7 +475,7 @@
     "securePayment": "PAIEMENT SÉCURISÉ"
   },
   "ConfirmationPage": {
-    "title": "Bravo — votre transformation commence maintenant.",
+    "title": "Bravo. Votre transformation commence maintenant.",
     "subtitle": "Votre bilan RESET™ est confirmé avec succès.",
     "duration": {
       "label": "Durée du bilan",

@@ -92,7 +92,7 @@ const KeyFigures: React.FC = () => {
     {
       key: 'weightLoss',
       value: 1990,
-      decimals: true
+      decimals: false
     },
     {
       key: 'satisfaction',
