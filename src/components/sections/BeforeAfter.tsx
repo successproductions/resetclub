@@ -12,7 +12,7 @@ const BeforeAfter: React.FC = () => {
   const testimonials = [
     {
       id: 1,
-      beforeImage: "/images/beforeAfter1.png",
+      beforeImage: "/images/w_b_f.jpeg",
       beforeWeight: "95 kg",
       afterWeight: "68 kg",
       weightLoss: "27 kg",
@@ -22,7 +22,7 @@ const BeforeAfter: React.FC = () => {
     },
     {
       id: 2,
-      beforeImage: "/images/beforeAfter2.png",
+      beforeImage: "/images/w_b_f_2.jpeg",
       beforeWeight: "88 kg",
       afterWeight: "63 kg",
       weightLoss: "25 kg",
@@ -32,7 +32,7 @@ const BeforeAfter: React.FC = () => {
     },
     {
       id: 3,
-      beforeImage: "/images/beforeAfter3.png",
+      beforeImage: "/images/w_b_f_3.jpeg",
       beforeWeight: "102 kg",
       afterWeight: "72 kg",
       weightLoss: "30 kg",
@@ -74,7 +74,7 @@ const BeforeAfter: React.FC = () => {
               className="bg-white shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 flex flex-col"
             >
               {/* Image Container */}
-              <div className="relative flex-1 overflow-hidden min-h-[500px]">
+              <div className="relative flex-1 overflow-hidden min-h-[550px]">
                 <Image
                   src={testimonial.beforeImage}
                   alt={`Transformation de ${testimonial.name}`}
@@ -150,7 +150,7 @@ const BeforeAfter: React.FC = () => {
       <div className="md:hidden w-full">
         <div className="relative">
           {/* Single Card */}
-          <div className="bg-white shadow-lg overflow-hidden flex flex-col min-h-[620px]">
+          <div className="bg-white shadow-lg overflow-hidden flex flex-col min-h-[630px]">
             {/* Image Container */}
             <div className="relative flex-1 overflow-hidden">
               <Image
@@ -161,7 +161,7 @@ const BeforeAfter: React.FC = () => {
                 sizes="100vw"
               />
               {/* Gradient Overlay for better text readability */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+              {/* <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" /> */}
 
               {/* Before/After Labels */}
               <div className="absolute top-4 left-4">
