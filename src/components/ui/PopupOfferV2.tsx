@@ -62,7 +62,7 @@ export default function PopupOfferV2() {
           {/* Left Side - Image */}
           <div className="relative h-48 md:h-auto">
             <Image
-              src="/images/woman-put.jpg"
+              src="/images/POPUP.jpg"
               alt="Reset Club"
               fill
               className="object-cover"
