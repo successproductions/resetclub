@@ -9,7 +9,7 @@ export default function ChatbotButton() {
 
   return (
     <>
-      {/* Floating Button */}
+ 
       <button
         onClick={() => setIsOpen(true)}
         className="fixed bottom-4 right-6 z-40 bg-black text-white p-4 shadow-2xl hover:bg-black/90 transition-all duration-300 font-graphik"
