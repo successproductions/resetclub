@@ -1,22 +1,13 @@
 'use client';
 
-import MembershipHero from '@/components/sections/MembershipHero';
-import MembershipBenefits from '@/components/sections/MembershipBenefits';
-import ClientExperience from '@/components/sections/ClientExperience';
-import MembershipCTA from '@/components/sections/MembershipCTA';
+import MembershipVideoHero from '@/components/sections/MembershipVideoHero';
 import ChatbotButton from '@/components/ui/ChatbotButton';
 
-
 export default function MembershipPage() {
-
-
   return (
     <>
       <main className="membership-page">
-        <MembershipHero />
-        <MembershipBenefits />
-        <ClientExperience />
-        <MembershipCTA />
+        <MembershipVideoHero />
       </main>
       <ChatbotButton />
     </>

@@ -487,5 +487,11 @@
     },
     "followUp": "Dans les prochaines 24 heures (hors week-end), notre équipe vous contactera personnellement pour fixer votre rendez-vous au centre.",
     "backToHome": "Retour à l'accueil"
+  },
+  "MembershipVideoHero": {
+    "titleMain": "RESET CLUB",
+    "titleSub": "Là où commence ta transformation.",
+    "subtitle": "À l'occasion de notre ouverture, nous avons le plaisir de t'offrir un bilan personnalisé d'une valeur de 1 500 DH, gratuitement aux 50 premières clientes.",
+    "cta": "Je réserve mon bilan"
   }
 }

@@ -19,7 +19,8 @@ export default function MembershipApplicationForm({ isOpen, onClose }: Membershi
     lastName: '',
     age: '',
     email: '',
-    phone: '',
+    phoneCode: '+212',
+    phoneNumber: '',
     mainGoal: '',
     howDidYouHear: [] as string[],
     energyLevel: 5,
@@ -40,8 +41,15 @@ export default function MembershipApplicationForm({ isOpen, onClose }: Membershi
     setIsSubmitting(true);
 
     try {
+      // Combine phone code and number
+      const submissionData = {
+        ...formData,
+        phone: `${formData.phoneCode} ${formData.phoneNumber}`
+      };
+
       // TODO: Send form data to your backend/API
-      // await fetch('/api/membership', { method: 'POST', body: JSON.stringify(formData) });
+      // await fetch('/api/membership', { method: 'POST', body: JSON.stringify(submissionData) });
+      console.log('Form data:', submissionData);
 
       // Short delay for smooth transition
       await new Promise(resolve => setTimeout(resolve, 300));
@@ -115,15 +123,11 @@ export default function MembershipApplicationForm({ isOpen, onClose }: Membershi
           <h2 className="text-3xl md:text-4xl font-light mb-2 md:mb-6">
             Diagnostic Biohacking RESET Club™
           </h2>
-          <div className="mb-4 md:mb-8 space-y-3">
+          <div className="mb-2 md:mb-2 space-y-3">
             <p className="text-black/80 leading-relaxed">
               Bienvenue dans ton Diagnostic Biohacking RESET Club™. Ce questionnaire a été conçu pour comprendre ton mode de vie, ton énergie, ton stress et tes objectifs afin de t&apos;offrir une analyse personnalisée lors de ton bilan gratuit au RESET Club Rabat, exclusivement réservé aux 50 premières clientes.
             </p>
-            <div className="flex flex-wrap gap-4 text-sm text-black/70">
-              <div>⏳ Durée : 2 minutes</div>
-              <div>🔒 Données 100% confidentielles</div>
-              <div> Réservé aux femmes prêtes à transformer leur bien-être</div>
-            </div>
+            
           </div>
 
           <form onSubmit={handleSubmit} className="space-y-4 md:space-y-8">
@@ -205,19 +209,37 @@ export default function MembershipApplicationForm({ isOpen, onClose }: Membershi
 
               {/* Phone */}
               <div>
-                <label htmlFor="phone" className="block text-sm mb-1 md:mb-2">
+                <label htmlFor="phoneNumber" className="block text-sm mb-1 md:mb-2">
                   Numéro de téléphone (WhatsApp) <span className="text-red-500">*</span>
                 </label>
-                <input
-                  type="tel"
-                  id="phone"
-                  name="phone"
-                  value={formData.phone}
-                  onChange={handleChange}
-                  required
-                  className="w-full bg-transparent border-b border-black/20 py-3 focus:border-black/60 focus:outline-none transition-colors"
-                  placeholder="+212 6 XX XX XX XX"
-                />
+                <div className="flex gap-2">
+                  <select
+                    name="phoneCode"
+                    value={formData.phoneCode}
+                    onChange={handleChange}
+                    className="bg-transparent border-b border-black/20 py-3 focus:border-black/60 focus:outline-none transition-colors pr-2"
+                  >
+                    <option value="+212">🇲🇦 +212</option>
+                    <option value="+33">🇫🇷 +33</option>
+                    <option value="+1">🇺🇸 +1</option>
+                    <option value="+44">🇬🇧 +44</option>
+                    <option value="+34">🇪🇸 +34</option>
+                    <option value="+971">🇦🇪 +971</option>
+                    <option value="+966">🇸🇦 +966</option>
+                    <option value="+213">🇩🇿 +213</option>
+                    <option value="+216">🇹🇳 +216</option>
+                  </select>
+                  <input
+                    type="tel"
+                    id="phoneNumber"
+                    name="phoneNumber"
+                    value={formData.phoneNumber}
+                    onChange={handleChange}
+                    required
+                    className="flex-1 bg-transparent border-b border-black/20 py-3 focus:border-black/60 focus:outline-none transition-colors"
+                    placeholder="6 XX XX XX XX"
+                  />
+                </div>
               </div>
             </div>
 

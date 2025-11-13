@@ -65,7 +65,7 @@ const Hero: React.FC = () => {
 
 
         {/* CTA Button */}
-        <div className="absolute left-[150px] md:left-48 lg:left-40 transform -translate-x-1/2">
+        <div className="absolute left-3 md:left-4">
           <Link href="/payment">
             <button className="text-white font-normal bg-transparent border-2 text-lg md:text-xl font-graphik px-2 md:px-4 py-2 mt-2 md:mt-4 hover:border-1 hover:border-gray-200 cursor-pointer transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl whitespace-nowrap">
               {t('cta')}

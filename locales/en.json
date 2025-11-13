@@ -126,7 +126,7 @@
       "members": {
         "sarah": {
           "name": "Dr. Sarah Martinez",
-          "role": "Nutritionist Physician",
+          "role": "Director ",
           "specialty": "Metabolism & Weight Loss",
           "description": "Specialist in metabolic optimization and personalized nutrition for lasting results. After completing her masters in nutritional medicine, Dr. Sarah has practiced for over 12 years in renowned hospitals and wellness retreats."
         },
@@ -487,5 +487,11 @@
     },
     "followUp": "Within the next 24 hours (excluding weekends), our team will contact you personally to schedule your appointment at the center.",
     "backToHome": "Back to Home"
+  },
+  "MembershipVideoHero": {
+    "titleMain": "RESET CLUB",
+    "titleSub": "Where your transformation begins.",
+    "subtitle": "To celebrate our opening, we're pleased to offer you a personalized assessment worth 1,500 DH, free for the first 50 clients.",
+    "cta": "Book my assessment"
   }
 }
