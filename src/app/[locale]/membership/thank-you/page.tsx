@@ -22,21 +22,6 @@ export default function ThankYouPage() {
 
       {/* Content */}
       <div className="relative z-10 text-center max-w-3xl">
-        <div className="mb-8">
-          <svg
-            className="w-20 h-20 mx-auto text-green-500"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M5 13l4 4L19 7"
-            />
-          </svg>
-        </div>
 
         <h1 className="text-4xl md:text-4xl lg:text-5xl font-light mb-6">
           Merci pour votre demande !
