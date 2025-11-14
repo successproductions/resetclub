@@ -82,7 +82,7 @@ const MembershipVideoHero: React.FC = () => {
         <div className="absolute inset-0 z-0">
           <video
             autoPlay
-            loop
+            // loop
             muted
             playsInline
             className="absolute inset-0 w-full h-full object-cover"
