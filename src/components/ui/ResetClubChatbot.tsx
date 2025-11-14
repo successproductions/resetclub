@@ -390,12 +390,12 @@ Je t'invite à réserver ton créneau avant fermeture des disponibilités :`,
         {/* Input */}
         {collectingInfo && infoStep < 3 && (
           <div className="p-4 border-t border-black/10 bg-[#f5efe8]">
-            <div className="flex gap-2">
+            <div className="flex gap-1">
               {showPhoneCodeSelector && infoStep === 2 && (
                 <select
                   value={userInfo.phoneCode}
                   onChange={(e) => setUserInfo(prev => ({ ...prev, phoneCode: e.target.value }))}
-                  className="px-3 py-2 border border-black/20 focus:outline-none focus:border-black bg-white text-base"
+                  className="px-1 py-2 border border-black/20 focus:outline-none focus:border-black bg-white text-base"
                 >
                   <option value="+212">🇲🇦 +212</option>
                   <option value="+33">🇫🇷 +33</option>
@@ -414,7 +414,7 @@ Je t'invite à réserver ton créneau avant fermeture des disponibilités :`,
                 onChange={(e) => setInputValue(e.target.value)}
                 onKeyPress={(e) => e.key === 'Enter' && handleSend()}
                 placeholder={infoStep === 2 ? (userInfo.phoneCode === '+212' ? '06XXXXXXXX' : 'Numéro de téléphone') : 'Tape ta réponse...'}
-                className="flex-1 px-4 py-2 border border-black/20 focus:outline-none focus:border-black bg-white text-base"
+                className="flex-1 px-2 py-2 border border-black/20 focus:outline-none focus:border-black bg-white text-base"
               />
               <button
                 onClick={handleSend}

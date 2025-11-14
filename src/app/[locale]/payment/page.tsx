@@ -42,16 +42,16 @@ export default function PaymentPage() {
       <Header />
 
       {/* Video Header Section */}
-      <div className="relative pt-28 pb-10 md:pb-16 min-h-[30vh] flex items-center justify-center overflow-hidden">
+      <div className="relative pt-28 pb-10 md:pb-16 min-h-[38vh] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 z-0">
           <video
             autoPlay
             loop
             muted
             playsInline
-            className="absolute inset-0 w-full h-full object-cover opacity-40 blur-sm"
+            className="absolute inset-0 w-full h-full object-cover  "
           >
-            <source src="/videos/videobg.mp4" type="video/mp4" />
+            <source src="/videos/website-banner-vdo.mp4" type="video/mp4" />
           </video>
           <div className="absolute inset-0 bg-black/30"></div>
         </div>

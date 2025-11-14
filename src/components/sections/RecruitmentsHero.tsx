@@ -14,11 +14,11 @@ export default function RecruitmentsHero() {
           playsInline
           className="w-full h-full object-cover"
         >
-          <source src="https://rakxawellness.com/wp-content/uploads/2025/08/website-banner-vdo.mp4" type="video/mp4" />
+          <source src="/videos/website-banner-vdo2.mp4" type="video/mp4" />
         </video>
 
         {/* Video Overlay */}
-        <div className="absolute inset-0 bg-black/40" />
+        <div className="absolute inset-0 bg-black/30" />
       </div>
 
       {/* Content */}
