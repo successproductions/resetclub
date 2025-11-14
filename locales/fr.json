@@ -408,52 +408,85 @@
     "bookingMessage": "Bonjour ! Je souhaite réserver mon Bilan Reset™. Pouvez-vous m'aider à choisir un créneau ?",
     "advisorMessage": "Bonjour ! Je souhaite parler à une conseillère pour en savoir plus sur les programmes Reset Club™.",
     "phase1": {
-      "greeting": "Bonjour 🌿\n\nJe suis Nahed, fondatrice du Reset Club™.\n\nIci, on ne cherche pas à te transformer.\nOn t'aide à te retrouver.\n\nRespire profondément…\net prends ce moment pour toi.",
-      "question": "Dis-moi simplement… aujourd'hui, tu veux plutôt :",
-      "weightLoss": "Perdre du poids",
-      "energy": "Retrouver ton énergie",
-      "balance": "Rééquilibrer ton corps et ton mental"
+      "greeting": "Bonjour 🌸\nJe suis Nahed, fondatrice du RESET Club™️ Rabat,\nle premier centre féminin de biohacking & transformation 360° au Maroc.\n\nIci, on ne te change pas.\nOn te reconnecte à la femme que tu es vraiment. ✨\n\nAvant de commencer, dis-moi ce que tu veux explorer :",
+      "discoverBilan": "🔸 Découvrir le Bilan Reset™️",
+      "understandBenefits": "🔸 Comprendre les bénéfices du RESET Club™️",
+      "bookBilan": "🔸 Réserver mon Bilan offert",
+      "talkAdvisor": "🔸 Parler à une conseillère bien-être",
+      "closing": "Ton reset commence ici… respire profondément."
     },
     "phase2": {
-      "weightLoss": "D'accord 🌿\n\nBeaucoup de femmes viennent au Reset Club™ pour ça.\nCe n'est pas qu'une question de silhouette,\nc'est une question d'énergie, d'inflammation, et d'équilibre intérieur.\n\nEt tout commence par un bilan précis pour comprendre ton corps.",
-      "energy": "Parfait ⚡\n\nTon énergie, c'est ton essence vitale.\nLe Reset Club™ va t'aider à la retrouver, à la stabiliser,\net à sentir ton feu intérieur renaître.",
-      "balance": "Très bon choix 🌸\n\nTu veux retrouver ton alignement — intérieur, physique, émotionnel.\nC'est exactement la philosophie Reset™ : In – Out – Reset."
+      "intro": "Le RESET Club™️ repose sur une approche exclusive :\n\nIN – OUT – RESET",
+      "in": "🥗 IN : Nutrition anti-inflammatoire & vitalité cellulaire",
+      "out": "⚙️ OUT : Technologies avancées pour remodelage, drainage & optimisation métabolique",
+      "reset": "🧘‍♀️ RESET : Stress, sommeil, mindset & rééquilibrage hormonal",
+      "explanation": "Ces 3 axes travaillent ensemble pour réinitialiser ton énergie, ton corps et ta clarté mentale.",
+      "question": "Souhaites-tu que je t'explique :",
+      "howWorks": "🔸 Comment fonctionne le Bilan Reset™️",
+      "results": "🔸 Quels résultats concrets tu peux attendre"
     },
     "phase3": {
-      "intro": "Peu importe ton objectif, tout commence toujours ici :\nle Bilan Reset™.",
-      "details": "En trente minutes, on lit ton corps, ton énergie, tes carences,\ngrâce à la technologie InBody + OligoCheck.\n\nC'est une vraie cartographie intérieure —\npour comprendre avant d'agir.\n\nEt en ce moment, on offre un bonus exclusif\npour chaque réservation en ligne.",
-      "bonus": "Tu veux que je t'en parle ? 💫"
+      "title": "Le Bilan Reset™️ est la première étape incontournable de ta transformation.\nEn 30 minutes, nous analysons ce que ton corps ne dit à personne :",
+      "point1": "• Composition corporelle, rétention & inflammation",
+      "point2": "• Carences minérales, stress oxydatif & métabolisme cellulaire",
+      "point3": "• Énergie, sommeil & charge de stress",
+      "point4": "• Freins invisibles qui bloquent ton métabolisme",
+      "closing": "Tu repars avec une lecture claire, simple et actionnable de ton corps.",
+      "preferQuestion": "Tu préfères :",
+      "readTestimony": "🔸 Lire témoignage de nos clientes",
+      "bookNow": "🔸 Réserver ton bilan maintenant"
     },
     "phase4": {
-      "presentation": "Laisse-moi me présenter 🌿\n\nJe m'appelle Nahed, je suis coach holistique,\net j'ai créé le Reset Club™ pour aider les femmes\nà se reconnecter à leur énergie naturelle.",
-      "philosophy": "Parce que ton corps sait.\nTon esprit sait.\n\nIl faut juste lui redonner la possibilité\nde respirer, de se libérer,\net de recommencer.\n\nC'est ce que fait le Reset Club™."
+      "testimonial1": "💖 \"En une semaine, j'ai perdu 3 cm et retrouvé une énergie que j'avais oubliée.\" — Amal, 45 ans",
+      "testimonial2": "💤 \"Après des mois d'insomnie, j'ai enfin dormi comme un bébé.\" — Lina, 36 ans",
+      "testimonial3": "🔥 \"Mon ventre a dégonflé et je me sens plus légère.\" — Samia, 32 ans",
+      "bookBilan": "🔸 Réserver mon Bilan Reset Offert",
+      "learnMore": "🔸 En savoir plus sur le centre"
     },
     "phase5": {
-      "intro": "Maintenant, tu as plusieurs possibilités 🌸",
-      "bookNow": "🟩 Réserver mon Bilan Reset™ maintenant",
-      "talkToAdvisor": "🟧 Parler à une conseillère",
-      "learnMore": "💭 J'ai des questions",
-      "bookResponse": "Parfait ! Je t'ouvre notre calendrier de réservation.\n\nÀ très bientôt pour ton Reset ! 💫",
-      "talkResponse": "Avec plaisir 💬\n\nJe te connecte avec une de nos conseillères Reset™.\nElle va t'aider à choisir ton protocole idéal."
+      "title": "Au RESET Club™️ tu vivras une expérience immersive :",
+      "point1": "• Un accueil personnalisé dans un espace sensoriel",
+      "point2": "• Des technologies exclusives et de dernière génération",
+      "point3": "• Des protocoles holistiques élaborés par des expertes en santé intégrative",
+      "philosophy": "Ici, ton corps cesse d'être une énigme.\nIl devient lisible, compréhensible et transformable.",
+      "question": "Tu veux :",
+      "seeProtocols": "🔸 Voir nos protocoles exclusifs",
+      "bookDiagnostic": "🔸 Réserver mon diagnostic gratuit"
     },
     "phase6": {
-      "intro": "Dis-moi ce qui te préoccupe ",
-      "hesitation": "😊 Je ne suis pas sûre...",
-      "price": "💰 Quel est le tarif ?",
-      "distance": "📍 Je ne suis pas à Rabat",
-      "backToOptions": "↩️ Retour aux options",
-      "hesitationResponse": "Je comprends 💛\n\nCe doute, c'est souvent le signe qu'un vrai changement se prépare.\nRespire… ton corps sait déjà si c'est le bon moment.\n\nSi tu veux, je peux t'envoyer un petit aperçu gratuit\nde notre Mini Reset à la Maison™ pour que tu ressentes par toi-même.",
-      "priceResponse": "Je te comprends 🌿\n\nCe que tu investis ici, ce n'est pas dans un soin…\nc'est dans ta clarté, ton sommeil, ton bien-être durable.\n\nLe Reset Club™, c'est une transformation en profondeur.\nPas une promesse. Une expérience.",
-      "distanceResponse": "Tu n'es pas à Rabat ?\nAucun souci ✈️\n\nOn accompagne aussi à distance\navec notre Mini Reset Digital™.\nLes mêmes rituels, la même énergie, depuis chez toi."
+      "title": "En réalisant ton Bilan Reset™️, tu vas :",
+      "benefit1": "💪 Identifier la vraie origine de ton stockage et de ta fatigue",
+      "benefit2": "🧠 Comprendre ton stress, tes hormones & ton système nerveux",
+      "benefit3": "💧 Accélérer ton métabolisme & retrouver ton énergie profonde",
+      "benefit4": "🌙 Améliorer ton sommeil et réduire la charge mentale",
+      "benefit5": "🔥 Recevoir un plan sur-mesure, basé sur ta biologie et ta vérité intérieure",
+      "offer": "🎁 Ce mois-ci, 50 bilans offerts par Nahed\n(places limitées pour garantir un suivi personnalisé)",
+      "yesBook": "🔘 Oui, je veux mon bilan offert",
+      "askFirst": "🔘 Je veux poser une question d'abord"
     },
     "phase7": {
-      "intro": "Je peux t'offrir quelque chose pour commencer 🎁",
-      "getMiniReset": "✨ Recevoir le Mini Reset à la Maison™",
-      "gift": "Félicitations 💫\n\nTon Reset commence maintenant.",
-      "program": "Voici ton cadeau exclusif :\nle Mini Reset à la Maison™.\n\nUn programme de 3 jours avec rituels et affirmations,\npour reconnecter ton corps et ton mental avant ton bilan.\n\nJour 1 : Respire la clarté.\nJour 2 : Réveille ton énergie.\nJour 3 : Apaise ton esprit.\n\nTu vas recevoir le guide par email 📧"
+      "intro": "Super 🌿\nAvant de t'envoyer ton lien de réservation, j'ai besoin de 4 petites infos :",
+      "firstName": "📋 Ton prénom",
+      "email": "📧 Ton email",
+      "whatsapp": "📲 Ton numéro WhatsApp",
+      "goalTitle": "🎯 Ton objectif principal :",
+      "weightLoss": "• Perte de poids",
+      "energy": "• Énergie",
+      "sleep": "• Sommeil",
+      "stress": "• Stress",
+      "globalWellness": "• Bien-être global",
+      "privacy": "Toutes tes informations sont strictement confidentielles."
     },
-    "phase10": {
-      "closing": "Coucou 🌸\n\nC'est Nahed.\nJe voulais juste te dire bravo.\n\nTu viens de faire un pas vers toi-même.\nVers ton équilibre.\nVers ton énergie vraie.\n\nTu verras…\nTon Reset commence dès maintenant."
+    "phase8": {
+      "title": "🎉 Merci {firstName}, ton inscription est validée.",
+      "scarcity": "💎 Il reste encore quelques places libres parmi les 50 bilans offerts ce mois-ci.\nJe t'invite à réserver ton créneau avant fermeture des disponibilités :",
+      "bookSlot": "🔘 Réserver mon Bilan Reset™️ offert",
+      "getBrochure": "🔘 Recevoir la brochure détaillée"
+    },
+    "phase9": {
+      "greeting": "🌸 Bravo {firstName}.\nTu viens d'activer ton RESET personnel.",
+      "followUp": "Tu recevras dans quelques heures un message de notre équipe pour confirmer ton rendez-vous.",
+      "preparation": "En attendant…\nRespire profondément.\nBois un grand verre d'eau.\nEt prépare-toi à rencontrer la version de toi que tu as toujours méritée."
     },
     "options": {
       "yes": "Oui, s'il te plaît 💫",

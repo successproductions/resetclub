@@ -19,31 +19,39 @@ export default function ResetClubChatbot({ isOpen, onClose }: ChatbotProps) {
   const [messages, setMessages] = useState<Message[]>([
     {
       id: '0',
-      text: `Bonjour 
+      text: `Bonjour 🌸
+Je suis Nahed, fondatrice du RESET Club™️ Rabat,
+le premier centre féminin de biohacking & transformation 360° au Maroc.
 
-Je suis Nahed, fondatrice du RESET Club™ Rabat, le premier centre de biohacking féminin et transformation 360° au Maroc.
+Ici, on ne te change pas.
+On te reconnecte à la femme que tu es vraiment. ✨
 
-Ici, on ne cherche pas à te transformer. On t'aide à te retrouver.
-
- Prends une grande respiration… et dis-moi ce que tu veux explorer :`,
+Avant de commencer, dis-moi ce que tu veux explorer :`,
       sender: 'bot',
       options: [
-        'Comprendre ce qu\'est le Bilan Reset™️',
-        'Découvrir les bienfaits du RESET Club™️',
-        'Réserver mon Bilan offert',
-        'Parler à une conseillère bien-être'
+        '🔸 Découvrir le Bilan Reset™️',
+        '🔸 Comprendre les bénéfices du RESET Club™️',
+        '🔸 Réserver mon Bilan offert',
+        '🔸 Parler à une conseillère bien-être'
       ]
+    },
+    {
+      id: '0-closing',
+      text: `Ton reset commence ici… respire profondément.`,
+      sender: 'bot'
     }
   ]);
   const [isTyping, setIsTyping] = useState(false);
   const [userInfo, setUserInfo] = useState({
     firstName: '',
     email: '',
+    phoneCode: '+212',
     phone: '',
     objective: ''
   });
   const [collectingInfo, setCollectingInfo] = useState(false);
   const [infoStep, setInfoStep] = useState(0);
+  const [showPhoneCodeSelector, setShowPhoneCodeSelector] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   const scrollToBottom = () => {
@@ -56,95 +64,100 @@ Ici, on ne cherche pas à te transformer. On t'aide à te retrouver.
 
   const responses = {
     phase1: {
-      text: ` Le RESET Club™️, c'est une approche unique :
+      text: `Le RESET Club™️ repose sur une approche exclusive :
 
 IN – OUT – RESET
 
- IN : Nutrition et vitalité cellulaire
- OUT : Technologies de rajeunissement et drainage
- RESET : Gestion du stress, sommeil, mindset
+🥗 IN : Nutrition anti-inflammatoire & vitalité cellulaire
+⚙️ OUT : Technologies avancées pour remodelage, drainage & optimisation métabolique
+🧘‍♀️ RESET : Stress, sommeil, mindset & rééquilibrage hormonal
 
-Ensemble, ces trois piliers t'aident à rééquilibrer ton corps, ton mental et ton énergie.
+Ces 3 axes travaillent ensemble pour réinitialiser ton énergie, ton corps et ta clarté mentale.
 
 Souhaites-tu que je t'explique :`,
       options: [
-        'Comment le Bilan Reset™️ fonctionne',
-        'Les bénéfices que tu peux en attendre'
+        '🔸 Comment fonctionne le Bilan Reset™️',
+        '🔸 Quels résultats concrets tu peux attendre'
       ]
     },
     phase2: {
-      text: ` Le Bilan Reset™️, c'est la première étape de ta transformation.
+      text: `Le Bilan Reset™️ est la première étape incontournable de ta transformation.
+En 30 minutes, nous analysons ce que ton corps ne dit à personne :
 
-En 30 minutes, on dresse la carte intérieure de ton corps :
+•  Composition corporelle, rétention & inflammation
+•  Carences minérales, stress oxydatif & métabolisme cellulaire
+•  Énergie, sommeil & charge de stress
+•  Freins invisibles qui bloquent ton métabolisme
 
-• Composition corporelle & inflammation (InBody)
-• Carences minérales et stress cellulaire (OligoCheck)
-• Analyse du sommeil, du stress et du métabolisme
+Tu repars avec une lecture claire, simple et actionnable de ton corps.
 
-Tu ressors avec une lecture claire de ton énergie, de ton corps et de tes freins invisibles.
-
-Souhaites-tu :`,
+Tu préfères :`,
       options: [
-        'Voir les résultats concrets que d\'autres femmes ont obtenus',
-        'Réserver ton bilan maintenant'
+        '🔸 Lire témoignage de nos clientes',
+        '🔸 Réserver ton bilan maintenant'
       ]
     },
     phase3: {
-      text: ` "En une semaine, j'ai retrouvé mon énergie et perdu 3 cm de tour de taille."
-— Amal, 45 ans
-
-💧 "Je ne dormais plus depuis des mois. Après mon Reset, j'ai retrouvé un vrai sommeil."
-— Lina, 36 ans`,
+      text: `💖 "En une semaine, j'ai perdu 3 cm et retrouvé une énergie que j'avais oubliée." — Amal, 45 ans
+💤 "Après des mois d'insomnie, j'ai enfin dormi comme un bébé." — Lina, 36 ans
+🔥 "Mon ventre a dégonflé et je me sens plus légère." — Samia, 32 ans`,
       options: [
-        'Réserver mon Bilan Reset offert',
-        'En savoir plus sur le centre'
+        '🔸 Réserver mon Bilan Reset Offert',
+        '🔸 En savoir plus sur le centre'
       ]
     },
     phase4: {
-      text: ` Une expérience immersive, où chaque détail compte :
+      text: `Au RESET Club™️ tu vivras une expérience immersive :
 
-• Accueil personnalisé dans un espace sensoriel haut de gamme
-• Technologies exclusives (sauna infrarouge, Dream Machine, cryothérapie douce)
-• Soins guidés par des experts en santé intégrative
+•  Un accueil personnalisé dans un espace sensoriel
+•  Des technologies exclusives et de dernière génération
+•  Des protocoles holistiques élaborés par des expertes en santé intégrative
 
- Ton corps ne sera plus un mystère. Tu comprendras pourquoi il bloque, et comment le relancer.
+Ici, ton corps cesse d'être une énigme.
+Il devient lisible, compréhensible et transformable.
 
-Souhaites-tu :`,
+Tu veux :`,
       options: [
-        'Voir nos protocoles exclusifs',
-        'Réserver mon diagnostic gratuit'
+        '🔸 Voir nos protocoles exclusifs',
+        '🔸 Réserver mon diagnostic gratuit'
       ]
     },
     phase5: {
-      text: ` En réalisant ton Bilan Reset™️, tu vas :
+      text: `En réalisant ton Bilan Reset™️, tu vas :
 
- Identifier la cause réelle de ta fatigue ou de ton stockage
- Comprendre ton stress et ton profil hormonal
- Retrouver ton énergie, ton sommeil et ta légèreté
+💪 Identifier la vraie origine de ton stockage et de ta fatigue
+🧠 Comprendre ton stress, tes hormones & ton système nerveux
+💧 Accélérer ton métabolisme & retrouver ton énergie profonde
+🌙 Améliorer ton sommeil et réduire la charge mentale
+🔥 Recevoir un plan sur-mesure, basé sur ta biologie et ta vérité intérieure
 
-Et tu bénéficieras d'un plan sur mesure basé sur ta biologie.
-
- Et en ce moment, Nahed offre 50 bilans gratuits ce mois-ci 🌸`,
+🎁 Ce mois-ci, 50 bilans offerts par Nahed
+(places limitées pour garantir un suivi personnalisé)`,
       options: [
-        'Oui, je veux le mien',
-        'Je préfère d\'abord poser une question'
+        '🔘 Oui, je veux mon bilan offert',
+        '🔘 Je veux poser une question d\'abord'
       ]
     }
   };
 
   const infoQuestions = [
-    'Parfait \n\nPour t\'envoyer ton lien de réservation, j\'ai juste besoin de quelques infos rapides.\n\n Quel est ton prénom ?',
-    ' Merci ! Et ton email ?',
-    ' Parfait. Ton numéro WhatsApp ?',
-    ' Enfin, quel est ton objectif principal ?'
+    `Super 🌿
+Avant de t'envoyer ton lien de réservation, j'ai besoin de 4 petites infos :
+
+📋 Ton prénom`,
+    '📧 Ton email',
+    '📲 Ton numéro WhatsApp',
+    `🎯 Ton objectif principal :
+
+Toutes tes informations sont strictement confidentielles.`
   ];
 
   const objectives = [
-    'Perte de poids',
-    'Sommeil',
-    'Énergie',
-    'Stress',
-    'Bien-être global'
+    '•  Perte de poids',
+    '•  Énergie',
+    '•  Sommeil',
+    '•  Stress',
+    '•  Bien-être global'
   ];
 
   const addMessage = (text: string, sender: 'bot' | 'user', options?: string[]) => {
@@ -164,29 +177,47 @@ Et tu bénéficieras d'un plan sur mesure basé sur ta biologie.
     setTimeout(() => {
       setIsTyping(false);
 
-      if (option.includes('Comprendre ce qu\'est le Bilan Reset') || option.includes('Découvrir les bienfaits')) {
+      if (option.includes('Découvrir le Bilan Reset') || option.includes('Comprendre les bénéfices')) {
         addMessage(responses.phase1.text, 'bot', responses.phase1.options);
-      } else if (option.includes('Comment le Bilan Reset™️ fonctionne') || option.includes('Les bénéfices')) {
+      } else if (option.includes('Comment fonctionne le Bilan Reset') || option.includes('Quels résultats concrets')) {
         addMessage(responses.phase2.text, 'bot', responses.phase2.options);
-      } else if (option.includes('Voir les résultats')) {
+      } else if (option.includes('Lire témoignage')) {
         addMessage(responses.phase3.text, 'bot', responses.phase3.options);
       } else if (option.includes('En savoir plus sur le centre')) {
         addMessage(responses.phase4.text, 'bot', responses.phase4.options);
-      } else if (option.includes('Voir nos protocoles') || option.includes('bénéfices')) {
+      } else if (option.includes('Voir nos protocoles')) {
         addMessage(responses.phase5.text, 'bot', responses.phase5.options);
-      } else if (option.includes('Réserver') || option.includes('Oui, je veux le mien')) {
+      } else if (option.includes('Réserver mon Bilan Reset™️ offert')) {
+        // Show Phase 8 - Final message (MUST be before generic 'Réserver')
+        addMessage(
+          `🌸 Bravo ${userInfo.firstName}.
+Tu viens d'activer ton RESET personnel.
+
+Tu recevras dans quelques heures un message de notre équipe pour confirmer ton rendez-vous.
+
+En attendant…
+Respire profondément.
+Bois un grand verre d'eau.
+Et prépare-toi à rencontrer la version de toi que tu as toujours méritée.`,
+          'bot',
+          ['💬 Contacter sur WhatsApp']
+        );
+      } else if (option.includes('Recevoir la brochure détaillée')) {
+        addMessage('📄 La brochure détaillée du RESET Club™️ va t\'être envoyée par email dans les prochaines minutes. Tu peux aussi nous contacter.', 'bot', ['💬 Contacter sur WhatsApp']);
+      } else if (option.includes('Réserver') || option.includes('Oui, je veux mon bilan offert')) {
         setCollectingInfo(true);
         setInfoStep(0);
         addMessage(infoQuestions[0], 'bot');
-      } else if (option.includes('Je préfère d\'abord poser une question')) {
-        addMessage(' Bien sûr ! Pour toute question, notre équipe est disponible sur WhatsApp pour t\'accompagner personnellement. 💬', 'bot', ['Contacter sur WhatsApp']);
-      } else if (option.includes('conseillère')) {
-        addMessage(' Parfait ! Un membre de notre équipe va te contacter très bientôt. Tu peux aussi nous joindre directement sur WhatsApp.', 'bot', ['Contacter sur WhatsApp']);
+      } else if (option.includes('Je veux poser une question d\'abord')) {
+        addMessage('Bien sûr ! Pour toute question, notre équipe est disponible sur WhatsApp pour t\'accompagner personnellement. 💬', 'bot', ['💬 Contacter sur WhatsApp']);
+      } else if (option.includes('conseillère bien-être')) {
+        addMessage('Parfait ! Un membre de notre équipe va te contacter très bientôt. Tu peux aussi nous joindre directement sur WhatsApp.', 'bot', ['💬 Contacter sur WhatsApp']);
       } else if (option.includes('Contacter sur WhatsApp')) {
-        // Redirect to WhatsApp
-        window.open('https://wa.me/212600000000', '_blank');
+        const message = `Bonjour ! Je souhaite réserver mon Bilan Reset™. Mon nom est ${userInfo.firstName || 'Client'}.`;
+        window.open(`https://wa.me/212600000000?text=${encodeURIComponent(message)}`, '_blank');
+      } else if (option.includes('Télécharger la brochure')) {
+        window.open('/brochure-reset-club.pdf', '_blank');
       } else if (objectives.includes(option)) {
-        // Handle objective selection - trigger final phase
         setIsTyping(true);
         handleInfoSubmit(option, true);
       }
@@ -198,9 +229,19 @@ Et tu bénéficieras d'un plan sur mesure basé sur ta biologie.
     return emailRegex.test(email);
   };
 
-  const validatePhone = (phone: string) => {
-    const phoneRegex = /^(\+212|0)[5-7][0-9]{8}$/;
-    return phoneRegex.test(phone.replace(/\s/g, ''));
+  const validatePhone = (phone: string, phoneCode: string) => {
+    // Remove spaces
+    const cleanPhone = phone.replace(/\s/g, '');
+
+    if (phoneCode === '+212') {
+      // Morocco: 0XXXXXXXXX or XXXXXXXXX
+      const phoneRegex = /^(0)?[5-7][0-9]{8}$/;
+      return phoneRegex.test(cleanPhone);
+    } else {
+      // International: at least 8 digits
+      const phoneRegex = /^[0-9]{8,15}$/;
+      return phoneRegex.test(cleanPhone);
+    }
   };
 
   const handleInfoSubmit = (value: string, isObjectiveSelection = false) => {
@@ -228,19 +269,23 @@ Et tu bénéficieras d'un plan sur mesure basé sur ta biologie.
       setUserInfo(prev => ({ ...prev, email: value }));
       setTimeout(() => {
         setIsTyping(false);
+        setShowPhoneCodeSelector(true);
         addMessage(infoQuestions[2], 'bot');
         setInfoStep(2);
       }, 1000);
     } else if (infoStep === 2) {
       // Validate phone
-      if (!validatePhone(value)) {
+      if (!validatePhone(value, userInfo.phoneCode)) {
         setTimeout(() => {
           setIsTyping(false);
-          addMessage('Oups ! Ce numéro ne semble pas valide. Utilise le format marocain : 06XXXXXXXX ou +212XXXXXXXXX 📱', 'bot');
+          addMessage(userInfo.phoneCode === '+212'
+            ? 'Oups ! Ce numéro ne semble pas valide. Utilise le format marocain : 06XXXXXXXX 📱'
+            : 'Oups ! Ce numéro ne semble pas valide. Vérifie le format. 📱', 'bot');
         }, 1000);
         return;
       }
       setUserInfo(prev => ({ ...prev, phone: value }));
+      setShowPhoneCodeSelector(false);
       setTimeout(() => {
         setIsTyping(false);
         addMessage(infoQuestions[3], 'bot', objectives);
@@ -249,19 +294,19 @@ Et tu bénéficieras d'un plan sur mesure basé sur ta biologie.
     } else if (infoStep === 3) {
       setUserInfo(prev => ({ ...prev, objective: value }));
       setCollectingInfo(false);
+      // Phase 7 - Confirmation with buttons
       setTimeout(() => {
         setIsTyping(false);
         addMessage(
-          `Bravo, ${userInfo.firstName}.
+          `🎉 Merci ${userInfo.firstName}, ton inscription est validée.
 
-Tu viens d'activer ton RESET personnel.
-
-Tu recevras dans quelques heures un message de notre équipe pour confirmer ton créneau.
-
-En attendant, bois un grand verre d'eau…
-Respire profondément…
-Et prépare-toi à rencontrer la meilleure version de toi-même. 💫`,
-          'bot'
+💎 Il reste encore quelques places libres parmi les 50 bilans offerts ce mois-ci.
+Je t'invite à réserver ton créneau avant fermeture des disponibilités :`,
+          'bot',
+          [
+            '🔘 Réserver mon Bilan Reset™️ offert',
+            '🔘 Recevoir la brochure détaillée'
+          ]
         );
       }, 1200);
     }
@@ -346,12 +391,29 @@ Et prépare-toi à rencontrer la meilleure version de toi-même. 💫`,
         {collectingInfo && infoStep < 3 && (
           <div className="p-4 border-t border-black/10 bg-[#f5efe8]">
             <div className="flex gap-2">
+              {showPhoneCodeSelector && infoStep === 2 && (
+                <select
+                  value={userInfo.phoneCode}
+                  onChange={(e) => setUserInfo(prev => ({ ...prev, phoneCode: e.target.value }))}
+                  className="px-3 py-2 border border-black/20 focus:outline-none focus:border-black bg-white text-base"
+                >
+                  <option value="+212">🇲🇦 +212</option>
+                  <option value="+33">🇫🇷 +33</option>
+                  <option value="+1">🇺🇸 +1</option>
+                  <option value="+44">🇬🇧 +44</option>
+                  <option value="+34">🇪🇸 +34</option>
+                  <option value="+971">🇦🇪 +971</option>
+                  <option value="+966">🇸🇦 +966</option>
+                  <option value="+213">🇩🇿 +213</option>
+                  <option value="+216">🇹🇳 +216</option>
+                </select>
+              )}
               <input
                 type={infoStep === 1 ? 'email' : infoStep === 2 ? 'tel' : 'text'}
                 value={inputValue}
                 onChange={(e) => setInputValue(e.target.value)}
                 onKeyPress={(e) => e.key === 'Enter' && handleSend()}
-                placeholder="Tape ta réponse..."
+                placeholder={infoStep === 2 ? (userInfo.phoneCode === '+212' ? '06XXXXXXXX' : 'Numéro de téléphone') : 'Tape ta réponse...'}
                 className="flex-1 px-4 py-2 border border-black/20 focus:outline-none focus:border-black bg-white text-base"
               />
               <button

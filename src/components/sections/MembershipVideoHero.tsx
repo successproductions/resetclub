@@ -98,7 +98,7 @@ const MembershipVideoHero: React.FC = () => {
           {/* Main Title */}
           <h1
             ref={titleMainRef}
-            className="text-5xl md:text-6xl lg:text-7xl font-graphik font-bold text-white mb-4 tracking-wide leading-tight"
+            className="text-5xl md:text-6xl lg:text-7xl font-graphik font-bold text-white text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)] mb-4 tracking-wide leading-tight"
           >
             {t('titleMain')}
           </h1>
@@ -106,7 +106,7 @@ const MembershipVideoHero: React.FC = () => {
           {/* Sub Title */}
           <h2
             ref={titleSubRef}
-            className="text-3xl md:text-4xl lg:text-5xl font-graphik font-normal text-white mb-6 md:mb-8 tracking-wide leading-tight"
+            className="text-3xl md:text-4xl lg:text-5xl font-graphik font-normal text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)] mb-6 md:mb-8 tracking-wide leading-tight"
           >
             {t('titleSub')}
           </h2>
@@ -114,7 +114,7 @@ const MembershipVideoHero: React.FC = () => {
           {/* Subtitle */}
           <p
             ref={subtitleRef}
-            className="text-base md:text-lg lg:text-xl text-white mb-8 md:mb-10 leading-relaxed font-graphik font-normal max-w-3xl mx-auto"
+            className="text-base md:text-lg lg:text-xl  text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)] mb-8 md:mb-10 leading-relaxed font-graphik font-normal max-w-3xl mx-auto"
           >
             {t('subtitle')}
           </p>
@@ -124,7 +124,7 @@ const MembershipVideoHero: React.FC = () => {
         <div ref={ctaRef} className="absolute bottom-[15vh] left-0 right-0 z-10 text-center px-4">
           <button
             onClick={() => setIsFormOpen(true)}
-            className="text-white font-normal bg-white/10 backdrop-blur-sm border-2 border-white/50 text-base md:text-lg font-graphik px-6 md:px-10 py-3 md:py-4 hover:bg-white/20 hover:border-white cursor-pointer transition-all duration-300 hover:scale-105 shadow-2xl hover:shadow-white/20"
+            className="text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)] font-normal bg-white/10 backdrop-blur-sm border-2 border-white/50 text-base md:text-lg font-graphik px-6 md:px-10 py-3 md:py-4 hover:bg-white/20 hover:border-white cursor-pointer transition-all duration-300 hover:scale-105 shadow-2xl hover:shadow-white/20"
           >
             {t('cta')}
           </button>
