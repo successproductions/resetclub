@@ -37,14 +37,9 @@ const Trustpilot: React.FC = () => {
           {/* TrustScore */}
           <div className="text-sm md:text-lg font-graphik text-gray-500">
             TrustScore <span className="text-gray-800">{trustScore}</span> |{' '}
-            <a
-              href="#"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="underline hover:text-[#00b67a] transition-colors"
-            >
+            <span className="text-gray-800">
               {totalReviews} reviews
-            </a>
+            </span>
           </div>
         </div>
 

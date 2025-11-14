@@ -23,11 +23,11 @@ const Director: React.FC = () => {
           {/* Title - Desktop */}
           <div className="hidden lg:block  space-y-1">
             <div>
-              <h1 className="text-3xl md:text-3xl lg:text-5xl font-graphik font-normal text-gray-900 md:mb-4 leading-tight">
+              <h2 className="text-3xl md:text-3xl lg:text-5xl font-graphik font-normal text-gray-900 md:mb-4 leading-tight">
                 {t('title')}
                 <br />
                 {t('subtitle')}
-              </h1>
+              </h2>
             </div>
 
             {/* Description - Desktop */}
@@ -61,11 +61,11 @@ const Director: React.FC = () => {
 
           {/* Description - Mobile Last */}
           <div className="lg:hidden px-6">
-             <h1 className="text-3xl font-graphik font-normal text-gray-900 leading-tight mt-2">
+             <h2 className="text-3xl font-graphik font-normal text-gray-900 leading-tight mt-2">
               {t('title')}
               <br />
               {t('subtitle')}
-            </h1>
+            </h2>
             <div className="space-y-2 text-gray-900 font-normal mt-2 font-graphik text-lg leading-relaxed">
               <p>
                 {t('bio1')}

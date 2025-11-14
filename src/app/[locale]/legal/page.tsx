@@ -3,8 +3,9 @@ import { Metadata } from 'next';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 
-export async function generateMetadata({ params }: { params: { locale: string } }): Promise<Metadata> {
-  const t = await getTranslations({ locale: params.locale, namespace: 'SEO.legal' });
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: 'SEO.legal' });
 
   return {
     title: t('title'),
@@ -12,7 +13,7 @@ export async function generateMetadata({ params }: { params: { locale: string } 
     openGraph: {
       title: t('title'),
       description: t('description'),
-      url: `https://www.resetclub.ma/${params.locale}/legal`,
+      url: `https://www.resetclub.ma/${locale}/legal`,
       siteName: 'ResetClub™️',
       images: [
         {
@@ -22,11 +23,11 @@ export async function generateMetadata({ params }: { params: { locale: string } 
           alt: 'ResetClub™️',
         },
       ],
-      locale: params.locale === 'fr' ? 'fr_FR' : 'en_US',
+      locale: locale === 'fr' ? 'fr_FR' : 'en_US',
       type: 'website',
     },
     alternates: {
-      canonical: `https://www.resetclub.ma/${params.locale}/legal`,
+      canonical: `https://www.resetclub.ma/${locale}/legal`,
       languages: {
         'en': 'https://www.resetclub.ma/en/legal',
         'fr': 'https://www.resetclub.ma/fr/legal',

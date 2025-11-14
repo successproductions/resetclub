@@ -2,8 +2,9 @@ import { useTranslations } from 'next-intl';
 import { getTranslations } from 'next-intl/server';
 import { Metadata } from 'next';
 
-export async function generateMetadata({ params }: { params: { locale: string } }): Promise<Metadata> {
-  const t = await getTranslations({ locale: params.locale, namespace: 'SEO.about' });
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: 'SEO.about' });
 
   return {
     title: t('title'),
@@ -11,7 +12,7 @@ export async function generateMetadata({ params }: { params: { locale: string } 
     openGraph: {
       title: t('title'),
       description: t('description'),
-      url: `https://www.resetclub.ma/${params.locale}/about`,
+      url: `https://www.resetclub.ma/${locale}/about`,
       siteName: 'ResetClub™️',
       images: [
         {
@@ -21,7 +22,7 @@ export async function generateMetadata({ params }: { params: { locale: string } 
           alt: 'ResetClub™️',
         },
       ],
-      locale: params.locale === 'fr' ? 'fr_FR' : 'en_US',
+      locale: locale === 'fr' ? 'fr_FR' : 'en_US',
       type: 'website',
     },
     twitter: {
@@ -31,7 +32,7 @@ export async function generateMetadata({ params }: { params: { locale: string } 
       images: ['/LOGO.png'],
     },
     alternates: {
-      canonical: `https://www.resetclub.ma/${params.locale}/about`,
+      canonical: `https://www.resetclub.ma/${locale}/about`,
       languages: {
         'en': 'https://www.resetclub.ma/en/about',
         'fr': 'https://www.resetclub.ma/fr/about',

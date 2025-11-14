@@ -7,8 +7,9 @@ import Footer from '@/components/layout/Footer';
 import RecruitmentsHero from '@/components/sections/RecruitmentsHero';
 import CVUploadForm from '@/components/forms/CVUploadForm';
 
-export async function generateMetadata({ params }: { params: { locale: string } }): Promise<Metadata> {
-  const t = await getTranslations({ locale: params.locale, namespace: 'SEO.recrutons' });
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: 'SEO.recrutons' });
 
   return {
     title: t('title'),
@@ -16,7 +17,7 @@ export async function generateMetadata({ params }: { params: { locale: string } 
     openGraph: {
       title: t('title'),
       description: t('description'),
-      url: `https://www.resetclub.ma/${params.locale}/recrutons`,
+      url: `https://www.resetclub.ma/${locale}/recrutons`,
       siteName: 'ResetClub™️',
       images: [
         {
@@ -26,7 +27,7 @@ export async function generateMetadata({ params }: { params: { locale: string } 
           alt: 'ResetClub™️',
         },
       ],
-      locale: params.locale === 'fr' ? 'fr_FR' : 'en_US',
+      locale: locale === 'fr' ? 'fr_FR' : 'en_US',
       type: 'website',
     },
     twitter: {
@@ -36,7 +37,7 @@ export async function generateMetadata({ params }: { params: { locale: string } 
       images: ['/LOGO.png'],
     },
     alternates: {
-      canonical: `https://www.resetclub.ma/${params.locale}/recrutons`,
+      canonical: `https://www.resetclub.ma/${locale}/recrutons`,
       languages: {
         'en': 'https://www.resetclub.ma/en/recrutons',
         'fr': 'https://www.resetclub.ma/fr/recrutons',

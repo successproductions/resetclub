@@ -17,8 +17,9 @@ import TeamHero from '@/components/sections/TeamHero';
 import Director from '@/components/sections/Director';
 import TeamSlider from '@/components/sections/TeamSlider';
 
-export async function generateMetadata({ params }: { params: { locale: string } }): Promise<Metadata> {
-  const t = await getTranslations({ locale: params.locale, namespace: 'SEO.home' });
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: 'SEO.home' });
 
   return {
     title: t('title'),
@@ -26,7 +27,7 @@ export async function generateMetadata({ params }: { params: { locale: string } 
     openGraph: {
       title: t('title'),
       description: t('description'),
-      url: `https://www.resetclub.ma/${params.locale}`,
+      url: `https://www.resetclub.ma/${locale}`,
       siteName: 'ResetClub™️',
       images: [
         {
@@ -36,7 +37,7 @@ export async function generateMetadata({ params }: { params: { locale: string } 
           alt: 'ResetClub™️',
         },
       ],
-      locale: params.locale === 'fr' ? 'fr_FR' : 'en_US',
+      locale: locale === 'fr' ? 'fr_FR' : 'en_US',
       type: 'website',
     },
     twitter: {
@@ -46,7 +47,7 @@ export async function generateMetadata({ params }: { params: { locale: string } 
       images: ['/LOGO.png'],
     },
     alternates: {
-      canonical: `https://www.resetclub.ma/${params.locale}`,
+      canonical: `https://www.resetclub.ma/${locale}`,
       languages: {
         'en': 'https://www.resetclub.ma/en',
         'fr': 'https://www.resetclub.ma/fr',

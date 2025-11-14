@@ -1,8 +1,9 @@
 import { getTranslations } from 'next-intl/server';
 import { Metadata } from 'next';
 
-export async function generateMetadata({ params }: { params: { locale: string } }): Promise<Metadata> {
-  const t = await getTranslations({ locale: params.locale, namespace: 'SEO.membership' });
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: 'SEO.membership' });
 
   return {
     title: t('title'),
@@ -10,7 +11,7 @@ export async function generateMetadata({ params }: { params: { locale: string } 
     openGraph: {
       title: t('title'),
       description: t('description'),
-      url: `https://www.resetclub.ma/${params.locale}/membership`,
+      url: `https://www.resetclub.ma/${locale}/membership`,
       siteName: 'ResetClub™️',
       images: [
         {
@@ -20,7 +21,7 @@ export async function generateMetadata({ params }: { params: { locale: string } 
           alt: 'ResetClub™️',
         },
       ],
-      locale: params.locale === 'fr' ? 'fr_FR' : 'en_US',
+      locale: locale === 'fr' ? 'fr_FR' : 'en_US',
       type: 'website',
     },
     twitter: {
@@ -30,7 +31,7 @@ export async function generateMetadata({ params }: { params: { locale: string } 
       images: ['/LOGO.png'],
     },
     alternates: {
-      canonical: `https://www.resetclub.ma/${params.locale}/membership`,
+      canonical: `https://www.resetclub.ma/${locale}/membership`,
       languages: {
         'en': 'https://www.resetclub.ma/en/membership',
         'fr': 'https://www.resetclub.ma/fr/membership',

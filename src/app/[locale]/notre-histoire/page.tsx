@@ -5,8 +5,9 @@ import Footer from '@/components/layout/Footer';
 import NotreHistoireHero from '@/components/sections/NotreHistoireHero';
 import NahedRachad from '@/components/sections/NahedRachad';
 
-export async function generateMetadata({ params }: { params: { locale: string } }): Promise<Metadata> {
-  const t = await getTranslations({ locale: params.locale, namespace: 'SEO.notreHistoire' });
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: 'SEO.notreHistoire' });
 
   return {
     title: t('title'),
@@ -14,7 +15,7 @@ export async function generateMetadata({ params }: { params: { locale: string } 
     openGraph: {
       title: t('title'),
       description: t('description'),
-      url: `https://www.resetclub.ma/${params.locale}/notre-histoire`,
+      url: `https://www.resetclub.ma/${locale}/notre-histoire`,
       siteName: 'ResetClub™️',
       images: [
         {
@@ -24,7 +25,7 @@ export async function generateMetadata({ params }: { params: { locale: string } 
           alt: 'ResetClub™️',
         },
       ],
-      locale: params.locale === 'fr' ? 'fr_FR' : 'en_US',
+      locale: locale === 'fr' ? 'fr_FR' : 'en_US',
       type: 'website',
     },
     twitter: {
@@ -34,7 +35,7 @@ export async function generateMetadata({ params }: { params: { locale: string } 
       images: ['/LOGO.png'],
     },
     alternates: {
-      canonical: `https://www.resetclub.ma/${params.locale}/notre-histoire`,
+      canonical: `https://www.resetclub.ma/${locale}/notre-histoire`,
       languages: {
         'en': 'https://www.resetclub.ma/en/notre-histoire',
         'fr': 'https://www.resetclub.ma/fr/notre-histoire',

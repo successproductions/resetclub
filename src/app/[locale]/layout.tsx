@@ -28,10 +28,8 @@ export default async function LocaleLayout({
 
   return (
     <html lang={locale} className={fontVariables}>
-      <head>
-        <StructuredData locale={locale} />
-      </head>
       <body className="font-futura-family antialiased overflow-x-hidden">
+        <StructuredData locale={locale} />
         <NextIntlClientProvider messages={messages}>
           {children}
           <ConditionalComponents />
