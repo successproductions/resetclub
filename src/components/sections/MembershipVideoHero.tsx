@@ -13,6 +13,7 @@ const MembershipVideoHero: React.FC = () => {
   const subtitleRef = useRef<HTMLParagraphElement>(null);
   const ctaRef = useRef<HTMLDivElement>(null);
   const [isFormOpen, setIsFormOpen] = useState(false);
+  const [onlineUsers, setOnlineUsers] = useState(47);
 
   useEffect(() => {
     // Split text into characters and words
@@ -75,9 +76,38 @@ const MembershipVideoHero: React.FC = () => {
     }
   }, []);
 
+  // Online users counter effect
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setOnlineUsers(prev => {
+        const change = Math.random() > 0.5 ? 1 : -1;
+        const newValue = prev + change;
+        // Keep between 35 and 65 users
+        return Math.max(35, Math.min(65, newValue));
+      });
+    }, 3000); // Change every 3 seconds
+
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <>
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
+        {/* Online Users Counter */}
+        <div className="absolute top-6 left-1/2 transform -translate-x-1/2 z-20 bg-white/10 backdrop-blur-md border border-white/30 px-6 py-3 rounded-full shadow-lg">
+          <div className="flex items-center gap-3">
+            <div className="relative flex items-center">
+              <span className="relative flex h-3 w-3">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
+              </span>
+            </div>
+            <span className="text-white font-graphik font-normal text-sm md:text-base">
+              <span className="font-semibold">{onlineUsers}</span> utilisateurs en ligne
+            </span>
+          </div>
+        </div>
+
         {/* Video Background */}
         <div className="absolute inset-0 z-0">
           <video
