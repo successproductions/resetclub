@@ -4,6 +4,7 @@ import { useState, useEffect, useRef } from 'react';
 import { useTranslations } from 'next-intl';
 import { X } from 'lucide-react';
 import Image from 'next/image';
+import Link from 'next/link';
 import ScratchCard from './ScratchCard';
 
 export default function PopupOffer() {
@@ -177,9 +178,9 @@ export default function PopupOffer() {
           {/* Privacy Policy */}
           <p className="text-[10px] md:text-xs text-gray-500 mt-3 md:mt-1">
             {t('privacyText')}{' '}
-            <a href="#" className="underline hover:text-gray-700">
+            <Link href="/privacy" className="underline hover:text-gray-700">
               {t('privacyLink')}
-            </a>
+            </Link>
             .
           </p>
         </div>
