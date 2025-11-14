@@ -1,12 +1,8 @@
 import { getTranslations } from 'next-intl/server';
 import { Metadata } from 'next';
-import Header from '@/components/layout/Header';
-import Footer from '@/components/layout/Footer';
-import NotreHistoireHero from '@/components/sections/NotreHistoireHero';
-import NahedRachad from '@/components/sections/NahedRachad';
 
 export async function generateMetadata({ params }: { params: { locale: string } }): Promise<Metadata> {
-  const t = await getTranslations({ locale: params.locale, namespace: 'SEO.notreHistoire' });
+  const t = await getTranslations({ locale: params.locale, namespace: 'SEO.membership' });
 
   return {
     title: t('title'),
@@ -14,7 +10,7 @@ export async function generateMetadata({ params }: { params: { locale: string } 
     openGraph: {
       title: t('title'),
       description: t('description'),
-      url: `https://www.resetclub.ma/${params.locale}/notre-histoire`,
+      url: `https://www.resetclub.ma/${params.locale}/membership`,
       siteName: 'ResetClub™️',
       images: [
         {
@@ -34,22 +30,19 @@ export async function generateMetadata({ params }: { params: { locale: string } 
       images: ['/LOGO.png'],
     },
     alternates: {
-      canonical: `https://www.resetclub.ma/${params.locale}/notre-histoire`,
+      canonical: `https://www.resetclub.ma/${params.locale}/membership`,
       languages: {
-        'en': 'https://www.resetclub.ma/en/notre-histoire',
-        'fr': 'https://www.resetclub.ma/fr/notre-histoire',
+        'en': 'https://www.resetclub.ma/en/membership',
+        'fr': 'https://www.resetclub.ma/fr/membership',
       },
     },
   };
 }
 
-export default function NotreHistoirePage() {
-  return (
-    <>
-      <Header />
-      <NotreHistoireHero />
-      <NahedRachad translationKey="NotreHistoirePage.nahed" />
-      <Footer />
-    </>
-  );
+export default function MembershipLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  return children;
 }

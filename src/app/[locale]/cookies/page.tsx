@@ -1,5 +1,43 @@
+import { getTranslations } from 'next-intl/server';
+import { Metadata } from 'next';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
+
+export async function generateMetadata({ params }: { params: { locale: string } }): Promise<Metadata> {
+  const t = await getTranslations({ locale: params.locale, namespace: 'SEO.cookies' });
+
+  return {
+    title: t('title'),
+    description: t('description'),
+    openGraph: {
+      title: t('title'),
+      description: t('description'),
+      url: `https://www.resetclub.ma/${params.locale}/cookies`,
+      siteName: 'ResetClub™️',
+      images: [
+        {
+          url: '/LOGO.png',
+          width: 1200,
+          height: 630,
+          alt: 'ResetClub™️',
+        },
+      ],
+      locale: params.locale === 'fr' ? 'fr_FR' : 'en_US',
+      type: 'website',
+    },
+    alternates: {
+      canonical: `https://www.resetclub.ma/${params.locale}/cookies`,
+      languages: {
+        'en': 'https://www.resetclub.ma/en/cookies',
+        'fr': 'https://www.resetclub.ma/fr/cookies',
+      },
+    },
+    robots: {
+      index: true,
+      follow: true,
+    },
+  };
+}
 
 export default function CookiesPage() {
   return (

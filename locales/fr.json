@@ -526,5 +526,43 @@
     "titleSub": "Là où commence ta transformation.",
     "subtitle": "À l'occasion de notre ouverture, nous avons le plaisir de t'offrir un bilan personnalisé d'une valeur de 1 500 DH, gratuitement aux 50 premières clientes.",
     "cta": "Je réserve mon bilan"
+  },
+  "SEO": {
+    "home": {
+      "title": "ResetClub™️ - Centre Holistique & Biohacking Premium au Maroc",
+      "description": "Transformez votre corps, esprit et émotions avec le protocole In-Out-Reset™. Coaching sportif, nutrition, biohacking et bien-être à Casablanca."
+    },
+    "about": {
+      "title": "À Propos de ResetClub™️ - Notre Mission et Vision",
+      "description": "Découvrez ResetClub, le premier centre premium de transformation holistique au Maroc. Notre approche unique combine neurosciences, biohacking et coaching."
+    },
+    "contact": {
+      "title": "Contactez ResetClub™️ - Réservez Votre Bilan Gratuit",
+      "description": "Prêt à commencer votre transformation ? Contactez-nous pour réserver votre bilan personnalisé ou obtenir plus d'informations sur nos programmes."
+    },
+    "membership": {
+      "title": "Adhésion ResetClub™️ - Bilan Reset Gratuit (50 Places)",
+      "description": "À l'occasion de notre ouverture, profitez d'un bilan personnalisé gratuit d'une valeur de 1500 DH. Offre limitée aux 50 premières clientes."
+    },
+    "notreHistoire": {
+      "title": "Notre Histoire - L'Équipe ResetClub™️",
+      "description": "Rencontrez l'équipe passionnée derrière ResetClub. Nos experts en coaching, nutrition et biohacking sont là pour vous accompagner dans votre transformation."
+    },
+    "recrutons": {
+      "title": "Nous Recrutons - Rejoignez l'Équipe ResetClub™️",
+      "description": "Rejoignez ResetClub et participez à la transformation holistique au Maroc. Découvrez nos opportunités de carrière dans le coaching, nutrition et bien-être."
+    },
+    "legal": {
+      "title": "Mentions Légales - ResetClub™️",
+      "description": "Consultez les mentions légales de ResetClub, centre de transformation holistique et biohacking à Casablanca, Maroc."
+    },
+    "privacy": {
+      "title": "Politique de Confidentialité - ResetClub™️",
+      "description": "Découvrez comment ResetClub protège et utilise vos données personnelles conformément au RGPD et aux lois marocaines."
+    },
+    "cookies": {
+      "title": "Politique des Cookies - ResetClub™️",
+      "description": "Informations sur l'utilisation des cookies sur le site web de ResetClub pour améliorer votre expérience de navigation."
+    }
   }
 }

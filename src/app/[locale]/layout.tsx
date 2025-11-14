@@ -4,6 +4,7 @@ import { notFound } from 'next/navigation';
 import { routing } from '../../i18n/routing';
 import { fontVariables } from '../fonts';
 import ConditionalComponents from '../../components/layout/ConditionalComponents';
+import StructuredData from '../../components/seo/StructuredData';
 import '../globals.css';
 
 export function generateStaticParams() {
@@ -27,6 +28,9 @@ export default async function LocaleLayout({
 
   return (
     <html lang={locale} className={fontVariables}>
+      <head>
+        <StructuredData locale={locale} />
+      </head>
       <body className="font-futura-family antialiased overflow-x-hidden">
         <NextIntlClientProvider messages={messages}>
           {children}
