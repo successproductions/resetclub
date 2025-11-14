@@ -12,11 +12,11 @@ export default function ContactHero() {
         playsInline
         className="absolute inset-0 w-full h-full object-cover"
       >
-        <source src="/videos/videobg.mp4" type="video/mp4" />
+        <source src="/videos/website-banner-vdo.mp4" type="video/mp4" />
       </video>
 
       {/* Black overlay filter */}
-      <div className="absolute inset-0 bg-black opacity-10"></div>
+      <div className="absolute inset-0 bg-black/30" />
 
       <div className="container mx-auto px-2 pt-6 md:px-6 text-center relative z-10">
         <h1 className="text-2xl md:text-3xl lg:text-5xl font-graphik  text-white mb-1 md:mb-6 drop-shadow-lg">
