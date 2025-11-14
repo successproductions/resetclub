@@ -21,7 +21,7 @@ const ExperienceClient: React.FC = () => {
         >
           <source src="/videos/videobg.mp4" type="video/mp4" />
         </video>
-      <div className="absolute inset-0 bg-black opacity-10"></div>
+      <div className="absolute inset-0 bg-black opacity-5"></div>
       </div>
 
       <div className="relative z-10 w-full">
