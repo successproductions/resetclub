@@ -207,7 +207,7 @@ export default function MembershipApplicationForm({ isOpen, onClose }: Membershi
                 <span className="text-3xl">⚠️</span>
               </div>
               <h2 className="text-2xl md:text-3xl font-light mb-4">
-                Vous avez déjà rempli le formulaire du diagnostic.
+                Vous avez déjà rempli le formulaire du diagnostic
               </h2>
 
               {/* {hoursRemaining > 0 && (

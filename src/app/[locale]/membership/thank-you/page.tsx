@@ -46,7 +46,7 @@ export default function ThankYouPage() {
       {/* Content */}
       <div className="relative z-20 text-center max-w-3xl ">
 
-        <h1 className="text-2xl md:text-4xl lg:text-5xl font-light md:mb-6 mt-18 md:mt-0 drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
+        <h1 className="text-2xl md:text-4xl lg:text-5xl font-light md:mb-6 mt-32 md:mt-0 drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
           Merci pour votre demande !
         </h1>
 

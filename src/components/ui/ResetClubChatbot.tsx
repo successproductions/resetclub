@@ -306,7 +306,7 @@ Places limitées pour garantir un suivi personnalisé de qualité.`,
       }
 
       addBotMessage(
-        `⚠️ Vous avez déjà rempli le formulaire du diagnostic.
+        `⚠️ Vous avez déjà rempli le formulaire du diagnostic
 
 Si vous souhaitez avoir plus d'informations ou poser une question, contactez notre équipe via WhatsApp.
 
