@@ -18,12 +18,7 @@ const MembershipVideoHero: React.FC = () => {
 
   useEffect(() => {
     // Split text into characters and words
-    if (titleMainRef.current && titleSubRef.current && subtitleRef.current) {
-      const titleMainSplit = new SplitType(titleMainRef.current, {
-        types: 'chars,words',
-        tagName: 'span'
-      });
-
+    if (titleSubRef.current && subtitleRef.current) {
       const titleSubSplit = new SplitType(titleSubRef.current, {
         types: 'chars,words',
         tagName: 'span'
@@ -37,22 +32,13 @@ const MembershipVideoHero: React.FC = () => {
       // Create timeline
       const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
 
-      // Animate main title characters
-      tl.from(titleMainSplit.chars, {
-        opacity: 0,
-        y: 100,
-        rotationX: -90,
-        stagger: 0.02,
-        duration: 1,
-        ease: 'back.out(1.7)'
-      })
       // Animate sub title characters
-      .from(titleSubSplit.chars, {
+      tl.from(titleSubSplit.chars, {
         opacity: 0,
         y: 50,
         stagger: 0.015,
         duration: 0.8
-      }, '-=0.4')
+      })
       // Animate subtitle characters
       .from(subtitleSplit.chars, {
         opacity: 0,
@@ -70,7 +56,6 @@ const MembershipVideoHero: React.FC = () => {
 
       // Cleanup
       return () => {
-        titleMainSplit.revert();
         titleSubSplit.revert();
         subtitleSplit.revert();
       };
@@ -109,7 +94,7 @@ const MembershipVideoHero: React.FC = () => {
     <>
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
         {/* Online Users Counter - Right Side */}
-        <div className="absolute top-1 md:top-4 right-1 md:right-6 z-20 bg-white/10 backdrop-blur-md border border-white/30 px-2 md:px-6 py-3 rounded-full shadow-lg">
+        <div className="absolute top-1 md:top-4 right-1 md:right-6 z-20 bg-white/10 backdrop-blur-md border border-white/30 px-2 md:px-6 py-2 md:py-3 rounded-full shadow-lg">
           <div className="flex items-center gap-3">
             <div className="relative flex items-center">
               <span className="relative flex h-3 w-3">
@@ -144,7 +129,7 @@ const MembershipVideoHero: React.FC = () => {
 
         {/* Content - Positioned at bottom to avoid logo */}
         {/* Mobile: bottom-[10vh], Desktop: bottom-[25vh] */}
-        <div className="absolute bottom-[20vh] md:bottom-[25vh] left-0 right-0 z-10 text-center px-4 md:px-6">
+        <div className="absolute bottom-[18vh] md:bottom-[24vh] left-0 right-0 z-10 text-center px-4 md:px-6">
           {/* Main Title */}
           {/* <h1
             ref={titleMainRef}
@@ -164,7 +149,7 @@ const MembershipVideoHero: React.FC = () => {
           {/* Subtitle */}
           <p
             ref={subtitleRef}
-            className="text-base md:text-lg lg:text-xl text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)] mb-6 md:mb-8 leading-relaxed font-graphik font-normal max-w-3xl mx-auto"
+            className="text-base md:text-lg lg:text-xl text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)] mb-6 md:mb-8 leading-relaxed font-graphik font- md:font-semibold max-w-3xl mx-auto"
           >
             {t('subtitle')}
           </p>
