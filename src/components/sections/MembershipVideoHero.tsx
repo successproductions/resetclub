@@ -14,6 +14,7 @@ const MembershipVideoHero: React.FC = () => {
   const ctaRef = useRef<HTMLDivElement>(null);
   const [isFormOpen, setIsFormOpen] = useState(false);
   const [onlineUsers, setOnlineUsers] = useState(47);
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
     // Split text into characters and words
@@ -76,6 +77,20 @@ const MembershipVideoHero: React.FC = () => {
     }
   }, []);
 
+  // Detect mobile device
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    // Check on mount
+    checkMobile();
+
+    // Check on resize
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
   // Online users counter effect
   useEffect(() => {
     const interval = setInterval(() => {
@@ -93,8 +108,8 @@ const MembershipVideoHero: React.FC = () => {
   return (
     <>
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
-        {/* Online Users Counter */}
-        <div className="absolute top-6 left-1/2 transform -translate-x-1/2 z-20 bg-white/10 backdrop-blur-md border border-white/30 px-6 py-3 rounded-full shadow-lg">
+        {/* Online Users Counter - Right Side */}
+        <div className="absolute top-1 md:top-4 right-1 md:right-6 z-20 bg-white/10 backdrop-blur-md border border-white/30 px-2 md:px-6 py-3 rounded-full shadow-lg">
           <div className="flex items-center gap-3">
             <div className="relative flex items-center">
               <span className="relative flex h-3 w-3">
@@ -108,35 +123,40 @@ const MembershipVideoHero: React.FC = () => {
           </div>
         </div>
 
-        {/* Video Background */}
+        {/* Video Background - Different for Desktop and Mobile */}
         <div className="absolute inset-0 z-0">
           <video
+            key={isMobile ? 'mobile' : 'desktop'} 
             autoPlay
-            // loop
+            loop
             muted
             playsInline
             className="absolute inset-0 w-full h-full object-cover"
           >
-            <source src="/videos/SANDMOTIONLOGO.mov" type="video/mp4" />
+            <source
+              src={isMobile ? '/videos/video_hero_section_mobile.mov' : '/videos/video_hero_section_desktop.mov'}
+              type="video/mp4"
+            />
           </video>
           {/* Overlay */}
           <div className="absolute inset-0 bg-black/10" />
         </div>
 
-        {/* Content */}
-        <div className="relative z-10 text-center px-4 md:px-6 max-w-6xl mx-auto">
+        {/* Content - Positioned at bottom to avoid logo */}
+        {/* Mobile: bottom-[10vh], Desktop: bottom-[25vh] */}
+        <div className="absolute bottom-[20vh] md:bottom-[25vh] left-0 right-0 z-10 text-center px-4 md:px-6">
           {/* Main Title */}
-          <h1
+          {/* <h1
             ref={titleMainRef}
             className="text-5xl md:text-6xl lg:text-7xl font-graphik font-bold text-white text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)] mb-4 tracking-wide leading-tight"
           >
             {t('titleMain')}
-          </h1>
+          </h1> */}
 
           {/* Sub Title */}
           <h2
             ref={titleSubRef}
-            className="text-3xl md:text-4xl lg:text-5xl font-graphik font-normal text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)] mb-6 md:mb-8 tracking-wide leading-tight"
+            className="text-3xl md:text-4xl lg:text-5xl font-graphik font-normal text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)] mb-4 md:mb-6 tracking-wide leading-tight"
           >
             {t('titleSub')}
           </h2>
@@ -144,20 +164,20 @@ const MembershipVideoHero: React.FC = () => {
           {/* Subtitle */}
           <p
             ref={subtitleRef}
-            className="text-base md:text-lg lg:text-xl  text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)] mb-8 md:mb-10 leading-relaxed font-graphik font-normal max-w-3xl mx-auto"
+            className="text-base md:text-lg lg:text-xl text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)] mb-6 md:mb-8 leading-relaxed font-graphik font-normal max-w-3xl mx-auto"
           >
             {t('subtitle')}
           </p>
-        </div>
 
-        {/* CTA Button - Positioned at bottom */}
-        <div ref={ctaRef} className="absolute bottom-[15vh] left-0 right-0 z-10 text-center px-4">
-          <button
-            onClick={() => setIsFormOpen(true)}
-            className="text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)] font-normal bg-white/10 backdrop-blur-sm border-2 border-white/50 text-base md:text-lg font-graphik px-6 md:px-10 py-3 md:py-4 hover:bg-white/20 hover:border-white cursor-pointer transition-all duration-300 hover:scale-105 shadow-2xl hover:shadow-white/20"
-          >
-            {t('cta')}
-          </button>
+          {/* CTA Button */}
+          <div ref={ctaRef}>
+            <button
+              onClick={() => setIsFormOpen(true)}
+              className="text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)] font-normal bg-white/10 backdrop-blur-sm border-2 border-white/50 text-base md:text-lg font-graphik px-6 md:px-10 py-3 md:py-4 hover:bg-white/20 hover:border-white cursor-pointer transition-all duration-300 hover:scale-105 shadow-2xl hover:shadow-white/20"
+            >
+              {t('cta')}
+            </button>
+          </div>
         </div>
       </section>
 

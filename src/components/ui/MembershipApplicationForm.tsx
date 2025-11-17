@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { X } from 'lucide-react';
 import { useRouter, usePathname } from 'next/navigation';
 
@@ -35,6 +35,36 @@ export default function MembershipApplicationForm({ isOpen, onClose }: Membershi
     gdprConsent: false,
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [hasAlreadySubmitted, setHasAlreadySubmitted] = useState(false);
+  const [hoursRemaining, setHoursRemaining] = useState(0);
+
+  // Check if user has already submitted the form (within last 24 hours)
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const formSubmitted = localStorage.getItem('resetclub_membership_form_submitted') === 'true';
+      const submissionDate = localStorage.getItem('resetclub_membership_form_date');
+
+      if (formSubmitted && submissionDate) {
+        const submittedAt = new Date(submissionDate);
+        const now = new Date();
+        const hoursDiff = (now.getTime() - submittedAt.getTime()) / (1000 * 60 * 60);
+
+        // If more than 24 hours have passed, clear the restriction
+        if (hoursDiff >= 24) {
+          localStorage.removeItem('resetclub_membership_form_submitted');
+          localStorage.removeItem('resetclub_membership_form_date');
+          setHasAlreadySubmitted(false);
+          setHoursRemaining(0);
+        } else {
+          setHasAlreadySubmitted(true);
+          setHoursRemaining(Math.ceil(24 - hoursDiff));
+        }
+      } else {
+        setHasAlreadySubmitted(false);
+        setHoursRemaining(0);
+      }
+    }
+  }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -44,15 +74,58 @@ export default function MembershipApplicationForm({ isOpen, onClose }: Membershi
       // Combine phone code and number
       const submissionData = {
         ...formData,
-        phone: `${formData.phoneCode} ${formData.phoneNumber}`
+        phone: `${formData.phoneCode} ${formData.phoneNumber}`,
+        timestamp: new Date().toISOString()
       };
 
-      // TODO: Send form data to your backend/API
-      // await fetch('/api/membership', { method: 'POST', body: JSON.stringify(submissionData) });
-      console.log('Form data:', submissionData);
+      // Send data to Google Sheets
+      const googleSheetsUrl = process.env.NEXT_PUBLIC_GOOGLE_SHEETS_URL;
+
+      if (googleSheetsUrl) {
+        // Prepare JSON data (matching working script format)
+        const jsonData = {
+          firstName: submissionData.firstName,
+          lastName: submissionData.lastName,
+          age: submissionData.age,
+          email: submissionData.email,
+          phone: submissionData.phone,
+          mainGoal: submissionData.mainGoal,
+          howDidYouHear: submissionData.howDidYouHear.join(', '),
+          energyLevel: submissionData.energyLevel.toString(),
+          sleepQuality: submissionData.sleepQuality.join(', '),
+          stressLevel: submissionData.stressLevel,
+          stressDescription: submissionData.stressDescription,
+          wellnessHabits: submissionData.wellnessHabits.join(', '),
+          nutritionRelation: submissionData.nutritionRelation.join(', '),
+          resetPriority: submissionData.resetPriority,
+          lifestyleSituation: submissionData.lifestyleSituation.join(', '),
+          lifestyleDescription: submissionData.lifestyleDescription,
+          timestamp: submissionData.timestamp
+        };
+
+        // Send JSON to Google Sheets (like working Black Friday script)
+        fetch(googleSheetsUrl, {
+          method: 'POST',
+          mode: 'no-cors',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(jsonData)
+        })
+          .then(() => {
+            console.log('Form data sent to Google Sheets successfully');
+          })
+          .catch(error => {
+            console.error('Error sending to Google Sheets:', error);
+          });
+      }
 
       // Short delay for smooth transition
       await new Promise(resolve => setTimeout(resolve, 300));
+
+      // Save to localStorage that form has been submitted
+      localStorage.setItem('resetclub_membership_form_submitted', 'true');
+      localStorage.setItem('resetclub_membership_form_date', new Date().toISOString());
 
       // Close modal and redirect to thank you page with locale
       onClose();
@@ -97,6 +170,12 @@ export default function MembershipApplicationForm({ isOpen, onClose }: Membershi
 
   if (!isOpen) return null;
 
+  const handleContactTeam = () => {
+    const whatsappNumber = '212600000000'; // Replace with actual WhatsApp number
+    const message = encodeURIComponent('Bonjour ! J\'ai déjà rempli le formulaire du diagnostic. Je souhaite obtenir plus d\'informations.');
+    window.open(`https://wa.me/${whatsappNumber}?text=${message}`, '_blank');
+  };
+
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm p-2 md:p-4 font-graphik">
       {/* Loading Overlay */}
@@ -114,18 +193,54 @@ export default function MembershipApplicationForm({ isOpen, onClose }: Membershi
         <button
           onClick={onClose}
           className="absolute top-2 md:top-6 right-2 md:right-6 text-black/60 hover:text-black transition-colors z-10"
+          aria-label="Fermer"
         >
           <X className="w-6 h-6" />
         </button>
 
-        {/* Form Content */}
-        <div className="p-5 md:p-12">
+        {/* Content - Show "Already Submitted" or Form */}
+        {hasAlreadySubmitted ? (
+          // Already Submitted Message
+          <div className="p-5 md:p-10 text-center">
+            <div className="mb-6">
+              <div className="inline-flex items-center justify-center w-16 h-16 bg-yellow-100 rounded-full mb-4">
+                <span className="text-3xl">⚠️</span>
+              </div>
+              <h2 className="text-2xl md:text-3xl font-light mb-4">
+                Vous avez déjà rempli le formulaire du diagnostic.
+              </h2>
+
+              {/* {hoursRemaining > 0 && (
+                <p className="text-black/60 text-sm mb-3">
+                  ⏰ Vous pourrez remplir un nouveau formulaire dans environ{' '}
+                  <strong>{hoursRemaining} heure{hoursRemaining > 1 ? 's' : ''}</strong>.
+                </p>
+              )} */}
+
+              <p className="text-black/80 leading-relaxed mb-8">
+                Si vous souhaitez avoir plus d&apos;informations ou poser une question, contactez notre équipe via WhatsApp.
+              </p>
+            </div>
+
+            <button
+              onClick={handleContactTeam}
+              className="w-full md:w-auto px-8 py-4 bg-black text-white font-medium uppercase tracking-wider transition-all duration-300 hover:bg-black/90"
+            >
+              Contacter l&apos;équipe
+            </button>
+          </div>
+        ) : (
+          // Form Content
+          <div className="p-5 md:p-12">
           <h2 className="text-3xl md:text-4xl font-light mb-2 md:mb-6">
             Diagnostic Biohacking RESET Club™
           </h2>
           <div className="mb-2 md:mb-2 space-y-3">
+            <p className="text-black/80 ">
+              N.B. : Vous ne pouvez remplir ce formulaire qu’une seule fois. Merci de vérifier attentivement toutes vos informations avant de valider.
+            </p>
             <p className="text-black/80 leading-relaxed">
-              Bienvenue dans ton Diagnostic Biohacking RESET Club™. Ce questionnaire a été conçu pour comprendre ton mode de vie, ton énergie, ton stress et tes objectifs afin de t&apos;offrir une analyse personnalisée lors de ton bilan gratuit au RESET Club Rabat, exclusivement réservé aux 50 premières clientes.
+              Pour bien vous accompagner, nous avons besoin de vous connaître . Ce questionnaire a été conçu pour comprendre ton mode de vie, ton énergie, ton stress et tes objectifs afin de t&apos;offrir une analyse personnalisée lors de ton bilan gratuit au RESET Club Rabat, exclusivement réservé aux 50 premières clientes.
             </p>
             
           </div>
@@ -254,7 +369,9 @@ export default function MembershipApplicationForm({ isOpen, onClose }: Membershi
                   'Retrouver ton énergie et ta vitalité',
                   'Améliorer ton sommeil et ta récupération',
                   'Rééquilibrer ton stress et tes hormones',
-                  'Optimiser ta performance physique ou mentale'
+                  'Optimiser ta performance physique ou mentale',
+                  'Retrouve ton pouvoir et ta confiance'
+
                 ].map((goal) => (
                   <label key={goal} className="flex items-center gap-3 cursor-pointer">
                     <input
@@ -454,7 +571,8 @@ export default function MembershipApplicationForm({ isOpen, onClose }: Membershi
                   'Énergie & vitalité',
                   'Sommeil & récupération',
                   'Stress & mental',
-                  'Nutrition et métabolisme'
+                  'Nutrition et métabolisme',
+                  'Récupérer mon pouvoir personnel et ma confiance'
                 ].map((priority) => (
                   <label key={priority} className="flex items-center gap-3 cursor-pointer">
                     <input
@@ -525,7 +643,7 @@ export default function MembershipApplicationForm({ isOpen, onClose }: Membershi
                 className="mt-1 w-4 h-4 accent-black flex-shrink-0"
               />
               <label htmlFor="gdprConsent" className="text-sm text-black/70">
-                J&apos;autorise le RESET Club™ à me contacter par WhatsApp ou email pour recevoir mon diagnostic personnalisé.
+                J&apos;autorise le RESET Club™ à me contacter par WhatsApp ou email pour réserver ma place pour mon diagnostic personnalisé.
               </label>
             </div>
 
@@ -539,6 +657,7 @@ export default function MembershipApplicationForm({ isOpen, onClose }: Membershi
             </button>
           </form>
         </div>
+        )}
       </div>
     </div>
   );
