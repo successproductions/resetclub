@@ -4,16 +4,16 @@ import { useState, useEffect, useRef } from 'react';
 import { useTranslations } from 'next-intl';
 import { X } from 'lucide-react';
 import Image from 'next/image';
-import { useRouter } from 'next/navigation';
 import Link from 'next/link';
+import Swal from 'sweetalert2';
 
 export default function PopupOfferV2() {
   const [isOpen, setIsOpen] = useState(false);
   const [fullName, setFullName] = useState('');
   const [email, setEmail] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const t = useTranslations('PopupOffer');
   const popupRef = useRef<HTMLDivElement>(null);
-  const router = useRouter();
 
   useEffect(() => {
     // Show popup after 3 seconds
@@ -24,14 +24,63 @@ export default function PopupOfferV2() {
     return () => clearTimeout(timer);
   }, []);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission
-    console.log('Form submitted:', { fullName, email });
+    setIsSubmitting(true);
 
-    // Close popup and redirect to payment page
-    setIsOpen(false);
-    router.push('/payment');
+    try {
+      // Submit to API
+      const response = await fetch('/api/popup', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          fullName,
+          email,
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to submit form');
+      }
+
+      // Close popup
+      setIsOpen(false);
+
+      // Show success alert
+      await Swal.fire({
+        icon: 'success',
+        title: 'Merci!',
+        text: 'Votre inscription a été enregistrée avec succès. Nous vous contacterons bientôt!',
+        confirmButtonText: 'OK',
+        confirmButtonColor: '#000000',
+        customClass: {
+          popup: 'font-graphik',
+        }
+      });
+
+      // Reset form
+      setFullName('');
+      setEmail('');
+
+    } catch (error) {
+      console.error('Error submitting form:', error);
+
+      // Show error alert
+      await Swal.fire({
+        icon: 'error',
+        title: 'Erreur',
+        text: 'Une erreur est survenue. Veuillez réessayer.',
+        confirmButtonText: 'OK',
+        confirmButtonColor: '#000000',
+        customClass: {
+          popup: 'font-graphik',
+        }
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   if (!isOpen) return null;
@@ -104,9 +153,10 @@ export default function PopupOfferV2() {
 
               <button
                 type="submit"
-                className="w-full bg-black text-white py-3 md:py-4 text-base md:text-lg font-medium hover:bg-[#1f1e1e] transition-colors duration-300 font-graphik"
+                disabled={isSubmitting}
+                className="w-full bg-black text-white py-3 md:py-4 text-base md:text-lg font-medium hover:bg-[#1f1e1e] transition-colors duration-300 font-graphik disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                {t('ctaButton')}
+                {isSubmitting ? 'Envoi en cours...' : t('ctaButton')}
               </button>
             </form>
 

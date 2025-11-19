@@ -383,9 +383,9 @@
     }
   },
   "PopupOffer": {
-    "title": "Prête pour votre transformation? Tout commence par un RESET",
+    "title": "Et si ta transformation commençait… maintenant?",
     "imageAlt": "Reset Club",
-    "subtitle": "Obtenez votre Bilan Transformationnel RESET™ et découvrez exactement ce dont votre corps a besoin pour perdre du poids, affiner votre silhouette et retrouver votre énergie dès aujourd’hui",
+    "subtitle": "À l’occasion de notre ouverture, nous t’offrons un Bilan Transformationnel RESET™ (valeur 1 500 DH) pour découvrir exactement ce dont ton corps a besoin pour perdre du poids, affiner ta silhouette et retrouver ton énergie.",
     "description": "Grattez pour découvrir votre réduction exclusive sur votre bilan personnalisé",
     "cardInstruction": "Grattez les 3 cartes pour révéler votre réduction !",
     "cardsScratched": "cartes grattées",
@@ -395,7 +395,7 @@
     "enterEmail": "Entrez votre email pour réserver votre bilan personnalisé",
     "emailPlaceholder": "VOTRE E-MAIL",
     "ctaButton": "JE RÉSERVE MON RESET",
-    "privacyText": "En réservant, j’accepte de recevoir mes instructions de prise de rendez-vous et les informations de suivi Reset Club™ (selon la Politique de confidentialité).",
+    "privacyText": "En réservant, j’accepte de recevoir mes instructions de prise de rendez-vous et les informations de suivi Reset Club™ (selon la politique de confidentialité).",
     "privacyLink": "Politique de confidentialité"
   },
   "NotificationWidget": {

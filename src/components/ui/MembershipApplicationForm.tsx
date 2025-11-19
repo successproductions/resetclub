@@ -78,31 +78,31 @@ export default function MembershipApplicationForm({ isOpen, onClose }: Membershi
         timestamp: new Date().toISOString()
       };
 
+      // Prepare JSON data (matching working script format)
+      const jsonData = {
+        firstName: submissionData.firstName,
+        lastName: submissionData.lastName,
+        age: submissionData.age,
+        email: submissionData.email,
+        phone: submissionData.phone,
+        mainGoal: submissionData.mainGoal,
+        howDidYouHear: submissionData.howDidYouHear.join(', '),
+        energyLevel: submissionData.energyLevel.toString(),
+        sleepQuality: submissionData.sleepQuality.join(', '),
+        stressLevel: submissionData.stressLevel,
+        stressDescription: submissionData.stressDescription,
+        wellnessHabits: submissionData.wellnessHabits.join(', '),
+        nutritionRelation: submissionData.nutritionRelation.join(', '),
+        resetPriority: submissionData.resetPriority,
+        lifestyleSituation: submissionData.lifestyleSituation.join(', '),
+        lifestyleDescription: submissionData.lifestyleDescription,
+        timestamp: submissionData.timestamp
+      };
+
       // Send data to Google Sheets
       const googleSheetsUrl = process.env.NEXT_PUBLIC_GOOGLE_SHEETS_URL;
 
       if (googleSheetsUrl) {
-        // Prepare JSON data (matching working script format)
-        const jsonData = {
-          firstName: submissionData.firstName,
-          lastName: submissionData.lastName,
-          age: submissionData.age,
-          email: submissionData.email,
-          phone: submissionData.phone,
-          mainGoal: submissionData.mainGoal,
-          howDidYouHear: submissionData.howDidYouHear.join(', '),
-          energyLevel: submissionData.energyLevel.toString(),
-          sleepQuality: submissionData.sleepQuality.join(', '),
-          stressLevel: submissionData.stressLevel,
-          stressDescription: submissionData.stressDescription,
-          wellnessHabits: submissionData.wellnessHabits.join(', '),
-          nutritionRelation: submissionData.nutritionRelation.join(', '),
-          resetPriority: submissionData.resetPriority,
-          lifestyleSituation: submissionData.lifestyleSituation.join(', '),
-          lifestyleDescription: submissionData.lifestyleDescription,
-          timestamp: submissionData.timestamp
-        };
-
         // Send JSON to Google Sheets (like working Black Friday script)
         fetch(googleSheetsUrl, {
           method: 'POST',
@@ -118,6 +118,21 @@ export default function MembershipApplicationForm({ isOpen, onClose }: Membershi
           .catch(error => {
             console.error('Error sending to Google Sheets:', error);
           });
+      }
+
+      // Send confirmation emails (to client and direction)
+      try {
+        await fetch('/api/membership', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(jsonData)
+        });
+        console.log('Confirmation emails sent successfully');
+      } catch (error) {
+        console.error('Error sending emails:', error);
+        // Don't block the form submission if email fails
       }
 
       // Short delay for smooth transition
