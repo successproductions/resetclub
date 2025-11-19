@@ -47,16 +47,16 @@ export async function POST(request: NextRequest) {
     }
     .header {
       background-color: #000;
-      color: #fff;
-      padding: 30px 20px;
+      padding: 0;
       text-align: center;
       margin-bottom: 30px;
+      overflow: hidden;
     }
-    .header h1 {
-      margin: 0;
-      font-size: 24px;
-      font-weight: 300;
-      letter-spacing: 2px;
+    .header img {
+      width: 100%;
+      max-width: 600px;
+      height: auto;
+      display: block;
     }
     .content {
       background-color: #f9f9f9;
@@ -111,7 +111,7 @@ export async function POST(request: NextRequest) {
 </head>
 <body>
   <div class="header">
-    <h1>RESET CLUB</h1>
+    <img src="https://resetclub.ma/images/banner_email.png" alt="RESET Club" />
   </div>
 
   <div class="content">
@@ -187,13 +187,23 @@ Rabat – Centre N°1 de Biohacking & d'Amincissement 360 au Maroc
     }
     .header {
       background-color: #000;
-      color: #fff;
-      padding: 20px;
+      padding: 0;
+      text-align: center;
       margin-bottom: 30px;
+      overflow: hidden;
     }
-    .header h2 {
-      margin: 0;
-      font-size: 20px;
+    .header img {
+      width: 100%;
+      max-width: 700px;
+      height: auto;
+      display: block;
+    }
+    .notification-badge {
+      background-color: #000;
+      color: #fff;
+      padding: 15px 20px;
+      text-align: center;
+      font-size: 18px;
       font-weight: 400;
     }
     .content {
@@ -267,7 +277,10 @@ Rabat – Centre N°1 de Biohacking & d'Amincissement 360 au Maroc
 </head>
 <body>
   <div class="header">
-    <h2>🔔 Nouvelle demande de bilan gratuit RESET</h2>
+    <img src="https://resetclub.ma/images/banner_email.png" alt="RESET Club" />
+  </div>
+  <div class="notification-badge">
+    🔔 Nouvelle demande de bilan gratuit RESET
   </div>
 
   <div class="content">
