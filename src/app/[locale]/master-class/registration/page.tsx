@@ -1,7 +1,8 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { useRouter } from 'next/navigation';
+import gsap from 'gsap';
 
 interface Question {
   id: number;
@@ -43,6 +44,18 @@ export default function MasterClassRegistration() {
   const [answers, setAnswers] = useState<Record<number, string>>({});
   const [error, setError] = useState('');
 
+  // Refs for video section
+  const progressBarRef = useRef<HTMLDivElement>(null);
+  const headingRef = useRef<HTMLHeadingElement>(null);
+  const descriptionRef = useRef<HTMLParagraphElement>(null);
+  const videoRef = useRef<HTMLDivElement>(null);
+  const ctaButtonRef = useRef<HTMLButtonElement>(null);
+
+  // Refs for survey section
+  const badgeRef = useRef<HTMLDivElement>(null);
+  const surveyHeadingRef = useRef<HTMLDivElement>(null);
+  const questionCardRef = useRef<HTMLDivElement>(null);
+
   // Redirect to master-class on refresh
   useEffect(() => {
     const handleBeforeUnload = () => {
@@ -52,6 +65,127 @@ export default function MasterClassRegistration() {
     window.addEventListener('beforeunload', handleBeforeUnload);
     return () => window.removeEventListener('beforeunload', handleBeforeUnload);
   }, [router]);
+
+  // Video section animations
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
+
+      // Animate progress bar
+      tl.fromTo(
+        progressBarRef.current,
+        { opacity: 0, y: -30 },
+        { opacity: 1, y: 0, duration: 0.8 }
+      );
+
+      // Animate heading
+      tl.fromTo(
+        headingRef.current,
+        { opacity: 0, y: 30 },
+        { opacity: 1, y: 0, duration: 0.8 },
+        '-=0.4'
+      );
+
+      // Animate description
+      tl.fromTo(
+        descriptionRef.current,
+        { opacity: 0, y: 20 },
+        { opacity: 1, y: 0, duration: 0.6 },
+        '-=0.3'
+      );
+
+      // Animate video container
+      tl.fromTo(
+        videoRef.current,
+        { opacity: 0, scale: 0.9, y: 30 },
+        { opacity: 1, scale: 1, y: 0, duration: 1 },
+        '-=0.2'
+      );
+
+      // Animate CTA button
+      tl.fromTo(
+        ctaButtonRef.current,
+        { opacity: 0, scale: 0.8, y: 20 },
+        { opacity: 1, scale: 1, y: 0, duration: 0.8 },
+        '-=0.4'
+      );
+
+      // Add continuous pulse to CTA button
+      gsap.to(ctaButtonRef.current, {
+        scale: 1.05,
+        duration: 1,
+        repeat: -1,
+        yoyo: true,
+        ease: 'sine.inOut',
+        delay: 1.5
+      });
+    });
+
+    return () => ctx.revert();
+  }, []);
+
+  // Survey section animation when scrolling
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const ctx = gsap.context(() => {
+              const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
+
+              // Animate badge
+              tl.fromTo(
+                badgeRef.current,
+                { opacity: 0, scale: 0.8, y: 20 },
+                { opacity: 1, scale: 1, y: 0, duration: 0.6 }
+              );
+
+              // Animate heading
+              tl.fromTo(
+                surveyHeadingRef.current,
+                { opacity: 0, y: 30 },
+                { opacity: 1, y: 0, duration: 0.8 },
+                '-=0.3'
+              );
+
+              // Animate question card
+              tl.fromTo(
+                questionCardRef.current,
+                { opacity: 0, y: 40, scale: 0.95 },
+                { opacity: 1, y: 0, scale: 1, duration: 1 },
+                '-=0.4'
+              );
+            });
+
+            return () => ctx.revert();
+          }
+        });
+      },
+      { threshold: 0.2 }
+    );
+
+    const surveySection = document.getElementById('survey-section');
+    if (surveySection) {
+      observer.observe(surveySection);
+    }
+
+    return () => {
+      if (surveySection) {
+        observer.unobserve(surveySection);
+      }
+    };
+  }, []);
+
+  // Animate question card when question changes
+  useEffect(() => {
+    if (questionCardRef.current) {
+      gsap.fromTo(
+        questionCardRef.current,
+        { x: 20, opacity: 0.7 },
+        { x: 0, opacity: 1, duration: 0.4, ease: 'power2.out' }
+      );
+    }
+  }, [currentQuestionIndex]);
 
   const handleInputChange = (value: string) => {
     setAnswers(prev => ({
@@ -116,9 +250,9 @@ export default function MasterClassRegistration() {
       {/* Video Section */}
       <main id="video-section" className="relative min-h-screen bg-black flex flex-col items-center justify-center px-4 font-graphik">
         {/* Content Container */}
-        <div className="w-full max-w-4xl mx-auto mt-16">
+        <div className="w-full max-w-4xl mx-auto mt-10 md:mt-0">
           {/* Progress Bar */}
-          <div className="w-full mb-8">
+          <div ref={progressBarRef} className="w-full mb-2 md:mb-8">
             <div className="relative w-full h-6 bg-gray-800 rounded-full overflow-hidden border-2 border-[#00ff00]">
               <div
                 className="absolute top-0 left-0 h-full bg-[#00ff00] transition-all duration-500"
@@ -132,18 +266,18 @@ export default function MasterClassRegistration() {
           </div>
 
           {/* Main Heading */}
-          <h1 className="text-white text-center mb-4">
+          <h1 ref={headingRef} className="text-white text-center mb-4">
             <span className="text-2xl md:text-4xl font-normal">Your registration is </span>
             <span className="text-[#e3bd93] text-2xl md:text-4xl font-bold">almost complete....</span>
           </h1>
 
-          <p className="text-white text-center mb-8 text-sm md:text-base max-w-2xl mx-auto">
+          <p ref={descriptionRef} className="text-white text-center mb-8 text-sm md:text-base max-w-2xl mx-auto">
             Watch the video below to finish your registration and fill out the survey<br />
             to download the Challenge Workbooks inside the WhatsApp Group
           </p>
 
           {/* Video Container */}
-          <div className="relative w-full aspect-video bg-gray-900 rounded-lg overflow-hidden mb-8">
+          <div ref={videoRef} className="relative w-full aspect-video bg-gray-900 rounded-sm overflow-hidden mb-8">
             <iframe
               src="https://www.youtube.com/embed/dQw4w9WgXcQ"
               title="Master Class Video"
@@ -155,19 +289,20 @@ export default function MasterClassRegistration() {
           </div>
 
           {/* Progress Bar (bottom) */}
-          <div className="w-full mb-8">
+          {/* <div className="w-full mb-8">
             <div className="relative w-full h-2 bg-gray-800 rounded-full overflow-hidden">
               <div
                 className="absolute top-0 left-0 h-full bg-[#e3bd93] transition-all duration-500"
                 style={{ width: '60%' }}
               />
             </div>
-          </div>
+          </div> */}
 
           {/* CTA Button */}
           <button
+            ref={ctaButtonRef}
             onClick={scrollToSurvey}
-            className="w-full max-w-md mx-auto block bg-[#e3bd93] hover:bg-[#e6ed00] text-black font-bold text-lg py-4 px-8 rounded-lg transition-all duration-300 uppercase"
+            className="w-full max-w-md mx-auto block bg-[#e3bd93] hover:bg-[#e6ed00] text-black font-medium text-lg py-4 px-8 rounded-sm transition-all duration-300 uppercase"
           >
             FILL OUT SURVEY TO JOIN THE GROUP
           </button>
@@ -179,32 +314,34 @@ export default function MasterClassRegistration() {
       {/* Content Container */}
       <div className="w-full max-w-2xl mx-auto">
         {/* Step Badge */}
-        <div className="text-center mb-6">
+        <div ref={badgeRef} className="text-center mb-6">
           <span className="inline-block bg-[#00ff00]/20 text-[#e3bd93] px-4 py-1 rounded-full text-sm font-bold uppercase tracking-wider">
             STEP 2
           </span>
         </div>
 
         {/* Heading */}
-        <h2 className="text-white text-center text-2xl md:text-3xl mb-2">
-          Fill Out The Quick Survey Below To Get Access To
-        </h2>
-        <h2 className="text-center text-2xl md:text-3xl mb-12">
-          <span className="text-white">The </span>
-          <span className="text-[#e3bd93] font-bold">Free Resources Inside</span>
-          <span className="text-white"> The </span>
-          <span className="text-[#e3bd93] font-bold">WhatsApp Group</span>
-        </h2>
+        <div ref={surveyHeadingRef}>
+          <h2 className="text-white text-center text-2xl! md:text-3xl mb-2">
+            Fill Out The Quick Survey Below To Get Access To
+          </h2>
+          <h2 className="text-center text-2xl! md:text-3xl mb-12">
+            <span className="text-white">The </span>
+            <span className="text-[#e3bd93] font-bold">Free Resources Inside</span>
+            <span className="text-white"> The </span>
+            <span className="text-[#e3bd93] font-bold">WhatsApp Group</span>
+          </h2>
+        </div>
 
         {/* Question Card */}
-        <div className="bg-white rounded-lg p-8 md:p-10 shadow-2xl">
+        <div ref={questionCardRef} className="bg-white rounded-sm p-8 md:p-10 shadow-2xl">
           {/* Question Number and Text */}
           <div className="mb-6">
-            <div className="flex items-start gap-3 mb-4">
-              <span className="text-xl font-bold text-gray-800">
+            <div className="flex items-start gap-3 md:mb-4">
+              <span className="text-xl font-medium mt-1 md:mt-0 text-gray-800">
                 {currentQuestionIndex + 1} →
               </span>
-              <h3 className="text-xl font-bold text-gray-800">
+              <h3 className="text-xl font-medium text-gray-800">
                 {currentQuestion.question}
                 <span className="text-red-500">*</span>
               </h3>
@@ -240,7 +377,7 @@ export default function MasterClassRegistration() {
             {currentQuestionIndex > 0 && (
               <button
                 onClick={goToPreviousQuestion}
-                className="p-2 bg-[#f7ff00] hover:bg-[#e6ed00] rounded transition-colors"
+                className="p-2 bg-[#e3bd93] hover:bg-[#e6ed00] rounded transition-colors"
                 aria-label="Previous question"
               >
                 <svg className="w-6 h-6 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -250,7 +387,7 @@ export default function MasterClassRegistration() {
             )}
             <button
               onClick={goToNextQuestion}
-              className="p-2 bg-[#f7ff00] hover:bg-[#e6ed00] rounded transition-colors"
+              className="p-2 bg-[#e3bd93] hover:bg-[#e6ed00] rounded transition-colors"
               aria-label="Next question"
             >
               <svg className="w-6 h-6 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
