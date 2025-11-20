@@ -382,6 +382,27 @@
       "video4": "La science rencontre le bien-être"
     }
   },
+  "MasterClass": {
+    "metaTitle": "Master Class Gratuite - Transformez Votre Santé | RESET Club",
+    "metaDescription": "Rejoignez notre master class gratuite en 3 jours pour découvrir les secrets du biohacking et de l'amincissement 360° au Maroc",
+    "eventBadge": "Événement Virtuel en Direct",
+    "mainTitle": "Transformez Votre",
+    "mainTitleHighlight": "Santé & Bien-être",
+    "mainTitleEnd": "en 3 Jours",
+    "subtitle": "Découvrez les secrets du biohacking et de l'amincissement 360°",
+    "description": "Aucune expérience requise. Aucun engagement. Suivez simplement le système et transformez-vous.",
+    "ctaButton": "RÉSERVEZ VOTRE PLACE GRATUITE",
+    "ctaNote": "*Les places sont limitées. Premier arrivé, premier servi",
+    "benefitsTitle": "Ce Que Vous Allez Découvrir",
+    "benefit1Title": "Biohacking Avancé",
+    "benefit1Description": "Les techniques scientifiques pour optimiser votre énergie, votre sommeil et votre vitalité",
+    "benefit2Title": "Amincissement 360°",
+    "benefit2Description": "Une approche holistique pour transformer votre corps de manière durable",
+    "benefit3Title": "Protocole Personnalisé",
+    "benefit3Description": "Un plan d'action adapté à vos objectifs spécifiques et votre mode de vie",
+    "finalCta": "JE M'INSCRIS MAINTENANT",
+    "socialProof": "Rejoignez plus de 500+ personnes qui ont transformé leur vie avec RESET Club"
+  },
   "PopupOffer": {
     "title": "Et si ta transformation commençait… maintenant?",
     "imageAlt": "Reset Club",

@@ -351,6 +351,19 @@ h3{
   will-change: transform;
 }
 
+@keyframes spin-slow {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin-slow {
+  animation: spin-slow 3s linear infinite;
+}
+
 /* Scrolled navbar button styles: gray-800 border, gray-700 text */
 .scrolled-navbar {
   border-color: #111010 !important;

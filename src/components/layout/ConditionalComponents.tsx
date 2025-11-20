@@ -9,13 +9,14 @@ import PopupOfferV2 from '../ui/PopupOfferV2';
 export default function ConditionalComponents() {
   const pathname = usePathname();
 
-  // Hide components on linktree, membership, payment, and confirmation pages
+  // Hide components on linktree, membership, payment, confirmation, and master-class pages
   const isLinktreePage = pathname.includes('/linktree');
   const isMembershipPage = pathname.includes('/membership');
   const isPaymentPage = pathname.includes('/payment');
   const isConfirmationPage = pathname.includes('/confirmation');
+  const isMasterClassPage = pathname.includes('/master-class');
 
-  if (isLinktreePage || isMembershipPage || isPaymentPage || isConfirmationPage) {
+  if (isLinktreePage || isMembershipPage || isPaymentPage || isConfirmationPage || isMasterClassPage) {
     return null;
   }
 
