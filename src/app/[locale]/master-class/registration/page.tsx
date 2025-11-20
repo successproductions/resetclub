@@ -387,7 +387,7 @@ export default function MasterClassRegistration() {
               <div className="flex items-center gap-2 mt-6">
                 <button
                   onClick={goToNextQuestion}
-                  className="bg-[#f7ff00] hover:bg-[#e6ed00] text-black font-bold text-lg px-8 py-3 rounded-md transition-colors"
+                  className="bg-[#e3bd93] hover:bg-[#e6ed00] text-black font-bold text-lg px-8 py-3 rounded-md transition-colors"
                 >
                   OK
                 </button>
