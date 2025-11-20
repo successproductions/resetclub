@@ -40,7 +40,6 @@ const questions: Question[] = [
 
 export default function MasterClassRegistration() {
   const router = useRouter();
-  const [currentSection, setCurrentSection] = useState<'video' | 'survey'>('video');
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [answers, setAnswers] = useState<Record<number, string>>({});
   const [error, setError] = useState('');
@@ -58,13 +57,11 @@ export default function MasterClassRegistration() {
 
   // Simulate video progress
   useEffect(() => {
-    if (currentSection === 'video') {
-      const timer = setTimeout(() => {
-        setVideoWatched(true);
-      }, 3000); // Simulate video starting
-      return () => clearTimeout(timer);
-    }
-  }, [currentSection]);
+    const timer = setTimeout(() => {
+      setVideoWatched(true);
+    }, 3000); // Simulate video starting
+    return () => clearTimeout(timer);
+  }, []);
 
   const handleInputChange = (value: string) => {
     setAnswers(prev => ({
@@ -107,19 +104,27 @@ export default function MasterClassRegistration() {
     router.push('/master-class');
   };
 
+  const scrollToSurvey = () => {
+    const surveySection = document.getElementById('survey-section');
+    if (surveySection) {
+      surveySection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   const currentQuestion = questions[currentQuestionIndex];
   const currentAnswer = answers[currentQuestion.id] || '';
 
-  if (currentSection === 'video') {
-    return (
-      <main className="relative min-h-screen bg-black flex flex-col items-center justify-center px-4 font-graphik">
-        {/* Top Warning Banner */}
-        <div className="fixed top-0 left-0 w-full bg-[#f7ff00] py-3 px-4 z-50">
-          <p className="text-black text-center font-bold text-sm md:text-base uppercase tracking-wide">
-            DO NOT CLOSE OR REFRESH THIS PAGE!
-          </p>
-        </div>
+  return (
+    <div className="relative bg-black">
+      {/* Top Warning Banner - Fixed */}
+      <div className="fixed top-0 left-0 w-full bg-[#f7ff00] py-3 px-4 z-50">
+        <p className="text-black text-center font-bold text-sm md:text-base uppercase tracking-wide">
+          DO NOT CLOSE OR REFRESH THIS PAGE!
+        </p>
+      </div>
 
+      {/* Video Section */}
+      <main id="video-section" className="relative min-h-screen bg-black flex flex-col items-center justify-center px-4 font-graphik">
         {/* Content Container */}
         <div className="w-full max-w-4xl mx-auto mt-16">
           {/* Progress Bar */}
@@ -190,19 +195,16 @@ export default function MasterClassRegistration() {
 
           {/* CTA Button */}
           <button
-            onClick={() => setCurrentSection('survey')}
+            onClick={scrollToSurvey}
             className="w-full max-w-md mx-auto block bg-[#f7ff00] hover:bg-[#e6ed00] text-black font-bold text-lg py-4 px-8 rounded-lg transition-all duration-300 uppercase"
           >
             FILL OUT SURVEY TO JOIN THE GROUP
           </button>
         </div>
       </main>
-    );
-  }
 
-  // Survey Section
-  return (
-    <main className="relative min-h-screen bg-black flex flex-col items-center justify-center px-4 font-graphik">
+      {/* Survey Section */}
+      <section id="survey-section" className="relative min-h-screen bg-black flex flex-col items-center justify-center px-4 font-graphik pt-20">
       {/* Content Container */}
       <div className="w-full max-w-2xl mx-auto">
         {/* Step Badge */}
@@ -300,6 +302,7 @@ export default function MasterClassRegistration() {
           <p>©2025 Educate.io, All Rights Reserved.</p>
         </div>
       </div>
-    </main>
+      </section>
+    </div>
   );
 }
