@@ -279,7 +279,7 @@ export default function MasterClassRegistration() {
           {/* Video Container */}
           <div ref={videoRef} className="relative w-full aspect-video bg-gray-900 rounded-sm overflow-hidden mb-8">
             <iframe
-              src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+              src="https://www.youtube.com/embed/7lECIsRif10"
               title="Master Class Video"
               className="absolute inset-0 w-full h-full"
               frameBorder="0"
