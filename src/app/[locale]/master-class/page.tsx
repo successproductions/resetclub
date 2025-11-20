@@ -90,7 +90,7 @@ export default function MasterClassPage() {
         <div className="relative z-20 flex-1 flex flex-col items-center justify-end px-4 md:px-8 pb-[220px]">
           <div className="max-w-5xl mx-auto text-center">
             {/* ND Image - Positioned at bottom */}
-            <div ref={imageRef} className="relative w-full max-w-2xl mx-auto mt-24 md:mt-33">
+            <div ref={imageRef} className="relative w-full max-w-2xl mx-auto mt-24 md:mt-54">
               <div className="relative w-full aspect-square h-[300px] md:aspect-auto md:h-[450px]">
                 <Image
                   src="/images/master/NAHED.png"
