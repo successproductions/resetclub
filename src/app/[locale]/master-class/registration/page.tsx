@@ -304,13 +304,13 @@ export default function MasterClassRegistration() {
             onClick={scrollToSurvey}
             className="w-full max-w-md mx-auto block bg-[#e3bd93] hover:bg-[#e6ed00] text-black font-medium text-lg py-4 px-8 rounded-sm transition-all duration-300 uppercase"
           >
-            FILL OUT SURVEY TO JOIN THE GROUP
+            FILL OUT SURVEY TO JOIN 
           </button>
         </div>
       </main>
 
       {/* Survey Section */}
-      <section id="survey-section" className="relative min-h-screen bg-black flex flex-col items-center justify-center px-4 font-graphik pt-20">
+      <section id="survey-section" className="relative min-h-screen bg-black flex flex-col items-center justify-center px-4 font-graphik pt-10 md:pt-20">
       {/* Content Container */}
       <div className="w-full max-w-2xl mx-auto">
         {/* Step Badge */}
@@ -338,10 +338,10 @@ export default function MasterClassRegistration() {
           {/* Question Number and Text */}
           <div className="mb-6">
             <div className="flex items-start gap-3 md:mb-4">
-              <span className="text-xl font-medium mt-1  text-gray-800">
+              <span className="text-xl font-medium   text-gray-800">
                 {currentQuestionIndex + 1} →
               </span>
-              <h3 className="text-xl font-medium text-gray-800">
+              <h3 className="text-xl! font-medium text-gray-800">
                 {currentQuestion.question}
                 <span className="text-red-500">*</span>
               </h3>
@@ -370,7 +370,7 @@ export default function MasterClassRegistration() {
             <div className="flex items-center gap-2 mt-6">
               <button
                 onClick={goToNextQuestion}
-                className="bg-[#f7ff00] hover:bg-[#e6ed00] text-black font-bold text-xl px-8 py-3 rounded-md transition-colors"
+                className="bg-[#e3bd93] hover:bg-[#e6ed00] text-black font-medium text-sm px-4 py-1.5 rounded-sm transition-colors"
               >
                 OK
               </button>
