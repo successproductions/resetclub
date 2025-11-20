@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { useRouter } from 'next/navigation';
 import { X } from 'lucide-react';
 import Swal from 'sweetalert2';
 
@@ -10,6 +11,7 @@ interface MasterClassPopupProps {
 }
 
 export default function MasterClassPopup({ isOpen, onClose }: MasterClassPopupProps) {
+  const router = useRouter();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -40,18 +42,6 @@ export default function MasterClassPopup({ isOpen, onClose }: MasterClassPopupPr
       // Close popup
       onClose();
 
-      // Show success alert
-      await Swal.fire({
-        icon: 'success',
-        title: 'Réservation Confirmée!',
-        text: 'Votre place a été réservée avec succès. Vous recevrez un email de confirmation sous peu.',
-        confirmButtonText: 'OK',
-        confirmButtonColor: '#e3bd93',
-        customClass: {
-          popup: 'font-graphik',
-        }
-      });
-
       // Reset form
       setFormData({
         name: '',
@@ -60,6 +50,9 @@ export default function MasterClassPopup({ isOpen, onClose }: MasterClassPopupPr
         countryCode: '+212',
         wantsVIP: false,
       });
+
+      // Redirect to registration page
+      router.push('/master-class/registration');
 
     } catch (error) {
       console.error('Error submitting form:', error);
