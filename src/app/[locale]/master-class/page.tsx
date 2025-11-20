@@ -73,7 +73,7 @@ export default function MasterClassPage() {
   }, []);
   return (
     <main className="relative h-screen bg-black overflow-hidden font-graphik">
-      {/* Hero Section */}
+
       <section className="relative h-screen flex flex-col">
         {/* Background Image - Rounded pattern */}
         <div className="absolute top-0 left-0 w-full h-[calc(70vh-220px)]  md:h-[calc(80vh-220px)] z-0">
