@@ -43,7 +43,6 @@ export default function MasterClassRegistration() {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [answers, setAnswers] = useState<Record<number, string>>({});
   const [error, setError] = useState('');
-  const [videoWatched, setVideoWatched] = useState(false);
 
   // Redirect to master-class on refresh
   useEffect(() => {
@@ -54,14 +53,6 @@ export default function MasterClassRegistration() {
     window.addEventListener('beforeunload', handleBeforeUnload);
     return () => window.removeEventListener('beforeunload', handleBeforeUnload);
   }, [router]);
-
-  // Simulate video progress
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setVideoWatched(true);
-    }, 3000); // Simulate video starting
-    return () => clearTimeout(timer);
-  }, []);
 
   const handleInputChange = (value: string) => {
     setAnswers(prev => ({
@@ -129,7 +120,7 @@ export default function MasterClassRegistration() {
         <div className="w-full max-w-4xl mx-auto mt-16">
           {/* Progress Bar */}
           <div className="w-full mb-8">
-            <div className="relative w-full h-3 bg-gray-800 rounded-full overflow-hidden border-2 border-[#00ff00]">
+            <div className="relative w-full h-6 bg-gray-800 rounded-full overflow-hidden border-2 border-[#00ff00]">
               <div
                 className="absolute top-0 left-0 h-full bg-[#00ff00] transition-all duration-500"
                 style={{ width: '60%' }}
@@ -162,24 +153,18 @@ export default function MasterClassRegistration() {
             />
 
             {/* Video Overlay */}
-            <div className="absolute inset-0 flex items-center justify-center bg-black/50">
-              <div className="text-center">
-                <div className="bg-[#f7ff00]/90 rounded-lg p-6 mb-4">
-                  <div className="flex items-center justify-center mb-2">
-                    <svg className="w-12 h-12 text-black" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-2-8c0-1.1.9-2 2-2s2 .9 2 2-.9 2-2 2-2-.9-2-2z"/>
-                      <path d="M12 6c-3.31 0-6 2.69-6 6s2.69 6 6 6 6-2.69 6-6-2.69-6-6-6zm0 10c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4z" opacity="0.3"/>
+            <div className="absolute inset-0 flex items-center justify-center bg-black/30">
+              <button className="group" aria-label="Play video">
+                <div className="relative">
+                  {/* Play Button Circle */}
+                  <div className="w-20 h-20 md:w-24 md:h-24 rounded-full bg-white/90 group-hover:bg-white flex items-center justify-center transition-all duration-300 shadow-2xl group-hover:scale-110">
+                    {/* Play Icon */}
+                    <svg className="w-10 h-10 md:w-12 md:h-12 text-black ml-1" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M8 5v14l11-7z"/>
                     </svg>
                   </div>
-                  <p className="text-black font-bold text-lg">
-                    {videoWatched ? 'Your video has already started' : 'Click to listen'}
-                  </p>
                 </div>
-                <p className="text-white text-sm">
-                  I&apos;ve left a very quick survey<br />
-                  for you to fill out.
-                </p>
-              </div>
+              </button>
             </div>
           </div>
 
