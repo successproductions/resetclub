@@ -76,9 +76,9 @@ export default function MasterClassPage() {
       {/* Hero Section */}
       <section className="relative h-screen flex flex-col">
         {/* Background Image - Rounded pattern */}
-        <div className="absolute top-0 left-0 w-full h-[calc(100vh-220px)] z-0">
+        <div className="absolute top-0 left-0 w-full h-[calc(70vh-220px)]  md:h-[calc(80vh-220px)] z-0">
           <Image
-            src="/images/master/bg-master.png"
+            src="/images/master/SCREAN.png"
             alt="Background pattern"
             fill
             className="object-cover"
@@ -91,14 +91,27 @@ export default function MasterClassPage() {
           <div className="max-w-5xl mx-auto text-center">
             {/* ND Image - Positioned at bottom */}
             <div ref={imageRef} className="relative w-full max-w-2xl mx-auto mt-24 md:mt-12">
-              <div className="relative w-full aspect-square h-[290px] md:aspect-auto md:h-[450px]">
+              <div className="relative w-full aspect-square h-[300px] md:aspect-auto md:h-[450px]">
                 <Image
-                  src="/images/master/nd-image.png"
+                  src="/images/master/NAHED.png"
                   alt="Nahed Rachad"
                   fill
                   className="object-contain"
                   priority
                 />
+              </div>
+
+              {/* Logo at bottom */}
+              <div className="relative w-full flex justify-center mt-4">
+                <div className="relative w-32 h-16 md:w-40 md:h-20">
+                  <Image
+                    src="/images/master/NRLOGO.png"
+                    alt="NR Logo"
+                    fill
+                    className="object-contain"
+                    priority
+                  />
+                </div>
               </div>
             </div>
 
@@ -124,10 +137,10 @@ export default function MasterClassPage() {
             <button
               ref={buttonRef}
               onClick={() => setIsPopupOpen(true)}
-              className="inline-flex items-center gap-2 md:gap-3 bg-[#e3bd93] hover:bg-[#e6b57c] text-white font-medium text-lg md:text-xl px-4 md:px-12 py-4 md:py-5 rounded-full transition-all duration-300 shadow-2xl shadow-[#e3bd93]/20"
+              className="inline-flex items-center gap-2 md:gap-3 bg-[#e3bd93] hover:bg-[#e6b57c] text-white font-medium text-lg md:text-xl px-4 md:px-12 py-4 md:py-5 rounded-sm transition-all duration-300 shadow-2xl shadow-[#e3bd93]/20"
             >
               <Ticket className="w-5 h-5 md:w-6 md:h-6" />
-              <span>RÉSERVEZ VOTRE PLACE GRATUITE</span>
+              <span>RÉSERVEZ VOTRE PLACE</span>
             </button>
 
             <p className="text-sm text-gray-500 mt-4">
