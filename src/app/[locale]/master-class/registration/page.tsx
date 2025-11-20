@@ -366,14 +366,14 @@ export default function MasterClassRegistration() {
                   onClick={() => {
                     handleInputChange(choice.label);
                   }}
-                  className={`w-full text-left px-6 py-4 rounded-lg border-2 transition-all duration-200 ${
+                  className={`w-full text-left px-6 py-4 rounded-sm border-2 transition-all duration-200 ${
                     currentAnswer === choice.label
                       ? 'border-black bg-gray-100'
-                      : 'border-gray-300 bg-white hover:border-gray-400'
+                      : 'border-gray-300 bg-white hover:border-gray-200'
                   }`}
                 >
                   <div className="flex items-center gap-3">
-                    <span className="flex-shrink-0 w-8 h-8 flex items-center justify-center border-2 border-gray-400 rounded text-sm font-medium">
+                    <span className="flex-shrink-0 w-8 h-8 text-black flex items-center justify-center border-2 border-gray-700 rounded text-sm font-medium">
                       {choice.value}
                     </span>
                     <span className="text-lg font-normal text-gray-800">
