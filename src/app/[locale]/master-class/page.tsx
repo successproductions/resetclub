@@ -90,7 +90,7 @@ export default function MasterClassPage() {
         <div className="relative z-20 flex-1 flex flex-col items-center justify-end px-4 md:px-8 pb-[220px]">
           <div className="max-w-5xl mx-auto text-center">
             {/* ND Image - Positioned at bottom */}
-            <div ref={imageRef} className="relative w-full max-w-2xl mx-auto mt-24 md:mt-12">
+            <div ref={imageRef} className="relative w-full max-w-2xl mx-auto mt-24 md:mt-33">
               <div className="relative w-full aspect-square h-[300px] md:aspect-auto md:h-[450px]">
                 <Image
                   src="/images/master/NAHED.png"
@@ -99,11 +99,9 @@ export default function MasterClassPage() {
                   className="object-contain"
                   priority
                 />
-              </div>
 
-              {/* Logo at bottom */}
-              <div className="relative w-full flex justify-center mt-4">
-                <div className="relative w-32 h-16 md:w-40 md:h-20">
+                {/* Logo positioned absolutely at bottom */}
+                <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-32 h-16 md:w-40 md:h-20">
                   <Image
                     src="/images/master/NRLOGO.png"
                     alt="NR Logo"
