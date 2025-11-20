@@ -178,20 +178,7 @@ export default function MasterClassPopup({ isOpen, onClose }: MasterClassPopupPr
             </div>
           </div>
 
-          {/* VIP Ticket Checkbox */}
-          <div className="flex items-center gap-2 p-3  rounded-lg">
-            <input
-              type="checkbox"
-              name="wantsVIP"
-              id="wantsVIP"
-              checked={formData.wantsVIP}
-              onChange={handleChange}
-              className="w-4 h-4 accent-[#e3bd93] cursor-pointer"
-            />
-            <label htmlFor="wantsVIP" className="text-sm text-gray-300 cursor-pointer">
-              Je veux un ticket VIP
-            </label>
-          </div>
+          
 
           {/* Submit Button */}
           <button

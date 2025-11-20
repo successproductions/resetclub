@@ -257,9 +257,9 @@ export default function MasterClassRegistration() {
         <div className="w-full max-w-4xl mx-auto mt-10 md:mt-0">
           {/* Progress Bar */}
           <div ref={progressBarRef} className="w-full mb-2 md:mb-8">
-            <div className="relative w-full h-6 bg-gray-800 rounded-full overflow-hidden border-2 border-[#00ff00]">
+            <div className="relative w-full h-6 bg-gray-800 rounded-full overflow-hidden border-2 border-[#e3bd93]">
               <div
-                className="absolute top-0 left-0 h-full bg-[#00ff00] transition-all duration-500"
+                className="absolute top-0 left-0 h-full bg-[#e3bd93] transition-all duration-500"
                 style={{ width: '60%' }}
               >
                 <div className="absolute right-2 top-1/2 -translate-y-1/2 text-black text-xs font-medium">
