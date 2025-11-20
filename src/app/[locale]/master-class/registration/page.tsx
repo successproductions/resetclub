@@ -258,7 +258,7 @@ export default function MasterClassRegistration() {
                 className="absolute top-0 left-0 h-full bg-[#00ff00] transition-all duration-500"
                 style={{ width: '60%' }}
               >
-                <div className="absolute right-2 top-1/2 -translate-y-1/2 text-black text-xs font-bold">
+                <div className="absolute right-2 top-1/2 -translate-y-1/2 text-black text-xs font-medium">
                   60%
                 </div>
               </div>
@@ -268,7 +268,7 @@ export default function MasterClassRegistration() {
           {/* Main Heading */}
           <h1 ref={headingRef} className="text-white text-center mb-4">
             <span className="text-2xl md:text-4xl font-normal">Your registration is </span>
-            <span className="text-[#e3bd93] text-2xl md:text-4xl font-bold">almost complete....</span>
+            <span className="text-[#e3bd93] text-2xl md:text-4xl font-medium">almost complete....</span>
           </h1>
 
           <p ref={descriptionRef} className="text-white text-center mb-8 text-sm md:text-base max-w-2xl mx-auto">
@@ -338,7 +338,7 @@ export default function MasterClassRegistration() {
           {/* Question Number and Text */}
           <div className="mb-6">
             <div className="flex items-start gap-3 md:mb-4">
-              <span className="text-xl font-medium mt-1 md:mt-0 text-gray-800">
+              <span className="text-xl font-medium mt-1  text-gray-800">
                 {currentQuestionIndex + 1} →
               </span>
               <h3 className="text-xl font-medium text-gray-800">
@@ -357,9 +357,27 @@ export default function MasterClassRegistration() {
               type={currentQuestion.type}
               value={currentAnswer}
               onChange={(e) => handleInputChange(e.target.value)}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter') {
+                  goToNextQuestion();
+                }
+              }}
               placeholder={currentQuestion.placeholder}
-              className="w-full px-4 py-3 border-b-2 border-gray-300 focus:border-black outline-none text-gray-800 text-lg transition-colors"
+              className="w-full px-0 py-3 border-b-2 border-gray-300 focus:border-black outline-none text-gray-800 text-3xl md:text-4xl font-normal transition-colors"
             />
+
+            {/* OK Button */}
+            <div className="flex items-center gap-2 mt-6">
+              <button
+                onClick={goToNextQuestion}
+                className="bg-[#f7ff00] hover:bg-[#e6ed00] text-black font-bold text-xl px-8 py-3 rounded-md transition-colors"
+              >
+                OK
+              </button>
+              <span className="text-gray-500 text-sm">
+                press <span className="font-semibold">Enter ↵</span>
+              </span>
+            </div>
           </div>
 
           {/* Error Message */}
