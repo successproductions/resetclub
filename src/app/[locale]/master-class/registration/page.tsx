@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
-import Image from 'next/image';
 
 interface Question {
   id: number;
@@ -108,7 +107,7 @@ export default function MasterClassRegistration() {
   return (
     <div className="relative bg-black">
       {/* Top Warning Banner - Fixed */}
-      <div className="fixed top-0 left-0 w-full bg-[#f7ff00] py-3 px-4 z-50">
+      <div className="fixed top-0 left-0 w-full bg-[#e3bd93] py-3 px-4 z-50">
         <p className="text-black text-center font-bold text-sm md:text-base uppercase tracking-wide">
           DO NOT CLOSE OR REFRESH THIS PAGE!
         </p>
@@ -135,7 +134,7 @@ export default function MasterClassRegistration() {
           {/* Main Heading */}
           <h1 className="text-white text-center mb-4">
             <span className="text-2xl md:text-4xl font-normal">Your registration is </span>
-            <span className="text-[#00ff00] text-2xl md:text-4xl font-bold">almost complete....</span>
+            <span className="text-[#e3bd93] text-2xl md:text-4xl font-bold">almost complete....</span>
           </h1>
 
           <p className="text-white text-center mb-8 text-sm md:text-base max-w-2xl mx-auto">
@@ -145,34 +144,21 @@ export default function MasterClassRegistration() {
 
           {/* Video Container */}
           <div className="relative w-full aspect-video bg-gray-900 rounded-lg overflow-hidden mb-8">
-            <Image
-              src="/images/master/nd-image.png"
-              alt="Video thumbnail"
-              fill
-              className="object-cover"
+            <iframe
+              src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+              title="Master Class Video"
+              className="absolute inset-0 w-full h-full"
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
             />
-
-            {/* Video Overlay */}
-            <div className="absolute inset-0 flex items-center justify-center bg-black/30">
-              <button className="group" aria-label="Play video">
-                <div className="relative">
-                  {/* Play Button Circle */}
-                  <div className="w-20 h-20 md:w-24 md:h-24 rounded-full bg-white/90 group-hover:bg-white flex items-center justify-center transition-all duration-300 shadow-2xl group-hover:scale-110">
-                    {/* Play Icon */}
-                    <svg className="w-10 h-10 md:w-12 md:h-12 text-black ml-1" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M8 5v14l11-7z"/>
-                    </svg>
-                  </div>
-                </div>
-              </button>
-            </div>
           </div>
 
           {/* Progress Bar (bottom) */}
           <div className="w-full mb-8">
             <div className="relative w-full h-2 bg-gray-800 rounded-full overflow-hidden">
               <div
-                className="absolute top-0 left-0 h-full bg-[#00ff00] transition-all duration-500"
+                className="absolute top-0 left-0 h-full bg-[#e3bd93] transition-all duration-500"
                 style={{ width: '60%' }}
               />
             </div>
@@ -181,7 +167,7 @@ export default function MasterClassRegistration() {
           {/* CTA Button */}
           <button
             onClick={scrollToSurvey}
-            className="w-full max-w-md mx-auto block bg-[#f7ff00] hover:bg-[#e6ed00] text-black font-bold text-lg py-4 px-8 rounded-lg transition-all duration-300 uppercase"
+            className="w-full max-w-md mx-auto block bg-[#e3bd93] hover:bg-[#e6ed00] text-black font-bold text-lg py-4 px-8 rounded-lg transition-all duration-300 uppercase"
           >
             FILL OUT SURVEY TO JOIN THE GROUP
           </button>
@@ -194,7 +180,7 @@ export default function MasterClassRegistration() {
       <div className="w-full max-w-2xl mx-auto">
         {/* Step Badge */}
         <div className="text-center mb-6">
-          <span className="inline-block bg-[#00ff00]/20 text-[#00ff00] px-4 py-1 rounded-full text-sm font-bold uppercase tracking-wider">
+          <span className="inline-block bg-[#00ff00]/20 text-[#e3bd93] px-4 py-1 rounded-full text-sm font-bold uppercase tracking-wider">
             STEP 2
           </span>
         </div>
@@ -205,9 +191,9 @@ export default function MasterClassRegistration() {
         </h2>
         <h2 className="text-center text-2xl md:text-3xl mb-12">
           <span className="text-white">The </span>
-          <span className="text-[#00ff00] font-bold">Free Resources Inside</span>
+          <span className="text-[#e3bd93] font-bold">Free Resources Inside</span>
           <span className="text-white"> The </span>
-          <span className="text-[#00ff00] font-bold">WhatsApp Group</span>
+          <span className="text-[#e3bd93] font-bold">WhatsApp Group</span>
         </h2>
 
         {/* Question Card */}
@@ -284,7 +270,7 @@ export default function MasterClassRegistration() {
           <p className="max-w-xl mx-auto">
             This site is not a part of the Facebook website or Facebook Inc. Additionally, This site is NOT endorsed by Facebook in any way. FACEBOOK is a trademark of FACEBOOK Inc.
           </p>
-          <p>©2025 Educate.io, All Rights Reserved.</p>
+          <p>©2025 resetclub.ma, All Rights Reserved.</p>
         </div>
       </div>
       </section>
