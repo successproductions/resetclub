@@ -7,8 +7,9 @@ import gsap from 'gsap';
 interface Question {
   id: number;
   question: string;
-  placeholder: string;
-  type: 'text' | 'number' | 'email';
+  placeholder?: string;
+  type: 'text' | 'number' | 'email' | 'choice';
+  choices?: { label: string; value: string }[];
 }
 
 const questions: Question[] = [
@@ -20,21 +21,24 @@ const questions: Question[] = [
   },
   {
     id: 2,
+    question: 'Have you ever tried any other online business models before?',
+    type: 'choice',
+    choices: [
+      { label: "No, I haven't tried any business models", value: 'A' },
+      { label: 'Yes, I have tried other online business models before', value: 'B' }
+    ]
+  },
+  {
+    id: 3,
     question: 'What is your biggest health challenge right now?',
     placeholder: 'Type your answer here...',
     type: 'text'
   },
   {
-    id: 3,
+    id: 4,
     question: 'What would you like to achieve in the next 3 months?',
     placeholder: 'Type your answer here...',
     type: 'text'
-  },
-  {
-    id: 4,
-    question: 'On a scale of 1-10, how committed are you to transforming your health?',
-    placeholder: 'Type your answer here...',
-    type: 'number'
   }
 ];
 
@@ -346,39 +350,79 @@ export default function MasterClassRegistration() {
                 <span className="text-red-500">*</span>
               </h3>
             </div>
-            <p className="text-gray-600 text-sm ml-8">
-              Please enter <span className="font-semibold">your {currentQuestion.type === 'number' ? 'age' : 'answer'}</span> {currentQuestion.type === 'number' ? 'in years' : ''}.
-            </p>
+            {currentQuestion.type !== 'choice' && (
+              <p className="text-gray-600 text-sm ml-8">
+                Please enter <span className="font-semibold">your {currentQuestion.type === 'number' ? 'age' : 'answer'}</span> {currentQuestion.type === 'number' ? 'in years' : ''}.
+              </p>
+            )}
           </div>
 
-          {/* Input Field */}
-          <div className="mb-6">
-            <input
-              type={currentQuestion.type}
-              value={currentAnswer}
-              onChange={(e) => handleInputChange(e.target.value)}
-              onKeyDown={(e) => {
-                if (e.key === 'Enter') {
-                  goToNextQuestion();
-                }
-              }}
-              placeholder={currentQuestion.placeholder}
-              className="w-full px-0 py-3 border-b-2 border-gray-300 focus:border-black outline-none text-gray-800 text-3xl md:text-4xl font-normal transition-colors"
-            />
+          {/* Choice Questions */}
+          {currentQuestion.type === 'choice' && currentQuestion.choices ? (
+            <div className="mb-6 space-y-4">
+              {currentQuestion.choices.map((choice) => (
+                <button
+                  key={choice.value}
+                  onClick={() => {
+                    handleInputChange(choice.label);
+                  }}
+                  className={`w-full text-left px-6 py-4 rounded-lg border-2 transition-all duration-200 ${
+                    currentAnswer === choice.label
+                      ? 'border-black bg-gray-100'
+                      : 'border-gray-300 bg-white hover:border-gray-400'
+                  }`}
+                >
+                  <div className="flex items-center gap-3">
+                    <span className="flex-shrink-0 w-8 h-8 flex items-center justify-center border-2 border-gray-400 rounded text-sm font-medium">
+                      {choice.value}
+                    </span>
+                    <span className="text-lg font-normal text-gray-800">
+                      {choice.label}
+                    </span>
+                  </div>
+                </button>
+              ))}
 
-            {/* OK Button */}
-            <div className="flex items-center gap-2 mt-6">
-              <button
-                onClick={goToNextQuestion}
-                className="bg-[#e3bd93] hover:bg-[#e6ed00] text-black font-medium text-sm px-4 py-1.5 rounded-sm transition-colors"
-              >
-                OK
-              </button>
-              <span className="text-gray-500 text-sm">
-                press <span className="font-semibold">Enter ↵</span>
-              </span>
+              {/* OK Button for choices */}
+              <div className="flex items-center gap-2 mt-6">
+                <button
+                  onClick={goToNextQuestion}
+                  className="bg-[#f7ff00] hover:bg-[#e6ed00] text-black font-bold text-lg px-8 py-3 rounded-md transition-colors"
+                >
+                  OK
+                </button>
+              </div>
             </div>
-          </div>
+          ) : (
+            /* Input Field for text/number questions */
+            <div className="mb-6">
+              <input
+                type={currentQuestion.type}
+                value={currentAnswer}
+                onChange={(e) => handleInputChange(e.target.value)}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter') {
+                    goToNextQuestion();
+                  }
+                }}
+                placeholder={currentQuestion.placeholder}
+                className="w-full px-0 py-3 border-b-2 border-gray-300 focus:border-black outline-none text-gray-800 text-3xl md:text-4xl font-normal transition-colors"
+              />
+
+              {/* OK Button */}
+              <div className="flex items-center gap-2 mt-6">
+                <button
+                  onClick={goToNextQuestion}
+                  className="bg-[#e3bd93] hover:bg-[#e6ed00] text-black font-medium text-sm px-4 py-1.5 rounded-sm transition-colors"
+                >
+                  OK
+                </button>
+                <span className="text-gray-500 text-sm">
+                  press <span className="font-semibold">Enter ↵</span>
+                </span>
+              </div>
+            </div>
+          )}
 
           {/* Error Message */}
           {error && (
