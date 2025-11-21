@@ -302,12 +302,12 @@ export default function MasterClassRegistration() {
           <button
             ref={ctaButtonRef}
             onClick={scrollToSurvey}
-            className="w-full max-w-md mx-auto block text-white font-bold text-lg py-4 px-8 rounded-full transition-all duration-300 uppercase"
+            className="w-full max-w-md mx-auto block text-white font-medium text-lg md:text-xl! py-4 px-8 rounded-xl transition-all duration-300 cursor-pointer uppercase"
             style={{
               background: 'linear-gradient(290deg, rgb(145, 219, 211) 0%, rgb(81, 177, 170) 30.2858%, rgb(145, 219, 211) 67.2878%, rgb(81, 177, 170) 100%)'
             }}
           >
-            FILL OUT SURVEY TO JOIN THE GROUP
+            FILL OUT SURVEY TO JOIN 
           </button>
         </div>
       </main>

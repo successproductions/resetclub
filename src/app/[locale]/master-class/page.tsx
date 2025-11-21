@@ -90,7 +90,7 @@ export default function MasterClassPage() {
         <div className="relative z-20 flex-1 flex flex-col items-center justify-end px-4 md:px-8 pb-[220px]">
           <div className="max-w-5xl mx-auto text-center">
             {/* ND Image - Positioned at bottom */}
-            <div ref={imageRef} className="relative w-full max-w-2xl mx-auto mt-24 md:mt-54">
+            <div ref={imageRef} className="relative w-full max-w-2xl mx-auto mt-24 lg:mt-24 xl:mt-54">
               <div className="relative w-full aspect-square h-[300px] md:aspect-auto md:h-[450px]">
                 <Image
                   src="/images/master/NAHED.png"
@@ -132,7 +132,7 @@ export default function MasterClassPage() {
             </p>
 
             {/* CTA Button */}
-            <div className="relative inline-block">
+            <div className="relative inline-block mt-2">
               {/* Animated yellow border */}
               <div className="absolute -inset-1 bg-[#51b1aa] rounded-full animate-border-pulse"></div>
 
@@ -143,7 +143,10 @@ export default function MasterClassPage() {
               <button
                 ref={buttonRef}
                 onClick={() => setIsPopupOpen(true)}
-                className="relative inline-flex items-center gap-2 md:gap-3 bg-[#51b1aa] hover:bg-[#51b1aa] text-white font-medium text-lg md:text-2xl! px-4 md:px-12 py-4 md:py-5 rounded-full transition-all duration-300"
+                style={{
+              background: 'linear-gradient(290deg, rgb(145, 219, 211) 0%, rgb(81, 177, 170) 30.2858%, rgb(145, 219, 211) 67.2878%, rgb(81, 177, 170) 100%) '
+            }}
+                className="relative inline-flex items-center gap-2 md:gap-3  text-white font-medium text-lg md:text-2xl! px-12 md:px-12 py-4 md:py-5 rounded-full transition-all duration-300"
               >
                 <Ticket className="w-5 h-5 md:w-6 md:h-6" />
                 <span>GET MY FREE TICKET</span>
