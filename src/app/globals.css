@@ -367,7 +367,7 @@ h3{
 /* Border pulse animation for CTA button */
 @keyframes border-pulse {
   0%, 100% {
-    opacity: 0.75;
+    opacity: 0.1;
     transform: scale(1);
   }
   50% {

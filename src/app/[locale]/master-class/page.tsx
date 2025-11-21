@@ -51,22 +51,22 @@ export default function MasterClassPage() {
       );
 
       // Animate button with scale effect
-      tl.fromTo(
-        buttonRef.current,
-        { opacity: 0, scale: 0.8, y: 20 },
-        { opacity: 1, scale: 1, y: 0, duration: 0.8 },
-        '-=0.2'
-      );
+      // tl.fromTo(
+      //   buttonRef.current,
+      //   { opacity: 0, scale: 0.8,  },
+      //   { opacity: 1, scale: 0.8, y: 0, duration: 0.8 },
+      //   '-=0.2'
+      // );
 
-      // Add continuous pulse animation to button
-      gsap.to(buttonRef.current, {
-        scale: 1.05,
-        duration: 0.8,
-        repeat: -1,
-        yoyo: true,
-        ease: 'sine.inOut',
-        delay: 2
-      });
+      // // Add continuous pulse animation to button
+      // gsap.to(buttonRef.current, {
+      //   scale: 1.05,
+      //   duration: 0.8,
+      //   repeat: -1,
+      //   yoyo: true,
+      //   ease: 'sine.inOut',
+      //   delay: 2
+      // });
     });
 
     return () => ctx.revert();
@@ -101,9 +101,9 @@ export default function MasterClassPage() {
                 />
 
                 {/* Logo positioned absolutely at bottom */}
-                <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-32 h-16 md:w-40 md:h-20">
+                <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-50 h-24 md:w-64 md:h-40">
                   <Image
-                    src="/images/master/NRLOGO.png"
+                    src="/images/master/MASTERCLASSLOGO2.png"
                     alt="NR Logo"
                     fill
                     className="object-contain"
@@ -134,7 +134,7 @@ export default function MasterClassPage() {
             {/* CTA Button */}
             <div className="relative inline-block">
               {/* Animated yellow border */}
-              <div className="absolute -inset-1 bg-[#f7ff00] rounded-full animate-border-pulse"></div>
+              <div className="absolute -inset-1 bg-[#51b1aa] rounded-full animate-border-pulse"></div>
 
               {/* Black border layer */}
               <div className="absolute -inset-0.5 bg-black rounded-full"></div>
@@ -143,7 +143,7 @@ export default function MasterClassPage() {
               <button
                 ref={buttonRef}
                 onClick={() => setIsPopupOpen(true)}
-                className="relative inline-flex items-center gap-2 md:gap-3 bg-[#f7ff00] hover:bg-[#f7ff00] text-black font-bold text-lg md:text-xl px-4 md:px-12 py-4 md:py-5 rounded-full transition-all duration-300"
+                className="relative inline-flex items-center gap-2 md:gap-3 bg-[#51b1aa] hover:bg-[#51b1aa] text-white font-medium text-lg md:text-2xl! px-4 md:px-12 py-4 md:py-5 rounded-full transition-all duration-300"
               >
                 <Ticket className="w-5 h-5 md:w-6 md:h-6" />
                 <span>GET MY FREE TICKET</span>

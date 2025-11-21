@@ -224,11 +224,7 @@ export default function MasterClassRegistration() {
   };
 
   const handleSubmit = async () => {
-    // Save survey data to localStorage or API
-    console.log('Survey answers:', answers);
-
-    // Redirect to WhatsApp group or thank you page
-    // For now, redirect back to master-class
+ 
     router.push('/master-class');
   };
 
@@ -245,7 +241,7 @@ export default function MasterClassRegistration() {
   return (
     <div className="relative bg-black">
       {/* Top Warning Banner - Fixed */}
-      <div className="fixed top-0 left-0 w-full bg-[#cbb9a7] py-3 px-4 z-50">
+      <div className="fixed top-0 left-0 w-full bg-[#51b1aa] py-3 px-4 z-50">
         <p className="text-black text-center font-bold text-sm md:text-base uppercase tracking-wide">
           DO NOT CLOSE OR REFRESH THIS PAGE!
         </p>
@@ -257,9 +253,9 @@ export default function MasterClassRegistration() {
         <div className="w-full max-w-4xl mx-auto mt-10 md:mt-0">
           {/* Progress Bar */}
           <div ref={progressBarRef} className="w-full mb-2 md:mb-8">
-            <div className="relative w-full h-6 bg-gray-800 rounded-full overflow-hidden border-2 border-[#cbb9a7]">
+            <div className="relative w-full h-6 bg-gray-800 rounded-full overflow-hidden border-1 border-gray-700">
               <div
-                className="absolute top-0 left-0 h-full bg-[#cbb9a7] transition-all duration-500"
+                className="absolute top-0 left-0 h-full bg-[#51b1aa] transition-all duration-500"
                 style={{ width: '60%' }}
               >
                 <div className="absolute right-2 top-1/2 -translate-y-1/2 text-black text-xs font-medium">
@@ -272,7 +268,7 @@ export default function MasterClassRegistration() {
           {/* Main Heading */}
           <h1 ref={headingRef} className="text-white text-center mb-4">
             <span className="text-2xl md:text-4xl font-normal">Your registration is </span>
-            <span className="text-[#e3bd93] text-2xl md:text-4xl font-medium">almost complete....</span>
+            <span className="text-[#cbb9a7] text-2xl md:text-4xl font-medium">almost complete....</span>
           </h1>
 
           <p ref={descriptionRef} className="text-white text-center mb-8 text-sm md:text-base max-w-2xl mx-auto">
@@ -296,7 +292,7 @@ export default function MasterClassRegistration() {
           {/* <div className="w-full mb-8">
             <div className="relative w-full h-2 bg-gray-800 rounded-full overflow-hidden">
               <div
-                className="absolute top-0 left-0 h-full bg-[#e3bd93] transition-all duration-500"
+                className="absolute top-0 left-0 h-full bg-[#cbb9a7] transition-all duration-500"
                 style={{ width: '60%' }}
               />
             </div>
@@ -306,9 +302,12 @@ export default function MasterClassRegistration() {
           <button
             ref={ctaButtonRef}
             onClick={scrollToSurvey}
-            className="w-full max-w-md mx-auto block bg-[#e3bd93] hover:bg-[#e6ed00] text-black font-medium text-lg py-4 px-8 rounded-sm transition-all duration-300 uppercase"
+            className="w-full max-w-md mx-auto block text-white font-bold text-lg py-4 px-8 rounded-full transition-all duration-300 uppercase"
+            style={{
+              background: 'linear-gradient(290deg, rgb(145, 219, 211) 0%, rgb(81, 177, 170) 30.2858%, rgb(145, 219, 211) 67.2878%, rgb(81, 177, 170) 100%)'
+            }}
           >
-            FILL OUT SURVEY TO JOIN 
+            FILL OUT SURVEY TO JOIN THE GROUP
           </button>
         </div>
       </main>
@@ -319,7 +318,7 @@ export default function MasterClassRegistration() {
       <div className="w-full max-w-2xl mx-auto">
         {/* Step Badge */}
         <div ref={badgeRef} className="text-center mb-6">
-          <span className="inline-block bg-[#00ff00]/20 text-[#e3bd93] px-4 py-1 rounded-full text-sm font-bold uppercase tracking-wider">
+          <span className="inline-block bg-[#51b1aa]/80 text-[#cbb9a7] px-4 py-1 rounded-full text-sm font-semibold uppercase tracking-wider">
             STEP 2
           </span>
         </div>
@@ -331,9 +330,9 @@ export default function MasterClassRegistration() {
           </h2>
           <h2 className="text-center text-2xl! md:text-3xl mb-12">
             <span className="text-white">The </span>
-            <span className="text-[#e3bd93] font-bold">Free Resources Inside</span>
+            <span className="text-[#cbb9a7] font-semibold">Free Resources Inside</span>
             <span className="text-white"> The </span>
-            <span className="text-[#e3bd93] font-bold">WhatsApp Group</span>
+            <span className="text-[#cbb9a7] font-semibold">WhatsApp Group</span>
           </h2>
         </div>
 
@@ -369,7 +368,7 @@ export default function MasterClassRegistration() {
                   className={`w-full text-left px-6 py-4 rounded-sm border-2 transition-all duration-200 ${
                     currentAnswer === choice.label
                       ? 'border-black bg-gray-100'
-                      : 'border-gray-300 bg-white hover:border-gray-200'
+                      : 'border-gray-300 bg-white hover:border-[#51b1aa]'
                   }`}
                 >
                   <div className="flex items-center gap-3">
@@ -387,7 +386,7 @@ export default function MasterClassRegistration() {
               <div className="flex items-center gap-2 mt-6">
                 <button
                   onClick={goToNextQuestion}
-                  className="bg-[#e3bd93] hover:bg-[#e6ed00] text-black font-bold text-lg px-8 py-3 rounded-md transition-colors"
+                  className="bg-[#cbb9a7] hover:bg-[#51b1aa] text-white font-bold text-lg px-8 py-3 rounded-md transition-colors"
                 >
                   OK
                 </button>
@@ -413,7 +412,7 @@ export default function MasterClassRegistration() {
               <div className="flex items-center gap-2 mt-6">
                 <button
                   onClick={goToNextQuestion}
-                  className="bg-[#e3bd93] hover:bg-[#e6ed00] text-black font-medium text-sm px-4 py-1.5 rounded-sm transition-colors"
+                  className="bg-[#cbb9a7] hover:bg-[#51b1aa] text-white font-medium text-sm px-4 py-1.5 rounded-sm transition-colors"
                 >
                   OK
                 </button>
@@ -439,20 +438,20 @@ export default function MasterClassRegistration() {
             {currentQuestionIndex > 0 && (
               <button
                 onClick={goToPreviousQuestion}
-                className="p-2 bg-[#e3bd93] hover:bg-[#e6ed00] rounded transition-colors"
+                className="p-2 bg-[#cbb9a7] hover:bg-[#51b1aa] rounded transition-colors"
                 aria-label="Previous question"
               >
-                <svg className="w-6 h-6 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 15l7-7 7 7" />
                 </svg>
               </button>
             )}
             <button
               onClick={goToNextQuestion}
-              className="p-2 bg-[#e3bd93] hover:bg-[#e6ed00] rounded transition-colors"
+              className="p-2 bg-[#cbb9a7] hover:bg-[#51b1aa] rounded transition-colors"
               aria-label="Next question"
             >
-              <svg className="w-6 h-6 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
               </svg>
             </button>

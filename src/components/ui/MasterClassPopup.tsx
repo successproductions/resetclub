@@ -27,17 +27,17 @@ export default function MasterClassPopup({ isOpen, onClose }: MasterClassPopupPr
 
     try {
       // Submit to API
-      const response = await fetch('/api/master-class', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
-      });
+      // const response = await fetch('/api/master-classs', {
+      //   method: 'POST',
+      //   headers: {
+      //     'Content-Type': 'application/json',
+      //   },
+      //   body: JSON.stringify(formData),
+      // });
 
-      if (!response.ok) {
-        throw new Error('Failed to submit form');
-      }
+      // if (!response.ok) {
+      //   throw new Error('Failed to submit form');
+      // }
 
       // Close popup
       onClose();
@@ -106,13 +106,9 @@ export default function MasterClassPopup({ isOpen, onClose }: MasterClassPopupPr
         </button>
 
         {/* Title */}
-        <h2 className="text-2xl md:text-2xl! font-medium! text-white mb-2 text-center">
-          Réservez Votre Place
-        </h2>
-        <p className="text-gray-400 text-center mb-6">
+        <h2 className="text-lg! md:text-xl! font-medium! text-white mb-2 ">
           Entrez vos informations pour réserver votre spot
-        </p>
-
+        </h2>
         {/* Form */}
         <form onSubmit={handleSubmit} className="space-y-4">
           {/* Name Input */}
@@ -124,7 +120,7 @@ export default function MasterClassPopup({ isOpen, onClose }: MasterClassPopupPr
               onChange={handleChange}
               placeholder="Votre nom complet *"
               required
-              className="w-full px-4 py-3 bg-[#2a2a2a] border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-[#e3bd93] transition-colors"
+              className="w-full px-4 py-3 bg-[#2a2a2a] border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-[#51b1aa] transition-colors"
             />
           </div>
 
@@ -137,7 +133,7 @@ export default function MasterClassPopup({ isOpen, onClose }: MasterClassPopupPr
               onChange={handleChange}
               placeholder="Votre meilleur email *"
               required
-              className="w-full px-4 py-3 bg-[#2a2a2a] border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-[#e3bd93] transition-colors"
+              className="w-full px-4 py-3 bg-[#2a2a2a] border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-[#51b1aa] transition-colors"
             />
           </div>
 
@@ -148,7 +144,7 @@ export default function MasterClassPopup({ isOpen, onClose }: MasterClassPopupPr
                 name="countryCode"
                 value={formData.countryCode}
                 onChange={handleChange}
-                className="px-1 py-3 bg-[#2a2a2a] border border-r-0 border-gray-700 rounded-l-lg text-white text-sm focus:outline-none focus:border-[#e3bd93] transition-colors cursor-pointer"
+                className="px-1 py-3 bg-[#2a2a2a] border border-r-0 border-gray-700 rounded-l-lg text-white text-sm focus:outline-none focus:border-[#51b1aa] transition-colors cursor-pointer"
               >
                 <option value="+212">🇲🇦 +212</option>
                 <option value="+33">🇫🇷 +33</option>
@@ -173,7 +169,7 @@ export default function MasterClassPopup({ isOpen, onClose }: MasterClassPopupPr
                 onChange={handleChange}
                 placeholder="Numéro de téléphone *"
                 required
-                className="flex-1 px-4 py-3 bg-[#2a2a2a] border border-gray-700 rounded-r-lg text-white placeholder-gray-500 focus:outline-none focus:border-[#e3bd93] transition-colors"
+                className="flex-1 px-4 py-3 bg-[#2a2a2a] border border-gray-700 rounded-r-lg text-white placeholder-gray-500 focus:outline-none focus:border-[#51b1aa] transition-colors"
               />
             </div>
           </div>
@@ -184,7 +180,7 @@ export default function MasterClassPopup({ isOpen, onClose }: MasterClassPopupPr
           <button
             type="submit"
             disabled={isSubmitting}
-            className="w-full bg-[#e3bd93] hover:bg-[#e6b57c] text-white font-medium text-lg py-4 rounded-sm transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed shadow-lg shadow-[#e3bd93]/20"
+            className="w-full bg-[#51b1aa] hover:bg-[#51b1aa] text-white font-medium text-lg py-4 rounded-xl transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed shadow-lg shadow-[#e3bd93]/20"
           >
             {isSubmitting ? 'ENVOI EN COURS...' : 'RÉSERVER MA PLACE'}
           </button>
