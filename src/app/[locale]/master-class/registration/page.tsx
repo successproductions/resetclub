@@ -245,7 +245,7 @@ export default function MasterClassRegistration() {
   return (
     <div className="relative bg-black">
       {/* Top Warning Banner - Fixed */}
-      <div className="fixed top-0 left-0 w-full bg-[#e3bd93] py-3 px-4 z-50">
+      <div className="fixed top-0 left-0 w-full bg-[#cbb9a7] py-3 px-4 z-50">
         <p className="text-black text-center font-bold text-sm md:text-base uppercase tracking-wide">
           DO NOT CLOSE OR REFRESH THIS PAGE!
         </p>
@@ -257,9 +257,9 @@ export default function MasterClassRegistration() {
         <div className="w-full max-w-4xl mx-auto mt-10 md:mt-0">
           {/* Progress Bar */}
           <div ref={progressBarRef} className="w-full mb-2 md:mb-8">
-            <div className="relative w-full h-6 bg-gray-800 rounded-full overflow-hidden border-2 border-[#e3bd93]">
+            <div className="relative w-full h-6 bg-gray-800 rounded-full overflow-hidden border-2 border-[#cbb9a7]">
               <div
-                className="absolute top-0 left-0 h-full bg-[#e3bd93] transition-all duration-500"
+                className="absolute top-0 left-0 h-full bg-[#cbb9a7] transition-all duration-500"
                 style={{ width: '60%' }}
               >
                 <div className="absolute right-2 top-1/2 -translate-y-1/2 text-black text-xs font-medium">

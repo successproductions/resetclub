@@ -76,7 +76,7 @@ export default function MasterClassPage() {
 
       <section className="relative h-screen flex flex-col">
         {/* Background Image - Rounded pattern */}
-        <div className="absolute top-0 left-0 w-full h-[calc(70vh-220px)]  md:h-[calc(80vh-220px)] z-0">
+        <div className="absolute top-0 left-0 w-full h-[calc(70vh-220px)]  md:h-[calc(65vh-220px)] z-0">
           <Image
             src="/images/master/SCREAN.png"
             alt="Background pattern"
@@ -124,7 +124,7 @@ export default function MasterClassPage() {
             {/* Main Heading */}
             <h1 ref={headlineRef} className="text-2xl md:text-3xl lg:text-4xl font-medium font-graphik text-white mb-1 ">
               <span className="block md:mb-1">Transformez Votre</span>
-              <span className="text-[#e3bd93]">Santé & Bien-être</span>
+              <span className="text-[#cbb9a7]">Santé & Bien-être</span>
               <span className="block md:mt-1">en 3 Jours</span>
             </h1>
             <p ref={descRef} className="text-xs md:text-lg text-white mb-2 max-w-2xl mx-auto">
@@ -132,17 +132,26 @@ export default function MasterClassPage() {
             </p>
 
             {/* CTA Button */}
-            <button
-              ref={buttonRef}
-              onClick={() => setIsPopupOpen(true)}
-              className="inline-flex items-center gap-2 md:gap-3 bg-[#e3bd93] hover:bg-[#e6b57c] text-white font-medium text-lg md:text-xl px-4 md:px-12 py-4 md:py-5 rounded-sm transition-all duration-300 shadow-2xl shadow-[#e3bd93]/20"
-            >
-              <Ticket className="w-5 h-5 md:w-6 md:h-6" />
-              <span>RÉSERVEZ VOTRE PLACE</span>
-            </button>
+            <div className="relative inline-block">
+              {/* Animated yellow border */}
+              <div className="absolute -inset-1 bg-[#f7ff00] rounded-full animate-border-pulse"></div>
 
-            <p className="text-sm text-gray-500 mt-4">
-              *Les places sont limitées. Premier arrivé, premier servi
+              {/* Black border layer */}
+              <div className="absolute -inset-0.5 bg-black rounded-full"></div>
+
+              {/* Main button */}
+              <button
+                ref={buttonRef}
+                onClick={() => setIsPopupOpen(true)}
+                className="relative inline-flex items-center gap-2 md:gap-3 bg-[#f7ff00] hover:bg-[#f7ff00] text-black font-bold text-lg md:text-xl px-4 md:px-12 py-4 md:py-5 rounded-full transition-all duration-300"
+              >
+                <Ticket className="w-5 h-5 md:w-6 md:h-6" />
+                <span>GET MY FREE TICKET</span>
+              </button>
+            </div>
+
+            <p className="text-sm text-gray-300 mt-4">
+              *Tickets Are First Come, First Served
             </p>
           </div>
         </div>

@@ -364,6 +364,22 @@ h3{
   animation: spin-slow 3s linear infinite;
 }
 
+/* Border pulse animation for CTA button */
+@keyframes border-pulse {
+  0%, 100% {
+    opacity: 0.75;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.02);
+  }
+}
+
+.animate-border-pulse {
+  animation: border-pulse 2s ease-in-out infinite;
+}
+
 /* Scrolled navbar button styles: gray-800 border, gray-700 text */
 .scrolled-navbar {
   border-color: #111010 !important;
