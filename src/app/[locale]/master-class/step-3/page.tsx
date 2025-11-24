@@ -135,7 +135,7 @@ export default function MasterClassStep3() {
               </div>
 
               <div className="text-center mb-4">
-                <div className="text-4xl font-bold text-white mb-2">🖤 0 MAD</div>
+                <div className="text-4xl font-bold text-white mb-2"> 0 MAD</div>
                 <div className="text-gray-400 text-base font-semibold">TICKET GRATUIT</div>
               </div>
 
@@ -146,7 +146,7 @@ export default function MasterClassStep3() {
               <div className="flex-grow">
                 <div className="mb-4">
                   <p className="text-[#51b1aa] font-semibold mb-2 text-sm">Ce que tu obtiens :</p>
-                  <ul className="space-y-1 text-sm">
+                  <ul className="space-y-1 text-sm font-medium md:text-lg">
                     <li className="flex items-start gap-2 text-white">
                       <span className="text-green-500 flex-shrink-0">✔</span>
                       <span>Accès à la Masterclass</span>
@@ -158,9 +158,9 @@ export default function MasterClassStep3() {
                   </ul>
                 </div>
 
-                <div className="mb-4">
+                <div className="mb-4 font-medium ">
                   <p className="text-red-400 font-semibold mb-2 text-sm">Ce que tu n&apos;obtiens pas :</p>
-                  <ul className="space-y-1 text-sm">
+                  <ul className="space-y-1 text-sm md:text-lg">
                     <li className="flex items-start gap-2 text-gray-500">
                       <span className="text-red-400 flex-shrink-0">✖</span>
                       <span>Aucun diagnostic personnalisé</span>
@@ -215,7 +215,7 @@ export default function MasterClassStep3() {
               <div className="flex-grow">
                 <div className="mb-4">
                   <p className="text-[#cbb9a7] font-semibold mb-2 text-sm">Ce que tu obtiens :</p>
-                  <ul className="space-y-1 text-sm">
+                  <ul className="space-y-1 text-sm md:text-lg font-medium">
                     <li className="flex items-start gap-2 text-white">
                       <span className="text-green-500 flex-shrink-0">✔</span>
                       <span>Accès Masterclass + mini-guide</span>
@@ -254,7 +254,7 @@ export default function MasterClassStep3() {
             </div>
 
             {/* Ultimate RESET 360 Ticket */}
-            <div className="bg-gradient-to-br from-[#1a4d47] to-[#0d2623] rounded-3xl p-6 border-2 border-[#51b1aa] relative flex flex-col transform md:scale-105 shadow-xl shadow-[#51b1aa]/40">
+            <div className="bg-gradient-to-br from-[#1a4d47] to-[#0d2623] rounded-3xl p-6 border-2 border-[#51b1aa] relative flex flex-col transform md:scale-102 shadow-xl shadow-[#51b1aa]/40">
               <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-gradient-to-r from-[#51b1aa] to-[#91dbd3] text-white px-4 py-1 rounded-full font-bold text-xs uppercase animate-pulse">
                 ULTIMATE ACCESS
               </div>
@@ -286,7 +286,7 @@ export default function MasterClassStep3() {
 
                 <div className="mb-3">
                   <p className="text-white font-bold text-sm mb-1">🌐 Plateforme RESET 360</p>
-                  <ul className="space-y-1 text-xs text-gray-300 ml-4">
+                  <ul className="space-y-1 text-xs md:text-sm font-medium text-white ml-4">
                     <li>• Protocoles guidés complets</li>
                     <li>• Vidéos pédagogiques exclusives</li>
                     <li>• Rituels matin & soir</li>
@@ -297,7 +297,7 @@ export default function MasterClassStep3() {
 
                 <div className="mb-3">
                   <p className="text-white font-bold text-sm mb-1">💎 Avantages Premium</p>
-                  <ul className="space-y-1 text-xs text-gray-300 ml-4">
+                  <ul className="space-y-1 text-xs md:text-sm font-medium text-white ml-4">
                     <li>• Remises sur les packs centre</li>
                     <li>• Priorité calendrier</li>
                     <li>• Accès VIP nouvelles méthodes</li>
@@ -306,7 +306,7 @@ export default function MasterClassStep3() {
 
                 <div className="mb-4">
                   <p className="text-white font-bold text-sm mb-1">🎁 Bonus Ultimate</p>
-                  <ul className="space-y-1 text-xs text-gray-300 ml-4">
+                  <ul className="space-y-1 text-xs md:text-sm font-medium text-white ml-4">
                     <li>• Bibliothèque exercices & recettes</li>
                     <li>• Workshops privés 360</li>
                   </ul>
@@ -316,7 +316,7 @@ export default function MasterClassStep3() {
               <div>
                 <button
                   onClick={handleUltimateTicket}
-                  className="w-full bg-gradient-to-r from-[#51b1aa] to-[#91dbd3] text-white font-bold text-sm py-3 rounded-lg transition-all duration-300 hover:scale-105 uppercase shadow-lg shadow-[#51b1aa]/50"
+                  className="w-full bg-gradient-to-r from-[#51b1aa] to-[#91dbd3] text-white font-medium text-sm py-3 rounded-lg transition-all duration-300 hover:scale-105 uppercase shadow-lg shadow-[#51b1aa]/50"
                 >
                    JE VEUX LE TICKET RESET 360™
                 </button>
