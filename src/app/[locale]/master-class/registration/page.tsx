@@ -8,37 +8,113 @@ interface Question {
   id: number;
   question: string;
   placeholder?: string;
-  type: 'text' | 'number' | 'email' | 'choice';
+  type: 'text' | 'number' | 'email' | 'choice' | 'slider';
   choices?: { label: string; value: string }[];
+  conditionalId?: number; // For conditional questions
+  showIf?: string; // Show this question if answer to conditionalId matches this
 }
 
 const questions: Question[] = [
   {
     id: 1,
-    question: 'How old are you?',
-    placeholder: 'Type your answer here...',
-    type: 'number'
+    question: 'Quel âge as-tu ?',
+    type: 'choice',
+    choices: [
+      { label: '18–24', value: 'A' },
+      { label: '25–34', value: 'B' },
+      { label: '35–44', value: 'C' },
+      { label: '45–54', value: 'D' },
+      { label: '55+', value: 'E' }
+    ]
   },
   {
     id: 2,
-    question: 'Have you ever tried any other online business models before?',
+    question: 'Connais-tu la coach Nahed Rachad ?',
     type: 'choice',
     choices: [
-      { label: "No, I haven't tried any business models", value: 'A' },
-      { label: 'Yes, I have tried other online business models before', value: 'B' }
+      { label: 'Oui, je la suis déjà', value: 'A' },
+      { label: 'J\'en ai entendu parler', value: 'B' },
+      { label: 'Non, pas encore', value: 'C' }
     ]
   },
   {
     id: 3,
-    question: 'What is your biggest health challenge right now?',
-    placeholder: 'Type your answer here...',
-    type: 'text'
+    question: 'Comment as-tu entendu parler de cette masterclass ?',
+    type: 'choice',
+    choices: [
+      { label: 'Instagram RESET Club', value: 'A' },
+      { label: 'Instagram Nahed', value: 'B' },
+      { label: 'TikTok', value: 'C' },
+      { label: 'Recommandation', value: 'D' },
+      { label: 'Autre', value: 'E' }
+    ]
   },
   {
     id: 4,
-    question: 'What would you like to achieve in the next 3 months?',
-    placeholder: 'Type your answer here...',
-    type: 'text'
+    question: 'Connais-tu le concept du biohacking ?',
+    type: 'choice',
+    choices: [
+      { label: 'Oui', value: 'A' },
+      { label: 'Non', value: 'B' },
+      { label: 'Un peu, mais je veux mieux comprendre', value: 'C' }
+    ]
+  },
+  {
+    id: 5,
+    question: 'Quel est ton objectif principal aujourd\'hui ?',
+    type: 'choice',
+    choices: [
+      { label: 'Perdre de la graisse durablement', value: 'A' },
+      { label: 'Retrouver mon énergie', value: 'B' },
+      { label: 'Améliorer mon sommeil', value: 'C' },
+      { label: 'Réduire mon stress / rééquilibrer mes hormones', value: 'D' },
+      { label: 'Booster ma confiance / mon pouvoir personnel', value: 'E' }
+    ]
+  },
+  {
+    id: 6,
+    question: 'As-tu déjà visité un centre bien-être ou biohacking au Maroc ou ailleurs ?',
+    type: 'choice',
+    choices: [
+      { label: 'Oui', value: 'A' },
+      { label: 'Non', value: 'B' }
+    ]
+  },
+  {
+    id: 7,
+    question: 'Qu\'as-tu le plus apprécié ?',
+    placeholder: 'Tape ta réponse ici...',
+    type: 'text',
+    conditionalId: 6,
+    showIf: 'Oui'
+  },
+  {
+    id: 8,
+    question: 'Dirais-tu que tu galères à perdre du gras malgré tes efforts ?',
+    type: 'choice',
+    choices: [
+      { label: 'Oui, totalement', value: 'A' },
+      { label: 'Un peu', value: 'B' },
+      { label: 'Non, ce n\'est pas mon problème principal', value: 'C' }
+    ]
+  },
+  {
+    id: 9,
+    question: 'Quel niveau d\'énergie as-tu en général ?',
+    type: 'slider'
+  },
+  {
+    id: 10,
+    question: 'Si tu devais choisir UNE priorité RESET à travailler d\'abord, ce serait…',
+    type: 'choice',
+    choices: [
+      { label: 'Corps & silhouette', value: 'A' },
+      { label: 'Sommeil & récupération', value: 'B' },
+      { label: 'Nutrition & métabolisme', value: 'C' },
+      { label: 'Énergie & vitalité', value: 'D' },
+      { label: 'Stress & gestion mentale', value: 'E' },
+      { label: 'Confiance & pouvoir personnel', value: 'F' }
+    ]
   }
 ];
 
@@ -46,6 +122,7 @@ export default function MasterClassRegistration() {
   const router = useRouter();
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [answers, setAnswers] = useState<Record<number, string>>({});
+  const [consent, setConsent] = useState(false);
   const [error, setError] = useState('');
 
   // Refs for video section
@@ -203,29 +280,67 @@ export default function MasterClassRegistration() {
     const currentAnswer = answers[questions[currentQuestionIndex].id];
 
     if (!currentAnswer || currentAnswer.trim() === '') {
-      setError('Oops! Please enter a value');
+      setError('Veuillez répondre à cette question');
       return;
     }
 
     if (currentQuestionIndex < questions.length - 1) {
-      setCurrentQuestionIndex(prev => prev + 1);
+      let nextIndex = currentQuestionIndex + 1;
+
+      // Check if next question is conditional and should be skipped
+      while (nextIndex < questions.length) {
+        const nextQuestion = questions[nextIndex];
+        if (nextQuestion.conditionalId && nextQuestion.showIf) {
+          const conditionalAnswer = answers[nextQuestion.conditionalId];
+          if (conditionalAnswer !== nextQuestion.showIf) {
+            nextIndex++; // Skip this question
+            continue;
+          }
+        }
+        break;
+      }
+
+      setCurrentQuestionIndex(nextIndex);
       setError('');
     } else {
-      // All questions answered - submit and redirect
+      // All questions answered - check consent and submit
+      if (!consent) {
+        setError('Vous devez accepter d\'être contacté pour continuer');
+        return;
+      }
       handleSubmit();
     }
   };
 
   const goToPreviousQuestion = () => {
     if (currentQuestionIndex > 0) {
-      setCurrentQuestionIndex(prev => prev - 1);
+      let prevIndex = currentQuestionIndex - 1;
+
+      // Check if previous question is conditional and should be skipped
+      while (prevIndex >= 0) {
+        const prevQuestion = questions[prevIndex];
+        if (prevQuestion.conditionalId && prevQuestion.showIf) {
+          const conditionalAnswer = answers[prevQuestion.conditionalId];
+          if (conditionalAnswer !== prevQuestion.showIf) {
+            prevIndex--; // Skip this question
+            continue;
+          }
+        }
+        break;
+      }
+
+      setCurrentQuestionIndex(prevIndex);
       setError('');
     }
   };
 
   const handleSubmit = async () => {
- 
-    router.push('/master-class');
+    // Save answers to localStorage or send to API here if needed
+    console.log('Survey answers:', answers);
+    console.log('Consent:', consent);
+
+    // Redirect to Step 2
+    router.push('/master-class/step-2');
   };
 
   const scrollToSurvey = () => {
@@ -243,7 +358,7 @@ export default function MasterClassRegistration() {
       {/* Top Warning Banner - Fixed */}
       <div className="fixed top-0 left-0 w-full bg-[#51b1aa] py-3 px-4 z-50">
         <p className="text-black text-center font-bold text-sm md:text-base uppercase tracking-wide">
-          DO NOT CLOSE OR REFRESH THIS PAGE!
+          NE FERME PAS OU N&apos;ACTUALISE PAS CETTE PAGE !
         </p>
       </div>
 
@@ -267,13 +382,13 @@ export default function MasterClassRegistration() {
 
           {/* Main Heading */}
           <h1 ref={headingRef} className="text-white text-center mb-4">
-            <span className="text-2xl md:text-4xl font-normal">Your registration is </span>
-            <span className="text-[#cbb9a7] text-2xl md:text-4xl font-medium">almost complete....</span>
+            <span className="text-2xl md:text-4xl font-normal">Ton inscription est </span>
+            <span className="text-[#cbb9a7] text-2xl md:text-4xl font-medium">presque terminée...</span>
           </h1>
 
           <p ref={descriptionRef} className="text-white text-center mb-8 text-sm md:text-base max-w-2xl mx-auto">
-            Watch the video below to finish your registration and fill out the survey<br />
-            to download the Challenge Workbooks inside the WhatsApp Group
+            Regarde la vidéo ci-dessous pour finaliser ton inscription et remplis le questionnaire<br />
+            pour confirmer ta place dans la Masterclass
           </p>
 
           {/* Video Container */}
@@ -307,7 +422,7 @@ export default function MasterClassRegistration() {
               background: 'linear-gradient(290deg, rgb(145, 219, 211) 0%, rgb(81, 177, 170) 30.2858%, rgb(145, 219, 211) 67.2878%, rgb(81, 177, 170) 100%)'
             }}
           >
-            FILL OUT SURVEY TO JOIN 
+            REMPLIS LE QUESTIONNAIRE POUR REJOINDRE
           </button>
         </div>
       </main>
@@ -319,25 +434,24 @@ export default function MasterClassRegistration() {
         {/* Step Badge */}
         <div ref={badgeRef} className="text-center mb-6">
           <span className="inline-block bg-[#51b1aa]/80 text-[#cbb9a7] px-4 py-1 rounded-full text-sm font-semibold uppercase tracking-wider">
-            STEP 2
+            ÉTAPE 2
           </span>
         </div>
 
         {/* Heading */}
         <div ref={surveyHeadingRef}>
           <h2 className="text-white text-center text-2xl! md:text-3xl mb-2">
-            Fill Out The Quick Survey Below To Get Access To
+            Masterclass Exclusive  
+
           </h2>
           <h2 className="text-center text-2xl! md:text-3xl mb-12">
-            <span className="text-white">The </span>
-            <span className="text-[#cbb9a7] font-semibold">Free Resources Inside</span>
-            <span className="text-white"> The </span>
-            <span className="text-[#cbb9a7] font-semibold">WhatsApp Group</span>
+            <span className="text-white">Les Secrets du Biohacking Féminin </span>
+            <span className="text-[#cbb9a7] font-semibold">Animée par Nahed Rachad</span>
           </h2>
         </div>
 
         {/* Question Card */}
-        <div ref={questionCardRef} className="bg-white rounded-sm p-8 md:p-10 shadow-2xl">
+        <div ref={questionCardRef} className="bg-white rounded-sm p-5 md:p-10 shadow-2xl">
           {/* Question Number and Text */}
           <div className="mb-6">
             <div className="flex items-start gap-3 md:mb-4">
@@ -349,9 +463,14 @@ export default function MasterClassRegistration() {
                 <span className="text-red-500">*</span>
               </h3>
             </div>
-            {currentQuestion.type !== 'choice' && (
+            {currentQuestion.type === 'slider' && (
               <p className="text-gray-600 text-sm ml-8">
-                Please enter <span className="font-semibold">your {currentQuestion.type === 'number' ? 'age' : 'answer'}</span> {currentQuestion.type === 'number' ? 'in years' : ''}.
+                Déplace le curseur pour sélectionner ton niveau d&apos;énergie (1 = épuisée, 10 = pleine d&apos;énergie)
+              </p>
+            )}
+            {currentQuestion.type !== 'choice' && currentQuestion.type !== 'slider' && (
+              <p className="text-gray-600 text-sm ml-8">
+                Tape ta réponse ci-dessous.
               </p>
             )}
           </div>
@@ -392,6 +511,38 @@ export default function MasterClassRegistration() {
                 </button>
               </div>
             </div>
+          ) : currentQuestion.type === 'slider' ? (
+            /* Slider for energy level */
+            <div className="mb-6">
+              <div className="mb-4">
+                <input
+                  type="range"
+                  min="1"
+                  max="10"
+                  value={currentAnswer || '5'}
+                  onChange={(e) => handleInputChange(e.target.value)}
+                  className="w-full h-3 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-[#51b1aa]"
+                  style={{
+                    background: `linear-gradient(to right, #51b1aa 0%, #51b1aa ${((parseInt(currentAnswer || '5') - 1) / 9) * 100}%, #e5e7eb ${((parseInt(currentAnswer || '5') - 1) / 9) * 100}%, #e5e7eb 100%)`
+                  }}
+                />
+              </div>
+              <div className="flex justify-between text-sm text-gray-600 mb-2">
+                <span>1 - Épuisée</span>
+                <span className="text-2xl font-bold text-[#51b1aa]">{currentAnswer || '5'}</span>
+                <span>10 - Pleine d&apos;énergie</span>
+              </div>
+
+              {/* OK Button */}
+              <div className="flex items-center gap-2 mt-6">
+                <button
+                  onClick={goToNextQuestion}
+                  className="bg-[#cbb9a7] hover:bg-[#51b1aa] text-white font-bold text-lg px-8 py-3 rounded-md transition-colors"
+                >
+                  OK
+                </button>
+              </div>
+            </div>
           ) : (
             /* Input Field for text/number questions */
             <div className="mb-6">
@@ -423,6 +574,27 @@ export default function MasterClassRegistration() {
             </div>
           )}
 
+          {/* Consent Checkbox - Show only on last question */}
+          {currentQuestionIndex === questions.length - 1 && (
+            <div className="mb-6 mt-8 p-4 bg-gray-50 rounded-lg">
+              <label className="flex items-start gap-3 cursor-pointer">
+                <input
+                  type="checkbox"
+                  checked={consent}
+                  onChange={(e) => {
+                    setConsent(e.target.checked);
+                    setError('');
+                  }}
+                  className="mt-1 w-5 h-5 text-[#51b1aa] border-gray-300 rounded focus:ring-[#51b1aa] cursor-pointer"
+                />
+                <span className="text-gray-700 text-sm leading-relaxed">
+                  J&apos;autorise RESET Club™ à me contacter par WhatsApp / Email pour confirmer ma place dans la Masterclass.
+                  <span className="text-red-500">*</span>
+                </span>
+              </label>
+            </div>
+          )}
+
           {/* Error Message */}
           {error && (
             <div className="mb-6 flex items-center gap-2 text-red-500 text-sm bg-red-50 px-4 py-2 rounded">
@@ -434,28 +606,44 @@ export default function MasterClassRegistration() {
           )}
 
           {/* Navigation Buttons */}
-          <div className="flex items-center justify-end gap-2">
-            {currentQuestionIndex > 0 && (
+          {currentQuestionIndex === questions.length - 1 ? (
+            /* Submit button on last question */
+            <div className="mt-8">
               <button
-                onClick={goToPreviousQuestion}
+                onClick={goToNextQuestion}
+                className="w-full text-white font-bold text-lg md:text-xl py-4 px-8 rounded-lg transition-all duration-300 hover:scale-105"
+                style={{
+                  background: 'linear-gradient(290deg, rgb(145, 219, 211) 0%, rgb(81, 177, 170) 30.2858%, rgb(145, 219, 211) 67.2878%, rgb(81, 177, 170) 100%)'
+                }}
+              >
+                CONFIRMER MON ACCÈS À LA MASTERCLASS
+              </button>
+            </div>
+          ) : (
+            /* Navigation arrows for other questions */
+            <div className="flex items-center justify-end gap-2">
+              {currentQuestionIndex > 0 && (
+                <button
+                  onClick={goToPreviousQuestion}
+                  className="p-2 bg-[#cbb9a7] hover:bg-[#51b1aa] rounded transition-colors"
+                  aria-label="Previous question"
+                >
+                  <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 15l7-7 7 7" />
+                  </svg>
+                </button>
+              )}
+              <button
+                onClick={goToNextQuestion}
                 className="p-2 bg-[#cbb9a7] hover:bg-[#51b1aa] rounded transition-colors"
-                aria-label="Previous question"
+                aria-label="Next question"
               >
                 <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 15l7-7 7 7" />
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                 </svg>
               </button>
-            )}
-            <button
-              onClick={goToNextQuestion}
-              className="p-2 bg-[#cbb9a7] hover:bg-[#51b1aa] rounded transition-colors"
-              aria-label="Next question"
-            >
-              <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-              </svg>
-            </button>
-          </div>
+            </div>
+          )}
         </div>
 
         {/* Footer Text */}
