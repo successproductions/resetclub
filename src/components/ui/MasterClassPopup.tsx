@@ -39,6 +39,14 @@ export default function MasterClassPopup({ isOpen, onClose }: MasterClassPopupPr
       //   throw new Error('Failed to submit form');
       // }
 
+      // Save user info to localStorage for payment page
+      localStorage.setItem('masterclass-user-info', JSON.stringify({
+        name: formData.name,
+        email: formData.email,
+        phone: formData.phone,
+        countryCode: formData.countryCode
+      }));
+
       // Close popup
       onClose();
 

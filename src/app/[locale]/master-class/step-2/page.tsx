@@ -31,7 +31,7 @@ export default function MasterClassStep2() {
   }, []);
 
   const handleFreeTicket = () => {
-    // Redirect to step-3
+    // Redirect to confirmation page
     router.push('/master-class/step-3');
   };
 
@@ -258,7 +258,7 @@ Ton bien-être passe avant tout.
                 </button>
 
                 <p className="text-gray-500 text-xs text-center mt-3">
-                  Tu seras redirigée vers la page de confirmation + groupe WhatsApp.
+                  Tu seras redirigée vers la page de confirmation + groupe WhatsApp
                 </p>
               </div>
             </div>

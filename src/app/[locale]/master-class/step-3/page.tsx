@@ -30,6 +30,7 @@ export default function MasterClassStep3() {
   }, []);
 
   const handleFreeTicket = () => {
+    // Redirect to confirmation page with WhatsApp join
     router.push('/master-class/confirmation');
   };
 
@@ -38,7 +39,7 @@ export default function MasterClassStep3() {
   };
 
   const handleUltimateTicket = () => {
-    router.push('/master-class/payment-ultimate');
+    router.push('/master-class/payment?type=ultimate');
   };
 
   return (
@@ -54,7 +55,7 @@ export default function MasterClassStep3() {
       <section className="relative min-h-[65vh] bg-white flex flex-col items-center justify-center px-4 pt-18 pb-6">
         <div ref={videoRef} className="w-full max-w-4xl mx-auto">
           {/* Progress Bar */}
-          <div className="w-full mb-8">
+          <div className="w-full mb-4 md:mb-6">
             <div className="relative w-full h-5 bg-gray-200 rounded-full overflow-hidden">
               <div
                 className="absolute top-0 left-0 h-full bg-gradient-to-r from-[#51b1aa] to-[#91dbd3] transition-all duration-500"
@@ -68,7 +69,7 @@ export default function MasterClassStep3() {
           </div>
 
           {/* Heading */}
-          <h1 className="text-2xl md:text-5xl font-medium text-gray-950 text-center mb-4">
+          <h1 className="text-2xl md:text-5xl font-medium text-gray-950 text-center md:mb-2">
             J&apos;ai réuni la méthode complète qui transforme{' '}
             <span className="text-[#51b1aa]">l&apos;énergie, la silhouette et l&apos;équilibre intérieur</span>…
             <br />
@@ -76,12 +77,12 @@ export default function MasterClassStep3() {
             <span className="text-[#51b1aa]">Plateforme RESET 360™</span> à un tarif inédit.
           </h1>
 
-          <p className="text-center text-gray-950 mb-4 md:mb-8">
+          <p className="text-center text-gray-950 mb-2 md:mb-4">
             Regarde cette vidéo pour comprendre pourquoi on ouvre exceptionnellement cet accès 👇
           </p>
 
           {/* Video Container */}
-          <div className="relative w-full aspect-video bg-gray-900 overflow-hidden mb-4 md:mb-8">
+          <div className="relative w-full aspect-video bg-gray-900 overflow-hidden mb-2 md:mb-3">
             <div className="absolute top-0 left-1/2 -translate-x-1/2 bg-[#51b1aa] w-full text-center text-white text-xs px-4 py-0.5 font-medium uppercase z-10">
               Dernière opportunité — regarde attentivement
             </div>
@@ -113,10 +114,12 @@ export default function MasterClassStep3() {
         </div>
       </section>
 
+
+
       {/* Section 2 - Ticket Comparison (80vh) */}
-      <section className="relative min-h-[80vh] bg-black flex flex-col items-center justify-center px-4 py-16">
+      <section className="relative min-h-[80vh] bg-black flex flex-col items-center justify-center px-4 pt-16">
         <div ref={ticketsRef} className="w-full max-w-7xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold text-white text-center mb-12">
+          <h2 className="text-3xl md:text-4xl font-bold text-white text-center mb-10 md:mb-12">
             Choisis ton Ticket :
           </h2>
 
@@ -136,11 +139,11 @@ export default function MasterClassStep3() {
 
               <div className="text-center mb-4">
                 <div className="text-4xl font-bold text-white mb-2"> 0 MAD</div>
-                <div className="text-gray-400 text-base font-semibold">TICKET GRATUIT</div>
+                <div className="text-gray-200 text-base font-semibold">TICKET GRATUIT</div>
               </div>
 
               <h3 className="text-lg font-bold text-white mb-3">
-                 Ticket Gratuit — Masterclass Exclusive
+                 Ticket Gratuit Masterclass Exclusive
               </h3>
 
               <div className="flex-grow">
@@ -204,8 +207,8 @@ export default function MasterClassStep3() {
               </div>
 
               <div className="text-center mb-4">
-                <div className="text-4xl font-bold text-[#cbb9a7] mb-2"> 1500 MAD</div>
-                <div className="text-gray-400 text-base font-semibold">TICKET VIP</div>
+                <div className="text-4xl font-bold text-white mb-2"> 1500 MAD</div>
+                <div className="text-gray-200 text-base font-semibold">TICKET VIP</div>
               </div>
 
               <h3 className="text-lg font-bold text-white mb-3">
@@ -215,7 +218,7 @@ export default function MasterClassStep3() {
               <div className="flex-grow">
                 <div className="mb-4">
                   <p className="text-[#cbb9a7] font-semibold mb-2 text-sm">Ce que tu obtiens :</p>
-                  <ul className="space-y-1 text-sm md:text-lg font-medium">
+                  <ul className="space-y-4 text-sm md:text-lg font-medium">
                     <li className="flex items-start gap-2 text-white">
                       <span className="text-green-500 flex-shrink-0">✔</span>
                       <span>Accès Masterclass + mini-guide</span>
@@ -270,13 +273,13 @@ export default function MasterClassStep3() {
                 </div>
               </div>
 
-              <div className="text-center mb-4">
-                <div className="text-4xl font-bold text-[#51b1aa] mb-2"> X MAD</div>
-                <div className="text-gray-400 text-base font-semibold">RESET 360™</div>
+              <div className="text-center mb-2">
+                <div className="text-4xl font-bold text-white mb-2"> X MAD</div>
+                <div className="text-gray-200 text-base font-semibold">RESET 360™</div>
               </div>
 
-              <h3 className="text-lg font-bold text-white mb-3">
-                TICKET ULTIMATE — RESET 360
+              <h3 className="text-lg font-bold text-white mb-2">
+                TICKET ULTIMATE  RESET 360
               </h3>
 
               <div className="flex-grow">
@@ -330,7 +333,7 @@ export default function MasterClassStep3() {
       </section>
 
       {/* Section 3 - Guarantee (70vh) */}
-      <section className="relative min-h-[70vh] bg-black flex flex-col items-center justify-center px-4 pt-16">
+      <section className="relative min-h-[70vh] bg-black flex flex-col items-center justify-center px-4 pt-6 md:pt-16">
         <div ref={guaranteeRef} className="w-full max-w-4xl mx-auto">
           <div className="bg-gradient-to-br from-[#1a4d47] to-[#0d2623] rounded-3xl p-6 md:p-12 border-2 border-[#51b1aa]">
             <div className="flex justify-center mb-8">
@@ -349,7 +352,7 @@ export default function MasterClassStep3() {
             </h2>
 
             <p className="text-white text-center text-lg mb-4 max-w-2xl mx-auto">
-              🔰 Une expérience complète, accessible en toute confiance
+               Une expérience complète, accessible en toute confiance
             </p>
 
             <p className="text-white text-center text-base mb-4 max-w-2xl mx-auto">
@@ -378,7 +381,7 @@ export default function MasterClassStep3() {
 
             <div className="bg-[#51b1aa]/10 border-2 border-[#51b1aa] rounded-xl p-4 mb-8 max-w-2xl mx-auto">
               <p className="text-[#51b1aa] text-center font-bold text-lg">
-                ✨ Aucun justificatif. Aucune question.
+                 Aucun justificatif. Aucune question.
               </p>
               <p className="text-white text-center text-sm mt-2">
                 Juste une garantie transparente, fidèle aux valeurs RESET Club™.
@@ -400,6 +403,145 @@ export default function MasterClassStep3() {
                 className="w-5/6 bg-gradient-to-r from-[#51b1aa] to-[#91dbd3] hover:from-[#91dbd3] hover:to-[#51b1aa] text-white font-medium text-base md:text-lg py-3 px-2 md:px-4 rounded-lg transition-all duration-300 hover:scale-105 uppercase"
               >
                  NON, JE PRÉFÈRE L&apos;ACCÈS GRATUIT À LA MASTERCLASS
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+            {/* New Section - Why Upgrade to RESET 360 */}
+      <section className="relative min-h-[90vh] bg-black flex flex-col items-center justify-center px-3 md:px-4 py-16">
+        <div className="w-full max-w-4xl mx-auto">
+          <div className="bg-gradient-to-br from-gray-50 to-gray-100 rounded-3xl p-6 md:p-12 shadow-2xl">
+            <h2 className="text-3xl md:text-5xl font-bold text-gray-950 text-center mb-4">
+              Pourquoi passer à RESET 360™ dès maintenant ?
+            </h2>
+
+            <p className="text-center text-gray-700 text-base md:text-lg mb-2">
+              Dernière opportunité : <span className="text-red-600 font-bold">seulement 0.44% des participantes</span> ont rejoint VIP.
+            </p>
+
+            <p className="text-center text-gray-700 text-sm md:text-base mb-6 md:mb-8 max-w-3xl mx-auto">
+              Et elles ont obtenu les résultats les plus incroyables, uniquement avec les sessions supplémentaires.
+              <br />
+              C&apos;est pourquoi cette fois, nous avons décidé de voir plus grand...
+            </p>
+
+            <p className="text-center text-gray-950 font-bold text-lg md:text-xl mb-8">
+              Plus de bonus. Plus de prix. Nouvelle dynamique de surprise :
+            </p>
+
+            {/* Video/Image Placeholder */}
+            <div className="relative w-full max-w-3xl mx-auto aspect-video bg-gray-900 rounded-2xl overflow-hidden mb-8 shadow-xl">
+              <div className="absolute inset-0 flex items-center justify-center">
+                <Image
+                  src="/images/RESET2.png"
+                  alt="RESET 360 Preview"
+                  fill
+                  className="object-cover opacity-100"
+                />
+              </div>
+            </div>
+
+            {/* Single Column Comparison */}
+            <div className="mb-8 max-w-3xl mx-auto">
+              {/* What you GET */}
+              <h3 className="text-xl md:text-2xl font-bold text-gray-950 mb-6">
+                Avec RESET 360™, tu accèdes immédiatement à :
+              </h3>
+              <ul className="space-y-3 text-base md:text-lg mb-8">
+                <li className="flex items-start gap-3 text-gray-950">
+                  <span className="text-green-500 text-xl flex-shrink-0">✔</span>
+                  <span>Une orientation personnalisée pour comprendre tes blocages (graisse, stress, hormones, énergie)</span>
+                </li>
+                <li className="flex items-start gap-3 text-gray-950">
+                  <span className="text-green-500 text-xl flex-shrink-0">✔</span>
+                  <span>Des mini-protocoles guidés pour accélérer ta transformation</span>
+                </li>
+                <li className="flex items-start gap-3 text-gray-950">
+                  <span className="text-green-500 text-xl flex-shrink-0">✔</span>
+                  <span>Des outils exclusifs pour suivre ton énergie, ton sommeil et ton métabolisme</span>
+                </li>
+                <li className="flex items-start gap-3 text-gray-950">
+                  <span className="text-green-500 text-xl flex-shrink-0">✔</span>
+                  <span>Des vidéos pédagogiques pour apprendre à biohacker ton quotidien</span>
+                </li>
+                <li className="flex items-start gap-3 text-gray-950">
+                  <span className="text-green-500 text-xl flex-shrink-0">✔</span>
+                  <span>Des ressources de reset émotionnel & mental</span>
+                </li>
+                <li className="flex items-start gap-3 text-gray-950">
+                  <span className="text-green-500 text-xl flex-shrink-0">✔</span>
+                  <span>Des rituels matin & soir pour booster ta vitalité</span>
+                </li>
+                <li className="flex items-start gap-3 text-gray-950">
+                  <span className="text-green-500 text-xl flex-shrink-0">✔</span>
+                  <span>Des avantages privés en centre réservés aux membres 360</span>
+                </li>
+              </ul>
+
+              {/* What you DON'T GET */}
+              <h3 className="text-xl md:text-2xl font-bold text-gray-950 mb-4 md:mb-6">
+                Ce que la Masterclass ne pourra jamais t&apos;offrir seule :
+              </h3>
+              <ul className="space-y-3 text-base md:text-lg">
+                <li className="flex items-start gap-3 text-gray-950">
+                  <span className="text-red-500 text-xl flex-shrink-0">✖</span>
+                  <span>Aucun plan personnalisé</span>
+                </li>
+                <li className="flex items-start gap-3 text-gray-950">
+                  <span className="text-red-500 text-xl flex-shrink-0">✖</span>
+                  <span>Aucun accompagnement après l&apos;événement</span>
+                </li>
+                <li className="flex items-start gap-3 text-gray-950">
+                  <span className="text-red-500 text-xl flex-shrink-0">✖</span>
+                  <span>Aucun accès aux ressources évolutives</span>
+                </li>
+                <li className="flex items-start gap-3 text-gray-950">
+                  <span className="text-red-500 text-xl flex-shrink-0">✖</span>
+                  <span>Aucun suivi d&apos;évolution</span>
+                </li>
+                <li className="flex items-start gap-3 text-gray-950">
+                  <span className="text-red-500 text-xl flex-shrink-0">✖</span>
+                  <span>Aucune orientation adaptée à TON corps</span>
+                </li>
+              </ul>
+            </div>
+
+            {/* Why Now Section */}
+            <div className=" max-w-3xl mx-auto">
+              <h3 className="text-2xl md:text-3xl font-bold text-gray-950 mb-2 md:mb-4 ">
+                Pourquoi cette offre maintenant ?
+              </h3>
+
+              <p className="text-gray-950 text-base md:text-lg leading-relaxed mb-4">
+                Parce qu&apos;une fois ta Masterclass confirmée, tu auras envie d&apos;aller plus loin…
+                <br />
+                <span className="font-semibold text-[#51b1aa]">mais cette offre 360 ne sera plus disponible après ta sortie de cette page.</span>
+              </p>
+
+              <p className="text-gray-950 text-base md:text-lg leading-relaxed mb-4">
+                Nous l&apos;ouvrons uniquement aux personnes les plus motivées.
+              </p>
+
+              <p className="text-gray-950 text-lg md:text-xl font-medium ">
+                Celles qui veulent enclencher un vrai changement — pas juste &quot;regarder un live&quot;.
+              </p>
+            </div>
+
+            {/* CTA Buttons */}
+            <div className="flex flex-col items-center gap-4 mt-4 md:mt-6 max-w-2xl mx-auto">
+              <button
+                onClick={handleUltimateTicket}
+                className="w-full bg-gradient-to-r from-[#cbb9a7] to-[#d4c4b3] hover:from-[#d4c4b3] hover:to-[#cbb9a7] text-white font-medium text-lg md:text-xl py-4 px-3 md:px-8 rounded-lg transition-all duration-300 hover:scale-105 uppercase shadow-xl"
+              >
+                OUI, JE VEUX ACCÉDER À RESET 360™ MAINTENANT
+              </button>
+              <button
+                onClick={handleFreeTicket}
+                className="w-5/6 bg-gradient-to-r from-[#51b1aa] to-[#91dbd3] hover:from-[#91dbd3] hover:to-[#51b1aa] text-white font-medium text-base md:text-lg py-3 px-2 md:px-6 rounded-lg transition-all duration-300 hover:scale-105 uppercase"
+              >
+                NON, JE RESTE SUR LA MASTERCLASS GRATUITE
               </button>
             </div>
           </div>
