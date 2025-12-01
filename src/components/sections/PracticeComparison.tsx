@@ -25,7 +25,7 @@ const PracticeComparison: React.FC = () => {
   ];
 
   return (
-    <section className="md:pb-1 pb-4  pt-3 bg-white">
+    <section className="md:pb-1 pb-4 pt-8 pt-3 bg-white">
       <div className="max-w-7xl mx-auto px-6">
         {/* Header */}
         <div className=" mb-4 md:mb-16">
