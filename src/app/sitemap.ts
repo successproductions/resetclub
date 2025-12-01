@@ -19,6 +19,7 @@ const routes = [
   '/membership/thank-you',
   '/payment',
   '/confirmation',
+  '/master-class',
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {

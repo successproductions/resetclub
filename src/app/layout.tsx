@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import './globals.css';
+import JsonLd from "@/components/JsonLd";
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://www.resetclub.ma'),
@@ -70,11 +71,9 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
-  verification: {
-    google: "your-google-site-verification-code",
-    // yandex: "your-yandex-verification-code",
-    // bing: "your-bing-verification-code",
-  },
+  // verification: {
+  //   google: "google-site-verification=PLACEHOLDER_CODE_HERE", // User verified via Cloudflare
+  // },
 };
 
 export default function RootLayout({
@@ -85,6 +84,7 @@ export default function RootLayout({
   return (
     <html>
       <body>
+        <JsonLd />
         {children}
       </body>
     </html>
