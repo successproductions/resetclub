@@ -159,7 +159,7 @@ export default function CookiesPage() {
               <p className="text-gray-700 leading-relaxed">
                 Pour toute question concernant notre utilisation des cookies, contactez-nous :<br />
                 <strong>Email :</strong> <a href="mailto:contact@resetclub.ma" className="text-[#ccbaa8] hover:underline">contact@resetclub.ma</a><br />
-                <strong>Téléphone :</strong> +212 6 XX XX XX XX
+                <strong>Téléphone :</strong> + 212 689 464 650
               </p>
             </section>
 

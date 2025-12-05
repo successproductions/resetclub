@@ -292,7 +292,7 @@ All rights reserved © 2025 ResetClub™️
 ## 📞 Contact
 
 - **Email**: contact@resetclub.ma
-- **Phone**: +212 6 XX XX XX XX
+- **Phone**: + 212 689 464 650
 - **Location**: Rabat, Morocco
 - **Website**: https://www.resetclub.ma
 

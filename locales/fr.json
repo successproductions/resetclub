@@ -28,7 +28,7 @@
       "reviews": " Lisez nos Avis Clients",
       "location": " Nous Trouver – Localisation & Itinéraire"
     },
-    "contact": "  +212 6 XX XX XX XX",
+    "contact": "  + 212 689 464 650",
     "newsletter": "Inscrivez-vous à notre Newsletter VIP"
   },
   "AboutPage": {
@@ -49,7 +49,7 @@
       "firstNamePlaceholder": "Votre prénom",
       "lastNamePlaceholder": "Votre nom",
       "emailPlaceholder": "votre@email.com",
-      "phonePlaceholder": "+212 6 XX XX XX XX",
+      "phonePlaceholder": "+ 212 689 464 650",
       "subjectPlaceholder": "Sélectionnez un sujet",
       "messagePlaceholder": "Décrivez votre demande...",
       "subjects": {
@@ -76,7 +76,7 @@
       },
       "phone": {
         "title": "Téléphone",
-        "value": "+212 6 XX XX XX XX"
+        "value": "+ 212 689 464 650"
       },
       "email": {
         "title": "Email",

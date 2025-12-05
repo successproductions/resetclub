@@ -16,7 +16,7 @@ export default function StructuredData({ locale }: StructuredDataProps) {
     url: `https://www.resetclub.ma/${locale}`,
     logo: 'https://www.resetclub.ma/LOGO.png',
     image: 'https://www.resetclub.ma/LOGO.png',
-    telephone: '+212 6 XX XX XX XX',
+    telephone: '+ 212 689 464 650',
     email: 'contact@resetclub.ma',
     address: {
       '@type': 'PostalAddress',

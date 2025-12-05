@@ -28,7 +28,7 @@
       "reviews": " Read our Client Reviews",
       "location": " Find Us – Location & Directions"
     },
-    "contact": " Direct contact: +212 6 XX XX XX XX",
+    "contact": " Direct contact: + 212 689 464 650",
     "newsletter": "Subscribe to our VIP Newsletter"
   },
   "AboutPage": {
@@ -49,7 +49,7 @@
       "firstNamePlaceholder": "Your first name",
       "lastNamePlaceholder": "Your last name",
       "emailPlaceholder": "your@email.com",
-      "phonePlaceholder": "+212 6 XX XX XX XX",
+      "phonePlaceholder": "+ 212 689 464 650",
       "subjectPlaceholder": "Select a subject",
       "messagePlaceholder": "Describe your request...",
       "subjects": {
@@ -76,7 +76,7 @@
       },
       "phone": {
         "title": "Phone",
-        "value": "+212 6 XX XX XX XX"
+        "value": "+ 212 689 464 650"
       },
       "email": {
         "title": "Email",

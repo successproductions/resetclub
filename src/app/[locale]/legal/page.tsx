@@ -58,7 +58,7 @@ export default function LegalPage() {
                 <strong>Forme juridique :</strong> [À compléter]<br />
                 <strong>Adresse du siège social :</strong> Rabat, Maroc<br />
                 <strong>Email :</strong> contact@resetclub.ma<br />
-                <strong>Téléphone :</strong> +212 6 XX XX XX XX
+                <strong>Téléphone :</strong> + 212 689 464 650
               </p>
             </section>
 
