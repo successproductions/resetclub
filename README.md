@@ -176,7 +176,7 @@ resetclub/
   "@type": "HealthAndBeautyBusiness",
   "name": "ResetClub™️",
   "description": "Premier centre de transformation holistique",
-  "address": "Casablanca, Morocco",
+  "address": "Rabat, Morocco",
   "offers": ["Bilan Reset™", "Coaching Sportif", "Nutrition & Biohacking"]
 }
 ```
@@ -283,7 +283,7 @@ npm start
 
 **Developed for:** ResetClub™️
 **Founder & Director:** Nahed Rachad
-**Location:** Casablanca, Morocco
+**Location:** Rabat, Morocco
 
 ## 📝 License
 

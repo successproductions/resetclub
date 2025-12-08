@@ -20,8 +20,8 @@ export default function StructuredData({ locale }: StructuredDataProps) {
     email: 'contact@resetclub.ma',
     address: {
       '@type': 'PostalAddress',
-      addressLocality: 'Casablanca',
-      addressRegion: 'Casablanca-Settat',
+      addressLocality: 'Rabat',
+      addressRegion: 'Rabat-Settat',
       addressCountry: 'MA',
     },
     geo: {

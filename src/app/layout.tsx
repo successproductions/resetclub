@@ -13,10 +13,10 @@ export const metadata: Metadata = {
     "ResetClub",
     "Holistic center Morocco",
     "Biohacking Maroc",
-    "Coaching sportif Casablanca",
+    "Coaching sportif Rabat",
     "Nutrition Maroc",
     "Transformation holistique",
-    "Centre bien-être Casablanca",
+    "Centre bien-être Rabat",
     "Fitness premium Morocco",
     "Bilan Reset",
     "Sport et nutrition"
