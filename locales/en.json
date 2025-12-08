@@ -239,12 +239,40 @@
     "upload": {
       "title": "SUBMIT YOUR CV HERE",
       "subtitle": "Join Reset Club. We're waiting for you to create a wellness revolution together!",
+      "cvLabel": "1. Upload your CV here",
       "dragText": "Click to select your CV",
       "fileTypes": "PDF, DOC, DOCX (max 5MB)",
-      "buttonText": " SEND MY CV",
+      "fullName": "2. Full Name",
+      "phone": "3. Phone Number",
+      "email": "4. Email Address",
+      "positionLabel": "5. Which of these positions interests you the most?",
+      "positionPlaceholder": "Select a position",
+      "positions": {
+        "director": "Center Director",
+        "receptionist": "Receptionist",
+        "sales": "Sales / Telephone Closer",
+        "therapist": "Therapist / Physiotherapist"
+      },
+      "descriptionLabel": "6. Describe in 3 lines: \"Why I would be a gem for RESET Club\"",
+      "descriptionPlaceholder": "Tell us about yourself in a few lines...",
+      "buttonText": "🚀 SEND MY CV",
       "uploading": "⏳ Uploading...",
       "successMessage": "🎉 CV sent successfully! We will contact you within 48h.",
-      "errorMessage": "❌ Error sending. Please try again."
+      "errorMessage": "❌ Error sending. Please try again.",
+      "errors": {
+        "cvRequired": "Please select your CV",
+        "fullNameRequired": "Full name is required",
+        "fullNameInvalid": "Name must contain only letters (2-50 characters)",
+        "phoneRequired": "Phone number is required",
+        "phoneInvalid": "Phone number must contain 9-15 digits",
+        "emailRequired": "Email address is required",
+        "emailInvalid": "Please enter a valid email address",
+        "positionRequired": "Please select a position",
+        "descriptionRequired": "Description is required",
+        "descriptionTooShort": "Description must contain at least 50 characters",
+        "fileTypeInvalid": "Invalid file type. Use PDF, DOC or DOCX",
+        "fileSizeInvalid": "File is too large. Maximum 5MB"
+      }
     },
     "contact": {
       "question": "Questions about the position?",

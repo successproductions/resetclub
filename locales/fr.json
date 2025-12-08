@@ -237,14 +237,42 @@
       "intro": "Vous êtes passionné(e) par le bien-être, la transformation, la relation client premium ?<br/>Vous aimez créer du lien, vendre avec authenticité, et accompagner dans la durée ?<br/>Vous rêvez de rejoindre une aventure unique et de créer un mouvement ?"
     },
     "upload": {
-      "title": " Déposez ton cv ici",
+      "title": "Déposez ton cv ici",
       "subtitle": "Rejoignez Reset Club. Nous vous attendons pour créer ensemble une révolution du bien-être !",
+      "cvLabel": "1. Déposez votre CV ici",
       "dragText": "Clique pour sélectionner ton CV",
       "fileTypes": "PDF, DOC, DOCX (max 5MB)",
+      "fullName": "2. Nom Complet",
+      "phone": "3. Numéro de téléphone",
+      "email": "4. Adresse mail",
+      "positionLabel": "5. Lequel de ces postes vous intéresse le plus ?",
+      "positionPlaceholder": "Sélectionnez un poste",
+      "positions": {
+        "director": "Directrice du centre",
+        "receptionist": "Hôtesse d'accueil",
+        "sales": "Commercial / Closer téléphonique",
+        "therapist": "Thérapeute / Kinésithérapeute"
+      },
+      "descriptionLabel": "6. Décrivez-nous en 3 lignes : \"Pourquoi je serais une pépite pour RESET Club\"",
+      "descriptionPlaceholder": "Parlez-nous de vous en quelques lignes...",
       "buttonText": "🚀 ENVOYER MON CV",
       "uploading": "⏳ Envoi en cours...",
       "successMessage": "🎉 CV envoyé avec succès ! Nous te contactons sous 48h.",
-      "errorMessage": "❌ Erreur lors de l'envoi. Merci de réessayer."
+      "errorMessage": "❌ Erreur lors de l'envoi. Merci de réessayer.",
+      "errors": {
+        "cvRequired": "Veuillez sélectionner votre CV",
+        "fullNameRequired": "Le nom complet est requis",
+        "fullNameInvalid": "Le nom doit contenir uniquement des lettres (2-50 caractères)",
+        "phoneRequired": "Le numéro de téléphone est requis",
+        "phoneInvalid": "Le numéro de téléphone doit contenir 9-15 chiffres",
+        "emailRequired": "L'adresse email est requise",
+        "emailInvalid": "Veuillez entrer une adresse email valide",
+        "positionRequired": "Veuillez sélectionner un poste",
+        "descriptionRequired": "La description est requise",
+        "descriptionTooShort": "La description doit contenir au moins 50 caractères",
+        "fileTypeInvalid": "Type de fichier non valide. Utilisez PDF, DOC ou DOCX",
+        "fileSizeInvalid": "Le fichier est trop volumineux. Maximum 5MB"
+      }
     },
     "contact": {
       "question": "Des questions sur le poste ?",

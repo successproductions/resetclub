@@ -56,45 +56,54 @@ export default function RecrutonsPage() {
 
 
       <div className="bg-white pb-8 md:py-20 overflow-x-hidden">
-        <div className="container mx-auto  md:px-6 max-w-7xl">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
-
-            {/* Left Side - Text & Form */}
-            <div className="order-2 lg:order-1">
-
+        <div className="container mx-auto md:px-6 max-w-7xl">
+          
+          {/* Top Section: Text Left, Image Right */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-start mb-0 lg:mb-0">
+            
+            {/* Left Side - Text Content */}
+            <div className="order-2 lg:order-1 px-6 lg:px-0">
               {/* Subtitle */}
-              <div className="md:mb-12 px-6 lg:px-0 text-center">
-                <h2 className="text-3xl md:text-4xl lg:text-5xl text-gray-900 font-normal leading-tight">
-                  {t('hero.subtitle')}
-                </h2>
-              </div>
+              <h2 className="text-3xl md:text-4xl lg:text-5xl text-gray-900 font-normal leading-tight mb-8">
+                {t('hero.subtitle')}
+              </h2>
 
               {/* Intro Text */}
-              <div className="mb-8 px-6 lg:px-0 ">
-                <p
-                  className="text-lg md:text-xl text-gray-900 text-center  font-graphik leading-relaxed"
-                  dangerouslySetInnerHTML={{__html: t('qualities.intro')}}
-                />
-              </div>
+              <p
+                className="text-lg md:text-xl text-gray-900 font-graphik leading-relaxed mb-8"
+                dangerouslySetInnerHTML={{__html: t('qualities.intro')}}
+              />
 
-              {/* CV Upload Form */}
-              <CVUploadForm />
+              {/* Upload Section Titles */}
+              <div className="mt-12">
+                <h3 className="text-3xl md:text-3xl text-gray-900 mb-3 font-graphik font-normal">
+                  {t('upload.title')}
+                </h3>
+                <p className="text-gray-900 text-lg md:text-xl font-graphik leading-relaxed">
+                  {t('upload.subtitle')}
+                </p>
+              </div>
             </div>
 
             {/* Right Side - Image */}
             <div className="order-1 lg:order-2">
-              <div className="relative w-full aspect-[4/5] lg:aspect-[3/4]">
+              <div className="relative w-full h-full min-h-[400px] lg:min-h-[600px]">
                 <Image
                   src="/images/nahed_with_team.png"
                   alt="Nahed with Reset Club Team"
                   fill
-                  className="object-cover  shadow-lg"
+                  className="object-cover shadow-lg"
                   priority
                 />
               </div>
             </div>
-
           </div>
+
+          {/* Bottom Section: Form Full Width */}
+          <div className="w-full">
+            <CVUploadForm />
+          </div>
+
         </div>
       </div>
 
