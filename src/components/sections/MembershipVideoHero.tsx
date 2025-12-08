@@ -119,7 +119,7 @@ const MembershipVideoHero: React.FC = () => {
             className="absolute inset-0 w-full h-full object-cover"
           >
             <source
-              src={isMobile ? '/videos/video_hero_section_mobile.mov' : '/videos/video_hero_section_desktop.mov'}
+              src={isMobile ? '/videos/video_hero_mobile.mov' : '/videos/video_hero.mov'}
               type="video/mp4"
             />
           </video>
