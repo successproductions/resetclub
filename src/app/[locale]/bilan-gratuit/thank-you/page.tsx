@@ -43,28 +43,28 @@ export default function ThankYouPage() {
       </div>
 
       {/* Content */}
-      <div className="relative z-20 text-center max-w-2/2 md:max-w-3xl ">
+      <div className="relative z-20 text-center md:mt-26 md:max-w-5xl ">
 
         <h1 className="!text-[28px] md:!text-5xl font-light md:!mb-6 !mt-44 md:!mt-72 font-graphik font-normal drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
           Merci Votre demande a bien été reçue
         </h1>
 
-        <p className="!text-xl md:!text-2xl font-graphik text-white mb-2 md:!mb-8 leading-relaxed drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
+        <p className="!text-xl md:!text-2xl font-graphik text-white mb-1 md:!mb-8 leading-relaxed drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
           Votre transformation commence maintenant.
         </p>
 
         <div className="bg-white/5 border border-white/10 font-graphik p-2 md:p-8 mb-3 md:mb-8 drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
    
-          <p className="!text-xl md:!text-2xl font-normal text-white mb-2 md:mb-6 leading-relaxed">
+          <p className="!text-xl md:!text-2xl font-normal text-white mb-1 md:mb-6 leading-relaxed">
            Prochaines étapes
           </p>
 
-          <p className="!text-lg md:!text-2xl font-normal text-white mb-2 md:mb-6 leading-relaxed">
+          <p className="!text-lg md:!text-2xl font-normal text-white  md:mb-6 leading-relaxed">
             Votre thérapeute vous contactera sous 24–48h pour fixer votre rdv<br></br> Vous êtes l’heureuse gagnante des 50 places offertes (valeur 1500 DH).<br></br> Vous pouvez accélérer via WhatsApp :
           </p>
 
           <div className="border-t border-white/10 pt-1 md:pt-6">
-            <p className="!text-lg md:!text-2xl font-normal! text-white mb-2 md:mb-4">
+            <p className="!text-lg md:!text-2xl font-normal! text-white mb-1 md:mb-4">
                Parler à ma conseillère
             </p>
             <a
@@ -82,7 +82,7 @@ export default function ThankYouPage() {
         </div>
 
         <div className="space-y-4">
-          <p className="text-white text-sm drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
+          <p className="text-white font-graphik text-sm drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
             Un email de confirmation vient de vous être envoyé. <br></br>Bienvenue au RESET Club
           </p>
         </div>
