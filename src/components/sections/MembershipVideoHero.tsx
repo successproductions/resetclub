@@ -128,7 +128,6 @@ const MembershipVideoHero: React.FC = () => {
         </div>
 
         {/* Content - Positioned at bottom to avoid logo */}
-        {/* Mobile: bottom-[10vh], Desktop: bottom-[25vh] */}
         <div className="absolute bottom-[18vh] md:bottom-[24vh] left-0 right-0 z-10 text-center px-4 md:px-6">
           {/* Main Title */}
           {/* <h1

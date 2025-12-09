@@ -1,69 +1,71 @@
 'use client';
 
 import { useRouter } from 'next/navigation';
-import Image from 'next/image';
+import { useEffect, useState } from 'react';
 
 export default function ThankYouPage() {
   const router = useRouter();
+  const [isMobile, setIsMobile] = useState(false);
+
+  // Detect mobile device
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    // Check on mount
+    checkMobile();
+
+    // Check on resize
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   return (
     <section className="relative min-h-screen flex flex-col items-center justify-center  text-white px-6 py-20">
-      {/* Background Image */}
+      {/* Video Background */}
       <div className="absolute inset-0 z-0">
-        <Image
-          src="/images/bg-thanks.png"
-          alt="Background"
-          fill
-          className="object-cover"
-          priority
-        />
-      </div>
-
-      {/* Background Orb - On top of bg image */}
-      <div className="absolute inset-0 z-10 flex items-center justify-center ">
-        <div className="relative w-[500px] h-[500px] md:w-[800px] md:h-[800px]">
-          <Image
-            src="/images/orberesetclub.png"
-            alt="Reset Club Orb"
-            fill
-            className="object-contain"
+        <video
+          key={isMobile ? 'mobile' : 'desktop'}
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover"
+        >
+          <source
+            src={isMobile ? '/videos/video_hero_mobile.mov' : '/videos/video_hero.mov'}
+            type="video/mp4"
           />
-        </div>
-      </div>
-
-      {/* Logo at Top Center */}
-      <div className="absolute top-6 left-1/2 transform -translate-x-1/2 z-30">
-        <div className="relative w-28 h-24 md:w-36 md:h-36">
-          <Image
-            src="/images/LOGORESETCLUBNOIR.png"
-            alt="Reset Club Logo"
-            fill
-            className="object-contain"
-          />
-        </div>
+        </video>
+        {/* Overlay for text readability */}
+        <div className="absolute inset-0 bg-black/10" />
       </div>
 
       {/* Content */}
-      <div className="relative z-20 text-center max-w-3xl ">
+      <div className="relative z-20 text-center max-w-2/2 md:max-w-3xl ">
 
-        <h1 className="text-2xl md:text-4xl lg:text-5xl font-light md:mb-6 mt-32 md:mt-0 drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
-          Merci pour votre demande !
+        <h1 className="!text-[28px] md:!text-5xl font-light md:!mb-6 !mt-44 md:!mt-72 font-graphik font-normal drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
+          Merci Votre demande a bien été reçue
         </h1>
 
-        <p className="text-xl md:text-2xl text-white  md:mb-8 leading-relaxed drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
+        <p className="!text-xl md:!text-2xl font-graphik text-white mb-2 md:!mb-8 leading-relaxed drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
           Votre transformation commence maintenant.
         </p>
 
-        <div className="bg-white/5 border border-white/10  p-2 md:p-8 mb-8 drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
-          <h2 className="text-2xl font-medium mb-4">Prochaines étapes</h2>
+        <div className="bg-white/5 border border-white/10 font-graphik p-2 md:p-8 mb-3 md:mb-8 drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
+   
+          <p className="!text-xl md:!text-2xl font-normal text-white mb-2 md:mb-6 leading-relaxed">
+           Prochaines étapes
+          </p>
 
-          <p className="text-white mb-2 md:mb-6 leading-relaxed">
-            Une de nos thérapeutes vous contactera dans les <strong>24-48 heures</strong> pour planifier votre Bilan Transformationnel Reset™.
+          <p className="!text-lg md:!text-2xl font-normal text-white mb-2 md:mb-6 leading-relaxed">
+            Votre thérapeute vous contactera sous 24–48h pour fixer votre rdv<br></br> Vous êtes l’heureuse gagnante des 50 places offertes (valeur 1500 DH).<br></br> Vous pouvez accélérer via WhatsApp :
           </p>
 
           <div className="border-t border-white/10 pt-1 md:pt-6">
-            <p className="text-white mb-2 md:mb-4">
-              Je réserve maintenant avec ma conseillère Reset
+            <p className="!text-lg md:!text-2xl font-normal! text-white mb-2 md:mb-4">
+               Parler à ma conseillère
             </p>
             <a
               href="https://wa.me/212600000000"
@@ -81,15 +83,8 @@ export default function ThankYouPage() {
 
         <div className="space-y-4">
           <p className="text-white text-sm drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
-            Vous recevrez également un email de confirmation avec tous les détails.
+            Un email de confirmation vient de vous être envoyé. <br></br>Bienvenue au RESET Club
           </p>
-
-          <button
-            onClick={() => router.push('/')}
-            className="text-white hover:text-white underline transition-colors drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]"
-          >
-            Retour à l&apos;accueil
-          </button>
         </div>
       </div>
     </section>
