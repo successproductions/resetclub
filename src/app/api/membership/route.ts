@@ -31,7 +31,7 @@ export async function POST(request: NextRequest) {
     const clientEmail = {
       from: `"RESET Club" <${process.env.EMAIL_USER}>`,
       to: formData.email,
-      subject: 'Confirmation de réception – Votre bilan gratuit personnalisé RESET est en cours de traitement',
+      subject: '✨ Votre demande est confirmée – Bienvenue au RESET Club™',
       html: `
 <!DOCTYPE html>
 <html>
@@ -39,136 +39,212 @@ export async function POST(request: NextRequest) {
   <style>
     body {
       font-family: 'Arial', sans-serif;
-      line-height: 1.8;
+      line-height: 1.6;
       color: #333;
       margin: 0;
       padding: 0;
+      background-color: #f3f4f6;
     }
     .email-container {
       max-width: 600px;
       margin: 0 auto;
-      background-color: #fff;
+      background-color: #ffffff;
+      overflow: hidden;
     }
     .header {
       background-color: #000;
       padding: 0;
       text-align: center;
-      overflow: hidden;
     }
     .header img {
       width: 100%;
-      height: auto;
+      height: 400px;
+      object-fit: cover;
       display: block;
-      margin: 0;
     }
-    .content {
-      background-color: #f9f9f9;
-      padding: 30px;
-      margin: 0;
+    .intro-content {
+      background-color: #ffffff;
+      padding: 40px 30px 20px 30px;
+      text-align: left;
+    }
+    .main-content {
+      background-color: #f3f4f6; /* gray-200 */
+      padding: 30px 30px 40px 30px;
+      text-align: left;
     }
     .greeting {
+      font-size: 18px;
+      font-weight: normal;
+      margin-bottom: 20px;
+      color: #b79977;
+    }
+    .message-text {
+      font-size: 16px;
+      line-height: 1.6;
+      color: #333;
+      margin-bottom: 0;
+    }
+    .next-step {
+      margin-top: 0;
+      margin-bottom: 30px;
+    }
+    .next-step-title {
+      font-weight: bold;
+      font-size: 16px;
+      margin-bottom: 10px;
+      color: #000;
+    }
+    .whatsapp-section {
+      margin-top: 30px;
+      margin-bottom: 10px;
+    }
+    .btn-whatsapp {
+      display: inline-block;
+      background-color: #25D366;
+      color: #ffffff !important;
+      padding: 12px 24px;
+      text-decoration: none;
+      border-radius: 6px;
+      font-weight: bold;
+      font-size: 15px;
+    }
+    .footer-content {
+      background-color: #ffffff;
+      padding: 40px 30px;
+      text-align: center;
+      border-top: 1px solid #eee;
+    }
+    .closing-text {
       font-size: 16px;
       margin-bottom: 20px;
-      font-weight: 600;
+      color: #333;
     }
-    .message {
-      font-size: 15px;
-      margin-bottom: 25px;
-      line-height: 1.8;
-    }
-    .highlight {
-      background-color: #fff;
-      padding: 20px;
-      border-left: 4px solid #000;
-      margin: 25px 0;
-    }
-    .highlight h3 {
-      margin-top: 0;
+    .team-signature {
+      font-weight: bold;
       font-size: 16px;
-      font-weight: 600;
-    }
-    .highlight ul {
-      margin: 15px 0;
-      padding-left: 20px;
-    }
-    .highlight li {
-      margin: 10px 0;
-      line-height: 1.6;
-    }
-    .footer {
-      margin-top: 30px;
-      padding-top: 20px;
-      border-top: 2px solid #000;
-      text-align: center;
-    }
-    .signature {
-      font-weight: 600;
+      color: #000;
       margin-bottom: 5px;
     }
     .tagline {
-      font-size: 13px;
+      font-size: 14px;
       color: #666;
-      font-style: italic;
+      margin-bottom: 30px;
+    }
+    .social-icons {
+      margin-bottom: 20px;
+    }
+    .social-icon {
+      display: inline-block;
+      margin: 0 8px;
+      text-decoration: none;
+    }
+    .social-icon img {
+      width: 24px;
+      height: 24px;
+      display: block;
+    }
+    .contact-info {
+      font-size: 12px;
+      color: #999;
+      margin-top: 20px;
+      line-height: 1.6;
     }
   </style>
 </head>
 <body>
   <div class="email-container">
+    <!-- Header Image with fixed height -->
     <div class="header">
-      <img src="https://resetclub.ma/images/banner_email.png" alt="RESET Club" />
+      <img src="https://resetclub.ma/images/banner_email.png" alt="RESET Club Banner" />
     </div>
 
-    <div class="content">
-    <div class="greeting">
-      Bonjour Madame ${formData.lastName},
+    <!-- Intro Content (White Background) -->
+    <div class="intro-content">
+      <div class="greeting">
+        Cher ${formData.firstName}
+      </div>
+
+      <div class="message-text">
+        Votre demande de Diagnostic Biohacking RESET™ a bien été reçue.<br>
+        Notre équipe prépare votre rdv pour une analyse personnalisée.
+      </div>
     </div>
 
-    <div class="message">
-      Nous vous confirmons que nous avons bien reçu toutes les informations de votre diagnostic.<br>
-      Votre bilan personnalisé RESET est actuellement en cours d'analyse par notre équipe de thérapeutes spécialisées.
+    <!-- Main Content (Gray Background) -->
+    <div class="main-content">
+      <div class="next-step">
+        <div class="next-step-title">Prochaine étape :</div>
+        <div class="message-text">
+          Vous serez contactée sous 24–48h par votre thérapeute pour planifier votre bilan (offert – valeur 1500 DH).
+        </div>
+      </div>
+
+      <div class="message-text">
+        Si vous souhaitez accélérer la prise en charge, vous pouvez nous écrire directement ici :
+      </div>
+
+      <div class="whatsapp-section">
+        <a href="https://wa.me/212689464650" class="btn-whatsapp">👉 WhatsApp : Parler à une conseillère RESET</a>
+      </div>
     </div>
 
-    <div class="highlight">
-      <h3>📞 Vous serez contactée très prochainement par téléphone ou WhatsApp afin de :</h3>
-      <ul>
-        <li>Valider vos informations.</li>
-        <li>Répondre à vos éventuelles questions.</li>
-        <li>Programmer la date de récupération de votre bilan.</li>
-      </ul>
-    </div>
+    <!-- Footer Content (White Background) -->
+    <div class="footer-content">
+      <div class="closing-text">
+        Merci pour votre confiance.<br>
+        Bienvenue au RESET Club. Votre transformation commence maintenant.
+      </div>
 
-    <div class="message">
-      Merci de rester attentive à votre téléphone pour ne pas manquer notre appel.<br>
-      Notre équipe fera le maximum pour vous proposer un créneau rapide et adapté à votre planning.
-    </div>
+      <div class="team-signature">
+        L’équipe RESET Club™
+      </div>
+      <div class="tagline">
+        Centre N°1 de Biohacking & Transformation 360° à Rabat
+      </div>
 
-    <div class="footer">
-      <div class="signature">À très vite,<br>L'équipe du RESET Club</div>
-      <div class="tagline">Rabat – Centre N°1 de Biohacking & d'Amincissement 360 au Maroc</div>
-    </div>
+      <!-- Social Media Icons -->
+      <div class="social-icons">
+        <a href="https://instagram.com" class="social-icon">
+          <img src="https://cdn-icons-png.flaticon.com/512/1384/1384063.png" alt="Instagram" />
+        </a>
+        <a href="https://facebook.com" class="social-icon">
+           <img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" alt="Facebook" />
+        </a>
+        <a href="https://linkedin.com" class="social-icon">
+           <img src="https://cdn-icons-png.flaticon.com/512/3536/3536505.png" alt="LinkedIn" />
+        </a>
+        <a href="https://youtube.com" class="social-icon">
+           <img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" alt="YouTube" />
+        </a>
+      </div>
+
+      <!-- Contact Info -->
+      <div class="contact-info">
+        Rabat, Maroc<br>
+        + 212 689 464 650
+      </div>
     </div>
   </div>
 </body>
 </html>
       `,
       text: `
-Bonjour Madame ${formData.lastName},
+Cher ${formData.firstName},
 
-Nous vous confirmons que nous avons bien reçu toutes les informations de votre diagnostic.
-Votre bilan personnalisé RESET est actuellement en cours d'analyse par notre équipe de thérapeutes spécialisées.
+Votre demande de Diagnostic Biohacking RESET™ a bien été reçue.
+Notre équipe prépare votre rdv pour une analyse personnalisée.
 
-📞 Vous serez contactée très prochainement par téléphone ou WhatsApp afin de :
+Prochaine étape :
+Vous serez contactée sous 24–48h par votre thérapeute pour planifier votre bilan (offert – valeur 1500 DH).
 
-- Valider vos informations.
-- Répondre à vos éventuelles questions.
-- Programmer la date de récupération de votre bilan.
+Si vous souhaitez accélérer la prise en charge, vous pouvez nous écrire directement ici :
+👉 WhatsApp : https://wa.me/212689464650
 
-Merci de rester attentive à votre téléphone pour ne pas manquer notre appel.
-Notre équipe fera le maximum pour vous proposer un créneau rapide et adapté à votre planning.
+Merci pour votre confiance.
+Bienvenue au RESET Club. Votre transformation commence maintenant.
 
-À très vite,
-L'équipe du RESET Club
-Rabat – Centre N°1 de Biohacking & d'Amincissement 360 au Maroc
+L’équipe RESET Club™
+Centre N°1 de Biohacking & Transformation 360° à Rabat
       `
     };
 

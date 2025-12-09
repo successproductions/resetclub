@@ -144,7 +144,7 @@ export default function MembershipApplicationForm({ isOpen, onClose }: Membershi
 
       // Close modal and redirect to thank you page with locale
       onClose();
-      router.push(`/${locale}/membership/thank-you`);
+      router.push(`/${locale}/bilan-gratuit/thank-you`);
     } catch (error) {
       console.error('Form submission error:', error);
       setIsSubmitting(false);
