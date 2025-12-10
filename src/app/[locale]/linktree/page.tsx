@@ -227,7 +227,7 @@ function PromoCard({
   return (
     <a
       href={href}
-      className={`block relative overflow-hidden rounded-2xl transition-all duration-500 shadow-xl group cursor-pointer
+      className={`block relative overflow-hidden rounded-sm transition-all duration-500 shadow-xl group cursor-pointer
         ${getHoverEffect()} active:scale-[0.97]
         ${getBorderGlow()}
         ${priority ? 'hover:ring-yellow-400/70' : 'hover:ring-white/30 hover:ring-2'}
@@ -257,7 +257,7 @@ function PromoCard({
         {/* Priority badge */}
         {priority && (
           <div className="absolute top-3 left-3 z-10">
-            <div className="bg-yellow-50 text-black px-2 py-1 rounded-full text-xs font-bold">
+            <div className="bg-yellow-50 text-black px-2 py-1 rounded-lg text-xs font-bold">
               ⭐ PRIORITY
             </div>
           </div>
@@ -331,7 +331,7 @@ function SocialIcon({ platform }: { platform: string }) {
   const { icon, bgClass } = getIconAndBg();
 
   return (
-    <div className={`w-10 h-10 ${bgClass} rounded-full flex items-center justify-center transition-all duration-200 cursor-pointer shadow-lg border-2 border-white/20`}>
+    <div className={`w-10 h-10 ${bgClass} rounded-xl flex items-center justify-center transition-all duration-200 cursor-pointer shadow-lg border-2 border-white/20`}>
       {icon}
     </div>
   );
