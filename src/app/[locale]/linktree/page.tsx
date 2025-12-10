@@ -109,7 +109,7 @@ export default function LinktreePage() {
           <PromoCard
             href="#"
             text={t('links.freeBilan')}
-            imageUrl="/images/linktree1.png"
+            imageUrl="/images/OUT2.png"
             height="tall"
             priority={true}
             hoverEffect="pulse"

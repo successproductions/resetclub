@@ -172,10 +172,10 @@ export default function MasterClassPage() {
       </section>
 
       {/* Info Cards Section */}
-      <section className="relative bg-black py-16 md:py-24 px-4 md:px-8">
+      {/* <section className="relative bg-black py-16 md:py-24 px-4 md:px-8">
         <div className="max-w-6xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
-            {/* Card 1 */}
+   
             <div className="bg-gradient-to-br from-gray-50 to-white rounded-3xl p-6 shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
               <div className="flex items-start gap-3">
                 <div className="flex-shrink-0 w-16 h-16 md:w-20 md:h-20 rounded-2xl bg-gradient-to-br from-[#51b1aa] to-[#91dbd3] flex items-center justify-center">
@@ -193,7 +193,7 @@ export default function MasterClassPage() {
               </div>
             </div>
 
-            {/* Card 2 - Check Spam */}
+        
             <div className="bg-gradient-to-br from-gray-50 to-white rounded-3xl p-6 shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
               <div className="flex items-start gap-3">
                 <div className="flex-shrink-0 w-16 h-16 md:w-20 md:h-20 rounded-2xl bg-gradient-to-br from-[#cbb9a7] to-[#d4c4b3] flex items-center justify-center relative">
@@ -214,7 +214,7 @@ export default function MasterClassPage() {
               </div>
             </div>
 
-            {/* Card 3 - What You'll Experience */}
+         
             <div className="bg-gradient-to-br from-gray-50 to-white rounded-3xl p-6 shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
               <div className="flex items-start gap-3">
                 <div className="flex-shrink-0 w-16 h-16 md:w-20 md:h-20 rounded-2xl bg-gradient-to-br from-[#51b1aa] to-[#91dbd3] flex items-center justify-center">
@@ -254,7 +254,7 @@ export default function MasterClassPage() {
               </div>
             </div>
 
-            {/* Card 4 - Bonus */}
+         
             <div className="bg-gradient-to-br from-gray-50 to-white rounded-3xl p-6 shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
               <div className="flex items-start gap-3">
                 <div className="flex-shrink-0 w-16 h-16 md:w-20 md:h-20 rounded-2xl bg-gradient-to-br from-[#cbb9a7] to-[#d4c4b3] flex items-center justify-center">
@@ -275,16 +275,16 @@ export default function MasterClassPage() {
             </div>
           </div>
 
-          {/* CTA Button */}
+         
           <div className="text-center">
             <div className="relative inline-block">
-              {/* Animated border */}
+              
               <div className="absolute -inset-1 bg-[#51b1aa] rounded-full animate-border-pulse"></div>
 
-              {/* Black border layer */}
+             
               <div className="absolute -inset-0.5 bg-black rounded-full"></div>
 
-              {/* Main button */}
+             
               <button
                 onClick={() => setIsPopupOpen(true)}
                 style={{
@@ -298,7 +298,7 @@ export default function MasterClassPage() {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* Master Class Popup */}
       <MasterClassPopup isOpen={isPopupOpen} onClose={() => setIsPopupOpen(false)} />
