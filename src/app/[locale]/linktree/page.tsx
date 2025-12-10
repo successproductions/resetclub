@@ -3,6 +3,7 @@
 import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 import { Link, Instagram, Facebook, Youtube, Linkedin, Globe } from 'lucide-react';
+import LanguageSwitcher from '@/components/ui/LanguageSwitcher';
 import { useEffect, useState } from 'react';
 
 export default function LinktreePage() {
@@ -39,6 +40,11 @@ export default function LinktreePage() {
           className="object-cover hidden md:block"
           priority
         />
+      </div>
+
+      {/* Language Switcher - Fixed Top Right */}
+      <div className="fixed top-4 right-4 z-50">
+        <LanguageSwitcher variant="header" />
       </div>
 
       {/* Fixed Header Logo */}
