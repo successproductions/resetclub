@@ -76,7 +76,7 @@ export default function MasterClassPage() {
 
       <section className="relative h-screen flex flex-col">
         {/* Background Image - Rounded pattern */}
-        <div className="absolute top-0 left-0 w-full h-[calc(70vh-220px)]  md:h-[calc(65vh-220px)] z-0">
+        <div className="absolute top-0 left-0 w-full h-[calc(70vh-220px)] md:h-[calc(65vh-220px)] z-0">
           <Image
             src="/images/master/SCREAN.png"
             alt="Background pattern"
@@ -172,8 +172,8 @@ export default function MasterClassPage() {
       </section>
 
       {/* Info Cards Section */}
-      {/* <section className="relative bg-black py-16 md:py-24 px-4 md:px-8">
-        <div className="max-w-6xl mx-auto">
+      <section className="relative bg-black py-16 md:py-24 px-4 md:px-8">
+        {/* <div className="max-w-6xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
    
             <div className="bg-gradient-to-br from-gray-50 to-white rounded-3xl p-6 shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
@@ -297,8 +297,8 @@ export default function MasterClassPage() {
               </button>
             </div>
           </div>
-        </div>
-      </section> */}
+        </div> */}
+      </section>
 
       {/* Master Class Popup */}
       <MasterClassPopup isOpen={isPopupOpen} onClose={() => setIsPopupOpen(false)} />
