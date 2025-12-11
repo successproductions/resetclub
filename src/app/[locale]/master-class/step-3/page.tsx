@@ -185,7 +185,7 @@ export default function MasterClassStep3() {
                   onClick={handleFreeTicket}
                   className="w-full bg-gradient-to-r from-[#51b1aa] to-[#91dbd3] text-white font-medium text-sm py-3 rounded-lg transition-all duration-300 hover:scale-105 uppercase"
                 >
-                   JE GARDE MON TICKET GRATUIT
+                   REJOINS LE GROUPE WHATSAPP
                 </button>
                 <p className="text-gray-500 text-xs text-center mt-2">
                   Redirection : confirmation + WhatsApp
@@ -244,14 +244,14 @@ export default function MasterClassStep3() {
               </div>
 
               <div>
-                <button
-                  onClick={handleVIPTicket}
-                  className="w-full bg-gradient-to-r from-[#cbb9a7] to-[#d4c4b3] text-white font-medium text-sm py-3 rounded-lg transition-all duration-300 hover:scale-105 uppercase shadow-lg shadow-[#cbb9a7]/50"
+                <div
+                  className="w-full bg-gradient-to-r from-gray-600 to-gray-500 text-white/70 font-medium text-sm py-3 rounded-lg opacity-60 cursor-not-allowed uppercase border-2 border-gray-400 flex items-center justify-center gap-2"
                 >
-                   JE VEUX LE TICKET VIP
-                </button>
+                   <span>J'AI DÉJÀ MON TICKET VIP</span>
+                   <span className="text-green-400">✓</span>
+                </div>
                 <p className="text-gray-500 text-xs text-center mt-2">
-                  Redirection : page de paiement
+                  Vous avez déjà ce ticket
                 </p>
               </div>
             </div>

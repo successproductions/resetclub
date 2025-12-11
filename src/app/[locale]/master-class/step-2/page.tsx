@@ -32,7 +32,7 @@ export default function MasterClassStep2() {
 
   const handleFreeTicket = () => {
     // Redirect to confirmation page
-    router.push('/master-class/step-3');
+    router.push('/master-class/confirmation');
   };
 
   const handleVIPTicket = () => {

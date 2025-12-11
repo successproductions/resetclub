@@ -10,13 +10,13 @@ export default function PaymentPage() {
   const ticketType = searchParams.get('type') || 'vip'; // 'vip' or 'ultimate'
 
   const [formData, setFormData] = useState({
-    email: '',
-    cardNumber: '',
-    expiryDate: '',
-    cvv: '',
-    name: '',
+    email: 'test@example.com',
+    cardNumber: '4242 4242 4242 4242',
+    expiryDate: '12 / 25',
+    cvv: '123',
+    name: 'John Doe',
     country: 'Morocco',
-    address: '',
+    address: '123 Main Street, Casablanca',
     promoCode: ''
   });
 
@@ -67,8 +67,12 @@ export default function PaymentPage() {
       // Process payment here
       // await processPayment(formData);
 
-      // Redirect to confirmation
-      router.push('/master-class/confirmation');
+      // Redirect based on ticket type
+      if (ticketType === 'ultimate') {
+        router.push('/master-class/confirmation-ultimate');
+      } else {
+        router.push('/master-class/confirmation-2');
+      }
     } catch (error) {
       console.error('Payment error:', error);
     } finally {
