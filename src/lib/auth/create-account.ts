@@ -142,8 +142,8 @@ export async function updateUserPassword(
     }
 
     // Verify current password
-    const bcrypt = require('bcryptjs');
-    const isValid = await bcrypt.compare(currentPassword, user.passwordHash);
+    const { verifyPassword } = await import('./password');
+    const isValid = await verifyPassword(currentPassword, user.passwordHash);
 
     if (!isValid) {
       return {
