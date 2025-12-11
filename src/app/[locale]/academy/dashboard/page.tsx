@@ -10,9 +10,7 @@ import {
   TrendingUp,
   LogOut,
   User,
-  PlayCircle,
-  CheckCircle,
-  Lock
+  PlayCircle
 } from 'lucide-react';
 import Image from 'next/image';
 
@@ -202,7 +200,7 @@ export default function AcademyDashboard() {
               Commence ton apprentissage
             </h3>
             <p className="text-gray-400 mb-6 max-w-md mx-auto">
-              Tu n'es inscrit à aucune formation pour le moment. Explore notre catalogue et commence ta transformation !
+              Tu n&apos;es inscrit à aucune formation pour le moment. Explore notre catalogue et commence ta transformation !
             </p>
             <button
               onClick={() => router.push('/academy/formations')}

@@ -59,7 +59,7 @@ export default function AcademyLoginPage() {
 
       // Redirect to dashboard
       router.push('/academy/dashboard');
-    } catch (err) {
+    } catch {
       setError('Erreur de connexion. Veuillez réessayer.');
       setIsLoading(false);
     }
@@ -189,10 +189,10 @@ export default function AcademyLoginPage() {
         {/* Help Text */}
         <div className="mt-6 text-center">
           <p className="text-gray-400 text-sm">
-            Tu n'as pas encore de compte ?
+            Tu n&apos;as pas encore de compte ?
             <br />
             <span className="text-gray-500 text-xs mt-1 block">
-              Les comptes sont créés automatiquement lors de l'accès à une master-class
+              Les comptes sont créés automatiquement lors de l&apos;accès à une master-class
             </span>
           </p>
         </div>
