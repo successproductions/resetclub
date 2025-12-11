@@ -34,9 +34,7 @@ export default function MasterClassStep3() {
     router.push('/master-class/confirmation');
   };
 
-  const handleVIPTicket = () => {
-    router.push('/master-class/payment');
-  };
+
 
   const handleUltimateTicket = () => {
     router.push('/master-class/payment?type=ultimate');
@@ -247,7 +245,7 @@ export default function MasterClassStep3() {
                 <div
                   className="w-full bg-gradient-to-r from-gray-600 to-gray-500 text-white/70 font-medium text-sm py-3 rounded-lg opacity-60 cursor-not-allowed uppercase border-2 border-gray-400 flex items-center justify-center gap-2"
                 >
-                   <span>J'AI DÉJÀ MON TICKET VIP</span>
+                   <span>J&apos;AI DÉJÀ MON TICKET VIP</span>
                    <span className="text-green-400">✓</span>
                 </div>
                 <p className="text-gray-500 text-xs text-center mt-2">
