@@ -164,7 +164,7 @@ export default function AcademyDashboard() {
               <Clock className="w-8 h-8 text-blue-500" />
               <span className="text-3xl font-bold text-white">0h</span>
             </div>
-            <p className="text-gray-400 text-sm">Temps d'étude</p>
+            <p className="text-gray-400 text-sm">Temps d&apos;étude</p>
           </div>
 
           {/* Progress */}
