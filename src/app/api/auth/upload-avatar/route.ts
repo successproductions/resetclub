@@ -91,19 +91,37 @@ export async function POST(request: NextRequest) {
     const uploadDir = join(process.cwd(), 'public', 'uploads', 'avatars');
     const filepath = join(uploadDir, filename);
 
-    console.log('Saving avatar to:', filepath);
+    console.log('Working directory:', process.cwd());
+    console.log('Upload directory:', uploadDir);
+    console.log('Full filepath:', filepath);
+    console.log('Filename:', filename);
 
     // Create directory if it doesn't exist (using fs/promises)
     const fs = await import('fs/promises');
     try {
       await fs.mkdir(uploadDir, { recursive: true });
+      console.log('✅ Directory created/verified:', uploadDir);
     } catch (err) {
-      // Directory might already exist, ignore error
+      console.error('⚠️ Directory creation error (might be OK if exists):', err);
     }
 
     // Write file
-    await writeFile(filepath, buffer);
-    console.log('Avatar saved successfully');
+    try {
+      console.log('📝 Writing file to:', filepath);
+      console.log('File size:', buffer.length, 'bytes');
+      await writeFile(filepath, buffer);
+      console.log('✅ Avatar saved successfully to:', filepath);
+      
+      // Verify file exists
+      const stats = await fs.stat(filepath);
+      console.log('✅ File verified - Size:', stats.size, 'bytes');
+    } catch (writeError) {
+      console.error('❌ File write error:', writeError);
+      return NextResponse.json(
+        { error: 'Erreur lors de la sauvegarde du fichier' },
+        { status: 500 }
+      );
+    }
 
     // Update user avatar URL in database (skip in dev mode for dev-user)
     const avatarUrl = `/uploads/avatars/${filename}`;
