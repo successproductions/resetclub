@@ -119,15 +119,24 @@ export default function AcademyProfilePage() {
       console.log('Upload successful! Avatar URL:', data.avatarUrl);
       console.log('Updated user:', data.user);
       
+      // Add timestamp to force image reload
+      const avatarUrlWithTimestamp = `${data.user.avatarUrl}?t=${Date.now()}`;
+      const updatedUserWithTimestamp = {
+        ...data.user,
+        avatarUrl: avatarUrlWithTimestamp
+      };
+      
+      console.log('Setting user state with:', updatedUserWithTimestamp);
+      
       setMessage('Photo de profil mise à jour !');
-      setUser(data.user);
       setImageError(false); // Reset error state
-      localStorage.setItem('academy_user', JSON.stringify(data.user));
+      setUser(updatedUserWithTimestamp);
+      localStorage.setItem('academy_user', JSON.stringify(data.user)); // Save without timestamp
       
       // Force re-render
       setTimeout(() => {
         setMessage('');
-        console.log('Current user state:', data.user);
+        console.log('Current user avatar:', updatedUserWithTimestamp.avatarUrl);
       }, 3000);
     } catch (err) {
       console.error('Upload error:', err);
@@ -338,21 +347,32 @@ export default function AcademyProfilePage() {
                   <div className="text-center">
                     <div className="relative inline-block mb-4">
                       <div className="w-24 h-24 bg-gradient-to-br from-[#51b1aa] to-[#91dbd3] rounded-full flex items-center justify-center shadow-lg overflow-hidden relative">
-                        {user?.avatarUrl && !imageError ? (
-                          <img
-                            src={user.avatarUrl}
-                            alt="Profile"
-                            className="w-full h-full object-cover"
-                            onError={() => {
-                              console.error('Failed to load avatar:', user.avatarUrl);
-                              setImageError(true);
-                            }}
-                          />
-                        ) : (
-                          <span className="text-white text-3xl font-bold">
-                            {user?.firstName?.[0] || user?.email[0].toUpperCase()}
-                          </span>
-                        )}
+                        {(() => {
+                          console.log('Avatar render check:', {
+                            hasAvatarUrl: !!user?.avatarUrl,
+                            avatarUrl: user?.avatarUrl,
+                            imageError,
+                            shouldShowImage: user?.avatarUrl && !imageError
+                          });
+                          
+                          return (user?.avatarUrl && !imageError) ? (
+                            <img
+                              src={user.avatarUrl}
+                              alt="Profile"
+                              className="w-full h-full object-cover"
+                              onLoad={() => console.log('✅ Avatar loaded successfully:', user.avatarUrl)}
+                              onError={(e) => {
+                                console.error('❌ Failed to load avatar:', user.avatarUrl);
+                                console.error('Image error event:', e);
+                                setImageError(true);
+                              }}
+                            />
+                          ) : (
+                            <span className="text-white text-3xl font-bold">
+                              {user?.firstName?.[0] || user?.email[0].toUpperCase()}
+                            </span>
+                          );
+                        })()}
                       </div>
                       <input
                         type="file"
