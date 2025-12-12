@@ -44,6 +44,7 @@ export default function AcademyProfilePage() {
   const [email, setEmail] = useState('');
   const [currentPassword, setCurrentPassword] = useState('');
   const [newPassword, setNewPassword] = useState('');
+  const [imageError, setImageError] = useState(false);
 
   useEffect(() => {
     const token = localStorage.getItem('academy_token');
@@ -120,6 +121,7 @@ export default function AcademyProfilePage() {
       
       setMessage('Photo de profil mise à jour !');
       setUser(data.user);
+      setImageError(false); // Reset error state
       localStorage.setItem('academy_user', JSON.stringify(data.user));
       
       // Force re-render
@@ -336,14 +338,15 @@ export default function AcademyProfilePage() {
                   <div className="text-center">
                     <div className="relative inline-block mb-4">
                       <div className="w-24 h-24 bg-gradient-to-br from-[#51b1aa] to-[#91dbd3] rounded-full flex items-center justify-center shadow-lg overflow-hidden relative">
-                        {user?.avatarUrl ? (
-                          <Image
+                        {user?.avatarUrl && !imageError ? (
+                          <img
                             src={user.avatarUrl}
                             alt="Profile"
-                            fill
-                            sizes="96px"
-                            className="object-cover"
-                            unoptimized
+                            className="w-full h-full object-cover"
+                            onError={() => {
+                              console.error('Failed to load avatar:', user.avatarUrl);
+                              setImageError(true);
+                            }}
                           />
                         ) : (
                           <span className="text-white text-3xl font-bold">
