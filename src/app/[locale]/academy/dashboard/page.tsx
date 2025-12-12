@@ -28,11 +28,28 @@ export default function AcademyDashboard() {
   const [user, setUser] = useState<UserData | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [activePage, setActivePage] = useState('home');
+  const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
 
   useEffect(() => {
     // Check authentication
     const token = localStorage.getItem('academy_token');
     const userData = localStorage.getItem('academy_user');
+
+    // DEV MODE: Bypass authentication in development
+    if (process.env.NODE_ENV === 'development' && !token) {
+      console.log('🔧 DEV MODE: Bypassing authentication');
+      const devUser = {
+        id: 'dev-user',
+        email: 'dev@resetclub.ma',
+        firstName: 'Dev',
+        lastName: 'User',
+        role: 'CLIENT',
+        avatarUrl: null
+      };
+      setUser(devUser);
+      setIsLoading(false);
+      return;
+    }
 
     if (!token || !userData) {
       router.push('/academy/login');
@@ -61,29 +78,27 @@ export default function AcademyDashboard() {
     <div className="min-h-screen bg-gray-50 font-graphik">
       {/* Top Navigation Bar */}
       <div className="bg-white border-b border-gray-200 sticky top-0 z-50">
-        <div className="max-w-7xl mx-auto px-4 h-14 flex items-center justify-between">
+        <div className="h-14 flex items-center justify-between px-4">
           {/* Logo */}
-          <div className="flex items-center gap-6">
-            <div className="relative w-24 h-8">
-              <Image
-                src="/images/master/MASTERCLASSLOGO2.png"
-                alt="RESET Club Academy"
-                fill
-                className="object-contain"
-              />
-            </div>
+          <div className="relative w-24 h-8">
+            <Image
+              src="/images/master/MASTERCLASSLOGO2.png"
+              alt="RESET Club Academy"
+              fill
+              className="object-contain"
+            />
           </div>
 
-          {/* Right Side - Language & Profile */}
-          <div className="flex items-center gap-4">
+          {/* Right Side - Language & Profile (no gap) */}
+          <div className="flex items-center">
             {/* Language Toggle */}
-            <button className="flex items-center gap-2 px-3 py-2 rounded hover:bg-gray-100 transition-colors">
+            <button className="flex items-center gap-1 px-3 py-2 hover:bg-gray-100 transition-colors">
               <Globe className="w-4 h-4 text-gray-600" />
-              <span className="text-sm text-gray-700">FR</span>
+              <span className="text-sm text-gray-700 font-medium">FR</span>
             </button>
 
-            {/* Profile Dropdown */}
-            <div className="flex items-center gap-2 border-l border-gray-200 pl-4">
+            {/* Profile - No spacing */}
+            <div className="flex items-center gap-2 border-l border-gray-200 pl-3">
               <div className="w-8 h-8 bg-[#51b1aa] rounded-full flex items-center justify-center">
                 <span className="text-white text-sm font-semibold">
                   {user?.firstName?.[0] || user?.email[0].toUpperCase()}
@@ -99,68 +114,92 @@ export default function AcademyDashboard() {
         </div>
       </div>
 
-      <div className="flex max-w-7xl mx-auto">
+      {/* Main Layout - Sidebar + Content */}
+      <div className="flex">
         {/* Left Sidebar Navigation - LinkedIn Style */}
-        <aside className="w-64 bg-white border-r border-gray-200 min-h-screen p-4">
-          <nav className="space-y-1">
+        <aside className={`${isSidebarCollapsed ? 'w-16' : 'w-56'} bg-white border-r border-gray-200 h-[calc(100vh-3.5rem)] fixed left-0 top-14 transition-all duration-300`}>
+          <nav className="py-2 h-full flex flex-col">
+            {/* Toggle Button */}
             <button
-              onClick={() => setActivePage('home')}
-              className={`w-full flex items-center gap-3 px-4 py-2.5 rounded text-sm font-medium transition-colors ${
-                activePage === 'home'
-                  ? 'bg-gray-100 text-gray-900'
-                  : 'text-gray-700 hover:bg-gray-50'
-              }`}
+              onClick={() => setIsSidebarCollapsed(!isSidebarCollapsed)}
+              className={`w-full flex items-center ${isSidebarCollapsed ? 'justify-center' : 'justify-start pl-4'} py-3 text-gray-600 hover:bg-gray-100 transition-colors mb-2`}
+              title={isSidebarCollapsed ? 'Expand sidebar' : 'Collapse sidebar'}
             >
-              <Home className="w-5 h-5" />
-              <span>Accueil</span>
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+              </svg>
             </button>
 
-            <button
-              onClick={() => setActivePage('library')}
-              className={`w-full flex items-center gap-3 px-4 py-2.5 rounded text-sm font-medium transition-colors ${
-                activePage === 'library'
-                  ? 'bg-gray-100 text-gray-900'
-                  : 'text-gray-700 hover:bg-gray-50'
-              }`}
-            >
-              <Library className="w-5 h-5" />
-              <span>Mes Formations</span>
-            </button>
+            {/* Top Navigation Items */}
+            <div>
+              <button
+                onClick={() => setActivePage('home')}
+                className={`w-full flex items-center ${isSidebarCollapsed ? 'justify-center' : 'gap-3'} px-4 py-3 text-sm font-medium transition-colors border-l-4 ${
+                  activePage === 'home'
+                    ? 'border-[#51b1aa] bg-gray-50 text-gray-900'
+                    : 'border-transparent text-gray-700 hover:bg-gray-50'
+                }`}
+                title="Accueil"
+              >
+                <Home className="w-5 h-5" />
+                {!isSidebarCollapsed && <span>Accueil</span>}
+              </button>
 
-            <button
-              onClick={() => setActivePage('certificates')}
-              className={`w-full flex items-center gap-3 px-4 py-2.5 rounded text-sm font-medium transition-colors ${
-                activePage === 'certificates'
-                  ? 'bg-gray-100 text-gray-900'
-                  : 'text-gray-700 hover:bg-gray-50'
-              }`}
-            >
-              <Award className="w-5 h-5" />
-              <span>Certificats</span>
-            </button>
+              <button
+                onClick={() => setActivePage('library')}
+                className={`w-full flex items-center ${isSidebarCollapsed ? 'justify-center' : 'gap-3'} px-4 py-3 text-sm font-medium transition-colors border-l-4 ${
+                  activePage === 'library'
+                    ? 'border-[#51b1aa] bg-gray-50 text-gray-900'
+                    : 'border-transparent text-gray-700 hover:bg-gray-50'
+                }`}
+                title="Mes Formations"
+              >
+                <Library className="w-5 h-5" />
+                {!isSidebarCollapsed && <span>Mes Formations</span>}
+              </button>
 
-            <div className="border-t border-gray-200 my-4"></div>
+              <button
+                onClick={() => setActivePage('certificates')}
+                className={`w-full flex items-center ${isSidebarCollapsed ? 'justify-center' : 'gap-3'} px-4 py-3 text-sm font-medium transition-colors border-l-4 ${
+                  activePage === 'certificates'
+                    ? 'border-[#51b1aa] bg-gray-50 text-gray-900'
+                    : 'border-transparent text-gray-700 hover:bg-gray-50'
+                }`}
+                title="Certificats"
+              >
+                <Award className="w-5 h-5" />
+                {!isSidebarCollapsed && <span>Certificats</span>}
+              </button>
+            </div>
 
-            <button
-              onClick={() => router.push('/academy/profile')}
-              className="w-full flex items-center gap-3 px-4 py-2.5 rounded text-sm font-medium text-gray-700 hover:bg-gray-50 transition-colors"
-            >
-              <User className="w-5 h-5" />
-              <span>Profil</span>
-            </button>
+            {/* Spacer to push bottom items down */}
+            <div className="flex-1"></div>
 
-            <button
-              onClick={handleLogout}
-              className="w-full flex items-center gap-3 px-4 py-2.5 rounded text-sm font-medium text-red-600 hover:bg-red-50 transition-colors"
-            >
-              <LogOut className="w-5 h-5" />
-              <span>Déconnexion</span>
-            </button>
+            {/* Bottom Navigation Items */}
+            <div className="border-t border-gray-200">
+              <button
+                onClick={() => router.push('/academy/profile')}
+                className={`w-full flex items-center ${isSidebarCollapsed ? 'justify-center' : 'gap-3'} px-4 py-3 text-sm font-medium text-gray-700 hover:bg-gray-50 transition-colors border-l-4 border-transparent`}
+                title="Profil"
+              >
+                <User className="w-5 h-5" />
+                {!isSidebarCollapsed && <span>Profil</span>}
+              </button>
+
+              <button
+                onClick={handleLogout}
+                className={`w-full flex items-center ${isSidebarCollapsed ? 'justify-center' : 'gap-3'} px-4 py-3 text-sm font-medium text-red-600 hover:bg-red-50 transition-colors border-l-4 border-transparent`}
+                title="Déconnexion"
+              >
+                <LogOut className="w-5 h-5" />
+                {!isSidebarCollapsed && <span>Déconnexion</span>}
+              </button>
+            </div>
           </nav>
         </aside>
 
-        {/* Main Content Area */}
-        <main className="flex-1 p-6">
+        {/* Main Content Area - With left margin for sidebar */}
+        <main className={`flex-1 ${isSidebarCollapsed ? 'ml-16' : 'ml-56'} p-6 transition-all duration-300`}>
           {/* Welcome Section */}
           <div className="mb-8">
             <h1 className="text-3xl font-normal text-gray-900 mb-2">

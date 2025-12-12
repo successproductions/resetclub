@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { Eye, EyeOff } from 'lucide-react';
+import { Eye, EyeOff, ArrowRight } from 'lucide-react';
 import Image from 'next/image';
 
 export default function AcademyLoginPage() {
@@ -35,11 +35,8 @@ export default function AcademyLoginPage() {
         return;
       }
 
-      // Store token in localStorage
       localStorage.setItem('academy_token', data.token);
       localStorage.setItem('academy_user', JSON.stringify(data.user));
-
-      // Redirect to dashboard
       router.push('/academy/dashboard');
     } catch {
       setError('Erreur de connexion. Veuillez réessayer.');
@@ -48,127 +45,127 @@ export default function AcademyLoginPage() {
   };
 
   return (
-    <div className="min-h-screen bg-white font-graphik">
-      {/* Top Bar - LinkedIn Style */}
-      <div className="border-b border-gray-200 bg-white">
-        <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
-          <div className="relative w-32 h-10">
-            <Image
-              src="/images/master/MASTERCLASSLOGO2.png"
-              alt="RESET Club Academy"
-              fill
-              className="object-contain"
-            />
-          </div>
-        </div>
+    <div className="relative min-h-screen bg-white font-graphik flex">
+      {/* Left Side - Image Only */}
+      <div className="hidden md:block md:w-1/2 relative">
+        <Image
+          src="/images/RESET2.png"
+          alt="Academy Background"
+          fill
+          className="object-cover"
+        />
       </div>
 
-      {/* Login Form Container */}
-      <div className="flex items-center justify-center px-4 py-12">
+      {/* Right Side - Logo + Login Form */}
+      <div className="w-full md:w-1/2 flex items-center justify-center p-6 md:p-12 bg-white">
         <div className="w-full max-w-md">
-          {/* Welcome Text */}
+          {/* Logo at Top */}
           <div className="text-center mb-8">
-            <h1 className="text-3xl font-normal text-gray-900 mb-2">
-              Bon retour !
-            </h1>
+            <div className="relative w-40 h-16 mx-auto mb-4">
+              <Image
+                src="/images/master/MASTERCLASSLOGO2.png"
+                alt="RESET Club Academy"
+                fill
+                className="object-contain"
+              />
+            </div>
             <p className="text-gray-600 text-sm">
-              Connectez-vous pour accéder à vos formations
+              Connecte-toi pour accéder à tes formations
             </p>
           </div>
 
-          {/* Login Form Card */}
-          <div className="bg-white rounded-lg border border-gray-300 shadow-sm p-6">
-            <form onSubmit={handleSubmit} className="space-y-4">
-              {/* Email Input */}
-              <div>
-                <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
-                  Adresse email
-                </label>
-                <div className="relative">
-                  <input
-                    id="email"
-                    type="email"
-                    required
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    className="w-full px-3 py-2 border border-gray-300 rounded text-gray-900 placeholder-gray-400 focus:outline-none focus:border-[#51b1aa] focus:ring-1 focus:ring-[#51b1aa] transition-all"
-                    placeholder="exemple@email.com"
-                  />
-                </div>
-              </div>
+          {/* Login Form */}
+          <form onSubmit={handleSubmit} className="space-y-6">
+            {/* Email Input */}
+            <div>
+              <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
+                Adresse email
+              </label>
+              <input
+                id="email"
+                type="email"
+                required
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                className="w-full px-4 py-3 bg-gray-50 border-2 border-gray-200 rounded-lg text-gray-900 placeholder-gray-500 focus:outline-none focus:border-[#51b1aa] transition-all duration-300"
+                placeholder="ton.email@example.com"
+              />
+            </div>
 
-              {/* Password Input */}
-              <div>
-                <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-1">
-                  Mot de passe
-                </label>
-                <div className="relative">
-                  <input
-                    id="password"
-                    type={showPassword ? 'text' : 'password'}
-                    required
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    className="w-full px-3 py-2 border border-gray-300 rounded text-gray-900 placeholder-gray-400 focus:outline-none focus:border-[#51b1aa] focus:ring-1 focus:ring-[#51b1aa] transition-all"
-                    placeholder="Mot de passe"
-                  />
-                  <button
-                    type="button"
-                    onClick={() => setShowPassword(!showPassword)}
-                    className="absolute inset-y-0 right-0 pr-3 flex items-center text-gray-400 hover:text-gray-600"
-                  >
-                    {showPassword ? (
-                      <EyeOff className="h-5 w-5" />
-                    ) : (
-                      <Eye className="h-5 w-5" />
-                    )}
-                  </button>
-                </div>
-              </div>
-
-              {/* Error Message */}
-              {error && (
-                <div className="bg-red-50 border border-red-200 rounded p-3">
-                  <p className="text-red-600 text-sm">{error}</p>
-                </div>
-              )}
-
-              {/* Forgot Password */}
-              <div className="text-right">
+            {/* Password Input */}
+            <div>
+              <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-2">
+                Mot de passe
+              </label>
+              <div className="relative">
+                <input
+                  id="password"
+                  type={showPassword ? 'text' : 'password'}
+                  required
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  className="w-full px-4 pr-12 py-3 bg-gray-50 border-2 border-gray-200 rounded-lg text-gray-900 placeholder-gray-500 focus:outline-none focus:border-[#51b1aa] transition-all duration-300"
+                  placeholder="••••••••"
+                />
                 <button
                   type="button"
-                  onClick={() => router.push('/academy/forgot-password')}
-                  className="text-[#51b1aa] hover:text-[#449990] text-sm font-medium transition-colors"
+                  onClick={() => setShowPassword(!showPassword)}
+                  className="absolute inset-y-0 right-0 pr-4 flex items-center text-gray-400 hover:text-[#51b1aa] transition-colors"
                 >
-                  Mot de passe oublié ?
+                  {showPassword ? (
+                    <EyeOff className="h-5 w-5" />
+                  ) : (
+                    <Eye className="h-5 w-5" />
+                  )}
                 </button>
               </div>
+            </div>
 
-              {/* Submit Button */}
+            {/* Error Message */}
+            {error && (
+              <div className="bg-red-500/10 border-2 border-red-500/50 rounded-lg p-3">
+                <p className="text-red-600 text-sm text-center">{error}</p>
+              </div>
+            )}
+
+            {/* Forgot Password */}
+            <div className="text-right">
               <button
-                type="submit"
-                disabled={isLoading}
-                className="w-full bg-[#51b1aa] hover:bg-[#449990] text-white font-semibold py-3 px-6 rounded transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                type="button"
+                onClick={() => router.push('/academy/forgot-password')}
+                className="text-[#51b1aa] hover:text-[#91dbd3] text-sm font-medium transition-colors"
               >
-                {isLoading ? (
-                  <>
-                    <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
-                    <span>Connexion...</span>
-                  </>
-                ) : (
-                  <span>SE CONNECTER</span>
-                )}
+                Mot de passe oublié ?
               </button>
-            </form>
-          </div>
+            </div>
+
+            {/* Submit Button */}
+            <button
+              type="submit"
+              disabled={isLoading}
+              className="w-full bg-gradient-to-r from-[#51b1aa] to-[#91dbd3] hover:from-[#91dbd3] hover:to-[#51b1aa] text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300 hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 flex items-center justify-center gap-2 shadow-lg shadow-[#51b1aa]/50"
+            >
+              {isLoading ? (
+                <>
+                  <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                  <span>Connexion...</span>
+                </>
+              ) : (
+                <>
+                  <span>SE CONNECTER</span>
+                  <ArrowRight className="w-5 h-5" />
+                </>
+              )}
+            </button>
+          </form>
 
           {/* Help Text */}
           <div className="mt-6 text-center">
             <p className="text-gray-600 text-sm">
-              Vous n&apos;avez pas encore de compte ?
+              Tu n&apos;as pas encore de compte ?
               <br />
               <span className="text-gray-500 text-xs mt-1 block">
-                Les comptes sont créés automatiquement lors de l&apos;accès à une formation
+                Les comptes sont créés automatiquement lors de l&apos;accès à une master-class
               </span>
             </p>
           </div>
