@@ -6,24 +6,48 @@ import { join } from 'path';
 
 export async function POST(request: NextRequest) {
   try {
-    // Get token from Authorization header
-    const authHeader = request.headers.get('authorization');
-    if (!authHeader || !authHeader.startsWith('Bearer ')) {
-      return NextResponse.json(
-        { error: 'Token manquant' },
-        { status: 401 }
-      );
-    }
+    let userId = '';
 
-    const token = authHeader.substring(7);
-    
-    // Verify token
-    const payload = verifyToken(token);
-    if (!payload || !payload.userId) {
-      return NextResponse.json(
-        { error: 'Token invalide' },
-        { status: 401 }
-      );
+    // DEV MODE: Allow upload without token for testing
+    if (process.env.NODE_ENV === 'development') {
+      const authHeader = request.headers.get('authorization');
+      
+      if (!authHeader || !authHeader.startsWith('Bearer ')) {
+        // In dev mode without token, use a test user ID
+        userId = 'dev-user';
+        console.log('DEV MODE: Using dev-user ID for avatar upload');
+      } else {
+        const token = authHeader.substring(7);
+        const payload = verifyToken(token);
+        
+        if (payload && payload.userId) {
+          userId = payload.userId;
+        } else {
+          userId = 'dev-user';
+          console.log('DEV MODE: Invalid token, using dev-user ID');
+        }
+      }
+    } else {
+      // PRODUCTION: Require valid token
+      const authHeader = request.headers.get('authorization');
+      if (!authHeader || !authHeader.startsWith('Bearer ')) {
+        return NextResponse.json(
+          { error: 'Token manquant' },
+          { status: 401 }
+        );
+      }
+
+      const token = authHeader.substring(7);
+      const payload = verifyToken(token);
+      
+      if (!payload || !payload.userId) {
+        return NextResponse.json(
+          { error: 'Token invalide' },
+          { status: 401 }
+        );
+      }
+      
+      userId = payload.userId;
     }
 
     // Get form data
@@ -57,7 +81,7 @@ export async function POST(request: NextRequest) {
     // Generate unique filename
     const timestamp = Date.now();
     const extension = file.name.split('.').pop();
-    const filename = `avatar-${payload.userId}-${timestamp}.${extension}`;
+    const filename = `avatar-${userId}-${timestamp}.${extension}`;
 
     // Convert file to buffer
     const bytes = await file.arrayBuffer();
@@ -66,6 +90,8 @@ export async function POST(request: NextRequest) {
     // Save to public/uploads/avatars directory
     const uploadDir = join(process.cwd(), 'public', 'uploads', 'avatars');
     const filepath = join(uploadDir, filename);
+
+    console.log('Saving avatar to:', filepath);
 
     // Create directory if it doesn't exist (using fs/promises)
     const fs = await import('fs/promises');
@@ -77,25 +103,42 @@ export async function POST(request: NextRequest) {
 
     // Write file
     await writeFile(filepath, buffer);
+    console.log('Avatar saved successfully');
 
-    // Update user avatar URL in database
+    // Update user avatar URL in database (skip in dev mode for dev-user)
     const avatarUrl = `/uploads/avatars/${filename}`;
     
-    const updatedUser = await prisma.user.update({
-      where: { id: payload.userId },
-      data: {
-        avatarUrl,
-        updatedAt: new Date()
-      },
-      select: {
-        id: true,
-        email: true,
-        firstName: true,
-        lastName: true,
-        role: true,
-        avatarUrl: true
-      }
-    });
+    let updatedUser;
+    
+    if (process.env.NODE_ENV === 'development' && userId === 'dev-user') {
+      // In dev mode, return mock user data
+      updatedUser = {
+        id: 'dev-user',
+        email: 'dev@resetclub.ma',
+        firstName: 'Dev',
+        lastName: 'User',
+        role: 'CLIENT',
+        avatarUrl
+      };
+      console.log('DEV MODE: Returning mock user with avatar:', avatarUrl);
+    } else {
+      // Production: Update database
+      updatedUser = await prisma.user.update({
+        where: { id: userId },
+        data: {
+          avatarUrl,
+          updatedAt: new Date()
+        },
+        select: {
+          id: true,
+          email: true,
+          firstName: true,
+          lastName: true,
+          role: true,
+          avatarUrl: true
+        }
+      });
+    }
 
     return NextResponse.json({
       success: true,

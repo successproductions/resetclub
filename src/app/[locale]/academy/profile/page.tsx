@@ -89,11 +89,15 @@ export default function AcademyProfilePage() {
     const file = e.target.files?.[0];
     if (!file) return;
 
+    console.log('Starting avatar upload...', file.name);
+    
     const formData = new FormData();
     formData.append('avatar', file);
 
     try {
       const token = localStorage.getItem('academy_token');
+      console.log('Token:', token ? 'exists' : 'missing');
+      
       const response = await fetch('/api/auth/upload-avatar', {
         method: 'POST',
         headers: {
@@ -103,17 +107,28 @@ export default function AcademyProfilePage() {
       });
 
       const data = await response.json();
+      console.log('Upload response:', response.status, data);
 
       if (!response.ok) {
         setError(data.error || 'Erreur lors du téléchargement');
+        console.error('Upload failed:', data);
         return;
       }
 
+      console.log('Upload successful! Avatar URL:', data.avatarUrl);
+      console.log('Updated user:', data.user);
+      
       setMessage('Photo de profil mise à jour !');
       setUser(data.user);
       localStorage.setItem('academy_user', JSON.stringify(data.user));
-      setTimeout(() => setMessage(''), 3000);
-    } catch {
+      
+      // Force re-render
+      setTimeout(() => {
+        setMessage('');
+        console.log('Current user state:', data.user);
+      }, 3000);
+    } catch (err) {
+      console.error('Upload error:', err);
       setError('Erreur de connexion');
     }
   };
