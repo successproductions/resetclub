@@ -38,6 +38,7 @@ export default function AcademyProfilePage() {
   const [showNewPassword, setShowNewPassword] = useState(false);
   const [message, setMessage] = useState('');
   const [error, setError] = useState('');
+  const [isUploadingAvatar, setIsUploadingAvatar] = useState(false);
 
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
@@ -90,7 +91,12 @@ export default function AcademyProfilePage() {
     const file = e.target.files?.[0];
     if (!file) return;
 
+    // Prevent multiple uploads
+    if (isUploadingAvatar) return;
+
     console.log('Starting avatar upload...', file.name);
+    setIsUploadingAvatar(true);
+    setError('');
     
     const formData = new FormData();
     formData.append('avatar', file);
@@ -113,6 +119,7 @@ export default function AcademyProfilePage() {
       if (!response.ok) {
         setError(data.error || 'Erreur lors du téléchargement');
         console.error('Upload failed:', data);
+        setIsUploadingAvatar(false);
         return;
       }
 
@@ -132,6 +139,7 @@ export default function AcademyProfilePage() {
       setImageError(false); // Reset error state
       setUser(updatedUserWithTimestamp);
       localStorage.setItem('academy_user', JSON.stringify(data.user)); // Save without timestamp
+      setIsUploadingAvatar(false);
       
       // Force re-render
       setTimeout(() => {
@@ -141,6 +149,7 @@ export default function AcademyProfilePage() {
     } catch (err) {
       console.error('Upload error:', err);
       setError('Erreur de connexion');
+      setIsUploadingAvatar(false);
     }
   };
 
@@ -373,6 +382,13 @@ export default function AcademyProfilePage() {
                             </span>
                           );
                         })()}
+                        
+                        {/* Upload Loading Overlay */}
+                        {isUploadingAvatar && (
+                          <div className="absolute inset-0 bg-black/50 flex items-center justify-center">
+                            <div className="w-8 h-8 border-3 border-white border-t-transparent rounded-full animate-spin" />
+                          </div>
+                        )}
                       </div>
                       <input
                         type="file"
@@ -380,13 +396,24 @@ export default function AcademyProfilePage() {
                         accept="image/jpeg,image/jpg,image/png,image/webp"
                         onChange={handleAvatarUpload}
                         className="hidden"
+                        disabled={isUploadingAvatar}
                       />
                       <button
                         type="button"
-                        onClick={() => document.getElementById('avatar-upload')?.click()}
-                        className="absolute bottom-0 right-0 bg-white rounded-full p-2 shadow-lg border-2 border-gray-200 hover:border-[#51b1aa] transition-colors"
+                        onClick={() => !isUploadingAvatar && document.getElementById('avatar-upload')?.click()}
+                        disabled={isUploadingAvatar}
+                        className={`absolute bottom-0 right-0 bg-white rounded-full p-2 shadow-lg border-2 transition-colors ${
+                          isUploadingAvatar 
+                            ? 'border-gray-200 opacity-50 cursor-not-allowed' 
+                            : 'border-gray-200 hover:border-[#51b1aa]'
+                        }`}
+                        title={isUploadingAvatar ? 'Téléchargement en cours...' : 'Changer la photo'}
                       >
-                        <Camera className="w-4 h-4 text-gray-600" />
+                        {isUploadingAvatar ? (
+                          <div className="w-4 h-4 border-2 border-gray-600 border-t-transparent rounded-full animate-spin" />
+                        ) : (
+                          <Camera className="w-4 h-4 text-gray-600" />
+                        )}
                       </button>
                     </div>
                     <h2 className="text-xl font-bold text-gray-900">
