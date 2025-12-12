@@ -124,7 +124,7 @@ export async function POST(request: NextRequest) {
     }
 
     // Update user avatar URL in database (skip in dev mode for dev-user)
-    const avatarUrl = `/uploads/avatars/${filename}`;
+    const avatarUrl = `/api/avatars/${filename}`;
     
     let updatedUser;
     
