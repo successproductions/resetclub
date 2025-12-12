@@ -3,7 +3,7 @@
 import Image from 'next/image';
 import { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
-import { Ticket, Sparkles, Mail, CheckCircle, Gift } from 'lucide-react';
+import { Ticket, Sparkles, Mail, CheckCircle, Gift, Calendar } from 'lucide-react';
 import MasterClassPopup from '@/components/ui/MasterClassPopup';
 
 export default function MasterClassPage() {
@@ -173,23 +173,53 @@ export default function MasterClassPage() {
 
       {/* Info Cards Section */}
       <section className="relative bg-black py-16 md:py-24 px-4 md:px-8">
+        
         <div className="max-w-6xl mx-auto">
+          {/* Section Title */}
+          <div className="text-center mb-12">
+            <h1 ref={headlineRef} className="text-2xl md:text-3xl lg:text-4xl font-medium font-graphik text-white mb-1 ">
+              <span className="block md:mb-1">Une Masterclass inédite, riche, et pensée </span>
+              <span className="text-[#cbb9a7]">pour éveiller votre conscience corporelle.</span>
+              <span className="block md:mt-1">Sans jargon. Sans pression.</span>
+            </h1>
+            <p ref={descRef} className="text-xs md:text-lg text-white mb-2 max-w-2xl mx-auto">
+              Juste une transmission claire et puissante, menée par Nahed Rachad, pour comprendre ce que votre corps essaie de vous dire depuis des années.
+            </p>
+          </div>
+
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
    
+            {/* Calendar Card */}
             <div className="bg-gradient-to-br from-gray-50 to-white rounded-3xl p-6 shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
-              <div className="flex items-start gap-3">
+              {/* Icon and Text Row */}
+              <div className="flex items-start gap-3 mb-6">
                 <div className="flex-shrink-0 w-16 h-16 md:w-20 md:h-20 rounded-2xl bg-gradient-to-br from-[#51b1aa] to-[#91dbd3] flex items-center justify-center">
-                  <Sparkles className="w-8 h-8 md:w-10 md:h-10 text-white" />
+                  <Calendar className="w-8 h-8 md:w-10 md:h-10 text-white" />
                 </div>
                 <div className="flex-1">
-                  <p className="text-gray-800 text-base md:text-lg leading-relaxed">
-                    Une Masterclass inédite, riche, et pensée pour éveiller votre conscience corporelle.
-                    <br /><br />
-                    Sans jargon. Sans pression.
-                    <br /><br />
-                    Juste une transmission claire et puissante, menée par Nahed Rachad, pour comprendre ce que votre corps essaie de vous dire depuis des années.
+                  <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-2">
+                    NE MANQUE RIEN
+                  </h3>
+                  <p className="text-gray-700 text-base md:text-lg leading-relaxed">
+                    Pré-enregistre dès maintenant toutes les dates dans ton calendrier via ce lien :
                   </p>
                 </div>
+              </div>
+              
+              {/* Button at Bottom Center */}
+              <div className="flex justify-center">
+                <a
+                  href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Masterclass+Biohacking+F%C3%A9minin+-+Nahed+Rachad&dates=20250120T140000Z/20250120T180000Z&details=Une+Masterclass+in%C3%A9dite+sur+le+biohacking+f%C3%A9minin+pour+%C3%A9veiller+votre+conscience+corporelle.+Men%C3%A9e+par+Nahed+Rachad.%0A%0AInscription+sur+resetclub.ma&location=En+ligne+(Lien+%C3%A0+venir)"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-3 px-8 py-4 rounded-full text-white font-semibold text-base md:text-lg transition-all duration-300 hover:scale-105 animate-pulse-slow"
+                  style={{
+                    background: 'linear-gradient(290deg, rgb(145, 219, 211) 0%, rgb(81, 177, 170) 30.2858%, rgb(145, 219, 211) 67.2878%, rgb(81, 177, 170) 100%)'
+                  }}
+                >
+                  <Calendar className="w-5 h-5" />
+                  <span>AJOUTER AU CALENDRIER</span>
+                </a>
               </div>
             </div>
 
