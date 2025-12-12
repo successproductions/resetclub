@@ -173,7 +173,7 @@ export default function MasterClassPage() {
 
       {/* Info Cards Section */}
       <section className="relative bg-black py-16 md:py-24 px-4 md:px-8">
-        {/* <div className="max-w-6xl mx-auto">
+        <div className="max-w-6xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
    
             <div className="bg-gradient-to-br from-gray-50 to-white rounded-3xl p-6 shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
@@ -297,7 +297,7 @@ export default function MasterClassPage() {
               </button>
             </div>
           </div>
-        </div> */}
+        </div>
       </section>
 
       {/* Master Class Popup */}
