@@ -1,16 +1,16 @@
 'use client';
 
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import gsap from 'gsap';
 import { 
   BookOpen, 
   Trophy, 
-  Clock, 
-  TrendingUp,
-  LogOut,
   User,
-  PlayCircle
+  LogOut,
+  Home,
+  Library,
+  Award,
+  Globe
 } from 'lucide-react';
 import Image from 'next/image';
 
@@ -25,10 +25,9 @@ interface UserData {
 
 export default function AcademyDashboard() {
   const router = useRouter();
-  const headerRef = useRef<HTMLDivElement>(null);
-  const statsRef = useRef<HTMLDivElement>(null);
   const [user, setUser] = useState<UserData | null>(null);
   const [isLoading, setIsLoading] = useState(true);
+  const [activePage, setActivePage] = useState('home');
 
   useEffect(() => {
     // Check authentication
@@ -42,30 +41,6 @@ export default function AcademyDashboard() {
 
     setUser(JSON.parse(userData));
     setIsLoading(false);
-
-    // Animations
-    const ctx = gsap.context(() => {
-      const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
-
-      if (headerRef.current) {
-        tl.fromTo(
-          headerRef.current,
-          { opacity: 0, y: -20 },
-          { opacity: 1, y: 0, duration: 0.6 }
-        );
-      }
-
-      if (statsRef.current) {
-        tl.fromTo(
-          statsRef.current.children,
-          { opacity: 0, y: 30 },
-          { opacity: 1, y: 0, duration: 0.6, stagger: 0.1 },
-          '-=0.3'
-        );
-      }
-    });
-
-    return () => ctx.revert();
   }, [router]);
 
   const handleLogout = () => {
@@ -76,171 +51,177 @@ export default function AcademyDashboard() {
 
   if (isLoading) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-black via-gray-900 to-black flex items-center justify-center">
-        <div className="w-16 h-16 border-4 border-[#51b1aa] border-t-transparent rounded-full animate-spin" />
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+        <div className="w-12 h-12 border-4 border-[#51b1aa] border-t-transparent rounded-full animate-spin" />
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-black via-gray-900 to-black font-graphik">
-      {/* Header */}
-      <div ref={headerRef} className="bg-gradient-to-r from-gray-900/80 to-gray-800/80 border-b border-gray-700 sticky top-0 z-50 backdrop-blur-xl">
-        <div className="max-w-7xl mx-auto px-4 py-4">
-          <div className="flex items-center justify-between">
-            {/* Logo */}
-            <div className="flex items-center gap-3">
-              <div className="relative w-32 h-10">
-                <Image
-                  src="/images/master/MASTERCLASSLOGO2.png"
-                  alt="RESET Club Academy"
-                  fill
-                  className="object-contain"
-                />
-              </div>
-              <span className="text-[#51b1aa] font-semibold text-sm hidden md:block">
-                Academy 360™
-              </span>
+    <div className="min-h-screen bg-gray-50 font-graphik">
+      {/* Top Navigation Bar */}
+      <div className="bg-white border-b border-gray-200 sticky top-0 z-50">
+        <div className="max-w-7xl mx-auto px-4 h-14 flex items-center justify-between">
+          {/* Logo */}
+          <div className="flex items-center gap-6">
+            <div className="relative w-24 h-8">
+              <Image
+                src="/images/master/MASTERCLASSLOGO2.png"
+                alt="RESET Club Academy"
+                fill
+                className="object-contain"
+              />
             </div>
+          </div>
 
-            {/* User Menu */}
-            <div className="flex items-center gap-4">
-              <button
-                onClick={() => router.push('/academy/profile')}
-                className="flex items-center gap-2 px-4 py-2 rounded-lg bg-gray-800/50 hover:bg-gray-700/50 transition-all duration-300 border border-gray-700"
-              >
-                <User className="w-5 h-5 text-[#51b1aa]" />
-                <span className="text-white text-sm hidden md:block">
-                  {user?.firstName || user?.email}
+          {/* Right Side - Language & Profile */}
+          <div className="flex items-center gap-4">
+            {/* Language Toggle */}
+            <button className="flex items-center gap-2 px-3 py-2 rounded hover:bg-gray-100 transition-colors">
+              <Globe className="w-4 h-4 text-gray-600" />
+              <span className="text-sm text-gray-700">FR</span>
+            </button>
+
+            {/* Profile Dropdown */}
+            <div className="flex items-center gap-2 border-l border-gray-200 pl-4">
+              <div className="w-8 h-8 bg-[#51b1aa] rounded-full flex items-center justify-center">
+                <span className="text-white text-sm font-semibold">
+                  {user?.firstName?.[0] || user?.email[0].toUpperCase()}
                 </span>
-              </button>
-              <button
-                onClick={handleLogout}
-                className="p-2 rounded-lg bg-gray-800/50 hover:bg-red-500/20 transition-all duration-300 border border-gray-700 hover:border-red-500"
-                title="Déconnexion"
-              >
-                <LogOut className="w-5 h-5 text-gray-400 hover:text-red-400" />
-              </button>
+              </div>
+              <div className="hidden md:block">
+                <p className="text-sm font-medium text-gray-900">
+                  {user?.firstName || 'Utilisateur'}
+                </p>
+              </div>
             </div>
           </div>
         </div>
       </div>
 
-      {/* Main Content */}
-      <div className="max-w-7xl mx-auto px-4 py-8">
-        {/* Welcome Section */}
-        <div className="mb-8">
-          <h1 className="text-3xl md:text-4xl font-bold text-white mb-2">
-            Bienvenue, <span className="text-[#51b1aa]">{user?.firstName || 'Membre'}</span> 👋
-          </h1>
-          <p className="text-gray-400">
-            Continue ta transformation avec RESET 360™
-          </p>
-        </div>
-
-        {/* Stats Cards */}
-        <div ref={statsRef} className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8">
-          {/* Formations Enrolled */}
-          <div className="bg-gradient-to-br from-gray-900/80 to-gray-800/80 rounded-2xl p-6 border border-[#51b1aa]/30 hover:border-[#51b1aa]/60 transition-all duration-300">
-            <div className="flex items-center justify-between mb-3">
-              <BookOpen className="w-8 h-8 text-[#51b1aa]" />
-              <span className="text-3xl font-bold text-white">0</span>
-            </div>
-            <p className="text-gray-400 text-sm">Formations</p>
-          </div>
-
-          {/* Completed */}
-          <div className="bg-gradient-to-br from-gray-900/80 to-gray-800/80 rounded-2xl p-6 border border-green-500/30 hover:border-green-500/60 transition-all duration-300">
-            <div className="flex items-center justify-between mb-3">
-              <Trophy className="w-8 h-8 text-green-500" />
-              <span className="text-3xl font-bold text-white">0</span>
-            </div>
-            <p className="text-gray-400 text-sm">Terminées</p>
-          </div>
-
-          {/* Hours Learning */}
-          <div className="bg-gradient-to-br from-gray-900/80 to-gray-800/80 rounded-2xl p-6 border border-blue-500/30 hover:border-blue-500/60 transition-all duration-300">
-            <div className="flex items-center justify-between mb-3">
-              <Clock className="w-8 h-8 text-blue-500" />
-              <span className="text-3xl font-bold text-white">0h</span>
-            </div>
-            <p className="text-gray-400 text-sm">Temps d&apos;étude</p>
-          </div>
-
-          {/* Progress */}
-          <div className="bg-gradient-to-br from-gray-900/80 to-gray-800/80 rounded-2xl p-6 border border-purple-500/30 hover:border-purple-500/60 transition-all duration-300">
-            <div className="flex items-center justify-between mb-3">
-              <TrendingUp className="w-8 h-8 text-purple-500" />
-              <span className="text-3xl font-bold text-white">0%</span>
-            </div>
-            <p className="text-gray-400 text-sm">Progression</p>
-          </div>
-        </div>
-
-        {/* Enrolled Formations Section */}
-        <div className="mb-8">
-          <div className="flex items-center justify-between mb-6">
-            <h2 className="text-2xl font-bold text-white">Mes Formations</h2>
+      <div className="flex max-w-7xl mx-auto">
+        {/* Left Sidebar Navigation - LinkedIn Style */}
+        <aside className="w-64 bg-white border-r border-gray-200 min-h-screen p-4">
+          <nav className="space-y-1">
             <button
-              onClick={() => router.push('/academy/formations')}
-              className="px-4 py-2 bg-gradient-to-r from-[#51b1aa] to-[#91dbd3] hover:from-[#91dbd3] hover:to-[#51b1aa] text-white rounded-lg transition-all duration-300 hover:scale-105 text-sm font-medium"
+              onClick={() => setActivePage('home')}
+              className={`w-full flex items-center gap-3 px-4 py-2.5 rounded text-sm font-medium transition-colors ${
+                activePage === 'home'
+                  ? 'bg-gray-100 text-gray-900'
+                  : 'text-gray-700 hover:bg-gray-50'
+              }`}
             >
-              Parcourir le catalogue
+              <Home className="w-5 h-5" />
+              <span>Accueil</span>
             </button>
+
+            <button
+              onClick={() => setActivePage('library')}
+              className={`w-full flex items-center gap-3 px-4 py-2.5 rounded text-sm font-medium transition-colors ${
+                activePage === 'library'
+                  ? 'bg-gray-100 text-gray-900'
+                  : 'text-gray-700 hover:bg-gray-50'
+              }`}
+            >
+              <Library className="w-5 h-5" />
+              <span>Mes Formations</span>
+            </button>
+
+            <button
+              onClick={() => setActivePage('certificates')}
+              className={`w-full flex items-center gap-3 px-4 py-2.5 rounded text-sm font-medium transition-colors ${
+                activePage === 'certificates'
+                  ? 'bg-gray-100 text-gray-900'
+                  : 'text-gray-700 hover:bg-gray-50'
+              }`}
+            >
+              <Award className="w-5 h-5" />
+              <span>Certificats</span>
+            </button>
+
+            <div className="border-t border-gray-200 my-4"></div>
+
+            <button
+              onClick={() => router.push('/academy/profile')}
+              className="w-full flex items-center gap-3 px-4 py-2.5 rounded text-sm font-medium text-gray-700 hover:bg-gray-50 transition-colors"
+            >
+              <User className="w-5 h-5" />
+              <span>Profil</span>
+            </button>
+
+            <button
+              onClick={handleLogout}
+              className="w-full flex items-center gap-3 px-4 py-2.5 rounded text-sm font-medium text-red-600 hover:bg-red-50 transition-colors"
+            >
+              <LogOut className="w-5 h-5" />
+              <span>Déconnexion</span>
+            </button>
+          </nav>
+        </aside>
+
+        {/* Main Content Area */}
+        <main className="flex-1 p-6">
+          {/* Welcome Section */}
+          <div className="mb-8">
+            <h1 className="text-3xl font-normal text-gray-900 mb-2">
+              Bonjour, {user?.firstName || 'Membre'} 👋
+            </h1>
+            <p className="text-gray-600">
+              Continue ta transformation avec RESET 360™
+            </p>
+          </div>
+
+          {/* Stats Cards */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+            {/* Formations Card */}
+            <div className="bg-white rounded-lg border border-gray-200 p-6">
+              <div className="flex items-center justify-between mb-4">
+                <BookOpen className="w-8 h-8 text-[#51b1aa]" />
+                <span className="text-3xl font-semibold text-gray-900">0</span>
+              </div>
+              <p className="text-gray-600 text-sm">Formations inscrites</p>
+            </div>
+
+            {/* Completed Card */}
+            <div className="bg-white rounded-lg border border-gray-200 p-6">
+              <div className="flex items-center justify-between mb-4">
+                <Trophy className="w-8 h-8 text-green-600" />
+                <span className="text-3xl font-semibold text-gray-900">0</span>
+              </div>
+              <p className="text-gray-600 text-sm">Formations terminées</p>
+            </div>
+
+            {/* Certificates Card */}
+            <div className="bg-white rounded-lg border border-gray-200 p-6">
+              <div className="flex items-center justify-between mb-4">
+                <Award className="w-8 h-8 text-blue-600" />
+                <span className="text-3xl font-semibold text-gray-900">0</span>
+              </div>
+              <p className="text-gray-600 text-sm">Certificats obtenus</p>
+            </div>
           </div>
 
           {/* Empty State */}
-          <div className="bg-gradient-to-br from-gray-900/80 to-gray-800/80 rounded-3xl p-12 border-2 border-gray-700/50 text-center">
+          <div className="bg-white rounded-lg border border-gray-200 p-12 text-center">
             <div className="flex justify-center mb-6">
-              <div className="p-6 bg-[#51b1aa]/10 rounded-full">
-                <BookOpen className="w-16 h-16 text-[#51b1aa]" />
+              <div className="w-20 h-20 bg-gray-100 rounded-full flex items-center justify-center">
+                <BookOpen className="w-10 h-10 text-gray-400" />
               </div>
             </div>
-            <h3 className="text-2xl font-bold text-white mb-3">
+            <h3 className="text-xl font-medium text-gray-900 mb-3">
               Commence ton apprentissage
             </h3>
-            <p className="text-gray-400 mb-6 max-w-md mx-auto">
+            <p className="text-gray-600 mb-6 max-w-md mx-auto">
               Tu n&apos;es inscrit à aucune formation pour le moment. Explore notre catalogue et commence ta transformation !
             </p>
             <button
               onClick={() => router.push('/academy/formations')}
-              className="px-6 py-3 bg-gradient-to-r from-[#51b1aa] to-[#91dbd3] hover:from-[#91dbd3] hover:to-[#51b1aa] text-white rounded-lg transition-all duration-300 hover:scale-105 font-medium inline-flex items-center gap-2"
+              className="inline-flex items-center px-6 py-3 bg-[#51b1aa] hover:bg-[#449990] text-white font-medium rounded transition-colors"
             >
-              <PlayCircle className="w-5 h-5" />
               Explorer les formations
             </button>
           </div>
-        </div>
-
-        {/* Quick Actions */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          <button
-            onClick={() => router.push('/academy/profile')}
-            className="bg-gradient-to-br from-gray-900/80 to-gray-800/80 rounded-2xl p-6 border border-gray-700 hover:border-[#51b1aa] transition-all duration-300 text-left group"
-          >
-            <User className="w-8 h-8 text-[#51b1aa] mb-3 group-hover:scale-110 transition-transform" />
-            <h3 className="text-white font-semibold text-lg mb-1">Mon Profil</h3>
-            <p className="text-gray-400 text-sm">Modifier mes informations</p>
-          </button>
-
-          <button
-            onClick={() => router.push('/academy/certificates')}
-            className="bg-gradient-to-br from-gray-900/80 to-gray-800/80 rounded-2xl p-6 border border-gray-700 hover:border-yellow-500 transition-all duration-300 text-left group"
-          >
-            <Trophy className="w-8 h-8 text-yellow-500 mb-3 group-hover:scale-110 transition-transform" />
-            <h3 className="text-white font-semibold text-lg mb-1">Certificats</h3>
-            <p className="text-gray-400 text-sm">Voir mes certificats</p>
-          </button>
-
-          <button
-            onClick={() => router.push('/academy/formations')}
-            className="bg-gradient-to-br from-gray-900/80 to-gray-800/80 rounded-2xl p-6 border border-gray-700 hover:border-[#51b1aa] transition-all duration-300 text-left group"
-          >
-            <BookOpen className="w-8 h-8 text-[#51b1aa] mb-3 group-hover:scale-110 transition-transform" />
-            <h3 className="text-white font-semibold text-lg mb-1">Catalogue</h3>
-            <p className="text-gray-400 text-sm">Découvrir les formations</p>
-          </button>
-        </div>
+        </main>
       </div>
     </div>
   );

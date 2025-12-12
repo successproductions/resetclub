@@ -4,7 +4,7 @@ import { useState, useEffect, useRef } from 'react';
 import { useRouter } from 'next/navigation';
 import gsap from 'gsap';
 import Image from 'next/image';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { } from 'lucide-react';
 
 export default function MasterClassCalendar() {
   const router = useRouter();
@@ -83,7 +83,7 @@ export default function MasterClassCalendar() {
 
         {/* Main Heading */}
         <h1 className="text-3xl md:text-5xl font-medium text-white text-center mb-3">
-          Ajoutez les <span className="text-[#cbb9a7]">Dates de l'événement</span> à votre calendrier
+          Ajoutez les <span className="text-[#cbb9a7]">Dates de l&apos;événement</span> à votre calendrier
         </h1>
 
         {/* Calendar */}

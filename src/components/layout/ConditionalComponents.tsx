@@ -15,9 +15,9 @@ export default function ConditionalComponents() {
   const isPaymentPage = pathname.includes('/payment');
   const isConfirmationPage = pathname.includes('/confirmation');
   const isMasterClassPage = pathname.includes('/master-class');
-  const isAcademyLoginPage = pathname.includes('/academy/login');
+  const isAcademyPage = pathname.includes('/academy');
 
-  if (isLinktreePage || isMembershipPage || isPaymentPage || isConfirmationPage || isMasterClassPage || isAcademyLoginPage) {
+  if (isLinktreePage || isMembershipPage || isPaymentPage || isConfirmationPage || isMasterClassPage || isAcademyPage) {
     return null;
   }
 
