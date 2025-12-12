@@ -320,13 +320,15 @@ export default function AcademyProfilePage() {
                 <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6 sticky top-24">
                   <div className="text-center">
                     <div className="relative inline-block mb-4">
-                      <div className="w-24 h-24 bg-gradient-to-br from-[#51b1aa] to-[#91dbd3] rounded-full flex items-center justify-center shadow-lg overflow-hidden">
+                      <div className="w-24 h-24 bg-gradient-to-br from-[#51b1aa] to-[#91dbd3] rounded-full flex items-center justify-center shadow-lg overflow-hidden relative">
                         {user?.avatarUrl ? (
                           <Image
                             src={user.avatarUrl}
                             alt="Profile"
                             fill
+                            sizes="96px"
                             className="object-cover"
+                            unoptimized
                           />
                         ) : (
                           <span className="text-white text-3xl font-bold">
