@@ -110,12 +110,32 @@ export default function CVUploadForm() {
     }
 
     setIsUploading(true);
+    setUploadStatus('idle');
 
     try {
-      // Simulate upload
-      await new Promise(resolve => setTimeout(resolve, 2000));
+      // Create FormData to send file and form fields
+      const formData = new FormData();
+      formData.append('cvFile', selectedFile);
+      formData.append('fullName', fullName.trim());
+      formData.append('phone', `${countryCode}${phone.trim()}`);
+      formData.append('email', email.trim());
+      formData.append('position', position);
+      formData.append('description', description.trim());
+
+      // Send to API
+      const response = await fetch('/api/upload-cv', {
+        method: 'POST',
+        body: formData,
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error || 'Upload failed');
+      }
+
+      // Success - reset form
       setUploadStatus('success');
-      // Reset form
       setSelectedFile(null);
       setFullName('');
       setCountryCode('+212');
@@ -124,7 +144,13 @@ export default function CVUploadForm() {
       setPosition('');
       setDescription('');
       setErrors({});
-    } catch {
+
+      // Reset success message after 5 seconds
+      setTimeout(() => {
+        setUploadStatus('idle');
+      }, 5000);
+    } catch (error) {
+      console.error('Upload error:', error);
       setUploadStatus('error');
     } finally {
       setIsUploading(false);
