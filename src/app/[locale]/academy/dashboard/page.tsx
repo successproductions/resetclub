@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 import { 
   BookOpen, 
   Trophy, 
@@ -80,12 +81,12 @@ export default function AcademyDashboard() {
       <div className="bg-white border-b border-gray-200 sticky top-0 z-50">
         <div className="h-14 flex items-center justify-between px-4">
           {/* Logo */}
-          <div className="relative w-24 h-8">
+          <div className="relative w-24 h-14">
             <Image
-              src="/images/master/MASTERCLASSLOGO2.png"
+              src="/images/logogras.png"
               alt="RESET Club Academy"
               fill
-              className="object-contain"
+              className="object-contain h-44 w-44"
             />
           </div>
 
@@ -240,24 +241,118 @@ export default function AcademyDashboard() {
             </div>
           </div>
 
-          {/* Empty State */}
-          <div className="bg-white rounded-lg border border-gray-200 p-12 text-center">
-            <div className="flex justify-center mb-6">
-              <div className="w-20 h-20 bg-gray-100 rounded-full flex items-center justify-center">
-                <BookOpen className="w-10 h-10 text-gray-400" />
+          {/* Formation Card Slider */}
+          <div className="relative">
+            {/* Left Arrow */}
+            <button className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 z-10 w-10 h-10 bg-white rounded-full shadow-md border border-gray-200 flex items-center justify-center hover:bg-gray-50 transition-colors">
+              <svg className="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+              </svg>
+            </button>
+
+            {/* Formation Card */}
+            <Link href="/fr/academy/formations/1" className="block">
+              <div className="bg-white rounded-lg border border-gray-200 overflow-hidden hover:shadow-md transition-shadow cursor-pointer">
+                <div className="flex flex-col md:flex-row md:items-center">
+                {/* Left Content */}
+                <div className="flex-1 px-4 py-2 md:p-6">
+                  {/* Badges */}
+                  <div className="flex gap-2 mb-1 md:mb-3">
+                    <span className="px-2.5 py-1 bg-gray-700 text-white text-xs font-medium rounded">New</span>
+                    
+                  </div>
+
+                  {/* Title */}
+                  <h3 className="text-base font-semibold text-gray-900 md:mb-3 leading-snug">
+                    Commencer votre transformation avec RESETCLUB Academy
+                  </h3>
+
+                  {/* Instructor */}
+                  {/* <div className="flex items-center gap-2 md:mb-4">
+                    <div className="w-5 h-5 bg-gray-300 rounded-full flex items-center justify-center">
+                      <span className="text-gray-700 text-[10px] font-semibold">HH</span>
+                    </div>
+                    <p className="text-xs text-gray-700 font-medium">Hartt Himanshu</p>
+                    <p className="text-xs text-gray-500">Cofounder and CTO at BetterMenu</p>
+                  </div> */}
+
+                  {/* Progress Bar - Hidden on mobile, shown on desktop */}
+                  <div className="mb-3 hidden md:block">
+                    <div className="flex justify-between items-center mb-1.5">
+                      <span className="text-xs text-gray-600">Progression</span>
+                      <span className="text-xs font-semibold text-[#51b1aa]">15%</span>
+                    </div>
+                    <div className="w-full h-1.5 bg-gray-200 rounded-full overflow-hidden">
+                      <div 
+                        className="h-full bg-gradient-to-r from-[#51b1aa] to-[#91dbd3] rounded-full transition-all" 
+                        style={{ width: '15%' }}
+                      />
+                    </div>
+                  </div>
+
+                  {/* Stats - Hidden on mobile, shown on desktop */}
+                  <div className="flex items-center gap-4 text-xs text-gray-600 hidden md:flex">
+                    <span className="flex items-center gap-1.5">
+                      <BookOpen className="w-3.5 h-3.5" />
+                      12 leçons
+                    </span>
+                    <span className="flex items-center gap-1.5">
+                      <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                      </svg>
+                      2h 30min
+                    </span>
+                  </div>
+                </div>
+
+                {/* Right Image with margin */}
+                <div className="w-full md:w-1/3 md:min-w-[200px] md:self-stretch flex-shrink-0 relative p-[10px]">
+                  <img 
+                    src="/images/IN2.png" 
+                    alt="Course" 
+                    className="w-full h-[200px] md:h-[300px] object-cover rounded-lg"
+                  />
+                </div>
               </div>
-            </div>
-            <h3 className="text-xl font-medium text-gray-900 mb-3">
-              Commence ton apprentissage
-            </h3>
-            <p className="text-gray-600 mb-6 max-w-md mx-auto">
-              Tu n&apos;es inscrit à aucune formation pour le moment. Explore notre catalogue et commence ta transformation !
-            </p>
-            <button
-              onClick={() => router.push('/academy/formations')}
-              className="inline-flex items-center px-6 py-3 bg-[#51b1aa] hover:bg-[#449990] text-white font-medium rounded transition-colors"
-            >
-              Explorer les formations
+
+              {/* Progress Bar and Stats - Shown on mobile only */}
+              <div className="px-6 pb-6 md:hidden">
+                {/* Progress Bar */}
+                <div className="mb-3">
+                  <div className="flex justify-between items-center mb-1.5">
+                    <span className="text-xs text-gray-600">Progression</span>
+                    <span className="text-xs font-semibold text-[#51b1aa]">15%</span>
+                  </div>
+                  <div className="w-full h-1.5 bg-gray-200 rounded-full overflow-hidden">
+                    <div 
+                      className="h-full bg-gradient-to-r from-[#51b1aa] to-[#91dbd3] rounded-full transition-all" 
+                      style={{ width: '15%' }}
+                    />
+                  </div>
+                </div>
+
+                {/* Stats */}
+                <div className="flex items-center gap-4 text-xs text-gray-600">
+                  <span className="flex items-center gap-1.5">
+                    <BookOpen className="w-3.5 h-3.5" />
+                    12 leçons
+                  </span>
+                  <span className="flex items-center gap-1.5">
+                    <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    2h 30min
+                  </span>
+                </div>
+              </div>
+              </div>
+            </Link>
+
+            {/* Right Arrow */}
+            <button className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 z-10 w-10 h-10 bg-white rounded-full shadow-md border border-gray-200 flex items-center justify-center hover:bg-gray-50 transition-colors">
+              <svg className="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              </svg>
             </button>
           </div>
         </main>

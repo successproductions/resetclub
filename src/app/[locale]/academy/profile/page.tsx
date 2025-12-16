@@ -231,12 +231,12 @@ export default function AcademyProfilePage() {
       {/* Top Navigation Bar */}
       <div className="bg-white border-b border-gray-200 sticky top-0 z-50">
         <div className="h-14 flex items-center justify-between px-4">
-          <div className="relative w-24 h-8">
+          <div className="relative w-24 h-14">
             <Image
-              src="/images/master/MASTERCLASSLOGO2.png"
+              src="/images/logogras.png"
               alt="RESET Club Academy"
               fill
-              className="object-contain"
+              className="object-contain h-44 w-44"
             />
           </div>
 
@@ -467,7 +467,7 @@ export default function AcademyProfilePage() {
                           type="text"
                           value={firstName}
                           onChange={(e) => setFirstName(e.target.value)}
-                          className="w-full px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#51b1aa] focus:border-transparent transition-all"
+                          className="w-full px-4 text-gray-500 py-2.5 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#51b1aa] focus:border-transparent transition-all placeholder:text-gray-600!"
                           placeholder="Ton prénom"
                         />
                       </div>
@@ -477,7 +477,7 @@ export default function AcademyProfilePage() {
                           type="text"
                           value={lastName}
                           onChange={(e) => setLastName(e.target.value)}
-                          className="w-full px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#51b1aa] focus:border-transparent transition-all"
+                          className="w-full px-4 text-gray-500 py-2.5 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#51b1aa] focus:border-transparent transition-all placeholder:text-gray-600"
                           placeholder="Ton nom"
                         />
                       </div>
@@ -500,7 +500,7 @@ export default function AcademyProfilePage() {
                       type="email"
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
-                      className="w-full px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+                      className="w-full px-4 text-gray-500 py-2.5 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all placeholder:text-gray-600"
                       placeholder="ton.email@example.com"
                     />
                   </div>
@@ -525,7 +525,7 @@ export default function AcademyProfilePage() {
                             type={showCurrentPassword ? 'text' : 'password'}
                             value={currentPassword}
                             onChange={(e) => setCurrentPassword(e.target.value)}
-                            className="w-full px-4 py-2.5 pr-12 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all"
+                            className="w-full px-4 py-2.5 pr-12 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all placeholder:text-gray-600"
                             placeholder="••••••••"
                           />
                           <button
@@ -545,7 +545,7 @@ export default function AcademyProfilePage() {
                             type={showNewPassword ? 'text' : 'password'}
                             value={newPassword}
                             onChange={(e) => setNewPassword(e.target.value)}
-                            className="w-full px-4 py-2.5 pr-12 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all"
+                            className="w-full px-4 py-2.5 pr-12 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all placeholder:text-gray-600"
                             placeholder="••••••••"
                           />
                           <button
