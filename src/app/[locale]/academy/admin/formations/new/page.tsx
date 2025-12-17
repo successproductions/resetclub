@@ -243,6 +243,25 @@ export default function NewFormationPage() {
             </div>
           </div>
 
+          {/* Thumbnail URL */}
+          <div>
+            <label htmlFor="thumbnailUrl" className="block text-sm font-medium text-gray-700 mb-2">
+              Image (URL)
+            </label>
+            <input
+              type="text"
+              id="thumbnailUrl"
+              name="thumbnailUrl"
+              value={formData.thumbnailUrl}
+              onChange={handleChange}
+              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#50b1aa] focus:border-transparent text-gray-900"
+              placeholder="/images/formation.jpg"
+            />
+            <p className="text-xs text-gray-500 mt-1">
+              URL de l&apos;image miniature (ex: /images/formation.jpg)
+            </p>
+          </div>
+
           {/* Published */}
           <div className="flex items-center gap-2">
             <input

@@ -24,12 +24,37 @@ interface UserData {
   avatarUrl: string | null;
 }
 
+interface Formation {
+  id: string;
+  title: string;
+  description: string | null;
+  thumbnailUrl: string | null;
+  durationHours: number | null;
+  modules: Array<{
+    id: string;
+    lessons: Array<{ id: string }>;
+  }>;
+}
+
 export default function AcademyDashboard() {
   const router = useRouter();
   const [user, setUser] = useState<UserData | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [activePage, setActivePage] = useState('home');
   const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
+  const [formations, setFormations] = useState<Formation[]>([]);
+
+  const fetchFormations = async () => {
+    try {
+      const response = await fetch('/api/formations');
+      if (response.ok) {
+        const { formations: formationsList } = await response.json();
+        setFormations(formationsList);
+      }
+    } catch (error) {
+      console.error('Error fetching formations:', error);
+    }
+  };
 
   useEffect(() => {
     // Check authentication
@@ -49,16 +74,24 @@ export default function AcademyDashboard() {
       };
       setUser(devUser);
       setIsLoading(false);
+      fetchFormations();
       return;
     }
 
     if (!token || !userData) {
-      router.push('/academy/login');
+      router.push('/fr/academy/login');
       return;
     }
 
-    setUser(JSON.parse(userData));
-    setIsLoading(false);
+    try {
+      const parsedUser = JSON.parse(userData);
+      setUser(parsedUser);
+      setIsLoading(false);
+      fetchFormations();
+    } catch {
+      // Invalid token or user data
+      router.push('/fr/academy/login');
+    }
   }, [router]);
 
   const handleLogout = () => {
@@ -250,103 +283,115 @@ export default function AcademyDashboard() {
               </svg>
             </button>
 
-            {/* Formation Card */}
-            <Link href="/fr/academy/formations/1" className="block">
-              <div className="bg-white rounded-lg border border-gray-200 overflow-hidden hover:shadow-md transition-shadow cursor-pointer">
-                <div className="flex flex-col md:flex-row md:items-center">
-                {/* Left Content */}
-                <div className="flex-1 px-4 py-2 md:p-6">
-                  {/* Badges */}
-                  <div className="flex gap-2 mb-1 md:mb-3">
-                    <span className="px-2.5 py-1 bg-gray-700 text-white text-xs font-medium rounded">New</span>
-                    
-                  </div>
-
-                  {/* Title */}
-                  <h3 className="text-base font-semibold text-gray-900 md:mb-3 leading-snug">
-                    Commencer votre transformation avec RESETCLUB Academy
-                  </h3>
-
-                  {/* Instructor */}
-                  {/* <div className="flex items-center gap-2 md:mb-4">
-                    <div className="w-5 h-5 bg-gray-300 rounded-full flex items-center justify-center">
-                      <span className="text-gray-700 text-[10px] font-semibold">HH</span>
-                    </div>
-                    <p className="text-xs text-gray-700 font-medium">Hartt Himanshu</p>
-                    <p className="text-xs text-gray-500">Cofounder and CTO at BetterMenu</p>
-                  </div> */}
-
-                  {/* Progress Bar - Hidden on mobile, shown on desktop */}
-                  <div className="mb-3 hidden md:block">
-                    <div className="flex justify-between items-center mb-1.5">
-                      <span className="text-xs text-gray-600">Progression</span>
-                      <span className="text-xs font-semibold text-[#51b1aa]">15%</span>
-                    </div>
-                    <div className="w-full h-1.5 bg-gray-200 rounded-full overflow-hidden">
-                      <div 
-                        className="h-full bg-gradient-to-r from-[#51b1aa] to-[#91dbd3] rounded-full transition-all" 
-                        style={{ width: '15%' }}
-                      />
-                    </div>
-                  </div>
-
-                  {/* Stats - Hidden on mobile, shown on desktop */}
-                  <div className="flex items-center gap-4 text-xs text-gray-600 hidden md:flex">
-                    <span className="flex items-center gap-1.5">
-                      <BookOpen className="w-3.5 h-3.5" />
-                      12 leçons
-                    </span>
-                    <span className="flex items-center gap-1.5">
-                      <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                      </svg>
-                      2h 30min
-                    </span>
-                  </div>
-                </div>
-
-                {/* Right Image with margin */}
-                <div className="w-full md:w-1/3 md:min-w-[200px] md:self-stretch flex-shrink-0 relative p-[10px]">
-                  <img 
-                    src="/images/IN2.png" 
-                    alt="Course" 
-                    className="w-full h-[200px] md:h-[300px] object-cover rounded-lg"
-                  />
-                </div>
+            {/* Formation Cards */}
+            {formations.length === 0 ?  (
+              <div className="bg-white rounded-lg border border-gray-200 p-12 text-center">
+                <BookOpen className="w-16 h-16 text-gray-400 mx-auto mb-4" />
+                <h3 className="text-lg font-semibold text-gray-900 mb-2">Aucune formation disponible</h3>
+                <p className="text-gray-600">Les formations seront bientôt disponibles</p>
               </div>
+            ) : (
+              formations.map((formation) => {
+                const totalLessons = formation.modules.reduce((acc, mod) => acc + mod.lessons.length, 0);
+                const durationHours = formation.durationHours || 0;
+                const hours = Math.floor(durationHours);
+                const minutes = Math.round((durationHours - hours) * 60);
+                const durationText = hours > 0 ? `${hours}h ${minutes}min` : `${minutes}min`;
 
-              {/* Progress Bar and Stats - Shown on mobile only */}
-              <div className="px-6 pb-6 md:hidden">
-                {/* Progress Bar */}
-                <div className="mb-3">
-                  <div className="flex justify-between items-center mb-1.5">
-                    <span className="text-xs text-gray-600">Progression</span>
-                    <span className="text-xs font-semibold text-[#51b1aa]">15%</span>
-                  </div>
-                  <div className="w-full h-1.5 bg-gray-200 rounded-full overflow-hidden">
-                    <div 
-                      className="h-full bg-gradient-to-r from-[#51b1aa] to-[#91dbd3] rounded-full transition-all" 
-                      style={{ width: '15%' }}
-                    />
-                  </div>
-                </div>
+                return (
+                  <Link key={formation.id} href={`/fr/academy/formations/${formation.id}`} className="block mb-6">
+                    <div className="bg-white rounded-lg border border-gray-200 overflow-hidden hover:shadow-md transition-shadow cursor-pointer">
+                      <div className="flex flex-col md:flex-row md:items-center">
+                        {/* Left Content */}
+                        <div className="flex-1 px-4 py-2 md:p-6">
+                          {/* Badges */}
+                          <div className="flex gap-2 mb-1 md:mb-3">
+                            <span className="px-2.5 py-1 bg-gray-700 text-white text-xs font-medium rounded">Nouveau</span>
+                          </div>
 
-                {/* Stats */}
-                <div className="flex items-center gap-4 text-xs text-gray-600">
-                  <span className="flex items-center gap-1.5">
-                    <BookOpen className="w-3.5 h-3.5" />
-                    12 leçons
-                  </span>
-                  <span className="flex items-center gap-1.5">
-                    <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                    </svg>
-                    2h 30min
-                  </span>
-                </div>
-              </div>
-              </div>
-            </Link>
+                          {/* Title */}
+                          <h3 className="text-base font-semibold text-gray-900 md:mb-3 leading-snug">
+                            {formation.title}
+                          </h3>
+
+                          {/* Progress Bar - Hidden on mobile, shown on desktop */}
+                          <div className="mb-3 hidden md:block">
+                            <div className="flex justify-between items-center mb-1.5">
+                              <span className="text-xs text-gray-600">Progression</span>
+                              <span className="text-xs font-semibold text-[#51b1aa]">0%</span>
+                            </div>
+                            <div className="w-full h-1.5 bg-gray-200 rounded-full overflow-hidden">
+                              <div 
+                                className="h-full bg-gradient-to-r from-[#51b1aa] to-[#91dbd3] rounded-full transition-all" 
+                                style={{ width: '0%' }}
+                              />
+                            </div>
+                          </div>
+
+                          {/* Stats - Hidden on mobile, shown on desktop */}
+                          <div className="flex items-center gap-4 text-xs text-gray-600 hidden md:flex">
+                            <span className="flex items-center gap-1.5">
+                              <BookOpen className="w-3.5 h-3.5" />
+                              {totalLessons} leçon{totalLessons > 1 ? 's' : ''}
+                            </span>
+                            {durationHours > 0 && (
+                              <span className="flex items-center gap-1.5">
+                                <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                </svg>
+                                {durationText}
+                              </span>
+                            )}
+                          </div>
+                        </div>
+
+                        {/* Right Image with margin */}
+                        <div className="w-full md:w-1/3 md:min-w-[200px] md:self-stretch flex-shrink-0 relative p-[10px]">
+                          <img 
+                            src={formation.thumbnailUrl || '/images/OUT.jpg'} 
+                            alt={formation.title} 
+                            className="w-full h-[200px] md:h-[300px] object-cover rounded-lg"
+                          />
+                        </div>
+                      </div>
+
+                      {/* Progress Bar and Stats - Shown on mobile only */}
+                      <div className="px-6 pb-6 md:hidden">
+                        {/* Progress Bar */}
+                        <div className="mb-3">
+                          <div className="flex justify-between items-center mb-1.5">
+                            <span className="text-xs text-gray-600">Progression</span>
+                            <span className="text-xs font-semibold text-[#51b1aa]">0%</span>
+                          </div>
+                          <div className="w-full h-1.5 bg-gray-200 rounded-full overflow-hidden">
+                            <div 
+                              className="h-full bg-gradient-to-r from-[#51b1aa] to-[#91dbd3] rounded-full transition-all" 
+                              style={{ width: '0%' }}
+                            />
+                          </div>
+                        </div>
+
+                        {/* Stats */}
+                        <div className="flex items-center gap-4 text-xs text-gray-600">
+                          <span className="flex items-center gap-1.5">
+                            <BookOpen className="w-3.5 h-3.5" />
+                            {totalLessons} leçon{totalLessons > 1 ? 's' : ''}
+                          </span>
+                          {durationHours > 0 && (
+                            <span className="flex items-center gap-1.5">
+                              <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                              </svg>
+                              {durationText}
+                            </span>
+                          )}
+                        </div>
+                      </div>
+                    </div>
+                  </Link>
+                );
+              })
+            )}
 
             {/* Right Arrow */}
             <button className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 z-10 w-10 h-10 bg-white rounded-full shadow-md border border-gray-200 flex items-center justify-center hover:bg-gray-50 transition-colors">
