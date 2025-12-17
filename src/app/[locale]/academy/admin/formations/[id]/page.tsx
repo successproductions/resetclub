@@ -165,6 +165,21 @@ export default function EditFormationPage({ params }: { params: Promise<{ id: st
 
       <h1 className="text-3xl font-bold text-gray-900 mb-8">Modifier la formation</h1>
 
+      {/* Content Management */}
+      <div className="mb-6 p-4 bg-blue-50 border-2 border-blue-200 rounded-lg">
+        <h2 className="text-lg! font-semibold text-gray-900 mb-3">Gestion du contenu</h2>
+        <Link
+          href={`/fr/academy/admin/formations/${formationId}/modules`}
+          className="inline-flex items-center gap-2 px-4 py-2 bg-[#50b1aa] text-white rounded-lg hover:bg-[#449990] transition-colors"
+        >
+          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+          </svg>
+          <span>Gérer les modules et leçons</span>
+        </Link>
+        <p className="text-sm text-gray-600 mt-2">Ajoutez des modules, leçons vidéo Vimeo et quiz</p>
+      </div>
+
       <form onSubmit={handleSubmit} className="max-w-3xl">
         <div className="bg-white rounded-lg border border-gray-200 p-6 space-y-6">
           {/* Title */}

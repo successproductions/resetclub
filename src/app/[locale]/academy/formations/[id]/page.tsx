@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { 
   ChevronLeft,
@@ -12,50 +12,60 @@ import {
   X
 } from 'lucide-react';
 
-export default function CoursePage({ params }: { params: { id: string } }) {
+interface Lesson {
+  id: string;
+  title: string;
+  vimeoVideoId: string | null;
+  durationSeconds: number | null;
+  orderIndex: number;
+}
+
+interface Module {
+  id: string;
+  title: string;
+  lessons: Lesson[];
+}
+
+interface Formation {
+  id: string;
+  title: string;
+  description: string | null;
+  modules: Module[];
+}
+
+export default function CoursePage({ params }: { params: Promise<{ id: string }> }) {
   const router = useRouter();
   const [sidebarOpen, setSidebarOpen] = useState(true);
   const [expandedModules, setExpandedModules] = useState<number[]>([0]);
+  const [formation, setFormation] = useState<Formation | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [currentLesson, setCurrentLesson] = useState<Lesson | null>(null);
 
-  // Mock course data
-  const courseData = {
-    title: "Transformation Reset: Votre Parcours Complet",
-    instructor: "Reset Club Team",
-    modules: [
-      {
-        title: "Bienvenue dans le Reset Club",
-        lessons: [
-          { id: 1, title: "Commencer votre transformation", duration: "8m", completed: true },
-          { id: 2, title: "Fixer vos objectifs de perte de poids", duration: "6m", completed: false },
-          { id: 3, title: "Comprendre le programme Reset", duration: "5m", completed: false }
-        ]
-      },
-      {
-        title: "Nutrition & Alimentation",
-        lessons: [
-          { id: 4, title: "Les bases de la nutrition saine", duration: "12m", completed: false },
-          { id: 5, title: "Créer votre plan de repas", duration: "15m", completed: false },
-          { id: 6, title: "Recettes & préparation des repas", duration: "18m", completed: false },
-          { id: 7, title: "Gérer les envies alimentaires", duration: "7m", completed: false }
-        ]
-      },
-      {
-        title: "Exercice & Mouvement",
-        lessons: [
-          { id: 8, title: "Programme d'entraînement débutant", duration: "10m", completed: false },
-          { id: 9, title: "Exercices à domicile", duration: "14m", completed: false },
-          { id: 10, title: "Cardio pour la perte de poids", duration: "12m", completed: false }
-        ]
-      },
-      {
-        title: "Mindset & Habitudes",
-        lessons: [
-          { id: 11, title: "Développer un mental de champion", duration: "9m", completed: false },
-          { id: 12, title: "Créer des habitudes durables", duration: "11m", completed: false },
-          { id: 13, title: "Surmonter les obstacles", duration: "8m", completed: false }
-        ]
+  useEffect(() => {
+    const loadData = async () => {
+      const resolvedParams = await params;
+      await fetchFormation(resolvedParams.id);
+    };
+    loadData();
+  }, []);
+
+  const fetchFormation = async (id: string) => {
+    try {
+      const response = await fetch(`/api/formations/${id}`);
+      if (response.ok) {
+        const { formation } = await response.json();
+        setFormation(formation);
+        
+        // Select first lesson by default
+        if (formation.modules.length > 0 && formation.modules[0].lessons.length > 0) {
+          setCurrentLesson(formation.modules[0].lessons[0]);
+        }
       }
-    ]
+    } catch (error) {
+      console.error('Error fetching formation:', error);
+    } finally {
+      setLoading(false);
+    }
   };
 
   const toggleModule = (index: number) => {
@@ -65,6 +75,28 @@ export default function CoursePage({ params }: { params: { id: string } }) {
         : [...prev, index]
     );
   };
+
+  const selectLesson = (lesson: Lesson) => {
+    setCurrentLesson(lesson);
+  };
+
+  const formatDuration = (seconds: number | null) => {
+    if (!seconds) return '0m';
+    const mins = Math.floor(seconds / 60);
+    return `${mins}m`;
+  };
+
+  if (loading) {
+    return (
+      <div className="flex items-center justify-center min-h-screen">
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#50b1aa]"></div>
+      </div>
+    );
+  }
+
+  if (!formation) {
+    return <div className="flex items-center justify-center min-h-screen">Formation non trouvée</div>;
+  }
 
   return (
     <div className="flex h-screen bg-gray-100">
@@ -95,14 +127,14 @@ export default function CoursePage({ params }: { params: { id: string } }) {
 
         {/* Course Title */}
         <div className="p-4 border-b border-white/20">
-          <h2 className="text-sm! text-gray-50 font-semibold mb-1">{courseData.title}</h2>
-          <p className="text-xs text-gray-100">Par {courseData.instructor}</p>
+          <h2 className="text-sm! text-gray-50 font-semibold mb-1">{formation.title}</h2>
+          <p className="text-xs text-gray-100">{formation.description || 'Formation Reset Club'}</p>
         </div>
 
         {/* Course Modules */}
         <div className="py-2">
-          {courseData.modules.map((module, moduleIndex) => (
-            <div key={moduleIndex} className="border-b border-white/10">
+          {formation.modules.map((module, moduleIndex) => (
+            <div key={module.id} className="border-b border-white/10">
               {/* Module Header */}
               <button
                 onClick={() => toggleModule(moduleIndex)}
@@ -124,16 +156,17 @@ export default function CoursePage({ params }: { params: { id: string } }) {
                   {module.lessons.map((lesson) => (
                     <button
                       key={lesson.id}
-                      className="w-full px-4 py-2.5 pl-10 flex items-center gap-3 hover:bg-[#2d6d68]  transition-colors text-left"
+                      onClick={() => selectLesson(lesson)}
+                      className="w-full px-4 py-2.5 pl-10 flex items-center gap-3 hover:bg-[#2d6d68] transition-colors text-left"
                     >
-                      {lesson.completed ? (
+                      {currentLesson?.id === lesson.id ? (
                         <CheckCircle2 className="w-4 h-4 text-green-500 flex-shrink-0" />
                       ) : (
                         <Circle className="w-4 h-4 text-gray-600 flex-shrink-0" />
                       )}
                       <div className="flex-1 min-w-0">
                         <p className="text-sm text-gray-100 truncate">{lesson.title}</p>
-                        <p className="text-xs text-gray-200">{lesson.duration}</p>
+                        <p className="text-xs text-gray-200">{formatDuration(lesson.durationSeconds)}</p>
                       </div>
                     </button>
                   ))}
@@ -149,14 +182,24 @@ export default function CoursePage({ params }: { params: { id: string } }) {
         {/* Video Player */}
         <div className="flex-1 bg-black flex items-center justify-center">
           <div className="w-full h-full max-w-7xl">
-            <video 
-              className="w-full h-full"
-              controls
-              poster="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='450'%3E%3Crect fill='%23000' width='800' height='450'/%3E%3Ctext fill='%23fff' font-size='24' font-family='Arial' x='50%25' y='50%25' text-anchor='middle' dy='.3em'%3EChargement de la formation...%3C/text%3E%3C/svg%3E"
-            >
-              <source src="/videos/sample-course.mp4" type="video/mp4" />
-              Votre navigateur ne supporte pas la lecture vidéo.
-            </video>
+            {currentLesson?.vimeoVideoId ? (
+              <iframe
+                src={`https://player.vimeo.com/video/${currentLesson.vimeoVideoId.includes('?') ? currentLesson.vimeoVideoId : currentLesson.vimeoVideoId + '?h=0'}&title=0&byline=0&portrait=0`}
+                className="w-full h-full"
+                frameBorder="0"
+                allow="autoplay; fullscreen; picture-in-picture"
+                allowFullScreen
+              ></iframe>
+            ) : (
+              <video 
+                className="w-full h-full"
+                controls
+                poster="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='450'%3E%3Crect fill='%23000' width='800' height='450'/%3E%3Ctext fill='%23fff' font-size='24' font-family='Arial' x='50%25' y='50%25' text-anchor='middle' dy='.3em'%3EChargement de la formation...%3C/text%3E%3C/svg%3E"
+              >
+                <source src="/videos/sample-course.mp4" type="video/mp4" />
+                Votre navigateur ne supporte pas la lecture vidéo.
+              </video>
+            )}
           </div>
         </div>
 
@@ -164,10 +207,10 @@ export default function CoursePage({ params }: { params: { id: string } }) {
         <div className="bg-white border-t border-gray-200 p-4">
           <div className="max-w-7xl mx-auto">
             <h1 className="text-lg font-semibold text-gray-900 mb-1">
-              Commencer votre transformation
+              {currentLesson?.title || 'Sélectionnez une leçon'}
             </h1>
             <p className="text-sm text-gray-600">
-              Module 1: Bienvenue dans le Reset Club • 8m 15s
+              {currentLesson && `Module ${formation.modules.findIndex(m => m.lessons.some(l => l.id === currentLesson.id)) + 1} • ${formatDuration(currentLesson.durationSeconds)}`}
             </p>
           </div>
         </div>
@@ -175,10 +218,30 @@ export default function CoursePage({ params }: { params: { id: string } }) {
         {/* Navigation Buttons */}
         <div className="bg-gray-50 border-t border-gray-200 p-4">
           <div className="max-w-7xl mx-auto flex justify-between">
-            <button className="px-4 py-2 text-sm text-gray-400 cursor-not-allowed">
+            <button 
+              onClick={() => {
+                const allLessons = formation.modules.flatMap(m => m.lessons);
+                const currentIndex = allLessons.findIndex(l => l.id === currentLesson?.id);
+                if (currentIndex > 0) {
+                  setCurrentLesson(allLessons[currentIndex - 1]);
+                }
+              }}
+              disabled={!currentLesson || formation.modules.flatMap(m => m.lessons).findIndex(l => l.id === currentLesson?.id) === 0}
+              className="px-4 py-2 text-sm text-gray-400 disabled:cursor-not-allowed enabled:text-gray-700 enabled:hover:text-gray-900"
+            >
               ← Leçon précédente
             </button>
-            <button className="px-4 py-2 bg-[#51b1aa] hover:bg-[#449990] text-white text-sm font-medium rounded transition-colors">
+            <button 
+              onClick={() => {
+                const allLessons = formation.modules.flatMap(m => m.lessons);
+                const currentIndex = allLessons.findIndex(l => l.id === currentLesson?.id);
+                if (currentIndex < allLessons.length - 1) {
+                  setCurrentLesson(allLessons[currentIndex + 1]);
+                }
+              }}
+              disabled={!currentLesson || formation.modules.flatMap(m => m.lessons).findIndex(l => l.id === currentLesson?.id) === formation.modules.flatMap(m => m.lessons).length - 1}
+              className="px-4 py-2 bg-[#51b1aa] hover:bg-[#449990] text-white text-sm font-medium rounded transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+            >
               Leçon suivante →
             </button>
           </div>

@@ -66,7 +66,7 @@ export async function PUT(
     } = body;
 
     // Prepare update data
-    const updateData: any = {
+    const updateData: Record<string, unknown> = {
       firstName: firstName || null,
       lastName: lastName || null,
       role,
@@ -83,7 +83,7 @@ export async function PUT(
       updateData.passwordHash = await hashPassword(password);
     }
 
-    const user = await prisma.user.update({
+    const updatedUser = await prisma.user.update({
       where: { id },
       data: updateData,
       select: {
@@ -98,11 +98,12 @@ export async function PUT(
       }
     });
 
-    return NextResponse.json({ user });
+    return NextResponse.json({ user: updatedUser });
   } catch (error: unknown) {
     console.error('Error updating user:', error);
     
-    if (error && typeof error === 'object' && 'code' in error && error.code === 'P2002') {
+    // Type guard for Prisma error
+    if (error && typeof error === 'object' && 'code' in error && (error as { code: string }).code === 'P2002') {
       return NextResponse.json(
         { error: 'Cet email existe déjà' },
         { status: 400 }
