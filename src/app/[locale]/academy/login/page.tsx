@@ -37,7 +37,13 @@ export default function AcademyLoginPage() {
 
       localStorage.setItem('academy_token', data.token);
       localStorage.setItem('academy_user', JSON.stringify(data.user));
-      router.push('/academy/dashboard');
+      
+      // Redirect based on user role
+      if (data.user.role === 'ADMIN') {
+        router.push('/academy/admin/formations');
+      } else {
+        router.push('/academy/dashboard');
+      }
     } catch {
       setError('Erreur de connexion. Veuillez réessayer.');
       setIsLoading(false);
