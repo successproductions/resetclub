@@ -61,24 +61,24 @@ export default function AcademyDashboard() {
     const token = localStorage.getItem('academy_token');
     const userData = localStorage.getItem('academy_user');
 
-    // DEV MODE: Bypass authentication in development
-    if (process.env.NODE_ENV === 'development' && !token) {
-      console.log('🔧 DEV MODE: Bypassing authentication');
-      const devUser = {
-        id: 'dev-user',
-        email: 'dev@resetclub.ma',
-        firstName: 'Dev',
-        lastName: 'User',
-        role: 'CLIENT',
-        avatarUrl: null
-      };
-      setUser(devUser);
-      setIsLoading(false);
-      fetchFormations();
-      return;
-    }
-
     if (!token || !userData) {
+      // DEV MODE: Create temp user only if no login
+      if (process.env.NODE_ENV === 'development') {
+        console.log('🔧 DEV MODE: Creating temp CLIENT user');
+        const devUser = {
+          id: 'dev-user',
+          email: 'dev@resetclub.ma',
+          firstName: 'Dev',
+          lastName: 'User',
+          role: 'CLIENT',
+          avatarUrl: null
+        };
+        setUser(devUser);
+        setIsLoading(false);
+        fetchFormations();
+        return;
+      }
+      
       router.push('/fr/academy/login');
       return;
     }
@@ -86,12 +86,14 @@ export default function AcademyDashboard() {
     try {
       const parsedUser = JSON.parse(userData);
       
-      // PRODUCTION: Check if user is ADMIN - redirect to admin panel
+      // Check if user is ADMIN - redirect to admin panel
       if (parsedUser.role === 'ADMIN') {
+        console.log('🔒 ADMIN user detected - redirecting to admin panel');
         router.push('/fr/academy/admin');
         return;
       }
       
+      console.log('✅ CLIENT user - allowing dashboard access');
       setUser(parsedUser);
       setIsLoading(false);
       fetchFormations();

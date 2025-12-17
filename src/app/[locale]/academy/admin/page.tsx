@@ -39,9 +39,12 @@ export default function AdminDashboardPage() {
       
       // Only ADMIN users can access this page
       if (user.role !== 'ADMIN') {
+        console.log('🔒 Non-ADMIN user detected - redirecting to dashboard');
         router.push('/fr/academy/dashboard');
         return;
       }
+      
+      console.log('✅ ADMIN user - allowing admin access');
     } catch {
       router.push('/fr/academy/login');
     }
