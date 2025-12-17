@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
 import { Plus, Edit, Trash2, Eye, BookOpen } from 'lucide-react';
+import Swal from 'sweetalert2';
 
 interface Formation {
   id: string;
@@ -43,8 +44,19 @@ export default function FormationsListPage() {
     }
   };
 
-  const handleDelete = async (id: string) => {
-    if (!confirm('Êtes-vous sûr de vouloir supprimer cette formation ?')) {
+  const handleDelete = async (id: string, title: string) => {
+    const result = await Swal.fire({
+      title: 'Êtes-vous sûr?',
+      text: `Supprimer "${title}" ? Cette action est irréversible!`,
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#ef4444',
+      cancelButtonColor: '#6b7280',
+      confirmButtonText: 'Oui, supprimer',
+      cancelButtonText: 'Annuler'
+    });
+
+    if (!result.isConfirmed) {
       return;
     }
 
@@ -59,13 +71,29 @@ export default function FormationsListPage() {
 
       if (response.ok) {
         setFormations(formations.filter(f => f.id !== id));
-        alert('Formation supprimée avec succès');
+        await Swal.fire({
+          icon: 'success',
+          title: 'Supprimée!',
+          text: 'La formation a été supprimée avec succès',
+          confirmButtonColor: '#50b1aa',
+          timer: 2000
+        });
       } else {
-        alert('Erreur lors de la suppression');
+        await Swal.fire({
+          icon: 'error',
+          title: 'Erreur',
+          text: 'Erreur lors de la suppression',
+          confirmButtonColor: '#50b1aa'
+        });
       }
     } catch (error) {
       console.error('Error deleting formation:', error);
-      alert('Erreur lors de la suppression');
+      await Swal.fire({
+        icon: 'error',
+        title: 'Erreur',
+        text: 'Erreur lors de la suppression',
+        confirmButtonColor: '#50b1aa'
+      });
     }
   };
 
@@ -177,7 +205,7 @@ export default function FormationsListPage() {
                         <Edit className="w-4 h-4" />
                       </Link>
                       <button
-                        onClick={() => handleDelete(formation.id)}
+                        onClick={() => handleDelete(formation.id, formation.title)}
                         className="p-2 text-gray-400 hover:text-red-600 transition-colors"
                         title="Supprimer"
                       >

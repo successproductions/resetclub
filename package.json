@@ -24,7 +24,7 @@
     "react": "19.1.0",
     "react-dom": "19.1.0",
     "split-type": "^0.3.4",
-    "sweetalert2": "^11.26.3",
+    "sweetalert2": "^11.26.10",
     "three": "^0.180.0"
   },
   "devDependencies": {

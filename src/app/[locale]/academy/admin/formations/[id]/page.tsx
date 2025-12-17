@@ -1,14 +1,16 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { ArrowLeft, Save } from 'lucide-react';
 import Swal from 'sweetalert2';
 
-export default function NewFormationPage() {
+export default function EditFormationPage({ params }: { params: Promise<{ id: string }> }) {
   const router = useRouter();
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
+  const [saving, setSaving] = useState(false);
+  const [formationId, setFormationId] = useState<string>('');
   const [formData, setFormData] = useState({
     title: '',
     slug: '',
@@ -21,6 +23,60 @@ export default function NewFormationPage() {
     currency: 'MAD',
     thumbnailUrl: '/images/OUT.jpg'
   });
+
+  useEffect(() => {
+    const loadFormation = async () => {
+      const resolvedParams = await params;
+      setFormationId(resolvedParams.id);
+      await fetchFormation(resolvedParams.id);
+    };
+    loadFormation();
+  }, [params]);
+
+  const fetchFormation = async (id: string) => {
+    try {
+      const token = localStorage.getItem('academy_token');
+      const response = await fetch(`/api/admin/formations/${id}`, {
+        headers: {
+          'Authorization': `Bearer ${token}`
+        }
+      });
+
+      if (response.ok) {
+        const { formation } = await response.json();
+        setFormData({
+          title: formation.title,
+          slug: formation.slug,
+          description: formation.description || '',
+          difficultyLevel: formation.difficultyLevel,
+          targetRole: formation.targetRole,
+          isPublished: formation.isPublished,
+          durationHours: formation.durationHours?.toString() || '',
+          price: formation.price?.toString() || '',
+          currency: formation.currency || 'MAD',
+          thumbnailUrl: formation.thumbnailUrl || '/images/OUT.jpg'
+        });
+      } else {
+        await Swal.fire({
+          icon: 'error',
+          title: 'Erreur',
+          text: 'Formation non trouvée',
+          confirmButtonColor: '#50b1aa'
+        });
+        router.push('/fr/academy/admin/formations');
+      }
+    } catch (error) {
+      console.error('Error fetching formation:', error);
+      await Swal.fire({
+        icon: 'error',
+        title: 'Erreur',
+        text: 'Erreur lors du chargement',
+        confirmButtonColor: '#50b1aa'
+      });
+    } finally {
+      setLoading(false);
+    }
+  };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value, type } = e.target;
@@ -45,12 +101,12 @@ export default function NewFormationPage() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setLoading(true);
+    setSaving(true);
 
     try {
       const token = localStorage.getItem('academy_token');
-      const response = await fetch('/api/admin/formations', {
-        method: 'POST',
+      const response = await fetch(`/api/admin/formations/${formationId}`, {
+        method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${token}`
@@ -59,36 +115,43 @@ export default function NewFormationPage() {
       });
 
       if (response.ok) {
-        const { formation } = await response.json();
         await Swal.fire({
           icon: 'success',
-          title: 'Formation créée!',
-          text: 'La formation a été créée avec succès',
+          title: 'Formation modifiée!',
+          text: 'La formation a été modifiée avec succès',
           confirmButtonColor: '#50b1aa',
           timer: 2000
         });
-        router.push(`/fr/academy/admin/formations/${formation.id}`);
+        router.push('/fr/academy/admin/formations');
       } else {
         const error = await response.json();
         await Swal.fire({
           icon: 'error',
           title: 'Erreur',
-          text: error.error || 'Erreur lors de la création',
+          text: error.error || 'Erreur lors de la modification',
           confirmButtonColor: '#50b1aa'
         });
       }
     } catch (error) {
-      console.error('Error creating formation:', error);
+      console.error('Error updating formation:', error);
       await Swal.fire({
         icon: 'error',
         title: 'Erreur',
-        text: 'Erreur lors de la création',
+        text: 'Erreur lors de la modification',
         confirmButtonColor: '#50b1aa'
       });
     } finally {
-      setLoading(false);
+      setSaving(false);
     }
   };
+
+  if (loading) {
+    return (
+      <div className="flex items-center justify-center py-12">
+        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-[#50b1aa]"></div>
+      </div>
+    );
+  }
 
   return (
     <div>
@@ -100,7 +163,7 @@ export default function NewFormationPage() {
         <span>Retour aux formations</span>
       </Link>
 
-      <h1 className="text-3xl font-bold text-gray-900 mb-8">Nouvelle formation</h1>
+      <h1 className="text-3xl font-bold text-gray-900 mb-8">Modifier la formation</h1>
 
       <form onSubmit={handleSubmit} className="max-w-3xl">
         <div className="bg-white rounded-lg border border-gray-200 p-6 space-y-6">
@@ -254,7 +317,7 @@ export default function NewFormationPage() {
               className="w-4 h-4 text-[#50b1aa] border-gray-300 rounded focus:ring-[#50b1aa]"
             />
             <label htmlFor="isPublished" className="text-sm font-medium text-gray-700">
-              Publier immédiatement
+              Publier
             </label>
           </div>
         </div>
@@ -263,11 +326,11 @@ export default function NewFormationPage() {
         <div className="mt-6 flex gap-4">
           <button
             type="submit"
-            disabled={loading}
+            disabled={saving}
             className="flex items-center gap-2 px-6 py-3 bg-[#50b1aa] text-white rounded-lg hover:bg-[#449990] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
           >
             <Save className="w-5 h-5" />
-            <span>{loading ? 'Création...' : 'Créer la formation'}</span>
+            <span>{saving ? 'Enregistrement...' : 'Enregistrer'}</span>
           </button>
           <Link
             href="/fr/academy/admin/formations"
