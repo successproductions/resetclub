@@ -30,6 +30,9 @@ export default function UsersPage() {
   const [searchTerm, setSearchTerm] = useState('');
   const [showModal, setShowModal] = useState(false);
   const [editingUser, setEditingUser] = useState<User | null>(null);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(1);
+  const [totalUsers, setTotalUsers] = useState(0);
   const [formData, setFormData] = useState<UserFormData>({
     email: '',
     firstName: '',
@@ -41,12 +44,13 @@ export default function UsersPage() {
 
   useEffect(() => {
     fetchUsers();
-  }, []);
+  }, [currentPage]);
 
   const fetchUsers = async () => {
     try {
+      setLoading(true);
       const token = localStorage.getItem('academy_token');
-      const response = await fetch('/api/admin/users', {
+      const response = await fetch(`/api/admin/users?page=${currentPage}&limit=10`, {
         headers: {
           'Authorization': `Bearer ${token}`
         }
@@ -55,6 +59,8 @@ export default function UsersPage() {
       if (response.ok) {
         const data = await response.json();
         setUsers(data.users || []);
+        setTotalPages(data.pagination?.totalPages || 1);
+        setTotalUsers(data.pagination?.total || 0);
       }
     } catch (error) {
       console.error('Error fetching users:', error);
@@ -224,7 +230,7 @@ export default function UsersPage() {
       <div className="flex justify-between items-center mb-8">
         <div>
           <h1 className="text-3xl font-bold text-gray-900">Utilisateurs</h1>
-          <p className="text-gray-600 mt-1">{users.length} utilisateur(s) au total</p>
+          <p className="text-gray-600 mt-1">{totalUsers} utilisateur(s) au total</p>
         </div>
         <button
           onClick={() => handleOpenModal()}
@@ -346,6 +352,31 @@ export default function UsersPage() {
             )}
           </tbody>
         </table>
+
+        {/* Pagination */}
+        {totalPages > 1 && (
+          <div className="px-6 py-4 border-t border-gray-200 flex items-center justify-between">
+            <div className="text-sm text-gray-700">
+              Page {currentPage} sur {totalPages}
+            </div>
+            <div className="flex gap-2">
+              <button
+                onClick={() => setCurrentPage(prev => Math.max(1, prev - 1))}
+                disabled={currentPage === 1}
+                className="px-4 py-2 border border-gray-300 rounded-lg text-sm font-medium text-gray-700 hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+              >
+                Précédent
+              </button>
+              <button
+                onClick={() => setCurrentPage(prev => Math.min(totalPages, prev + 1))}
+                disabled={currentPage === totalPages}
+                className="px-4 py-2 bg-[#50b1aa] text-white rounded-lg text-sm font-medium hover:bg-[#449990] disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+              >
+                Suivant
+              </button>
+            </div>
+          </div>
+        )}
       </div>
 
       {/* Modal */}

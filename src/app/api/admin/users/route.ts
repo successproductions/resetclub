@@ -2,13 +2,25 @@ import { NextRequest, NextResponse } from 'next/server';
 import prisma from '@/lib/prisma';
 import { hashPassword } from '@/lib/auth/password';
 
-// GET /api/admin/users - List all users
-export async function GET() {
+// GET /api/admin/users - Get all users with pagination
+export async function GET(request: NextRequest) {
   try {
     // DEVELOPMENT: Authentication disabled
     // TODO: Re-enable in production
+    
+    // Get pagination parameters from URL
+    const { searchParams } = new URL(request.url);
+    const page = parseInt(searchParams.get('page') || '1');
+    const limit = parseInt(searchParams.get('limit') || '10');
+    const skip = (page - 1) * limit;
 
+    // Get total count
+    const totalUsers = await prisma.user.count();
+
+    // Get paginated users
     const users = await prisma.user.findMany({
+      skip,
+      take: limit,
       select: {
         id: true,
         email: true,
@@ -24,7 +36,15 @@ export async function GET() {
       }
     });
 
-    return NextResponse.json({ users });
+    return NextResponse.json({ 
+      users,
+      pagination: {
+        page,
+        limit,
+        total: totalUsers,
+        totalPages: Math.ceil(totalUsers / limit)
+      }
+    });
   } catch (error) {
     console.error('Error fetching users:', error);
     return NextResponse.json(
