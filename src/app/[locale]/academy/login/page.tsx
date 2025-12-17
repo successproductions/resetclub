@@ -1,22 +1,54 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { Eye, EyeOff, ArrowRight } from 'lucide-react';
 import Image from 'next/image';
 
-export default function AcademyLoginPage() {
+export default function LoginPage({ params }: { params: Promise<{ locale: string }> }) {
   const router = useRouter();
+  const [locale, setLocale] = useState('fr');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
+  const [loading, setLoading] = useState(false); // Changed from isLoading to loading
   const [error, setError] = useState('');
+
+  useEffect(() => {
+    const loadLocale = async () => {
+      const resolvedParams = await params;
+      setLocale(resolvedParams.locale);
+    };
+    loadLocale();
+  }, [params]);
+
+  // Redirect if already logged in
+  useEffect(() => {
+    const token = localStorage.getItem('academy_token');
+    const userData = localStorage.getItem('academy_user');
+
+    if (token && userData) {
+      try {
+        const user = JSON.parse(userData);
+        
+        // Redirect based on role
+        if (user.role === 'ADMIN') {
+          console.log('✅ Already logged in as ADMIN - redirecting to admin panel');
+          router.push('/fr/academy/admin');
+        } else {
+          console.log('✅ Already logged in as CLIENT - redirecting to dashboard');
+          router.push('/fr/academy/dashboard');
+        }
+      } catch {
+        // Invalid data, allow login
+      }
+    }
+  }, [router]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError('');
-    setIsLoading(true);
+    setLoading(true); // Changed from setIsLoading to setLoading
 
     try {
       const response = await fetch('/api/auth/login', {
@@ -31,7 +63,7 @@ export default function AcademyLoginPage() {
 
       if (!response.ok) {
         setError(data.error || 'Une erreur s&apos;est produite');
-        setIsLoading(false);
+        setLoading(false);
         return;
       }
 
@@ -46,7 +78,7 @@ export default function AcademyLoginPage() {
       }
     } catch {
       setError('Erreur de connexion. Veuillez réessayer.');
-      setIsLoading(false);
+      setLoading(false);
     }
   };
 
@@ -148,10 +180,10 @@ export default function AcademyLoginPage() {
             {/* Submit Button */}
             <button
               type="submit"
-              disabled={isLoading}
+              disabled={loading}
               className="w-full bg-gradient-to-r from-[#51b1aa] to-[#91dbd3] hover:from-[#91dbd3] hover:to-[#51b1aa] text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300 hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 flex items-center justify-center gap-2 shadow-lg shadow-[#51b1aa]/50"
             >
-              {isLoading ? (
+              {loading ? (
                 <>
                   <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
                   <span>Connexion...</span>
