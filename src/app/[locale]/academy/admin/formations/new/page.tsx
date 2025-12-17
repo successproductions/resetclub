@@ -99,7 +99,7 @@ export default function NewFormationPage() {
               value={formData.title}
               onChange={handleChange}
               required
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#50b1aa] focus:border-transparent"
+              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#50b1aa] focus:border-transparent text-gray-900"
               placeholder="Ex: Academy Client"
             />
           </div>
@@ -116,7 +116,7 @@ export default function NewFormationPage() {
               value={formData.slug}
               onChange={handleChange}
               required
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#50b1aa] focus:border-transparent"
+              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#50b1aa] focus:border-transparent text-gray-900"
               placeholder="academy-client"
             />
             <p className="text-xs text-gray-500 mt-1">
@@ -135,7 +135,7 @@ export default function NewFormationPage() {
               value={formData.description}
               onChange={handleChange}
               rows={4}
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#50b1aa] focus:border-transparent"
+              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#50b1aa] focus:border-transparent text-gray-900"
               placeholder="Description de la formation..."
             />
           </div>
@@ -151,7 +151,7 @@ export default function NewFormationPage() {
               value={formData.targetRole}
               onChange={handleChange}
               required
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#50b1aa] focus:border-transparent"
+              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#50b1aa] focus:border-transparent text-gray-900"
             >
               <option value="CLIENT">Client</option>
               <option value="EMPLOYEE">Employé</option>
@@ -170,7 +170,7 @@ export default function NewFormationPage() {
               value={formData.difficultyLevel}
               onChange={handleChange}
               required
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#50b1aa] focus:border-transparent"
+              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#50b1aa] focus:border-transparent text-gray-900"
             >
               <option value="BEGINNER">Débutant</option>
               <option value="INTERMEDIATE">Intermédiaire</option>
@@ -191,7 +191,7 @@ export default function NewFormationPage() {
               onChange={handleChange}
               step="0.5"
               min="0"
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#50b1aa] focus:border-transparent"
+              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#50b1aa] focus:border-transparent text-gray-900"
               placeholder="10"
             />
           </div>
@@ -210,14 +210,14 @@ export default function NewFormationPage() {
                 onChange={handleChange}
                 step="0.01"
                 min="0"
-                className="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#50b1aa] focus:border-transparent"
+                className="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#50b1aa] focus:border-transparent text-gray-900"
                 placeholder="0"
               />
               <select
                 name="currency"
                 value={formData.currency}
                 onChange={handleChange}
-                className="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#50b1aa] focus:border-transparent"
+                className="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#50b1aa] focus:border-transparent text-gray-900"
               >
                 <option value="MAD">MAD</option>
                 <option value="EUR">EUR</option>
