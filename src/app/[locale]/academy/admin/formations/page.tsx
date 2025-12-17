@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { useState, useEffect } from 'react';
 import { Plus, Edit, Trash2, Eye, BookOpen } from 'lucide-react';
 import Swal from 'sweetalert2';
+import { useAdminAuth } from '@/hooks/useRoleAuth';
 
 interface Formation {
   id: string;
@@ -17,6 +18,7 @@ interface Formation {
 }
 
 export default function FormationsListPage() {
+  useAdminAuth(); // Protect this page
   const [formations, setFormations] = useState<Formation[]>([]);
   const [loading, setLoading] = useState(true);
 

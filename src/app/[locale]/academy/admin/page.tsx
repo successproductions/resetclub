@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { Users, BookOpen, TrendingUp, Award } from 'lucide-react';
 
@@ -19,10 +20,32 @@ export default function AdminDashboardPage() {
     completedCourses: 0
   });
   const [loading, setLoading] = useState(true);
+  const router = useRouter(); // Initialize useRouter
 
   useEffect(() => {
     fetchStats();
-  }, []);
+    
+    // PRODUCTION: Check authentication and role
+    const token = localStorage.getItem('academy_token');
+    const userData = localStorage.getItem('academy_user');
+    
+    if (!token || !userData) {
+      router.push('/fr/academy/login');
+      return;
+    }
+    
+    try {
+      const user = JSON.parse(userData);
+      
+      // Only ADMIN users can access this page
+      if (user.role !== 'ADMIN') {
+        router.push('/fr/academy/dashboard');
+        return;
+      }
+    } catch {
+      router.push('/fr/academy/login');
+    }
+  }, [router]);
 
   const fetchStats = async () => {
     try {

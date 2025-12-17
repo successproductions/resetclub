@@ -85,6 +85,13 @@ export default function AcademyDashboard() {
 
     try {
       const parsedUser = JSON.parse(userData);
+      
+      // PRODUCTION: Check if user is ADMIN - redirect to admin panel
+      if (parsedUser.role === 'ADMIN') {
+        router.push('/fr/academy/admin');
+        return;
+      }
+      
       setUser(parsedUser);
       setIsLoading(false);
       fetchFormations();
