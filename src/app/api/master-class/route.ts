@@ -20,7 +20,18 @@ export async function POST(request: NextRequest) {
       name: formData.name,
       email: formData.email,
       phone: `${formData.countryCode} ${formData.phone}`,
-      wantsVIP: formData.wantsVIP ? 'Oui' : 'Non'
+      wantsVIP: formData.wantsVIP ? 'Oui' : 'Non',
+      // Survey data
+      age: formData.surveyAnswers?.age || '',
+      knowsNahed: formData.surveyAnswers?.knowsNahed || '',
+      source: formData.surveyAnswers?.source || '',
+      knowsBiohacking: formData.surveyAnswers?.knowsBiohacking || '',
+      mainGoal: formData.surveyAnswers?.mainGoal || '',
+      visitedWellnessCenter: formData.surveyAnswers?.visitedWellnessCenter || '',
+      wellnessCenterAppreciation: formData.surveyAnswers?.wellnessCenterAppreciation || '',
+      struggleFatLoss: formData.surveyAnswers?.struggleFatLoss || '',
+      energyLevel: formData.surveyAnswers?.energyLevel || '',
+      resetPriority: formData.surveyAnswers?.resetPriority || ''
     };
 
     // Submit to Google Sheets

@@ -90,7 +90,7 @@ export default function MasterClassCalendar() {
         <div className="bg-[#0a0a0a] rounded-2xl p-6 md:py-4 md:px-6 border border-gray-800 shadow-2xl mb-8">
           {/* Calendar Header */}
           <div className="flex items-center justify-between mb-6">
-            <h2 className="text-white text-xl md:text-2xl font-semibold capitalize">
+            <h2 className="text-white text-xl md:text-2xl! font-semibold capitalize">
               {monthName}
             </h2>
             <div className="flex gap-2">
@@ -239,7 +239,7 @@ export default function MasterClassCalendar() {
             {/* Right Side - Button */}
             <div className="flex flex-col items-center justify-center">
               <button
-                onClick={() => router.push('/master-class/step-3')}
+                onClick={() => router.push('/master-class/step-2')}
                 className="bg-gradient-to-r from-[#cbb9a7] to-[#d4c4b3] hover:from-[#d4c4b3] hover:to-[#cbb9a7] text-black font-medium text-base md:text-lg py-4 px-8 md:px-12 rounded-lg transition-all duration-300 hover:scale-105 uppercase shadow-xl whitespace-nowrap"
               >
                 DÉCOUVRIR RESET 360

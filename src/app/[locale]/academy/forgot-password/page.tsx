@@ -95,7 +95,7 @@ export default function ForgotPasswordPage() {
             </div>
           ) : (
             <>
-              <h1 className="text-2xl font-bold text-gray-900 mb-2">
+              <h1 className="text-2xl! font-bold text-gray-900 mb-2">
                 Mot de passe oublié ?
               </h1>
               <p className="text-gray-600 mb-6">

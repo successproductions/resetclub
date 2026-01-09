@@ -335,9 +335,47 @@ export default function MasterClassRegistration() {
   };
 
   const handleSubmit = async () => {
-    // Save answers to localStorage or send to API here if needed
-    console.log('Survey answers:', answers);
-    console.log('Consent:', consent);
+    try {
+      // Get user info from localStorage (saved from popup)
+      const userInfoStr = localStorage.getItem('masterclass-user-info');
+      const userInfo = userInfoStr ? JSON.parse(userInfoStr) : {};
+
+      // Map survey answers to API format
+      const surveyAnswers = {
+        age: answers[1] || '',
+        knowsNahed: answers[2] || '',
+        source: answers[3] || '',
+        knowsBiohacking: answers[4] || '',
+        mainGoal: answers[5] || '',
+        visitedWellnessCenter: answers[6] || '',
+        wellnessCenterAppreciation: answers[7] || '',
+        struggleFatLoss: answers[8] || '',
+        energyLevel: answers[9] || '',
+        resetPriority: answers[10] || ''
+      };
+
+      // Send data to API
+      const response = await fetch('/api/master-class', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: userInfo.name || '',
+          email: userInfo.email || '',
+          phone: userInfo.phone || '',
+          countryCode: userInfo.countryCode || '+212',
+          wantsVIP: false,
+          surveyAnswers
+        }),
+      });
+
+      if (!response.ok) {
+        console.error('Failed to submit survey data');
+      }
+    } catch (error) {
+      console.error('Error submitting survey:', error);
+    }
 
     // Redirect to Step 2
     router.push('/master-class/step-2');

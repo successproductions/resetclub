@@ -16,6 +16,18 @@ export async function GET(
           include: {
             lessons: {
               orderBy: { orderIndex: 'asc' }
+            },
+            quizzes: {
+              take: 1,
+              select: {
+                id: true,
+                title: true,
+                _count: {
+                  select: {
+                    questions: true
+                  }
+                }
+              }
             }
           },
           orderBy: { orderIndex: 'asc' }

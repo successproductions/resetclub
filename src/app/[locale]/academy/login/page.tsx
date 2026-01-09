@@ -99,9 +99,9 @@ export default function LoginPage({ params }: { params: Promise<{ locale: string
         <div className="w-full max-w-md">
           {/* Logo at Top */}
           <div className="text-center mb-8">
-            <div className="relative w-40 h-16 mx-auto mb-4">
+            <div className="relative w-40 h-42 mx-auto mb-4">
               <Image
-                src="/images/master/MASTERCLASSLOGO2.png"
+                src="/images/logogras.png"
                 alt="RESET Club Academy"
                 fill
                 className="object-contain"

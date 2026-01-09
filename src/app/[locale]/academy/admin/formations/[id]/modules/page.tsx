@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
-import { ArrowLeft, Plus, Edit, Trash2, GripVertical, BookOpen } from 'lucide-react';
+import { ArrowLeft, Plus, Edit, Trash2, GripVertical, BookOpen, FileQuestion } from 'lucide-react';
 import Swal from 'sweetalert2';
 
 interface Module {
@@ -271,12 +271,20 @@ export default function ModulesManagementPage({ params }: { params: Promise<{ id
                   </div>
                 </div>
 
+
                 <div className="flex items-center gap-2">
                   <Link
                     href={`/fr/academy/admin/formations/${formationId}/modules/${module.id}/lessons`}
                     className="px-3 py-2 text-sm bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 transition-colors"
                   >
                     Gérer les leçons
+                  </Link>
+                  <Link
+                    href={`/fr/academy/admin/formations/${formationId}/modules/${module.id}/quiz`}
+                    className="px-3 py-2 text-sm bg-purple-100 text-purple-700 rounded-lg hover:bg-purple-200 transition-colors flex items-center gap-1"
+                  >
+                    <FileQuestion className="w-4 h-4" />
+                    Gérer le quiz
                   </Link>
                   <button
                     onClick={() => handleOpenModal(module)}

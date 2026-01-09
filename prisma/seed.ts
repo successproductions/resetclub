@@ -147,11 +147,7 @@ async function main() {
     }
   });
 
-  console.log('✅ Created formation: Academy Terapot');
-  console.log('\n🎉 Database seeded successfully!');
-  console.log('\nFormations created:');
-  console.log(`- ${academyClient.title} (${academyClient.slug}) - CLIENT`);
-  console.log(`- ${academyTerapot.title} (${academyTerapot.slug}) - EMPLOYEE`);
+
 }
 
 main()

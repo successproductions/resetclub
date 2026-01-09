@@ -119,7 +119,7 @@ export default function ResetPasswordPage() {
             </div>
           ) : (
             <>
-              <h1 className="text-2xl font-bold text-gray-900 mb-2">
+              <h1 className="text-2xl! font-bold text-gray-900 mb-2">
                 Nouveau mot de passe
               </h1>
               <p className="text-gray-600 mb-6">
