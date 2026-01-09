@@ -458,7 +458,7 @@ export default function QuizManagementPage({ params }: { params: Promise<{ id: s
 
           {questions.length === 0 ? (
             <div className="bg-white rounded-lg border-2 border-dashed border-gray-300 p-8 text-center">
-              <p className="text-gray-600 mb-4">Aucune question pour l\'instant</p>
+              <p className="text-gray-600 mb-4">Aucune question pour l&apos;instant</p>
               <button
                 onClick={() => handleOpenQuestionModal()}
                 className="inline-flex items-center gap-2 px-4 py-2 bg-[#50b1aa] text-white rounded-lg hover:bg-[#449990] transition-colors"
