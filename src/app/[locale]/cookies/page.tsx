@@ -52,7 +52,7 @@ export default function CookiesPage() {
 
           <div className="prose prose-lg max-w-none space-y-8">
             <section>
-              <h2 className="text-2xl font-serif text-gray-900 mb-4">Qu&apos;est-ce qu&apos;un cookie ?</h2>
+              <h2 className="text-2xl! font-serif text-gray-900 mb-4">Qu&apos;est-ce qu&apos;un cookie ?</h2>
               <p className="text-gray-700 leading-relaxed">
                 Un cookie est un petit fichier texte déposé sur votre ordinateur ou appareil mobile lors de la visite d&apos;un site web.
                 Les cookies permettent au site de mémoriser vos actions et préférences pendant une période donnée,
@@ -64,7 +64,7 @@ export default function CookiesPage() {
               <h2 className="text-2xl font-serif text-gray-900 mb-4">Types de cookies utilisés</h2>
 
               <div className="mt-4">
-                <h3 className="text-xl font-semibold text-gray-900 mb-2">Cookies essentiels</h3>
+                <h3 className="text-xl! font-semibold text-gray-900 mb-2">Cookies essentiels</h3>
                 <p className="text-gray-700 leading-relaxed">
                   Ces cookies sont nécessaires au fonctionnement du site. Ils vous permettent de naviguer sur le site
                   et d&apos;utiliser ses fonctionnalités de base. Sans ces cookies, certaines parties du site ne fonctionneront pas correctement.
@@ -72,7 +72,7 @@ export default function CookiesPage() {
               </div>
 
               <div className="mt-4">
-                <h3 className="text-xl font-semibold text-gray-900 mb-2">Cookies de performance</h3>
+                <h3 className="text-xl! font-semibold text-gray-900 mb-2">Cookies de performance</h3>
                 <p className="text-gray-700 leading-relaxed">
                   Ces cookies collectent des informations sur la façon dont les visiteurs utilisent notre site,
                   comme les pages les plus visitées et les messages d&apos;erreur reçus. Ces cookies nous aident à améliorer
@@ -81,7 +81,7 @@ export default function CookiesPage() {
               </div>
 
               <div className="mt-4">
-                <h3 className="text-xl font-semibold text-gray-900 mb-2">Cookies fonctionnels</h3>
+                <h3 className="text-xl! font-semibold text-gray-900 mb-2">Cookies fonctionnels</h3>
                 <p className="text-gray-700 leading-relaxed">
                   Ces cookies permettent au site de mémoriser vos choix (comme votre langue préférée ou votre région)
                   et de fournir des fonctionnalités améliorées et personnalisées.
@@ -89,7 +89,7 @@ export default function CookiesPage() {
               </div>
 
               <div className="mt-4">
-                <h3 className="text-xl font-semibold text-gray-900 mb-2">Cookies publicitaires</h3>
+                <h3 className="text-xl! font-semibold text-gray-900 mb-2">Cookies publicitaires</h3>
                 <p className="text-gray-700 leading-relaxed">
                   Ces cookies sont utilisés pour diffuser des publicités plus pertinentes pour vous et vos centres d&apos;intérêt.
                   Ils sont également utilisés pour limiter le nombre de fois que vous voyez une publicité
@@ -99,7 +99,7 @@ export default function CookiesPage() {
             </section>
 
             <section>
-              <h2 className="text-2xl font-serif text-gray-900 mb-4">Cookies tiers</h2>
+              <h2 className="text-2xl! font-serif text-gray-900 mb-4">Cookies tiers</h2>
               <p className="text-gray-700 leading-relaxed">
                 Nous utilisons également des services tiers qui peuvent placer des cookies sur votre appareil, notamment :
               </p>
@@ -111,7 +111,7 @@ export default function CookiesPage() {
             </section>
 
             <section>
-              <h2 className="text-2xl font-serif text-gray-900 mb-4">Gestion des cookies</h2>
+              <h2 className="text-2xl! font-serif text-gray-900 mb-4">Gestion des cookies</h2>
               <p className="text-gray-700 leading-relaxed">
                 Vous pouvez contrôler et/ou supprimer les cookies comme vous le souhaitez. Vous pouvez supprimer tous les cookies
                 déjà présents sur votre ordinateur et configurer la plupart des navigateurs pour qu&apos;ils les bloquent.
@@ -123,7 +123,7 @@ export default function CookiesPage() {
             </section>
 
             <section>
-              <h2 className="text-2xl font-serif text-gray-900 mb-4">Comment gérer les cookies dans votre navigateur</h2>
+              <h2 className="text-2xl! font-serif text-gray-900 mb-4">Comment gérer les cookies dans votre navigateur</h2>
               <p className="text-gray-700 leading-relaxed">
                 Vous pouvez gérer les cookies via les paramètres de votre navigateur :
               </p>
@@ -136,7 +136,7 @@ export default function CookiesPage() {
             </section>
 
             <section>
-              <h2 className="text-2xl font-serif text-gray-900 mb-4">Durée de conservation</h2>
+              <h2 className="text-2xl! font-serif text-gray-900 mb-4">Durée de conservation</h2>
               <p className="text-gray-700 leading-relaxed">
                 La durée de conservation des cookies varie selon leur type :
               </p>
@@ -147,7 +147,7 @@ export default function CookiesPage() {
             </section>
 
             <section>
-              <h2 className="text-2xl font-serif text-gray-900 mb-4">Modifications</h2>
+              <h2 className="text-2xl! font-serif text-gray-900 mb-4">Modifications</h2>
               <p className="text-gray-700 leading-relaxed">
                 Nous pouvons modifier cette politique de cookies à tout moment. Toute modification sera publiée sur cette page
                 avec une date de mise à jour révisée.
@@ -155,7 +155,7 @@ export default function CookiesPage() {
             </section>
 
             <section>
-              <h2 className="text-2xl font-serif text-gray-900 mb-4">Contact</h2>
+              <h2 className="text-2xl! font-serif text-gray-900 mb-4">Contact</h2>
               <p className="text-gray-700 leading-relaxed">
                 Pour toute question concernant notre utilisation des cookies, contactez-nous :<br />
                 <strong>Email :</strong> <a href="mailto:contact@resetclub.ma" className="text-[#ccbaa8] hover:underline">contact@resetclub.ma</a><br />

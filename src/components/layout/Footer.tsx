@@ -167,6 +167,9 @@ const Footer: React.FC = () => {
               <Link href="/cookies" className="text-gray-950 hover:text-gray-700 text-sm transition-colors duration-300">
                 {t('cookies')}
               </Link>
+              <Link href="/cgv" className="text-gray-950 hover:text-gray-700 text-sm transition-colors duration-300">
+                CGV
+              </Link>
             </div>
           </div>
         </div>

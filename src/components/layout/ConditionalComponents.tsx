@@ -16,8 +16,12 @@ export default function ConditionalComponents() {
   const isConfirmationPage = pathname.includes('/confirmation');
   const isMasterClassPage = pathname.includes('/master-class');
   const isAcademyPage = pathname.includes('/academy');
+  const isLegalPage = pathname.includes('/legal');
+  const isCookiesPage = pathname.includes('/cookies');
+  const isCGVPage = pathname.includes('/cgv');
 
-  if (isLinktreePage || isMembershipPage || isPaymentPage || isConfirmationPage || isMasterClassPage || isAcademyPage) {
+
+  if (isLinktreePage || isMembershipPage || isPaymentPage || isConfirmationPage || isMasterClassPage || isAcademyPage || isLegalPage || isCookiesPage || isCGVPage) {
     return null;
   }
 

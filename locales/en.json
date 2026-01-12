@@ -559,5 +559,72 @@
       "title": "Cookie Policy - ResetClub™️",
       "description": "Information about cookie usage on ResetClub's website to enhance your browsing experience."
     }
+  },
+  "cgv": {
+    "title": "Terms and Conditions",
+    "lastUpdate": "Last update: January 2026",
+    "section1": {
+      "title": "1. Purpose",
+      "content": "These Terms and Conditions define the terms of distance sale of services offered by RESET Club™ on the website resetclub.ma, in accordance with Moroccan law n° 31-08 on consumer protection."
+    },
+    "section2": {
+      "title": "2. Services Offered",
+      "content": "RESET Club™ offers the following services:",
+      "list1": "Biohacking Masterclass for Women (free or VIP access)",
+      "list2": "RESET™ Transformational Assessment (personalized diagnosis)",
+      "list3": "Holistic transformation programs",
+      "list4": "Access to RESET 360™ platform (online courses)",
+      "list5": "Center treatment reservations"
+    },
+    "section3": {
+      "title": "3. Prices and Validity",
+      "content1": "Prices are expressed in Moroccan Dirhams (MAD), all taxes included.",
+      "content2": "International credit card payments (Visa, Mastercard) are accepted.",
+      "content3": "Prices are valid at the order date and may be modified without notice.",
+      "content4": "Promotional offers are valid for the duration indicated on the website."
+    },
+    "section4": {
+      "title": "4. Payment Methods",
+      "content": "Payment is made online by credit card via our secure CMI platform (Centre Monétique Interbancaire). Bank details are encrypted and do not pass through our servers."
+    },
+    "section5": {
+      "title": "5. Order Confirmation",
+      "content": "After payment, the customer receives a confirmation email containing:",
+      "list1": "Order summary",
+      "list2": "Access to digital services (if applicable)",
+      "list3": "RESET Club™ center contact details",
+      "list4": "Instructions for the next steps"
+    },
+    "section6": {
+      "title": "6. Right of Withdrawal",
+      "content1": "In accordance with law n° 31-08, the 7-day withdrawal right does not apply to services performed on a specific date (assessments, center treatments, live masterclass).",
+      "content2": "For digital content (RESET 360™ platform access), the withdrawal right expires upon content access."
+    },
+    "section7": {
+      "title": "7. Cancellation and Refund",
+      "content1": "Free Masterclass: Can be cancelled at any time without charge.",
+      "content2": "VIP Assessment and RESET 360™: Serenity Guarantee — full refund if not satisfied, no justification required.",
+      "content3": "Center treatments: Rescheduling possible based on availability, no refund for no-shows."
+    },
+    "section8": {
+      "title": "8. Liability",
+      "content": "RESET Club™ commits to providing the described services professionally. Liability cannot be engaged in case of force majeure, technical issues beyond our control, or misuse of services by the customer."
+    },
+    "section9": {
+      "title": "9. Intellectual Property",
+      "content": "All content (texts, videos, images, protocols) offered on the website and in RESET Club™ programs are protected by copyright. Any unauthorized reproduction is prohibited."
+    },
+    "section10": {
+      "title": "10. Data Protection",
+      "content": "Personal data collected is processed in accordance with our Privacy Policy and law n° 09-08 on personal data protection."
+    },
+    "section11": {
+      "title": "11. Complaints",
+      "content": "For any complaints, contact us at contact@resetclub.ma or +212 689 464 650. We commit to responding within 48 hours."
+    },
+    "section12": {
+      "title": "12. Applicable Law",
+      "content": "These Terms and Conditions are governed by Moroccan law. Any dispute shall be submitted to the courts of Rabat."
+    }
   }
 }

@@ -52,10 +52,12 @@ export default function LegalPage() {
 
           <div className="prose prose-lg max-w-none space-y-8">
             <section>
-              <h2 className="text-2xl font-serif text-gray-900 mb-4">Éditeur du site</h2>
+              <h2 className="text-2xl! font-serif text-gray-900 mb-4">Éditeur du site</h2>
               <p className="text-gray-700 leading-relaxed">
-                <strong>Nom de la société :</strong> Reset Club™<br />
-                <strong>Forme juridique :</strong> [À compléter]<br />
+                <strong>Raison sociale :</strong> EXTBODY<br />
+                <strong>Forme juridique :</strong> SARL AU<br />
+                <strong>N° d'immatriculation :</strong> 190925<br />
+                <strong>Nom commercial :</strong> Reset Club™<br />
                 <strong>Adresse du siège social :</strong> Rabat, Maroc<br />
                 <strong>Email :</strong> contact@resetclub.ma<br />
                 <strong>Téléphone :</strong> + 212 689 464 650
@@ -63,22 +65,15 @@ export default function LegalPage() {
             </section>
 
             <section>
-              <h2 className="text-2xl font-serif text-gray-900 mb-4">Directeur de la publication</h2>
+              <h2 className="text-2xl! font-serif text-gray-900 mb-4">Directeur de la publication</h2>
               <p className="text-gray-700 leading-relaxed">
                 Nahed Rachad, Fondatrice & Directrice
               </p>
             </section>
 
-            <section>
-              <h2 className="text-2xl font-serif text-gray-900 mb-4">Hébergement</h2>
-              <p className="text-gray-700 leading-relaxed">
-                <strong>Hébergeur :</strong> [À compléter]<br />
-                <strong>Adresse :</strong> [À compléter]
-              </p>
-            </section>
 
             <section>
-              <h2 className="text-2xl font-serif text-gray-900 mb-4">Propriété intellectuelle</h2>
+              <h2 className="text-2xl! font-serif text-gray-900 mb-4">Propriété intellectuelle</h2>
               <p className="text-gray-700 leading-relaxed">
                 L&apos;ensemble de ce site relève de la législation marocaine et internationale sur le droit d&apos;auteur et la propriété intellectuelle.
                 Tous les droits de reproduction sont réservés, y compris pour les documents téléchargeables et les représentations iconographiques et photographiques.
@@ -90,7 +85,7 @@ export default function LegalPage() {
             </section>
 
             <section>
-              <h2 className="text-2xl font-serif text-gray-900 mb-4">Données personnelles</h2>
+              <h2 className="text-2xl! font-serif text-gray-900 mb-4">Données personnelles</h2>
               <p className="text-gray-700 leading-relaxed">
                 Conformément à la loi marocaine n° 09-08 relative à la protection des personnes physiques à l&apos;égard du traitement des données à caractère personnel,
                 vous disposez d&apos;un droit d&apos;accès, de rectification et de suppression des données vous concernant.
@@ -101,7 +96,7 @@ export default function LegalPage() {
             </section>
 
             <section>
-              <h2 className="text-2xl font-serif text-gray-900 mb-4">Responsabilité</h2>
+              <h2 className="text-2xl! font-serif text-gray-900 mb-4">Responsabilité</h2>
               <p className="text-gray-700 leading-relaxed">
                 Les informations contenues sur ce site sont aussi précises que possible et le site est périodiquement remis à jour,
                 mais peut toutefois contenir des inexactitudes, des omissions ou des lacunes.

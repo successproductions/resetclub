@@ -613,5 +613,72 @@
       "title": "Politique des Cookies - ResetClub™️",
       "description": "Informations sur l'utilisation des cookies sur le site web de ResetClub pour améliorer votre expérience de navigation."
     }
+  },
+  "cgv": {
+    "title": "Conditions Générales de Vente",
+    "lastUpdate": "Dernière mise à jour : Janvier 2026",
+    "section1": {
+      "title": "1. Objet",
+      "content": "Les présentes Conditions Générales de Vente (CGV) définissent les modalités de vente à distance des services proposés par RESET Club™ sur le site resetclub.ma, conformément à la loi n° 31-08 édictant des mesures de protection du consommateur."
+    },
+    "section2": {
+      "title": "2. Services proposés",
+      "content": "RESET Club™ propose les services suivants :",
+      "list1": "Masterclass Biohacking Féminin (accès gratuit ou VIP)",
+      "list2": "Bilan Transformationnel RESET™ (diagnostic personnalisé)",
+      "list3": "Programmes de transformation holistique",
+      "list4": "Accès à la plateforme RESET 360™ (formations en ligne)",
+      "list5": "Réservations de soins en centre"
+    },
+    "section3": {
+      "title": "3. Prix et validité",
+      "content1": "Les prix sont exprimés en dirhams marocains (MAD), toutes taxes comprises.",
+      "content2": "Les paiements par carte bancaire internationale (Visa, Mastercard) sont acceptés.",
+      "content3": "Les tarifs sont valables à la date de commande et peuvent être modifiés sans préavis.",
+      "content4": "Les offres promotionnelles sont valides pendant la durée indiquée sur le site."
+    },
+    "section4": {
+      "title": "4. Modalités de paiement",
+      "content": "Le paiement s'effectue en ligne par carte bancaire via notre plateforme sécurisée CMI (Centre Monétique Interbancaire). Les données bancaires sont cryptées et ne transitent pas par nos serveurs."
+    },
+    "section5": {
+      "title": "5. Confirmation de commande",
+      "content": "Après paiement, le client reçoit un e-mail de confirmation contenant :",
+      "list1": "Le récapitulatif de la commande",
+      "list2": "Les accès aux services numériques (le cas échéant)",
+      "list3": "Les coordonnées du centre RESET Club™",
+      "list4": "Les instructions pour la suite du parcours"
+    },
+    "section6": {
+      "title": "6. Droit de rétractation",
+      "content1": "Conformément à la loi n° 31-08, le droit de rétractation de 7 jours ne s'applique pas aux prestations exécutées à une date déterminée (bilans, soins en centre, masterclass en direct).",
+      "content2": "Pour les contenus numériques (accès plateforme RESET 360™), le droit de rétractation expire dès l'accès au contenu."
+    },
+    "section7": {
+      "title": "7. Annulation et remboursement",
+      "content1": "Masterclass gratuite : Annulation possible à tout moment sans frais.",
+      "content2": "Bilan VIP et RESET 360™ : Garantie Sérénité — remboursement intégral si non satisfait, sans justification.",
+      "content3": "Soins en centre : Report possible selon disponibilités, pas de remboursement pour non-présentation."
+    },
+    "section8": {
+      "title": "8. Responsabilité",
+      "content": "RESET Club™ s'engage à fournir les services décrits avec professionnalisme. La responsabilité ne saurait être engagée en cas de force majeure, de problème technique indépendant de notre volonté, ou de mauvaise utilisation des services par le client."
+    },
+    "section9": {
+      "title": "9. Propriété intellectuelle",
+      "content": "L'ensemble des contenus (textes, vidéos, images, protocoles) proposés sur le site et dans les programmes RESET Club™ sont protégés par le droit d'auteur. Toute reproduction non autorisée est interdite."
+    },
+    "section10": {
+      "title": "10. Protection des données",
+      "content": "Les données personnelles collectées sont traitées conformément à notre Politique de Confidentialité et à la loi n° 09-08 relative à la protection des données personnelles."
+    },
+    "section11": {
+      "title": "11. Réclamations",
+      "content": "Pour toute réclamation, contactez-nous à contact@resetclub.ma ou au +212 689 464 650. Nous nous engageons à répondre sous 48 heures."
+    },
+    "section12": {
+      "title": "12. Droit applicable",
+      "content": "Les présentes CGV sont régies par le droit marocain. Tout litige sera soumis à la compétence des tribunaux de Rabat."
+    }
   }
 }
