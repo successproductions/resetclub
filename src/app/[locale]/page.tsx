@@ -3,7 +3,7 @@ import { Metadata } from 'next';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import Hero from '@/components/sections/Hero';
-import LogoBanner from '@/components/sections/LogoBanner';
+// LogoBanner removed - not used
 import IntroSection from '@/components/sections/IntroSection';
 import WhyResetClub from '@/components/sections/WhyResetClub';
 import KeyFigures from '@/components/sections/KeyFigures';

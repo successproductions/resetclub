@@ -3,7 +3,7 @@
 import Image from 'next/image';
 import { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
-import { Ticket, Sparkles, Mail, CheckCircle, Gift, Calendar } from 'lucide-react';
+import { Ticket, Mail, CheckCircle, Gift, Calendar } from 'lucide-react';
 import MasterClassPopup from '@/components/ui/MasterClassPopup';
 
 export default function MasterClassPage() {

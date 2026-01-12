@@ -2,7 +2,7 @@
 
 import { usePathname } from 'next/navigation';
 import WhatsAppButton from '../ui/WhatsAppButton';
-import PopupOffer from '../ui/PopupOffer';
+// PopupOffer removed - using PopupOfferV2
 import NotificationWidget from '../ui/NotificationWidget';
 import PopupOfferV2 from '../ui/PopupOfferV2';
 

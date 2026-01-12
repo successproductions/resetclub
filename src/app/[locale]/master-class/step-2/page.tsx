@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import gsap from 'gsap';
-import { Award, Plus, Minus } from 'lucide-react';
+import { Plus, Minus } from 'lucide-react';
 import Image from 'next/image';
 
 export default function MasterClassStep2() {
