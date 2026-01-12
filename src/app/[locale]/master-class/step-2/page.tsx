@@ -11,6 +11,8 @@ export default function MasterClassStep2() {
   const videoRef = useRef<HTMLDivElement>(null);
   const guaranteeRef = useRef<HTMLDivElement>(null);
   const ticketsRef = useRef<HTMLDivElement>(null);
+  const progressBarRef = useRef<HTMLDivElement>(null);
+  const progressTextRef = useRef<HTMLDivElement>(null);
   const [openFAQ, setOpenFAQ] = useState<number | null>(0);
 
   useEffect(() => {
@@ -23,6 +25,38 @@ export default function MasterClassStep2() {
           videoRef.current,
           { opacity: 0, y: 30 },
           { opacity: 1, y: 0, duration: 0.8 }
+        );
+      }
+
+      // Animate progress bar
+      if (progressBarRef.current && progressTextRef.current) {
+        gsap.fromTo(
+          progressBarRef.current,
+          { width: '0%' },
+          { 
+            width: '73%', 
+            duration: 1.5, 
+            ease: 'power2.out',
+            delay: 0.3
+          }
+        );
+        
+        // Animate counter from 0 to 73
+        gsap.fromTo(
+          progressTextRef.current,
+          { innerText: 0 },
+          {
+            innerText: 73,
+            duration: 1.5,
+            ease: 'power2.out',
+            delay: 0.3,
+            snap: { innerText: 1 },
+            onUpdate: function() {
+              if (progressTextRef.current) {
+                progressTextRef.current.innerText = Math.round(Number(progressTextRef.current.innerText)) + '%';
+              }
+            }
+          }
         );
       }
     });
@@ -56,11 +90,15 @@ export default function MasterClassStep2() {
           <div className="w-full mb-8">
             <div className="relative w-full h-5 bg-gray-200 rounded-full overflow-hidden">
               <div
-                className="absolute top-0 left-0 h-full bg-gradient-to-r from-[#51b1aa] to-[#91dbd3] transition-all duration-500"
-                style={{ width: '73%' }}
+                ref={progressBarRef}
+                className="absolute top-0 left-0 h-full bg-gradient-to-r from-[#51b1aa] to-[#91dbd3]"
+                style={{ width: '0%' }}
               >
-                <div className="absolute right-2 top-1/2 -translate-y-1/2 text-white text-xs font-bold">
-                  73%
+                <div 
+                  ref={progressTextRef}
+                  className="absolute right-2 top-1/2 -translate-y-1/2 text-white text-xs font-bold"
+                >
+                  0%
                 </div>
               </div>
             </div>
