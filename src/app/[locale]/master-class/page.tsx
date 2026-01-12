@@ -177,12 +177,12 @@ export default function MasterClassPage() {
         <div className="max-w-6xl mx-auto">
           {/* Section Title */}
           <div className="text-center mb-12">
-            <h1 ref={headlineRef} className="text-2xl md:text-3xl lg:text-4xl font-medium font-graphik text-white mb-1 ">
+            <h2 className="text-2xl md:text-3xl lg:text-4xl font-medium font-graphik text-white mb-1 ">
               <span className="block md:mb-1">Une Masterclass inédite, riche, et pensée </span>
               <span className="text-[#cbb9a7]">pour éveiller votre conscience corporelle.</span>
               <span className="block md:mt-1">Sans jargon. Sans pression.</span>
-            </h1>
-            <p ref={descRef} className="text-xs md:text-lg text-white mb-2 max-w-2xl mx-auto">
+            </h2>
+            <p className="text-xs md:text-lg text-white mb-2 max-w-2xl mx-auto">
               Juste une transmission claire et puissante, menée par Nahed Rachad, pour comprendre ce que votre corps essaie de vous dire depuis des années.
             </p>
           </div>
