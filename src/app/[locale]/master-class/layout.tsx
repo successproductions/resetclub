@@ -2,11 +2,11 @@ import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: 'Masterclass Biohacking Féminin | Nahed Rachad - RESET Club',
-  description: 'Découvrez les secrets du biohacking féminin avec Nahed Rachad. Une journée pour comprendre ce qui bloque votre énergie, métabolisme et silhouette. Réservez votre accès gratuit maintenant.',
+  description: 'Découvrez les secrets du biohacking féminin avec Nahed Rachad. Comprenez ce qui bloque votre énergie et métabolisme. Accès gratuit.',
   keywords: 'biohacking féminin, masterclass, Nahed Rachad, RESET Club, énergie, métabolisme, bien-être, transformation, Maroc',
   openGraph: {
     title: 'Masterclass Biohacking Féminin | Nahed Rachad',
-    description: 'Une journée pour découvrir les méthodes inédites du biohacking féminin et comprendre ce qui bloque réellement votre énergie.',
+    description: 'Découvrez les secrets du biohacking féminin avec Nahed Rachad. Accès gratuit.',
     type: 'website',
     locale: 'fr_FR',
     images: [

@@ -162,7 +162,7 @@ export default function MasterClassPage() {
         {/* Bottom Wave SVG - Fixed at bottom */}
         <div className="absolute bottom-0 left-0 w-full z-10 h-[200px]">
           <Image
-            src="https://framerusercontent.com/images/fX4qDtjEx58RDMEQ2paoAsRYtqI.svg?width=1440&height=220"
+            src="/images/master/wave-decoration.svg"
             alt="Wave decoration"
             fill
             className="object-cover"
