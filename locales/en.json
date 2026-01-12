@@ -597,8 +597,10 @@
     },
     "section6": {
       "title": "6. Right of Withdrawal",
-      "content1": "In accordance with law n° 31-08, the 7-day withdrawal right does not apply to services performed on a specific date (assessments, center treatments, live masterclass).",
-      "content2": "For digital content (RESET 360™ platform access), the withdrawal right expires upon content access."
+      "content1": "In accordance with Moroccan law n° 31-08 on consumer protection, the customer has a 7-day period to exercise their right of withdrawal from the date of contract conclusion.",
+      "content2": "However, pursuant to Article 36 of this law, the right of withdrawal cannot be exercised for services whose execution has begun, with the consumer's agreement, before the end of the 7-day period.",
+      "content3": "The following are therefore excluded from the right of withdrawal: completed assessments, center treatments performed, live masterclasses already broadcast, and digital content upon first access.",
+      "content4": "To exercise your right of withdrawal in eligible cases, send an email to contact@resetclub.ma within 7 days of your order."
     },
     "section7": {
       "title": "7. Cancellation and Refund",

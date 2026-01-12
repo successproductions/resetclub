@@ -80,14 +80,16 @@ export default function CGVPage() {
             </ul>
           </section>
 
-          {/* Section 6 */}
-          <section className="bg-white rounded-xl p-6 shadow-sm">
+          {/* Section 6 - Droit de rétractation */}
+          <section className="bg-white rounded-xl p-6 shadow-sm border-l-4 border-[#51b1aa]">
             <h2 className="text-xl! font-semibold text-gray-900 mb-3">
               {t('section6.title')}
             </h2>
             <ul className="space-y-2 text-gray-700">
               <li>{t('section6.content1')}</li>
               <li>{t('section6.content2')}</li>
+              <li>{t('section6.content3')}</li>
+              <li className="font-medium text-[#51b1aa]">{t('section6.content4')}</li>
             </ul>
           </section>
 

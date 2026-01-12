@@ -651,8 +651,10 @@
     },
     "section6": {
       "title": "6. Droit de rétractation",
-      "content1": "Conformément à la loi n° 31-08, le droit de rétractation de 7 jours ne s'applique pas aux prestations exécutées à une date déterminée (bilans, soins en centre, masterclass en direct).",
-      "content2": "Pour les contenus numériques (accès plateforme RESET 360™), le droit de rétractation expire dès l'accès au contenu."
+      "content1": "Conformément à la loi marocaine n° 31-08 édictant des mesures de protection du consommateur, le client dispose d'un délai de 7 jours pour exercer son droit de rétractation à compter de la conclusion du contrat.",
+      "content2": "Toutefois, conformément à l'article 36 de cette loi, le droit de rétractation ne peut être exercé pour les prestations de services dont l'exécution a commencé, avec l'accord du consommateur, avant la fin du délai de 7 jours.",
+      "content3": "Sont donc exclus du droit de rétractation : les bilans réalisés, les soins en centre effectués, les masterclass en direct déjà diffusées, et les contenus numériques dès leur premier accès.",
+      "content4": "Pour exercer votre droit de rétractation dans les cas éligibles, envoyez un email à contact@resetclub.ma dans le délai de 7 jours suivant votre commande."
     },
     "section7": {
       "title": "7. Annulation et remboursement",
