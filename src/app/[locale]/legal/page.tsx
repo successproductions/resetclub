@@ -56,7 +56,7 @@ export default function LegalPage() {
               <p className="text-gray-700 leading-relaxed">
                 <strong>Raison sociale :</strong> EXTBODY<br />
                 <strong>Forme juridique :</strong> SARL AU<br />
-                <strong>N° d'immatriculation :</strong> 190925<br />
+                <strong>N° d&apos;immatriculation :</strong> 190925<br />
                 <strong>Nom commercial :</strong> Reset Club™<br />
                 <strong>Adresse du siège social :</strong> Rabat, Maroc<br />
                 <strong>Email :</strong> contact@resetclub.ma<br />
