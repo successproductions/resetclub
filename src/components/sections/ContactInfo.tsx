@@ -77,7 +77,7 @@ export default function ContactInfo() {
       <div className="bg-white rounded-sm shadow-lg p-2 md:p-4">
         <div className="aspect-video rounded-sm overflow-hidden">
           <iframe
-            src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d1134.002295986668!2d-6.8780724126678034!3d33.95305643512945!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e1!3m2!1sfr!2sma!4v1759336647515!5m2!1sfr!2sma"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d26474.347470417542!2d-6.884208715234361!3d33.959296680415896!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xda7159a5f82d723%3A0xee1529345ea67802!2sRESET%20Club!5e0!3m2!1sen!2sma!4v1776248536922!5m2!1sen!2sma"
             width="100%"
             height="100%"
             style={{ border: 0 }}
