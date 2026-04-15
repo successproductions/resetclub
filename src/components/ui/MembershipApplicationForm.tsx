@@ -186,7 +186,7 @@ export default function MembershipApplicationForm({ isOpen, onClose }: Membershi
   if (!isOpen) return null;
  
   const handleContactTeam = () => {
-    const whatsappNumber = '212600000000'; // Replace with actual WhatsApp number
+    const whatsappNumber = '212689464650'; // Replace with actual WhatsApp number
     const message = encodeURIComponent('Bonjour ! J\'ai déjà rempli le formulaire du diagnostic. Je souhaite obtenir plus d\'informations.');
     window.open(`https://wa.me/${whatsappNumber}?text=${message}`, '_blank');
   };

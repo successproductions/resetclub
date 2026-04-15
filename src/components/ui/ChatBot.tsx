@@ -17,7 +17,7 @@ interface ChatBotProps {
   phoneNumber?: string;
 }
 
-export default function ChatBot({ onClose, phoneNumber = '+212600000000' }: ChatBotProps) {
+export default function ChatBot({ onClose, phoneNumber = '+212689464650' }: ChatBotProps) {
   const t = useTranslations('ChatBot');
   const tWhatsApp = useTranslations('WhatsApp');
   const [messageIdCounter, setMessageIdCounter] = useState(2);

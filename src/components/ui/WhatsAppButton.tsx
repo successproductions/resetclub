@@ -12,7 +12,7 @@ interface WhatsAppButtonProps {
 }
 
 export default function WhatsAppButton({
-  phoneNumber = '+212600000000',
+  phoneNumber = '+212689464650',
   message = '',
   className = ''
 }: WhatsAppButtonProps) {

@@ -399,7 +399,7 @@ Notre équipe vous répond généralement en quelques minutes. 🌸`,
     ) {
       showContactBranch();
     } else if (option === 'Contacter l\'équipe') {
-      const whatsappNumber = '212600000000'; // Replace with actual WhatsApp number
+      const whatsappNumber = '212689464650'; // Replace with actual WhatsApp number
       const message = encodeURIComponent('Bonjour ! Je souhaite obtenir plus d\'informations sur le Bilan Reset™️.');
       window.open(`https://wa.me/${whatsappNumber}?text=${message}`, '_blank');
 
