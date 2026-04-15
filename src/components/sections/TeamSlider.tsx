@@ -11,8 +11,8 @@ const TeamSlider: React.FC = () => {
   const teamMembers = [
     {
       id: 1,
-      key: 'siam',
-      image: "/images/siam.jpeg"
+      key: 'Siham',
+      image: "/images/Siham.jpeg"
     },
     {
       id: 2,
