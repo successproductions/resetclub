@@ -3,7 +3,7 @@ import crypto from 'crypto';
 import nodemailer from 'nodemailer';
 
 const CMI_CONFIG = {
-  storeKey: process.env.CMI_STORE_KEY || process.env.CMI_STORE_KEY_TEST || process.env.CMI_STORE_KEY_PROD || '',
+  storeKey: process.env.CMI_STORE_KEY_PROD || 'TEST1234',
 };
 
 const IGNORE_HASH_MISMATCH =

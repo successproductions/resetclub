@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import crypto from 'crypto';
 
 const CMI_CONFIG = {
-  storeKey: process.env.CMI_STORE_KEY || process.env.CMI_STORE_KEY_TEST || process.env.CMI_STORE_KEY_PROD || '',
+  storeKey: process.env.CMI_STORE_KEY_PROD || 'TEST1234',
 };
 
 function decodeHtmlEntities(str: string): string {

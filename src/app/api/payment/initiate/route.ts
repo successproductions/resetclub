@@ -2,10 +2,10 @@ import { NextRequest, NextResponse } from 'next/server';
 import crypto from 'crypto';
 
 const CMI_CONFIG = {
-  clientId:   process.env.CMI_CLIENT_ID || process.env.CMI_CLIENT_ID_TEST || process.env.CMI_CLIENT_ID_PROD || '',
-  storeKey:   process.env.CMI_STORE_KEY || process.env.CMI_STORE_KEY_TEST || process.env.CMI_STORE_KEY_PROD || '',
-  gatewayUrl: process.env.CMI_GATEWAY_URL || process.env.CMI_GATEWAY_URL_TEST || process.env.CMI_GATEWAY_URL_PROD || '',
-  currency:   process.env.CMI_CURRENCY || process.env.CMI_CURRENCY_TEST || process.env.CMI_CURRENCY_PROD || '504',
+  clientId:   process.env.CMI_CLIENT_ID_PROD || process.env.CMI_CLIENT_ID || process.env.CMI_CLIENT_ID_TEST || '',
+  storeKey:   process.env.CMI_STORE_KEY_PROD || 'TEST1234',
+  gatewayUrl: process.env.CMI_GATEWAY_URL_PROD || process.env.CMI_GATEWAY_URL || process.env.CMI_GATEWAY_URL_TEST || '',
+  currency:   process.env.CMI_CURRENCY_PROD || process.env.CMI_CURRENCY || process.env.CMI_CURRENCY_TEST || '504',
 };
 
 interface PaymentRequest {
