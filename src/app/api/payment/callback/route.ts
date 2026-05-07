@@ -6,6 +6,9 @@ const CMI_CONFIG = {
   storeKey: process.env.CMI_STORE_KEY || process.env.CMI_STORE_KEY_TEST || process.env.CMI_STORE_KEY_PROD || '',
 };
 
+const IGNORE_HASH_MISMATCH =
+  process.env.CMI_IGNORE_CALLBACK_HASH_MISMATCH === 'true';
+
 function decodeHtmlEntities(str: string): string {
   return str
     .replace(/&amp;/g,  '&')
@@ -108,17 +111,28 @@ export async function POST(request: NextRequest) {
     const calculatedHash = generateHash(params, CMI_CONFIG.storeKey);
 
     if (receivedHash !== calculatedHash) {
-      console.error('CMI Callback: Hash mismatch', { receivedHash, calculatedHash });
-      return new NextResponse('FAILURE', {
-        status:  200,
-        headers: { 'Content-Type': 'text/plain', 'Cache-Control': 'no-store' },
+      console.error('CMI Callback: Hash mismatch', {
+        receivedHash,
+        calculatedHash,
+        storeKeyConfigured: Boolean(CMI_CONFIG.storeKey),
       });
+
+      if (!IGNORE_HASH_MISMATCH) {
+        return new NextResponse('FAILURE', {
+          status:  200,
+          headers: { 'Content-Type': 'text/plain' },
+        });
+      }
+
+      console.warn('CMI Callback: temporarily ignoring hash mismatch because CMI_IGNORE_CALLBACK_HASH_MISMATCH=true');
     }
 
     const procReturnCode = params['ProcReturnCode'];
 
     if (procReturnCode === '00') {
       const callbackAction = process.env.CMI_AUTO_POSTAUTH === 'false' ? 'APPROVED' : 'ACTION=POSTAUTH';
+
+      console.log('CMI Callback: approved payment, returning', callbackAction);
 
       // Fire-and-forget emails AFTER responding to CMI
       after(async () => {
