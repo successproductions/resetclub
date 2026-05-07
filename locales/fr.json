@@ -8,8 +8,8 @@
   },
   "Hero": {
     "title": "Réinitialisez votre corps, votre esprit et vos émotions",
-    "subtitle": "Le protocole signature In-Out-Reset™ allie neurosciences, biohacking et coaching transformationnel pour un changement durable et mesurable",
-    "cta": "Réservez votre bilan personnalisé"
+    "subtitle": "Comprendre votre métabolisme et retrouver votre énergie grâce au biohacking et à une équipe d'experts pluridisciplinaires.",
+    "cta": "Réserver mon Bilan RESET™"
   },
   "HomePage": {
     "title": "",
@@ -192,8 +192,8 @@
     }
   },
   "PracticeComparison": {
-    "title": "Pourquoi choisir Reset Club ?",
-    "subtitle": "Parce que vous méritez plus qu’un simple soin. Reset Club, c’est la première expérience où la science rencontre la transformation. Chaque protocole est conçu pour rééquilibrer le corps, l’esprit, les émotions et durablement.  ||  Holistique et intégrée, Suivi personnalisé à long terme, Méthode In-Out-Reset exclusive, Équipe pluridisciplinaire d'experts,Transformation durable et profonde",
+    "title": "Chez Reset Club, on ne vous apprend pas à maigrir.",
+    "subtitle": "On vous apprend à comprendre votre corps. Fatigue, poids qui résiste, sommeil perturbé… Ces signaux indiquent que le corps est déséquilibré et doit être rééquilibré. C'est précisément ce que nous faisons au Reset Club.",
     "comparisons": {
       "approach": {
         "criteria": "SUPPORT PERSONNALISÉ & COMMUNICATION DÉDIÉE",
@@ -552,6 +552,8 @@
       "fullName": "Nom complet",
       "email": "E-mail",
       "phone": "Téléphone",
+      "address": "Adresse",
+      "city": "Ville",
       "submit": "Je réserve ce créneau"
     },
     "securePayment": "PAIEMENT SÉCURISÉ"

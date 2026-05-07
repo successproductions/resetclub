@@ -5,6 +5,14 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useTranslations } from 'next-intl';
 
+const PaymentSecurityLogos = ({ className = '' }: { className?: string }) => (
+  <div className={`flex flex-wrap items-center gap-4 ${className}`}>
+    <Image src="/images/payment-security/logo_cmi.png" alt="CMI" width={92} height={36} className="h-9 w-auto object-contain" />
+    <Image src="/images/payment-security/tn_verified_by_visa.png" alt="Verified by Visa" width={92} height={36} className="h-9 w-auto object-contain" />
+    <Image src="/images/payment-security/secure_code_logo.png" alt="Mastercard SecureCode" width={112} height={36} className="h-9 w-auto object-contain" />
+  </div>
+);
+
 const Footer: React.FC = () => {
   const t = useTranslations('Footer');
   const [currentYear, setCurrentYear] = useState<number>(2025);
@@ -129,6 +137,8 @@ const Footer: React.FC = () => {
                   </svg>
                 </Link>
               </div>
+
+              <PaymentSecurityLogos className="mt-5" />
             </div>
           </div>
 
@@ -267,6 +277,8 @@ const Footer: React.FC = () => {
             </svg>
           </Link>
         </div>
+
+        <PaymentSecurityLogos className="justify-center mb-8" />
 
         {/* Copyright and Rights */}
         <div className="mb-6">

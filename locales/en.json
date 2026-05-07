@@ -498,6 +498,8 @@
       "fullName": "Full Name",
       "email": "Email",
       "phone": "Phone",
+      "address": "Address",
+      "city": "City",
       "submit": "I book this slot"
     },
     "securePayment": "SECURE PAYMENT"
