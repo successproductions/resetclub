@@ -13,7 +13,7 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Prepare data for Google Sheets
+    // data for Google Sheets
     const sheetData = {
       formType: 'master-class',
       timestamp: new Date().toISOString(),
