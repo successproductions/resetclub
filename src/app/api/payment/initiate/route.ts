@@ -61,6 +61,19 @@ function generateHash(params: Record<string, string>, storeKey: string): string 
 
 export async function POST(request: NextRequest) {
   try {
+    const missingConfig = [];
+    if (!CMI_CONFIG.clientId) missingConfig.push('CMI_CLIENT_ID');
+    if (!CMI_CONFIG.storeKey) missingConfig.push('CMI_STORE_KEY');
+    if (!CMI_CONFIG.gatewayUrl) missingConfig.push('CMI_GATEWAY_URL');
+
+    if (missingConfig.length > 0) {
+      console.error('CMI payment configuration missing:', missingConfig);
+      return NextResponse.json(
+        { error: 'CMI payment is not configured', missingConfig },
+        { status: 500 }
+      );
+    }
+
     const body: PaymentRequest = await request.json();
     const { fullName, email, phone, address, city, amount, orderId, pageSlug } = body;
 
