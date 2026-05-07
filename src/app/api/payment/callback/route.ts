@@ -118,6 +118,8 @@ export async function POST(request: NextRequest) {
     const procReturnCode = params['ProcReturnCode'];
 
     if (procReturnCode === '00') {
+      const callbackAction = process.env.CMI_AUTO_POSTAUTH === 'false' ? 'APPROVED' : 'ACTION=POSTAUTH';
+
       // Fire-and-forget emails AFTER responding to CMI
       after(async () => {
         try {
@@ -127,12 +129,10 @@ export async function POST(request: NextRequest) {
         }
       });
 
-      const callbackAction = process.env.CMI_AUTO_POSTAUTH === 'false' ? 'APPROVED' : 'ACTION=POSTAUTH';
-
-      // MUST respond with plain text within ~10 seconds
+      // MUST respond with exact plain text immediately, like the official CMI PHP sample.
       return new NextResponse(callbackAction, {
         status:  200,
-        headers: { 'Content-Type': 'text/plain', 'Cache-Control': 'no-store' },
+        headers: { 'Content-Type': 'text/plain' },
       });
     } else {
       console.warn('CMI Callback: Payment not approved, code:', procReturnCode);
