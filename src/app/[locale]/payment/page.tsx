@@ -10,10 +10,17 @@ import Footer from '@/components/layout/Footer';
 // CMI fee: 2.97% — applied server-side but declared here for reference
 const RESET_CLUB_AMOUNT_MAD = 1500; // Base price in MAD — adjust as needed
 
+function getCertificationOrderId(value: string | null): string | null {
+  if (!value) return null;
+  const cleaned = value.trim().toUpperCase();
+  return /^[A-Z0-9-]{6,64}$/.test(cleaned) ? cleaned : null;
+}
+
 export default function PaymentPage() {
   const t = useTranslations('PaymentPage');
   const searchParams = useSearchParams();
   const hasError = searchParams.get('error') === '1';
+  const certificationOrderId = getCertificationOrderId(searchParams.get('testOrderId'));
 
   const [formData, setFormData] = useState({
     fullName: '',
@@ -41,7 +48,7 @@ export default function PaymentPage() {
 
     try {
       // Generate unique order ID
-      const orderId = `RC-${Date.now().toString(36)}${Math.random().toString(36).substring(2, 7)}`.toUpperCase();
+      const orderId = certificationOrderId || `RC-${Date.now().toString(36)}${Math.random().toString(36).substring(2, 7)}`.toUpperCase();
 
       // Apply 2.97% CMI fee
       const totalAmount = Math.ceil(RESET_CLUB_AMOUNT_MAD * 1.0297 * 100) / 100;
