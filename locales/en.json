@@ -282,16 +282,17 @@
     }
   },
   "WhatsApp": {
-    "tooltip": "Contact us on WhatsApp",
+    "tooltip": "Open the RESET assistant",
     "defaultMessage": "Hello! I'm interested in your ResetClub transformation services. Can you give me more information?",
-    "aria-label": "Contact on WhatsApp",
-    "buttonText": "WhatsApp Us",
+    "aria-label": "Open the RESET assistant",
+    "buttonText": "RESET Assistant",
     "startChat": "Start Chat",
-    "chatWithNahed": "Chat with Nahed AI",
+    "chatWithNahed": "Chat with the RESET assistant",
     "welcomeTitle": "Welcome to RESET CLUB.",
-    "welcomeMessage": "Click below to speak directly with us.",
-    "helpMessage": "If you have any questions, our team is here to help you.",
-    "subtitle": "For appointments & questions"
+    "welcomeMessage": "Tell us your goal and we will guide you to the right next step.",
+    "helpMessage": "Free assessment, protocols, availability: the assistant is here to orient you.",
+    "subtitle": "Assessment & questions",
+    "closeLabel": "Close assistant"
   },
   "PressBanner": {
     "title": "They talk about innovation, we talk about revolution.",
@@ -432,11 +433,11 @@
     "brand": "RESET CLUB"
   },
   "ChatBot": {
-    "subtitle": "Your holistic coach",
+    "subtitle": "Assessment & guidance",
     "bookingMessage": "Hello! I would like to book my Reset™ Assessment. Can you help me choose a time slot?",
     "advisorMessage": "Hello! I would like to speak with an advisor to learn more about the Reset Club™ programs.",
     "phase1": {
-      "greeting": "Hello 🌿\n\nI'm Nahed, founder of Reset Club™.\n\nHere, we don't try to transform you.\nWe help you find yourself.\n\nTake a deep breath…\nand take this moment for you.",
+      "greeting": "Hello 🌿\n\nWelcome to Reset Club™, Rabat's women's biohacking and 360° transformation center.\n\nHere, we do not force change.\nWe help you understand your body, restore your energy, and choose the right next step.",
       "question": "Tell me simply… today, do you want to:",
       "weightLoss": "Lose weight",
       "energy": "Regain your energy",
@@ -453,8 +454,8 @@
       "bonus": "Want me to tell you more? 💫"
     },
     "phase4": {
-      "presentation": "Let me introduce myself 🌿\n\nMy name is Nahed, I'm a holistic coach,\nand I created Reset Club™ to help women\nreconnect with their natural energy.",
-      "philosophy": "Because your body knows.\nYour mind knows.\n\nIt just needs to be given the opportunity\nto breathe, to free itself,\nand to start again.\n\nThat's what Reset Club™ does."
+      "presentation": "Reset Club™ is designed for women who want to understand their body without pressure, without judgment, and with a clear method.",
+      "philosophy": "Your body is already giving signals.\n\nOur role is to make them readable, then guide you toward the right protocol: nutrition, technologies, recovery, sleep, stress, and support."
     },
     "phase5": {
       "intro": "Now, you have several options 🌸",
@@ -481,7 +482,7 @@
       "program": "Here's your exclusive gift:\nthe Mini Reset at Home™.\n\nA 3-day program with rituals and affirmations,\nto reconnect your body and mind before your assessment.\n\nDay 1: Breathe clarity.\nDay 2: Awaken your energy.\nDay 3: Calm your mind.\n\nYou'll receive the guide by email 📧"
     },
     "phase10": {
-      "closing": "Hey 🌸\n\nIt's Nahed.\nI just wanted to say well done.\n\nYou just took a step towards yourself.\nTowards your balance.\nTowards your true energy.\n\nYou'll see…\nYour Reset starts right now."
+      "closing": "Well done 🌸\n\nYou just took a first step toward more clarity, energy, and balance.\n\nYour Reset starts here."
     },
     "options": {
       "yes": "Yes, please 💫",

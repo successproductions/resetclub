@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import { useTranslations } from 'next-intl';
 import Image from 'next/image';
+import { Sparkles, X } from 'lucide-react';
 
 interface Message {
   id: number;
@@ -31,7 +32,6 @@ export default function ChatBot({ onClose, phoneNumber = '+212689464650' }: Chat
   ]);
   const [currentPhase, setCurrentPhase] = useState(1);
   const [showTyping, setShowTyping] = useState(false);
-  const [userChoice, setUserChoice] = useState<string>('');
 
   const addMessage = (text: string, type: 'bot' | 'user', options?: { label: string; value: string }[]) => {
     setMessages((prev) => {
@@ -50,7 +50,6 @@ export default function ChatBot({ onClose, phoneNumber = '+212689464650' }: Chat
   const handleUserChoice = (choice: string, label: string) => {
     // Add user's choice as a message
     addMessage(label, 'user');
-    setUserChoice(choice);
 
     // Show typing indicator
     setShowTyping(true);
@@ -189,49 +188,51 @@ export default function ChatBot({ onClose, phoneNumber = '+212689464650' }: Chat
   return (
     <div className="flex flex-col h-full bg-white font-graphik">
       {/* Header */}
-      <div className="bg-white text-gray-900 px-6 py-4 flex items-center justify-between border-b border-gray-200">
+      <div className="bg-[#111111] text-white px-5 py-4 flex items-center justify-between border-b border-white/10">
         <div className="flex items-center space-x-3">
-          <div className="w-10 h-10 bg-white flex items-center justify-center">
+          <div className="relative flex h-11 w-11 items-center justify-center rounded-full bg-[#f5efe8]">
             <Image
-                                src="/images/logogras.png"
-                                alt="Reset Club Logo"
-                                width={32}
-                                height={32}
-                                className="object-contain"
-                              />
+              src="/images/logogras.png"
+              alt="Reset Club Logo"
+              width={30}
+              height={30}
+              className="object-contain"
+            />
+            <span className="absolute -right-0.5 -top-0.5 flex h-4 w-4 items-center justify-center rounded-full bg-[#cbb9a7] text-black">
+              <Sparkles className="h-2.5 w-2.5" />
+            </span>
           </div>
           <div>
-            <p className="font-graphik font-medium text-xl text-gray-900">Nahed - Reset Club</p>
-            <p className="text-sm text-gray-900 font-graphik">{t('subtitle')}</p>
+            <p className="font-graphik text-base font-semibold leading-tight text-white">Assistante RESET</p>
+            <p className="text-xs text-white/65 font-graphik">{t('subtitle')}</p>
           </div>
         </div>
         {onClose && (
           <button
             onClick={onClose}
-            className="text-gray-900 hover:text-gray-600 transition-colors"
+            className="flex h-9 w-9 items-center justify-center rounded-full text-white/70 transition-colors hover:bg-white/10 hover:text-white"
+            aria-label={tWhatsApp('closeLabel')}
           >
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-            </svg>
+            <X className="h-5 w-5" />
           </button>
         )}
       </div>
 
       {/* Messages Container */}
-      <div className="flex-1 overflow-y-auto p-6 space-y-4 bg-white">
+      <div className="flex-1 overflow-y-auto space-y-4 bg-[#fbf8f4] p-4 sm:p-5">
         {messages.map((message) => (
           <div
             key={message.id}
             className={`flex ${message.type === 'user' ? 'justify-end' : 'justify-start'}`}
           >
             <div
-              className={`max-w-[80%] px-4 py-3 ${
+              className={`max-w-[84%] rounded-[6px] px-4 py-3 shadow-sm ${
                 message.type === 'user'
-                  ? 'bg-white text-gray-900 border border-[#52422e]'
-                  : 'bg-white text-gray-900 border border-gray-700'
+                  ? 'bg-[#111111] text-white'
+                  : 'bg-white text-gray-900 border border-black/10'
               }`}
             >
-              <p className="text-sm whitespace-pre-line font-graphik">{message.text}</p>
+              <p className="text-sm leading-relaxed whitespace-pre-line font-graphik">{message.text}</p>
 
               {/* Options */}
               {message.options && message.type === 'bot' && (
@@ -240,7 +241,7 @@ export default function ChatBot({ onClose, phoneNumber = '+212689464650' }: Chat
                     <button
                       key={index}
                       onClick={() => handleUserChoice(option.value, option.label)}
-                      className="w-full text-left px-4 py-2 bg-white hover:bg-gray-50 text-gray-900 transition-colors text-sm font-medium border border-[#52422e] font-graphik"
+                      className="w-full rounded-[5px] border border-black/15 bg-[#f5efe8] px-4 py-2.5 text-left font-graphik text-sm! font-medium text-gray-950 transition-colors hover:border-black hover:bg-white"
                     >
                       {option.label}
                     </button>
@@ -254,7 +255,7 @@ export default function ChatBot({ onClose, phoneNumber = '+212689464650' }: Chat
         {/* Typing Indicator */}
         {showTyping && (
           <div className="flex justify-start">
-            <div className="bg-white px-4 py-3 border border-gray-200">
+            <div className="rounded-[6px] border border-black/10 bg-white px-4 py-3 shadow-sm">
               <div className="flex items-center space-x-1">
                 <div className="typing-dots">
                   <div className="dot dot1"></div>
@@ -269,23 +270,23 @@ export default function ChatBot({ onClose, phoneNumber = '+212689464650' }: Chat
 
       {/* Initial Options */}
       {currentPhase === 1 && messages.length === 1 && (
-        <div className="p-6 bg-white border-t border-gray-200 space-y-2">
-          <p className="text-sm text-gray-900 mb-3 font-graphik">{t('phase1.question')}</p>
+        <div className="space-y-2 border-t border-black/10 bg-white p-4 sm:p-5">
+          <p className="mb-3 font-graphik text-sm text-gray-700">{t('phase1.question')}</p>
           <button
             onClick={() => handleUserChoice('weightLoss', t('phase1.weightLoss'))}
-            className="w-full px-4 py-3 bg-white hover:bg-gray-50 text-gray-900 border border-[#52422e] transition-colors text-sm font-medium font-graphik"
+            className="w-full rounded-[5px] border border-black/15 bg-[#111111] px-4 py-3 font-graphik text-sm! font-semibold text-white transition-colors hover:bg-black"
           >
             {t('phase1.weightLoss')}
           </button>
           <button
             onClick={() => handleUserChoice('energy', t('phase1.energy'))}
-            className="w-full px-4 py-3 bg-white hover:bg-gray-50 text-gray-900 border border-[#52422e] transition-colors text-sm font-medium font-graphik"
+            className="w-full rounded-[5px] border border-black/15 bg-[#f5efe8] px-4 py-3 font-graphik text-sm! font-medium text-gray-950 transition-colors hover:border-black hover:bg-white"
           >
             {t('phase1.energy')}
           </button>
           <button
             onClick={() => handleUserChoice('balance', t('phase1.balance'))}
-            className="w-full px-4 py-3 bg-white hover:bg-gray-50 text-gray-900 border border-[#52422e] transition-colors text-sm font-medium font-graphik"
+            className="w-full rounded-[5px] border border-black/15 bg-[#f5efe8] px-4 py-3 font-graphik text-sm! font-medium text-gray-950 transition-colors hover:border-black hover:bg-white"
           >
             {t('phase1.balance')}
           </button>
