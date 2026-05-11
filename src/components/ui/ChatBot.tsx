@@ -198,9 +198,7 @@ export default function ChatBot({ onClose, phoneNumber = '+212689464650' }: Chat
               height={30}
               className="object-contain"
             />
-            <span className="absolute -right-0.5 -top-0.5 flex h-4 w-4 items-center justify-center rounded-full bg-[#cbb9a7] text-black">
-              <Sparkles className="h-2.5 w-2.5" />
-            </span>
+            
           </div>
           <div>
             <p className="font-graphik text-base font-semibold leading-tight text-white">Assistante RESET</p>
