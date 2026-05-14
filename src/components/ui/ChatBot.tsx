@@ -181,7 +181,7 @@ export default function ChatBot({ onClose }: ChatBotProps) {
         )}
       </div>
 
-      {/* Messages Container */}
+      {/* Messages  */}
       <div className="flex-1 overflow-y-auto space-y-4 bg-[#fbf8f4] p-4 sm:p-5">
         {messages.map((message) => (
           <div
