@@ -7,9 +7,9 @@
     "reserve": "Réserver"
   },
   "Hero": {
-    "title": "Réinitialisez votre corps, votre esprit et vos émotions",
+    "title": "Vous avez tout essayé. Les régimes, le sport, les efforts. Et pourtant  votre corps résiste toujours. mais un problème de biologie ?",
     "subtitle": "Comprendre votre métabolisme et retrouver votre énergie grâce au biohacking et à une équipe d'experts pluridisciplinaires.",
-    "cta": "Réserver mon Bilan RESET™"
+    "cta": "Réserver mon bilan"
   },
   "HomePage": {
     "title": "",
@@ -193,7 +193,7 @@
   },
   "PracticeComparison": {
     "title": "Chez Reset Club, on ne vous apprend pas à maigrir.",
-    "subtitle": "On vous apprend à comprendre votre corps. Fatigue, poids qui résiste, sommeil perturbé… Ces signaux indiquent que le corps est déséquilibré et doit être rééquilibré. C'est précisément ce que nous faisons au Reset Club.",
+    "subtitle": "On vous apprend à comprendre votre corps. Fatigue persistante, poids qui résiste, sommeil perturbé… Ces signaux ne sont pas des fatalités. Ils indiquent que votre corps est déséquilibré  et qu’il attend d’être rééquilibré. C’est précisément ce que nous faisons au Reset Club.",
     "comparisons": {
       "approach": {
         "criteria": "SUPPORT PERSONNALISÉ & COMMUNICATION DÉDIÉE",
