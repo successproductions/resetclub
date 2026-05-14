@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import { useTranslations } from 'next-intl';
 import Image from 'next/image';
-import { Sparkles, X } from 'lucide-react';
+import { X } from 'lucide-react';
 
 interface Message {
   id: number;
@@ -18,7 +18,7 @@ interface ChatBotProps {
   phoneNumber?: string;
 }
 
-export default function ChatBot({ onClose, phoneNumber = '+212689464650' }: ChatBotProps) {
+export default function ChatBot({ onClose }: ChatBotProps) {
   const t = useTranslations('ChatBot');
   const tWhatsApp = useTranslations('WhatsApp');
   const [messageIdCounter, setMessageIdCounter] = useState(2);
@@ -61,122 +61,87 @@ export default function ChatBot({ onClose, phoneNumber = '+212689464650' }: Chat
     }, 1500);
   };
 
+  const showBilan = () => {
+    addMessage(t('bilan.presentation'), 'bot', [
+      { label: t('bilan.book'), value: 'book' },
+      { label: t('bilan.talk'), value: 'talk' },
+      { label: t('bilan.question'), value: 'question' },
+    ]);
+    setCurrentPhase(3);
+  };
+
+  const showClosing = () => {
+    setTimeout(() => {
+      addMessage(t('closing'), 'bot');
+    }, 1200);
+  };
+
+  const showBookResponse = () => {
+    addMessage(t('responses.book'), 'bot');
+    showClosing();
+  };
+
+  const showTalkResponse = () => {
+    addMessage(t('responses.talk'), 'bot');
+    showClosing();
+  };
+
   const processChoice = (choice: string) => {
     switch (currentPhase) {
       case 1:
-        // Phase 2: Identification du besoin dominant
-        const phase2Response = t(`phase2.${choice}`);
-        addMessage(phase2Response, 'bot');
+        addMessage(t(`goalResponses.${choice}`), 'bot', [
+          { label: t('buttons.discoverBilan'), value: 'discoverBilan' },
+        ]);
+        setCurrentPhase(2);
+        break;
 
-        setTimeout(() => {
-          // Phase 3: Présentation du Bilan Reset
-          addMessage(t('phase3.intro'), 'bot');
-          setTimeout(() => {
-            addMessage(t('phase3.details'), 'bot');
-            setTimeout(() => {
-              addMessage(t('phase3.bonus'), 'bot', [
-                { label: t('options.yes'), value: 'yes' },
-                { label: t('options.no'), value: 'no' },
-              ]);
-              setCurrentPhase(3);
-            }, 2000);
-          }, 2000);
-        }, 1500);
+      case 2:
+        if (choice === 'discoverBilan') {
+          showBilan();
+        }
         break;
 
       case 3:
-        // Phase 4: Humanisation
-        if (choice === 'yes') {
-          addMessage(t('phase4.presentation'), 'bot');
-          setTimeout(() => {
-            addMessage(t('phase4.philosophy'), 'bot');
-            setTimeout(() => {
-              // Phase 5: Call to Action
-              addMessage(t('phase5.intro'), 'bot', [
-                { label: t('phase5.bookNow'), value: 'book' },
-                { label: t('phase5.talkToAdvisor'), value: 'talk' },
-                { label: t('phase5.learnMore'), value: 'learn' },
-              ]);
-              setCurrentPhase(5);
-            }, 2000);
-          }, 2000);
-        } else {
-          // Skip to phase 5
-          addMessage(t('phase5.intro'), 'bot', [
-            { label: t('phase5.bookNow'), value: 'book' },
-            { label: t('phase5.talkToAdvisor'), value: 'talk' },
-            { label: t('phase5.learnMore'), value: 'learn' },
+        if (choice === 'book') {
+          showBookResponse();
+        } else if (choice === 'talk') {
+          showTalkResponse();
+        } else if (choice === 'question') {
+          addMessage(t('questions.intro'), 'bot', [
+            { label: t('questions.hesitation'), value: 'hesitation' },
+            { label: t('questions.price'), value: 'price' },
+            { label: t('questions.distance'), value: 'distance' },
+          ]);
+          setCurrentPhase(4);
+        }
+        break;
+
+      case 4:
+        if (choice === 'hesitation') {
+          addMessage(t('questions.hesitationResponse'), 'bot', [
+            { label: t('questions.reserveAfterHesitation'), value: 'book' },
+            { label: t('questions.talkAfterHesitation'), value: 'talk' },
+          ]);
+          setCurrentPhase(5);
+        } else if (choice === 'price') {
+          addMessage(t('questions.priceResponse'), 'bot', [
+            { label: t('questions.talkAfterPrice'), value: 'talk' },
+            { label: t('questions.reserveAfterPrice'), value: 'book' },
+          ]);
+          setCurrentPhase(5);
+        } else if (choice === 'distance') {
+          addMessage(t('questions.distanceResponse'), 'bot', [
+            { label: t('questions.contactTeam'), value: 'talk' },
           ]);
           setCurrentPhase(5);
         }
         break;
 
       case 5:
-        // Phase 5 actions
         if (choice === 'book') {
-          // Navigate directly to WhatsApp (no popup blocker)
-          const bookingMessage = t('bookingMessage');
-          const whatsappUrl = `https://wa.me/${phoneNumber.replace(/\D/g, '')}?text=${encodeURIComponent(bookingMessage)}`;
-          window.location.href = whatsappUrl;
+          showBookResponse();
         } else if (choice === 'talk') {
-          // Navigate directly to WhatsApp (no popup blocker)
-          const advisorMessage = t('advisorMessage');
-          const whatsappUrl = `https://wa.me/${phoneNumber.replace(/\D/g, '')}?text=${encodeURIComponent(advisorMessage)}`;
-          window.location.href = whatsappUrl;
-        } else if (choice === 'learn') {
-          // Show objection handling options
-          addMessage(t('phase6.intro'), 'bot', [
-            { label: t('phase6.hesitation'), value: 'hesitation' },
-            { label: t('phase6.price'), value: 'price' },
-            { label: t('phase6.distance'), value: 'distance' },
-            { label: t('phase6.backToOptions'), value: 'back' },
-          ]);
-          setCurrentPhase(6);
-        }
-        break;
-
-      case 6:
-        // Phase 6: Micro-interactions
-        if (choice === 'back') {
-          addMessage(t('phase5.intro'), 'bot', [
-            { label: t('phase5.bookNow'), value: 'book' },
-            { label: t('phase5.talkToAdvisor'), value: 'talk' },
-            { label: t('phase5.learnMore'), value: 'learn' },
-          ]);
-          setCurrentPhase(5);
-        } else {
-          const response = t(`phase6.${choice}Response`);
-          addMessage(response, 'bot');
-
-          // Offer mini reset program
-          setTimeout(() => {
-            addMessage(t('phase7.intro'), 'bot', [
-              { label: t('phase7.getMiniReset'), value: 'getMini' },
-              { label: t('phase5.bookNow'), value: 'book' },
-            ]);
-            setCurrentPhase(7);
-          }, 2000);
-        }
-        break;
-
-      case 7:
-        // Phase 7: Bonus Mini Reset
-        if (choice === 'getMini') {
-          addMessage(t('phase7.gift'), 'bot');
-          setTimeout(() => {
-            addMessage(t('phase7.program'), 'bot');
-            setTimeout(() => {
-              addMessage(t('phase10.closing'), 'bot', [
-                { label: t('phase5.bookNow'), value: 'book' },
-              ]);
-              setCurrentPhase(5);
-            }, 2000);
-          }, 1500);
-        } else if (choice === 'book') {
-          // Navigate directly to WhatsApp (no popup blocker)
-          const bookingMessage = t('bookingMessage');
-          const whatsappUrl = `https://wa.me/${phoneNumber.replace(/\D/g, '')}?text=${encodeURIComponent(bookingMessage)}`;
-          window.location.href = whatsappUrl;
+          showTalkResponse();
         }
         break;
 
@@ -188,7 +153,7 @@ export default function ChatBot({ onClose, phoneNumber = '+212689464650' }: Chat
   return (
     <div className="flex flex-col h-full bg-white font-graphik">
       {/* Header */}
-      <div className="bg-[#111111] text-white px-5 py-4 flex items-center justify-between border-b border-white/10">
+      <div className="bg-[#5b5148] text-white px-5 py-4 flex items-center justify-between border-b border-white/10">
         <div className="flex items-center space-x-3">
           <div className="relative flex h-11 w-11 items-center justify-center rounded-full bg-[#f5efe8]">
             <Image
@@ -269,24 +234,23 @@ export default function ChatBot({ onClose, phoneNumber = '+212689464650' }: Chat
       {/* Initial Options */}
       {currentPhase === 1 && messages.length === 1 && (
         <div className="space-y-2 border-t border-black/10 bg-white p-4 sm:p-5">
-          <p className="mb-3 font-graphik text-sm text-gray-700">{t('phase1.question')}</p>
           <button
-            onClick={() => handleUserChoice('weightLoss', t('phase1.weightLoss'))}
+            onClick={() => handleUserChoice('weightLoss', t('buttons.weightLoss'))}
             className="w-full rounded-[5px] border border-black/15 bg-[#111111] px-4 py-3 font-graphik text-sm! font-semibold text-white transition-colors hover:bg-black"
           >
-            {t('phase1.weightLoss')}
+            {t('buttons.weightLoss')}
           </button>
           <button
-            onClick={() => handleUserChoice('energy', t('phase1.energy'))}
+            onClick={() => handleUserChoice('energy', t('buttons.energy'))}
             className="w-full rounded-[5px] border border-black/15 bg-[#f5efe8] px-4 py-3 font-graphik text-sm! font-medium text-gray-950 transition-colors hover:border-black hover:bg-white"
           >
-            {t('phase1.energy')}
+            {t('buttons.energy')}
           </button>
           <button
-            onClick={() => handleUserChoice('balance', t('phase1.balance'))}
+            onClick={() => handleUserChoice('balance', t('buttons.balance'))}
             className="w-full rounded-[5px] border border-black/15 bg-[#f5efe8] px-4 py-3 font-graphik text-sm! font-medium text-gray-950 transition-colors hover:border-black hover:bg-white"
           >
-            {t('phase1.balance')}
+            {t('buttons.balance')}
           </button>
         </div>
       )}

@@ -1,8 +1,8 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useTranslations } from 'next-intl';
-import { Bot, Sparkles } from 'lucide-react';
+import { Bot } from 'lucide-react';
 import ChatBot from './ChatBot';
 
 interface WhatsAppButtonProps {
@@ -16,8 +16,20 @@ export default function WhatsAppButton({
 }: WhatsAppButtonProps) {
   const t = useTranslations('WhatsApp');
   const [isOpen, setIsOpen] = useState(false);
+  const hasInteracted = useRef(false);
+
+  useEffect(() => {
+    const timer = window.setTimeout(() => {
+      if (!hasInteracted.current) {
+        setIsOpen(true);
+      }
+    }, 8000);
+
+    return () => window.clearTimeout(timer);
+  }, []);
 
   const toggleWidget = () => {
+    hasInteracted.current = true;
     setIsOpen((current) => !current);
   };
 
@@ -25,8 +37,7 @@ export default function WhatsAppButton({
     <div className={`fixed bottom-5 right-4 z-50 flex flex-col items-end gap-3 sm:bottom-6 sm:right-6 ${className}`}>
       {isOpen && (
         <div
-          className="w-[calc(100vw-2rem)] max-w-[390px] overflow-hidden rounded-md border border-black/10 bg-white shadow-2xl animate-fade-in"
-          style={{ height: 'min(620px, calc(100vh - 7rem))' }}
+          className="chatbot-panel w-[calc(100vw-2rem)] max-w-[390px] overflow-hidden rounded-md border border-black/10 bg-white shadow-2xl animate-fade-in"
         >
           <ChatBot
             onClose={() => setIsOpen(false)}
@@ -71,6 +82,16 @@ export default function WhatsAppButton({
         }
         .animate-fade-in {
           animation: fade-in 0.3s ease-out;
+        }
+
+        .chatbot-panel {
+          height: min(620px, calc(100vh - 7rem));
+        }
+
+        @media (max-width: 640px) {
+          .chatbot-panel {
+            height: 50vh;
+          }
         }
       `}</style>
     </div>

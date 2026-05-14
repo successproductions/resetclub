@@ -455,60 +455,45 @@
   },
   "ChatBot": {
     "subtitle": "Bilan offert & accompagnement",
-    "bookingMessage": "Bonjour ! Je souhaite réserver mon Bilan Reset™. Pouvez-vous m'aider à choisir un créneau ?",
-    "advisorMessage": "Bonjour ! Je souhaite parler à une conseillère pour en savoir plus sur les programmes Reset Club™.",
     "phase1": {
-      "greeting": "Bonjour 🌸\n\nBienvenue chez Reset Club™ Rabat, le premier centre féminin de biohacking & transformation 360° au Maroc.\n\nIci, on ne te change pas.\nOn t'aide à comprendre ton corps, retrouver ton énergie et choisir la bonne prochaine étape.",
-      "question": "Aujourd'hui, tu veux plutôt :",
-      "weightLoss": "Perdre du poids",
-      "energy": "Retrouver ton énergie",
-      "balance": "Rééquilibrer ton corps et ton mental"
+      "greeting": "Bonjour\nBienvenue chez Reset Club™.\nVous êtes exactement là où vous devez être.\nIci, on ne vous change pas.\nOn vous aide à comprendre votre corps \net à retrouver votre énergie.\nPour commencer, dites-moi :\naujourd’hui, vous souhaitez plutôt…"
     },
-    "phase2": {
-      "weightLoss": "Très bien 🌿\n\nBeaucoup de femmes arrivent ici avec cet objectif.\nMais au RESET Club™, on ne regarde pas seulement la silhouette : on analyse l'énergie, l'inflammation, la rétention et l'équilibre intérieur.\n\nTout commence par un bilan précis pour comprendre ton corps avant d'agir.",
-      "energy": "Parfait ⚡\n\nL'énergie n'est pas seulement une question de motivation.\nElle dépend du sommeil, du stress, des carences, de l'inflammation et de ton rythme quotidien.\n\nLe Bilan Reset™ aide à identifier ce qui te vide, puis à construire un protocole adapté.",
-      "balance": "Très bon choix 🌸\n\nQuand le corps et le mental sont sous tension, tout devient plus difficile : sommeil, poids, digestion, humeur.\n\nNotre approche In - Out - Reset aide à retrouver une base plus claire, plus stable, plus vivante."
+    "buttons": {
+      "weightLoss": "Perdre du poids durablement",
+      "energy": "Retrouver mon énergie",
+      "balance": "Rééquilibrer mon corps et mon mental",
+      "discoverBilan": "Découvrir le Bilan Reset™"
     },
-    "phase3": {
-      "intro": "Quel que soit ton objectif, la première étape reste la même :\nle Bilan Reset™.",
-      "details": "En 30 minutes, notre équipe lit les signaux de ton corps avec une analyse InBody + OligoCheck.\n\nOn observe la composition corporelle, la rétention, les carences, le stress oxydatif et les freins invisibles qui peuvent bloquer ton métabolisme.\n\nL'idée est simple : comprendre avant d'agir.",
-      "bonus": "Tu veux que je t'explique la suite ? 💫"
+    "goalResponses": {
+      "weightLoss": "Beaucoup de femmes arrivent ici avec cet objectif.\nAu Reset Club™, on ne regarde pas seulement la silhouette.\nOn analyse ce qui bloque vraiment :\nl’inflammation, la rétention, les déséquilibres invisibles.\nParce que souvent, ce n’est pas un problème de volonté.\nC’est un problème de biologie.\nEt ça, ça change tout.",
+      "energy": "L’énergie, ce n’est pas qu’une question de motivation.\nC’est le sommeil. Le stress. L’inflammation.\nLes carences que personne n’a encore identifiées.\nLe Bilan Reset™ permet d’identifier précisément\nce qui vous vide \net comment le recharger durablement.",
+      "balance": "Quand le corps et le mental sont sous tension\ntout devient plus difficile.\nLe sommeil. Le poids. L’humeur. La digestion.\nNotre approche exclusive IN–OUT–RESET™\nagit sur les trois niveaux simultanément \npour retrouver une base plus claire,\nplus stable, plus vivante."
     },
-    "phase4": {
-      "presentation": "Le RESET Club™ est un espace pensé pour les femmes qui veulent comprendre leur corps sans pression, sans jugement, et avec une vraie méthode.",
-      "philosophy": "Ton corps donne déjà beaucoup d'informations.\n\nNotre rôle est de les rendre lisibles, puis de t'orienter vers le protocole le plus juste : nutrition, technologies, récupération, sommeil, stress et accompagnement."
+    "bilan": {
+      "presentation": "Quel que soit votre objectif,\ntout commence par la même étape.\nLe Bilan Reset™.\nEn 30 minutes, notre équipe analyse\nles signaux de votre corps :\ncomposition corporelle, carences,\nstress oxydatif, freins métaboliques invisibles.\nL’idée est simple :\ncomprendre avant d’agir.\nNos créneaux sont volontairement limités chaque semaine\npour garantir un accompagnement entièrement personnalisé.",
+      "book": "Réserver mon Bilan Reset™",
+      "talk": "Parler à une conseillère",
+      "question": "J’ai encore une question"
     },
-    "phase5": {
-      "intro": "Tu peux maintenant choisir la suite 🌸",
-      "bookNow": "Réserver mon Bilan Reset™",
-      "talkToAdvisor": "Parler à une conseillère",
-      "learnMore": "J'ai encore des questions",
-      "bookResponse": "Parfait, on t'ouvre la réservation.",
-      "talkResponse": "Avec plaisir. Une conseillère RESET pourra t'aider à choisir le bon protocole."
+    "responses": {
+      "book": "Excellent choix .\nVoici le lien pour choisir votre créneau :\n[Lien Calendly personnalisé Reset Club™]\nNotre équipe vous confirmera votre rendez-vous\ndans les plus brefs délais.\nÀ très vite chez Reset Club™.",
+      "talk": "C’est noté .\nNotre conseillère Reset™ va vous contacter\ndans les prochaines heures.\nPour aller plus vite,\nvous pouvez aussi nous écrire directement :\n[WhatsApp ™]"
     },
-    "phase6": {
-      "intro": "Dis-moi ce qui te bloque le plus :",
-      "hesitation": "Je ne suis pas sûre",
+    "questions": {
+      "intro": "Bien sûr.\nDites-moi ce qui vous bloque :",
+      "hesitation": "Je ne suis pas encore sûre",
       "price": "Quel est le prix ?",
       "distance": "Je ne suis pas à Rabat",
-      "backToOptions": "Retour aux options",
-      "hesitationResponse": "C'est normal 🌿\n\nUn premier bilan sert justement à clarifier les choses avant de s'engager dans une transformation.\nTu peux venir simplement pour comprendre ce dont ton corps a besoin.",
-      "priceResponse": "Le Bilan Reset™ est actuellement offert dans le cadre de notre campagne d'ouverture, avec un nombre de places limité.\n\nLa conseillère pourra confirmer les disponibilités et les conditions au moment de la réservation.",
-      "distanceResponse": "Même si tu n'es pas à Rabat, tu peux échanger avec notre équipe.\n\nElle t'indiquera ce qui peut être préparé à distance et les meilleures options selon ta situation."
+      "hesitationResponse": "C’est tout à fait normal.\nVous avez probablement déjà essayé des choses\nqui n’ont pas donné les résultats attendus.\nCe doute-là, on le comprend parfaitement.La plupart des femmes qui nous rejoignent\nnous ont dit exactement la même chose.\nEt c’est précisément pour ça que le bilan existe.\nLe Bilan Reset™ n’est pas un engagement.\nC’est simplement un moment pour comprendre\nce dont votre corps a vraiment besoin —\nsans pression. Sans jugement.\nVous n’avez rien à décider avant d’y être.",
+      "reserveAfterHesitation": "Je réserve mon Bilan Reset™",
+      "talkAfterHesitation": "Je préfère parler à une conseillère",
+      "priceResponse": "Le Bilan Reset™ est proposé dans le cadre\nde notre ouverture\navec un tarif préférentiel\net un nombre de places limité.\nNotre conseillère peut vous confirmer\nles disponibilités et les conditions\nen quelques minutes.",
+      "talkAfterPrice": "Parler à une conseillère",
+      "reserveAfterPrice": "Réserver directement",
+      "distanceResponse": "Vous n’êtes pas à Rabat ?\nPas de problème.\nNotre équipe peut échanger avec vous\npour vous orienter vers les meilleures options\nselon votre situation.",
+      "contactTeam": "Contacter l’équipe Reset™"
     },
-    "phase7": {
-      "intro": "Je peux aussi te proposer un premier pas simple 🎁",
-      "getMiniReset": "Recevoir le Mini Reset à la maison",
-      "gift": "Très bien 💫\n\nTon reset commence par une petite action concrète.",
-      "program": "Mini Reset à la maison :\n\nJour 1 : respirer et clarifier.\nJour 2 : réveiller l'énergie.\nJour 3 : apaiser le mental.\n\nUne conseillère pourra te l'envoyer et répondre à tes questions."
-    },
-    "phase10": {
-      "closing": "Bravo 🌸\n\nTu viens de faire un premier pas vers plus de clarté, d'énergie et d'équilibre.\n\nLe RESET commence ici."
-    },
-    "options": {
-      "yes": "Oui, s'il te plaît 💫",
-      "no": "Non merci, je veux réserver directement"
-    }
+    "closing": "Vous venez de faire un premier pas\nvers votre corps.\nVers votre énergie.\nVers votre équilibre.\nLe Reset commence ici.\nÀ très vite chez Reset Club™.\nUne question de dernière minute ?\nNotre équipe est là\n(whats up Reset club )"
   },
   "PaymentPage": {
     "warning": "Ne fermez pas cette page — votre réservation n'est pas encore finalisée.",
