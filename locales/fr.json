@@ -8,7 +8,13 @@
   },
   "Hero": {
     "title": "Vous avez tout essayé. Les régimes, le sport, les efforts. Et pourtant  votre corps résiste toujours. mais un problème de biologie ?",
-    "subtitle": "Comprendre votre métabolisme et retrouver votre énergie grâce au biohacking et à une équipe d'experts pluridisciplinaires.",
+    "subtitle": "Vous avez tout essayé. Les régimes, le sport, les efforts. Et pourtant  votre corps résiste toujours. Et si ce n’était pas un problème de volonté, mais un problème de biologie ?",
+    "slider": {
+      "metabolism": "RÉACTIVER VOTRE MÉTABOLISME",
+      "nervousSystem": "APAISER VOTRE SYSTÈME NERVEUX",
+      "energy": "RETROUVER ÉNERGIE ET VITALITÉ",
+      "body": "TRANSFORMER DURABLEMENT VOTRE CORPS"
+    },
     "cta": "Réserver mon bilan"
   },
   "HomePage": {

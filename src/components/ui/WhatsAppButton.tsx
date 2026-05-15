@@ -90,7 +90,8 @@ export default function WhatsAppButton({
 
         @media (max-width: 640px) {
           .chatbot-panel {
-            height: 50vh;
+            height: min(78svh, calc(100vh - 5.5rem));
+            max-height: 720px;
           }
         }
       `}</style>

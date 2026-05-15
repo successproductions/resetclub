@@ -9,6 +9,7 @@ import Link from 'next/link';
 const Hero: React.FC = () => {
   const t = useTranslations('Hero');
   const [currentImage, setCurrentImage] = useState(0);
+  const [currentSlide, setCurrentSlide] = useState(0);
 
   const images = [
     '/images/image1.jpeg',
@@ -18,6 +19,13 @@ const Hero: React.FC = () => {
     '/images/image5.jpeg',
   ];
 
+  const sliderTexts = [
+    t('slider.metabolism'),
+    t('slider.nervousSystem'),
+    t('slider.energy'),
+    t('slider.body'),
+  ];
+
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentImage((prev) => (prev + 1) % images.length);
@@ -25,6 +33,14 @@ const Hero: React.FC = () => {
 
     return () => clearInterval(interval);
   }, [images.length]);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % sliderTexts.length);
+    }, 2600);
+
+    return () => clearInterval(interval);
+  }, [sliderTexts.length]);
 
   return (
     <section className="relative h-[87vh] flex items-center justify-center lg:justify-start overflow-hidden">
@@ -52,13 +68,24 @@ const Hero: React.FC = () => {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 top-26 lg:top-36 xl:top-0 left-0 md:left-24 mx-2 px-3 pt-4 max-w-4xl bg-white/10 md:bg-white/30 backdrop-blur-sm rounded-sm shadow-lg ">
+      <div className="relative z-10 top-26 lg:top-36 xl:top-0 left-0 md:left-24 mx-2 px-3 pt-4 max-w-4xl  ">
         {/* Main Heading */}
         <h1 className="text-white mb-3 md:mb-8 font-graphik font-normal">
-          <div className="text-3xl md:text-xl lg:text-5xl mb-2 md:mb-4  tracking-wide text-gray-900 ">
-            {t('title')}
+          <div className="relative min-h-[4rem] overflow-hidden text-3xl md:min-h-[3.5rem] md:text-xl lg:min-h-[2.5rem] lg:text-5xl mb-2 md:mb-4 tracking-wide text-gray-900">
+            {sliderTexts.map((text, index) => (
+              <span
+                key={text}
+                className={`absolute left-0 top-0 transition-all duration-700 ${
+                  index === currentSlide
+                    ? 'translate-x-0 opacity-100'
+                    : '-translate-x-8 opacity-0'
+                }`}
+              >
+                {text}
+              </span>
+            ))}
           </div>
-          <div className="text-lg md:text-xl  xl:text-1xl tracking-tight font-normal  text-gray-900">
+          <div className="text-lg md:text-xl xl:text-1xl tracking-tight font-normal text-gray-900">
             {t('subtitle')}
           </div>
         </h1>

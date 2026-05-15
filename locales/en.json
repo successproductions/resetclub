@@ -8,7 +8,13 @@
   },
   "Hero": {
     "title": "Reset your body, mind and emotions",
-    "subtitle": "Le protocole signature In-Out-ResetTM allie neurosciences, biohacking et coaching transformationnel pour un changement durable et mesurable",
+    "subtitle": "Vous avez tout essayé. Les régimes, le sport, les efforts. Et pourtant  votre corps résiste toujours. Et si ce n’était pas un problème de volonté, mais un problème de biologie ?",
+    "slider": {
+      "metabolism": "RÉACTIVER VOTRE MÉTABOLISME",
+      "nervousSystem": "APAISER VOTRE SYSTÈME NERVEUX",
+      "energy": "RETROUVER ÉNERGIE ET VITALITÉ",
+      "body": "TRANSFORMER DURABLEMENT VOTRE CORPS"
+    },
     "cta": "Book my assessment"
   },
   "HomePage": {
