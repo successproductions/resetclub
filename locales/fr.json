@@ -171,23 +171,29 @@
     "cta": "Réserver mon bilan"
   },
   "KeyFigures": {
-    "title": "Les résultats parlent d'eux-mêmes",
-    "description": "Parce qu’ici, chaque transformation se voit et se mesure",
+    "title": "Des résultats mesurables. Pas des promesses.",
+    "description": "",
+    "cta": "Ces résultats comment par un bilan. Réserver le mien",
     "stats": {
-      "weightLoss": {
-        "number": "10.599",
-        "unit": "cm",
-        "label": "perdus depuis l'ouverture"
-      },
-      "satisfaction": {
-        "number": "95",
+      "sleep": {
+        "number": "30",
         "unit": "%",
-        "label": "de satisfaction clients"
+        "label": "d’amélioration de la qualité du sommeil"
       },
-      "objectives": {
-        "number": "90",
+      "energy": {
+        "number": "25",
         "unit": "%",
-        "label": "atteignent leurs objectifs personnalisés"
+        "label": "d’augmentation du niveau d’énergie"
+      },
+      "fatigue": {
+        "number": "40",
+        "unit": "%",
+        "label": "de fatigue chronique et d’inflammation"
+      },
+      "bodyRelation": {
+        "number": "70",
+        "unit": "%",
+        "label": "des membres rapportent une relation transformée à leur corps et à l’alimentation"
       }
     }
   },
@@ -300,10 +306,10 @@
     "cta": "Réserver mon bilan"
   },
   "IntroSection": {
-    "hook": "Et si votre corps, votre esprit et vos émotions pouvaient être réinitialisés en un seul lieu ?",
-    "title": "Reset Club™ – le premier centre premium de transformation holistique au Maroc.",
-    "description": "Vous avez tout essayé : régimes, sport, soins… Rien n'a jamais tenu dans la durée. Ici, vous allez découvrir une méthode exclusive – In • Out • Reset™ – qui combine neurosciences, biohacking et coaching transformationnel pour libérer vos blocages, relancer votre énergie et révéler votre potentiel.",
-    "cta": "Je veux ma transformation",
+    "hook": "LA MÉTHODE IN–OUT–RESET™",
+    "title": "La logique exclusive qui structure toute votre transformation",
+    "description": "Reset Club repose sur une approche exclusive : IN–OUT–RESET™. Une méthode globale qui agit simultanément à l’intérieur, à l’extérieur et en profondeur — pour rééquilibrer le métabolisme, le système nerveux et l’énergie du corps. Nos protocoles s’inspirent des approches développées dans les meilleurs centres internationaux spécialisés en longévité, optimisation métabolique, récupération nerveuse et performance humaine. IN–OUT–RESET™ n’est pas une méthode de contrôle. C’est une méthode de réconciliation avec votre corps. Et lorsque le corps recommence à coopérer, la perte de poids, l’énergie et la vitalité deviennent des conséquences naturelles.",
+    "cta": "Réserver mon bilan RESET™",
     "trust": {
       "certified": "Experts certifiés",
       "proven": "Méthode éprouvée",
@@ -312,18 +318,18 @@
     "cards": {
       "in": {
         "title": "IN",
-        "title2" :"Réveillez votre énergie cellulaire",
-        "subtitle": "Rechargez vos cellules. Réactivez votre métabolisme. Reconnectez-vous à votre vitalité profonde. Là où la transformation commence, de l'intérieur."
+        "title2" :"Ce que vous apportez à votre corps",
+        "subtitle": "IN regroupe tout ce qui nourrit réellement votre corps et soutient votre métabolisme : nutrition adaptée à votre réalité, jus et infusions fonctionnelles, compléments sélectionnés avec précision, routines simples applicables dans la vraie vie. Nous donnons à votre corps ce dont il a réellement besoin pour fonctionner — pas seulement pour tenir."
       },
       "out": {
         "title": "OUT ",
-        "title2" :"Libérez ce qui vous retient",
-        "subtitle": "Détoxifiez. Drainez. Respirez. Chaque soin sculpte votre corps et allège votre esprit. Votre légèreté devient votre nouvelle puissance."
+        "title2" :"Ce que votre corps doit libérer",
+        "subtitle": "OUT correspond à tout ce que le corps doit relâcher pour retrouver son équilibre : surcharge inflammatoire, rétention et gonflements, stress accumulé et fatigue nerveuse, tensions corporelles et charge émotionnelle. Lorsque le corps libère, le métabolisme peut enfin se remettre en mouvement."
       },
       "reset": {
         "title": "RESET ",
-        "title2": "Réinitialisez votre pouvoir intérieur",
-        "subtitle": "Libérez vos blocages émotionnels. Réveillez votre équilibre intérieur. Réinitialisez. Rayonnez. Renaissez. Parce que la vraie beauté commence à l'intérieur."
+        "title2": "Ce que vous transformez en profondeur",
+        "subtitle": "RESET est la dimension la plus durable — et la plus précieuse — de la transformation : relation au corps et à l’alimentation, gestion du stress et des émotions, qualité du sommeil et récupération profonde, confiance et rapport apaisé à son corps. Ce n’est pas seulement le corps qui change. C’est votre manière de l’habiter."
       }
     }
   },
@@ -494,6 +500,35 @@
       "contactTeam": "Contacter l’équipe Reset™"
     },
     "closing": "Vous venez de faire un premier pas\nvers votre corps.\nVers votre énergie.\nVers votre équilibre.\nLe Reset commence ici.\nÀ très vite chez Reset Club™.\nUne question de dernière minute ?\nNotre équipe est là\n(whats up Reset club )"
+  },
+  "BiologicalResistanceBlock": {
+    "eyebrow": "BLOC 2",
+    "title": "Pourquoi votre corps résiste malgré vos efforts : 4 causes biologiques que personne ne vous a expliquées",
+    "causes": {
+      "training": {
+        "title": "Un entraînement mal adapté",
+        "description": "Trop de cardio, trop d’intensité, séances non adaptées à votre âge, votre cycle ou votre niveau de stress.",
+        "result": "Résultat : inflammation, cortisol élevé, stockage accéléré et fonte musculaire."
+      },
+      "nutrition": {
+        "title": "Une nutrition qui freine au lieu de nourrir",
+        "description": "Jeûnes mal placés, apports insuffisants, trop peu de protéines pour le métabolisme féminin.",
+        "result": "Résultat : fatigue chronique, ralentissement métabolique, corps en mode survie."
+      },
+      "nervousSystem": {
+        "title": "Un système nerveux sous pression",
+        "description": "Stress chronique, sommeil non réparateur, charge mentale élevée.",
+        "result": "Le corps ne peut pas se transformer quand il est en état d’alerte permanent."
+      },
+      "imbalances": {
+        "title": "Des déséquilibres biologiques invisibles",
+        "description": "Inflammation de bas grade, instabilité glycémique, rétention, fatigue nerveuse.",
+        "result": "Tant que ces quatre leviers ne sont pas rééquilibrés, le corps résiste."
+      }
+    },
+    "fault": "Et ce n’est pas votre faute.",
+    "closing": "Si vous vous êtes déjà dit “pourquoi ça marche pour les autres mais pas pour moi”, vous êtes exactement là où vous devez être",
+    "cta": "Je veux comprendre mon corps"
   },
   "PaymentPage": {
     "warning": "Ne fermez pas cette page — votre réservation n'est pas encore finalisée.",

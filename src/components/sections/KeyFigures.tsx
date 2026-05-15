@@ -1,7 +1,9 @@
 'use client';
 
 import React, { useState, useEffect, useRef } from 'react';
-import { useTranslations } from 'next-intl';
+import Link from 'next/link';
+import { useLocale, useTranslations } from 'next-intl';
+import { Activity, BatteryCharging, Moon, Orbit } from 'lucide-react';
 
 interface CounterProps {
   end: number;
@@ -87,93 +89,78 @@ const AnimatedCounter: React.FC<CounterProps> = ({ end, duration = 2000, decimal
 
 const KeyFigures: React.FC = () => {
   const t = useTranslations('KeyFigures');
+  const locale = useLocale();
 
   const stats = [
     {
-      key: 'weightLoss',
-      value: 1990,
-      decimals: false
+      key: 'sleep',
+      value: 30,
+      prefix: '+',
+      decimals: false,
+      Icon: Moon,
     },
     {
-      key: 'satisfaction',
-      value: 95,
-      decimals: false
+      key: 'energy',
+      value: 25,
+      prefix: '+',
+      decimals: false,
+      Icon: BatteryCharging,
     },
     {
-      key: 'objectives',
-      value: 90,
-      decimals: false
+      key: 'fatigue',
+      value: 40,
+      prefix: '−',
+      decimals: false,
+      Icon: Activity,
+    },
+    {
+      key: 'bodyRelation',
+      value: 70,
+      prefix: '',
+      decimals: false,
+      Icon: Orbit,
     }
   ];
 
   return (
-    <section id="key-figures-section" className=" py-2 md:pt-8 bg-white relative overflow-hidden">
-      {/* Background Pattern */}
-      <div className="absolute inset-0 opacity-5">
-        <div className="absolute top-0 left-0 w-72 h-72 bg-[#ccbaa8] rounded-full blur-3xl -translate-x-36 -translate-y-36"></div>
-        <div className="absolute bottom-0 right-0 w-72 h-72 bg-[#ccbaa8] rounded-full blur-3xl translate-x-36 translate-y-36"></div>
-      </div>
-
-      <div className="max-w-7xl mx-auto px-6 relative">
-        {/* Header */}
-        <div className="md:text-center mb-2 md:mb-6">
-
-          <h2 className="text-3xl md:text-4xl lg:text-5xl text-gray-900 mb-1 md:mb-2">
+    <section id="key-figures-section" className="relative overflow-hidden bg-white px-6 py-12 md:py-20">
+      <div className="mx-auto grid max-w-7xl gap-10 md:grid-cols-[0.9fr_1.1fr] md:gap-16">
+        <div className="md:pt-2">
+          <div className="mb-6 h-px w-20 bg-[#524029]"></div>
+          <h2 className="max-w-3xl text-3xl! leading-tight text-gray-950 md:text-3xl! lg:text-[45px]!">
             {t('title')}
           </h2>
-          <p className='text-gray-900 text-lg mb-3 md:mb-6 md:text-xl font-graphik '>{t('description')}</p>
-          {/* <div className="w-20 h-1 bg-[#c26d4c] mx-auto rounded-full"></div> */}
         </div>
 
-        {/* Stats Container */}
-        <div className="relative">
-          {/* Connecting Line */}
-          <div className="hidden md:block absolute top-1/2 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#ccbaa8]/30 to-transparent"></div>
-
-          {/* Stats Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-16">
-            {stats.map((stat) => (
-              <div key={stat.key} className="relative group">
-                {/* Background Circle */}
-                <div className="absolute inset-0 bg-[#ccbaa8]/5 rounded-full scale-90 group-hover:scale-100 transition-transform duration-500"></div>
-
-                {/* Content */}
-                <div className="relative text-center py-3 md:py-12">
-                  {/* Top Line */}
-                  {/* <div className="w-12 md:w-16 h-px bg-[#c26d4c] mx-auto mb-4 md:mb-8"></div> */}
-
-                  {/* Animated Number */}
-                  <div className="mb-2 md:mb-6">
-                    <div className="text-3xl md:text-6xl lg:text-6xl font-light text-gray-900 mb-2">
-                      <AnimatedCounter
-                        end={stat.value}
-                        decimals={stat.decimals}
-                        duration={2500}
-                      />
-                      <span className="">
-                        {t(`stats.${stat.key}.unit`)}
-                      </span>
-                    </div>
-                  </div>
-
-                  {/* Label */}
-                  <div className="  mx-auto">
-                    <p className="text-gray-900 text-lg md:text-base xl:text-xl font-graphik  leading-relaxed">
-                      {t(`stats.${stat.key}.label`)}
-                    </p>
-                  </div>
-
-                  {/* Bottom Line */}
-                  <div className="w-14 h-0.5 md:h-1 md:w-16 rounded-full  bg-[#0a0a09] mx-auto mt-1 md:mt-8"></div>
-                   {/* <div className="w-20 h-1 bg-[#c26d4c] mx-auto rounded-full"></div> */}
-
-                  {/* Dot indicator */}
-                  {/* <div className="absolute -bottom-1 md:-bottom-2 left-1/2 transform -translate-x-1/2 w-3 md:w-4 h-3 md:h-4 bg-[#c26d4c] rounded-full border-2 md:border-4 border-white shadow-lg"></div> */}
+        <div className="grid grid-cols-1 gap-y-12 md:grid-cols-2 md:gap-x-20 md:gap-y-20">
+          {stats.map(({ Icon, ...stat }) => (
+            <div key={stat.key}>
+              <div className="flex items-center gap-5">
+                <Icon className="h-12 w-12 shrink-0 text-[#7b7066] md:h-14 md:w-14" strokeWidth={1} />
+                <div className="font-graphik text-5xl! font-normal leading-none text-gray-950 md:text-6xl!">
+                  <span>{stat.prefix}</span>
+                  <AnimatedCounter
+                    end={stat.value}
+                    decimals={stat.decimals}
+                    duration={2200}
+                  />
+                  <span>{t(`stats.${stat.key}.unit`)}</span>
                 </div>
               </div>
-            ))}
-          </div>
+              <p className="mt-4 max-w-md pl-[68px] font-graphik text-lg! font-normal leading-relaxed text-gray-700 md:pl-[76px] md:text-lg!">
+                {t(`stats.${stat.key}.label`)}
+              </p>
+            </div>
+          ))}
         </div>
+      </div>
+      <div className="mx-auto mt-12 flex max-w-7xl justify-center md:mt-16">
+        <Link
+          href={`/${locale}/payment`}
+          className="inline-block bg-transparent font-normal font-graphik text-gray-900 hover:text-white px-8 py-4 border border-[#524029] text-lg! hover:bg-gray-950 cursor-pointer transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl md:text-lg!"
+        >
+          {t('cta')}
+        </Link>
       </div>
     </section>
   );

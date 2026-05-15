@@ -13,6 +13,7 @@ import NotreHistoireSection from '@/components/sections/NotreHistoireSection';
 import BeforeAfter from '@/components/sections/BeforeAfter';
 import Trustpilot from '@/components/sections/Trustpilot';
 import PracticeComparison from '@/components/sections/PracticeComparison';
+import BiologicalResistanceBlock from '@/components/sections/BiologicalResistanceBlock';
 import TeamHero from '@/components/sections/TeamHero';
 import Director from '@/components/sections/Director';
 import TeamSlider from '@/components/sections/TeamSlider';
@@ -67,6 +68,7 @@ export default function HomePage() {
         {/* <LogoBanner /> */}
         {/* <PressBanner /> */}
             <PracticeComparison />
+        <BiologicalResistanceBlock />
         <WhyResetClub />
                 <BeforeAfter />
                 {/* <VideoCarousel /> */}
