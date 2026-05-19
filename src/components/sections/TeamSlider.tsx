@@ -142,10 +142,10 @@ const TeamSlider: React.FC = () => {
                   {t(`members.${member.key}.role`)}
                 </div>
 
-                {/* Description
+                {/* Description */}
                 <p className="text-gray-500 font-graphik text-lg leading-relaxed">
                   {t(`members.${member.key}.description`)}
-                </p> */}
+                </p>
               </div>
             ))}
           </div>

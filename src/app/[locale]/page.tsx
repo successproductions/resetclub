@@ -17,6 +17,7 @@ import BiologicalResistanceBlock from '@/components/sections/BiologicalResistanc
 import TeamHero from '@/components/sections/TeamHero';
 import Director from '@/components/sections/Director';
 import TeamSlider from '@/components/sections/TeamSlider';
+import ResetPillarsSection from '@/components/sections/ResetPillarsSection';
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
@@ -70,6 +71,7 @@ export default function HomePage() {
             <PracticeComparison />
         <BiologicalResistanceBlock />
         <WhyResetClub />
+        <ResetPillarsSection />
                 <BeforeAfter />
                 {/* <VideoCarousel /> */}
         <KeyFigures />

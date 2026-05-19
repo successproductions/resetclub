@@ -118,20 +118,35 @@
       "bio3": "Au-delà de sa vie professionnelle, Nahed embrasse chaque moment de sa plénitude. Qu'il s'agisse de voyages, d'exploration de nouvelles expériences ou simplement de savourer les plaisirs simples, il trouve de la joie et du bonheur purs."
     },
     "director": {
-      "name": "Sarah Martinez",
-      "title": "Fondatrice Générale",
+      "name": "Nahed Rachad",
+      "title": "À l’origine de Reset Club",
       "subtitle": "Reset Club™",
-      "bio1": "Nahed Rachad, entrepreneure et coach, a vécu ce que vivent ses clientes : surcharge de travail, stress, perte de santé et de confiance. Elle a cherché. Elle a testé.",
-      "bio2": "Elle a voyagé à travers les plus grands salons du monde. Elle a découvert les meilleures technologies, les meilleures approches en neurosciences, en biohacking et en coaching transformationnel.",
-      "bio3": "De cette quête est née une méthode, et aujourd’hui, un mouvement : Reset Club™"
+      "role": "Fondatrice de Reset Club · Coach en transformation féminine",
+      "imageAlt": "Nahed Rachad, fondatrice de Reset Club",
+      "bio1": "Life and business coach spécialisé en stratégie et leadership. Pendant des années, j’ai coaché des centaines d'entreprises et des milliers de personnes.",
+      "bio2": "Fondatrice du concept Prépare ton exam et accompagné plus de 2 700 000 jeunes au Maroc.",
+      "bio3": "J’étais partout — la télé, la radio, les réseaux sociaux, les scènes. Une communauté de 3.5 millions sur les réseaux sociaux. Une vie à plein régime.",
+      "bio4": "Et pendant ce temps-là, en silence, mon corps, lui, décrochait.",
+      "bio5": "La fatigue d’abord. Puis les douleurs articulaires. Puis 12 kilos que je ne comprenais pas. Un corps qui résistait à tout — le sport, les régimes, les centres. Un effet yoyo qui durait.",
+      "bio6": "Et une question qui revenait, de plus en plus fort : Pourquoi ça ne marche plus pour moi ?",
+      "bio7": "J’aurais pu baisser les bras. Au lieu de ça, j’ai fait ce que je fais toujours quand quelque chose me bloque : je me suis formée.",
+      "bio8": "J’ai découvert le biohacking. Je me suis entourée des meilleurs experts mondiaux. Et pour la première fois, j’ai compris ce qui se passait vraiment dans mon corps — l’inflammation, le cortisol, la résistance à l’insuline, le sommeil cassé. Ces paramètres invisibles qui bloquent tout, et que personne ne m’avait jamais expliqué.",
+      "bio9": "J’ai été mon propre cobaye. J’ai construit mes protocoles entoure des meilleurs experts internationals. Et mon corps a recommencé à coopérer.",
+      "bio10": "C’est là que j’ai su.",
+      "bio11": "Si moi — coach, formée, informée, entourée — je suis passée à côté de tout ça pendant des années… combien de femmes vivent exactement la même chose en ce moment, sans savoir que ce n’est pas leur faute ?",
+      "bio12": "Reset Club est né de cette conviction. Pas pour vous donner un programme de plus.",
+      "bio13": "Pour vous donner enfin ce que personne ne vous a donné : la compréhension de votre propre corps. La perte de poids ? Elle est arrivée. Mais comme une conséquence.",
+      "readMore": "Lire la suite",
+      "readLess": "Réduire",
+      "cta": "Réserver mon bilan RESET™"
     },
     "team": {
       "title": "Notre Équipe d'Experts",
       "subtitle": "Une équipe pluridisciplinaire de spécialistes dédiés à votre transformation",
-      "expertsTitle": "Nos Experts",
+      "expertsTitle": "Vous êtes entourée d’experts",
       "members": {
         "Siham": {
-          "name": "Dr. Siham",
+          "name": "Siham",
           "role": "Directrice",
           "specialty": "Métabolisme & Perte de Poids",
           "description": "Spécialiste en optimisation métabolique et nutrition personnalisée pour des résultats durables. Après avoir terminé ses masters en médecine nutritionnelle, Dr. Sarah a pratiqué pendant plus de 12 ans dans des hôpitaux renommés et des retraites de bien-être."
@@ -143,10 +158,10 @@
           "description": "Marc est un professionnel dynamique avec plus de 10 ans d'expérience multiculturelle riche englobant les centres de villégiature et les retraites de bien-être. Il se spécialise dans les programmes d'entraînement personnalisés."
         },
         "amina": {
-          "name": "Dr. Amina Hassan",
+          "name": "Amina Hassan",
           "role": "Psychologue Clinicienne",
           "specialty": "Comportement & Habitudes",
-          "description": "Dr. Amina a plus de 8 années d'expérience diverse dans l'accompagnement psychologique des transformations de vie. Elle est spécialisée dans l'art de guider les changements de comportement durables."
+          "description": "Amina a plus de 8 années d'expérience diverse dans l'accompagnement psychologique des transformations de vie. Elle est spécialisée dans l'art de guider les changements de comportement durables."
         },
         "thomas": {
           "name": "Thomas Laurent",
@@ -172,7 +187,7 @@
   "BeforeAfter": {
     "title": "Témoignages avant/après",
         "description": "Elles ont osé dire oui à leur transformation. Et vous ?",
-    "subtitle": "La preuve la plus forte: celles qui ont vécu la transformation",
+    "subtitle": "Elles ont vécu Reset Club. Voici ce qu’elles en disent",
     "quote": "Chaque transformation commence par une décision. Rejoignez-nous et découvrez votre potentiel.",
     "cta": "Réserver mon bilan"
   },
@@ -236,6 +251,26 @@
     "cta": {
       "title": "Prêt pour une transformation authentique ?",
       "subtitle": "Découvrez pourquoi RESET CLUB fait la différence dans votre parcours de bien-être."
+    }
+  },
+  "ResetPillarsSection": {
+    "title": "Les trois piliers de la transformation Reset Club",
+    "pillars": {
+      "movement": {
+        "title": "MOUVEMENT & TECHNOLOGIES",
+        "description": "Activer le métabolisme sans épuiser le système nerveux.",
+        "tools": "EM Sculpt Neo · Emtone · Exilis · Power Shape…"
+      },
+      "neuro": {
+        "title": "NEURO & BIOHACKING",
+        "description": "Réguler le système nerveux et restaurer l’énergie du corps.",
+        "tools": "Neurofeedback · Hypnose · Laser auriculaire · Technologies anti-stress"
+      },
+      "coaching": {
+        "title": "COACHING & ACCOMPAGNEMENT",
+        "description": "Ancrer des habitudes durables dans la vraie vie.",
+        "tools": "Coaching transformationnel · Nutrition adaptée · Routines métaboliques · Communauté Reset Club"
+      }
     }
   },
   "RecrutonsPage": {
