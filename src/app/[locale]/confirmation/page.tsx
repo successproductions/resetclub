@@ -43,7 +43,7 @@ function ConfirmationContent() {
     <>
       <Header />
 
-      {/* ── Video banner ── */}
+      {/*  Video banner  */}
       <div className="relative flex min-h-[28vh] items-center justify-center overflow-hidden pt-28 pb-10 md:min-h-[34vh] md:pb-16">
         <div className="absolute inset-0 z-0">
           <video autoPlay loop muted playsInline
