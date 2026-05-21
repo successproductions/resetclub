@@ -4,22 +4,24 @@ import React, { Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import { Check, LockKeyhole } from 'lucide-react';
+import { useLocale, useTranslations } from 'next-intl';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 
 // ─── helper ───────────────────────────────────────────────────────────────────
 
-function formatDate(iso: string | null): string {
-  if (!iso) return new Date().toLocaleString('fr-MA', { day: '2-digit', month: 'long', year: 'numeric', hour: '2-digit', minute: '2-digit' });
+function formatDate(iso: string | null, locale: string): string {
+  const dateLocale = locale === 'fr' ? 'fr-MA' : 'en-US';
+  if (!iso) return new Date().toLocaleString(dateLocale, { day: '2-digit', month: 'long', year: 'numeric', hour: '2-digit', minute: '2-digit' });
   try {
-    return new Date(iso).toLocaleString('fr-MA', { day: '2-digit', month: 'long', year: 'numeric', hour: '2-digit', minute: '2-digit' });
+    return new Date(iso).toLocaleString(dateLocale, { day: '2-digit', month: 'long', year: 'numeric', hour: '2-digit', minute: '2-digit' });
   } catch {
-    return new Date().toLocaleString('fr-MA', { day: '2-digit', month: 'long', year: 'numeric', hour: '2-digit', minute: '2-digit' });
+    return new Date().toLocaleString(dateLocale, { day: '2-digit', month: 'long', year: 'numeric', hour: '2-digit', minute: '2-digit' });
   }
 }
 
-function formatAmount(raw: string | null): string {
-  if (!raw) return 'Montant non disponible';
+function formatAmount(raw: string | null, unavailableLabel: string): string {
+  if (!raw) return unavailableLabel;
   const n = parseFloat(raw);
   if (isNaN(n)) return `${raw} MAD`;
   return n.toLocaleString('fr-MA', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' MAD';
@@ -29,9 +31,11 @@ function formatAmount(raw: string | null): string {
 
 function ConfirmationContent() {
   const params   = useSearchParams();
+  const t = useTranslations('ConfirmationPage');
+  const locale = useLocale();
   const orderId  = params.get('order') || '—';
-  const amount   = formatAmount(params.get('amount'));
-  const date     = formatDate(params.get('date'));
+  const amount   = formatAmount(params.get('amount'), t('amount.unavailable'));
+  const date     = formatDate(params.get('date'), locale);
   const code     = params.get('code') || '00';
   const transactionId = params.get('transaction') || '';
 
@@ -58,16 +62,16 @@ function ConfirmationContent() {
           <div className="flex justify-center mb-6">
             <span className="inline-flex items-center gap-3 rounded-[4px] border border-[#524029] bg-[#fbf8f4] px-5 py-3 font-graphik text-sm font-medium uppercase tracking-[0.16em] text-gray-950 shadow-sm">
               <Check className="h-4 w-4 text-[#524029]" strokeWidth={2.5} />
-              Paiement effectué avec succès
+              {t('statusBadge')}
             </span>
           </div>
 
           {/* Title */}
           <h1 className="mb-3 text-center font-graphik text-3xl font-normal leading-tight text-gray-950 md:text-5xl">
-            Bravo. Votre transformation<br />commence maintenant.
+            {t('title')}
           </h1>
           <p className="mb-8 text-center font-graphik text-base leading-relaxed text-[#5b5148] md:text-lg">
-            Votre bilan RESET™ est confirmé avec succès.
+            {t('subtitle')}
           </p>
 
           {/* ── Transaction receipt card ── */}
@@ -75,9 +79,9 @@ function ConfirmationContent() {
 
             {/* Card header */}
             <div className="border-b border-[#d8cec4] bg-[#fbf8f4] px-6 py-5 md:px-8">
-              <p className="mb-2 font-graphik text-xs uppercase tracking-[0.22em] text-[#7b7066]">Récapitulatif de la transaction</p>
+              <p className="mb-2 font-graphik text-xs uppercase tracking-[0.22em] text-[#7b7066]">{t('receiptEyebrow')}</p>
               <p className="font-graphik text-xl font-medium text-gray-950 md:text-2xl">
-                Bilan RESET™ — Reset Club
+                {t('receiptTitle')}
               </p>
             </div>
 
@@ -86,41 +90,41 @@ function ConfirmationContent() {
 
               {/* Statut */}
               <div className="flex flex-col gap-2 px-6 py-4 md:flex-row md:items-center md:justify-between md:px-8">
-                <span className="font-graphik text-sm text-[#7b7066]">Statut du paiement</span>
+                <span className="font-graphik text-sm text-[#7b7066]">{t('paymentStatus.label')}</span>
                 <span className="flex items-center gap-2 font-graphik text-sm font-medium text-gray-950">
                   <span className="inline-block h-2 w-2 rounded-full bg-[#524029]" />
-                  Paiement réussi {code && `(code ${code})`}
+                  {t('paymentStatus.success', { code })}
                 </span>
               </div>
 
               {/* Numéro de commande */}
               <div className="flex flex-col gap-2 px-6 py-4 md:flex-row md:items-center md:justify-between md:px-8">
-                <span className="font-graphik text-sm text-[#7b7066]">Numéro de commande</span>
+                <span className="font-graphik text-sm text-[#7b7066]">{t('orderNumber')}</span>
                 <span className="break-all font-graphik text-sm font-medium tracking-wide text-gray-950">{orderId}</span>
               </div>
 
               {transactionId && (
                 <div className="flex flex-col gap-2 px-6 py-4 md:flex-row md:items-center md:justify-between md:px-8">
-                  <span className="font-graphik text-sm text-[#7b7066]">Numéro de transaction CMI</span>
+                  <span className="font-graphik text-sm text-[#7b7066]">{t('cmiTransactionNumber')}</span>
                   <span className="break-all font-graphik text-sm font-medium tracking-wide text-gray-950">{transactionId}</span>
                 </div>
               )}
 
               {/* Date */}
               <div className="flex flex-col gap-2 px-6 py-4 md:flex-row md:items-center md:justify-between md:px-8">
-                <span className="font-graphik text-sm text-[#7b7066]">Date de la transaction</span>
+                <span className="font-graphik text-sm text-[#7b7066]">{t('transactionDate')}</span>
                 <span className="font-graphik text-sm font-medium text-gray-950">{date}</span>
               </div>
 
               {/* Service */}
               <div className="flex flex-col gap-2 px-6 py-4 md:flex-row md:items-center md:justify-between md:px-8">
-                <span className="font-graphik text-sm text-[#7b7066]">Durée du bilan</span>
-                <span className="font-graphik text-sm font-medium text-gray-950">45 minutes</span>
+                <span className="font-graphik text-sm text-[#7b7066]">{t('duration.label')}</span>
+                <span className="font-graphik text-sm font-medium text-gray-950">{t('duration.value')}</span>
               </div>
 
               {/* Amount */}
               <div className="flex flex-col gap-2 bg-[#fbf8f4] px-6 py-6 md:flex-row md:items-center md:justify-between md:px-8">
-                <span className="font-graphik text-base font-medium text-gray-950">Montant payé</span>
+                <span className="font-graphik text-base font-medium text-gray-950">{t('amount.label')}</span>
                 <span className="font-graphik text-2xl font-medium text-gray-950">{amount}</span>
               </div>
             </div>
@@ -128,22 +132,22 @@ function ConfirmationContent() {
             {/* Secure footer */}
             <div className="flex items-center gap-2 border-t border-[#d8cec4] bg-[#f5efe8] px-6 py-4 md:px-8">
               <LockKeyhole className="h-4 w-4 shrink-0 text-[#7b7066]" strokeWidth={1.8} />
-              <span className="font-graphik text-xs leading-relaxed text-[#7b7066]">Transaction sécurisée via CMI — Centre Monétique Interbancaire</span>
+              <span className="font-graphik text-xs leading-relaxed text-[#7b7066]">{t('secureText')}</span>
             </div>
           </div>
 
           {/* Follow-up message */}
           <p className="mx-auto mb-8 max-w-2xl text-center font-graphik text-base leading-relaxed text-[#5b5148] md:text-lg">
-            Dans les prochaines 24 heures (hors week-end), notre équipe vous contactera personnellement pour fixer votre rendez-vous au centre.
+            {t('followUp')}
           </p>
 
           {/* CTA */}
           <div className="flex justify-center">
             <Link
-              href="/"
+              href={`/${locale}`}
               className="inline-block border border-[#524029] bg-transparent px-8 py-4 font-graphik text-base font-medium text-gray-950 shadow-lg transition-all duration-300 hover:scale-105 hover:bg-gray-950 hover:text-white hover:shadow-xl md:text-lg"
             >
-              Retour à l&apos;accueil
+              {t('backToHome')}
             </Link>
           </div>
 

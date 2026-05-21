@@ -569,14 +569,26 @@
   "ConfirmationPage": {
     "title": "Bravo — your transformation starts now.",
     "subtitle": "Your RESET™ assessment is successfully confirmed.",
+    "statusBadge": "Payment completed successfully",
+    "receiptEyebrow": "Transaction summary",
+    "receiptTitle": "RESET™ Assessment — Reset Club",
+    "paymentStatus": {
+      "label": "Payment status",
+      "success": "Payment successful (code {code})"
+    },
+    "orderNumber": "Order number",
+    "cmiTransactionNumber": "CMI transaction number",
+    "transactionDate": "Transaction date",
     "duration": {
       "label": "Assessment duration",
       "value": "45 minutes"
     },
     "amount": {
       "label": "Amount paid",
-      "value": "1500 MAD"
+      "value": "1500 MAD",
+      "unavailable": "Amount unavailable"
     },
+    "secureText": "Secure transaction via CMI — Centre Monétique Interbancaire",
     "followUp": "Within the next 24 hours (excluding weekends), our team will contact you personally to schedule your appointment at the center.",
     "backToHome": "Back to Home"
   },

@@ -590,14 +590,26 @@
   "ConfirmationPage": {
     "title": "Bravo. Votre transformation commence maintenant.",
     "subtitle": "Votre bilan RESET™ est confirmé avec succès.",
+    "statusBadge": "Paiement effectué avec succès",
+    "receiptEyebrow": "Récapitulatif de la transaction",
+    "receiptTitle": "Bilan RESET™ — Reset Club",
+    "paymentStatus": {
+      "label": "Statut du paiement",
+      "success": "Paiement réussi (code {code})"
+    },
+    "orderNumber": "Numéro de commande",
+    "cmiTransactionNumber": "Numéro de transaction CMI",
+    "transactionDate": "Date de la transaction",
     "duration": {
       "label": "Durée du bilan",
       "value": "45 minutes"
     },
     "amount": {
       "label": "Montant payé",
-      "value": "1500 MAD"
+      "value": "1500 MAD",
+      "unavailable": "Montant non disponible"
     },
+    "secureText": "Transaction sécurisée via CMI — Centre Monétique Interbancaire",
     "followUp": "Dans les prochaines 24 heures (hors week-end), notre équipe vous contactera personnellement pour fixer votre rendez-vous au centre.",
     "backToHome": "Retour à l'accueil"
   },
