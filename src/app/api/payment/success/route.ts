@@ -57,16 +57,28 @@ export async function POST(request: NextRequest) {
     const procReturnCode = params['ProcReturnCode'];
     const receivedHash   = params['HASH'] || params['hash'];
     const calculatedHash = generateHash(params, CMI_CONFIG.storeKey);
+    const amount         = params['amount'] || '';
+    const customerName   = params['BillToName'] || '';
+    const transactionId  = params['TransId'] || params['TRANID'] || params['transaction_id'] || '';
 
-    let baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://www.resetclub.ma';
+    let baseUrl = process.env.CMI_PUBLIC_BASE_URL || process.env.NEXT_PUBLIC_BASE_URL || request.nextUrl.origin || 'https://resetclub.ma';
     if (process.env.NODE_ENV === 'development') {
       const o = request.nextUrl.origin;
       if (o.includes('localhost') || o.includes('127.0.0.1')) baseUrl = o;
     }
 
     if (procReturnCode === '00' && receivedHash === calculatedHash) {
-      // Redirect to existing /fr/confirmation page
-      return NextResponse.redirect(new URL(`/fr/confirmation?order=${encodeURIComponent(orderId)}`, baseUrl), { status: 303 });
+      // Build confirmation URL with all transaction details for CMI compliance
+      const now = new Date().toISOString();
+      const confirmUrl = new URL('/fr/confirmation', baseUrl);
+      confirmUrl.searchParams.set('order', orderId);
+      confirmUrl.searchParams.set('amount', amount);
+      confirmUrl.searchParams.set('date', now);
+      confirmUrl.searchParams.set('name', customerName);
+      confirmUrl.searchParams.set('status', 'success');
+      confirmUrl.searchParams.set('code', procReturnCode);
+      if (transactionId) confirmUrl.searchParams.set('transaction', transactionId);
+      return NextResponse.redirect(confirmUrl, { status: 303 });
     } else {
       console.warn('CMI Success: Payment not confirmed or hash mismatch', { procReturnCode, receivedHash, calculatedHash });
       return NextResponse.redirect(new URL(`/fr/payment?error=1&order=${encodeURIComponent(orderId)}`, baseUrl), { status: 303 });
@@ -83,10 +95,20 @@ export async function POST(request: NextRequest) {
 export async function GET(request: NextRequest) {
   const orderId = request.nextUrl.searchParams.get('oid') || '';
   const code    = request.nextUrl.searchParams.get('ProcReturnCode') || '';
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://www.resetclub.ma';
+  const amount  = request.nextUrl.searchParams.get('amount') || '';
+  const transactionId = request.nextUrl.searchParams.get('TransId') || request.nextUrl.searchParams.get('TRANID') || '';
+  const baseUrl = process.env.CMI_PUBLIC_BASE_URL || process.env.NEXT_PUBLIC_BASE_URL || request.nextUrl.origin || 'https://resetclub.ma';
 
   if (code === '00') {
-    return NextResponse.redirect(new URL(`/fr/confirmation?order=${encodeURIComponent(orderId)}`, baseUrl));
+    const now = new Date().toISOString();
+    const confirmUrl = new URL('/fr/confirmation', baseUrl);
+    confirmUrl.searchParams.set('order', orderId);
+    confirmUrl.searchParams.set('amount', amount);
+    confirmUrl.searchParams.set('date', now);
+    confirmUrl.searchParams.set('status', 'success');
+    confirmUrl.searchParams.set('code', code);
+    if (transactionId) confirmUrl.searchParams.set('transaction', transactionId);
+    return NextResponse.redirect(confirmUrl);
   }
   return NextResponse.redirect(new URL(`/fr/payment?error=1&order=${encodeURIComponent(orderId)}`, baseUrl));
 }
