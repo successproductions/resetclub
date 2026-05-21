@@ -3,6 +3,7 @@
 import React, { Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import Link from 'next/link';
+import { Check, LockKeyhole } from 'lucide-react';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 
@@ -39,104 +40,100 @@ function ConfirmationContent() {
       <Header />
 
       {/* ── Video banner ── */}
-      <div className="relative pt-28 pb-10 md:pb-16 min-h-[28vh] flex items-center justify-center overflow-hidden">
+      <div className="relative flex min-h-[28vh] items-center justify-center overflow-hidden pt-28 pb-10 md:min-h-[34vh] md:pb-16">
         <div className="absolute inset-0 z-0">
           <video autoPlay loop muted playsInline
-            className="absolute inset-0 w-full h-full object-cover opacity-40 blur-sm">
-            <source src="/videos/videobg.mp4" type="video/mp4" />
+            className="absolute inset-0 h-full w-full object-cover">
+            <source src="/videos/website-banner-vdo.mp4" type="video/mp4" />
           </video>
-          <div className="absolute inset-0 bg-black/30" />
+          <div className="absolute inset-0 bg-black/45" />
         </div>
       </div>
 
       {/* ── Main receipt section ── */}
-      <main className="min-h-[72vh] bg-white flex items-start justify-center px-4 py-10 md:py-16">
-        <div className="w-full max-w-lg mx-auto">
+      <main className="flex min-h-[72vh] items-start justify-center bg-[#f7f3ee] px-5 py-10 md:px-8 md:py-16">
+        <div className="mx-auto w-full max-w-3xl">
 
           {/* Status badge */}
           <div className="flex justify-center mb-6">
-            <span className="inline-flex items-center gap-2 bg-green-50 border border-green-200 text-green-700 text-sm font-medium px-4 py-2 rounded-full">
-              <svg className="w-4 h-4 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-                <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-              </svg>
+            <span className="inline-flex items-center gap-3 rounded-[4px] border border-[#524029] bg-[#fbf8f4] px-5 py-3 font-graphik text-sm font-medium uppercase tracking-[0.16em] text-gray-950 shadow-sm">
+              <Check className="h-4 w-4 text-[#524029]" strokeWidth={2.5} />
               Paiement effectué avec succès
             </span>
           </div>
 
           {/* Title */}
-          <h1 className="text-3xl md:text-4xl font-normal text-gray-900 text-center mb-2 leading-tight" style={{ fontFamily: 'var(--font-graphik, sans-serif)' }}>
+          <h1 className="mb-3 text-center font-graphik text-3xl font-normal leading-tight text-gray-950 md:text-5xl">
             Bravo. Votre transformation<br />commence maintenant.
           </h1>
-          <p className="text-base text-gray-500 text-center mb-8" style={{ fontFamily: 'var(--font-graphik, sans-serif)' }}>
+          <p className="mb-8 text-center font-graphik text-base leading-relaxed text-[#5b5148] md:text-lg">
             Votre bilan RESET™ est confirmé avec succès.
           </p>
 
           {/* ── Transaction receipt card ── */}
-          <div className="border border-gray-200 rounded-sm overflow-hidden mb-8">
+          <div className="mb-8 overflow-hidden rounded-[8px] border border-[#ded4ca] bg-white shadow-2xl shadow-black/10">
 
             {/* Card header */}
-            <div className="bg-gray-900 px-6 py-4">
-              <p className="text-xs uppercase tracking-widest text-gray-400 mb-1">Récapitulatif de la transaction</p>
-              <p className="text-white font-medium text-lg" style={{ fontFamily: 'var(--font-graphik, sans-serif)' }}>
+            <div className="border-b border-[#d8cec4] bg-[#fbf8f4] px-6 py-5 md:px-8">
+              <p className="mb-2 font-graphik text-xs uppercase tracking-[0.22em] text-[#7b7066]">Récapitulatif de la transaction</p>
+              <p className="font-graphik text-xl font-medium text-gray-950 md:text-2xl">
                 Bilan RESET™ — Reset Club
               </p>
             </div>
 
             {/* Card rows */}
-            <div className="divide-y divide-gray-100 bg-white">
+            <div className="divide-y divide-[#eee7df] bg-white">
 
               {/* Statut */}
-              <div className="flex items-center justify-between px-6 py-4">
-                <span className="text-sm text-gray-500">Statut du paiement</span>
-                <span className="flex items-center gap-1.5 text-sm font-semibold text-green-700">
-                  <span className="w-2 h-2 rounded-full bg-green-500 inline-block" />
+              <div className="flex flex-col gap-2 px-6 py-4 md:flex-row md:items-center md:justify-between md:px-8">
+                <span className="font-graphik text-sm text-[#7b7066]">Statut du paiement</span>
+                <span className="flex items-center gap-2 font-graphik text-sm font-medium text-gray-950">
+                  <span className="inline-block h-2 w-2 rounded-full bg-[#524029]" />
                   Paiement réussi {code && `(code ${code})`}
                 </span>
               </div>
 
               {/* Numéro de commande */}
-              <div className="flex items-center justify-between px-6 py-4">
-                <span className="text-sm text-gray-500">Numéro de commande</span>
-                <span className="text-sm font-semibold text-gray-900 font-mono tracking-wide">{orderId}</span>
+              <div className="flex flex-col gap-2 px-6 py-4 md:flex-row md:items-center md:justify-between md:px-8">
+                <span className="font-graphik text-sm text-[#7b7066]">Numéro de commande</span>
+                <span className="break-all font-graphik text-sm font-medium tracking-wide text-gray-950">{orderId}</span>
               </div>
 
               {transactionId && (
-                <div className="flex items-center justify-between px-6 py-4">
-                  <span className="text-sm text-gray-500">Numéro de transaction CMI</span>
-                  <span className="text-sm font-semibold text-gray-900 font-mono tracking-wide">{transactionId}</span>
+                <div className="flex flex-col gap-2 px-6 py-4 md:flex-row md:items-center md:justify-between md:px-8">
+                  <span className="font-graphik text-sm text-[#7b7066]">Numéro de transaction CMI</span>
+                  <span className="break-all font-graphik text-sm font-medium tracking-wide text-gray-950">{transactionId}</span>
                 </div>
               )}
 
               {/* Date */}
-              <div className="flex items-center justify-between px-6 py-4">
-                <span className="text-sm text-gray-500">Date de la transaction</span>
-                <span className="text-sm font-semibold text-gray-900">{date}</span>
+              <div className="flex flex-col gap-2 px-6 py-4 md:flex-row md:items-center md:justify-between md:px-8">
+                <span className="font-graphik text-sm text-[#7b7066]">Date de la transaction</span>
+                <span className="font-graphik text-sm font-medium text-gray-950">{date}</span>
               </div>
 
               {/* Service */}
-              <div className="flex items-center justify-between px-6 py-4">
-                <span className="text-sm text-gray-500">Durée du bilan</span>
-                <span className="text-sm font-semibold text-gray-900">45 minutes</span>
+              <div className="flex flex-col gap-2 px-6 py-4 md:flex-row md:items-center md:justify-between md:px-8">
+                <span className="font-graphik text-sm text-[#7b7066]">Durée du bilan</span>
+                <span className="font-graphik text-sm font-medium text-gray-950">45 minutes</span>
               </div>
 
               {/* Amount */}
-              <div className="flex items-center justify-between px-6 py-5 bg-gray-50">
-                <span className="text-base font-semibold text-gray-900">Montant payé</span>
-                <span className="text-xl font-bold text-gray-900">{amount}</span>
+              <div className="flex flex-col gap-2 bg-[#fbf8f4] px-6 py-6 md:flex-row md:items-center md:justify-between md:px-8">
+                <span className="font-graphik text-base font-medium text-gray-950">Montant payé</span>
+                <span className="font-graphik text-2xl font-medium text-gray-950">{amount}</span>
               </div>
             </div>
 
             {/* Secure footer */}
-            <div className="px-6 py-3 bg-gray-50 border-t border-gray-200 flex items-center gap-2">
-              <svg className="w-4 h-4 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.8}>
-                <path strokeLinecap="round" strokeLinejoin="round" d="M12 11c0-1.657 1.343-3 3-3s3 1.343 3 3v1H9v-1c0-1.657 1.343-3 3-3zm-6 2h12v7a2 2 0 01-2 2H8a2 2 0 01-2-2v-7z" />
-              </svg>
-              <span className="text-xs text-gray-400">Transaction sécurisée via CMI — Centre Monétique Interbancaire</span>
+            <div className="flex items-center gap-2 border-t border-[#d8cec4] bg-[#f5efe8] px-6 py-4 md:px-8">
+              <LockKeyhole className="h-4 w-4 shrink-0 text-[#7b7066]" strokeWidth={1.8} />
+              <span className="font-graphik text-xs leading-relaxed text-[#7b7066]">Transaction sécurisée via CMI — Centre Monétique Interbancaire</span>
             </div>
           </div>
 
           {/* Follow-up message */}
-          <p className="text-sm text-gray-600 text-center leading-relaxed mb-8" style={{ fontFamily: 'var(--font-graphik, sans-serif)' }}>
+          <p className="mx-auto mb-8 max-w-2xl text-center font-graphik text-base leading-relaxed text-[#5b5148] md:text-lg">
             Dans les prochaines 24 heures (hors week-end), notre équipe vous contactera personnellement pour fixer votre rendez-vous au centre.
           </p>
 
@@ -144,8 +141,7 @@ function ConfirmationContent() {
           <div className="flex justify-center">
             <Link
               href="/"
-              className="inline-block bg-black text-white px-8 py-4 text-sm font-medium hover:bg-[#1d1c1c] transition-colors duration-300"
-              style={{ fontFamily: 'var(--font-graphik, sans-serif)' }}
+              className="inline-block border border-[#524029] bg-transparent px-8 py-4 font-graphik text-base font-medium text-gray-950 shadow-lg transition-all duration-300 hover:scale-105 hover:bg-gray-950 hover:text-white hover:shadow-xl md:text-lg"
             >
               Retour à l&apos;accueil
             </Link>
