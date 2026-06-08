@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import { 
+import {
   User,
   Mail,
   Lock,
@@ -97,14 +97,14 @@ export default function AcademyProfilePage() {
     console.log('Starting avatar upload...', file.name);
     setIsUploadingAvatar(true);
     setError('');
-    
+
     const formData = new FormData();
     formData.append('avatar', file);
 
     try {
       const token = localStorage.getItem('academy_token');
       console.log('Token:', token ? 'exists' : 'missing');
-      
+
       const response = await fetch('/api/auth/upload-avatar', {
         method: 'POST',
         headers: {
@@ -125,22 +125,22 @@ export default function AcademyProfilePage() {
 
       console.log('Upload successful! Avatar URL:', data.avatarUrl);
       console.log('Updated user:', data.user);
-      
+
       // Add timestamp to force image reload
       const avatarUrlWithTimestamp = `${data.user.avatarUrl}?t=${Date.now()}`;
       const updatedUserWithTimestamp = {
         ...data.user,
         avatarUrl: avatarUrlWithTimestamp
       };
-      
+
       console.log('Setting user state with:', updatedUserWithTimestamp);
-      
+
       setMessage('Photo de profil mise à jour !');
       setImageError(false); // Reset error state
       setUser(updatedUserWithTimestamp);
       localStorage.setItem('academy_user', JSON.stringify(data.user)); // Save without timestamp
       setIsUploadingAvatar(false);
-      
+
       // Force re-render
       setTimeout(() => {
         setMessage('');
@@ -363,7 +363,7 @@ export default function AcademyProfilePage() {
                             imageError,
                             shouldShowImage: user?.avatarUrl && !imageError
                           });
-                          
+
                           return (user?.avatarUrl && !imageError) ? (
                             <img
                               src={user.avatarUrl}
@@ -382,7 +382,7 @@ export default function AcademyProfilePage() {
                             </span>
                           );
                         })()}
-                        
+
                         {/* Upload Loading Overlay */}
                         {isUploadingAvatar && (
                           <div className="absolute inset-0 bg-black/50 flex items-center justify-center">
@@ -402,11 +402,10 @@ export default function AcademyProfilePage() {
                         type="button"
                         onClick={() => !isUploadingAvatar && document.getElementById('avatar-upload')?.click()}
                         disabled={isUploadingAvatar}
-                        className={`absolute bottom-0 right-0 bg-white rounded-full p-2 shadow-lg border-2 transition-colors ${
-                          isUploadingAvatar 
-                            ? 'border-gray-200 opacity-50 cursor-not-allowed' 
+                        className={`absolute bottom-0 right-0 bg-white rounded-full p-2 shadow-lg border-2 transition-colors ${isUploadingAvatar
+                            ? 'border-gray-200 opacity-50 cursor-not-allowed'
                             : 'border-gray-200 hover:border-[#51b1aa]'
-                        }`}
+                          }`}
                         title={isUploadingAvatar ? 'Téléchargement en cours...' : 'Changer la photo'}
                       >
                         {isUploadingAvatar ? (
@@ -416,7 +415,7 @@ export default function AcademyProfilePage() {
                         )}
                       </button>
                     </div>
-                    <h2 className="text-xl font-bold text-gray-900">
+                    <h2 className="text-xl! font-bold text-gray-900">
                       {firstName && lastName ? `${firstName} ${lastName}` : 'Utilisateur'}
                     </h2>
                     <p className="text-gray-500 text-sm mb-4">{email}</p>

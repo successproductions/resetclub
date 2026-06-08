@@ -40,12 +40,8 @@ export async function POST(request: NextRequest) {
       title,
       slug,
       description,
-      difficultyLevel,
       targetRole,
       isPublished,
-      durationHours,
-      price,
-      currency,
       thumbnailUrl
     } = body;
 
@@ -55,14 +51,13 @@ export async function POST(request: NextRequest) {
         title,
         slug,
         description,
-        difficultyLevel,
+        difficultyLevel: 'BEGINNER',
         targetRole,
         isPublished: isPublished || false,
-        durationHours: durationHours ? parseFloat(durationHours) : null,
-        price: price ? parseFloat(price) : null,
-        currency: currency || 'MAD',
+        durationHours: null,
+        price: null,
+        currency: 'MAD',
         thumbnailUrl
-        // createdBy: payload.userId // Disabled for development
       }
     });
 

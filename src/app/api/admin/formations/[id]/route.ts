@@ -56,12 +56,8 @@ export async function PUT(
       title,
       slug,
       description,
-      difficultyLevel,
       targetRole,
       isPublished,
-      durationHours,
-      price,
-      currency,
       thumbnailUrl
     } = body;
 
@@ -71,12 +67,8 @@ export async function PUT(
         title,
         slug,
         description,
-        difficultyLevel,
         targetRole,
         isPublished,
-        durationHours: durationHours ? parseFloat(durationHours) : null,
-        price: price ? parseFloat(price) : null,
-        currency,
         thumbnailUrl
       }
     });

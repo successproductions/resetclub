@@ -15,12 +15,8 @@ export default function EditFormationPage({ params }: { params: Promise<{ id: st
     title: '',
     slug: '',
     description: '',
-    difficultyLevel: 'BEGINNER',
     targetRole: 'CLIENT',
     isPublished: false,
-    durationHours: '',
-    price: '',
-    currency: 'MAD',
     thumbnailUrl: '/images/OUT.jpg'
   });
 
@@ -48,12 +44,8 @@ export default function EditFormationPage({ params }: { params: Promise<{ id: st
           title: formation.title,
           slug: formation.slug,
           description: formation.description || '',
-          difficultyLevel: formation.difficultyLevel,
           targetRole: formation.targetRole,
           isPublished: formation.isPublished,
-          durationHours: formation.durationHours?.toString() || '',
-          price: formation.price?.toString() || '',
-          currency: formation.currency || 'MAD',
           thumbnailUrl: formation.thumbnailUrl || '/images/OUT.jpg'
         });
       } else {
@@ -254,72 +246,7 @@ export default function EditFormationPage({ params }: { params: Promise<{ id: st
             </select>
           </div>
 
-          {/* Difficulty Level */}
-          <div>
-            <label htmlFor="difficultyLevel" className="block text-sm font-medium text-gray-700 mb-2">
-              Niveau de difficulté *
-            </label>
-            <select
-              id="difficultyLevel"
-              name="difficultyLevel"
-              value={formData.difficultyLevel}
-              onChange={handleChange}
-              required
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#50b1aa] focus:border-transparent text-gray-900"
-            >
-              <option value="BEGINNER">Débutant</option>
-              <option value="INTERMEDIATE">Intermédiaire</option>
-              <option value="ADVANCED">Avancé</option>
-            </select>
-          </div>
 
-          {/* Duration */}
-          <div>
-            <label htmlFor="durationHours" className="block text-sm font-medium text-gray-700 mb-2">
-              Durée (heures)
-            </label>
-            <input
-              type="number"
-              id="durationHours"
-              name="durationHours"
-              value={formData.durationHours}
-              onChange={handleChange}
-              step="0.5"
-              min="0"
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#50b1aa] focus:border-transparent text-gray-900"
-              placeholder="10"
-            />
-          </div>
-
-          {/* Price */}
-          <div>
-            <label htmlFor="price" className="block text-sm font-medium text-gray-700 mb-2">
-              Prix
-            </label>
-            <div className="flex gap-2">
-              <input
-                type="number"
-                id="price"
-                name="price"
-                value={formData.price}
-                onChange={handleChange}
-                step="0.01"
-                min="0"
-                className="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#50b1aa] focus:border-transparent text-gray-900"
-                placeholder="0"
-              />
-              <select
-                name="currency"
-                value={formData.currency}
-                onChange={handleChange}
-                className="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#50b1aa] focus:border-transparent text-gray-900"
-              >
-                <option value="MAD">MAD</option>
-                <option value="EUR">EUR</option>
-                <option value="USD">USD</option>
-              </select>
-            </div>
-          </div>
 
           {/* Published */}
           <div className="flex items-center gap-2">
