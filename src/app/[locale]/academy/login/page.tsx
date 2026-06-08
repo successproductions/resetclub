@@ -30,7 +30,7 @@ export default function LoginPage({ params }: { params: Promise<{ locale: string
     if (token && userData) {
       try {
         const user = JSON.parse(userData);
-        
+
         // Redirect based on role
         if (user.role === 'ADMIN') {
           console.log('✅ Already logged in as ADMIN - redirecting to admin panel');
@@ -40,7 +40,6 @@ export default function LoginPage({ params }: { params: Promise<{ locale: string
           router.push('/fr/academy/dashboard');
         }
       } catch {
-        // Invalid data, allow login
       }
     }
   }, [router]);
@@ -69,7 +68,7 @@ export default function LoginPage({ params }: { params: Promise<{ locale: string
 
       localStorage.setItem('academy_token', data.token);
       localStorage.setItem('academy_user', JSON.stringify(data.user));
-      
+
       // Redirect based on user role
       if (data.user.role === 'ADMIN') {
         router.push('/academy/admin/formations');
