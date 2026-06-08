@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import jwt from 'jsonwebtoken';
+import { verifyToken } from '@/lib/auth/jwt';
 import prisma from '@/lib/prisma';
 
 // POST /api/progress/lesson — Mark a lesson as completed
@@ -12,9 +12,10 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: 'Non authentifié' }, { status: 401 });
     }
 
-    const payload = jwt.verify(token, process.env.JWT_SECRET || 'fallback-secret') as {
-      userId: string;
-    };
+    const payload = verifyToken(token);
+    if (!payload) {
+      return NextResponse.json({ error: 'Token invalide' }, { status: 401 });
+    }
 
     const { lessonId, formationId } = await request.json();
 

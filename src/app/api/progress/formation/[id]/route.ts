@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import jwt from 'jsonwebtoken';
+import { verifyToken } from '@/lib/auth/jwt';
 import prisma from '@/lib/prisma';
 
 // GET /api/progress/formation/[id] — Get completion status for a formation
@@ -15,9 +15,10 @@ export async function GET(
       return NextResponse.json({ error: 'Non authentifié' }, { status: 401 });
     }
 
-    const payload = jwt.verify(token, process.env.JWT_SECRET || 'fallback-secret') as {
-      userId: string;
-    };
+    const payload = verifyToken(token);
+    if (!payload) {
+      return NextResponse.json({ error: 'Token invalide' }, { status: 401 });
+    }
 
     const { id: formationId } = await params;
 

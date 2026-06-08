@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useRouter } from 'next/navigation';
 import {
   ChevronLeft,
@@ -77,12 +77,13 @@ export default function CoursePage({ params }: { params: Promise<{ id: string }>
   const [completedLessonIds, setCompletedLessonIds] = useState<string[]>([]);
   const [isFormationComplete, setIsFormationComplete] = useState(false);
   const [downloadingCert, setDownloadingCert] = useState(false);
-  const [formationId, setFormationId] = useState<string>('');
+  // useRef to avoid stale closure in markLessonComplete
+  const formationIdRef = useRef<string>('');
 
   useEffect(() => {
     const loadData = async () => {
       const resolvedParams = await params;
-      setFormationId(resolvedParams.id);
+      formationIdRef.current = resolvedParams.id;
       await fetchFormation(resolvedParams.id);
       await fetchProgress(resolvedParams.id);
     };
@@ -124,7 +125,8 @@ export default function CoursePage({ params }: { params: Promise<{ id: string }>
   };
 
   const markLessonComplete = async (lessonId: string) => {
-    if (!formationId || completedLessonIds.includes(lessonId)) return;
+    const fId = formationIdRef.current;
+    if (!fId || completedLessonIds.includes(lessonId)) return;
     try {
       const token = localStorage.getItem('academy_token');
       if (!token) return;
@@ -134,7 +136,7 @@ export default function CoursePage({ params }: { params: Promise<{ id: string }>
           'Content-Type': 'application/json',
           Authorization: `Bearer ${token}`,
         },
-        body: JSON.stringify({ lessonId, formationId }),
+        body: JSON.stringify({ lessonId, formationId: fId }),
       });
       if (response.ok) {
         const data = await response.json();
@@ -150,7 +152,7 @@ export default function CoursePage({ params }: { params: Promise<{ id: string }>
     setDownloadingCert(true);
     try {
       const token = localStorage.getItem('academy_token');
-      const response = await fetch(`/api/certificate/${formationId}`, {
+      const response = await fetch(`/api/certificate/${formationIdRef.current}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       if (response.ok) {
