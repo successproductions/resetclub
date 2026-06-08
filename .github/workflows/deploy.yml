@@ -29,8 +29,8 @@ jobs:
     - name: Deploy to server
       uses: appleboy/ssh-action@v1.0.0
       with:
-        host: 95.216.6.6
-        username: resetclub
+        host: 91.98.229.108
+        username: ${{ secrets.SSH_USERNAME }}
         password: ${{ secrets.SSH_PASSWORD }}
         script: |
           # Load Node.js 
