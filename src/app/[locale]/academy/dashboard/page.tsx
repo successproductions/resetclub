@@ -36,6 +36,14 @@ interface Formation {
   }>;
 }
 
+interface Certificate {
+  id: string;
+  formationId: string;
+  certificateNumber: string;
+  issuedDate: string;
+  formation: { title: string; thumbnailUrl: string | null };
+}
+
 export default function AcademyDashboard() {
   const router = useRouter();
   const [user, setUser] = useState<UserData | null>(null);
@@ -43,6 +51,8 @@ export default function AcademyDashboard() {
   const [activePage, setActivePage] = useState('home');
   const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
   const [formations, setFormations] = useState<Formation[]>([]);
+  const [certificates, setCertificates] = useState<Certificate[]>([]);
+  const [downloadingCert, setDownloadingCert] = useState<string | null>(null);
 
   const fetchFormations = async () => {
     try {
@@ -53,6 +63,43 @@ export default function AcademyDashboard() {
       }
     } catch (error) {
       console.error('Error fetching formations:', error);
+    }
+  };
+
+  const fetchCertificates = async (token: string) => {
+    try {
+      const response = await fetch('/api/certificate/user', {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      if (response.ok) {
+        const { certificates: certs } = await response.json();
+        setCertificates(certs || []);
+      }
+    } catch (error) {
+      console.error('Error fetching certificates:', error);
+    }
+  };
+
+  const downloadCertificate = async (formationId: string) => {
+    setDownloadingCert(formationId);
+    try {
+      const token = localStorage.getItem('academy_token');
+      const response = await fetch(`/api/certificate/${formationId}`, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      if (response.ok) {
+        const blob = await response.blob();
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'Certificat_ResetClub.pdf';
+        a.click();
+        URL.revokeObjectURL(url);
+      }
+    } catch (error) {
+      console.error('Error downloading certificate:', error);
+    } finally {
+      setDownloadingCert(null);
     }
   };
 
@@ -76,6 +123,7 @@ export default function AcademyDashboard() {
         setUser(devUser);
         setIsLoading(false);
         fetchFormations();
+        fetchCertificates('dev-token');
         return;
       }
       
@@ -97,6 +145,7 @@ export default function AcademyDashboard() {
       setUser(parsedUser);
       setIsLoading(false);
       fetchFormations();
+      fetchCertificates(token);
     } catch {
       // Invalid token or user data
       router.push('/fr/academy/login');
@@ -277,14 +326,60 @@ export default function AcademyDashboard() {
             <div className="bg-white rounded-lg border border-gray-200 p-6">
               <div className="flex items-center justify-between mb-4">
                 <Award className="w-8 h-8 text-blue-600" />
-                <span className="text-3xl font-semibold text-gray-900">0</span>
+                <span className="text-3xl font-semibold text-gray-900">{certificates.length}</span>
               </div>
               <p className="text-gray-600 text-sm">Certificats obtenus</p>
             </div>
           </div>
 
-          {/* Formation Card Slider */}
-          <div className="relative">
+          {/* Certificates Page */}
+          {activePage === 'certificates' && (
+            <div>
+              <h2 className="text-2xl font-semibold text-gray-900 mb-6">Mes Certificats</h2>
+              {certificates.length === 0 ? (
+                <div className="bg-white rounded-lg border border-gray-200 p-12 text-center">
+                  <Award className="w-16 h-16 text-gray-300 mx-auto mb-4" />
+                  <h3 className="text-lg font-semibold text-gray-900 mb-2">Aucun certificat encore</h3>
+                  <p className="text-gray-500 mb-4">Complétez toutes les leçons d&apos;une formation pour obtenir votre certificat.</p>
+                  <button
+                    onClick={() => setActivePage('library')}
+                    className="px-5 py-2 bg-[#51b1aa] text-white rounded-lg hover:bg-[#449990] transition-colors text-sm"
+                  >
+                    Voir mes formations
+                  </button>
+                </div>
+              ) : (
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  {certificates.map((cert) => (
+                    <div key={cert.id} className="bg-white rounded-lg border border-gray-200 p-6 flex items-start gap-4">
+                      <div className="w-14 h-14 rounded-full bg-amber-50 flex items-center justify-center flex-shrink-0">
+                        <Award className="w-7 h-7 text-amber-500" />
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <h3 className="font-semibold text-gray-900 truncate">{cert.formation.title}</h3>
+                        <p className="text-xs text-gray-500 mt-1">
+                          Obtenu le {new Date(cert.issuedDate).toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' })}
+                        </p>
+                        <p className="text-xs text-gray-400 mt-0.5">N° {cert.certificateNumber}</p>
+                      </div>
+                      <button
+                        onClick={() => downloadCertificate(cert.formationId)}
+                        disabled={downloadingCert === cert.formationId}
+                        className="flex items-center gap-1.5 px-3 py-1.5 bg-amber-500 hover:bg-amber-600 text-white text-xs font-medium rounded-lg transition-colors disabled:opacity-60 flex-shrink-0"
+                      >
+                        <Award className="w-3.5 h-3.5" />
+                        {downloadingCert === cert.formationId ? '...' : 'Télécharger'}
+                      </button>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+          )}
+
+          {/* Formation Card Slider (home page content) */}
+          {activePage === 'home' && (
+            <div className="relative">
             {/* Left Arrow */}
             <button className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 z-10 w-10 h-10 bg-white rounded-full shadow-md border border-gray-200 flex items-center justify-center hover:bg-gray-50 transition-colors">
               <svg className="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -330,8 +425,8 @@ export default function AcademyDashboard() {
                               <span className="text-xs font-semibold text-[#51b1aa]">0%</span>
                             </div>
                             <div className="w-full h-1.5 bg-gray-200 rounded-full overflow-hidden">
-                              <div 
-                                className="h-full bg-gradient-to-r from-[#51b1aa] to-[#91dbd3] rounded-full transition-all" 
+                              <div
+                                className="h-full bg-gradient-to-r from-[#51b1aa] to-[#91dbd3] rounded-full transition-all"
                                 style={{ width: '0%' }}
                               />
                             </div>
@@ -356,9 +451,9 @@ export default function AcademyDashboard() {
 
                         {/* Right Image with margin */}
                         <div className="w-full md:w-1/3 md:min-w-[200px] md:self-stretch flex-shrink-0 relative p-[10px]">
-                          <img 
-                            src={formation.thumbnailUrl || '/images/OUT.jpg'} 
-                            alt={formation.title} 
+                          <img
+                            src={formation.thumbnailUrl || '/images/OUT.jpg'}
+                            alt={formation.title}
                             className="w-full h-[200px] md:h-[300px] object-cover rounded-lg"
                           />
                         </div>
@@ -373,8 +468,8 @@ export default function AcademyDashboard() {
                             <span className="text-xs font-semibold text-[#51b1aa]">0%</span>
                           </div>
                           <div className="w-full h-1.5 bg-gray-200 rounded-full overflow-hidden">
-                            <div 
-                              className="h-full bg-gradient-to-r from-[#51b1aa] to-[#91dbd3] rounded-full transition-all" 
+                            <div
+                              className="h-full bg-gradient-to-r from-[#51b1aa] to-[#91dbd3] rounded-full transition-all"
                               style={{ width: '0%' }}
                             />
                           </div>
@@ -409,6 +504,7 @@ export default function AcademyDashboard() {
               </svg>
             </button>
           </div>
+          )}
         </main>
       </div>
     </div>

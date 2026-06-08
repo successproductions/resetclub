@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import { 
+import {
   ChevronLeft,
   ChevronDown,
   ChevronRight,
@@ -10,7 +10,8 @@ import {
   Circle,
   Menu,
   X,
-  FileQuestion
+  FileQuestion,
+  Award
 } from 'lucide-react';
 
 interface Lesson {
@@ -73,11 +74,17 @@ export default function CoursePage({ params }: { params: Promise<{ id: string }>
   const [showFeedback, setShowFeedback] = useState(false);
   const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null);
   const [quizCompleted, setQuizCompleted] = useState(false);
+  const [completedLessonIds, setCompletedLessonIds] = useState<string[]>([]);
+  const [isFormationComplete, setIsFormationComplete] = useState(false);
+  const [downloadingCert, setDownloadingCert] = useState(false);
+  const [formationId, setFormationId] = useState<string>('');
 
   useEffect(() => {
     const loadData = async () => {
       const resolvedParams = await params;
+      setFormationId(resolvedParams.id);
       await fetchFormation(resolvedParams.id);
+      await fetchProgress(resolvedParams.id);
     };
     loadData();
   }, []);
@@ -88,8 +95,6 @@ export default function CoursePage({ params }: { params: Promise<{ id: string }>
       if (response.ok) {
         const { formation } = await response.json();
         setFormation(formation);
-        
-        // Select first lesson by default
         if (formation.modules.length > 0 && formation.modules[0].lessons.length > 0) {
           setCurrentLesson(formation.modules[0].lessons[0]);
         }
@@ -98,6 +103,71 @@ export default function CoursePage({ params }: { params: Promise<{ id: string }>
       console.error('Error fetching formation:', error);
     } finally {
       setLoading(false);
+    }
+  };
+
+  const fetchProgress = async (id: string) => {
+    try {
+      const token = localStorage.getItem('academy_token');
+      if (!token) return;
+      const response = await fetch(`/api/progress/formation/${id}`, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      if (response.ok) {
+        const data = await response.json();
+        setCompletedLessonIds(data.completedLessonIds || []);
+        setIsFormationComplete(data.isComplete || false);
+      }
+    } catch (error) {
+      console.error('Error fetching progress:', error);
+    }
+  };
+
+  const markLessonComplete = async (lessonId: string) => {
+    if (!formationId || completedLessonIds.includes(lessonId)) return;
+    try {
+      const token = localStorage.getItem('academy_token');
+      if (!token) return;
+      const response = await fetch('/api/progress/lesson', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({ lessonId, formationId }),
+      });
+      if (response.ok) {
+        const data = await response.json();
+        setCompletedLessonIds((prev) => [...prev, lessonId]);
+        setIsFormationComplete(data.isComplete || false);
+      }
+    } catch (error) {
+      console.error('Error marking lesson complete:', error);
+    }
+  };
+
+  const downloadCertificate = async () => {
+    setDownloadingCert(true);
+    try {
+      const token = localStorage.getItem('academy_token');
+      const response = await fetch(`/api/certificate/${formationId}`, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      if (response.ok) {
+        const blob = await response.blob();
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `Certificat_ResetClub.pdf`;
+        a.click();
+        URL.revokeObjectURL(url);
+      } else {
+        alert('Certificat non disponible');
+      }
+    } catch (error) {
+      console.error('Error downloading certificate:', error);
+    } finally {
+      setDownloadingCert(false);
     }
   };
 
@@ -260,10 +330,12 @@ export default function CoursePage({ params }: { params: Promise<{ id: string }>
                       onClick={() => selectLesson(lesson)}
                       className="w-full px-4 py-2.5 pl-10 flex items-center gap-3 hover:bg-[#2d6d68] transition-colors text-left"
                     >
-                      {currentLesson?.id === lesson.id ? (
-                        <CheckCircle2 className="w-4 h-4 text-green-500 flex-shrink-0" />
+                      {completedLessonIds.includes(lesson.id) ? (
+                        <CheckCircle2 className="w-4 h-4 text-green-400 flex-shrink-0" />
+                      ) : currentLesson?.id === lesson.id ? (
+                        <CheckCircle2 className="w-4 h-4 text-white flex-shrink-0" />
                       ) : (
-                        <Circle className="w-4 h-4 text-gray-600 flex-shrink-0" />
+                        <Circle className="w-4 h-4 text-gray-400 flex-shrink-0" />
                       )}
                       <div className="flex-1 min-w-0">
                         <p className="text-sm text-gray-100 truncate">{lesson.title}</p>
@@ -541,8 +613,8 @@ export default function CoursePage({ params }: { params: Promise<{ id: string }>
 
         {/* Navigation Buttons */}
         <div className="bg-gray-50 border-t border-gray-200 p-4">
-          <div className="max-w-7xl mx-auto flex justify-between">
-            <button 
+          <div className="max-w-7xl mx-auto flex justify-between items-center">
+            <button
               onClick={() => {
                 const allLessons = formation.modules.flatMap(m => m.lessons);
                 const currentIndex = allLessons.findIndex(l => l.id === currentLesson?.id);
@@ -555,10 +627,25 @@ export default function CoursePage({ params }: { params: Promise<{ id: string }>
             >
               ← Leçon précédente
             </button>
-            <button 
+
+            {/* Certificate button when complete */}
+            {isFormationComplete && (
+              <button
+                onClick={downloadCertificate}
+                disabled={downloadingCert}
+                className="flex items-center gap-2 px-5 py-2 bg-amber-500 hover:bg-amber-600 text-white text-sm font-medium rounded-lg transition-colors disabled:opacity-60"
+              >
+                <Award className="w-4 h-4" />
+                {downloadingCert ? 'Génération...' : 'Télécharger mon certificat'}
+              </button>
+            )}
+
+            <button
               onClick={() => {
                 const allLessons = formation.modules.flatMap(m => m.lessons);
                 const currentIndex = allLessons.findIndex(l => l.id === currentLesson?.id);
+                // Mark current lesson as complete
+                if (currentLesson) markLessonComplete(currentLesson.id);
                 if (currentIndex < allLessons.length - 1) {
                   setCurrentLesson(allLessons[currentIndex + 1]);
                 }
