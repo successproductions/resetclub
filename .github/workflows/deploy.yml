@@ -35,7 +35,7 @@ jobs:
         script_stop: true
         script: |
           set -e
-          APP_PORT=3000
+          APP_PORT=3010
 
           # Load Node.js 
           export PATH="$HOME/.nvm/versions/node/$(ls $HOME/.nvm/versions/node/ | tail -1)/bin:$PATH"
@@ -59,19 +59,6 @@ jobs:
           fi
 
           pm2 delete resetclub || true
-
-          # Free the app port if a stale process is still holding it
-          if command -v fuser >/dev/null 2>&1; then
-            fuser -k "${APP_PORT}/tcp" || true
-          fi
-          if command -v lsof >/dev/null 2>&1; then
-            PORT_PIDS=$(lsof -ti tcp:"${APP_PORT}" || true)
-            if [ -n "$PORT_PIDS" ]; then
-              kill -TERM $PORT_PIDS || true
-              sleep 2
-              kill -KILL $PORT_PIDS || true
-            fi
-          fi
 
           PORT="$APP_PORT" pm2 start npm --name "resetclub" -- start
           
