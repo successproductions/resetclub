@@ -35,6 +35,7 @@ jobs:
         script_stop: true
         script: |
           set -e
+          APP_PORT=3005
 
           # Load Node.js 
           export PATH="$HOME/.nvm/versions/node/$(ls $HOME/.nvm/versions/node/ | tail -1)/bin:$PATH"
@@ -61,10 +62,18 @@ jobs:
 
           # Free the app port if a stale process is still holding it
           if command -v fuser >/dev/null 2>&1; then
-            fuser -k 3004/tcp || true
+            fuser -k "${APP_PORT}/tcp" || true
+          fi
+          if command -v lsof >/dev/null 2>&1; then
+            PORT_PIDS=$(lsof -ti tcp:"${APP_PORT}" || true)
+            if [ -n "$PORT_PIDS" ]; then
+              kill -TERM $PORT_PIDS || true
+              sleep 2
+              kill -KILL $PORT_PIDS || true
+            fi
           fi
 
-          pm2 start npm --name "resetclub" -- start
+          PORT="$APP_PORT" pm2 start npm --name "resetclub" -- start
           
           # Save PM2 configuration
           pm2 save || true
