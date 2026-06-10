@@ -68,7 +68,6 @@ const Hero: React.FC = () => {
 
       {/* Content */}
       <div className="relative z-10 top-26 lg:top-36 xl:top-0 left-0 md:left-24 mx-2 px-3 pt-4 max-w-4xl  ">
-        {/* Main Heading */}
         <h1 className="text-white mb-3 md:mb-8 font-graphik font-normal">
           <div className="relative min-h-[4rem] overflow-hidden text-3xl md:min-h-[3.5rem] md:text-xl lg:min-h-[2.5rem] lg:text-5xl mb-2 md:mb-4 tracking-wide text-gray-900">
             {sliderTexts.map((text, index) => (
