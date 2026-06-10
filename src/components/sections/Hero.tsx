@@ -44,7 +44,7 @@ const Hero: React.FC = () => {
 
   return (
     <section className="relative h-[87vh] flex items-center justify-center lg:justify-start overflow-hidden">
-      {/* Image Carousel Background */}
+      {/* Image Background */}
       <div className="absolute inset-0 z-0">
         {images.map((image, index) => (
           <div
