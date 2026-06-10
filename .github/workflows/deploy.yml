@@ -35,7 +35,7 @@ jobs:
         script_stop: true
         script: |
           set -e
-          APP_PORT=3005
+          APP_PORT=3000
 
           # Load Node.js 
           export PATH="$HOME/.nvm/versions/node/$(ls $HOME/.nvm/versions/node/ | tail -1)/bin:$PATH"
