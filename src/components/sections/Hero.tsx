@@ -67,31 +67,31 @@ const Hero: React.FC = () => {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 top-26 lg:top-36 xl:top-0 left-0 md:left-24 mx-2 px-3 pt-4 max-w-4xl  ">
-        <h1 className="text-white mb-3 md:mb-8 font-graphik font-normal">
-          <div className="relative min-h-[4rem] overflow-hidden text-3xl md:min-h-[3.5rem] md:text-xl lg:min-h-[2.5rem] lg:text-5xl mb-2 md:mb-4 tracking-wide text-gray-900">
-            {sliderTexts.map((text, index) => (
-              <span
-                key={text}
-                className={`absolute left-0 top-0 transition-all duration-700 ${index === currentSlide
-                  ? 'translate-x-0 opacity-100'
-                  : '-translate-x-8 opacity-0'
-                  }`}
-              >
-                {text}
-              </span>
-            ))}
-          </div>
-          <div className="text-lg md:text-xl xl:text-1xl tracking-tight font-normal text-gray-900">
-            {t('subtitle')}
-          </div>
-        </h1>
+      <div className="relative z-10 top-26 left-0 mx-2 max-w-4xl px-3 pt-4 md:left-24 lg:top-36 xl:top-0">
+        <div className="relative max-w-3xl bg-white/18 px-5 py-5 shadow-[0_26px_80px_rgba(17,24,39,0.16)] backdrop-blur-md md:px-8 md:py-7">
 
+          <h1 className="relative mb-4 font-graphik font-normal md:mb-6">
+            <div className="relative mb-2 min-h-[4rem] overflow-hidden text-3xl tracking-wide text-gray-900 md:mb-4 md:min-h-[3.5rem] md:text-xl lg:min-h-[2.5rem] lg:text-5xl">
+              {sliderTexts.map((text, index) => (
+                <span
+                  key={text}
+                  className={`absolute left-0 top-0 transition-all duration-700 ${index === currentSlide
+                    ? 'translate-x-0 opacity-100'
+                    : '-translate-x-8 opacity-0'
+                    }`}
+                >
+                  {text}
+                </span>
+              ))}
+            </div>
+            <div className="text-lg font-normal tracking-tight text-gray-900 md:text-xl xl:text-1xl">
+              {t('subtitle')}
+            </div>
+          </h1>
 
-        {/* CTA Button */}
-        <div className="absolute left-3 md:left-4">
-          <Link href="/payment">
-            <button className="text-black hover:text-white font-normal bg-transparent border-2 text-lg md:text-xl font-graphik px-2 md:px-4 py-2 mt-2 md:mt-4 hover:border-1 hover:border-gray-200 cursor-pointer transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl whitespace-nowrap">
+          {/* CTA Button */}
+          <Link href="/payment" className="relative inline-block">
+            <button className="whitespace-nowrap border-2 bg-white/25 px-3 py-2 font-graphik text-lg font-normal text-black shadow-lg transition-all duration-300 hover:scale-105 hover:border-gray-200 hover:bg-gray-950 hover:text-white hover:shadow-xl md:px-5 md:text-xl">
               {t('cta')}
             </button>
           </Link>

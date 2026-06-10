@@ -38,36 +38,36 @@ const IntroSection: React.FC = () => {
         { opacity: 1, y: 0, duration: 1, ease: 'power3.out' },
         0
       )
-      .fromTo(card1Ref.current,
-        { opacity: 0, x: -100 },
-        { opacity: 1, x: 0, duration: 0.8, ease: 'power3.out' },
-        0.2
-      )
-      .fromTo(arrow1Ref.current,
-        { opacity: 0, x: -20 },
-        { opacity: 1, x: 0, duration: 0.6, ease: 'power3.out' },
-        0.8
-      )
-      .fromTo(card2Ref.current,
-        { opacity: 0, y: 100 },
-        { opacity: 1, y: 0, duration: 0.8, ease: 'power3.out' },
-        1.2
-      )
-      .fromTo(arrow2Ref.current,
-        { opacity: 0, x: -20 },
-        { opacity: 1, x: 0, duration: 0.6, ease: 'power3.out' },
-        1.8
-      )
-      .fromTo(card3Ref.current,
-        { opacity: 0, x: 100 },
-        { opacity: 1, x: 0, duration: 0.8, ease: 'power3.out' },
-        2.2
-      )
-      .fromTo(buttonRef.current,
-        { opacity: 0, y: 30 },
-        { opacity: 1, y: 0, duration: 0.8, ease: 'power3.out' },
-        2.8
-      );
+        .fromTo(card1Ref.current,
+          { opacity: 0, x: -100 },
+          { opacity: 1, x: 0, duration: 0.8, ease: 'power3.out' },
+          0.2
+        )
+        .fromTo(arrow1Ref.current,
+          { opacity: 0, x: -20 },
+          { opacity: 1, x: 0, duration: 0.6, ease: 'power3.out' },
+          0.8
+        )
+        .fromTo(card2Ref.current,
+          { opacity: 0, y: 100 },
+          { opacity: 1, y: 0, duration: 0.8, ease: 'power3.out' },
+          1.2
+        )
+        .fromTo(arrow2Ref.current,
+          { opacity: 0, x: -20 },
+          { opacity: 1, x: 0, duration: 0.6, ease: 'power3.out' },
+          1.8
+        )
+        .fromTo(card3Ref.current,
+          { opacity: 0, x: 100 },
+          { opacity: 1, x: 0, duration: 0.8, ease: 'power3.out' },
+          2.2
+        )
+        .fromTo(buttonRef.current,
+          { opacity: 0, y: 30 },
+          { opacity: 1, y: 0, duration: 0.8, ease: 'power3.out' },
+          2.8
+        );
 
       // Animation to hide cards when entering key figures section
       gsap.to([titleRef.current, card1Ref.current, card2Ref.current, card3Ref.current, arrow1Ref.current, arrow2Ref.current, buttonRef.current], {
@@ -118,13 +118,13 @@ const IntroSection: React.FC = () => {
                   </div>
                   {/* Content */}
                   <div className="px-6 py-4 flex-grow flex flex-col">
-                    <h3 className="text-xl font-normal text-gray-900 md:mb-2 font-graphik">
+                    <h3 className="text-xl text-center font-normal text-gray-900 md:mb-2 font-graphik">
                       {t('cards.in.title')}
                     </h3>
-                    <h3 className="text-xl font-normal text-gray-900 mb-1 font-graphik">
+                    <h3 className="text-xl text-center font-normal text-gray-900 mb-1 font-graphik">
                       {t('cards.in.title2')}
                     </h3>
-                    <p className="text-gray-900 text-lg leading-5.5 mb-2 font-graphik flex-grow">
+                    <p className="text-gray-900 text-lg text-center leading-5.5 mb-2 font-graphik flex-grow">
                       {t('cards.in.subtitle')}
                     </p>
                   </div>
@@ -146,13 +146,13 @@ const IntroSection: React.FC = () => {
                   </div>
                   {/* Content */}
                   <div className="px-6 py-4 flex-grow flex flex-col">
-                    <h3 className="text-xl font-normal text-gray-900 md:mb-2 font-graphik">
+                    <h3 className="text-xl text-center font-normal text-gray-900 md:mb-2 font-graphik">
                       {t('cards.out.title')}
                     </h3>
-                     <h3 className="text-xl font-normal text-gray-900 md:b-1 font-graphik">
+                    <h3 className="text-xl text-center font-normal text-gray-900 md:b-1 font-graphik">
                       {t('cards.out.title2')}
                     </h3>
-                    <p className="text-gray-900 text-lg leading-5.5 mb-2 font-graphik flex-grow">
+                    <p className="text-gray-900 text-center text-lg leading-5.5 mb-2 font-graphik flex-grow">
                       {t('cards.out.subtitle')}
                     </p>
                   </div>
@@ -174,13 +174,13 @@ const IntroSection: React.FC = () => {
                   </div>
                   {/* Content */}
                   <div className="px-6 py-4 flex-grow flex flex-col">
-                    <h3 className="text-xl font-normal text-gray-900 md:mb-2 leading-1.5 font-graphik">
+                    <h3 className="text-xl text-center font-normal text-gray-900 md:mb-2 leading-1.5 font-graphik">
                       {t('cards.reset.title')}
                     </h3>
-                    <h3 className="text-xl font-normal text-gray-900 mb-1 leading-1.5 font-graphik">
+                    <h3 className="text-xl text-center font-normal text-gray-900 mb-1 leading-1.5 font-graphik">
                       {t('cards.reset.title2')}
                     </h3>
-                    <p className="text-gray-900 text-lg leading-5.5 mb-2 font-graphik flex-grow">
+                    <p className="text-gray-900 text-center text-lg leading-5.5 mb-2 font-graphik flex-grow">
                       {t('cards.reset.subtitle')}
                     </p>
                   </div>

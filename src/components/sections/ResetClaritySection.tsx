@@ -17,29 +17,33 @@ const ResetClaritySection: React.FC = () => {
           {t('title')}
         </h2>
 
-        <div className="grid gap-6 lg:grid-cols-[1fr_1fr]">
-          <div className="bg-white p-0 md:p-8">
-            <h3 className="mb-6 font-graphik text-2xl! font-normal text-gray-950 md:text-3xl!">
+        <div className="grid gap-6 lg:grid-cols-2">
+          <div className="bg-white p-0 shadow-none md:p-8 md:shadow-[0_24px_70px_rgba(17,24,39,0.08)]">
+            <h3 className="mb-6 max-w-xl font-graphik text-2xl! font-normal leading-tight text-gray-950 md:text-3xl!">
               {t('fit.title')}
             </h3>
-            <ul className="space-y-4">
+            <ul className="space-y-5">
               {fitKeys.map((key) => (
-                <li key={key} className="flex gap-3 font-graphik text-lg! font-normal leading-relaxed text-gray-900 md:text-lg!">
-                  <span className="mt-3 h-1.5 w-1.5 shrink-0 rounded-full bg-[#524029]" />
+                <li key={key} className="flex gap-4 font-graphik text-lg! font-normal leading-relaxed text-gray-900 md:text-lg!">
+                  <span className="mt-2.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-gray-950 text-xs text-white">
+                    {fitKeys.indexOf(key) + 1}
+                  </span>
                   <span>{t(`fit.${key}`)}</span>
                 </li>
               ))}
             </ul>
           </div>
 
-          <div className="bg-[#f4f3f1] p-6 md:p-8">
-            <h3 className="mb-6 font-graphik text-2xl! font-normal text-gray-950 md:text-3xl!">
+          <div className="bg-white p-0 shadow-none md:p-8 md:shadow-[0_24px_70px_rgba(17,24,39,0.08)]">
+            <h3 className="mb-6 max-w-xl font-graphik text-2xl! font-normal leading-tight text-gray-950 md:text-3xl!">
               {t('notFit.title')}
             </h3>
-            <ul className="space-y-4">
+            <ul className="space-y-5">
               {notFitKeys.map((key) => (
-                <li key={key} className="flex gap-3 font-graphik text-lg! font-normal leading-relaxed text-gray-900 md:text-lg!">
-                  <span className="mt-3 h-1.5 w-1.5 shrink-0 rounded-full bg-[#524029]" />
+                <li key={key} className="flex gap-4 font-graphik text-lg! font-normal leading-relaxed text-gray-900 md:text-lg!">
+                  <span className="mt-2.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-gray-950 text-xs text-white">
+                    {notFitKeys.indexOf(key) + 1}
+                  </span>
                   <span>{t(`notFit.${key}`)}</span>
                 </li>
               ))}
@@ -47,18 +51,18 @@ const ResetClaritySection: React.FC = () => {
           </div>
         </div>
 
-        <div className="mt-6 bg-[#fbf8f4] p-6 md:p-8">
+        <div className="mt-10 bg-white p-0 md:p-8 md:shadow-[0_24px_70px_rgba(17,24,39,0.08)]">
           <h3 className="mb-6 font-graphik text-2xl! font-normal text-gray-950 md:text-3xl!">
             {t('notDo.title')}
           </h3>
-          <div className="grid gap-x-10 gap-y-4 md:grid-cols-2">
+          <div className="grid gap-x-12 gap-y-5 md:grid-cols-2">
             {notDoKeys.map((key) => (
               <p key={key} className="font-graphik text-lg! font-normal leading-relaxed text-gray-900 md:text-lg!">
                 {t(`notDo.${key}`)}
               </p>
             ))}
           </div>
-          <p className="mt-6 border-t border-[#d8cec4] pt-6 font-graphik text-lg! font-normal leading-relaxed text-gray-950 md:text-xl!">
+          <p className="mt-8 max-w-4xl font-graphik text-lg! font-normal leading-relaxed text-gray-950 md:text-xl!">
             {t('notDo.closing')}
           </p>
         </div>

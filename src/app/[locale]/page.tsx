@@ -20,6 +20,7 @@ import TeamSlider from '@/components/sections/TeamSlider';
 import ResetPillarsSection from '@/components/sections/ResetPillarsSection';
 import ResetClaritySection from '@/components/sections/ResetClaritySection';
 import ResetFaqSection from '@/components/sections/ResetFaqSection';
+import FemaleSchemaSection from '@/components/sections/FemaleSchemaSection';
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
@@ -70,12 +71,13 @@ export default function HomePage() {
         <Hero />
         {/* <LogoBanner /> */}
         {/* <PressBanner /> */}
-            <PracticeComparison />
+        <PracticeComparison />
         <BiologicalResistanceBlock />
         <WhyResetClub />
         <ResetPillarsSection />
-                <BeforeAfter />
-                {/* <VideoCarousel /> */}
+        <FemaleSchemaSection />
+        <BeforeAfter />
+        {/* <VideoCarousel /> */}
         <KeyFigures />
         <ExperienceClient />
         <IntroSection />
@@ -85,7 +87,7 @@ export default function HomePage() {
         <TeamHero />
         <Director />
         <TeamSlider />
-        
+
         <Trustpilot />
       </main>
       <Footer />
