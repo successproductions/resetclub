@@ -273,6 +273,60 @@
       }
     }
   },
+  "ResetClaritySection": {
+    "title": "Reset Club en toute clarté",
+    "fit": {
+      "title": "Reset Club est fait pour vous si…",
+      "fit1": "Vous êtes fatiguée de lutter contre votre corps",
+      "fit2": "Vous sentez que “quelque chose bloque” sans réussir à l’expliquer",
+      "fit3": "Vous voulez retrouver de l’énergie, un sommeil réparateur et une relation apaisée avec votre corps",
+      "fit4": "Vous cherchez une approche globale et intelligente — pas un énième régime"
+    },
+    "notFit": {
+      "title": "Reset Club n’est probablement pas fait pour vous si…",
+      "notFit1": "Vous cherchez une solution rapide et superficielle",
+      "notFit2": "Vous voulez perdre du poids vite sans chercher à comprendre votre corps",
+      "notFit3": "Vous n’êtes pas prête à écouter vos signaux internes ni à ajuster certaines habitudes"
+    },
+    "notDo": {
+      "title": "Ce que nous ne faisons pas",
+      "notDo1": "Chez Reset Club, nous ne promettons pas de résultats irréalistes.",
+      "notDo2": "Nous ne remplaçons pas un suivi médical.",
+      "notDo3": "Nous ne proposons pas de régimes restrictifs.",
+      "notDo4": "Nous ne vendons pas de solutions universelles ni de miracles en quelques semaines.",
+      "notDo5": "Nous ne réduisons pas la transformation à un “avant / après”.",
+      "closing": "Nous accompagnons les femmes là où les approches classiques atteignent leurs limites."
+    }
+  },
+  "ResetFaqSection": {
+    "title": "Vos questions les plus fréquentes",
+    "items": {
+      "paid": {
+        "question": "Le bilan est-il payant ?",
+        "answer": "Dans le cadre de notre ouverture, le Bilan Reset™ est offert aux 50 premières clientes. Sa valeur est de 1 500 DH et les places sont limitées."
+      },
+      "menopause": {
+        "question": "Reset Club fonctionne-t-il pour les femmes en préménopause ou ménopause ?",
+        "answer": "Oui. Notre approche est spécifiquement adaptée aux réalités hormonales et métaboliques féminines à chaque étape de la vie, y compris les transitions hormonales."
+      },
+      "medical": {
+        "question": "Est-ce que je dois avoir un suivi médical en parallèle ?",
+        "answer": "Reset Club ne remplace pas un suivi médical. Nous travaillons en complément de votre médecin et vous encourageons à maintenir tout suivi existant."
+      },
+      "duration": {
+        "question": "Combien de temps dure un accompagnement ?",
+        "answer": "La durée dépend de votre situation, de vos objectifs et des signaux de votre corps. Contactez-nous pour une meilleure estimation et une orientation adaptée à vos besoins."
+      },
+      "remote": {
+        "question": "Reset Club est-il disponible à distance ?",
+        "answer": "Reset Club vous accueille actuellement à Rabat. Pour les personnes à distance, nous développons aussi une plateforme d’apprentissage afin de transmettre nos contenus, routines et accompagnements pédagogiques."
+      },
+      "difference": {
+        "question": "Quelle est la différence avec un coach sportif ou nutritionniste classique ?",
+        "answer": "Un coach classique travaille généralement sur un seul levier — l’entraînement ou l’alimentation. Chez Reset Club, nous intervenons simultanément sur la biologie, le système nerveux, la nutrition et l’accompagnement émotionnel. C’est cette approche globale qui change les résultats."
+      }
+    }
+  },
   "RecrutonsPage": {
     "title": "Nous recrutons",
     "subtitle": "Rejoins notre équipe féminine et contribue à transformer des vies",

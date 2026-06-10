@@ -18,6 +18,8 @@ import TeamHero from '@/components/sections/TeamHero';
 import Director from '@/components/sections/Director';
 import TeamSlider from '@/components/sections/TeamSlider';
 import ResetPillarsSection from '@/components/sections/ResetPillarsSection';
+import ResetClaritySection from '@/components/sections/ResetClaritySection';
+import ResetFaqSection from '@/components/sections/ResetFaqSection';
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
@@ -78,6 +80,8 @@ export default function HomePage() {
         <ExperienceClient />
         <IntroSection />
         <NotreHistoireSection />
+        <ResetClaritySection />
+        <ResetFaqSection />
         <TeamHero />
         <Director />
         <TeamSlider />

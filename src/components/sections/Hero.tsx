@@ -29,7 +29,7 @@ const Hero: React.FC = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentImage((prev) => (prev + 1) % images.length);
-    }, 5000); 
+    }, 5000);
 
     return () => clearInterval(interval);
   }, [images.length]);
@@ -49,9 +49,8 @@ const Hero: React.FC = () => {
         {images.map((image, index) => (
           <div
             key={image}
-            className={`absolute inset-0 transition-opacity duration-1000 ${
-              index === currentImage ? 'opacity-100' : 'opacity-0'
-            }`}
+            className={`absolute inset-0 transition-opacity duration-1000 ${index === currentImage ? 'opacity-100' : 'opacity-0'
+              }`}
           >
             <Image
               src={image}
@@ -75,11 +74,10 @@ const Hero: React.FC = () => {
             {sliderTexts.map((text, index) => (
               <span
                 key={text}
-                className={`absolute left-0 top-0 transition-all duration-700 ${
-                  index === currentSlide
-                    ? 'translate-x-0 opacity-100'
-                    : '-translate-x-8 opacity-0'
-                }`}
+                className={`absolute left-0 top-0 transition-all duration-700 ${index === currentSlide
+                  ? 'translate-x-0 opacity-100'
+                  : '-translate-x-8 opacity-0'
+                  }`}
               >
                 {text}
               </span>
@@ -94,7 +92,7 @@ const Hero: React.FC = () => {
         {/* CTA Button */}
         <div className="absolute left-3 md:left-4">
           <Link href="/payment">
-            <button className="text-white font-normal bg-transparent border-2 text-lg md:text-xl font-graphik px-2 md:px-4 py-2 mt-2 md:mt-4 hover:border-1 hover:border-gray-200 cursor-pointer transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl whitespace-nowrap">
+            <button className="text-black hover:text-white font-normal bg-transparent border-2 text-lg md:text-xl font-graphik px-2 md:px-4 py-2 mt-2 md:mt-4 hover:border-1 hover:border-gray-200 cursor-pointer transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl whitespace-nowrap">
               {t('cta')}
             </button>
           </Link>
