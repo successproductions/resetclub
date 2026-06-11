@@ -70,9 +70,7 @@ const ResetPillarsSection: React.FC = () => {
                   {t(`pillars.${pillar.key}.description`)}
                   {t(`pillars.${pillar.key}.tools`)}
                 </p>
-                {/* <p className="font-graphik text-base! font-normal leading-relaxed text-gray-600 md:text-base!">
-                  {t(`pillars.${pillar.key}.tools`)}
-                </p> */}
+
               </div>
             ))}
           </div>
