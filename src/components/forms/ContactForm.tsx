@@ -19,7 +19,7 @@ export default function ContactForm() {
 
   return (
     <div className="bg-white rounded-sm shadow-lg p-4 md:p-6 font-graphik lg:p-8">
-      <p className="text-lg md:text-3xl   text-gray-900 mb-4">
+      <p className="text-lg md:text-[28px]   text-gray-900 mb-4">
         {t('subtitle')}
       </p>
 
@@ -48,9 +48,8 @@ export default function ContactForm() {
               name="firstName"
               value={formData.firstName}
               onChange={handleInputChange}
-              className={`w-full px-4 py-3 border  focus:outline-none focus:border-[#ccbaa8] text-gray-900 transition-colors placeholder:text-gray-400 ${
-                errors.firstName ? 'border-red-500' : 'border-gray-900'
-              }`}
+              className={`w-full px-4 py-3 border  focus:outline-none focus:border-[#ccbaa8] text-gray-900 transition-colors placeholder:text-gray-400 ${errors.firstName ? 'border-red-500' : 'border-gray-900'
+                }`}
               placeholder={t('form.firstNamePlaceholder')}
             />
             {errors.firstName && (
@@ -68,9 +67,8 @@ export default function ContactForm() {
               name="lastName"
               value={formData.lastName}
               onChange={handleInputChange}
-              className={`w-full px-4 text-gray-900 py-3 border  focus:outline-none focus:border-[#ccbaa8] transition-colors placeholder:text-gray-400 ${
-                errors.lastName ? 'border-red-500' : 'border-gray-900'
-              }`}
+              className={`w-full px-4 text-gray-900 py-3 border  focus:outline-none focus:border-[#ccbaa8] transition-colors placeholder:text-gray-400 ${errors.lastName ? 'border-red-500' : 'border-gray-900'
+                }`}
               placeholder={t('form.lastNamePlaceholder')}
             />
             {errors.lastName && (
@@ -90,9 +88,8 @@ export default function ContactForm() {
             name="email"
             value={formData.email}
             onChange={handleInputChange}
-            className={`w-full px-4 text-gray-900 py-3 border  focus:outline-none focus:border-[#ccbaa8] transition-colors placeholder:text-gray-400 ${
-              errors.email ? 'border-red-500' : 'border-gray-900'
-            }`}
+            className={`w-full px-4 text-gray-900 py-3 border  focus:outline-none focus:border-[#ccbaa8] transition-colors placeholder:text-gray-400 ${errors.email ? 'border-red-500' : 'border-gray-900'
+              }`}
             placeholder={t('form.emailPlaceholder')}
           />
           {errors.email && (
@@ -110,9 +107,8 @@ export default function ContactForm() {
               name="countryCode"
               value={formData.countryCode}
               onChange={handleInputChange}
-              className={`px-3 py-3 border  focus:outline-none focus:border-[#ccbaa8]  text-gray-400 transition-colors ${
-                errors.countryCode ? 'border-red-500' : 'border-gray-900'
-              }`}
+              className={`px-3 py-3 border  focus:outline-none focus:border-[#ccbaa8]  text-gray-400 transition-colors ${errors.countryCode ? 'border-red-500' : 'border-gray-900'
+                }`}
             >
               {COUNTRIES.map((country) => (
                 <option key={country.code} value={country.dialCode}>
@@ -126,9 +122,8 @@ export default function ContactForm() {
               name="phone"
               value={formData.phone}
               onChange={handleInputChange}
-              className={`flex-1 px-4 py-3 border text-gray-900   focus:outline-none focus:border-[#ccbaa8] transition-colors placeholder:text-gray-400 ${
-                errors.phone ? 'border-red-500' : 'border-gray-900'
-              }`}
+              className={`flex-1 px-4 py-3 border text-gray-900   focus:outline-none focus:border-[#ccbaa8] transition-colors placeholder:text-gray-400 ${errors.phone ? 'border-red-500' : 'border-gray-900'
+                }`}
               placeholder={t('form.phonePlaceholder')}
             />
           </div>
@@ -148,9 +143,8 @@ export default function ContactForm() {
             rows={5}
             value={formData.message}
             onChange={handleInputChange}
-            className={`w-full px-4 py-3 border text-gray-900  focus:outline-none focus:border-[#ccbaa8] transition-colors resize-vertical placeholder:text-gray-400 ${
-              errors.message ? 'border-red-500' : 'border-gray-900'
-            }`}
+            className={`w-full px-4 py-3 border text-gray-900  focus:outline-none focus:border-[#ccbaa8] transition-colors resize-vertical placeholder:text-gray-400 ${errors.message ? 'border-red-500' : 'border-gray-900'
+              }`}
             placeholder={t('form.messagePlaceholder')}
           />
           {errors.message && (

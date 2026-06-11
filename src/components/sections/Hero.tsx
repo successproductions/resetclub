@@ -68,10 +68,10 @@ const Hero: React.FC = () => {
 
       {/* Content */}
       <div className="relative z-10 top-26 left-0 mx-2 max-w-4xl px-3 pt-4 md:left-24 lg:top-36 xl:top-0">
-        <div className="relative max-w-3xl bg-white/18 px-5 py-5 shadow-[0_26px_80px_rgba(17,24,39,0.16)] backdrop-blur-md md:px-8 md:py-7">
+        <div className="relative max-w-5xl bg-[linear-gradient(90deg,rgba(255,255,255,0.82)_0%,rgba(255,255,255,0.72)_42%,rgba(255,255,255,0)_100%)] px-5 py-5 md:px-4 md:py-7">
 
           <h1 className="relative mb-4 font-graphik font-normal md:mb-6">
-            <div className="relative mb-2 min-h-[4rem] overflow-hidden text-3xl tracking-wide text-gray-900 md:mb-4 md:min-h-[3.5rem] md:text-xl lg:min-h-[2.5rem] lg:text-5xl">
+            <div className="relative mb-2 min-h-[4rem] overflow-hidden text-3xl tracking-wide text-gray-900 md:mb-4 md:min-h-[3.5rem] md:text-xl lg:min-h-[2.5rem] lg:text-4xl">
               {sliderTexts.map((text, index) => (
                 <span
                   key={text}

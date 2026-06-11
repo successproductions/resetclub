@@ -34,7 +34,7 @@
       "reviews": " Lisez nos Avis Clients",
       "location": " Nous Trouver – Localisation & Itinéraire"
     },
-    "contact": "  + 212 689 464 650",
+    "contact": "  + 212 689 464 650 / 05 375 705 21",
     "newsletter": "Inscrivez-vous à notre Newsletter VIP"
   },
   "AboutPage": {
@@ -42,7 +42,7 @@
     "description": ""
   },
   "ContactPage": {
-    "title": "Prêt à commencer votre transformation ?",
+    "title": "Prête à commencer votre transformation ?",
     "subtitle": "Contactez-nous pour réserver votre bilan ou obtenir plus d'informations sur nos programmes",
     "form": {
       "title": "Au plaisir de vous servir",
@@ -55,7 +55,7 @@
       "firstNamePlaceholder": "Votre prénom",
       "lastNamePlaceholder": "Votre nom",
       "emailPlaceholder": "votre@email.com",
-      "phonePlaceholder": "+ 212 689 464 650",
+      "phonePlaceholder": "+ 212 689 464 650 ",
       "subjectPlaceholder": "Sélectionnez un sujet",
       "messagePlaceholder": "Décrivez votre demande...",
       "subjects": {
@@ -78,11 +78,11 @@
       "title": "Informations de contact",
       "address": {
         "title": "Adresse",
-        "value": "11 Rue Clarkia, Rabat"
+        "value": "à, N° 11 rue Clarkia Secteur 15 Quartier, Hay Riad Rabat 10000"
       },
       "phone": {
         "title": "Téléphone",
-        "value": "+ 212 689 464 650"
+        "value": "+ 212 689 464 650 / 05 375 705 21"
       },
       "email": {
         "title": "Email",
@@ -107,7 +107,7 @@
     "description": "Une équipe d'experts dédiés à votre transformation",
     "video": {
       "title": "Derrière Reset Club",
-      "subtitle": "une équipe formée dans notre académie interne la première au Maroc dédiée à l'excellence thérapeutique et au coaching transformationnel"
+      "subtitle": "une équipe formée dans notre académie interne, la première au Maroc dédiée à l'excellence thérapeutique et au coaching transformationnel"
     },
     "nahed": {
       "name": "Nahed Rachad",
@@ -123,19 +123,19 @@
       "subtitle": "Reset Club™",
       "role": "Fondatrice de Reset Club · Coach en transformation féminine",
       "imageAlt": "Nahed Rachad, fondatrice de Reset Club",
-      "bio1": "Life and business coach spécialisé en stratégie et leadership. Pendant des années, j’ai coaché des centaines d'entreprises et des milliers de personnes.",
+      "bio1": "'' Life and business coach spécialisé en stratégie et leadership. Pendant des années, j’ai coaché des centaines d'entreprises et des milliers de personnes.",
       "bio2": "Fondatrice du concept Prépare ton exam et accompagné plus de 2 700 000 jeunes au Maroc.",
-      "bio3": "J’étais partout — la télé, la radio, les réseaux sociaux, les scènes. Une communauté de 3.5 millions sur les réseaux sociaux. Une vie à plein régime.",
+      "bio3": "J’étais partout : la télé, la radio, les réseaux sociaux et les scènes. Une communauté de 3.5 millions sur les réseaux sociaux. Une vie à plein régime.",
       "bio4": "Et pendant ce temps-là, en silence, mon corps, lui, décrochait.",
-      "bio5": "La fatigue d’abord. Puis les douleurs articulaires. Puis 12 kilos que je ne comprenais pas. Un corps qui résistait à tout — le sport, les régimes, les centres. Un effet yoyo qui durait.",
+      "bio5": "La fatigue d’abord. Puis les douleurs articulaires. Puis 12 kilos que je ne comprenais pas. Un corps qui résistait à tout le sport, les régimes, les centres. Un effet yoyo qui durait.",
       "bio6": "Et une question qui revenait, de plus en plus fort : Pourquoi ça ne marche plus pour moi ?",
       "bio7": "J’aurais pu baisser les bras. Au lieu de ça, j’ai fait ce que je fais toujours quand quelque chose me bloque : je me suis formée.",
-      "bio8": "J’ai découvert le biohacking. Je me suis entourée des meilleurs experts mondiaux. Et pour la première fois, j’ai compris ce qui se passait vraiment dans mon corps — l’inflammation, le cortisol, la résistance à l’insuline, le sommeil cassé. Ces paramètres invisibles qui bloquent tout, et que personne ne m’avait jamais expliqué.",
-      "bio9": "J’ai été mon propre cobaye. J’ai construit mes protocoles entoure des meilleurs experts internationals. Et mon corps a recommencé à coopérer.",
+      "bio8": "J’ai découvert le biohacking. Je me suis entourée des meilleurs experts mondiaux. Et pour la première fois, j’ai compris ce qui se passait vraiment dans mon corps l’inflammation, le cortisol, la résistance à l’insuline, le sommeil cassé. Ces paramètres invisibles qui bloquent tout, et que personne ne m’avait jamais expliqué.",
+      "bio9": "J’ai été mon propre cobaye. J’ai construit mes protocoles autour des meilleurs experts internationaux. Et mon corps a recommencé à coopérer.",
       "bio10": "C’est là que j’ai su.",
-      "bio11": "Si moi — coach, formée, informée, entourée — je suis passée à côté de tout ça pendant des années… combien de femmes vivent exactement la même chose en ce moment, sans savoir que ce n’est pas leur faute ?",
+      "bio11": "Si moi coach, formée, informée, entourée je suis passée à côté de tout ça pendant des années… combien de femmes vivent exactement la même chose en ce moment, sans savoir que ce n’est pas leur faute ?",
       "bio12": "Reset Club est né de cette conviction. Pas pour vous donner un programme de plus.",
-      "bio13": "Pour vous donner enfin ce que personne ne vous a donné : la compréhension de votre propre corps. La perte de poids ? Elle est arrivée. Mais comme une conséquence.",
+      "bio13": "Pour vous donner enfin ce que personne ne vous a donné : la compréhension de votre propre corps. La perte de poids ? Elle est arrivée. Mais comme une conséquence. ''",
       "readMore": "Lire la suite",
       "readLess": "Réduire",
       "cta": "Réserver mon bilan RESET™"
@@ -152,7 +152,7 @@
           "description": "Spécialiste en optimisation métabolique et nutrition personnalisée pour des résultats durables. Après avoir terminé ses masters en médecine nutritionnelle, Dr. Sarah a pratiqué pendant plus de 12 ans dans des hôpitaux renommés et des retraites de bien-être."
         },
         "marc": {
-          "name": "Marc Dubois",
+          "name": "Anissa Dubois",
           "role": "Coach Sportif Elite",
           "specialty": "Transformation Physique",
           "description": "Marc est un professionnel dynamique avec plus de 10 ans d'expérience multiculturelle riche englobant les centres de villégiature et les retraites de bien-être. Il se spécialise dans les programmes d'entraînement personnalisés."
@@ -186,15 +186,15 @@
   },
   "BeforeAfter": {
     "title": "Témoignages avant/après",
-        "description": "Elles ont osé dire oui à leur transformation. Et vous ?",
+    "description": "Elles ont osé dire oui à leur transformation. Et vous ?",
     "subtitle": "Elles ont vécu Reset Club. Voici ce qu’elles en disent",
     "quote": "Chaque transformation commence par une décision. Rejoignez-nous et découvrez votre potentiel.",
     "cta": "Réserver mon bilan"
   },
   "KeyFigures": {
     "title": "Des résultats mesurables. Pas des promesses.",
-    "description": "",
-    "cta": "Ces résultats comment par un bilan. Réserver le mien",
+    "description": "Ces résultats commencent par un bilan. ",
+    "cta": "Réserver le mien",
     "stats": {
       "sleep": {
         "number": "30",
@@ -209,7 +209,7 @@
       "fatigue": {
         "number": "40",
         "unit": "%",
-        "label": "de fatigue chronique et d’inflammation"
+        "label": "de fatigue chronique et d’inflammations"
       },
       "bodyRelation": {
         "number": "70",
@@ -254,22 +254,28 @@
     }
   },
   "ResetPillarsSection": {
-    "title": "Les trois piliers de la transformation Reset Club",
+    "title": "Trois piliers de la transformation RESET CLUB",
     "pillars": {
       "movement": {
-        "title": "MOUVEMENT & TECHNOLOGIES",
-        "description": "Activer le métabolisme sans épuiser le système nerveux.",
-        "tools": "EM Sculpt Neo · Emtone · Exilis · Power Shape…"
+        "title": "MOUVEMENT",
+        "title2": "&",
+        "title3": "TECHNOLOGIES",
+        "description": "Activer le métabolisme sans épuiser le système nerveux ",
+        "tools": "par le biais de technologies de pointe : EM Sculpt Neo, Emtone, Exilis, Power Shape,…"
       },
       "neuro": {
-        "title": "NEURO & BIOHACKING",
-        "description": "Réguler le système nerveux et restaurer l’énergie du corps.",
-        "tools": "Neurofeedback · Hypnose · Laser auriculaire · Technologies anti-stress"
+        "title": "NEURO",
+        "title2": "&",
+        "title3": "BIOHACKING",
+        "description": "Réguler le système nerveux et restaurer l’énergie du corps : ",
+        "tools": "Neurofeedback, Hypnose, Laser auriculaire, Technologies anti-stress,..."
       },
       "coaching": {
-        "title": "COACHING & ACCOMPAGNEMENT",
-        "description": "Ancrer des habitudes durables dans la vraie vie.",
-        "tools": "Coaching transformationnel · Nutrition adaptée · Routines métaboliques · Communauté Reset Club"
+        "title": "COACHING ",
+        "title2": "&",
+        "title3": "ACCOMPAGNEMENT",
+        "description": "Ancrer des habitudes durables dans la vraie vie : ",
+        "tools": "Coaching transformationnel, Nutrition adaptée, Routines métaboliques, Communauté Reset Club,..."
       }
     }
   },
@@ -280,7 +286,7 @@
       "fit1": "Vous êtes fatiguée de lutter contre votre corps",
       "fit2": "Vous sentez que “quelque chose bloque” sans réussir à l’expliquer",
       "fit3": "Vous voulez retrouver de l’énergie, un sommeil réparateur et une relation apaisée avec votre corps",
-      "fit4": "Vous cherchez une approche globale et intelligente — pas un énième régime"
+      "fit4": "Vous cherchez une approche globale et intelligente, pas un énième régime"
     },
     "notFit": {
       "title": "Reset Club n’est probablement pas fait pour vous si…",
@@ -289,7 +295,7 @@
       "notFit3": "Vous n’êtes pas prête à écouter vos signaux internes ni à ajuster certaines habitudes"
     },
     "notDo": {
-      "title": "Ce que nous ne faisons pas",
+      "title": "Ce que nous ne faisons pas :",
       "notDo1": "Chez Reset Club, nous ne promettons pas de résultats irréalistes.",
       "notDo2": "Nous ne remplaçons pas un suivi médical.",
       "notDo3": "Nous ne proposons pas de régimes restrictifs.",
@@ -323,7 +329,7 @@
       },
       "difference": {
         "question": "Quelle est la différence avec un coach sportif ou nutritionniste classique ?",
-        "answer": "Un coach classique travaille généralement sur un seul levier — l’entraînement ou l’alimentation. Chez Reset Club, nous intervenons simultanément sur la biologie, le système nerveux, la nutrition et l’accompagnement émotionnel. C’est cette approche globale qui change les résultats."
+        "answer": "Un coach classique travaille généralement sur un seul levier : L’entraînement ou l’alimentation. Chez Reset Club, nous intervenons simultanément sur la biologie, le système nerveux, la nutrition et l’accompagnement émotionnel. C’est cette approche globale qui change les résultats."
       }
     }
   },
@@ -338,10 +344,10 @@
       "intro": "Vous êtes passionné(e) par le bien-être, la transformation, la relation client premium ?<br/>Vous aimez créer du lien, vendre avec authenticité, et accompagner dans la durée ?<br/>Vous rêvez de rejoindre une aventure unique et de créer un mouvement ?"
     },
     "upload": {
-      "title": "Déposez ton cv ici",
+      "title": "Déposez votre cv ici",
       "subtitle": "Rejoignez Reset Club. Nous vous attendons pour créer ensemble une révolution du bien-être !",
       "cvLabel": "1. Déposez votre CV ici",
-      "dragText": "Clique pour sélectionner ton CV",
+      "dragText": "Cliquez pour sélectionner votre CV",
       "fileTypes": "PDF, DOC, DOCX (max 5MB)",
       "fullName": "2. Nom Complet",
       "phone": "3. Numéro de téléphone",
@@ -413,18 +419,18 @@
     "cards": {
       "in": {
         "title": "IN",
-        "title2" :"Ce que vous apportez à votre corps",
-        "subtitle": "IN regroupe tout ce qui nourrit réellement votre corps et soutient votre métabolisme : nutrition adaptée à votre réalité, jus et infusions fonctionnelles, compléments sélectionnés avec précision, routines simples applicables dans la vraie vie. Nous donnons à votre corps ce dont il a réellement besoin pour fonctionner — pas seulement pour tenir."
+        "title2": "Ce que vous apportez à votre corps",
+        "subtitle": "IN regroupe tout ce qui nourrit réellement votre corps et soutient votre métabolisme : Nutrition adaptée à votre réalité, jus et infusions fonctionnelles, compléments sélectionnés avec précision, routines simples applicables dans la vraie vie. Nous donnons à votre corps ce dont il a réellement besoin pour fonctionner, pas seulement pour tenir."
       },
       "out": {
         "title": "OUT ",
-        "title2" :"Ce que votre corps doit libérer",
-        "subtitle": "OUT correspond à tout ce que le corps doit relâcher pour retrouver son équilibre : surcharge inflammatoire, rétention et gonflements, stress accumulé et fatigue nerveuse, tensions corporelles et charge émotionnelle. Lorsque le corps libère, le métabolisme peut enfin se remettre en mouvement."
+        "title2": "Ce que votre corps doit libérer",
+        "subtitle": "OUT correspond à tout ce que le corps doit relâcher pour retrouver son équilibre : Surcharge inflammatoire, rétention et gonflements, stress accumulé et fatigue nerveuse, tensions corporelles et charge émotionnelle. Lorsque le corps libère, le métabolisme peut enfin se remettre en mouvement."
       },
       "reset": {
         "title": "RESET ",
         "title2": "Ce que vous transformez en profondeur",
-        "subtitle": "RESET est la dimension la plus durable — et la plus précieuse — de la transformation : relation au corps et à l’alimentation, gestion du stress et des émotions, qualité du sommeil et récupération profonde, confiance et rapport apaisé à son corps. Ce n’est pas seulement le corps qui change. C’est votre manière de l’habiter."
+        "subtitle": "RESET est la dimension la plus durable et la plus précieuse de la transformation : Relation au corps et à l’alimentation, gestion du stress et des émotions, qualité du sommeil et récupération profonde, confiance et rapport apaisé à son corps. Ce n’est pas seulement le corps qui change. C’est votre manière de l’habiter."
       }
     }
   },
@@ -452,7 +458,7 @@
         "description": "Des résultats visibles, concrets et mesurables. Grâce à nos technologies (InBody, OligoCheck™), chaque évolution est suivie scientifiquement — pour une transformation durable et quantifiable."
       },
       "innovation": {
-        "title": "Innovation & science",
+        "title": "Innovation & Science",
         "description": "Science & Biohacking — Des protocoles de pointe issus des neurosciences et de la recherche en longévité. Des technologies avancées au service du mieux-être mesurable et de la performance cellulaire."
       },
       "transformation": {
@@ -557,7 +563,7 @@
   "ChatBot": {
     "subtitle": "Bilan offert & accompagnement",
     "phase1": {
-      "greeting": "Bonjour\nBienvenue chez Reset Club™.\nVous êtes exactement là où vous devez être.\nIci, on ne vous change pas.\nOn vous aide à comprendre votre corps \net à retrouver votre énergie.\nPour commencer, dites-moi :\naujourd’hui, vous souhaitez plutôt…"
+      "greeting": "Bonjour\nBienvenue chez Reset Club™.\nVous êtes exactement là où vous devez être.\nIci, on ne vous change pas.\nOn vous aide à comprendre votre corps et à retrouver votre énergie.\nPour commencer, dites-moi :\naujourd’hui, vous souhaitez plutôt…"
     },
     "buttons": {
       "weightLoss": "Perdre du poids durablement",
@@ -578,7 +584,7 @@
     },
     "responses": {
       "book": "Excellent choix .\nVoici le lien pour choisir votre créneau :\nWhatsApp : + 212 689 464 650\nNotre équipe vous confirmera votre rendez-vous\ndans les plus brefs délais.\nÀ très vite chez Reset Club™.",
-      "talk": "C’est noté .\nNotre conseillère Reset™ va vous contacter\ndans les prochaines heures.\nPour aller plus vite,\nvous pouvez aussi nous écrire directement :\nWhatsApp / Téléphone : + 212 689 464 650"
+      "talk": "C’est noté .\nNotre conseillère Reset™ va vous contacter dans les prochaines heures.\nPour aller plus vite,\nvous pouvez aussi nous écrire directement :\nWhatsApp / Téléphone : + 212 689 464 650"
     },
     "questions": {
       "intro": "Bien sûr.\nDites-moi ce qui vous bloque :",

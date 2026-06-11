@@ -55,14 +55,14 @@ const ResetClaritySection: React.FC = () => {
           <h3 className="mb-6 font-graphik text-2xl! font-normal text-gray-950 md:text-3xl!">
             {t('notDo.title')}
           </h3>
-          <div className="grid gap-x-12 gap-y-5 md:grid-cols-2">
+          <div className="grid gap-x-12 gap-y-3 md:grid-cols-2">
             {notDoKeys.map((key) => (
               <p key={key} className="font-graphik text-lg! font-normal leading-relaxed text-gray-900 md:text-lg!">
                 {t(`notDo.${key}`)}
               </p>
             ))}
           </div>
-          <p className="mt-8 max-w-4xl font-graphik text-lg! font-normal leading-relaxed text-gray-950 md:text-xl!">
+          <p className="mt-8 font-graphik text-lg! font-normal leading-relaxed text-gray-950 md:text-lg! text-center">
             {t('notDo.closing')}
           </p>
         </div>

@@ -125,15 +125,15 @@
       "imageAlt": "Nahed Rachad, fondatrice de Reset Club",
       "bio1": "Life and business coach spécialisé en stratégie et leadership. Pendant des années, j’ai coaché des centaines d'entreprises et des milliers de personnes.",
       "bio2": "Fondatrice du concept Prépare ton exam et accompagné plus de 2 700 000 jeunes au Maroc.",
-      "bio3": "J’étais partout — la télé, la radio, les réseaux sociaux, les scènes. Une communauté de 3.5 millions sur les réseaux sociaux. Une vie à plein régime.",
+      "bio3": "J’étais partout  la télé, la radio, les réseaux sociaux, les scènes. Une communauté de 3.5 millions sur les réseaux sociaux. Une vie à plein régime.",
       "bio4": "Et pendant ce temps-là, en silence, mon corps, lui, décrochait.",
-      "bio5": "La fatigue d’abord. Puis les douleurs articulaires. Puis 12 kilos que je ne comprenais pas. Un corps qui résistait à tout — le sport, les régimes, les centres. Un effet yoyo qui durait.",
+      "bio5": "La fatigue d’abord. Puis les douleurs articulaires. Puis 12 kilos que je ne comprenais pas. Un corps qui résistait à tout  le sport, les régimes, les centres. Un effet yoyo qui durait.",
       "bio6": "Et une question qui revenait, de plus en plus fort : Pourquoi ça ne marche plus pour moi ?",
       "bio7": "J’aurais pu baisser les bras. Au lieu de ça, j’ai fait ce que je fais toujours quand quelque chose me bloque : je me suis formée.",
-      "bio8": "J’ai découvert le biohacking. Je me suis entourée des meilleurs experts mondiaux. Et pour la première fois, j’ai compris ce qui se passait vraiment dans mon corps — l’inflammation, le cortisol, la résistance à l’insuline, le sommeil cassé. Ces paramètres invisibles qui bloquent tout, et que personne ne m’avait jamais expliqué.",
+      "bio8": "J’ai découvert le biohacking. Je me suis entourée des meilleurs experts mondiaux. Et pour la première fois, j’ai compris ce qui se passait vraiment dans mon corps  l’inflammation, le cortisol, la résistance à l’insuline, le sommeil cassé. Ces paramètres invisibles qui bloquent tout, et que personne ne m’avait jamais expliqué.",
       "bio9": "J’ai été mon propre cobaye. J’ai construit mes protocoles entoure des meilleurs experts internationals. Et mon corps a recommencé à coopérer.",
       "bio10": "C’est là que j’ai su.",
-      "bio11": "Si moi — coach, formée, informée, entourée — je suis passée à côté de tout ça pendant des années… combien de femmes vivent exactement la même chose en ce moment, sans savoir que ce n’est pas leur faute ?",
+      "bio11": "Si moi  coach, formée, informée, entourée  je suis passée à côté de tout ça pendant des années… combien de femmes vivent exactement la même chose en ce moment, sans savoir que ce n’est pas leur faute ?",
       "bio12": "Reset Club est né de cette conviction. Pas pour vous donner un programme de plus.",
       "bio13": "Pour vous donner enfin ce que personne ne vous a donné : la compréhension de votre propre corps. La perte de poids ? Elle est arrivée. Mais comme une conséquence.",
       "readMore": "Lire la suite",
@@ -209,7 +209,7 @@
       "fatigue": {
         "number": "40",
         "unit": "%",
-        "label": "de fatigue chronique et d’inflammation"
+        "label": "de fatigue chronique et d’inflammations"
       },
       "bodyRelation": {
         "number": "70",
@@ -258,7 +258,7 @@
     "pillars": {
       "movement": {
         "title": "MOUVEMENT & TECHNOLOGIES",
-        "description": "Activer le métabolisme sans épuiser le système nerveux.",
+        "description": "Activer le métabolisme sans épuiser le système nerveux. ",
         "tools": "EM Sculpt Neo · Emtone · Exilis · Power Shape…"
       },
       "neuro": {
@@ -414,7 +414,7 @@
       "in": {
         "title": "IN",
         "title2": "Ce que vous apportez à votre corps",
-        "subtitle": "IN regroupe tout ce qui nourrit réellement votre corps et soutient votre métabolisme : nutrition adaptée à votre réalité, jus et infusions fonctionnelles, compléments sélectionnés avec précision, routines simples applicables dans la vraie vie. Nous donnons à votre corps ce dont il a réellement besoin pour fonctionner — pas seulement pour tenir."
+        "subtitle": "IN regroupe tout ce qui nourrit réellement votre corps et soutient votre métabolisme : nutrition adaptée à votre réalité, jus et infusions fonctionnelles, compléments sélectionnés avec précision, routines simples applicables dans la vraie vie. Nous donnons à votre corps ce dont il a réellement besoin pour fonctionner, pas seulement pour tenir."
       },
       "out": {
         "title": "OUT",

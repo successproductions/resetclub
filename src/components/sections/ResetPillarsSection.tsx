@@ -28,7 +28,6 @@ const ResetPillarsSection: React.FC = () => {
         <h2 className="mx-auto mb-10 max-w-5xl text-center text-3xl! font-graphik font-normal leading-tight text-gray-950 md:text-3xl! lg:text-[45px]!">
           {t('title')}
         </h2>
-
         <div className="bg-white">
           <div className="grid grid-cols-1 md:grid-cols-3">
             {pillars.map((pillar, index) => (
@@ -42,10 +41,20 @@ const ResetPillarsSection: React.FC = () => {
                   priority={index === 0}
                 />
                 <div className="absolute inset-0 bg-black/10" />
-                <div className="absolute inset-0 flex items-center justify-center px-8 text-center">
+                <div className="absolute inset-0 flex flex-col items-center justify-center px-8 text-center">
                   <h3 className="font-graphik text-2xl! font-normal leading-tight text-white md:text-3xl!">
                     {t(`pillars.${pillar.key}.title`)}
                   </h3>
+                  {t.has(`pillars.${pillar.key}.title2`) && (
+                    <h3 className="font-graphik text-2xl! font-normal leading-tight text-white md:text-3xl!">
+                      {t(`pillars.${pillar.key}.title2`)}
+                    </h3>
+                  )}
+                  {t.has(`pillars.${pillar.key}.title3`) && (
+                    <h3 className="font-graphik text-2xl! font-normal leading-tight text-white md:text-3xl!">
+                      {t(`pillars.${pillar.key}.title3`)}
+                    </h3>
+                  )}
                 </div>
               </div>
             ))}
@@ -57,8 +66,8 @@ const ResetPillarsSection: React.FC = () => {
                 key={pillar.key}
                 className="border-t border-[#ded8d0] px-7 py-8 md:min-h-[190px] md:border-t-0 md:px-10 md:py-10 md:[&:not(:last-child)]:border-r"
               >
-                <p className="mb-4 font-graphik text-lg! font-normal leading-relaxed text-gray-950 md:text-lg!">
-                  {t(`pillars.${pillar.key}.description`)} 
+                <p className="mb-4 font-graphik text-lg! font-normal leading-relaxed text-gray-950 md:text-lg! md:text-center">
+                  {t(`pillars.${pillar.key}.description`)}
                   {t(`pillars.${pillar.key}.tools`)}
                 </p>
                 {/* <p className="font-graphik text-base! font-normal leading-relaxed text-gray-600 md:text-base!">
@@ -69,7 +78,7 @@ const ResetPillarsSection: React.FC = () => {
           </div>
         </div>
       </div>
-    </section>
+    </section >
   );
 };
 

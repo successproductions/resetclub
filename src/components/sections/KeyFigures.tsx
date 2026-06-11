@@ -154,7 +154,12 @@ const KeyFigures: React.FC = () => {
           ))}
         </div>
       </div>
-      <div className="mx-auto mt-12 flex max-w-7xl justify-center md:mt-16">
+      <h2 className="text-center mt-5 font-semibold! text-gray-950 md:text-3xl! lg:text-[18px]! 
+       ">
+        {t('description')}
+      </h2>
+      <div className="mx-auto mt-12 flex max-w-7xl justify-center md:mt-10">
+
         <Link
           href={`/${locale}/payment`}
           className="inline-block bg-transparent font-normal font-graphik text-gray-900 hover:text-white px-8 py-4 border border-[#524029] text-lg! hover:bg-gray-950 cursor-pointer transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl md:text-lg!"
