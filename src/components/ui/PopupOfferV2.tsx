@@ -119,7 +119,6 @@ export default function PopupOfferV2() {
             />
           </div>
 
-          {/* Right Side - Form */}
           <div className="p-3 md:p-5 flex flex-col justify-center">
             {/* Title */}
             <h3 className="text-[23px] md:text-3xl! font-graphik font-medium md:mb-2 text-gray-900 tracking-wide">
