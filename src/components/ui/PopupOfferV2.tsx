@@ -48,7 +48,7 @@ export default function PopupOfferV2() {
       // Close popup
       setIsOpen(false);
 
-      // Show success alert
+      // Show success (alert)
       await Swal.fire({
         icon: 'success',
         title: 'Merci!',
@@ -60,7 +60,7 @@ export default function PopupOfferV2() {
         }
       });
 
-      // Reset form
+      // Reset form 
       setFullName('');
       setEmail('');
 
@@ -106,7 +106,7 @@ export default function PopupOfferV2() {
           <X size={24} className="md:w-7 md:h-7" />
         </button>
 
-        {/* Two Column Layout */}
+        {/* Two Column  */}
         <div className="grid md:grid-cols-2">
           {/* Left Side - Image */}
           <div className="relative h-48 md:h-auto">
