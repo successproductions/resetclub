@@ -67,7 +67,7 @@ const Hero: React.FC = () => {
 
       {/* Content */}
       <div className="relative z-10 top-26 left-0 mx-2 w-[calc(100vw-2rem)] px-3 xl:px-1 pt-4 md:left-24 md:w-[calc(100vw-8rem)] lg:top-36 xl:top-0 xl:w-[min(88vw,2600px)]">
-        <div className="relative w-full px-5 xl:px-0 py-5 md:px-4 md:py-7">
+        <div className="relative w-full px-0 xl:px-0 py-5 md:px-4 md:py-7">
 
           <h1 className="relative mb-4 font-graphik font-normal md:mb-6">
             <div className="relative mb-2 min-h-[2rem] overflow-hidden text-[18px] tracking-wide text-white md:mb-4 md:min-h-[3.5rem] md:text-2xl lg:min-h-[4.9rem] lg:text-6xl xl:text-7xl">

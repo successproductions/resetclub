@@ -11,7 +11,7 @@ const BiologicalResistanceBlock: React.FC = () => {
   const locale = useLocale();
 
   return (
-    <section className="bg-white px-6 py-10 md:bg-[#fbf8f4] md:py-16">
+    <section className="bg-white px-6 pb-10 md:bg-[#fbf8f4] md:py-16">
       <div className="mx-auto grid max-w-7xl items-stretch gap-8 md:grid-cols-[0.92fr_1.08fr] md:gap-12">
         <div className="relative min-h-[420px] overflow-hidden  bg-black md:min-h-[720px]">
           <video
