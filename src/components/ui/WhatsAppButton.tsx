@@ -18,15 +18,15 @@ export default function WhatsAppButton({
   const [isOpen, setIsOpen] = useState(false);
   const hasInteracted = useRef(false);
 
-  useEffect(() => {
-    const timer = window.setTimeout(() => {
-      if (!hasInteracted.current) {
-        setIsOpen(true);
-      }
-    }, 8000);
+  // useEffect(() => {
+  //   const timer = window.setTimeout(() => {
+  //     if (!hasInteracted.current) {
+  //       setIsOpen(true);
+  //     }
+  //   }, 8000);
 
-    return () => window.clearTimeout(timer);
-  }, []);
+  //   return () => window.clearTimeout(timer);
+  // }, []);
 
   const toggleWidget = () => {
     hasInteracted.current = true;

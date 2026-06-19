@@ -123,7 +123,7 @@ const KeyFigures: React.FC = () => {
   ];
 
   return (
-    <section id="key-figures-section" className="relative overflow-hidden bg-white px-6 py-12 md:py-20">
+    <section id="key-figures-section" className="relative overflow-hidden bg-white px-6 py-5 md:py-25">
       <div className="mx-auto grid max-w-7xl gap-10 md:grid-cols-[0.9fr_1.1fr] md:gap-16">
         <div className="md:pt-2">
           <div className="mb-6 h-px w-20 bg-[#524029]"></div>
@@ -154,11 +154,11 @@ const KeyFigures: React.FC = () => {
           ))}
         </div>
       </div>
-      <h2 className="text-center mt-5 font-semibold! text-gray-950 md:text-3xl! lg:text-[18px]! 
+      <h2 className="text-center mt-7 md:font-semibold! text-gray-700  md:text-gray-950 text-lg! md:text-3xl! lg:text-[18px]! 
        ">
         {t('description')}
       </h2>
-      <div className="mx-auto mt-12 flex max-w-7xl justify-center md:mt-10">
+      <div className="mx-auto mt-4 flex max-w-7xl justify-center md:mt-10">
 
         <Link
           href={`/${locale}/payment`}

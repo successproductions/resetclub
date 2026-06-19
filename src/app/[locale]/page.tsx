@@ -79,7 +79,7 @@ export default function HomePage() {
         <BeforeAfter />
         {/* <VideoCarousel /> */}
         <KeyFigures />
-        <ExperienceClient />
+        {/* <ExperienceClient /> */}
         <IntroSection />
         <NotreHistoireSection />
         <ResetClaritySection />
