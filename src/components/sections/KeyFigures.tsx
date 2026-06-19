@@ -137,7 +137,7 @@ const KeyFigures: React.FC = () => {
             <div key={stat.key}>
               <div className="flex items-center gap-5">
                 <Icon className="h-12 w-12 shrink-0 text-[#7b7066] md:h-14 md:w-14" strokeWidth={1} />
-                <div className="font-graphik text-5xl! font-normal leading-none text-gray-950 md:text-6xl!">
+                <div className="font-graphik text-4xl! font-normal leading-none text-gray-950 md:text-6xl!">
                   <span>{stat.prefix}</span>
                   <AnimatedCounter
                     end={stat.value}
