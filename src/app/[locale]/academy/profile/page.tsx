@@ -403,8 +403,8 @@ export default function AcademyProfilePage() {
                         onClick={() => !isUploadingAvatar && document.getElementById('avatar-upload')?.click()}
                         disabled={isUploadingAvatar}
                         className={`absolute bottom-0 right-0 bg-white rounded-full p-2 shadow-lg border-2 transition-colors ${isUploadingAvatar
-                            ? 'border-gray-200 opacity-50 cursor-not-allowed'
-                            : 'border-gray-200 hover:border-[#51b1aa]'
+                          ? 'border-gray-200 opacity-50 cursor-not-allowed'
+                          : 'border-gray-200 hover:border-[#51b1aa]'
                           }`}
                         title={isUploadingAvatar ? 'Téléchargement en cours...' : 'Changer la photo'}
                       >
@@ -454,7 +454,7 @@ export default function AcademyProfilePage() {
                         <User className="w-5 h-5 text-[#51b1aa]" />
                       </div>
                       <div>
-                        <h3 className="text-lg font-semibold text-gray-900">Informations personnelles</h3>
+                        <h3 className="text-lg! font-semibold text-gray-900">Informations personnelles</h3>
                         <p className="text-sm text-gray-500">Mets à jour ton nom et prénom</p>
                       </div>
                     </div>
@@ -490,7 +490,7 @@ export default function AcademyProfilePage() {
                         <Mail className="w-5 h-5 text-blue-600" />
                       </div>
                       <div>
-                        <h3 className="text-lg font-semibold text-gray-900">Adresse email</h3>
+                        <h3 className="text-lg! font-semibold text-gray-900">Adresse email</h3>
                         <p className="text-sm text-gray-500">Utilisée pour la connexion et les notifications</p>
                       </div>
                     </div>
@@ -511,7 +511,7 @@ export default function AcademyProfilePage() {
                         <Lock className="w-5 h-5 text-purple-600" />
                       </div>
                       <div>
-                        <h3 className="text-lg font-semibold text-gray-900">Sécurité</h3>
+                        <h3 className="text-lg! font-semibold text-gray-900">Sécurité</h3>
                         <p className="text-sm text-gray-500">Change ton mot de passe</p>
                       </div>
                     </div>

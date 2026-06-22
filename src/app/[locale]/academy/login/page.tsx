@@ -201,9 +201,7 @@ export default function LoginPage({ params }: { params: Promise<{ locale: string
             <p className="text-gray-600 text-sm">
               Tu n&apos;as pas encore de compte ?
               <br />
-              <span className="text-gray-500 text-xs mt-1 block">
-                Les comptes sont créés automatiquement lors de l&apos;accès à une master-class
-              </span>
+
             </p>
           </div>
         </div>
