@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { verifyToken } from '@/lib/auth/jwt';
-import prisma from '@/lib/prisma';
+import { getFormationProgress } from '@/lib/academy/progress';
 
 // GET /api/progress/formation/[id] — Get completion status for a formation
 export async function GET(
@@ -21,64 +21,23 @@ export async function GET(
     }
 
     const { id: formationId } = await params;
+    const progress = await getFormationProgress(payload.userId, formationId);
 
-    // Get formation with all lessons
-    const formation = await prisma.formation.findUnique({
-      where: { id: formationId },
-      include: {
-        modules: {
-          include: { lessons: { select: { id: true } } },
-        },
-      },
-    });
-
-    if (!formation) {
+    if (!progress) {
       return NextResponse.json({ error: 'Formation non trouvée' }, { status: 404 });
     }
 
-    const totalLessons = formation.modules.reduce((acc, m) => acc + m.lessons.length, 0);
-
-    // Get enrollment
-    const enrollment = await prisma.enrollment.findUnique({
-      where: {
-        userId_formationId: {
-          userId: payload.userId,
-          formationId,
-        },
-      },
-    });
-
-    if (!enrollment) {
-      return NextResponse.json({
-        isComplete: false,
-        completedLessons: 0,
-        totalLessons,
-        progressPercentage: 0,
-        completedLessonIds: [],
-      });
-    }
-
-    // Get completed lesson IDs
-    const completedProgress = await prisma.lessonProgress.findMany({
-      where: {
-        userId: payload.userId,
-        enrollmentId: enrollment.id,
-        isCompleted: true,
-      },
-      select: { lessonId: true },
-    });
-
-    const completedLessonIds = completedProgress.map((p) => p.lessonId);
-    const completedLessons = completedLessonIds.length;
-    const progressPercentage = totalLessons > 0 ? (completedLessons / totalLessons) * 100 : 0;
-    const isComplete = completedLessons >= totalLessons && totalLessons > 0;
-
     return NextResponse.json({
-      isComplete,
-      completedLessons,
-      totalLessons,
-      progressPercentage: Math.round(progressPercentage),
-      completedLessonIds,
+      isComplete: progress.isComplete,
+      completedLessons: progress.completedLessons,
+      totalLessons: progress.totalLessons,
+      completedQuizzes: progress.completedQuizzes,
+      totalQuizzes: progress.totalQuizzes,
+      completedItems: progress.completedItems,
+      totalItems: progress.totalItems,
+      progressPercentage: Math.round(progress.progressPercentage),
+      completedLessonIds: progress.completedLessonIds,
+      completedQuizIds: progress.completedQuizIds,
     });
   } catch (error) {
     console.error('Error fetching formation progress:', error);

@@ -19,9 +19,11 @@ export async function GET(
             },
             quizzes: {
               take: 1,
+              orderBy: { orderIndex: 'asc' },
               select: {
                 id: true,
                 title: true,
+                passingScore: true,
                 _count: {
                   select: {
                     questions: true

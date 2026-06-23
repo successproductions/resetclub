@@ -4,6 +4,7 @@ import prisma from '@/lib/prisma';
 import { PDFDocument, rgb, StandardFonts } from 'pdf-lib';
 import fs from 'fs';
 import path from 'path';
+import { getFormationProgress, syncFormationProgress } from '@/lib/academy/progress';
 
 // GET /api/certificate/[formationId] — Generate personalized certificate PDF
 export async function GET(
@@ -35,22 +36,6 @@ export async function GET(
       return NextResponse.json({ error: 'Utilisateur non trouvé' }, { status: 404 });
     }
 
-    // Check if formation is complete
-    const formation = await prisma.formation.findUnique({
-      where: { id: formationId },
-      include: {
-        modules: {
-          include: { lessons: { select: { id: true } } },
-        },
-      },
-    });
-
-    if (!formation) {
-      return NextResponse.json({ error: 'Formation non trouvée' }, { status: 404 });
-    }
-
-    const totalLessons = formation.modules.reduce((acc, m) => acc + m.lessons.length, 0);
-
     const enrollment = await prisma.enrollment.findUnique({
       where: {
         userId_formationId: {
@@ -67,17 +52,16 @@ export async function GET(
       );
     }
 
-    const completedCount = await prisma.lessonProgress.count({
-      where: {
-        userId: payload.userId,
-        enrollmentId: enrollment.id,
-        isCompleted: true,
-      },
-    });
+    await syncFormationProgress(payload.userId, formationId);
+    const progress = await getFormationProgress(payload.userId, formationId);
 
-    if (completedCount < totalLessons || totalLessons === 0) {
+    if (!progress) {
+      return NextResponse.json({ error: 'Formation non trouvée' }, { status: 404 });
+    }
+
+    if (!progress.isComplete) {
       return NextResponse.json(
-        { error: 'Vous devez compléter toutes les leçons pour obtenir le certificat' },
+        { error: 'Vous devez compléter toutes les leçons et tous les quiz pour obtenir le certificat' },
         { status: 403 }
       );
     }
@@ -90,7 +74,7 @@ export async function GET(
     // Get the first page
     const pages = pdfDoc.getPages();
     const page = pages[0];
-    const { width, height } = page.getSize();
+    const { width } = page.getSize();
     // width ≈ 841.89, height ≈ 595.276 (A4 landscape)
 
     // Embed fonts

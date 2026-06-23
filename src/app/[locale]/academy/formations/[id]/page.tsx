@@ -39,6 +39,7 @@ interface QuizQuestion {
 interface Quiz {
   id: string;
   title: string;
+  passingScore: number;
   _count?: {
     questions: number;
   };
@@ -75,6 +76,7 @@ export default function CoursePage({ params }: { params: Promise<{ id: string }>
   const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null);
   const [quizCompleted, setQuizCompleted] = useState(false);
   const [completedLessonIds, setCompletedLessonIds] = useState<string[]>([]);
+  const [completedQuizIds, setCompletedQuizIds] = useState<string[]>([]);
   const [isFormationComplete, setIsFormationComplete] = useState(false);
   const [downloadingCert, setDownloadingCert] = useState(false);
   // useRef to avoid stale closure in markLessonComplete
@@ -88,7 +90,7 @@ export default function CoursePage({ params }: { params: Promise<{ id: string }>
       await fetchProgress(resolvedParams.id);
     };
     loadData();
-  }, []);
+  }, [params]);
 
   const fetchFormation = async (id: string) => {
     try {
@@ -117,6 +119,7 @@ export default function CoursePage({ params }: { params: Promise<{ id: string }>
       if (response.ok) {
         const data = await response.json();
         setCompletedLessonIds(data.completedLessonIds || []);
+        setCompletedQuizIds(data.completedQuizIds || []);
         setIsFormationComplete(data.isComplete || false);
       }
     } catch (error) {
@@ -140,11 +143,45 @@ export default function CoursePage({ params }: { params: Promise<{ id: string }>
       });
       if (response.ok) {
         const data = await response.json();
-        setCompletedLessonIds((prev) => [...prev, lessonId]);
+        setCompletedLessonIds(data.completedLessonIds || []);
+        setCompletedQuizIds(data.completedQuizIds || []);
         setIsFormationComplete(data.isComplete || false);
       }
     } catch (error) {
       console.error('Error marking lesson complete:', error);
+    }
+  };
+
+  const markQuizComplete = async () => {
+    if (!currentQuiz || completedQuizIds.includes(currentQuiz.quiz.id)) return;
+
+    try {
+      const token = localStorage.getItem('academy_token');
+      if (!token) return;
+
+      const score = calculateScore();
+      const response = await fetch('/api/progress/quiz', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({
+          quizId: currentQuiz.quiz.id,
+          formationId: formationIdRef.current,
+          score: score.percentage,
+          answers: userAnswers,
+        }),
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        setCompletedLessonIds(data.completedLessonIds || []);
+        setCompletedQuizIds(data.completedQuizIds || []);
+        setIsFormationComplete(data.isComplete || false);
+      }
+    } catch (error) {
+      console.error('Error marking quiz complete:', error);
     }
   };
 
@@ -185,6 +222,7 @@ export default function CoursePage({ params }: { params: Promise<{ id: string }>
     setCurrentLesson(lesson);
     setViewMode('lesson');
     setCurrentQuiz(null);
+    void markLessonComplete(lesson.id);
   };
 
   const selectQuiz = (moduleId: string, quiz: Quiz) => {
@@ -233,6 +271,7 @@ export default function CoursePage({ params }: { params: Promise<{ id: string }>
     } else {
       // Quiz completed
       setQuizCompleted(true);
+      void markQuizComplete();
     }
   };
 
@@ -250,7 +289,7 @@ export default function CoursePage({ params }: { params: Promise<{ id: string }>
       total++;
     });
     
-    return { correct, total, percentage: Math.round((correct / total) * 100) };
+    return { correct, total, percentage: total > 0 ? Math.round((correct / total) * 100) : 0 };
   };
 
   const formatDuration = (seconds: number | null) => {
@@ -270,6 +309,16 @@ export default function CoursePage({ params }: { params: Promise<{ id: string }>
   if (!formation) {
     return <div className="flex items-center justify-center min-h-screen">Formation non trouvée</div>;
   }
+
+  const allLessons = formation.modules.flatMap((module) => module.lessons);
+  const currentLessonIndex = allLessons.findIndex((lesson) => lesson.id === currentLesson?.id);
+  const isLastLesson = currentLessonIndex === allLessons.length - 1;
+  const currentLessonCompleted = currentLesson
+    ? completedLessonIds.includes(currentLesson.id)
+    : false;
+  const currentQuizCompleted = currentQuiz
+    ? completedQuizIds.includes(currentQuiz.quiz.id)
+    : false;
 
   return (
     <div className="flex h-screen bg-gray-100">
@@ -335,7 +384,7 @@ export default function CoursePage({ params }: { params: Promise<{ id: string }>
                       {completedLessonIds.includes(lesson.id) ? (
                         <CheckCircle2 className="w-4 h-4 text-green-400 flex-shrink-0" />
                       ) : currentLesson?.id === lesson.id ? (
-                        <CheckCircle2 className="w-4 h-4 text-white flex-shrink-0" />
+                        <Circle className="w-4 h-4 text-white flex-shrink-0" />
                       ) : (
                         <Circle className="w-4 h-4 text-gray-400 flex-shrink-0" />
                       )}
@@ -352,11 +401,17 @@ export default function CoursePage({ params }: { params: Promise<{ id: string }>
                       onClick={() => selectQuiz(module.id, module.quizzes![0])}
                       className="w-full px-4 py-2.5 pl-10 flex items-center gap-3 bg-[#50b1aa] hover:bg-[#449990] transition-colors text-left border-t border-[#3d8a85]"
                     >
-                      <FileQuestion className="w-4 h-4 text-yellow-300 flex-shrink-0" />
+                      {completedQuizIds.includes(module.quizzes[0].id) ? (
+                        <CheckCircle2 className="w-4 h-4 text-green-400 flex-shrink-0" />
+                      ) : (
+                        <FileQuestion className="w-4 h-4 text-yellow-300 flex-shrink-0" />
+                      )}
                       <div className="flex-1 min-w-0">
                         <p className="text-sm text-white font-normal">Quiz du module</p>
                         <p className="text-xs text-gray-200">
-                          {module.quizzes[0]._count?.questions || 0} question{(module.quizzes[0]._count?.questions || 0) > 1 ? 's' : ''}
+                          {completedQuizIds.includes(module.quizzes[0].id)
+                            ? 'Réussi'
+                            : `${module.quizzes[0]._count?.questions || 0} question${(module.quizzes[0]._count?.questions || 0) > 1 ? 's' : ''}`}
                         </p>
                       </div>
                     </button>
@@ -443,13 +498,15 @@ export default function CoursePage({ params }: { params: Promise<{ id: string }>
                         </p>
                       </div>
                       
-                      {calculateScore().percentage >= 70 ? (
+                      {calculateScore().percentage >= (currentQuiz?.quiz.passingScore || 70) ? (
                         <div className="bg-emerald-50 border border-emerald-200 rounded-xl p-4 mb-8">
                           <p className="text-emerald-700 font-medium">🎉 Félicitations! Vous avez réussi le quiz!</p>
                         </div>
                       ) : (
                         <div className="bg-amber-50 border border-amber-200 rounded-xl p-4 mb-8">
-                          <p className="text-amber-700 font-medium">Continuez à apprendre et réessayez!</p>
+                          <p className="text-amber-700 font-medium">
+                            Score minimum: {currentQuiz?.quiz.passingScore || 70}%. Continuez à apprendre et réessayez!
+                          </p>
                         </div>
                       )}
                       
@@ -501,7 +558,7 @@ export default function CoursePage({ params }: { params: Promise<{ id: string }>
                           
                           {/* Answer Options - Clean Style */}
                           <div className="space-y-3 mb-6">
-                            {currentQuestion.options.map((option, index) => {
+                            {currentQuestion.options.map((option) => {
                               const isSelected = selectedAnswer === option.id;
                               const isCorrect = option.isCorrect;
                               const showResult = showFeedback;
@@ -605,10 +662,17 @@ export default function CoursePage({ params }: { params: Promise<{ id: string }>
         <div className="bg-white border-t border-gray-200 p-4">
           <div className="max-w-7xl mx-auto">
             <h1 className="text-lg font-normal text-gray-900 mb-1">
-              {currentLesson?.title || 'Sélectionnez une leçon'}
+              {viewMode === 'quiz'
+                ? currentQuiz?.quiz.title || 'Quiz du module'
+                : currentLesson?.title || 'Sélectionnez une leçon'}
             </h1>
             <p className="text-sm text-gray-600">
-              {currentLesson && `Module ${formation.modules.findIndex(m => m.lessons.some(l => l.id === currentLesson.id)) + 1} • ${formatDuration(currentLesson.durationSeconds)}`}
+              {viewMode === 'quiz'
+                ? currentQuizCompleted
+                  ? 'Quiz réussi'
+                  : `Score minimum: ${currentQuiz?.quiz.passingScore || 70}%`
+                : currentLesson &&
+                  `Module ${formation.modules.findIndex(m => m.lessons.some(l => l.id === currentLesson.id)) + 1} • ${currentLessonCompleted ? 'Regardée' : formatDuration(currentLesson.durationSeconds)}`}
             </p>
           </div>
         </div>
@@ -618,44 +682,49 @@ export default function CoursePage({ params }: { params: Promise<{ id: string }>
           <div className="max-w-7xl mx-auto flex justify-between items-center">
             <button
               onClick={() => {
-                const allLessons = formation.modules.flatMap(m => m.lessons);
-                const currentIndex = allLessons.findIndex(l => l.id === currentLesson?.id);
-                if (currentIndex > 0) {
-                  setCurrentLesson(allLessons[currentIndex - 1]);
+                if (currentLessonIndex > 0) {
+                  selectLesson(allLessons[currentLessonIndex - 1]);
                 }
               }}
-              disabled={!currentLesson || formation.modules.flatMap(m => m.lessons).findIndex(l => l.id === currentLesson?.id) === 0}
+              disabled={!currentLesson || currentLessonIndex === 0}
               className="px-4 py-2 text-sm text-gray-400 disabled:cursor-not-allowed enabled:text-gray-700 enabled:hover:text-gray-900"
             >
               ← Leçon précédente
             </button>
 
-            {/* Certificate button when complete */}
-            {isFormationComplete && (
-              <button
-                onClick={downloadCertificate}
-                disabled={downloadingCert}
-                className="flex items-center gap-2 px-5 py-2 bg-amber-500 hover:bg-amber-600 text-white text-sm font-medium rounded-lg transition-colors disabled:opacity-60"
-              >
-                <Award className="w-4 h-4" />
-                {downloadingCert ? 'Génération...' : 'Télécharger mon certificat'}
-              </button>
-            )}
+            <div className="flex items-center gap-3">
+              {viewMode === 'lesson' && currentLesson && !currentLessonCompleted && (
+                <button
+                  onClick={() => markLessonComplete(currentLesson.id)}
+                  className="px-4 py-2 border border-[#50b1aa] text-[#2d6d68] text-sm font-medium rounded hover:bg-[#50b1aa]/10 transition-colors"
+                >
+                  Marquer comme regardée
+                </button>
+              )}
+
+              {isFormationComplete && (
+                <button
+                  onClick={downloadCertificate}
+                  disabled={downloadingCert}
+                  className="flex items-center gap-2 px-5 py-2 bg-amber-500 hover:bg-amber-600 text-white text-sm font-medium rounded-lg transition-colors disabled:opacity-60"
+                >
+                  <Award className="w-4 h-4" />
+                  {downloadingCert ? 'Génération...' : 'Télécharger mon certificat'}
+                </button>
+              )}
+            </div>
 
             <button
               onClick={() => {
-                const allLessons = formation.modules.flatMap(m => m.lessons);
-                const currentIndex = allLessons.findIndex(l => l.id === currentLesson?.id);
-                // Mark current lesson as complete
                 if (currentLesson) markLessonComplete(currentLesson.id);
-                if (currentIndex < allLessons.length - 1) {
-                  setCurrentLesson(allLessons[currentIndex + 1]);
+                if (currentLessonIndex < allLessons.length - 1) {
+                  selectLesson(allLessons[currentLessonIndex + 1]);
                 }
               }}
-              disabled={!currentLesson || formation.modules.flatMap(m => m.lessons).findIndex(l => l.id === currentLesson?.id) === formation.modules.flatMap(m => m.lessons).length - 1}
+              disabled={!currentLesson}
               className="px-4 py-2 bg-[#51b1aa] hover:bg-[#449990] text-white text-sm font-medium rounded transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              Leçon suivante →
+              {isLastLesson ? 'Terminer la leçon' : 'Leçon suivante →'}
             </button>
           </div>
         </div>

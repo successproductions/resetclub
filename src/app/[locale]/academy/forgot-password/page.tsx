@@ -62,7 +62,7 @@ export default function ForgotPasswordPage() {
           <div className="text-center mb-8">
             <div className="relative w-40 h-16 mx-auto mb-4">
               <Image
-                src="/images/master/MASTERCLASSLOGO2.png"
+                src="/images/logogras.png"
                 alt="RESET Club Academy"
                 fill
                 className="object-contain"
