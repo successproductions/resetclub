@@ -3,9 +3,9 @@
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
-import { 
-  BookOpen, 
-  Trophy, 
+import {
+  BookOpen,
+  Trophy,
   User,
   LogOut,
   Home,
@@ -62,8 +62,8 @@ export default function AcademyDashboard() {
         const { formations: formationsList } = await response.json();
         const visibleFormations = role
           ? formationsList.filter((formation: Formation) =>
-              formation.targetRole === role || formation.targetRole === 'BOTH'
-            )
+            formation.targetRole === role || formation.targetRole === 'BOTH'
+          )
           : formationsList;
         setFormations(visibleFormations);
       }
@@ -132,21 +132,21 @@ export default function AcademyDashboard() {
         fetchCertificates('dev-token');
         return;
       }
-      
+
       router.push('/fr/academy/login');
       return;
     }
 
     try {
       const parsedUser = JSON.parse(userData);
-      
+
       // Check if user is ADMIN - redirect to admin panel
       if (parsedUser.role === 'ADMIN') {
         console.log('🔒 ADMIN user detected - redirecting to admin panel');
         router.push('/fr/academy/admin');
         return;
       }
-      
+
       console.log('✅ CLIENT user - allowing dashboard access');
       setUser(parsedUser);
       setIsLoading(false);
@@ -237,11 +237,10 @@ export default function AcademyDashboard() {
             <div>
               <button
                 onClick={() => setActivePage('home')}
-                className={`w-full flex items-center ${isSidebarCollapsed ? 'justify-center' : 'gap-3'} px-4 py-3 text-sm font-medium transition-colors border-l-4 ${
-                  activePage === 'home'
+                className={`w-full flex items-center ${isSidebarCollapsed ? 'justify-center' : 'gap-3'} px-4 py-3 text-sm font-medium transition-colors border-l-4 ${activePage === 'home'
                     ? 'border-[#51b1aa] bg-gray-50 text-gray-900'
                     : 'border-transparent text-gray-700 hover:bg-gray-50'
-                }`}
+                  }`}
                 title="Accueil"
               >
                 <Home className="w-5 h-5" />
@@ -250,11 +249,10 @@ export default function AcademyDashboard() {
 
               <button
                 onClick={() => setActivePage('library')}
-                className={`w-full flex items-center ${isSidebarCollapsed ? 'justify-center' : 'gap-3'} px-4 py-3 text-sm font-medium transition-colors border-l-4 ${
-                  activePage === 'library'
+                className={`w-full flex items-center ${isSidebarCollapsed ? 'justify-center' : 'gap-3'} px-4 py-3 text-sm font-medium transition-colors border-l-4 ${activePage === 'library'
                     ? 'border-[#51b1aa] bg-gray-50 text-gray-900'
                     : 'border-transparent text-gray-700 hover:bg-gray-50'
-                }`}
+                  }`}
                 title="Mon parcours"
               >
                 <Library className="w-5 h-5" />
@@ -263,15 +261,14 @@ export default function AcademyDashboard() {
 
               <button
                 onClick={() => setActivePage('certificates')}
-                className={`w-full flex items-center ${isSidebarCollapsed ? 'justify-center' : 'gap-3'} px-4 py-3 text-sm font-medium transition-colors border-l-4 ${
-                  activePage === 'certificates'
+                className={`w-full flex items-center ${isSidebarCollapsed ? 'justify-center' : 'gap-3'} px-4 py-3 text-sm font-medium transition-colors border-l-4 ${activePage === 'certificates'
                     ? 'border-[#51b1aa] bg-gray-50 text-gray-900'
                     : 'border-transparent text-gray-700 hover:bg-gray-50'
-                }`}
+                  }`}
                 title="Certificats"
               >
                 <Award className="w-5 h-5" />
-                {!isSidebarCollapsed && <span>Certificats</span>}
+                {!isSidebarCollapsed && <span>Mon Certificat</span>}
               </button>
             </div>
 
@@ -391,46 +388,93 @@ export default function AcademyDashboard() {
           {/* Formation Card Slider (home page content) */}
           {activePage === 'home' && (
             <div className="relative">
-            {/* Left Arrow */}
-            <button className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 z-10 w-10 h-10 bg-white rounded-full shadow-md border border-gray-200 flex items-center justify-center hover:bg-gray-50 transition-colors">
-              <svg className="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-              </svg>
-            </button>
+              {/* Left Arrow */}
+              <button className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 z-10 w-10 h-10 bg-white rounded-full shadow-md border border-gray-200 flex items-center justify-center hover:bg-gray-50 transition-colors">
+                <svg className="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                </svg>
+              </button>
 
-            {/* Formation Cards */}
-            {formations.length === 0 ?  (
-              <div className="bg-white rounded-lg border border-gray-200 p-12 text-center">
-                <BookOpen className="w-16 h-16 text-gray-400 mx-auto mb-4" />
-                <h3 className="text-lg font-semibold text-gray-900 mb-2">Aucune formation disponible</h3>
-                <p className="text-gray-600">Les formations seront bientôt disponibles</p>
-              </div>
-            ) : (
-              formations.map((formation) => {
-                const totalLessons = formation.modules.reduce((acc, mod) => acc + mod.lessons.length, 0);
-                const durationHours = formation.durationHours || 0;
-                const hours = Math.floor(durationHours);
-                const minutes = Math.round((durationHours - hours) * 60);
-                const durationText = hours > 0 ? `${hours}h ${minutes}min` : `${minutes}min`;
+              {/* Formation Cards */}
+              {formations.length === 0 ? (
+                <div className="bg-white rounded-lg border border-gray-200 p-12 text-center">
+                  <BookOpen className="w-16 h-16 text-gray-400 mx-auto mb-4" />
+                  <h3 className="text-lg font-semibold text-gray-900 mb-2">Aucune formation disponible</h3>
+                  <p className="text-gray-600">Les formations seront bientôt disponibles</p>
+                </div>
+              ) : (
+                formations.map((formation) => {
+                  const totalLessons = formation.modules.reduce((acc, mod) => acc + mod.lessons.length, 0);
+                  const durationHours = formation.durationHours || 0;
+                  const hours = Math.floor(durationHours);
+                  const minutes = Math.round((durationHours - hours) * 60);
+                  const durationText = hours > 0 ? `${hours}h ${minutes}min` : `${minutes}min`;
 
-                return (
-                  <Link key={formation.id} href={`/fr/academy/formations/${formation.id}`} className="block mb-6">
-                    <div className="bg-white rounded-lg border border-gray-200 overflow-hidden hover:shadow-md transition-shadow cursor-pointer">
-                      <div className="flex flex-col md:flex-row md:items-center">
-                        {/* Left Content */}
-                        <div className="flex-1 px-4 py-2 md:p-6">
-                          {/* Badges */}
-                          <div className="flex gap-2 mb-1 md:mb-3">
-                            <span className="px-2.5 py-1 bg-gray-700 text-white text-xs font-medium rounded">Nouveau</span>
+                  return (
+                    <Link key={formation.id} href={`/fr/academy/formations/${formation.id}`} className="block mb-6">
+                      <div className="bg-white rounded-lg border border-gray-200 overflow-hidden hover:shadow-md transition-shadow cursor-pointer">
+                        <div className="flex flex-col md:flex-row md:items-center">
+                          {/* Left Content */}
+                          <div className="flex-1 px-4 py-2 md:p-6">
+                            {/* Badges */}
+                            <div className="flex gap-2 mb-1 md:mb-3">
+                              <span className="px-2.5 py-1 bg-gray-700 text-white text-xs font-medium rounded">Nouveau</span>
+                            </div>
+
+                            {/* Title */}
+                            <h3 className="text-base font-semibold text-gray-900 md:mb-3 leading-snug">
+                              {formation.title}
+                            </h3>
+
+                            {/* Progress Bar - Hidden on mobile, shown on desktop */}
+                            <div className="mb-3 hidden md:block">
+                              <div className="flex justify-between items-center mb-1.5">
+                                <span className="text-xs text-gray-600">Progression</span>
+                                <span className="text-xs font-semibold text-[#51b1aa]">0%</span>
+                              </div>
+                              <div className="w-full h-1.5 bg-gray-200 rounded-full overflow-hidden">
+                                <div
+                                  className="h-full bg-gradient-to-r from-[#51b1aa] to-[#91dbd3] rounded-full transition-all"
+                                  style={{ width: '0%' }}
+                                />
+                              </div>
+                            </div>
+
+                            {/* Stats - Hidden on mobile, shown on desktop */}
+                            <div className="flex items-center gap-4 text-xs text-gray-600 hidden md:flex">
+                              <span className="flex items-center gap-1.5">
+                                <BookOpen className="w-3.5 h-3.5" />
+                                {totalLessons} leçon{totalLessons > 1 ? 's' : ''}
+                              </span>
+                              {durationHours > 0 && (
+                                <span className="flex items-center gap-1.5">
+                                  <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                  </svg>
+                                  {durationText}
+                                </span>
+                              )}
+                            </div>
                           </div>
 
-                          {/* Title */}
-                          <h3 className="text-base font-semibold text-gray-900 md:mb-3 leading-snug">
-                            {formation.title}
-                          </h3>
+                          {/* Right Image with margin */}
+                          <div className="w-full md:w-1/3 md:min-w-[200px] md:self-stretch flex-shrink-0 p-[10px]">
+                            <div className="relative h-[200px] md:h-[300px] overflow-hidden rounded-lg">
+                              <Image
+                                src={formation.thumbnailUrl || '/images/OUT.jpg'}
+                                alt={formation.title}
+                                fill
+                                className="object-cover"
+                                sizes="(min-width: 768px) 33vw, 100vw"
+                              />
+                            </div>
+                          </div>
+                        </div>
 
-                          {/* Progress Bar - Hidden on mobile, shown on desktop */}
-                          <div className="mb-3 hidden md:block">
+                        {/* Progress Bar and Stats - Shown on mobile only */}
+                        <div className="px-6 pb-6 md:hidden">
+                          {/* Progress Bar */}
+                          <div className="mb-3">
                             <div className="flex justify-between items-center mb-1.5">
                               <span className="text-xs text-gray-600">Progression</span>
                               <span className="text-xs font-semibold text-[#51b1aa]">0%</span>
@@ -443,8 +487,8 @@ export default function AcademyDashboard() {
                             </div>
                           </div>
 
-                          {/* Stats - Hidden on mobile, shown on desktop */}
-                          <div className="flex items-center gap-4 text-xs text-gray-600 hidden md:flex">
+                          {/* Stats */}
+                          <div className="flex items-center gap-4 text-xs text-gray-600">
                             <span className="flex items-center gap-1.5">
                               <BookOpen className="w-3.5 h-3.5" />
                               {totalLessons} leçon{totalLessons > 1 ? 's' : ''}
@@ -459,66 +503,19 @@ export default function AcademyDashboard() {
                             )}
                           </div>
                         </div>
-
-                        {/* Right Image with margin */}
-                        <div className="w-full md:w-1/3 md:min-w-[200px] md:self-stretch flex-shrink-0 p-[10px]">
-                          <div className="relative h-[200px] md:h-[300px] overflow-hidden rounded-lg">
-                            <Image
-                              src={formation.thumbnailUrl || '/images/OUT.jpg'}
-                              alt={formation.title}
-                              fill
-                              className="object-cover"
-                              sizes="(min-width: 768px) 33vw, 100vw"
-                            />
-                          </div>
-                        </div>
                       </div>
+                    </Link>
+                  );
+                })
+              )}
 
-                      {/* Progress Bar and Stats - Shown on mobile only */}
-                      <div className="px-6 pb-6 md:hidden">
-                        {/* Progress Bar */}
-                        <div className="mb-3">
-                          <div className="flex justify-between items-center mb-1.5">
-                            <span className="text-xs text-gray-600">Progression</span>
-                            <span className="text-xs font-semibold text-[#51b1aa]">0%</span>
-                          </div>
-                          <div className="w-full h-1.5 bg-gray-200 rounded-full overflow-hidden">
-                            <div
-                              className="h-full bg-gradient-to-r from-[#51b1aa] to-[#91dbd3] rounded-full transition-all"
-                              style={{ width: '0%' }}
-                            />
-                          </div>
-                        </div>
-
-                        {/* Stats */}
-                        <div className="flex items-center gap-4 text-xs text-gray-600">
-                          <span className="flex items-center gap-1.5">
-                            <BookOpen className="w-3.5 h-3.5" />
-                            {totalLessons} leçon{totalLessons > 1 ? 's' : ''}
-                          </span>
-                          {durationHours > 0 && (
-                            <span className="flex items-center gap-1.5">
-                              <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                              </svg>
-                              {durationText}
-                            </span>
-                          )}
-                        </div>
-                      </div>
-                    </div>
-                  </Link>
-                );
-              })
-            )}
-
-            {/* Right Arrow */}
-            <button className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 z-10 w-10 h-10 bg-white rounded-full shadow-md border border-gray-200 flex items-center justify-center hover:bg-gray-50 transition-colors">
-              <svg className="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-              </svg>
-            </button>
-          </div>
+              {/* Right Arrow */}
+              <button className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 z-10 w-10 h-10 bg-white rounded-full shadow-md border border-gray-200 flex items-center justify-center hover:bg-gray-50 transition-colors">
+                <svg className="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </button>
+            </div>
           )}
         </main>
       </div>
