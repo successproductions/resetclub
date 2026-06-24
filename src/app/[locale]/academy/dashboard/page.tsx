@@ -30,6 +30,7 @@ interface Formation {
   description: string | null;
   thumbnailUrl: string | null;
   durationHours: number | null;
+  targetRole: string;
   modules: Array<{
     id: string;
     lessons: Array<{ id: string }>;
@@ -54,12 +55,17 @@ export default function AcademyDashboard() {
   const [certificates, setCertificates] = useState<Certificate[]>([]);
   const [downloadingCert, setDownloadingCert] = useState<string | null>(null);
 
-  const fetchFormations = async () => {
+  const fetchFormations = async (role?: string) => {
     try {
       const response = await fetch('/api/formations');
       if (response.ok) {
         const { formations: formationsList } = await response.json();
-        setFormations(formationsList);
+        const visibleFormations = role
+          ? formationsList.filter((formation: Formation) =>
+              formation.targetRole === role || formation.targetRole === 'BOTH'
+            )
+          : formationsList;
+        setFormations(visibleFormations);
       }
     } catch (error) {
       console.error('Error fetching formations:', error);
@@ -122,7 +128,7 @@ export default function AcademyDashboard() {
         };
         setUser(devUser);
         setIsLoading(false);
-        fetchFormations();
+        fetchFormations(devUser.role);
         fetchCertificates('dev-token');
         return;
       }
@@ -144,7 +150,7 @@ export default function AcademyDashboard() {
       console.log('✅ CLIENT user - allowing dashboard access');
       setUser(parsedUser);
       setIsLoading(false);
-      fetchFormations();
+      fetchFormations(parsedUser.role);
       fetchCertificates(token);
     } catch {
       // Invalid token or user data
@@ -165,6 +171,11 @@ export default function AcademyDashboard() {
       </div>
     );
   }
+
+  const assignedModulesCount = formations.reduce(
+    (total, formation) => total + formation.modules.length,
+    0
+  );
 
   return (
     <div className="min-h-screen bg-gray-50 font-graphik">
@@ -244,10 +255,10 @@ export default function AcademyDashboard() {
                     ? 'border-[#51b1aa] bg-gray-50 text-gray-900'
                     : 'border-transparent text-gray-700 hover:bg-gray-50'
                 }`}
-                title="Mes Formations"
+                title="Mon parcours"
               >
                 <Library className="w-5 h-5" />
-                {!isSidebarCollapsed && <span>Mes Formations</span>}
+                {!isSidebarCollapsed && <span>Mon parcours</span>}
               </button>
 
               <button
@@ -308,9 +319,9 @@ export default function AcademyDashboard() {
             <div className="bg-white rounded-lg border border-gray-200 p-6">
               <div className="flex items-center justify-between mb-4">
                 <BookOpen className="w-8 h-8 text-[#51b1aa]" />
-                <span className="text-3xl font-semibold text-gray-900">0</span>
+                <span className="text-3xl font-semibold text-gray-900">{assignedModulesCount}</span>
               </div>
-              <p className="text-gray-600 text-sm">Formations inscrites</p>
+              <p className="text-gray-600 text-sm">Modules inscrits</p>
             </div>
 
             {/* Completed Card */}
@@ -319,7 +330,7 @@ export default function AcademyDashboard() {
                 <Trophy className="w-8 h-8 text-green-600" />
                 <span className="text-3xl font-semibold text-gray-900">0</span>
               </div>
-              <p className="text-gray-600 text-sm">Formations terminées</p>
+              <p className="text-gray-600 text-sm">Modules terminés</p>
             </div>
 
             {/* Certificates Card */}
@@ -340,12 +351,12 @@ export default function AcademyDashboard() {
                 <div className="bg-white rounded-lg border border-gray-200 p-12 text-center">
                   <Award className="w-16 h-16 text-gray-300 mx-auto mb-4" />
                   <h3 className="text-lg font-semibold text-gray-900 mb-2">Aucun certificat encore</h3>
-                  <p className="text-gray-500 mb-4">Complétez toutes les leçons d&apos;une formation pour obtenir votre certificat.</p>
+                  <p className="text-gray-500 mb-4">Complétez toutes les leçons et tous les quiz de votre parcours pour obtenir votre certificat.</p>
                   <button
                     onClick={() => setActivePage('library')}
                     className="px-5 py-2 bg-[#51b1aa] text-white rounded-lg hover:bg-[#449990] transition-colors text-sm"
                   >
-                    Voir mes formations
+                    Voir mon parcours
                   </button>
                 </div>
               ) : (
@@ -450,12 +461,16 @@ export default function AcademyDashboard() {
                         </div>
 
                         {/* Right Image with margin */}
-                        <div className="w-full md:w-1/3 md:min-w-[200px] md:self-stretch flex-shrink-0 relative p-[10px]">
-                          <img
-                            src={formation.thumbnailUrl || '/images/OUT.jpg'}
-                            alt={formation.title}
-                            className="w-full h-[200px] md:h-[300px] object-cover rounded-lg"
-                          />
+                        <div className="w-full md:w-1/3 md:min-w-[200px] md:self-stretch flex-shrink-0 p-[10px]">
+                          <div className="relative h-[200px] md:h-[300px] overflow-hidden rounded-lg">
+                            <Image
+                              src={formation.thumbnailUrl || '/images/OUT.jpg'}
+                              alt={formation.title}
+                              fill
+                              className="object-cover"
+                              sizes="(min-width: 768px) 33vw, 100vw"
+                            />
+                          </div>
                         </div>
                       </div>
 

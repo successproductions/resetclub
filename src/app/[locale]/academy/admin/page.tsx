@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
-import { Users, BookOpen, TrendingUp, Award } from 'lucide-react';
+import { ArrowRight, Award, BookOpen, TrendingUp, Users } from 'lucide-react';
 
 interface DashboardStats {
   totalUsers: number;
@@ -83,59 +83,77 @@ export default function AdminDashboardPage() {
       title: 'Utilisateurs totaux',
       value: stats.totalUsers,
       icon: Users,
-      color: 'bg-blue-500',
+      iconBg: 'bg-[#151f2b]',
+      accent: 'border-t-[#151f2b]',
       link: '/fr/academy/admin/users'
     },
     {
-      title: 'Formations',
+      title: 'Parcours publiés',
       value: stats.totalFormations,
       icon: BookOpen,
-      color: 'bg-[#50b1aa]',
+      iconBg: 'bg-[#50b1aa]',
+      accent: 'border-t-[#50b1aa]',
       link: '/fr/academy/admin/formations'
     },
     {
       title: 'Inscriptions actives',
       value: stats.activeEnrollments,
       icon: TrendingUp,
-      color: 'bg-purple-500'
+      iconBg: 'bg-[#c9b8a8]',
+      accent: 'border-t-[#c9b8a8]'
     },
     {
-      title: 'Cours complétés',
+      title: 'Certificats prêts',
       value: stats.completedCourses,
       icon: Award,
-      color: 'bg-orange-500'
+      iconBg: 'bg-[#8f7b68]',
+      accent: 'border-t-[#8f7b68]'
     }
   ];
 
   return (
-    <div>
-      <h1 className="text-3xl font-bold text-gray-900 mb-8">Tableau de bord</h1>
+    <div className="space-y-8">
+      <div className="flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
+        <div>
+          <p className="text-xs uppercase tracking-[0.2em] text-[#8f7b68]">Academy RESET CLUB</p>
+          <h1 className="mt-2 text-3xl font-semibold text-[#151f2b]">Tableau de bord</h1>
+          <p className="mt-2 max-w-2xl text-sm text-[#5d6672]">
+            Pilote les parcours clients et employés avec une lecture rapide des accès, modules et certificats.
+          </p>
+        </div>
+
+        <Link
+          href="/fr/academy/admin/formations/new"
+          className="inline-flex items-center justify-center gap-2 rounded-lg bg-[#151f2b] px-5 py-3 text-sm font-medium text-white transition-colors hover:bg-[#253243]"
+        >
+          <BookOpen className="w-4 h-4" />
+          Créer un parcours
+        </Link>
+      </div>
 
       {/* Stats Grid - Clean Uniform Design */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
         {statCards.map((stat, index) => {
           const Icon = stat.icon;
           const content = (
-            <div className="h-full bg-white rounded-xl border-2 border-gray-100 p-6 hover:border-[#50b1aa] hover:shadow-lg transition-all duration-300 flex flex-col justify-between min-h-[160px]">
+            <div className={`h-full bg-white rounded-lg border border-[#e7dfd6] border-t-4 ${stat.accent} p-5 shadow-sm hover:shadow-md transition-all duration-300 flex flex-col justify-between min-h-[158px]`}>
               {/* Top Section */}
-              <div className="flex items-center justify-between mb-4">
-                <div className={`${stat.color} w-12 h-12 rounded-lg flex items-center justify-center shadow-md`}>
+              <div className="flex items-center justify-between mb-5">
+                <div className={`${stat.iconBg} w-11 h-11 rounded-lg flex items-center justify-center shadow-sm`}>
                   <Icon className="w-6 h-6 text-white" />
                 </div>
                 {stat.link && (
-                  <svg className="w-5 h-5 text-gray-300 group-hover:text-[#50b1aa] transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                  </svg>
+                  <ArrowRight className="w-5 h-5 text-[#c9b8a8] group-hover:text-[#50b1aa] transition-colors" />
                 )}
               </div>
               
               {/* Bottom Section */}
               <div>
-                <p className="text-gray-500 text-sm font-medium mb-2">{stat.title}</p>
+                <p className="text-[#5d6672] text-sm font-medium mb-2">{stat.title}</p>
                 {loading ? (
-                  <div className="h-9 w-20 bg-gray-200 animate-pulse rounded"></div>
+                  <div className="h-9 w-20 bg-[#eee7df] animate-pulse rounded"></div>
                 ) : (
-                  <p className="text-3xl font-bold text-gray-900">{stat.value}</p>
+                  <p className="text-3xl font-semibold text-[#151f2b]">{stat.value}</p>
                 )}
               </div>
             </div>
@@ -152,31 +170,34 @@ export default function AdminDashboardPage() {
       </div>
 
       {/* Quick Actions */}
-      <div className="bg-white rounded-lg border border-gray-200 p-6">
-        <h2 className="text-xl! font-bold text-gray-900 mb-4">Actions rapides</h2>
+      <div className="bg-white rounded-lg border border-[#e7dfd6] p-6 shadow-sm">
+        <div className="mb-5">
+          <p className="text-xs uppercase tracking-[0.18em] text-[#8f7b68]">Raccourcis</p>
+          <h2 className="mt-1 text-xl! font-semibold text-[#151f2b]">Actions rapides</h2>
+        </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           <Link
             href="/fr/academy/admin/formations/new"
-            className="flex items-center gap-3 p-4 border-2 border-gray-200 rounded-lg hover:border-[#50b1aa] hover:bg-gray-50 transition-all"
+            className="flex items-center gap-3 p-4 border border-[#e7dfd6] rounded-lg hover:border-[#50b1aa] hover:bg-[#f7fbfa] transition-all"
           >
             <BookOpen className="w-5 h-5 text-[#50b1aa]" />
-            <span className="font-medium text-gray-900">Créer une formation</span>
+            <span className="font-medium text-[#151f2b]">Créer un parcours</span>
           </Link>
           
           <Link
             href="/fr/academy/admin/users"
-            className="flex items-center gap-3 p-4 border-2 border-gray-200 rounded-lg hover:border-[#50b1aa] hover:bg-gray-50 transition-all"
+            className="flex items-center gap-3 p-4 border border-[#e7dfd6] rounded-lg hover:border-[#50b1aa] hover:bg-[#f7fbfa] transition-all"
           >
             <Users className="w-5 h-5 text-[#50b1aa]" />
-            <span className="font-medium text-gray-900">Gérer les utilisateurs</span>
+            <span className="font-medium text-[#151f2b]">Gérer les utilisateurs</span>
           </Link>
 
           <Link
             href="/fr/academy/admin/formations"
-            className="flex items-center gap-3 p-4 border-2 border-gray-200 rounded-lg hover:border-[#50b1aa] hover:bg-gray-50 transition-all"
+            className="flex items-center gap-3 p-4 border border-[#e7dfd6] rounded-lg hover:border-[#50b1aa] hover:bg-[#f7fbfa] transition-all"
           >
             <TrendingUp className="w-5 h-5 text-[#50b1aa]" />
-            <span className="font-medium text-gray-900">Voir les formations</span>
+            <span className="font-medium text-[#151f2b]">Voir les parcours</span>
           </Link>
         </div>
       </div>
