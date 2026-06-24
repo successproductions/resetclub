@@ -8,6 +8,29 @@ const DEMO_PASSWORDS = {
   employee: 'ResetEmployee123!',
 };
 
+const DEMO_VIMEO_VIDEOS = [
+  { vimeoVideoId: '146022717', videoUrl: 'https://vimeo.com/146022717' },
+  { vimeoVideoId: '22439234', videoUrl: 'https://vimeo.com/22439234' },
+  { vimeoVideoId: '253989945', videoUrl: 'https://vimeo.com/253989945' },
+  { vimeoVideoId: '66140585', videoUrl: 'https://vimeo.com/66140585' },
+  { vimeoVideoId: '1084537', videoUrl: 'https://vimeo.com/1084537' },
+  { vimeoVideoId: '45830194', videoUrl: 'https://vimeo.com/45830194' },
+  { vimeoVideoId: '357274789', videoUrl: 'https://vimeo.com/357274789' },
+  { vimeoVideoId: '174428903', videoUrl: 'https://vimeo.com/174428903' },
+  { vimeoVideoId: '112836958', videoUrl: 'https://vimeo.com/112836958' },
+  { vimeoVideoId: '11712103', videoUrl: 'https://vimeo.com/11712103' },
+  { vimeoVideoId: '191947042', videoUrl: 'https://vimeo.com/191947042' },
+  { vimeoVideoId: '115014610', videoUrl: 'https://vimeo.com/115014610' },
+  { vimeoVideoId: '1211060', videoUrl: 'https://vimeo.com/1211060' },
+  { vimeoVideoId: '25584872', videoUrl: 'https://vimeo.com/25584872' },
+  { vimeoVideoId: '12769338', videoUrl: 'https://vimeo.com/12769338' },
+  { vimeoVideoId: '160418182', videoUrl: 'https://vimeo.com/160418182' },
+  { vimeoVideoId: '209051403', videoUrl: 'https://vimeo.com/209051403' },
+  { vimeoVideoId: '199169823', videoUrl: 'https://vimeo.com/199169823' },
+  { vimeoVideoId: '24069938', videoUrl: 'https://vimeo.com/24069938' },
+  { vimeoVideoId: '100902001', videoUrl: 'https://vimeo.com/100902001' },
+];
+
 const DEMO_USER_EMAILS = ['client.demo@resetclub.ma', 'employee.demo@resetclub.ma'];
 const DEMO_FORMATION_SLUGS = [
   'academy-client',
@@ -260,6 +283,9 @@ const employeeModuleBlueprints: ModuleBlueprint[] = [
 ];
 
 function buildModule(module: ModuleBlueprint, moduleIndex: number) {
+  const firstVideo = DEMO_VIMEO_VIDEOS[(moduleIndex * 2) % DEMO_VIMEO_VIDEOS.length];
+  const secondVideo = DEMO_VIMEO_VIDEOS[(moduleIndex * 2 + 1) % DEMO_VIMEO_VIDEOS.length];
+
   return {
     title: module.title,
     description: module.description,
@@ -269,12 +295,15 @@ function buildModule(module: ModuleBlueprint, moduleIndex: number) {
         title: module.lessonOne,
         description: `Objectif: comprendre ${module.keyPractice}.`,
         durationSeconds: 420 + moduleIndex * 20,
-        vimeoVideoId: moduleIndex % 3 === 0 ? '1038468190' : undefined,
+        vimeoVideoId: firstVideo.vimeoVideoId,
+        videoUrl: firstVideo.videoUrl,
       },
       {
         title: module.lessonTwo,
         description: `Mise en pratique: eviter de ${module.wrongPractice}.`,
         durationSeconds: 390 + moduleIndex * 15,
+        vimeoVideoId: secondVideo.vimeoVideoId,
+        videoUrl: secondVideo.videoUrl,
       },
     ],
     quiz: {
@@ -353,9 +382,7 @@ async function createFormation(data: DemoFormation) {
               description: lesson.description,
               durationSeconds: lesson.durationSeconds,
               vimeoVideoId: lesson.vimeoVideoId,
-              videoUrl: lesson.vimeoVideoId
-                ? `https://vimeo.com/${lesson.vimeoVideoId}`
-                : null,
+              videoUrl: lesson.videoUrl,
               orderIndex: lessonIndex + 1,
               isPreview: moduleIndex === 0 && lessonIndex === 0,
             })),

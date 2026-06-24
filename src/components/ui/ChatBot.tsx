@@ -18,6 +18,28 @@ interface ChatBotProps {
   phoneNumber?: string;
 }
 
+const renderLinkedText = (text: string) => {
+  const parts = text.split(/(https?:\/\/[^\s]+)/g);
+
+  return parts.map((part, index) => {
+    if (!part.match(/^https?:\/\//)) {
+      return part;
+    }
+
+    return (
+      <a
+        key={`${part}-${index}`}
+        href={part}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="font-semibold text-[#2d8f88] underline underline-offset-2 hover:text-[#1f6f69]"
+      >
+        {part}
+      </a>
+    );
+  });
+};
+
 export default function ChatBot({ onClose }: ChatBotProps) {
   const t = useTranslations('ChatBot');
   const tWhatsApp = useTranslations('WhatsApp');
@@ -195,7 +217,9 @@ export default function ChatBot({ onClose }: ChatBotProps) {
                   : 'bg-white text-gray-900 border border-black/10'
               }`}
             >
-              <p className="text-sm leading-relaxed whitespace-pre-line font-graphik">{message.text}</p>
+              <p className="text-sm leading-relaxed whitespace-pre-line font-graphik">
+                {renderLinkedText(message.text)}
+              </p>
 
               {/* Options */}
               {message.options && message.type === 'bot' && (
