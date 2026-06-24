@@ -6,7 +6,8 @@
     "dev": "next dev --turbopack",
     "build": "next build --turbopack",
     "start": "next start -p ${PORT:-3010}",
-    "lint": "eslint"
+    "lint": "eslint",
+    "seed:academy": "tsx prisma/seed.ts"
   },
   "dependencies": {
     "@prisma/client": "^6.19.1",
