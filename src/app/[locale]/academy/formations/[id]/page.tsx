@@ -218,10 +218,17 @@ export default function CoursePage({ params }: { params: Promise<{ id: string }>
     );
   };
 
+  const closeSidebarOnMobile = () => {
+    if (window.innerWidth < 1024) {
+      setSidebarOpen(false);
+    }
+  };
+
   const selectLesson = (lesson: Lesson) => {
     setCurrentLesson(lesson);
     setViewMode('lesson');
     setCurrentQuiz(null);
+    closeSidebarOnMobile();
     void markLessonComplete(lesson.id);
   };
 
@@ -230,6 +237,7 @@ export default function CoursePage({ params }: { params: Promise<{ id: string }>
     setViewMode('quiz');
     setCurrentLesson(null);
     setQuizStarted(false);
+    closeSidebarOnMobile();
   };
 
   const startQuiz = async () => {
