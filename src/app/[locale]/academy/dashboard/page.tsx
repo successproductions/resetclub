@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useCallback, useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import {
@@ -37,6 +37,12 @@ interface Formation {
   }>;
 }
 
+interface FormationProgress {
+  progressPercentage: number;
+  completedLessonIds: string[];
+  completedQuizIds: string[];
+}
+
 interface Certificate {
   id: string;
   formationId: string;
@@ -52,10 +58,48 @@ export default function AcademyDashboard() {
   const [activePage, setActivePage] = useState('home');
   const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
   const [formations, setFormations] = useState<Formation[]>([]);
+  const [formationProgress, setFormationProgress] = useState<Record<string, FormationProgress>>({});
   const [certificates, setCertificates] = useState<Certificate[]>([]);
   const [downloadingCert, setDownloadingCert] = useState<string | null>(null);
 
-  const fetchFormations = async (role?: string) => {
+  const fetchFormationProgress = useCallback(async (formationIds: string[], token: string) => {
+    if (!formationIds.length) {
+      setFormationProgress({});
+      return;
+    }
+
+    try {
+      const progressEntries = await Promise.all(
+        formationIds.map(async (formationId) => {
+          const response = await fetch(`/api/progress/formation/${formationId}`, {
+            headers: { Authorization: `Bearer ${token}` },
+          });
+
+          if (!response.ok) {
+            return null;
+          }
+
+          const progress = await response.json();
+          return [
+            formationId,
+            {
+              progressPercentage: progress.progressPercentage || 0,
+              completedLessonIds: progress.completedLessonIds || [],
+              completedQuizIds: progress.completedQuizIds || [],
+            },
+          ] as const;
+        })
+      );
+
+      setFormationProgress(
+        Object.fromEntries(progressEntries.filter((entry): entry is NonNullable<typeof entry> => Boolean(entry)))
+      );
+    } catch (error) {
+      console.error('Error fetching formation progress:', error);
+    }
+  }, []);
+
+  const fetchFormations = useCallback(async (role?: string, token?: string) => {
     try {
       const response = await fetch('/api/formations');
       if (response.ok) {
@@ -66,13 +110,22 @@ export default function AcademyDashboard() {
           )
           : formationsList;
         setFormations(visibleFormations);
+
+        if (token) {
+          await fetchFormationProgress(
+            visibleFormations.map((formation: Formation) => formation.id),
+            token
+          );
+        } else {
+          setFormationProgress({});
+        }
       }
     } catch (error) {
       console.error('Error fetching formations:', error);
     }
-  };
+  }, [fetchFormationProgress]);
 
-  const fetchCertificates = async (token: string) => {
+  const fetchCertificates = useCallback(async (token: string) => {
     try {
       const response = await fetch('/api/certificate/user', {
         headers: { Authorization: `Bearer ${token}` },
@@ -84,7 +137,7 @@ export default function AcademyDashboard() {
     } catch (error) {
       console.error('Error fetching certificates:', error);
     }
-  };
+  }, []);
 
   const downloadCertificate = async (formationId: string) => {
     setDownloadingCert(formationId);
@@ -150,13 +203,13 @@ export default function AcademyDashboard() {
       console.log('✅ CLIENT user - allowing dashboard access');
       setUser(parsedUser);
       setIsLoading(false);
-      fetchFormations(parsedUser.role);
+      fetchFormations(parsedUser.role, token);
       fetchCertificates(token);
     } catch {
       // Invalid token or user data
       router.push('/fr/academy/login');
     }
-  }, [router]);
+  }, [fetchCertificates, fetchFormations, router]);
 
   const handleLogout = () => {
     localStorage.removeItem('academy_token');
@@ -176,6 +229,18 @@ export default function AcademyDashboard() {
     (total, formation) => total + formation.modules.length,
     0
   );
+  const completedModulesCount = formations.reduce((total, formation) => {
+    const completedLessonIds = formationProgress[formation.id]?.completedLessonIds || [];
+    const completedModuleCount = formation.modules.filter((module) => {
+      if (module.lessons.length === 0) {
+        return false;
+      }
+
+      return module.lessons.every((lesson) => completedLessonIds.includes(lesson.id));
+    }).length;
+
+    return total + completedModuleCount;
+  }, 0);
 
   return (
     <div className="min-h-screen bg-gray-50 font-graphik">
@@ -325,7 +390,7 @@ export default function AcademyDashboard() {
             <div className="bg-white rounded-lg border border-gray-200 p-6">
               <div className="flex items-center justify-between mb-4">
                 <Trophy className="w-8 h-8 text-green-600" />
-                <span className="text-3xl font-semibold text-gray-900">0</span>
+                <span className="text-3xl font-semibold text-gray-900">{completedModulesCount}</span>
               </div>
               <p className="text-gray-600 text-sm">Modules terminés</p>
             </div>
@@ -405,6 +470,7 @@ export default function AcademyDashboard() {
               ) : (
                 formations.map((formation) => {
                   const totalLessons = formation.modules.reduce((acc, mod) => acc + mod.lessons.length, 0);
+                  const progressPercentage = formationProgress[formation.id]?.progressPercentage || 0;
                   const durationHours = formation.durationHours || 0;
                   const hours = Math.floor(durationHours);
                   const minutes = Math.round((durationHours - hours) * 60);
@@ -430,12 +496,12 @@ export default function AcademyDashboard() {
                             <div className="mb-3 hidden md:block">
                               <div className="flex justify-between items-center mb-1.5">
                                 <span className="text-xs text-gray-600">Progression</span>
-                                <span className="text-xs font-semibold text-[#51b1aa]">0%</span>
+                                <span className="text-xs font-semibold text-[#51b1aa]">{progressPercentage}%</span>
                               </div>
                               <div className="w-full h-1.5 bg-gray-200 rounded-full overflow-hidden">
                                 <div
                                   className="h-full bg-gradient-to-r from-[#51b1aa] to-[#91dbd3] rounded-full transition-all"
-                                  style={{ width: '0%' }}
+                                  style={{ width: `${progressPercentage}%` }}
                                 />
                               </div>
                             </div>
@@ -477,12 +543,12 @@ export default function AcademyDashboard() {
                           <div className="mb-3">
                             <div className="flex justify-between items-center mb-1.5">
                               <span className="text-xs text-gray-600">Progression</span>
-                              <span className="text-xs font-semibold text-[#51b1aa]">0%</span>
+                              <span className="text-xs font-semibold text-[#51b1aa]">{progressPercentage}%</span>
                             </div>
                             <div className="w-full h-1.5 bg-gray-200 rounded-full overflow-hidden">
                               <div
                                 className="h-full bg-gradient-to-r from-[#51b1aa] to-[#91dbd3] rounded-full transition-all"
-                                style={{ width: '0%' }}
+                                style={{ width: `${progressPercentage}%` }}
                               />
                             </div>
                           </div>
