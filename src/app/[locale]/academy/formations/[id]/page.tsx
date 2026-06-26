@@ -9,7 +9,6 @@ import {
   CheckCircle2,
   Circle,
   Menu,
-  X,
   FileQuestion,
   Award
 } from 'lucide-react';
@@ -81,6 +80,12 @@ export default function CoursePage({ params }: { params: Promise<{ id: string }>
   const [downloadingCert, setDownloadingCert] = useState(false);
   // useRef to avoid stale closure in markLessonComplete
   const formationIdRef = useRef<string>('');
+
+  useEffect(() => {
+    if (window.innerWidth < 1024) {
+      setSidebarOpen(false);
+    }
+  }, []);
 
   useEffect(() => {
     const loadData = async () => {
@@ -331,21 +336,15 @@ export default function CoursePage({ params }: { params: Promise<{ id: string }>
   return (
     <div className="flex h-screen bg-gray-100">
       {/* Mobile Menu Button */}
-      <button
-        onClick={() => setSidebarOpen(!sidebarOpen)}
-        className="lg:hidden fixed top-4 left-4 z-50 p-2 bg-gray-800 text-white rounded-lg"
-      >
-        {sidebarOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
-      </button>
-
-      {/* Mobile Back Button */}
-      <button
-        onClick={() => router.push('/fr/academy/dashboard')}
-        className="lg:hidden fixed top-4 right-4 z-50 flex items-center gap-1.5 rounded-lg bg-white/95 px-3 py-2 text-sm font-medium text-gray-900 shadow-sm ring-1 ring-black/10"
-      >
-        <ChevronLeft className="w-4 h-4" />
-        Accueil
-      </button>
+      {!sidebarOpen && (
+        <button
+          onClick={() => setSidebarOpen(true)}
+          className="lg:hidden fixed top-4 left-4 z-50 flex h-11 w-11 items-center justify-center rounded-xl bg-[#50b1aa] text-white shadow-lg shadow-black/15 ring-1 ring-white/20"
+          aria-label="Ouvrir le menu du cours"
+        >
+          <Menu className="w-5 h-5" />
+        </button>
+      )}
 
       {/* Sidebar */}
       <div className={`
@@ -353,19 +352,34 @@ export default function CoursePage({ params }: { params: Promise<{ id: string }>
         lg:translate-x-0 fixed lg:relative z-40 
         w-80 h-full bg-[#50b1aa] text-white overflow-y-auto transition-transform duration-300
       `}>
-        {/* Back Button */}
         <div className="p-4 border-b border-white/20">
+          <div className="mb-4 flex items-center gap-2 lg:hidden">
+            <button
+              onClick={() => setSidebarOpen(false)}
+              className="flex flex-1 items-center justify-center gap-2 rounded-xl bg-white/15 px-3 py-2.5 text-sm font-medium text-white ring-1 ring-white/20 transition-colors hover:bg-white/20"
+              aria-label="Masquer le menu du cours"
+            >
+              <Menu className="w-4 h-4" />
+              Masquer
+            </button>
+            <button
+              onClick={() => router.push('/fr/academy/dashboard')}
+              className="flex flex-1 items-center justify-center gap-2 rounded-xl bg-white px-3 py-2.5 text-sm font-semibold text-[#2d6d68] shadow-sm transition-colors hover:bg-white/90"
+            >
+              <ChevronLeft className="w-4 h-4" />
+              Accueil
+            </button>
+          </div>
+
           <button
             onClick={() => router.push('/fr/academy/dashboard')}
-            className="flex items-center gap-2 text-gray-300 hover:text-white transition-colors"
+            className="mb-4 hidden items-center gap-2 text-gray-300 hover:text-white transition-colors lg:flex"
           >
             <ChevronLeft className="w-5 h-5 text-white" />
             <span className="text-sm text-gray-100">Retour au tableau de bord</span>
           </button>
-        </div>
 
-        {/* Course Title */}
-        <div className="p-4 border-b border-white/20">
+          {/* Course Title */}
           <h2 className="text-sm! text-gray-50 font-normal mb-1">{formation.title}</h2>
           <p className="text-xs text-gray-100">{formation.description || 'Formation Reset Club'}</p>
         </div>
