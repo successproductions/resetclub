@@ -609,9 +609,8 @@ export default function AcademyDashboard() {
                                   className="rounded-lg border border-gray-200 bg-white p-4 transition-colors hover:border-[#51b1aa] hover:bg-[#f5fbfa]"
                                 >
                                   <div className="flex items-start gap-3">
-                                    <div className={`mt-0.5 flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-full ${
-                                      moduleComplete ? 'bg-green-50 text-green-600' : 'bg-gray-100 text-gray-500'
-                                    }`}>
+                                    <div className={`mt-0.5 flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-full ${moduleComplete ? 'bg-green-50 text-green-600' : 'bg-gray-100 text-gray-500'
+                                      }`}>
                                       {moduleComplete ? (
                                         <CheckCircle2 className="w-4 h-4" />
                                       ) : (
@@ -619,7 +618,7 @@ export default function AcademyDashboard() {
                                       )}
                                     </div>
                                     <div className="min-w-0">
-                                      <h4 className="text-sm font-semibold text-gray-900">{module.title}</h4>
+                                      <h4 className="text-sm! font-semibold text-gray-900">{module.title}</h4>
                                       <div className="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-gray-500">
                                         <span className="inline-flex items-center gap-1">
                                           <BookOpen className="w-3.5 h-3.5" />
