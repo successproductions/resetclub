@@ -15,6 +15,8 @@ import {
   Library,
   Award,
   Globe,
+  Menu,
+  X,
   PlayCircle
 } from 'lucide-react';
 import Image from 'next/image';
@@ -65,6 +67,7 @@ export default function AcademyDashboard() {
   const [isLoading, setIsLoading] = useState(true);
   const [activePage, setActivePage] = useState('home');
   const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
+  const [isMobileSidebarOpen, setIsMobileSidebarOpen] = useState(false);
   const [formations, setFormations] = useState<Formation[]>([]);
   const [formationProgress, setFormationProgress] = useState<Record<string, FormationProgress>>({});
   const [certificates, setCertificates] = useState<Certificate[]>([]);
@@ -224,6 +227,10 @@ export default function AcademyDashboard() {
     localStorage.removeItem('academy_user');
     router.push('/academy/login');
   };
+  const setDashboardPage = (page: string) => {
+    setActivePage(page);
+    setIsMobileSidebarOpen(false);
+  };
 
   if (isLoading) {
     return (
@@ -287,16 +294,26 @@ export default function AcademyDashboard() {
   return (
     <div className="min-h-screen bg-gray-50 font-graphik">
       {/* Top Navigation Bar */}
-      <div className="bg-white border-b border-gray-200 sticky top-0 z-50">
+      <div className="fixed left-0 right-0 top-0 z-50 bg-white border-b border-gray-200">
         <div className="h-14 flex items-center justify-between px-4">
-          {/* Logo */}
-          <div className="relative w-24 h-14">
-            <Image
-              src="/images/logogras.png"
-              alt="RESET Club Academy"
-              fill
-              className="object-contain h-44 w-44"
-            />
+          <div className="flex items-center gap-2">
+            <button
+              onClick={() => setIsMobileSidebarOpen(true)}
+              className="md:hidden flex h-10 w-10 items-center justify-center rounded-lg text-gray-700 hover:bg-gray-100 transition-colors"
+              aria-label="Ouvrir le menu"
+            >
+              <Menu className="w-5 h-5" />
+            </button>
+
+            {/* Logo */}
+            <div className="relative w-24 h-14">
+              <Image
+                src="/images/logogras.png"
+                alt="RESET Club Academy"
+                fill
+                className="object-contain h-44 w-44"
+              />
+            </div>
           </div>
 
           {/* Right Side - Language & Profile (no gap) */}
@@ -325,57 +342,73 @@ export default function AcademyDashboard() {
       </div>
 
       {/* Main Layout - Sidebar + Content */}
-      <div className="flex">
+      <div className="flex pt-14">
+        {isMobileSidebarOpen && (
+          <button
+            type="button"
+            onClick={() => setIsMobileSidebarOpen(false)}
+            className="fixed inset-0 top-14 z-30 bg-gray-900/40 md:hidden"
+            aria-label="Fermer le menu"
+          />
+        )}
+
         {/* Left Sidebar Navigation - LinkedIn Style */}
-        <aside className={`${isSidebarCollapsed ? 'w-16' : 'w-56'} bg-white border-r border-gray-200 h-[calc(100vh-3.5rem)] fixed left-0 top-14 transition-all duration-300`}>
-          <nav className="py-2 h-full flex flex-col">
+        <aside className={`${isMobileSidebarOpen ? 'translate-x-0' : '-translate-x-full'} ${isSidebarCollapsed ? 'md:w-16' : 'md:w-56'} fixed left-0 top-14 z-40 h-[calc(100dvh-3.5rem)] w-56 bg-white border-r border-gray-200 transition-all duration-300 md:translate-x-0`}>
+          <nav className="py-2 h-full flex flex-col overflow-y-auto">
             {/* Toggle Button */}
             <button
-              onClick={() => setIsSidebarCollapsed(!isSidebarCollapsed)}
-              className={`w-full flex items-center ${isSidebarCollapsed ? 'justify-center' : 'justify-start pl-4'} py-3 text-gray-600 hover:bg-gray-100 transition-colors mb-2`}
-              title={isSidebarCollapsed ? 'Expand sidebar' : 'Collapse sidebar'}
+              onClick={() => {
+                if (window.innerWidth < 768) {
+                  setIsMobileSidebarOpen(false);
+                  return;
+                }
+
+                setIsSidebarCollapsed(!isSidebarCollapsed);
+              }}
+              className={`w-full flex items-center gap-3 ${isSidebarCollapsed ? 'md:justify-center md:gap-0' : 'pl-4'} px-4 py-3 text-gray-600 hover:bg-gray-100 transition-colors mb-2`}
+              title={isSidebarCollapsed ? 'Ouvrir le menu' : 'Réduire le menu'}
             >
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-              </svg>
+              <X className="w-5 h-5 md:hidden" />
+              <Menu className="hidden w-5 h-5 md:block" />
+              <span className={`md:hidden ${isSidebarCollapsed ? 'md:hidden' : ''}`}>Fermer</span>
             </button>
 
             {/* Top Navigation Items */}
             <div>
               <button
-                onClick={() => setActivePage('home')}
-                className={`w-full flex items-center ${isSidebarCollapsed ? 'justify-center' : 'gap-3'} px-4 py-3 text-sm font-medium transition-colors border-l-4 ${activePage === 'home'
+                onClick={() => setDashboardPage('home')}
+                className={`w-full flex items-center gap-3 ${isSidebarCollapsed ? 'md:justify-center md:gap-0' : ''} px-4 py-3 text-sm font-medium transition-colors border-l-4 ${activePage === 'home'
                   ? 'border-[#51b1aa] bg-gray-50 text-gray-900'
                   : 'border-transparent text-gray-700 hover:bg-gray-50'
                   }`}
                 title="Accueil"
               >
                 <Home className="w-5 h-5" />
-                {!isSidebarCollapsed && <span>Accueil</span>}
+                <span className={isSidebarCollapsed ? 'md:hidden' : ''}>Accueil</span>
               </button>
 
               <button
-                onClick={() => setActivePage('library')}
-                className={`w-full flex items-center ${isSidebarCollapsed ? 'justify-center' : 'gap-3'} px-4 py-3 text-sm font-medium transition-colors border-l-4 ${activePage === 'library'
+                onClick={() => setDashboardPage('library')}
+                className={`w-full flex items-center gap-3 ${isSidebarCollapsed ? 'md:justify-center md:gap-0' : ''} px-4 py-3 text-sm font-medium transition-colors border-l-4 ${activePage === 'library'
                   ? 'border-[#51b1aa] bg-gray-50 text-gray-900'
                   : 'border-transparent text-gray-700 hover:bg-gray-50'
                   }`}
                 title="Mon parcours"
               >
                 <Library className="w-5 h-5" />
-                {!isSidebarCollapsed && <span>Mon parcours</span>}
+                <span className={isSidebarCollapsed ? 'md:hidden' : ''}>Mon parcours</span>
               </button>
 
               <button
-                onClick={() => setActivePage('certificates')}
-                className={`w-full flex items-center ${isSidebarCollapsed ? 'justify-center' : 'gap-3'} px-4 py-3 text-sm font-medium transition-colors border-l-4 ${activePage === 'certificates'
+                onClick={() => setDashboardPage('certificates')}
+                className={`w-full flex items-center gap-3 ${isSidebarCollapsed ? 'md:justify-center md:gap-0' : ''} px-4 py-3 text-sm font-medium transition-colors border-l-4 ${activePage === 'certificates'
                   ? 'border-[#51b1aa] bg-gray-50 text-gray-900'
                   : 'border-transparent text-gray-700 hover:bg-gray-50'
                   }`}
                 title="Certificats"
               >
                 <Award className="w-5 h-5" />
-                {!isSidebarCollapsed && <span>Mon Certificat</span>}
+                <span className={isSidebarCollapsed ? 'md:hidden' : ''}>Mon Certificat</span>
               </button>
             </div>
 
@@ -386,27 +419,27 @@ export default function AcademyDashboard() {
             <div className="border-t border-gray-200">
               <button
                 onClick={() => router.push('/academy/profile')}
-                className={`w-full flex items-center ${isSidebarCollapsed ? 'justify-center' : 'gap-3'} px-4 py-3 text-sm font-medium text-gray-700 hover:bg-gray-50 transition-colors border-l-4 border-transparent`}
+                className={`w-full flex items-center gap-3 ${isSidebarCollapsed ? 'md:justify-center md:gap-0' : ''} px-4 py-3 text-sm font-medium text-gray-700 hover:bg-gray-50 transition-colors border-l-4 border-transparent`}
                 title="Profil"
               >
                 <User className="w-5 h-5" />
-                {!isSidebarCollapsed && <span>Profil</span>}
+                <span className={isSidebarCollapsed ? 'md:hidden' : ''}>Profil</span>
               </button>
 
               <button
                 onClick={handleLogout}
-                className={`w-full flex items-center ${isSidebarCollapsed ? 'justify-center' : 'gap-3'} px-4 py-3 text-sm font-medium text-red-600 hover:bg-red-50 transition-colors border-l-4 border-transparent`}
+                className={`w-full flex items-center gap-3 ${isSidebarCollapsed ? 'md:justify-center md:gap-0' : ''} px-4 py-3 text-sm font-medium text-red-600 hover:bg-red-50 transition-colors border-l-4 border-transparent`}
                 title="Déconnexion"
               >
                 <LogOut className="w-5 h-5" />
-                {!isSidebarCollapsed && <span>Déconnexion</span>}
+                <span className={isSidebarCollapsed ? 'md:hidden' : ''}>Déconnexion</span>
               </button>
             </div>
           </nav>
         </aside>
 
         {/* Main Content Area - With left margin for sidebar */}
-        <main className={`flex-1 ${isSidebarCollapsed ? 'ml-16' : 'ml-56'} p-6 transition-all duration-300`}>
+        <main className={`flex-1 p-4 transition-all duration-300 md:p-6 ${isSidebarCollapsed ? 'md:ml-16' : 'md:ml-56'}`}>
           {/* Welcome Section */}
           <div className="mb-8">
             <h1 className="text-3xl font-normal text-gray-900 mb-2">
