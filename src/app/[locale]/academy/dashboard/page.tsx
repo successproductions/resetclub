@@ -16,7 +16,6 @@ import {
   Award,
   Globe,
   Menu,
-  X,
   PlayCircle
 } from 'lucide-react';
 import Image from 'next/image';
@@ -298,9 +297,9 @@ export default function AcademyDashboard() {
         <div className="h-14 flex items-center justify-between px-4">
           <div className="flex items-center gap-2">
             <button
-              onClick={() => setIsMobileSidebarOpen(true)}
+              onClick={() => setIsMobileSidebarOpen((isOpen) => !isOpen)}
               className="md:hidden flex h-10 w-10 items-center justify-center rounded-lg text-gray-700 hover:bg-gray-100 transition-colors"
-              aria-label="Ouvrir le menu"
+              aria-label={isMobileSidebarOpen ? 'Fermer le menu' : 'Ouvrir le menu'}
             >
               <Menu className="w-5 h-5" />
             </button>
@@ -357,20 +356,11 @@ export default function AcademyDashboard() {
           <nav className="py-2 h-full flex flex-col overflow-y-auto">
             {/* Toggle Button */}
             <button
-              onClick={() => {
-                if (window.innerWidth < 768) {
-                  setIsMobileSidebarOpen(false);
-                  return;
-                }
-
-                setIsSidebarCollapsed(!isSidebarCollapsed);
-              }}
-              className={`w-full flex items-center gap-3 ${isSidebarCollapsed ? 'md:justify-center md:gap-0' : 'pl-4'} px-4 py-3 text-gray-600 hover:bg-gray-100 transition-colors mb-2`}
+              onClick={() => setIsSidebarCollapsed(!isSidebarCollapsed)}
+              className={`hidden w-full items-center gap-3 ${isSidebarCollapsed ? 'md:justify-center md:gap-0' : 'pl-4'} px-4 py-3 text-gray-600 hover:bg-gray-100 transition-colors mb-2 md:flex`}
               title={isSidebarCollapsed ? 'Ouvrir le menu' : 'Réduire le menu'}
             >
-              <X className="w-5 h-5 md:hidden" />
-              <Menu className="hidden w-5 h-5 md:block" />
-              <span className={`md:hidden ${isSidebarCollapsed ? 'md:hidden' : ''}`}>Fermer</span>
+              <Menu className="w-5 h-5" />
             </button>
 
             {/* Top Navigation Items */}
