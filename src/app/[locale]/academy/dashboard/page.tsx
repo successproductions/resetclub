@@ -4,14 +4,18 @@ import { useCallback, useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import {
+  ArrowRight,
   BookOpen,
+  CheckCircle2,
+  Clock,
   Trophy,
   User,
   LogOut,
   Home,
   Library,
   Award,
-  Globe
+  Globe,
+  PlayCircle
 } from 'lucide-react';
 import Image from 'next/image';
 
@@ -33,7 +37,11 @@ interface Formation {
   targetRole: string;
   modules: Array<{
     id: string;
+    title: string;
+    description: string | null;
+    durationMinutes: number | null;
     lessons: Array<{ id: string }>;
+    quizzes?: Array<{ id: string }>;
   }>;
 }
 
@@ -229,15 +237,49 @@ export default function AcademyDashboard() {
     (total, formation) => total + formation.modules.length,
     0
   );
-  const completedModulesCount = formations.reduce((total, formation) => {
-    const completedLessonIds = formationProgress[formation.id]?.completedLessonIds || [];
-    const completedModuleCount = formation.modules.filter((module) => {
-      if (module.lessons.length === 0) {
-        return false;
-      }
+  const isModuleComplete = (module: Formation['modules'][number], progress?: FormationProgress) => {
+    const completedLessonIds = progress?.completedLessonIds || [];
+    const completedQuizIds = progress?.completedQuizIds || [];
+    const lessonIds = module.lessons.map((lesson) => lesson.id);
+    const quizIds = module.quizzes?.map((quiz) => quiz.id) || [];
+    const hasCompletionTarget = lessonIds.length > 0 || quizIds.length > 0;
 
-      return module.lessons.every((lesson) => completedLessonIds.includes(lesson.id));
-    }).length;
+    if (!hasCompletionTarget) {
+      return false;
+    }
+
+    return (
+      lessonIds.every((lessonId) => completedLessonIds.includes(lessonId)) &&
+      quizIds.every((quizId) => completedQuizIds.includes(quizId))
+    );
+  };
+  const getFormationStats = (formation: Formation) => {
+    const progress = formationProgress[formation.id];
+    const totalLessons = formation.modules.reduce((acc, module) => acc + module.lessons.length, 0);
+    const totalQuizzes = formation.modules.reduce((acc, module) => acc + (module.quizzes?.length || 0), 0);
+    const completedLessons = progress?.completedLessonIds.length || 0;
+    const completedQuizzes = progress?.completedQuizIds.length || 0;
+    const completedModules = formation.modules.filter((module) => isModuleComplete(module, progress)).length;
+    const progressPercentage = Math.round(progress?.progressPercentage || 0);
+    const durationHours = formation.durationHours || 0;
+    const hours = Math.floor(durationHours);
+    const minutes = Math.round((durationHours - hours) * 60);
+    const durationText = hours > 0 ? `${hours}h ${minutes}min` : `${minutes}min`;
+
+    return {
+      totalLessons,
+      totalQuizzes,
+      completedLessons,
+      completedQuizzes,
+      completedModules,
+      progressPercentage,
+      durationText,
+    };
+  };
+  const completedModulesCount = formations.reduce((total, formation) => {
+    const completedModuleCount = formation.modules.filter((module) =>
+      isModuleComplete(module, formationProgress[formation.id])
+    ).length;
 
     return total + completedModuleCount;
   }, 0);
@@ -303,8 +345,8 @@ export default function AcademyDashboard() {
               <button
                 onClick={() => setActivePage('home')}
                 className={`w-full flex items-center ${isSidebarCollapsed ? 'justify-center' : 'gap-3'} px-4 py-3 text-sm font-medium transition-colors border-l-4 ${activePage === 'home'
-                    ? 'border-[#51b1aa] bg-gray-50 text-gray-900'
-                    : 'border-transparent text-gray-700 hover:bg-gray-50'
+                  ? 'border-[#51b1aa] bg-gray-50 text-gray-900'
+                  : 'border-transparent text-gray-700 hover:bg-gray-50'
                   }`}
                 title="Accueil"
               >
@@ -315,8 +357,8 @@ export default function AcademyDashboard() {
               <button
                 onClick={() => setActivePage('library')}
                 className={`w-full flex items-center ${isSidebarCollapsed ? 'justify-center' : 'gap-3'} px-4 py-3 text-sm font-medium transition-colors border-l-4 ${activePage === 'library'
-                    ? 'border-[#51b1aa] bg-gray-50 text-gray-900'
-                    : 'border-transparent text-gray-700 hover:bg-gray-50'
+                  ? 'border-[#51b1aa] bg-gray-50 text-gray-900'
+                  : 'border-transparent text-gray-700 hover:bg-gray-50'
                   }`}
                 title="Mon parcours"
               >
@@ -327,8 +369,8 @@ export default function AcademyDashboard() {
               <button
                 onClick={() => setActivePage('certificates')}
                 className={`w-full flex items-center ${isSidebarCollapsed ? 'justify-center' : 'gap-3'} px-4 py-3 text-sm font-medium transition-colors border-l-4 ${activePage === 'certificates'
-                    ? 'border-[#51b1aa] bg-gray-50 text-gray-900'
-                    : 'border-transparent text-gray-700 hover:bg-gray-50'
+                  ? 'border-[#51b1aa] bg-gray-50 text-gray-900'
+                  : 'border-transparent text-gray-700 hover:bg-gray-50'
                   }`}
                 title="Certificats"
               >
@@ -368,7 +410,7 @@ export default function AcademyDashboard() {
           {/* Welcome Section */}
           <div className="mb-8">
             <h1 className="text-3xl font-normal text-gray-900 mb-2">
-              Bonjour, {user?.firstName || 'Membre'} 👋
+              Bonjour {user?.firstName || 'Membre'} 👋
             </h1>
             <p className="text-gray-600">
               Continue ta transformation avec RESET 360™
@@ -445,6 +487,167 @@ export default function AcademyDashboard() {
                       </button>
                     </div>
                   ))}
+                </div>
+              )}
+            </div>
+          )}
+
+          {/* Learning Path Page */}
+          {activePage === 'library' && (
+            <div>
+              <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-3 mb-6">
+                <div>
+                  <h2 className="text-2xl font-semibold text-gray-900">Mon parcours</h2>
+                  <p className="text-sm text-gray-600 mt-1">
+                    Retrouvez vos modules, votre progression et la prochaine étape à suivre.
+                  </p>
+                </div>
+              </div>
+
+              {formations.length === 0 ? (
+                <div className="bg-white rounded-lg border border-gray-200 p-12 text-center">
+                  <BookOpen className="w-16 h-16 text-gray-400 mx-auto mb-4" />
+                  <h3 className="text-lg font-semibold text-gray-900 mb-2">Aucun parcours disponible</h3>
+                  <p className="text-gray-600">Votre parcours sera disponible dès son activation.</p>
+                </div>
+              ) : (
+                <div className="space-y-6">
+                  {formations.map((formation) => {
+                    const stats = getFormationStats(formation);
+                    const progress = formationProgress[formation.id];
+
+                    return (
+                      <div key={formation.id} className="bg-white rounded-lg border border-gray-200 overflow-hidden">
+                        <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_320px]">
+                          <div className="p-6">
+                            <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4 mb-5">
+                              <div>
+                                <span className="inline-flex items-center rounded bg-[#51b1aa]/10 px-2.5 py-1 text-xs font-medium text-[#2f817b] mb-3">
+                                  Parcours actif
+                                </span>
+                                <h3 className="text-xl font-semibold text-gray-900">{formation.title}</h3>
+                                {formation.description && (
+                                  <p className="text-sm text-gray-600 mt-2 max-w-3xl">{formation.description}</p>
+                                )}
+                              </div>
+
+                              <Link
+                                href={`/fr/academy/formations/${formation.id}`}
+                                className="inline-flex items-center justify-center gap-2 rounded-lg bg-[#51b1aa] px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-[#449990] md:flex-shrink-0"
+                              >
+                                Continuer
+                                <ArrowRight className="w-4 h-4" />
+                              </Link>
+                            </div>
+
+                            <div className="mb-5">
+                              <div className="flex items-center justify-between mb-2">
+                                <span className="text-sm font-medium text-gray-700">Progression globale</span>
+                                <span className="text-sm font-semibold text-[#51b1aa]">{stats.progressPercentage}%</span>
+                              </div>
+                              <div className="h-2 w-full overflow-hidden rounded-full bg-gray-200">
+                                <div
+                                  className="h-full rounded-full bg-gradient-to-r from-[#51b1aa] to-[#91dbd3] transition-all"
+                                  style={{ width: `${stats.progressPercentage}%` }}
+                                />
+                              </div>
+                            </div>
+
+                            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                              <div className="rounded-lg border border-gray-200 p-4">
+                                <div className="flex items-center gap-2 text-sm font-medium text-gray-900">
+                                  <Trophy className="w-4 h-4 text-green-600" />
+                                  Modules
+                                </div>
+                                <p className="text-sm text-gray-600 mt-1">
+                                  {stats.completedModules}/{formation.modules.length} terminés
+                                </p>
+                              </div>
+                              <div className="rounded-lg border border-gray-200 p-4">
+                                <div className="flex items-center gap-2 text-sm font-medium text-gray-900">
+                                  <PlayCircle className="w-4 h-4 text-[#51b1aa]" />
+                                  Leçons
+                                </div>
+                                <p className="text-sm text-gray-600 mt-1">
+                                  {stats.completedLessons}/{stats.totalLessons} suivies
+                                </p>
+                              </div>
+                              <div className="rounded-lg border border-gray-200 p-4">
+                                <div className="flex items-center gap-2 text-sm font-medium text-gray-900">
+                                  <CheckCircle2 className="w-4 h-4 text-blue-600" />
+                                  Quiz
+                                </div>
+                                <p className="text-sm text-gray-600 mt-1">
+                                  {stats.completedQuizzes}/{stats.totalQuizzes} validés
+                                </p>
+                              </div>
+                            </div>
+                          </div>
+
+                          <div className="relative min-h-[220px] lg:min-h-full">
+                            <Image
+                              src={formation.thumbnailUrl || '/images/OUT.jpg'}
+                              alt={formation.title}
+                              fill
+                              className="object-cover"
+                              sizes="(min-width: 1024px) 320px, 100vw"
+                            />
+                          </div>
+                        </div>
+
+                        <div className="border-t border-gray-200 bg-gray-50 p-4 md:p-6">
+                          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-3">
+                            {formation.modules.map((module, moduleIndex) => {
+                              const moduleComplete = isModuleComplete(module, progress);
+                              const lessonCount = module.lessons.length;
+                              const quizCount = module.quizzes?.length || 0;
+
+                              return (
+                                <Link
+                                  key={module.id}
+                                  href={`/fr/academy/formations/${formation.id}`}
+                                  className="rounded-lg border border-gray-200 bg-white p-4 transition-colors hover:border-[#51b1aa] hover:bg-[#f5fbfa]"
+                                >
+                                  <div className="flex items-start gap-3">
+                                    <div className={`mt-0.5 flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-full ${
+                                      moduleComplete ? 'bg-green-50 text-green-600' : 'bg-gray-100 text-gray-500'
+                                    }`}>
+                                      {moduleComplete ? (
+                                        <CheckCircle2 className="w-4 h-4" />
+                                      ) : (
+                                        <span className="text-xs font-semibold">{moduleIndex + 1}</span>
+                                      )}
+                                    </div>
+                                    <div className="min-w-0">
+                                      <h4 className="text-sm font-semibold text-gray-900">{module.title}</h4>
+                                      <div className="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-gray-500">
+                                        <span className="inline-flex items-center gap-1">
+                                          <BookOpen className="w-3.5 h-3.5" />
+                                          {lessonCount} leçon{lessonCount > 1 ? 's' : ''}
+                                        </span>
+                                        {quizCount > 0 && (
+                                          <span className="inline-flex items-center gap-1">
+                                            <CheckCircle2 className="w-3.5 h-3.5" />
+                                            {quizCount} quiz
+                                          </span>
+                                        )}
+                                        {module.durationMinutes && (
+                                          <span className="inline-flex items-center gap-1">
+                                            <Clock className="w-3.5 h-3.5" />
+                                            {module.durationMinutes} min
+                                          </span>
+                                        )}
+                                      </div>
+                                    </div>
+                                  </div>
+                                </Link>
+                              );
+                            })}
+                          </div>
+                        </div>
+                      </div>
+                    );
+                  })}
                 </div>
               )}
             </div>

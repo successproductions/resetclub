@@ -13,6 +13,11 @@ export async function GET() {
               select: {
                 id: true
               }
+            },
+            quizzes: {
+              select: {
+                id: true
+              }
             }
           },
           orderBy: { orderIndex: 'asc' }
