@@ -10,6 +10,29 @@ import Footer from '@/components/layout/Footer';
 // CMI fee: 2.97% — applied server-side but declared here for reference
 const RESET_CLUB_AMOUNT_MAD = 1500; // Base price in MAD — adjust as needed
 
+const TOP_COUNTRIES = [
+  { code: '+212', label: '🇲🇦 +212' },
+  { code: '+33', label: '🇫🇷 +33' },
+  { code: '+34', label: '🇪🇸 +34' },
+  { code: '+32', label: '🇧🇪 +32' },
+  { code: '+1', label: '🇺🇸 +1' },
+  { code: '+44', label: '🇬🇧 +44' },
+  { code: '+49', label: '🇩🇪 +49' },
+  { code: '+39', label: '🇮🇹 +39' },
+  { code: '+31', label: '🇳🇱 +31' },
+  { code: '+41', label: '🇨🇭 +41' },
+  { code: '+971', label: '🇦🇪 +971' },
+  { code: '+966', label: '🇸🇦 +966' },
+  { code: '+974', label: '🇶🇦 +974' },
+  { code: '+213', label: '🇩🇿 +213' },
+  { code: '+216', label: '🇹🇳 +216' },
+  { code: '+221', label: '🇸🇳 +221' },
+  { code: '+225', label: '🇨🇮 +225' },
+  { code: '+86', label: '🇨🇳 +86' },
+  { code: '+81', label: '🇯🇵 +81' },
+  { code: '+61', label: '🇦🇺 +61' },
+];
+
 export default function PaymentPage() {
   const t = useTranslations('PaymentPage');
   const searchParams = useSearchParams();
@@ -19,6 +42,7 @@ export default function PaymentPage() {
     fullName: '',
     email: '',
     phone: '',
+    countryCode: '+212',
     address: '',
     city: ''
   });
@@ -26,7 +50,7 @@ export default function PaymentPage() {
   const [errorMsg, setErrorMsg] = useState(hasError ? 'Votre paiement a échoué. Veuillez réessayer.' : '');
   const [termsAccepted, setTermsAccepted] = useState(false);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({
       ...prev,
@@ -52,7 +76,7 @@ export default function PaymentPage() {
         body: JSON.stringify({
           fullName:  formData.fullName,
           email:     formData.email,
-          phone:     formData.phone,
+          phone:     `${formData.countryCode} ${formData.phone}`,
           address:   formData.address,
           city:      formData.city,
           amount:    totalAmount,
@@ -188,16 +212,33 @@ export default function PaymentPage() {
                   className={inputClassName}
                 />
 
-                <input
-                  type="tel"
-                  name="phone"
-                  value={formData.phone}
-                  onChange={handleChange}
-                  placeholder={t('form.phone')}
-                  required
-                  disabled={isLoading}
-                  className={inputClassName}
-                />
+                <div className="flex gap-3">
+                  <select
+                    name="countryCode"
+                    value={formData.countryCode}
+                    onChange={handleChange}
+                    disabled={isLoading}
+                    className="w-[130px] flex-shrink-0 rounded-[4px] border border-[#d8cec4] bg-white px-3 py-4 font-graphik text-base text-gray-950 transition-colors focus:border-[#5b5148] focus:outline-none focus:ring-2 focus:ring-[#cbb9a7]/30 disabled:opacity-60 md:w-[150px]"
+                  >
+                    {TOP_COUNTRIES.map((country) => (
+                      <option key={country.code} value={country.code}>
+                        {country.label}
+                      </option>
+                    ))}
+                  </select>
+                  <div className="flex-1">
+                    <input
+                      type="tel"
+                      name="phone"
+                      value={formData.phone}
+                      onChange={handleChange}
+                      placeholder={t('form.phone')}
+                      required
+                      disabled={isLoading}
+                      className={inputClassName}
+                    />
+                  </div>
+                </div>
 
                 <div className="grid grid-cols-1 gap-3 md:grid-cols-2">
                   <input
