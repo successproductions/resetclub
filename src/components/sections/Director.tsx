@@ -27,7 +27,7 @@ const Director: React.FC = () => {
   const [isExpanded, setIsExpanded] = useState(false);
 
   return (
-    <section className="bg-white px-6 py-10 md:py-16">
+    <section className="bg-white px-6 py-10 md:py-10">
       <div className="mx-auto max-w-7xl">
         <h2 className="mb-8 text-3xl! font-graphik font-normal leading-tight text-gray-900 md:mb-12 md:text-3xl! lg:text-[45px]! md:text-center">
           {t('title')}
@@ -58,9 +58,8 @@ const Director: React.FC = () => {
             </div>
 
             <div
-              className={`relative mt-4 overflow-hidden transition-[max-height] duration-700 ${
-                isExpanded ? 'max-h-[2200px]' : 'max-h-[560px] md:max-h-[585px] lg:max-h-[560px]'
-              }`}
+              className={`relative mt-4 overflow-hidden transition-[max-height] duration-700 ${isExpanded ? 'max-h-[2200px]' : 'max-h-[560px] md:max-h-[585px] lg:max-h-[560px]'
+                }`}
             >
               <div className="space-y-4 font-graphik text-lg! font-normal leading-relaxed text-gray-900 md:text-lg!">
                 {bioKeys.map((key) => (

@@ -75,7 +75,7 @@ export default function HomePage() {
         <BiologicalResistanceBlock />
         <WhyResetClub />
         <ResetPillarsSection />
-        <FemaleSchemaSection />
+        {/* <FemaleSchemaSection /> */}
         <BeforeAfter />
         {/* <VideoCarousel /> */}
         <KeyFigures />
