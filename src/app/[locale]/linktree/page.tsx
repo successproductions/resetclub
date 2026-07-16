@@ -150,7 +150,7 @@ function LinkCard({
         </p>
         <p className="text-white/90 text-xs leading-snug mb-3">{description}</p>
         <span
-          className="self-start uppercase text-[11px] font-bold tracking-[0.15em] px-5 py-1.5 rounded-sm shadow-sm transition-colors duration-300 group-hover:bg-white"
+          className="self-start uppercase text-[11px] font-medium tracking-[0.15em] px-5 py-1.5 rounded-sm shadow-sm transition-colors duration-300 group-hover:bg-white"
           style={{ backgroundColor: BUTTON_BG, color: BUTTON_TEXT }}
         >
           {buttonLabel}
