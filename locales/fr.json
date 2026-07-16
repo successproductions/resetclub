@@ -26,7 +26,7 @@
     "fullName": "Reset club: Le premier centre où ta silhouette, ton énergie et ton équilibre mental sont reprogrammés, de l’intérieur comme de l’extérieur, grâce à la méthode exclusive IN–OUT–RESET",
     "slogan": "Hackez votre corps. Révélez votre potentiel",
     "links": {
-      "freeBilan": " Réservez votre Bilan Gratuit (-25% ouverture)",
+      "freeBilan": " Réservez votre Bilan",
       "discover": " Découvrez ResetClub",
       "booking": " Prenez Rendez-vous en Ligne",
       "offers": " Offres Spéciales D'Ouverture",
@@ -34,6 +34,17 @@
       "reviews": " Lisez nos Avis Clients",
       "location": " Nous Trouver – Localisation & Itinéraire"
     },
+    "linksTitle": {
+      "freeBilan": "Bilan Gratuit",
+      "discover": "Découvrez ResetClub",
+      "booking": "Rendez-vous",
+      "offers": "Offres Spéciales",
+      "whatsapp": "WhatsApp",
+      "reviews": "Avis Clients",
+      "location": "Localisation"
+    },
+    "access": "Accéder",
+    "copyright": "2026 ResetClub. Tous droits réservés.",
     "contact": "  + 212 689 464 650 / 05 375 705 21",
     "newsletter": "Inscrivez-vous à notre Newsletter VIP"
   },

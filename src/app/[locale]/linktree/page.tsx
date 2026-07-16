@@ -2,337 +2,191 @@
 
 import { useTranslations } from 'next-intl';
 import Image from 'next/image';
-import { Link, Instagram, Facebook, Youtube, Linkedin, Globe } from 'lucide-react';
+import {
+  Instagram,
+  MessageCircle,
+  Globe,
+  CalendarCheck,
+  Sparkles,
+  CalendarDays,
+  Gift,
+  Star,
+  MapPin,
+  type LucideIcon,
+} from 'lucide-react';
 import LanguageSwitcher from '@/components/ui/LanguageSwitcher';
-import { useEffect, useState } from 'react';
+
+const BRAND = '#c19f7d';
+const CREAM = '#f2eadf';
+const BUTTON_BG = '#efe3cf';
+const BUTTON_TEXT = '#5f4a33';
 
 export default function LinktreePage() {
   const t = useTranslations('LinktreePage');
-  const [scrollY, setScrollY] = useState(0);
 
-  useEffect(() => {
-    const handleScroll = () => setScrollY(window.scrollY);
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  // Calculate animation values based on scroll
-  const logoOpacity = Math.max(0, 1 - scrollY / 150);
-  const logoScale = Math.max(0.7, 1 - scrollY / 300);
+  const cards = [
+    { key: 'freeBilan', icon: CalendarCheck, imageUrl: '/images/OUT2.png' },
+    { key: 'discover', icon: Sparkles, imageUrl: '/images/REST.jpg' },
+    { key: 'booking', icon: CalendarDays, imageUrl: '/images/linktree2.jpg' },
+    { key: 'offers', icon: Gift, imageUrl: '/images/offerLinktree.png' },
+    { key: 'whatsapp', icon: MessageCircle, imageUrl: '/images/WhatsappLinktree.jpg' },
+    { key: 'reviews', icon: Star, imageUrl: '/images/image14.png' },
+    { key: 'location', icon: MapPin, imageUrl: '/images/locationLinktree.png' },
+  ] as const;
 
   return (
-    <div className="min-h-screen text-white relative font-graphik ">
-      {/* Background Images */}
-      <div className="absolute inset-0">
-        {/* Mobile Background */}
-        <Image
-          src="/PALMSBACKGORUNDMOBILE.jpg"
-          alt="Reset Club Background Mobile"
-          fill
-          className="object-cover md:hidden"
-          priority
-        />
-        {/* Desktop Background */}
-        <Image
-          src="/PALMSBACKGROUND.jpg"
-          alt="Reset Club Background Desktop"
-          fill
-          className="object-cover hidden md:block"
-          priority
-        />
-      </div>
-
+    <div className="min-h-screen font-graphik" style={{ backgroundColor: CREAM }}>
       {/* Language Switcher - Fixed Top Right */}
       <div className="fixed top-4 right-4 z-50">
         <LanguageSwitcher variant="header" />
       </div>
 
-      {/* Fixed Header Logo */}
-      <div className="fixed top-8 left-1/2 transform -translate-x-1/2 z-0">
-        <div
-          className=" flex items-center justify-center transition-all duration-300 ease-out"
-          style={{
-            opacity: logoOpacity,
-            transform: `scale(${logoScale})`,
-          }}
+      <div className="max-w-md mx-auto min-h-screen shadow-2xl" style={{ backgroundColor: CREAM }}>
+        {/* Header */}
+        <header
+          className="relative overflow-hidden rounded-b-[2.5rem]"
+          style={{ backgroundColor: BRAND }}
         >
-          <Image
-            src="/images/logogras.png"
-            alt="ResetClub Logo"
-            width={320}
-            height={256}
-            className="object-contain h-44  md:h-60"
-          />
-        </div>
-      </div>
-
-
-      {/* Scrollable Content */}
-      <div className="max-w-md mx-auto px-4 sm:px-6 py-6 sm:py-8 relative z-10">
-        {/* Header - space for logo initially */}
-        <div className="text-center mb-8">
-          {/* Invisible spacer for bigger logo */}
-          <div className="w-64 h-44 md:h-56 mx-auto "></div>
-
-          {/* Title and verified badge */}
-          {/* <div className="flex items-center justify-center mb-3">
-            <h1 className="text-2xl font-bold">{t('title')}</h1>
-            <div className="ml-2 w-6 h-6 bg-blue-500 rounded-full flex items-center justify-center">
-              <span className="text-sm text-white font-bold">✓</span>
+          <div className="flex items-stretch min-h-[300px]">
+            {/* Portrait */}
+            <div className="relative w-[45%]">
+              <Image
+                src="/images/nahed1.png"
+                alt={t('title')}
+                fill
+                sizes="(max-width: 448px) 45vw, 200px"
+                className="object-cover object-top"
+                priority
+              />
+              {/* Fade the portrait into the header color */}
+              <div
+                className="absolute inset-0"
+                style={{
+                  background: `linear-gradient(to right, transparent 60%, ${BRAND} 100%)`,
+                }}
+              ></div>
             </div>
-          </div> */}
 
-          {/* Social Media Icons */}
-          <div className="flex justify-center space-x-2 mb-4">
-            <SocialIcon platform="instagram" />
-            <SocialIcon platform="facebook" />
-            <SocialIcon platform="tiktok" />
-            <SocialIcon platform="youtube" />
-            <SocialIcon platform="linkedin" />
-            <SocialIcon platform="website" />
+            {/* Logo, socials and slogan */}
+            <div className="flex-1 flex flex-col items-center justify-center text-center px-5 py-8">
+              <Image
+                src="/images/LOGOBLANC.png"
+                alt={t('title')}
+                width={718}
+                height={990}
+                className="w-24 md:w-28 h-auto mb-4 drop-shadow-sm"
+                priority
+              />
+
+              {/* Social Icons */}
+              <div className="flex items-center justify-center gap-4 mb-4">
+                <SocialIcon href="#" icon={Instagram} label="Instagram" />
+                <SocialIcon href="#" icon={MessageCircle} label="WhatsApp" />
+                <SocialIcon href="#" icon={Globe} label="Website" />
+              </div>
+
+              <p className="text-white text-sm leading-relaxed opacity-95">
+                {t('slogan')}
+              </p>
+              <p className="text-white/80 text-xs mt-2">{t('contact')}</p>
+            </div>
           </div>
- <p className="text-lg md:text-lg opacity-90 pb-2 px-4 font-graphik font-normal leading-relaxed">2.4M Total Flollowers </p>
-          {/* Full name */}
-          <p className="text-sm opacity-90 mb-2 font-medium">{t('fullName')}</p>
+        </header>
 
-          {/* Mission/Slogan */}
-         
-                  <div className="text-center text-sm opacity-80">
-          <p className="mb-2">{t('contact')}</p>
-
-        </div>
-
-        </div>
-
-        {/* Links as Image Cards */}
-        <div className="space-y-3 mb-6 font-graphik ">
-          <PromoCard
-            href="#"
-            text={t('links.freeBilan')}
-            imageUrl="/images/OUT2.png"
-            height="tall"
-            priority={true}
-            hoverEffect="pulse"
-          />
-
-
-            <PromoCard
+        {/* Link Cards */}
+        <main className="px-4 py-6 space-y-4">
+          {cards.map(({ key, icon, imageUrl }) => (
+            <LinkCard
+              key={key}
               href="#"
-              text={t('links.discover')}
-              imageUrl="/images/REST.jpg"
-            height="regular"
-            hoverEffect="zoom"
+              icon={icon}
+              title={t(`linksTitle.${key}`)}
+              description={t(`links.${key}`)}
+              buttonLabel={t('access')}
+              imageUrl={imageUrl}
             />
-            <PromoCard
-              href="#"
-              text={t('links.booking')}
-              imageUrl="/images/linktree2.jpg"
-            height="regular"
-            hoverEffect="zoom"
-            />
+          ))}
+        </main>
 
-
-          <PromoCard
-            href="#"
-            text={t('links.offers')}
-            imageUrl="/images/offerLinktree.png"
-            height="regular"
-
-            hoverEffect="zoom"
-          />
-            <PromoCard
-              href="#"
-              text={t('links.whatsapp')}
-              imageUrl="/images/WhatsappLinktree.jpg"
-            height="regular"
-            hoverEffect="zoom"
-            />
-            <PromoCard
-              href="#"
-              text={t('links.reviews')}
-              imageUrl="/images/image14.png"
-            height="regular"
-            hoverEffect="zoom"
-            />
-
-
-          <PromoCard
-            href="#"
-            text={t('links.location')}
-            imageUrl="/images/locationLinktree.png"
-            height="regular"
-            hoverEffect="zoom"
-          />
-        </div>
-
-
+        {/* Footer */}
+        <footer className="text-center text-xs pb-8 px-4" style={{ color: BUTTON_TEXT }}>
+          {t('copyright')}
+        </footer>
       </div>
     </div>
   );
 }
 
-function PromoCard({
+function LinkCard({
   href,
-  text,
+  icon: Icon,
+  title,
+  description,
+  buttonLabel,
   imageUrl,
-  height = "regular",
-  priority = false,
-  hoverEffect = "default"
 }: {
   href: string;
-  text: string;
+  icon: LucideIcon;
+  title: string;
+  description: string;
+  buttonLabel: string;
   imageUrl: string;
-  height?: "small" | "medium" | "regular" | "tall";
-  priority?: boolean;
-  hoverEffect?: "pulse" | "flip" | "slide" | "glow" | "bounce" | "shake" | "zoom" | "default";
 }) {
-  const getHeight = () => {
-    switch (height) {
-      case "small": return "h-32";
-      case "medium": return "h-40";
-      case "regular": return "h-48";
-      case "tall": return "h-60";
-      default: return "h-48";
-    }
-  };
-
-  const getBorderGlow = () => {
-    if (priority) {
-      return "ring-2 ring-white ring-offset-2 ring-offset-transparent";
-    }
-    return "";
-  };
-
-  const getHoverEffect = () => {
-    switch (hoverEffect) {
-      case "pulse":
-        return "hover:animate-pulse hover:scale-[1.05] hover:shadow-2xl hover:shadow-yellow-100/30";
-      case "flip":
-        return "hover:rotate-y-12 hover:scale-[1.02] hover:-translate-y-2 hover:shadow-lg";
-      case "slide":
-        return "hover:translate-x-2 hover:-translate-y-3 hover:rotate-3 hover:scale-[1.03]";
-      case "glow":
-        return "hover:shadow-2xl hover:shadow-[#ccbaa8]/50 hover:ring-4 hover:ring-yellow-400/60 hover:scale-[1.04]";
-      case "bounce":
-        return "hover:animate-bounce hover:scale-[1.1] hover:shadow-xl";
-      case "shake":
-        return "hover:animate-pulse hover:rotate-2 hover:-rotate-2 hover:scale-[1.05]";
-      case "zoom":
-        return "hover:scale-[1.08] hover:-translate-y-4 hover:shadow-2xl hover:shadow-[#ccbaa8]/40";
-      default:
-        return "hover:scale-[1.03] hover:shadow-2xl hover:-translate-y-1";
-    }
-  };
-
   return (
     <a
       href={href}
-      className={`block relative overflow-hidden rounded-sm transition-all duration-500 shadow-xl group cursor-pointer
-        ${getHoverEffect()} active:scale-[0.97]
-        ${getBorderGlow()}
-        ${priority ? 'hover:ring-yellow-400/70' : 'hover:ring-white/30 hover:ring-2'}
-      `}
-      style={{
-        transformStyle: 'preserve-3d',
-      }}
+      className="group flex items-stretch overflow-hidden rounded-2xl shadow-lg transition-all duration-300 hover:scale-[1.02] hover:shadow-xl active:scale-[0.98]"
+      style={{ backgroundColor: BRAND }}
     >
-      {/* Background Image */}
-      <div className={`relative ${getHeight()}`}>
+      {/* Icon */}
+      <div className="flex items-center pl-4 shrink-0">
+        <Icon className="w-8 h-8 text-white" strokeWidth={1.5} />
+      </div>
+
+      {/* Text content */}
+      <div className="flex-1 flex flex-col justify-center px-4 py-5 min-w-0">
+        <p className="text-white font-semibold uppercase tracking-wide text-base leading-tight mb-1">
+          {title}
+        </p>
+        <p className="text-white/90 text-xs leading-snug mb-3">{description}</p>
+        <span
+          className="self-start uppercase text-[11px] font-bold tracking-[0.15em] px-5 py-1.5 rounded-sm shadow-sm transition-colors duration-300 group-hover:bg-white"
+          style={{ backgroundColor: BUTTON_BG, color: BUTTON_TEXT }}
+        >
+          {buttonLabel}
+        </span>
+      </div>
+
+      {/* Image */}
+      <div className="relative w-[35%] shrink-0 overflow-hidden rounded-l-3xl">
         <Image
           src={imageUrl}
-          alt={text}
+          alt={title}
           fill
+          sizes="(max-width: 448px) 35vw, 160px"
           className="object-cover transition-transform duration-500 group-hover:scale-110"
         />
-
-        {/* Dynamic overlay that changes on hover */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent
-          group-hover:from-black/80 group-hover:via-black/40 transition-all duration-300"></div>
-
-        {/* Lucide Link icon in top right */}
-        <div className="absolute top-3 right-3 z-10 opacity-70 group-hover:opacity-100 transition-opacity duration-300">
-          <Link className="w-5 h-5 text-white drop-shadow-lg" />
-        </div>
-
-        {/* Priority badge */}
-        {priority && (
-          <div className="absolute top-3 left-3 z-10">
-            <div className="bg-yellow-50 text-black px-2 py-1 rounded-lg text-xs font-bold">
-              ⭐ PRIORITY
-            </div>
-          </div>
-        )}
-
-        {/* Text overlay with better positioning */}
-        <div className="absolute inset-0 flex items-end justify-center text-center text-white p-4">
-          <div className="transform transition-transform duration-300 group-hover:scale-105">
-            <p className={`font-medium leading-tight drop-shadow-lg font-graphik  text-2xl
-              ${height === 'small' ? 'text-sm' : height === 'tall' ? 'text-lg' : 'text-base'}
-            `}>
-              {text}
-            </p>
-
-            {/* Hover underline */}
-            <div className="w-0 h-0.5 bg-white mx-auto mt-2 transition-all duration-300 group-hover:w-full"></div>
-          </div>
-        </div>
-
-        {/* Shimmer effect on hover */}
-        <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent
-            transform -skew-x-12 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000"></div>
-        </div>
       </div>
     </a>
   );
 }
 
-function SocialIcon({ platform }: { platform: string }) {
-  const getIconAndBg = () => {
-    switch (platform) {
-      case 'instagram':
-        return {
-          icon: <Instagram className="w-4 h-4 text-white" />,
-          bgClass: "bg-gradient-to-br from-purple-600 via-pink-600 to-orange-500 hover:from-purple-700 hover:via-pink-700 hover:to-orange-600"
-        };
-      case 'facebook':
-        return {
-          icon: <Facebook className="w-4 h-4 text-white" />,
-          bgClass: "bg-blue-600 hover:bg-blue-700"
-        };
-      case 'tiktok':
-        return {
-          icon: <div className="w-4 h-4 text-white font-bold text-xs flex items-center justify-center">T</div>,
-          bgClass: "bg-black hover:bg-gray-900"
-        };
-      case 'youtube':
-        return {
-          icon: <Youtube className="w-4 h-4 text-white" />,
-          bgClass: "bg-red-600 hover:bg-red-700"
-        };
-      case 'linkedin':
-        return {
-          icon: <Linkedin className="w-4 h-4 text-white" />,
-          bgClass: "bg-blue-700 hover:bg-blue-800"
-        };
-      case 'website':
-        return {
-          icon: <Globe className="w-4 h-4 text-white" />,
-          bgClass: "bg-gray-700 hover:bg-gray-800"
-        };
-      default:
-        return {
-          icon: <Globe className="w-4 h-4 text-white" />,
-          bgClass: "bg-gray-700 hover:bg-gray-800"
-        };
-    }
-  };
-
-  const { icon, bgClass } = getIconAndBg();
-
+function SocialIcon({
+  href,
+  icon: Icon,
+  label,
+}: {
+  href: string;
+  icon: LucideIcon;
+  label: string;
+}) {
   return (
-    <div className={`w-10 h-10 ${bgClass} rounded-xl flex items-center justify-center transition-all duration-200 cursor-pointer shadow-lg border-2 border-white/20`}>
-      {icon}
-    </div>
+    <a
+      href={href}
+      aria-label={label}
+      className="text-white opacity-90 hover:opacity-100 hover:scale-110 transition-all duration-200"
+    >
+      <Icon className="w-6 h-6" strokeWidth={1.75} />
+    </a>
   );
 }
