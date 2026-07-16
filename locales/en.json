@@ -8,12 +8,12 @@
   },
   "Hero": {
     "title": "Reset your body, mind and emotions",
-    "subtitle": "Vous avez tout essayé. Les régimes, le sport, les efforts. Et pourtant  votre corps résiste toujours. Et si ce n’était pas un problème de volonté, mais un problème de biologie ?",
+    "subtitle": "You have tried everything. Diets, exercise, effort. And yet your body still resists. What if it wasn't a matter of willpower, but a matter of biology?",
     "slider": {
-      "metabolism": "RÉACTIVER VOTRE MÉTABOLISME",
-      "nervousSystem": "APAISER VOTRE SYSTÈME NERVEUX",
-      "energy": "RETROUVER ÉNERGIE ET VITALITÉ",
-      "body": "TRANSFORMER DURABLEMENT VOTRE CORPS"
+      "metabolism": "REACTIVATE YOUR METABOLISM",
+      "nervousSystem": "CALM YOUR NERVOUS SYSTEM",
+      "energy": "REGAIN ENERGY AND VITALITY",
+      "body": "TRANSFORM YOUR BODY FOR GOOD"
     },
     "cta": "Book my assessment"
   },
@@ -192,29 +192,29 @@
     "cta": "Book my assessment"
   },
   "KeyFigures": {
-    "title": "Des résultats mesurables. Pas des promesses.",
+    "title": "Measurable results. Not promises.",
     "description": "",
-    "cta": "Ces résultats comment par un bilan. Réserver le mien",
+    "cta": "These results start with an assessment. Book mine",
     "stats": {
       "sleep": {
         "number": "30",
         "unit": "%",
-        "label": "d’amélioration de la qualité du sommeil"
+        "label": "improvement in sleep quality"
       },
       "energy": {
         "number": "25",
         "unit": "%",
-        "label": "d’augmentation du niveau d’énergie"
+        "label": "increase in energy levels"
       },
       "fatigue": {
         "number": "40",
         "unit": "%",
-        "label": "de fatigue chronique et d’inflammations"
+        "label": "decrease in chronic fatigue and inflammation"
       },
       "bodyRelation": {
         "number": "70",
         "unit": "%",
-        "label": "des membres rapportent une relation transformée à leur corps et à l’alimentation"
+        "label": "of members report a transformed relationship with their body and food"
       }
     }
   },
@@ -254,76 +254,76 @@
     }
   },
   "ResetPillarsSection": {
-    "title": "Les trois piliers de la transformation Reset Club",
+    "title": "The three pillars of the Reset Club transformation",
     "pillars": {
       "movement": {
-        "title": "MOUVEMENT & TECHNOLOGIES",
-        "description": "Activer le métabolisme sans épuiser le système nerveux. ",
+        "title": "MOVEMENT & TECHNOLOGIES",
+        "description": "Activate the metabolism without exhausting the nervous system. ",
         "tools": "EM Sculpt Neo · Emtone · Exilis · Power Shape…"
       },
       "neuro": {
         "title": "NEURO & BIOHACKING",
-        "description": "Réguler le système nerveux et restaurer l’énergie du corps.",
-        "tools": "Neurofeedback · Hypnose · Laser auriculaire · Technologies anti-stress"
+        "description": "Regulate the nervous system and restore the body's energy.",
+        "tools": "Neurofeedback · Hypnosis · Auricular Laser · Anti-stress technologies"
       },
       "coaching": {
-        "title": "COACHING & ACCOMPAGNEMENT",
-        "description": "Ancrer des habitudes durables dans la vraie vie.",
-        "tools": "Coaching transformationnel · Nutrition adaptée · Routines métaboliques · Communauté Reset Club"
+        "title": "COACHING & SUPPORT",
+        "description": "Anchor lasting habits in real life.",
+        "tools": "Transformational coaching · Adapted nutrition · Metabolic routines · Reset Club Community"
       }
     }
   },
   "ResetClaritySection": {
-    "title": "Reset Club en toute clarté",
+    "title": "Reset Club in complete clarity",
     "fit": {
-      "title": "Reset Club est fait pour vous si…",
-      "fit1": "Vous êtes fatiguée de lutter contre votre corps",
-      "fit2": "Vous sentez que “quelque chose bloque” sans réussir à l’expliquer",
-      "fit3": "Vous voulez retrouver de l’énergie, un sommeil réparateur et une relation apaisée avec votre corps",
-      "fit4": "Vous cherchez une approche globale et intelligente — pas un énième régime"
+      "title": "Reset Club is for you if...",
+      "fit1": "You are tired of fighting your body",
+      "fit2": "You feel that “something is blocking” without being able to explain it",
+      "fit3": "You want to regain energy, restful sleep, and a peaceful relationship with your body",
+      "fit4": "You are looking for a comprehensive and intelligent approach — not just another diet"
     },
     "notFit": {
-      "title": "Reset Club n’est probablement pas fait pour vous si…",
-      "notFit1": "Vous cherchez une solution rapide et superficielle",
-      "notFit2": "Vous voulez perdre du poids vite sans chercher à comprendre votre corps",
-      "notFit3": "Vous n’êtes pas prête à écouter vos signaux internes ni à ajuster certaines habitudes"
+      "title": "Reset Club is probably not for you if...",
+      "notFit1": "You are looking for a quick and superficial solution",
+      "notFit2": "You want to lose weight fast without trying to understand your body",
+      "notFit3": "You are not ready to listen to your internal signals or adjust certain habits"
     },
     "notDo": {
-      "title": "Ce que nous ne faisons pas",
-      "notDo1": "Chez Reset Club, nous ne promettons pas de résultats irréalistes.",
-      "notDo2": "Nous ne remplaçons pas un suivi médical.",
-      "notDo3": "Nous ne proposons pas de régimes restrictifs.",
-      "notDo4": "Nous ne vendons pas de solutions universelles ni de miracles en quelques semaines.",
-      "notDo5": "Nous ne réduisons pas la transformation à un “avant / après”.",
-      "closing": "Nous accompagnons les femmes là où les approches classiques atteignent leurs limites."
+      "title": "What we do not do",
+      "notDo1": "At Reset Club, we do not promise unrealistic results.",
+      "notDo2": "We do not replace medical supervision.",
+      "notDo3": "We do not offer restrictive diets.",
+      "notDo4": "We do not sell universal solutions or miracles in a few weeks.",
+      "notDo5": "We do not reduce transformation to a “before / after”.",
+      "closing": "We support women where classic approaches reach their limits."
     }
   },
   "ResetFaqSection": {
-    "title": "Vos questions les plus fréquentes",
+    "title": "Your most frequently asked questions",
     "items": {
       "paid": {
-        "question": "Le bilan est-il payant ?",
-        "answer": "Dans le cadre de notre ouverture, le Bilan Reset™ est offert aux 50 premières clientes. Sa valeur est de 1 500 DH et les places sont limitées."
+        "question": "Is the assessment paid?",
+        "answer": "As part of our opening, the Reset Assessment™ is offered to the first 50 clients. Its value is 1,500 DH and spots are limited."
       },
       "menopause": {
-        "question": "Reset Club fonctionne-t-il pour les femmes en préménopause ou ménopause ?",
-        "answer": "Oui. Notre approche est spécifiquement adaptée aux réalités hormonales et métaboliques féminines à chaque étape de la vie, y compris les transitions hormonales."
+        "question": "Does Reset Club work for women in perimenopause or menopause?",
+        "answer": "Yes. Our approach is specifically adapted to the hormonal and metabolic realities of women at every stage of life, including hormonal transitions."
       },
       "medical": {
-        "question": "Est-ce que je dois avoir un suivi médical en parallèle ?",
-        "answer": "Reset Club ne remplace pas un suivi médical. Nous travaillons en complément de votre médecin et vous encourageons à maintenir tout suivi existant."
+        "question": "Do I need to have medical supervision at the same time?",
+        "answer": "Reset Club does not replace medical supervision. We work alongside your doctor and encourage you to maintain any existing care."
       },
       "duration": {
-        "question": "Combien de temps dure un accompagnement ?",
-        "answer": "La durée dépend de votre situation, de vos objectifs et des signaux de votre corps. Contactez-nous pour une meilleure estimation et une orientation adaptée à vos besoins."
+        "question": "How long does a program last?",
+        "answer": "The duration depends on your situation, your goals, and your body's signals. Contact us for a better estimate and guidance adapted to your needs."
       },
       "remote": {
-        "question": "Reset Club est-il disponible à distance ?",
-        "answer": "Reset Club vous accueille actuellement à Rabat. Pour les personnes à distance, nous développons aussi une plateforme d’apprentissage afin de transmettre nos contenus, routines et accompagnements pédagogiques."
+        "question": "Is Reset Club available remotely?",
+        "answer": "Reset Club currently welcomes you in Rabat. For people further away, we are also developing a learning platform to share our content, routines, and educational support."
       },
       "difference": {
-        "question": "Quelle est la différence avec un coach sportif ou nutritionniste classique ?",
-        "answer": "Un coach classique travaille généralement sur un seul levier — l’entraînement ou l’alimentation. Chez Reset Club, nous intervenons simultanément sur la biologie, le système nerveux, la nutrition et l’accompagnement émotionnel. C’est cette approche globale qui change les résultats."
+        "question": "What is the difference compared to a classic sports coach or nutritionist?",
+        "answer": "A classic coach usually works on a single lever — training or nutrition. At Reset Club, we intervene simultaneously on biology, the nervous system, nutrition, and emotional support. It is this global approach that changes the results."
       }
     }
   },
@@ -576,33 +576,33 @@
     "closing": "Vous venez de faire un premier pas\nvers votre corps.\nVers votre énergie.\nVers votre équilibre.\nLe Reset commence ici.\nÀ très vite chez Reset Club™.\nUne question de dernière minute ?\nNotre équipe est là\n(whats up Reset club )"
   },
   "BiologicalResistanceBlock": {
-    "eyebrow": "BLOC 2",
-    "title": "Pourquoi votre corps résiste malgré vos efforts : 4 causes biologiques que personne ne vous a expliquées",
+    "eyebrow": "BLOCK 2",
+    "title": "Why your body resists despite your efforts: 4 biological causes no one has explained to you",
     "causes": {
       "training": {
-        "title": "Un entraînement mal adapté",
-        "description": "Trop de cardio, trop d’intensité, séances non adaptées à votre âge, votre cycle ou votre niveau de stress.",
-        "result": "Résultat : inflammation, cortisol élevé, stockage accéléré et fonte musculaire."
+        "title": "Poorly adapted training",
+        "description": "Too much cardio, too much intensity, sessions not adapted to your age, your cycle, or your stress level.",
+        "result": "Result: inflammation, high cortisol, accelerated storage, and muscle loss."
       },
       "nutrition": {
-        "title": "Une nutrition qui freine au lieu de nourrir",
-        "description": "Jeûnes mal placés, apports insuffisants, trop peu de protéines pour le métabolisme féminin.",
-        "result": "Résultat : fatigue chronique, ralentissement métabolique, corps en mode survie."
+        "title": "Nutrition that hinders instead of nourishing",
+        "description": "Poorly timed fasting, insufficient intake, too little protein for the female metabolism.",
+        "result": "Result: chronic fatigue, metabolic slowdown, body in survival mode."
       },
       "nervousSystem": {
-        "title": "Un système nerveux sous pression",
-        "description": "Stress chronique, sommeil non réparateur, charge mentale élevée.",
-        "result": "Le corps ne peut pas se transformer quand il est en état d’alerte permanent."
+        "title": "A nervous system under pressure",
+        "description": "Chronic stress, unrefreshing sleep, high mental load.",
+        "result": "The body cannot transform when it is in a permanent state of alert."
       },
       "imbalances": {
-        "title": "Des déséquilibres biologiques invisibles",
-        "description": "Inflammation de bas grade, instabilité glycémique, rétention, fatigue nerveuse.",
-        "result": "Tant que ces quatre leviers ne sont pas rééquilibrés, le corps résiste."
+        "title": "Invisible biological imbalances",
+        "description": "Low-grade inflammation, glycemic instability, retention, nervous fatigue.",
+        "result": "As long as these four levers are not rebalanced, the body resists."
       }
     },
-    "fault": "Et ce n’est pas votre faute.",
-    "closing": "Si vous vous êtes déjà dit “pourquoi ça marche pour les autres mais pas pour moi”, vous êtes exactement là où vous devez être",
-    "cta": "Je veux comprendre mon corps"
+    "fault": "And it's not your fault.",
+    "closing": "If you've ever asked yourself “why does it work for others but not for me”, you are exactly where you need to be",
+    "cta": "I want to understand my body"
   },
   "PaymentPage": {
     "warning": "Do not close this page — your reservation is not yet finalized.",

@@ -33,7 +33,7 @@ export default function RecruitmentsHero() {
 
       {/* Background Pattern Overlay */}
       <div className="absolute inset-0 z-5 opacity-10">
-        <div className="absolute inset-0 bg-gradient-to-br from-transparent via-amber-500/20 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-br from-transparent via-amber-500/5 to-transparent" />
       </div>
     </section>
   );

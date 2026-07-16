@@ -2,7 +2,7 @@ import Image from 'next/image';
 
 const FemaleSchemaSection = () => {
   return (
-    <section className="bg-white py-8 md:px-6 md:py-12">
+    <section className="bg-white py-8 md:px-6 md:py-0">
       <div className="mx-auto max-w-7xl md:h-[72vh] md:max-h-[780px] md:min-h-[600px]">
         <Image
           src="/images/SHEMA_FEMME.jpeg"

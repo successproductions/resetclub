@@ -23,9 +23,9 @@ const ResetPillarsSection: React.FC = () => {
   const t = useTranslations('ResetPillarsSection');
 
   return (
-    <section className="bg-[#f4f3f1] px-6 py-12 md:py-20">
+    <section className="bg-[#f4f3f1] px-6 py-8 md:py-5">
       <div className="mx-auto max-w-6xl">
-        <h2 className="mx-auto mb-10 max-w-5xl md:text-center text-[28px]! font-graphik font-normal leading-tight text-gray-950 md:text-3xl! lg:text-[45px]!">
+        <h2 className="mx-auto mb-5 max-w-5xl md:text-center text-[25px]! font-graphik font-normal leading-tight text-gray-950 md:text-2xl! lg:text-[30px]! uppercase">
           {t('title')}
         </h2>
         <div className="bg-white">

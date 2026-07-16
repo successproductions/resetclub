@@ -58,11 +58,11 @@ const BeforeAfter: React.FC = () => {
     <section id="temoignages-clients" className="md:py-8 py-4 bg-white">
       {/* Header Section */}
       <div className="max-w-7xl mx-auto px-6 mb-5 md:mb-10">
-        <h2 className="text-3xl md:text-4xl lg:text-5xl text-gray-900 md:mb-6 md:text-center ">
+        <h2 className="text-3xl md:text-4xl lg:text-4xl! uppercase text-gray-900 md:mb-6 md:text-center ">
           {t('subtitle')}
         </h2>
         {/* <p className='text-gray-900 text-lg md:text-center font-graphik md:text-xl'>{t('description')}</p> */}
-        
+
       </div>
 
       {/* Desktop Grid */}
@@ -246,11 +246,10 @@ const BeforeAfter: React.FC = () => {
             <button
               key={index}
               onClick={() => setCurrentIndex(index)}
-              className={`w-2 h-2 rounded-full transition-all duration-200 ${
-                index === currentIndex
-                  ? 'bg-[#524029] w-6'
-                  : 'bg-gray-300 hover:bg-gray-400'
-              }`}
+              className={`w-2 h-2 rounded-full transition-all duration-200 ${index === currentIndex
+                ? 'bg-[#524029] w-6'
+                : 'bg-gray-300 hover:bg-gray-400'
+                }`}
               aria-label={`Go to testimonial ${index + 1}`}
             />
           ))}

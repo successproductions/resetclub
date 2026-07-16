@@ -87,14 +87,14 @@ const IntroSection: React.FC = () => {
   }, []);
 
   return (
-    <section ref={sectionRef} className="relative py-8 md:py-12 overflow-hidden bg-white">
+    <section ref={sectionRef} className="relative py-8 md:py-8 overflow-hidden bg-white">
       {/* Main container - Full width */}
       <div className="w-full relative">
         <div className="relative w-full">
 
           {/* Header */}
           <div className="md:text-center mx-auto md:max-w-5xl mt-1 mb-6 md:mb-8 px-6">
-            <h2 ref={titleRef} className="text-3xl md:text-3xl lg:text-5xl text-gray-900 mb-1 md:mb-8">
+            <h2 ref={titleRef} className="text-3xl md:text-3xl lg:text-4xl! text-gray-900 mb-1 md:mb-8">
               {t('hook')}
             </h2>
           </div>

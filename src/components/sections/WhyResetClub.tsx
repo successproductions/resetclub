@@ -15,10 +15,10 @@ const WhyResetClub: React.FC = () => {
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
       if (!isDragging || !scrollRef.current) return;
-      
+
       e.preventDefault();
       const x = e.pageX - scrollRef.current.offsetLeft;
-      const walk = (x - startX) * 2; 
+      const walk = (x - startX) * 2;
       scrollRef.current.scrollLeft = scrollLeft - walk;
     };
 
@@ -39,7 +39,7 @@ const WhyResetClub: React.FC = () => {
 
   const handleMouseDown = (e: React.MouseEvent) => {
     if (!scrollRef.current) return;
-    
+
     setIsDragging(true);
     const startX = e.pageX - scrollRef.current.offsetLeft;
     setStartX(startX);
@@ -92,7 +92,7 @@ const WhyResetClub: React.FC = () => {
   ];
 
   return (
-    <section className="md:pt-2 pt-4 bg-white">
+    <section className="md:pt-0 pt-4 bg-white">
       {/* Header Section */}
       {/* <div className="max-w-7xl mx-auto px-6 md:text-center mb-6 md:mb-16">
         <h2 className="text-3xl md:text-4xl lg:text-5xl  text-gray-900 mb-1 ">

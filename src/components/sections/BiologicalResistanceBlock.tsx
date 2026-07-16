@@ -11,7 +11,7 @@ const BiologicalResistanceBlock: React.FC = () => {
   const locale = useLocale();
 
   return (
-    <section className="bg-white px-6 pb-10 md:bg-[#fbf8f4] md:py-16">
+    <section className="bg-white px-6 pb-10 md:bg-[#fbf8f4] md:pt-16 md:pb-0">
       <div className="mx-auto grid max-w-7xl items-stretch gap-8 md:grid-cols-[0.92fr_1.08fr] md:gap-12">
         <div className="relative min-h-[420px] overflow-hidden  bg-black md:min-h-[720px]">
           <video
@@ -29,7 +29,7 @@ const BiologicalResistanceBlock: React.FC = () => {
 
         <div className="flex flex-col justify-center bg-white px-0 py-0 md:bg-transparent">
           <div className="max-w-3xl md:py-4">
-            <h2 className="mb-8 text-3xl! leading-tight text-gray-950 md:text-3xl! lg:text-[42px]!">
+            <h2 className="mb-8 text-3xl! leading-tight text-gray-950 md:text-3xl! lg:text-[29px]!">
               {t('title')}
             </h2>
 
@@ -37,7 +37,7 @@ const BiologicalResistanceBlock: React.FC = () => {
               {causeKeys.map((key, index) => (
                 <div key={key} className="border-t border-[#d8cec4] pt-5">
                   <h3 className="mb-2 font-graphik text-lg! font-normal text-gray-950 md:text-lg!">
-                    {index + 1} — {t(`causes.${key}.title`)}
+                    {t(`causes.${key}.title`)}
                   </h3>
                   <p className="font-graphik text-lg! leading-relaxed text-gray-700 md:text-lg!">
                     {t(`causes.${key}.description`)}

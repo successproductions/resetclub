@@ -90,7 +90,7 @@ export default function NotreHistoireSection() {
         });
       },
       {
-        threshold: 0.5, 
+        threshold: 0.5,
       }
     );
 
@@ -129,7 +129,7 @@ export default function NotreHistoireSection() {
               {t('bio1')}
             </h2>
 
-            <p className="text-lg md:text-lg font-graphik text-gray-900 leading-relaxed ">
+            <p className="text-lg md:text-lg font-graphik text-gray-900 leading-relaxed lowercase ">
               {t('bio2')}
             </p>
 
@@ -190,10 +190,10 @@ export default function NotreHistoireSection() {
               <h2 className="text-3xl text-gray-900 leading-tight mb-1">
                 Et si ce que vous<br />
                 cherchez n&apos;était pas<br />
-                un régime… <br/>
+                un régime… <br />
                 mais une renaissance ?
               </h2>
-              
+
             </div>
 
             {/* Thumbnail or Video - Full Width */}

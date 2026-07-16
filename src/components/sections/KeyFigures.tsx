@@ -123,11 +123,11 @@ const KeyFigures: React.FC = () => {
   ];
 
   return (
-    <section id="key-figures-section" className="relative overflow-hidden bg-white px-6 py-5 md:py-25">
+    <section id="key-figures-section" className="relative overflow-hidden bg-[#f4f3f1] px-6 py-5 md:pt-6">
       <div className="mx-auto grid max-w-7xl gap-10 md:grid-cols-[0.9fr_1.1fr] md:gap-16">
         <div className="md:pt-2">
           <div className="mb-6 h-px w-20 bg-[#524029]"></div>
-          <h2 className="max-w-3xl text-3xl! leading-tight text-gray-950 md:text-3xl! lg:text-[45px]!">
+          <h2 className="max-w-3xl text-3xl! leading-tight text-gray-950 md:text-3xl! lg:text-[35px]!">
             {t('title')}
           </h2>
         </div>
@@ -136,8 +136,8 @@ const KeyFigures: React.FC = () => {
           {stats.map(({ Icon, ...stat }) => (
             <div key={stat.key}>
               <div className="flex items-center gap-5">
-                <Icon className="h-12 w-12 shrink-0 text-[#7b7066] md:h-14 md:w-14" strokeWidth={1} />
-                <div className="font-graphik text-4xl! font-normal leading-none text-gray-950 md:text-6xl!">
+                <Icon className="h-12 w-12 shrink-0 text-[#7b7066] md:h-10 md:w-10" strokeWidth={1} />
+                <div className="font-graphik text-4xl! font-normal leading-none text-gray-950 md:text-5xl!">
                   <span>{stat.prefix}</span>
                   <AnimatedCounter
                     end={stat.value}
@@ -147,7 +147,7 @@ const KeyFigures: React.FC = () => {
                   <span>{t(`stats.${stat.key}.unit`)}</span>
                 </div>
               </div>
-              <p className="mt-4 max-w-md pl-[68px] font-graphik text-lg! font-normal leading-relaxed text-gray-700 md:pl-[76px] md:text-lg!">
+              <p className="mt-4 max-w-md pl-0 font-graphik text-lg! font-normal leading-relaxed text-gray-700 md:pl-0 md:text-lg!">
                 {t(`stats.${stat.key}.label`)}
               </p>
             </div>
