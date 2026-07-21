@@ -473,7 +473,7 @@ export default function AcademyDashboard() {
           {/* Certificates Page */}
           {activePage === 'certificates' && (
             <div>
-              <h2 className="text-2xl font-semibold text-gray-900 mb-6">Mes Certificats</h2>
+              <h2 className="text-2xl! font-semibold text-gray-900 mb-6">Mes Certificats</h2>
               {certificates.length === 0 ? (
                 <div className="bg-white rounded-lg border border-gray-200 p-12 text-center">
                   <Award className="w-16 h-16 text-gray-300 mx-auto mb-4" />
@@ -520,7 +520,7 @@ export default function AcademyDashboard() {
             <div>
               <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-3 mb-6">
                 <div>
-                  <h2 className="text-2xl font-semibold text-gray-900">Mon parcours</h2>
+                  <h2 className="text-2xl! font-semibold text-gray-900">Mon parcours</h2>
                   <p className="text-sm text-gray-600 mt-1">
                     Retrouvez vos modules, votre progression et la prochaine étape à suivre.
                   </p>
