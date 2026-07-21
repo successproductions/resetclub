@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { verifyToken } from '@/lib/auth/jwt';
+import { getCurrentAcademySession } from '@/lib/auth/academy-session';
 import prisma from '@/lib/prisma';
 import { PDFDocument, rgb, StandardFonts } from 'pdf-lib';
 import fs from 'fs';
@@ -12,34 +12,18 @@ export async function GET(
   { params }: { params: Promise<{ formationId: string }> }
 ) {
   try {
-    const authHeader = request.headers.get('Authorization');
-    const token = authHeader?.replace('Bearer ', '');
-
-    if (!token) {
-      return NextResponse.json({ error: 'Non authentifié' }, { status: 401 });
-    }
-
-    const payload = verifyToken(token);
-    if (!payload) {
-      return NextResponse.json({ error: 'Token invalide' }, { status: 401 });
+    const session = await getCurrentAcademySession(request);
+    if (!session.ok) {
+      return NextResponse.json({ error: session.error }, { status: session.status });
     }
 
     const { formationId } = await params;
-
-    // Get user info
-    const user = await prisma.user.findUnique({
-      where: { id: payload.userId },
-      select: { firstName: true, lastName: true, email: true },
-    });
-
-    if (!user) {
-      return NextResponse.json({ error: 'Utilisateur non trouvé' }, { status: 404 });
-    }
+    const user = session.user;
 
     const enrollment = await prisma.enrollment.findUnique({
       where: {
         userId_formationId: {
-          userId: payload.userId,
+          userId: user.id,
           formationId,
         },
       },
@@ -52,8 +36,8 @@ export async function GET(
       );
     }
 
-    await syncFormationProgress(payload.userId, formationId);
-    const progress = await getFormationProgress(payload.userId, formationId);
+    await syncFormationProgress(user.id, formationId);
+    const progress = await getFormationProgress(user.id, formationId);
 
     if (!progress) {
       return NextResponse.json({ error: 'Formation non trouvée' }, { status: 404 });

@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { verifyToken } from '@/lib/auth/jwt';
+import { getCurrentAcademySession } from '@/lib/auth/academy-session';
 import prisma from '@/lib/prisma';
 import {
   getFormationCompletionTargets,
@@ -10,16 +10,9 @@ import {
 // POST /api/progress/quiz — Save a completed quiz attempt
 export async function POST(request: NextRequest) {
   try {
-    const authHeader = request.headers.get('Authorization');
-    const token = authHeader?.replace('Bearer ', '');
-
-    if (!token) {
-      return NextResponse.json({ error: 'Non authentifié' }, { status: 401 });
-    }
-
-    const payload = verifyToken(token);
-    if (!payload) {
-      return NextResponse.json({ error: 'Token invalide' }, { status: 401 });
+    const session = await getCurrentAcademySession(request);
+    if (!session.ok) {
+      return NextResponse.json({ error: session.error }, { status: session.status });
     }
 
     const { quizId, formationId, score, answers } = await request.json();
@@ -52,11 +45,12 @@ export async function POST(request: NextRequest) {
 
     const normalizedScore = Math.max(0, Math.min(100, Math.round(score)));
     const passed = normalizedScore >= quiz.passingScore;
-    const enrollment = await getOrCreateEnrollment(payload.userId, formationId);
+    const userId = session.user.id;
+    const enrollment = await getOrCreateEnrollment(userId, formationId);
 
     await prisma.quizAttempt.create({
       data: {
-        userId: payload.userId,
+        userId,
         quizId,
         enrollmentId: enrollment.id,
         score: normalizedScore,
@@ -66,7 +60,7 @@ export async function POST(request: NextRequest) {
       },
     });
 
-    const progress = await syncFormationProgress(payload.userId, formationId);
+    const progress = await syncFormationProgress(userId, formationId);
 
     return NextResponse.json({
       success: true,

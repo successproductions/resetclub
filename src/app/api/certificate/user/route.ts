@@ -1,25 +1,18 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { verifyToken } from '@/lib/auth/jwt';
+import { getCurrentAcademySession } from '@/lib/auth/academy-session';
 import prisma from '@/lib/prisma';
 
 // GET /api/certificate/user — List all certificates for the current user
 export async function GET(request: NextRequest) {
   try {
-    const authHeader = request.headers.get('Authorization');
-    const token = authHeader?.replace('Bearer ', '');
-
-    if (!token) {
-      return NextResponse.json({ error: 'Non authentifié' }, { status: 401 });
-    }
-
-    const payload = verifyToken(token);
-    if (!payload) {
-      return NextResponse.json({ error: 'Token invalide' }, { status: 401 });
+    const session = await getCurrentAcademySession(request);
+    if (!session.ok) {
+      return NextResponse.json({ error: session.error }, { status: session.status });
     }
 
     const certificates = await prisma.certificate.findMany({
       where: {
-        userId: payload.userId,
+        userId: session.user.id,
         isValid: true,
       },
       include: {

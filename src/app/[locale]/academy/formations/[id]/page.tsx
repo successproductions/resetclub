@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, useRef } from 'react';
+import { useCallback, useState, useEffect, useRef } from 'react';
 import { useRouter } from 'next/navigation';
 import {
   ChevronLeft,
@@ -82,23 +82,19 @@ export default function CoursePage({ params }: { params: Promise<{ id: string }>
   // useRef to avoid stale closure in markLessonComplete
   const formationIdRef = useRef<string>('');
 
+  const handleExpiredSession = useCallback(() => {
+    localStorage.removeItem('academy_token');
+    localStorage.removeItem('academy_user');
+    router.push('/fr/academy/login');
+  }, [router]);
+
   useEffect(() => {
     if (window.innerWidth < 1024) {
       setSidebarOpen(false);
     }
   }, []);
 
-  useEffect(() => {
-    const loadData = async () => {
-      const resolvedParams = await params;
-      formationIdRef.current = resolvedParams.id;
-      await fetchFormation(resolvedParams.id);
-      await fetchProgress(resolvedParams.id);
-    };
-    loadData();
-  }, [params]);
-
-  const fetchFormation = async (id: string) => {
+  const fetchFormation = useCallback(async (id: string) => {
     try {
       const response = await fetch(`/api/formations/${id}`);
       if (response.ok) {
@@ -113,15 +109,20 @@ export default function CoursePage({ params }: { params: Promise<{ id: string }>
     } finally {
       setLoading(false);
     }
-  };
+  }, []);
 
-  const fetchProgress = async (id: string) => {
+  const fetchProgress = useCallback(async (id: string) => {
     try {
       const token = localStorage.getItem('academy_token');
       if (!token) return;
       const response = await fetch(`/api/progress/formation/${id}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
+      if (response.status === 401) {
+        handleExpiredSession();
+        return;
+      }
+
       if (response.ok) {
         const data = await response.json();
         setCompletedLessonIds(data.completedLessonIds || []);
@@ -131,7 +132,17 @@ export default function CoursePage({ params }: { params: Promise<{ id: string }>
     } catch (error) {
       console.error('Error fetching progress:', error);
     }
-  };
+  }, [handleExpiredSession]);
+
+  useEffect(() => {
+    const loadData = async () => {
+      const resolvedParams = await params;
+      formationIdRef.current = resolvedParams.id;
+      await fetchFormation(resolvedParams.id);
+      await fetchProgress(resolvedParams.id);
+    };
+    loadData();
+  }, [fetchFormation, fetchProgress, params]);
 
   const markLessonComplete = async (lessonId: string) => {
     const fId = formationIdRef.current;
@@ -147,6 +158,11 @@ export default function CoursePage({ params }: { params: Promise<{ id: string }>
         },
         body: JSON.stringify({ lessonId, formationId: fId }),
       });
+      if (response.status === 401) {
+        handleExpiredSession();
+        return;
+      }
+
       if (response.ok) {
         const data = await response.json();
         setCompletedLessonIds(data.completedLessonIds || []);
@@ -180,6 +196,11 @@ export default function CoursePage({ params }: { params: Promise<{ id: string }>
         }),
       });
 
+      if (response.status === 401) {
+        handleExpiredSession();
+        return;
+      }
+
       if (response.ok) {
         const data = await response.json();
         setCompletedLessonIds(data.completedLessonIds || []);
@@ -198,6 +219,11 @@ export default function CoursePage({ params }: { params: Promise<{ id: string }>
       const response = await fetch(`/api/certificate/${formationIdRef.current}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
+      if (response.status === 401) {
+        handleExpiredSession();
+        return;
+      }
+
       if (response.ok) {
         const blob = await response.blob();
         const url = URL.createObjectURL(blob);

@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { verifyToken } from '@/lib/auth/jwt';
+import { getCurrentAcademySession } from '@/lib/auth/academy-session';
 import { getFormationProgress } from '@/lib/academy/progress';
 
 // GET /api/progress/formation/[id] — Get completion status for a formation
@@ -8,20 +8,13 @@ export async function GET(
   { params }: { params: Promise<{ id: string }> }
 ) {
   try {
-    const authHeader = request.headers.get('Authorization');
-    const token = authHeader?.replace('Bearer ', '');
-
-    if (!token) {
-      return NextResponse.json({ error: 'Non authentifié' }, { status: 401 });
-    }
-
-    const payload = verifyToken(token);
-    if (!payload) {
-      return NextResponse.json({ error: 'Token invalide' }, { status: 401 });
+    const session = await getCurrentAcademySession(request);
+    if (!session.ok) {
+      return NextResponse.json({ error: session.error }, { status: session.status });
     }
 
     const { id: formationId } = await params;
-    const progress = await getFormationProgress(payload.userId, formationId);
+    const progress = await getFormationProgress(session.user.id, formationId);
 
     if (!progress) {
       return NextResponse.json({ error: 'Formation non trouvée' }, { status: 404 });
