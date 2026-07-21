@@ -17,6 +17,7 @@ interface Lesson {
   id: string;
   title: string;
   vimeoVideoId: string | null;
+  resourcesUrl?: string | null;
   durationSeconds: number | null;
   orderIndex: number;
 }
@@ -331,6 +332,20 @@ export default function CoursePage({ params }: { params: Promise<{ id: string }>
     : false;
   const currentQuizCompleted = currentQuiz
     ? completedQuizIds.includes(currentQuiz.quiz.id)
+    : false;
+  const currentModule = formation.modules.find((module) => {
+    if (currentQuiz) {
+      return module.id === currentQuiz.moduleId;
+    }
+
+    return currentLesson
+      ? module.lessons.some((lesson) => lesson.id === currentLesson.id)
+      : false;
+  });
+  const currentBadgeUrl = currentModule?.lessons.find((lesson) => lesson.resourcesUrl)?.resourcesUrl || null;
+  const currentModuleComplete = currentModule
+    ? currentModule.lessons.every((lesson) => completedLessonIds.includes(lesson.id)) &&
+      (currentModule.quizzes || []).every((quiz) => completedQuizIds.includes(quiz.id))
     : false;
 
   return (
@@ -742,6 +757,18 @@ export default function CoursePage({ params }: { params: Promise<{ id: string }>
                   <Award className="w-4 h-4" />
                   {downloadingCert ? 'Génération...' : 'Télécharger mon certificat'}
                 </button>
+              )}
+
+              {currentBadgeUrl && currentModuleComplete && (
+                <a
+                  href={currentBadgeUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 px-5 py-2 bg-[#151f2b] hover:bg-[#263447] text-white text-sm font-medium rounded-lg transition-colors"
+                >
+                  <Award className="w-4 h-4" />
+                  Badge du module
+                </a>
               )}
             </div>
 
