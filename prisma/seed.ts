@@ -800,7 +800,7 @@ const employeeModules: ModuleSeed[] = [
   },
 ];
 
-const phaseTwoProtocolQuiz = employeeModules[3].quiz;
+const phaseThreeProtocolQuiz = employeeModules[3].quiz;
 const phaseTwoAccueilQuiz = employeeModules[4].quiz;
 const phaseTwoEthiqueQuiz = employeeModules[5].quiz;
 
@@ -817,11 +817,11 @@ employeeModules[6] = {
       phaseBadgeUrls.phase3
     ),
   ],
-  quiz: phaseTwoProtocolQuiz
+  quiz: phaseThreeProtocolQuiz
     ? {
-      ...phaseTwoProtocolQuiz,
-      title: 'Quiz - Phase 3 : Formation présentielle coaching RESET CLUB',
-      description: 'Valide la compréhension des protocoles, résultats et machines RESET CLUB.',
+      ...phaseThreeProtocolQuiz,
+      title: 'Quiz - Phase 3 : Protocoles, Résultats & Machines',
+      description: 'Quiz fourni pour la Phase 3 : Protocoles, Résultats & Machines.',
     }
     : undefined,
 };
