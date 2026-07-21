@@ -39,6 +39,7 @@ interface QuizQuestion {
 interface Quiz {
   id: string;
   title: string;
+  description: string | null;
   passingScore: number;
   _count?: {
     questions: number;
@@ -368,8 +369,13 @@ export default function CoursePage({ params }: { params: Promise<{ id: string }>
       ? module.lessons.some((lesson) => lesson.id === currentLesson.id)
       : false;
   });
+  const getQuizBadgeUrl = (quiz?: Quiz) => {
+    const match = quiz?.description?.match(/(?:^|\n)Badge:\s*(.+)\s*$/);
+    return match?.[1]?.trim() || null;
+  };
   const getModuleBadgeUrl = (module: Module) =>
-    module.lessons.find((lesson) => lesson.resourcesUrl)?.resourcesUrl || null;
+    module.lessons.find((lesson) => lesson.resourcesUrl)?.resourcesUrl ||
+    getQuizBadgeUrl(module.quizzes?.[0]);
   const isModuleComplete = (module: Module) =>
     module.lessons.every((lesson) => completedLessonIds.includes(lesson.id)) &&
     (module.quizzes || []).every((quiz) => completedQuizIds.includes(quiz.id));
@@ -448,13 +454,6 @@ export default function CoursePage({ params }: { params: Promise<{ id: string }>
                     )}
                     <span className="text-sm font-medium text-left">{module.title}</span>
                   </div>
-                  {moduleBadgeUrl && (
-                    <Award
-                      className={`ml-2 w-4 h-4 flex-shrink-0 ${
-                        moduleComplete ? 'text-yellow-300' : 'text-white/50'
-                      }`}
-                    />
-                  )}
                 </button>
 
                 {/* Lessons */}
@@ -508,21 +507,15 @@ export default function CoursePage({ params }: { params: Promise<{ id: string }>
                           href={moduleBadgeUrl}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="mx-4 my-3 flex items-center gap-3 rounded-xl bg-white px-4 py-3 text-left text-[#2d6d68] shadow-sm transition-colors hover:bg-white/90"
+                          className="mx-10 my-2 inline-flex items-center gap-2 rounded-full bg-white/95 px-3 py-1.5 text-xs font-medium text-[#2d6d68] transition-colors hover:bg-white"
                         >
-                          <Award className="w-5 h-5 flex-shrink-0 text-yellow-500" />
-                          <span className="min-w-0">
-                            <span className="block text-sm font-semibold">Badge débloqué</span>
-                            <span className="block text-xs text-[#2d6d68]/75">Ouvrir le PDF du module</span>
-                          </span>
+                          <Award className="w-3.5 h-3.5 flex-shrink-0 text-[#2d6d68]" />
+                          Badge disponible
                         </a>
                       ) : (
-                        <div className="mx-4 my-3 flex items-center gap-3 rounded-xl bg-white/10 px-4 py-3 text-white/80 ring-1 ring-white/15">
-                          <Award className="w-5 h-5 flex-shrink-0 text-white/55" />
-                          <span className="min-w-0">
-                            <span className="block text-sm font-medium">Badge à débloquer</span>
-                            <span className="block text-xs text-white/65">Terminez la vidéo et le quiz.</span>
-                          </span>
+                        <div className="mx-10 my-2 inline-flex items-center gap-2 rounded-full bg-white/10 px-3 py-1.5 text-xs font-medium text-white/75">
+                          <Award className="w-3.5 h-3.5 flex-shrink-0 text-white/55" />
+                          Badge après validation
                         </div>
                       )
                     )}

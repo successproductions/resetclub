@@ -88,6 +88,7 @@ type ModuleSeed = {
   quiz?: {
     title: string;
     description: string;
+    resourcesUrl?: string;
     questions: QuizQuestionSeed[];
   };
 };
@@ -808,20 +809,13 @@ employeeModules[6] = {
   title: 'PHASE 3 · Formation présentielle coaching RESET CLUB',
   description: 'Approfondir les protocoles, résultats et machines avec une posture de coaching terrain.',
   durationMinutes: 45,
-  lessons: [
-    buildEmployeeVideoLesson(
-      'Formation présentielle coaching RESET CLUB',
-      'Mettre en pratique les protocoles RESET CLUB avec une posture claire, incarnée et orientée résultat.',
-      6,
-      720,
-      phaseBadgeUrls.phase3
-    ),
-  ],
+  lessons: [],
   quiz: phaseThreeProtocolQuiz
     ? {
       ...phaseThreeProtocolQuiz,
       title: 'Quiz - Phase 3 : Protocoles, Résultats & Machines',
       description: 'Quiz fourni pour la Phase 3 : Protocoles, Résultats & Machines.',
+      resourcesUrl: phaseBadgeUrls.phase3,
     }
     : undefined,
 };
@@ -830,20 +824,13 @@ employeeModules[7] = {
   title: 'PHASE 4 · Formation présentielle machine RESET CLUB',
   description: 'Maîtriser l’accueil, le rituel RESET et l’utilisation terrain des machines.',
   durationMinutes: 45,
-  lessons: [
-    buildEmployeeVideoLesson(
-      'Formation présentielle machine RESET CLUB',
-      'Appliquer les gestes, les repères et l’expérience RESET autour des machines en centre.',
-      0,
-      720,
-      phaseBadgeUrls.phase4
-    ),
-  ],
+  lessons: [],
   quiz: phaseTwoAccueilQuiz
     ? {
       ...phaseTwoAccueilQuiz,
       title: 'Quiz - Phase 4 : Formation présentielle machine RESET CLUB',
       description: 'Valide le badge digital : Gardienne de l’Accueil RESET.',
+      resourcesUrl: phaseBadgeUrls.phase4,
     }
     : undefined,
 };
@@ -852,20 +839,13 @@ employeeModules[8] = {
   title: 'PHASE 5 · Certification et intégration RESET CLUB',
   description: 'Valider la posture, l’éthique et la confidentialité avant intégration complète.',
   durationMinutes: 45,
-  lessons: [
-    buildEmployeeVideoLesson(
-      'Certification et intégration RESET CLUB',
-      'Finaliser la posture thérapeute RESET CLUB avec éthique, confidentialité et responsabilité.',
-      1,
-      720,
-      phaseBadgeUrls.phase5
-    ),
-  ],
+  lessons: [],
   quiz: phaseTwoEthiqueQuiz
     ? {
       ...phaseTwoEthiqueQuiz,
       title: 'Quiz - Phase 5 : Certification et intégration RESET CLUB',
       description: 'Valide le badge digital : Gardienne de Confiance RESET.',
+      resourcesUrl: phaseBadgeUrls.phase5,
     }
     : undefined,
 };
@@ -946,7 +926,9 @@ async function createFormation(data: DemoFormation) {
               quizzes: {
                 create: {
               title: module.quiz.title,
-              description: module.quiz.description,
+              description: module.quiz.resourcesUrl
+                ? `${module.quiz.description}\nBadge: ${module.quiz.resourcesUrl}`
+                : module.quiz.description,
               passingScore: 70,
               maxAttempts: null,
               orderIndex: 1,

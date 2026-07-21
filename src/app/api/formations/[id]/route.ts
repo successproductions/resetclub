@@ -23,6 +23,7 @@ export async function GET(
               select: {
                 id: true,
                 title: true,
+                description: true,
                 passingScore: true,
                 _count: {
                   select: {
