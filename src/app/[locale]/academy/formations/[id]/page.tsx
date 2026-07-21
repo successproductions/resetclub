@@ -368,11 +368,13 @@ export default function CoursePage({ params }: { params: Promise<{ id: string }>
       ? module.lessons.some((lesson) => lesson.id === currentLesson.id)
       : false;
   });
-  const currentBadgeUrl = currentModule?.lessons.find((lesson) => lesson.resourcesUrl)?.resourcesUrl || null;
-  const currentModuleComplete = currentModule
-    ? currentModule.lessons.every((lesson) => completedLessonIds.includes(lesson.id)) &&
-      (currentModule.quizzes || []).every((quiz) => completedQuizIds.includes(quiz.id))
-    : false;
+  const getModuleBadgeUrl = (module: Module) =>
+    module.lessons.find((lesson) => lesson.resourcesUrl)?.resourcesUrl || null;
+  const isModuleComplete = (module: Module) =>
+    module.lessons.every((lesson) => completedLessonIds.includes(lesson.id)) &&
+    (module.quizzes || []).every((quiz) => completedQuizIds.includes(quiz.id));
+  const currentBadgeUrl = currentModule ? getModuleBadgeUrl(currentModule) : null;
+  const currentModuleComplete = currentModule ? isModuleComplete(currentModule) : false;
 
   return (
     <div className="flex h-screen bg-gray-100">
@@ -427,71 +429,108 @@ export default function CoursePage({ params }: { params: Promise<{ id: string }>
 
         {/* Course Modules */}
         <div className="py-2">
-          {formation.modules.map((module, moduleIndex) => (
-            <div key={module.id} className="border-b border-white/10">
-              {/* Module Header */}
-              <button
-                onClick={() => toggleModule(moduleIndex)}
-                className="w-full px-4 py-3 flex items-center justify-between hover:bg-[#449990] transition-colors"
-              >
-                <div className="flex items-center gap-2 flex-1">
-                  {expandedModules.includes(moduleIndex) ? (
-                    <ChevronDown className="w-4 h-4 text-gray-100" />
-                  ) : (
-                    <ChevronRight className="w-4 h-4 text-white" />
-                  )}
-                  <span className="text-sm font-medium text-left">{module.title}</span>
-                </div>
-              </button>
+          {formation.modules.map((module, moduleIndex) => {
+            const moduleBadgeUrl = getModuleBadgeUrl(module);
+            const moduleComplete = isModuleComplete(module);
 
-              {/* Lessons */}
-              {expandedModules.includes(moduleIndex) && (
-                <div className="bg-[#3d8a85]">
-                  {module.lessons.map((lesson) => (
-                    <button
-                      key={lesson.id}
-                      onClick={() => selectLesson(lesson)}
-                      className="w-full px-4 py-2.5 pl-10 flex items-center gap-3 hover:bg-[#2d6d68] transition-colors text-left"
-                    >
-                      {completedLessonIds.includes(lesson.id) ? (
-                        <CheckCircle2 className="w-4 h-4 text-green-400 flex-shrink-0" />
-                      ) : currentLesson?.id === lesson.id ? (
-                        <Circle className="w-4 h-4 text-white flex-shrink-0" />
-                      ) : (
-                        <Circle className="w-4 h-4 text-gray-400 flex-shrink-0" />
-                      )}
-                      <div className="flex-1 min-w-0">
-                        <p className="text-sm text-gray-100 truncate">{lesson.title}</p>
-                        <p className="text-xs text-gray-200">{formatDuration(lesson.durationSeconds)}</p>
-                      </div>
-                    </button>
-                  ))}
-                  
-                  {/* Quiz Button */}
-                  {module.quizzes && module.quizzes.length > 0 && (
-                    <button
-                      onClick={() => selectQuiz(module.id, module.quizzes![0])}
-                      className="w-full px-4 py-2.5 pl-10 flex items-center gap-3 bg-[#50b1aa] hover:bg-[#449990] transition-colors text-left border-t border-[#3d8a85]"
-                    >
-                      {completedQuizIds.includes(module.quizzes[0].id) ? (
-                        <CheckCircle2 className="w-4 h-4 text-green-400 flex-shrink-0" />
-                      ) : (
-                        <FileQuestion className="w-4 h-4 text-yellow-300 flex-shrink-0" />
-                      )}
-                      <div className="flex-1 min-w-0">
-                        <p className="text-sm text-white font-normal">Quiz du module</p>
-                        <p className="text-xs text-gray-200">
-                          {completedQuizIds.includes(module.quizzes[0].id)
-                            ? 'Réussi'
-                            : `${module.quizzes[0]._count?.questions || 0} question${(module.quizzes[0]._count?.questions || 0) > 1 ? 's' : ''}`}
-                        </p>
-                      </div>
-                    </button>
+            return (
+              <div key={module.id} className="border-b border-white/10">
+                {/* Module Header */}
+                <button
+                  onClick={() => toggleModule(moduleIndex)}
+                  className="w-full px-4 py-3 flex items-center justify-between hover:bg-[#449990] transition-colors"
+                >
+                  <div className="flex items-center gap-2 flex-1">
+                    {expandedModules.includes(moduleIndex) ? (
+                      <ChevronDown className="w-4 h-4 text-gray-100" />
+                    ) : (
+                      <ChevronRight className="w-4 h-4 text-white" />
+                    )}
+                    <span className="text-sm font-medium text-left">{module.title}</span>
+                  </div>
+                  {moduleBadgeUrl && (
+                    <Award
+                      className={`ml-2 w-4 h-4 flex-shrink-0 ${
+                        moduleComplete ? 'text-yellow-300' : 'text-white/50'
+                      }`}
+                    />
                   )}
-                </div>
-              )}
-            </div>
-          ))}
+                </button>
+
+                {/* Lessons */}
+                {expandedModules.includes(moduleIndex) && (
+                  <div className="bg-[#3d8a85]">
+                    {module.lessons.map((lesson) => (
+                      <button
+                        key={lesson.id}
+                        onClick={() => selectLesson(lesson)}
+                        className="w-full px-4 py-2.5 pl-10 flex items-center gap-3 hover:bg-[#2d6d68] transition-colors text-left"
+                      >
+                        {completedLessonIds.includes(lesson.id) ? (
+                          <CheckCircle2 className="w-4 h-4 text-green-400 flex-shrink-0" />
+                        ) : currentLesson?.id === lesson.id ? (
+                          <Circle className="w-4 h-4 text-white flex-shrink-0" />
+                        ) : (
+                          <Circle className="w-4 h-4 text-gray-400 flex-shrink-0" />
+                        )}
+                        <div className="flex-1 min-w-0">
+                          <p className="text-sm text-gray-100 truncate">{lesson.title}</p>
+                          <p className="text-xs text-gray-200">{formatDuration(lesson.durationSeconds)}</p>
+                        </div>
+                      </button>
+                    ))}
+
+                    {/* Quiz Button */}
+                    {module.quizzes && module.quizzes.length > 0 && (
+                      <button
+                        onClick={() => selectQuiz(module.id, module.quizzes![0])}
+                        className="w-full px-4 py-2.5 pl-10 flex items-center gap-3 bg-[#50b1aa] hover:bg-[#449990] transition-colors text-left border-t border-[#3d8a85]"
+                      >
+                        {completedQuizIds.includes(module.quizzes[0].id) ? (
+                          <CheckCircle2 className="w-4 h-4 text-green-400 flex-shrink-0" />
+                        ) : (
+                          <FileQuestion className="w-4 h-4 text-yellow-300 flex-shrink-0" />
+                        )}
+                        <div className="flex-1 min-w-0">
+                          <p className="text-sm text-white font-normal">Quiz du module</p>
+                          <p className="text-xs text-gray-200">
+                            {completedQuizIds.includes(module.quizzes[0].id)
+                              ? 'Réussi'
+                              : `${module.quizzes[0]._count?.questions || 0} question${(module.quizzes[0]._count?.questions || 0) > 1 ? 's' : ''}`}
+                          </p>
+                        </div>
+                      </button>
+                    )}
+
+                    {moduleBadgeUrl && (
+                      moduleComplete ? (
+                        <a
+                          href={moduleBadgeUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="mx-4 my-3 flex items-center gap-3 rounded-xl bg-white px-4 py-3 text-left text-[#2d6d68] shadow-sm transition-colors hover:bg-white/90"
+                        >
+                          <Award className="w-5 h-5 flex-shrink-0 text-yellow-500" />
+                          <span className="min-w-0">
+                            <span className="block text-sm font-semibold">Badge débloqué</span>
+                            <span className="block text-xs text-[#2d6d68]/75">Ouvrir le PDF du module</span>
+                          </span>
+                        </a>
+                      ) : (
+                        <div className="mx-4 my-3 flex items-center gap-3 rounded-xl bg-white/10 px-4 py-3 text-white/80 ring-1 ring-white/15">
+                          <Award className="w-5 h-5 flex-shrink-0 text-white/55" />
+                          <span className="min-w-0">
+                            <span className="block text-sm font-medium">Badge à débloquer</span>
+                            <span className="block text-xs text-white/65">Terminez la vidéo et le quiz.</span>
+                          </span>
+                        </div>
+                      )
+                    )}
+                  </div>
+                )}
+              </div>
+            );
+          })}
         </div>
       </div>
 
