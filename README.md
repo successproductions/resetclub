@@ -300,4 +300,3 @@ All rights reserved © 2025 ResetClub™️
 
 **Built with ❤️ using Next.js 15, TypeScript, and Tailwind CSS**
 
-🤖 *Developed with assistance from Claude Code*
