@@ -16,6 +16,7 @@ import {
 interface Lesson {
   id: string;
   title: string;
+  videoUrl: string | null;
   vimeoVideoId: string | null;
   resourcesUrl?: string | null;
   durationSeconds: number | null;
@@ -533,7 +534,18 @@ export default function CoursePage({ params }: { params: Promise<{ id: string }>
         <div className="flex-1 bg-gray-50 flex items-center justify-center">
           {viewMode === 'lesson' ? (
             <div className="w-full h-full max-w-7xl">
-              {currentLesson?.vimeoVideoId ? (
+              {currentLesson?.videoUrl ? (
+                <video
+                  key={currentLesson.id}
+                  className="w-full h-full bg-black"
+                  controls
+                  playsInline
+                  preload="metadata"
+                >
+                  <source src={currentLesson.videoUrl} type="video/mp4" />
+                  Votre navigateur ne supporte pas la lecture vidéo.
+                </video>
+              ) : currentLesson?.vimeoVideoId ? (
                 <iframe
                   src={`https://player.vimeo.com/video/${currentLesson.vimeoVideoId.includes('?') ? currentLesson.vimeoVideoId : currentLesson.vimeoVideoId + '?h=0'}&title=0&byline=0&portrait=0`}
                   className="w-full h-full"

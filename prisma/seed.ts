@@ -39,6 +39,15 @@ const DEMO_VIMEO_VIDEOS = [
   },
 ];
 
+const EMPLOYEE_CLOUDINARY_VIDEO_URLS: Record<string, string> = {
+  'Vidéo accueil thérapeute - Nahed Rachad':
+    'https://res.cloudinary.com/clo5dy7d/video/upload/v1784731852/PHASE_1_VIDEO_ACCEUIL_THERAPEUTE_ected1.mp4',
+  'Bienvenue chez RESET CLUB':
+    'https://res.cloudinary.com/clo5dy7d/video/upload/v1784731894/PHASE_2_MODULE_1_ELEARNING_THERAPEUTE_p43kdx.mp4',
+  'La Méthode IN•OUT•RESET':
+    'https://res.cloudinary.com/clo5dy7d/video/upload/v1784731951/PHASE_2_MODULE_2_ELEARNING_THERAPEUTE_us1eo7.mp4',
+};
+
 const DEMO_USER_EMAILS = ['client.demo@resetclub.ma', 'employee.demo@resetclub.ma'];
 const DEMO_FORMATION_SLUGS = [
   'academy-client',
@@ -273,13 +282,14 @@ function buildEmployeeVideoLesson(
   badgeUrl?: string
 ): LessonSeed {
   const video = DEMO_VIMEO_VIDEOS[videoIndex % DEMO_VIMEO_VIDEOS.length];
+  const cloudinaryVideoUrl = EMPLOYEE_CLOUDINARY_VIDEO_URLS[title];
 
   return {
     title,
     description,
     durationSeconds,
-    vimeoVideoId: video.vimeoVideoId,
-    videoUrl: video.videoUrl,
+    vimeoVideoId: cloudinaryVideoUrl ? null : video.vimeoVideoId,
+    videoUrl: cloudinaryVideoUrl || video.videoUrl,
     resourcesUrl: badgeUrl,
     attachments: badgeUrl
       ? [{ title: `Badge - ${title}`, fileUrl: badgeUrl, fileType: 'pdf' }]

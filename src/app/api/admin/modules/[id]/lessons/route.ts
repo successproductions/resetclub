@@ -32,7 +32,7 @@ export async function POST(
   try {
     const { id } = await params;
     const body = await request.json();
-    const { title, description, vimeoVideoId, durationSeconds, isPreview } = body;
+    const { title, description, videoUrl, vimeoVideoId, durationSeconds, isPreview } = body;
 
     if (!title) {
       return NextResponse.json(
@@ -54,6 +54,7 @@ export async function POST(
         moduleId: id,
         title,
         description: description || null,
+        videoUrl: videoUrl || null,
         vimeoVideoId: vimeoVideoId || null,
         durationSeconds: durationSeconds || null,
         isPreview: isPreview || false,

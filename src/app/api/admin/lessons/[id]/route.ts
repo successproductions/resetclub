@@ -38,13 +38,14 @@ export async function PUT(
   try {
     const { id } = await params;
     const body = await request.json();
-    const { title, description, vimeoVideoId, durationSeconds, isPreview } = body;
+    const { title, description, videoUrl, vimeoVideoId, durationSeconds, isPreview } = body;
 
     const lesson = await prisma.lesson.update({
       where: { id },
       data: {
         title,
         description: description || null,
+        videoUrl: videoUrl || null,
         vimeoVideoId: vimeoVideoId || null,
         durationSeconds: durationSeconds || null,
         isPreview: isPreview || false

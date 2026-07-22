@@ -1,7 +1,6 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { ArrowLeft, Plus, Edit, Trash2, GripVertical, Video, Eye } from 'lucide-react';
 import Swal from 'sweetalert2';
@@ -10,6 +9,7 @@ interface Lesson {
   id: string;
   title: string;
   description: string | null;
+  videoUrl: string | null;
   vimeoVideoId: string | null;
   durationSeconds: number | null;
   orderIndex: number;
@@ -21,7 +21,6 @@ export default function LessonsManagementPage({
 }: { 
   params: Promise<{ id: string; moduleId: string }> 
 }) {
-  const router = useRouter();
   const [formationId, setFormationId] = useState<string>('');
   const [moduleId, setModuleId] = useState<string>('');
   const [moduleTitle, setModuleTitle] = useState<string>('');
@@ -32,6 +31,7 @@ export default function LessonsManagementPage({
   const [formData, setFormData] = useState({
     title: '',
     description: '',
+    videoUrl: '',
     vimeoVideoId: '',
     durationSeconds: '',
     isPreview: false
@@ -88,6 +88,7 @@ export default function LessonsManagementPage({
       setFormData({
         title: lesson.title,
         description: lesson.description || '',
+        videoUrl: lesson.videoUrl || '',
         vimeoVideoId: lesson.vimeoVideoId || '',
         durationSeconds: lesson.durationSeconds?.toString() || '',
         isPreview: lesson.isPreview
@@ -97,6 +98,7 @@ export default function LessonsManagementPage({
       setFormData({
         title: '',
         description: '',
+        videoUrl: '',
         vimeoVideoId: '',
         durationSeconds: '',
         isPreview: false
@@ -289,7 +291,13 @@ export default function LessonsManagementPage({
                     <p className="text-sm text-gray-600 mb-3">{lesson.description}</p>
                   )}
                   <div className="flex items-center gap-4 text-sm text-gray-500">
-                    {lesson.vimeoVideoId && (
+                    {lesson.videoUrl && (
+                      <span className="flex items-center gap-1">
+                        <Video className="w-4 h-4" />
+                        Cloudinary
+                      </span>
+                    )}
+                    {!lesson.videoUrl && lesson.vimeoVideoId && (
                       <span className="flex items-center gap-1">
                         <Video className="w-4 h-4" />
                         Vimeo: {lesson.vimeoVideoId}
@@ -361,7 +369,23 @@ export default function LessonsManagementPage({
 
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Vimeo Video ID
+                  URL vidéo Cloudinary
+                </label>
+                <input
+                  type="url"
+                  value={formData.videoUrl}
+                  onChange={(e) => setFormData({ ...formData, videoUrl: e.target.value })}
+                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#50b1aa] focus:border-transparent text-gray-900"
+                  placeholder="https://res.cloudinary.com/.../video/upload/...mp4"
+                />
+                <p className="text-xs text-gray-500 mt-1">
+                  Collez ici le lien MP4 Cloudinary. Il sera utilisé en priorité dans le lecteur.
+                </p>
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                  ID Vimeo ancien
                 </label>
                 <input
                   type="text"
@@ -371,7 +395,7 @@ export default function LessonsManagementPage({
                   placeholder="123456789"
                 />
                 <p className="text-xs text-gray-500 mt-1">
-                  L&apos;ID de la vidéo Vimeo (ex: vimeo.com/123456789)
+                  Optionnel, seulement pour les anciennes vidéos Vimeo.
                 </p>
               </div>
 
