@@ -321,7 +321,7 @@ const employeeModules: ModuleSeed[] = [
         'Vidéo accueil thérapeute - Nahed Rachad',
         'Comprendre la posture attendue avant de commencer le parcours thérapeute RESET CLUB.',
         0,
-        420
+        85
       ),
     ],
   },
@@ -334,7 +334,7 @@ const employeeModules: ModuleSeed[] = [
         'Bienvenue chez RESET CLUB',
         'Découvrir la mission, les valeurs et l’ADN RESET CLUB.',
         1,
-        540,
+        281,
         phase2BadgeUrls[0]
       ),
     ],
@@ -434,7 +434,7 @@ const employeeModules: ModuleSeed[] = [
         'La Méthode IN•OUT•RESET',
         'Comprendre les leviers IN, OUT et RESET dans l’accompagnement client.',
         2,
-        600,
+        503,
         phase2BadgeUrls[1]
       ),
     ],
