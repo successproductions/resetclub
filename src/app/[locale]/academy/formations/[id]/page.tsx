@@ -371,17 +371,27 @@ export default function CoursePage({ params }: { params: Promise<{ id: string }>
       : false;
   });
   const getQuizBadgeUrl = (quiz?: Quiz) => {
-    const match = quiz?.description?.match(/(?:^|\n)Badge:\s*(.+)\s*$/);
+    const match = quiz?.description?.match(/(?:^|\n)Badge:\s*([^\n]+)/);
+    return match?.[1]?.trim() || null;
+  };
+  const getQuizCertificateUrl = (quiz?: Quiz) => {
+    const match = quiz?.description?.match(/(?:^|\n)Certificat:\s*([^\n]+)/);
     return match?.[1]?.trim() || null;
   };
   const getModuleBadgeUrl = (module: Module) =>
     module.lessons.find((lesson) => lesson.resourcesUrl)?.resourcesUrl ||
     getQuizBadgeUrl(module.quizzes?.[0]);
+  const getModuleCertificateUrl = (module: Module) => getQuizCertificateUrl(module.quizzes?.[0]);
   const isModuleComplete = (module: Module) =>
     module.lessons.every((lesson) => completedLessonIds.includes(lesson.id)) &&
     (module.quizzes || []).every((quiz) => completedQuizIds.includes(quiz.id));
+  const isModuleQuizComplete = (module: Module) =>
+    (module.quizzes || []).length > 0 &&
+    (module.quizzes || []).every((quiz) => completedQuizIds.includes(quiz.id));
   const currentBadgeUrl = currentModule ? getModuleBadgeUrl(currentModule) : null;
+  const currentCertificateUrl = currentModule ? getModuleCertificateUrl(currentModule) : null;
   const currentModuleComplete = currentModule ? isModuleComplete(currentModule) : false;
+  const currentModuleQuizComplete = currentModule ? isModuleQuizComplete(currentModule) : false;
 
   return (
     <div className="flex h-screen bg-gray-100">
@@ -438,7 +448,9 @@ export default function CoursePage({ params }: { params: Promise<{ id: string }>
         <div className="py-2">
           {formation.modules.map((module, moduleIndex) => {
             const moduleBadgeUrl = getModuleBadgeUrl(module);
+            const moduleCertificateUrl = getModuleCertificateUrl(module);
             const moduleComplete = isModuleComplete(module);
+            const moduleQuizComplete = isModuleQuizComplete(module);
 
             return (
               <div key={module.id} className="border-b border-white/10">
@@ -517,6 +529,25 @@ export default function CoursePage({ params }: { params: Promise<{ id: string }>
                         <div className="mx-10 my-2 inline-flex items-center gap-2 rounded-full bg-white/10 px-3 py-1.5 text-xs font-medium text-white/75">
                           <Award className="w-3.5 h-3.5 flex-shrink-0 text-white/55" />
                           Badge après validation
+                        </div>
+                      )
+                    )}
+
+                    {moduleCertificateUrl && (
+                      moduleQuizComplete ? (
+                        <a
+                          href={moduleCertificateUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="mx-10 mb-2 inline-flex items-center gap-2 rounded-full bg-amber-50 px-3 py-1.5 text-xs font-medium text-amber-800 transition-colors hover:bg-white"
+                        >
+                          <Award className="w-3.5 h-3.5 flex-shrink-0 text-amber-700" />
+                          Certificat disponible
+                        </a>
+                      ) : (
+                        <div className="mx-10 mb-2 inline-flex items-center gap-2 rounded-full bg-amber-50/10 px-3 py-1.5 text-xs font-medium text-white/75">
+                          <Award className="w-3.5 h-3.5 flex-shrink-0 text-white/55" />
+                          Certificat après quiz
                         </div>
                       )
                     )}
@@ -838,6 +869,18 @@ export default function CoursePage({ params }: { params: Promise<{ id: string }>
                 >
                   <Award className="w-4 h-4" />
                   Badge du module
+                </a>
+              )}
+
+              {currentCertificateUrl && currentModuleQuizComplete && (
+                <a
+                  href={currentCertificateUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 px-5 py-2 bg-amber-500 hover:bg-amber-600 text-white text-sm font-medium rounded-lg transition-colors"
+                >
+                  <Award className="w-4 h-4" />
+                  Certificat de phase
                 </a>
               )}
             </div>

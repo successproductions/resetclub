@@ -98,6 +98,7 @@ type ModuleSeed = {
     title: string;
     description: string;
     resourcesUrl?: string;
+    certificateUrl?: string;
     questions: QuizQuestionSeed[];
   };
 };
@@ -309,6 +310,13 @@ const phaseBadgeUrls = {
   phase3: '/pdf/PHASE-3/BADGE%20MODULE%203%20RESET%20CLUB.pdf',
   phase4: '/pdf/PHASE-4/BADGE%20MODULE%204%20RESET%20CLUB.pdf',
   phase5: '/pdf/PHASE-5/BADGE%20MODULE%205%20RESET%20CLUB.pdf',
+};
+
+const phaseCertificateUrls = {
+  phase2: '/pdf/CERTIFICAT-E-LEARNING.pdf',
+  phase3: '/pdf/PHASE-3/CERTIFICATION%20FORMATION%20PRESENTIELLE%20%20THERAPEUTE%20RESET%20CLUB.pdf',
+  phase4: '/pdf/PHASE-4/CERTIFICAT%20FORMATION%20MACHINE%20RESET%20CLUB.pdf',
+  phase5: '/pdf/PHASE-5/CERTIFICAT%20GLOBAL%20THERAPEUTE%20RESET%20CLUB%20.pdf',
 };
 
 const employeeModules: ModuleSeed[] = [
@@ -711,6 +719,7 @@ const employeeModules: ModuleSeed[] = [
     quiz: {
       title: 'Quiz - Module 5 : Éthique, Confidentialité & Posture RESET CLUB',
       description: 'Valide le badge digital : Gardienne de Confiance RESET.',
+      certificateUrl: phaseCertificateUrls.phase2,
       questions: [
         {
           questionText: 'Que signifie la confidentialité chez RESET CLUB ?',
@@ -826,6 +835,7 @@ employeeModules[6] = {
       title: 'Quiz - Phase 3 : Protocoles, Résultats & Machines',
       description: 'Quiz fourni pour la Phase 3 : Protocoles, Résultats & Machines.',
       resourcesUrl: phaseBadgeUrls.phase3,
+      certificateUrl: phaseCertificateUrls.phase3,
     }
     : undefined,
 };
@@ -841,6 +851,7 @@ employeeModules[7] = {
       title: 'Quiz - Phase 4 : Formation présentielle machine RESET CLUB',
       description: 'Valide le badge digital : Gardienne de l’Accueil RESET.',
       resourcesUrl: phaseBadgeUrls.phase4,
+      certificateUrl: phaseCertificateUrls.phase4,
     }
     : undefined,
 };
@@ -856,6 +867,7 @@ employeeModules[8] = {
       title: 'Quiz - Phase 5 : Certification et intégration RESET CLUB',
       description: 'Valide le badge digital : Gardienne de Confiance RESET.',
       resourcesUrl: phaseBadgeUrls.phase5,
+      certificateUrl: phaseCertificateUrls.phase5,
     }
     : undefined,
 };
@@ -936,9 +948,11 @@ async function createFormation(data: DemoFormation) {
               quizzes: {
                 create: {
               title: module.quiz.title,
-              description: module.quiz.resourcesUrl
-                ? `${module.quiz.description}\nBadge: ${module.quiz.resourcesUrl}`
-                : module.quiz.description,
+              description: [
+                module.quiz.description,
+                module.quiz.resourcesUrl ? `Badge: ${module.quiz.resourcesUrl}` : null,
+                module.quiz.certificateUrl ? `Certificat: ${module.quiz.certificateUrl}` : null,
+              ].filter(Boolean).join('\n'),
               passingScore: 70,
               maxAttempts: null,
               orderIndex: 1,
