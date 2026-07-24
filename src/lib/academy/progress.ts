@@ -1,4 +1,12 @@
+import { Prisma } from '@prisma/client';
 import prisma from '@/lib/prisma';
+
+function isMissingValidationTableError(error: unknown) {
+  return (
+    error instanceof Prisma.PrismaClientKnownRequestError &&
+    (error.code === 'P2021' || error.code === 'P2022')
+  );
+}
 
 export async function getOrCreateEnrollment(userId: string, formationId: string) {
   const enrollment = await prisma.enrollment.findUnique({
@@ -136,16 +144,28 @@ export async function getFormationProgress(userId: string, formationId: string) 
     distinct: ['quizId'],
     select: { quizId: true },
   });
-  const completedValidations = validationModuleIds.length > 0
-    ? await prisma.phaseValidation.findMany({
+  let completedValidations: Array<{ moduleId: string }> = [];
+
+  if (validationModuleIds.length > 0) {
+    try {
+      completedValidations = await prisma.phaseValidation.findMany({
         where: {
           userId,
           moduleId: { in: validationModuleIds },
           status: 'VALIDATED',
         },
         select: { moduleId: true },
-      })
-    : [];
+      });
+    } catch (error) {
+      if (!isMissingValidationTableError(error)) {
+        throw error;
+      }
+
+      console.warn(
+        'Phase validation table is not available yet. Run `npx prisma db push` on the server to enable Phase 7 validation.'
+      );
+    }
+  }
 
   const completedLessonIds = completedLessons.map((progress) => progress.lessonId);
   const completedQuizIds = completedQuizzes.map((attempt) => attempt.quizId);
