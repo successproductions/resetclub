@@ -18,6 +18,12 @@ enum UserRole {
   ADMIN
 }
 
+enum PhaseValidationStatus {
+  PENDING
+  VALIDATED
+  NOT_VALIDATED
+}
+
 model User {
   id            String   @id @default(uuid())
   email         String   @unique
@@ -42,6 +48,8 @@ model User {
   payments         Payment[]
   formationAccess  FormationAccess[]
   formationReviews FormationReview[]
+  phaseValidations  PhaseValidation[] @relation("PhaseValidationUser")
+  reviewedPhaseValidations PhaseValidation[] @relation("PhaseValidationReviewer")
 
   @@map("users")
 }
@@ -151,8 +159,27 @@ model Module {
   formation Formation @relation(fields: [formationId], references: [id], onDelete: Cascade)
   lessons   Lesson[]
   quizzes   Quiz[]
+  phaseValidations PhaseValidation[]
 
   @@map("modules")
+}
+
+model PhaseValidation {
+  id            String                @id @default(uuid())
+  userId        String                @map("user_id")
+  moduleId      String                @map("module_id")
+  status        PhaseValidationStatus @default(PENDING)
+  reviewedById  String?               @map("reviewed_by_id")
+  reviewedAt    DateTime?             @map("reviewed_at")
+  createdAt     DateTime              @default(now()) @map("created_at")
+  updatedAt     DateTime              @updatedAt @map("updated_at")
+
+  user       User    @relation("PhaseValidationUser", fields: [userId], references: [id], onDelete: Cascade)
+  module     Module  @relation(fields: [moduleId], references: [id], onDelete: Cascade)
+  reviewedBy User?   @relation("PhaseValidationReviewer", fields: [reviewedById], references: [id], onDelete: SetNull)
+
+  @@unique([userId, moduleId])
+  @@map("phase_validations")
 }
 
 model Lesson {

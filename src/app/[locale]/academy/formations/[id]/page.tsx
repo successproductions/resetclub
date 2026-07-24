@@ -10,7 +10,10 @@ import {
   Circle,
   Menu,
   FileQuestion,
-  Award
+  Award,
+  ClipboardCheck,
+  Clock3,
+  XCircle
 } from 'lucide-react';
 
 interface Lesson {
@@ -50,6 +53,7 @@ interface Quiz {
 interface Module {
   id: string;
   title: string;
+  description: string | null;
   lessons: Lesson[];
   quizzes?: Quiz[];
 }
@@ -61,6 +65,16 @@ interface Formation {
   modules: Module[];
 }
 
+type PhaseValidationStatus = 'PENDING' | 'VALIDATED' | 'NOT_VALIDATED';
+
+interface PhaseValidation {
+  moduleId: string;
+  moduleTitle: string;
+  status: PhaseValidationStatus;
+  reviewedAt: string | null;
+  updatedAt: string | null;
+}
+
 export default function CoursePage({ params }: { params: Promise<{ id: string }> }) {
   const router = useRouter();
   const [sidebarOpen, setSidebarOpen] = useState(true);
@@ -69,7 +83,8 @@ export default function CoursePage({ params }: { params: Promise<{ id: string }>
   const [loading, setLoading] = useState(true);
   const [currentLesson, setCurrentLesson] = useState<Lesson | null>(null);
   const [currentQuiz, setCurrentQuiz] = useState<{ moduleId: string; quiz: Quiz } | null>(null);
-  const [viewMode, setViewMode] = useState<'lesson' | 'quiz'>('lesson');
+  const [currentValidationModule, setCurrentValidationModule] = useState<Module | null>(null);
+  const [viewMode, setViewMode] = useState<'lesson' | 'quiz' | 'validation'>('lesson');
   const [quizStarted, setQuizStarted] = useState(false);
   const [quizQuestions, setQuizQuestions] = useState<QuizQuestion[]>([]);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
@@ -82,6 +97,8 @@ export default function CoursePage({ params }: { params: Promise<{ id: string }>
   const [isFormationComplete, setIsFormationComplete] = useState(false);
   const [downloadingCert, setDownloadingCert] = useState(false);
   const [downloadingPhaseCertId, setDownloadingPhaseCertId] = useState<string | null>(null);
+  const [downloadingValidationCertId, setDownloadingValidationCertId] = useState<string | null>(null);
+  const [phaseValidations, setPhaseValidations] = useState<Record<string, PhaseValidation>>({});
   // useRef to avoid stale closure in markLessonComplete
   const formationIdRef = useRef<string>('');
 
@@ -137,15 +154,42 @@ export default function CoursePage({ params }: { params: Promise<{ id: string }>
     }
   }, [handleExpiredSession]);
 
+  const fetchPhaseValidations = useCallback(async (id: string) => {
+    try {
+      const token = localStorage.getItem('academy_token');
+      if (!token) return;
+
+      const response = await fetch(`/api/phase-validations?formationId=${id}`, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+
+      if (response.status === 401) {
+        handleExpiredSession();
+        return;
+      }
+
+      if (response.ok) {
+        const data = await response.json();
+        const validations = (data.validations || []) as PhaseValidation[];
+        setPhaseValidations(
+          Object.fromEntries(validations.map((validation) => [validation.moduleId, validation]))
+        );
+      }
+    } catch (error) {
+      console.error('Error fetching phase validations:', error);
+    }
+  }, [handleExpiredSession]);
+
   useEffect(() => {
     const loadData = async () => {
       const resolvedParams = await params;
       formationIdRef.current = resolvedParams.id;
       await fetchFormation(resolvedParams.id);
       await fetchProgress(resolvedParams.id);
+      await fetchPhaseValidations(resolvedParams.id);
     };
     loadData();
-  }, [fetchFormation, fetchProgress, params]);
+  }, [fetchFormation, fetchPhaseValidations, fetchProgress, params]);
 
   const markLessonComplete = async (lessonId: string) => {
     const fId = formationIdRef.current;
@@ -278,6 +322,39 @@ export default function CoursePage({ params }: { params: Promise<{ id: string }>
     }
   };
 
+  const downloadValidationCertificate = async (moduleId: string) => {
+    setDownloadingValidationCertId(moduleId);
+    try {
+      const token = localStorage.getItem('academy_token');
+      const response = await fetch(`/api/certificate/validation/${moduleId}`, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+
+      if (response.status === 401) {
+        handleExpiredSession();
+        return;
+      }
+
+      if (response.ok) {
+        const blob = await response.blob();
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'Certificat_Validation_ResetClub.pdf';
+        a.click();
+        URL.revokeObjectURL(url);
+      } else {
+        const error = await response.json();
+        alert(error.error || 'Certificat non disponible');
+      }
+    } catch (error) {
+      console.error('Error downloading validation certificate:', error);
+      alert('Erreur lors du téléchargement du certificat');
+    } finally {
+      setDownloadingValidationCertId(null);
+    }
+  };
+
   const toggleModule = (index: number) => {
     setExpandedModules(prev => 
       prev.includes(index) 
@@ -296,6 +373,7 @@ export default function CoursePage({ params }: { params: Promise<{ id: string }>
     setCurrentLesson(lesson);
     setViewMode('lesson');
     setCurrentQuiz(null);
+    setCurrentValidationModule(null);
     closeSidebarOnMobile();
     void markLessonComplete(lesson.id);
   };
@@ -304,6 +382,16 @@ export default function CoursePage({ params }: { params: Promise<{ id: string }>
     setCurrentQuiz({ moduleId, quiz });
     setViewMode('quiz');
     setCurrentLesson(null);
+    setCurrentValidationModule(null);
+    setQuizStarted(false);
+    closeSidebarOnMobile();
+  };
+
+  const selectValidation = (module: Module) => {
+    setCurrentValidationModule(module);
+    setViewMode('validation');
+    setCurrentLesson(null);
+    setCurrentQuiz(null);
     setQuizStarted(false);
     closeSidebarOnMobile();
   };
@@ -395,7 +483,25 @@ export default function CoursePage({ params }: { params: Promise<{ id: string }>
   const currentQuizCompleted = currentQuiz
     ? completedQuizIds.includes(currentQuiz.quiz.id)
     : false;
+  const isValidationModule = (module: Module) => module.title.startsWith('PHASE 7');
+  const getValidationStatus = (module: Module): PhaseValidationStatus =>
+    phaseValidations[module.id]?.status || 'PENDING';
+  const isValidationApproved = (module: Module) => getValidationStatus(module) === 'VALIDATED';
+  const getValidationLabel = (status: PhaseValidationStatus) => {
+    if (status === 'VALIDATED') return 'Validé';
+    if (status === 'NOT_VALIDATED') return 'Non validé';
+    return 'En attente';
+  };
+  const getValidationStyles = (status: PhaseValidationStatus) => {
+    if (status === 'VALIDATED') return 'bg-emerald-50 text-emerald-700 border-emerald-200';
+    if (status === 'NOT_VALIDATED') return 'bg-red-50 text-red-700 border-red-200';
+    return 'bg-amber-50 text-amber-700 border-amber-200';
+  };
   const currentModule = formation.modules.find((module) => {
+    if (currentValidationModule) {
+      return module.id === currentValidationModule.id;
+    }
+
     if (currentQuiz) {
       return module.id === currentQuiz.moduleId;
     }
@@ -431,6 +537,7 @@ export default function CoursePage({ params }: { params: Promise<{ id: string }>
   const getModuleCertificateUrl = (module: Module) =>
     getQuizCertificateUrl(module.quizzes?.[0]) || getFallbackPhaseCertificateUrl(module.title);
   const isModuleComplete = (module: Module) =>
+    (isValidationModule(module) ? isValidationApproved(module) : true) &&
     module.lessons.every((lesson) => completedLessonIds.includes(lesson.id)) &&
     (module.quizzes || []).every((quiz) => completedQuizIds.includes(quiz.id));
   const isModuleQuizComplete = (module: Module) =>
@@ -440,6 +547,10 @@ export default function CoursePage({ params }: { params: Promise<{ id: string }>
   const currentCertificateUrl = currentModule ? getModuleCertificateUrl(currentModule) : null;
   const currentModuleComplete = currentModule ? isModuleComplete(currentModule) : false;
   const currentModuleQuizComplete = currentModule ? isModuleQuizComplete(currentModule) : false;
+  const isCurrentValidationModule = currentModule ? isValidationModule(currentModule) : false;
+  const currentValidationStatus = currentValidationModule
+    ? getValidationStatus(currentValidationModule)
+    : 'PENDING';
 
   return (
     <div className="flex h-screen bg-gray-100">
@@ -499,12 +610,20 @@ export default function CoursePage({ params }: { params: Promise<{ id: string }>
             const moduleCertificateUrl = getModuleCertificateUrl(module);
             const moduleComplete = isModuleComplete(module);
             const moduleQuizComplete = isModuleQuizComplete(module);
+            const validationModule = isValidationModule(module);
+            const validationStatus = getValidationStatus(module);
+            const validationApproved = validationStatus === 'VALIDATED';
 
             return (
               <div key={module.id} className="border-b border-white/10">
                 {/* Module Header */}
                 <button
-                  onClick={() => toggleModule(moduleIndex)}
+                  onClick={() => {
+                    toggleModule(moduleIndex);
+                    if (validationModule) {
+                      selectValidation(module);
+                    }
+                  }}
                   className="w-full px-4 py-3 flex items-center justify-between hover:bg-[#449990] transition-colors"
                 >
                   <div className="flex items-center gap-2 flex-1">
@@ -515,11 +634,35 @@ export default function CoursePage({ params }: { params: Promise<{ id: string }>
                     )}
                     <span className="text-sm font-medium text-left">{module.title}</span>
                   </div>
+                  {validationModule && (
+                    <span className="ml-2 rounded-full bg-white/15 px-2 py-1 text-[10px] font-medium text-white">
+                      {getValidationLabel(validationStatus)}
+                    </span>
+                  )}
                 </button>
 
                 {/* Lessons */}
                 {expandedModules.includes(moduleIndex) && (
                   <div className="bg-[#3d8a85]">
+                    {validationModule && (
+                      <button
+                        onClick={() => selectValidation(module)}
+                        className="w-full px-4 py-3 pl-10 flex items-center gap-3 hover:bg-[#2d6d68] transition-colors text-left"
+                      >
+                        {validationApproved ? (
+                          <CheckCircle2 className="w-4 h-4 text-green-400 flex-shrink-0" />
+                        ) : validationStatus === 'NOT_VALIDATED' ? (
+                          <XCircle className="w-4 h-4 text-red-300 flex-shrink-0" />
+                        ) : (
+                          <Clock3 className="w-4 h-4 text-amber-200 flex-shrink-0" />
+                        )}
+                        <div className="flex-1 min-w-0">
+                          <p className="text-sm text-gray-100">Validation admin</p>
+                          <p className="text-xs text-gray-200">{getValidationLabel(validationStatus)}</p>
+                        </div>
+                      </button>
+                    )}
+
                     {module.lessons.map((lesson) => (
                       <button
                         key={lesson.id}
@@ -598,6 +741,24 @@ export default function CoursePage({ params }: { params: Promise<{ id: string }>
                         </div>
                       )
                     )}
+
+                    {validationModule && (
+                      validationApproved ? (
+                        <button
+                          onClick={() => downloadValidationCertificate(module.id)}
+                          disabled={downloadingValidationCertId === module.id}
+                          className="mx-10 mb-2 inline-flex items-center gap-2 rounded-full bg-amber-50 px-3 py-1.5 text-xs font-medium text-amber-800 transition-colors hover:bg-white"
+                        >
+                          <Award className="w-3.5 h-3.5 flex-shrink-0 text-amber-700" />
+                          {downloadingValidationCertId === module.id ? 'Génération...' : 'Certificat disponible'}
+                        </button>
+                      ) : (
+                        <div className="mx-10 mb-2 inline-flex items-center gap-2 rounded-full bg-amber-50/10 px-3 py-1.5 text-xs font-medium text-white/75">
+                          <Award className="w-3.5 h-3.5 flex-shrink-0 text-white/55" />
+                          Certificat après validation
+                        </div>
+                      )
+                    )}
                   </div>
                 )}
               </div>
@@ -641,6 +802,73 @@ export default function CoursePage({ params }: { params: Promise<{ id: string }>
                   Votre navigateur ne supporte pas la lecture vidéo.
                 </video>
               )}
+            </div>
+          ) : viewMode === 'validation' ? (
+            <div className="w-full h-full max-w-7xl p-6 md:p-10 overflow-y-auto bg-gray-50">
+              <div className="max-w-3xl mx-auto">
+                <div className="text-center mb-8 pt-8">
+                  <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-[#50b1aa]/10 mb-6">
+                    <ClipboardCheck className="w-10 h-10 text-[#50b1aa]" />
+                  </div>
+                  <h1 className="text-3xl font-normal text-gray-900 mb-3">
+                    {currentValidationModule?.title || 'PHASE 7 · Validation'}
+                  </h1>
+                  <span className={`inline-flex rounded-full border px-4 py-1.5 text-sm font-medium ${getValidationStyles(currentValidationStatus)}`}>
+                    {getValidationLabel(currentValidationStatus)}
+                  </span>
+                </div>
+
+                <div className="bg-white rounded-2xl p-6 md:p-8 shadow-sm border border-gray-200">
+                  {(() => {
+                    const lines = (currentValidationModule?.description || '')
+                      .split('\n')
+                      .map((line) => line.trim())
+                      .filter(Boolean);
+                    const [title, minimumLabel, ...requirements] = lines;
+
+                    return (
+                      <div className="space-y-6">
+                        <div>
+                          <p className="text-xs uppercase tracking-[0.18em] text-[#8f7b68]">
+                            Validation terrain
+                          </p>
+                          <h2 className="mt-2 text-2xl! font-semibold text-[#151f2b]">
+                            {title || 'PRISE EN CHARGE CLIENTES RÉELLES'}
+                          </h2>
+                        </div>
+
+                        <div className="rounded-xl border border-[#e7dfd6] bg-[#fbfaf8] p-5">
+                          <p className="mb-4 text-sm font-semibold text-[#151f2b]">
+                            {minimumLabel || 'Minimum :'}
+                          </p>
+                          <ul className="space-y-3">
+                            {requirements.map((requirement) => (
+                              <li key={requirement} className="flex items-start gap-3 text-sm text-[#394452]">
+                                <CheckCircle2 className="mt-0.5 h-4 w-4 flex-shrink-0 text-[#50b1aa]" />
+                                <span>{requirement}</span>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+
+                        {currentValidationStatus === 'VALIDATED' ? (
+                          <div className="rounded-xl border border-emerald-200 bg-emerald-50 p-4 text-sm text-emerald-700">
+                            La validation admin est confirmée. Le certificat est disponible.
+                          </div>
+                        ) : currentValidationStatus === 'NOT_VALIDATED' ? (
+                          <div className="rounded-xl border border-red-200 bg-red-50 p-4 text-sm text-red-700">
+                            La validation admin n’est pas validée pour le moment.
+                          </div>
+                        ) : (
+                          <div className="rounded-xl border border-amber-200 bg-amber-50 p-4 text-sm text-amber-700">
+                            En attente de validation par un admin.
+                          </div>
+                        )}
+                      </div>
+                    );
+                  })()}
+                </div>
+              </div>
             </div>
           ) : (
             <div className="w-full h-full max-w-7xl p-8 overflow-y-auto bg-gray-50">
@@ -856,12 +1084,16 @@ export default function CoursePage({ params }: { params: Promise<{ id: string }>
         <div className="bg-white border-t border-gray-200 p-4">
           <div className="max-w-7xl mx-auto">
             <h1 className="text-lg font-normal text-gray-900 mb-1">
-              {viewMode === 'quiz'
+              {viewMode === 'validation'
+                ? currentValidationModule?.title || 'PHASE 7 · Validation'
+                : viewMode === 'quiz'
                 ? currentQuiz?.quiz.title || 'Quiz du module'
                 : currentLesson?.title || 'Sélectionnez une leçon'}
             </h1>
             <p className="text-sm text-gray-600">
-              {viewMode === 'quiz'
+              {viewMode === 'validation'
+                ? `Statut: ${getValidationLabel(currentValidationStatus)}`
+                : viewMode === 'quiz'
                 ? currentQuizCompleted
                   ? 'Quiz réussi'
                   : `Score minimum: ${currentQuiz?.quiz.passingScore || 70}%`
@@ -896,7 +1128,7 @@ export default function CoursePage({ params }: { params: Promise<{ id: string }>
                 </button>
               )}
 
-              {isFormationComplete && !(currentCertificateUrl && currentModuleQuizComplete) && (
+              {isFormationComplete && !isCurrentValidationModule && !(currentCertificateUrl && currentModuleQuizComplete) && (
                 <button
                   onClick={downloadCertificate}
                   disabled={downloadingCert}
@@ -917,6 +1149,24 @@ export default function CoursePage({ params }: { params: Promise<{ id: string }>
                   <Award className="w-4 h-4" />
                   Badge du module
                 </a>
+              )}
+
+              {isCurrentValidationModule && currentValidationModule && (
+                <button
+                  onClick={() => downloadValidationCertificate(currentValidationModule.id)}
+                  disabled={
+                    currentValidationStatus !== 'VALIDATED' ||
+                    downloadingValidationCertId === currentValidationModule.id
+                  }
+                  className="flex items-center gap-2 px-5 py-2 bg-amber-500 hover:bg-amber-600 text-white text-sm font-medium rounded-lg transition-colors disabled:cursor-not-allowed disabled:opacity-50"
+                >
+                  <Award className="w-4 h-4" />
+                  {downloadingValidationCertId === currentValidationModule.id
+                    ? 'Génération...'
+                    : currentValidationStatus === 'VALIDATED'
+                      ? 'Télécharger mon certificat'
+                      : 'Certificat verrouillé'}
+                </button>
               )}
 
               {currentCertificateUrl && currentModuleQuizComplete && currentModule?.quizzes?.[0] && (

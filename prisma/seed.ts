@@ -818,6 +818,20 @@ const employeeModules: ModuleSeed[] = [
     durationMinutes: 0,
     lessons: [],
   },
+  {
+    title: 'PHASE 7 · Validation',
+    description: [
+      'PRISE EN CHARGE CLIENTES RÉELLES',
+      'Minimum :',
+      '5 clientes complètes',
+      '1 bilan complet minimum',
+      '1 cas stimulation forte',
+      '1 cas stagnation ou fatigue',
+      '1 cas gestion objection',
+    ].join('\n'),
+    durationMinutes: 0,
+    lessons: [],
+  },
 ];
 
 const phaseThreeProtocolQuiz = employeeModules[3].quiz;
@@ -888,7 +902,7 @@ const demoFormations: DemoFormation[] = [
     title: 'Onboarding Thérapeute RESET CLUB',
     slug: 'parcours-employe-reset-club',
     description:
-      'Un parcours interne en 6 phases pour préparer, former, certifier et intégrer les thérapeutes RESET CLUB.',
+      'Un parcours interne en 7 phases pour préparer, former, certifier et intégrer les thérapeutes RESET CLUB.',
     targetRole: 'EMPLOYEE',
     difficultyLevel: 'INTERMEDIATE',
     durationHours: 6,

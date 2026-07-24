@@ -28,9 +28,12 @@ export async function GET(
       totalQuizzes: progress.totalQuizzes,
       completedItems: progress.completedItems,
       totalItems: progress.totalItems,
+      completedValidations: progress.completedValidations,
+      totalValidations: progress.totalValidations,
       progressPercentage: Math.round(progress.progressPercentage),
       completedLessonIds: progress.completedLessonIds,
       completedQuizIds: progress.completedQuizIds,
+      completedValidationModuleIds: progress.completedValidationModuleIds,
     });
   } catch (error) {
     console.error('Error fetching formation progress:', error);

@@ -54,19 +54,31 @@ function getSafeFilename(value: string) {
 }
 
 function getOverlayLayout(templatePath: string) {
-  const isElearningCertificate = path.basename(templatePath) === 'CERTIFICAT-E-LEARNING.pdf';
+  const templateName = path.basename(templatePath);
+  const isElearningCertificate = templateName === 'CERTIFICAT-E-LEARNING.pdf';
+  const isGlobalTherapistCertificate = templateName === 'CERTIFICAT GLOBAL THERAPEUTE RESET CLUB .pdf';
 
-  return isElearningCertificate
-    ? {
+  if (isElearningCertificate) {
+    return {
       nameY: 288,
       dateY: 92,
       dateCenterX: 690,
-    }
-    : {
-      nameY: 338,
-      dateY: 58,
-      dateCenterX: 705,
     };
+  }
+
+  if (isGlobalTherapistCertificate) {
+    return {
+      nameY: 338,
+      dateY: 78,
+      dateCenterX: 306,
+    };
+  }
+
+  return {
+    nameY: 338,
+    dateY: 58,
+    dateCenterX: 705,
+  };
 }
 
 // GET /api/certificate/phase/[quizId] - Generate a personalized phase certificate PDF

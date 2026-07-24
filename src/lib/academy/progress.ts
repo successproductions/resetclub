@@ -62,11 +62,15 @@ export async function getFormationCompletionTargets(formationId: string) {
       ])
     )
   );
+  const validationModuleIds = formation.modules
+    .filter((module) => module.title.startsWith('PHASE 7'))
+    .map((module) => module.id);
 
   return {
     formation,
     lessonIds,
     quizIds,
+    validationModuleIds,
   };
 }
 
@@ -77,10 +81,11 @@ export async function getFormationProgress(userId: string, formationId: string) 
     return null;
   }
 
-  const { lessonIds, quizIds } = targets;
+  const { lessonIds, quizIds, validationModuleIds } = targets;
   const totalLessons = lessonIds.length;
   const totalQuizzes = quizIds.length;
-  const totalItems = totalLessons + totalQuizzes;
+  const totalValidations = validationModuleIds.length;
+  const totalItems = totalLessons + totalQuizzes + totalValidations;
 
   const enrollment = await prisma.enrollment.findUnique({
     where: {
@@ -104,6 +109,9 @@ export async function getFormationProgress(userId: string, formationId: string) 
       isComplete: false,
       completedLessonIds: [] as string[],
       completedQuizIds: [] as string[],
+      completedValidationModuleIds: [] as string[],
+      totalValidations,
+      completedValidations: 0,
     };
   }
 
@@ -128,10 +136,22 @@ export async function getFormationProgress(userId: string, formationId: string) 
     distinct: ['quizId'],
     select: { quizId: true },
   });
+  const completedValidations = validationModuleIds.length > 0
+    ? await prisma.phaseValidation.findMany({
+        where: {
+          userId,
+          moduleId: { in: validationModuleIds },
+          status: 'VALIDATED',
+        },
+        select: { moduleId: true },
+      })
+    : [];
 
   const completedLessonIds = completedLessons.map((progress) => progress.lessonId);
   const completedQuizIds = completedQuizzes.map((attempt) => attempt.quizId);
-  const completedItems = completedLessonIds.length + completedQuizIds.length;
+  const completedValidationModuleIds = completedValidations.map((validation) => validation.moduleId);
+  const completedItems =
+    completedLessonIds.length + completedQuizIds.length + completedValidationModuleIds.length;
   const progressPercentage = totalItems > 0 ? (completedItems / totalItems) * 100 : 0;
   const isComplete = totalItems > 0 && completedItems >= totalItems;
 
@@ -147,6 +167,9 @@ export async function getFormationProgress(userId: string, formationId: string) 
     isComplete,
     completedLessonIds,
     completedQuizIds,
+    completedValidationModuleIds,
+    totalValidations,
+    completedValidations: completedValidationModuleIds.length,
   };
 }
 
