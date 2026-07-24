@@ -412,10 +412,24 @@ export default function CoursePage({ params }: { params: Promise<{ id: string }>
     const match = quiz?.description?.match(/(?:^|\n)Certificat:\s*([^\n]+)/);
     return match?.[1]?.trim() || null;
   };
+  const getFallbackPhaseCertificateUrl = (moduleTitle: string) => {
+    if (moduleTitle.startsWith('PHASE 3')) {
+      return '/pdf/PHASE-3/CERTIFICATION%20FORMATION%20PRESENTIELLE%20%20THERAPEUTE%20RESET%20CLUB.pdf';
+    }
+    if (moduleTitle.startsWith('PHASE 4')) {
+      return '/pdf/PHASE-4/CERTIFICAT%20FORMATION%20MACHINE%20RESET%20CLUB.pdf';
+    }
+    if (moduleTitle.startsWith('PHASE 5')) {
+      return '/pdf/PHASE-5/CERTIFICAT%20GLOBAL%20THERAPEUTE%20RESET%20CLUB%20.pdf';
+    }
+
+    return null;
+  };
   const getModuleBadgeUrl = (module: Module) =>
     module.lessons.find((lesson) => lesson.resourcesUrl)?.resourcesUrl ||
     getQuizBadgeUrl(module.quizzes?.[0]);
-  const getModuleCertificateUrl = (module: Module) => getQuizCertificateUrl(module.quizzes?.[0]);
+  const getModuleCertificateUrl = (module: Module) =>
+    getQuizCertificateUrl(module.quizzes?.[0]) || getFallbackPhaseCertificateUrl(module.title);
   const isModuleComplete = (module: Module) =>
     module.lessons.every((lesson) => completedLessonIds.includes(lesson.id)) &&
     (module.quizzes || []).every((quiz) => completedQuizIds.includes(quiz.id));
@@ -882,7 +896,7 @@ export default function CoursePage({ params }: { params: Promise<{ id: string }>
                 </button>
               )}
 
-              {isFormationComplete && (
+              {isFormationComplete && !(currentCertificateUrl && currentModuleQuizComplete) && (
                 <button
                   onClick={downloadCertificate}
                   disabled={downloadingCert}

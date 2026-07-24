@@ -10,6 +10,20 @@ function getCertificateUrl(description: string | null) {
   return match?.[1]?.trim() || null;
 }
 
+function getFallbackPhaseCertificateUrl(moduleTitle: string) {
+  if (moduleTitle.startsWith('PHASE 3')) {
+    return '/pdf/PHASE-3/CERTIFICATION%20FORMATION%20PRESENTIELLE%20%20THERAPEUTE%20RESET%20CLUB.pdf';
+  }
+  if (moduleTitle.startsWith('PHASE 4')) {
+    return '/pdf/PHASE-4/CERTIFICAT%20FORMATION%20MACHINE%20RESET%20CLUB.pdf';
+  }
+  if (moduleTitle.startsWith('PHASE 5')) {
+    return '/pdf/PHASE-5/CERTIFICAT%20GLOBAL%20THERAPEUTE%20RESET%20CLUB%20.pdf';
+  }
+
+  return null;
+}
+
 function getTemplatePath(certificateUrl: string) {
   const pathname = new URL(certificateUrl, 'https://resetclub.ma').pathname;
 
@@ -83,7 +97,8 @@ export async function GET(
       return NextResponse.json({ error: 'Quiz non trouvé' }, { status: 404 });
     }
 
-    const certificateUrl = getCertificateUrl(quiz.description);
+    const certificateUrl =
+      getCertificateUrl(quiz.description) || getFallbackPhaseCertificateUrl(quiz.module.title);
     if (!certificateUrl) {
       return NextResponse.json({ error: 'Certificat non disponible pour ce module' }, { status: 404 });
     }
