@@ -46,6 +46,12 @@ const EMPLOYEE_CLOUDINARY_VIDEO_URLS: Record<string, string> = {
     'https://res.cloudinary.com/clo5dy7d/video/upload/v1784731894/PHASE_2_MODULE_1_ELEARNING_THERAPEUTE_p43kdx.mp4',
   'La Méthode IN•OUT•RESET':
     'https://res.cloudinary.com/clo5dy7d/video/upload/v1784731951/PHASE_2_MODULE_2_ELEARNING_THERAPEUTE_us1eo7.mp4',
+  'Les 3 types de protocoles RESET CLUB':
+    'https://res.cloudinary.com/clo5dy7d/video/upload/v1784907652/PHASE_2_Module_3_nxdhcz.mp4',
+  'Accueil Client & Rituel RESET':
+    'https://res.cloudinary.com/clo5dy7d/video/upload/v1784908142/PHASE_2_Module_4_rswo5p.mp4',
+  'Éthique, Confidentialité & Posture de Thérapeute':
+    'https://res.cloudinary.com/clo5dy7d/video/upload/v1784907768/PHASE_2_Module_5_giervn.mp4',
 };
 
 const DEMO_USER_EMAILS = ['client.demo@resetclub.ma', 'employee.demo@resetclub.ma'];
