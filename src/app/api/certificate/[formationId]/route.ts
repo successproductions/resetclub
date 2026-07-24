@@ -78,23 +78,23 @@ export async function GET(
       year: 'numeric',
     });
 
-    // ── Name — centered on the signature line ──
-    // The line is approximately at y=320 from bottom (PDF coords are bottom-left origin)
-    const nameWidth = timesRomanBold.widthOfTextAtSize(fullName, 22);
+    // Place values on the existing template lines without editing the source PDF.
+    const nameSize = fullName.length > 32 ? 18 : 22;
+    const dateSize = 10;
+    const nameWidth = timesRomanBold.widthOfTextAtSize(fullName, nameSize);
+    const dateWidth = helvetica.widthOfTextAtSize(dateStr, dateSize);
     page.drawText(fullName, {
       x: (width - nameWidth) / 2,
-      y: 338,
-      size: 22,
+      y: 288,
+      size: nameSize,
       font: timesRomanBold,
       color: rgb(0.18, 0.18, 0.18),
     });
 
-    // ── Date — right side, next to "Date :" ──
-    // "Date :" text is at approximately x=630, y=120 from bottom
     page.drawText(dateStr, {
-      x: 658,
-      y: 58,
-      size: 10,
+      x: 690 - dateWidth / 2,
+      y: 92,
+      size: dateSize,
       font: helvetica,
       color: rgb(0.18, 0.18, 0.18),
     });

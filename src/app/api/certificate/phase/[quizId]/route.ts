@@ -39,6 +39,22 @@ function getSafeFilename(value: string) {
   return value.replace(/[^a-zA-Z0-9]/g, '_');
 }
 
+function getOverlayLayout(templatePath: string) {
+  const isElearningCertificate = path.basename(templatePath) === 'CERTIFICAT-E-LEARNING.pdf';
+
+  return isElearningCertificate
+    ? {
+      nameY: 288,
+      dateY: 92,
+      dateCenterX: 690,
+    }
+    : {
+      nameY: 338,
+      dateY: 58,
+      dateCenterX: 705,
+    };
+}
+
 // GET /api/certificate/phase/[quizId] - Generate a personalized phase certificate PDF
 export async function GET(
   request: NextRequest,
@@ -121,20 +137,23 @@ export async function GET(
         : session.user.email.toUpperCase();
     const dateStr = formatFrenchDate(passedAttempt.completedAt);
     const nameSize = fullName.length > 32 ? 18 : 22;
+    const dateSize = 10;
+    const layout = getOverlayLayout(templatePath);
     const nameWidth = nameFont.widthOfTextAtSize(fullName, nameSize);
+    const dateWidth = dateFont.widthOfTextAtSize(dateStr, dateSize);
 
     page.drawText(fullName, {
       x: (width - nameWidth) / 2,
-      y: 338,
+      y: layout.nameY,
       size: nameSize,
       font: nameFont,
       color: rgb(0.18, 0.18, 0.18),
     });
 
     page.drawText(dateStr, {
-      x: 658,
-      y: 58,
-      size: 10,
+      x: layout.dateCenterX - dateWidth / 2,
+      y: layout.dateY,
+      size: dateSize,
       font: dateFont,
       color: rgb(0.18, 0.18, 0.18),
     });
