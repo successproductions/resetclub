@@ -55,9 +55,8 @@ export async function GET(
     const existingPdfBytes = fs.readFileSync(pdfPath);
     const pdfDoc = await PDFDocument.load(existingPdfBytes);
 
-    // Get the first page
     const pages = pdfDoc.getPages();
-    const page = pages[0];
+    const page = pages[pages.length - 1];
     const { width } = page.getSize();
     // width ≈ 841.89, height ≈ 595.276 (A4 landscape)
 
@@ -84,7 +83,7 @@ export async function GET(
     const nameWidth = timesRomanBold.widthOfTextAtSize(fullName, 22);
     page.drawText(fullName, {
       x: (width - nameWidth) / 2,
-      y: 295,
+      y: 338,
       size: 22,
       font: timesRomanBold,
       color: rgb(0.18, 0.18, 0.18),
@@ -94,7 +93,7 @@ export async function GET(
     // "Date :" text is at approximately x=630, y=120 from bottom
     page.drawText(dateStr, {
       x: 658,
-      y: 118,
+      y: 58,
       size: 10,
       font: helvetica,
       color: rgb(0.18, 0.18, 0.18),

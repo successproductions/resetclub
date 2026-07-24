@@ -81,6 +81,7 @@ export default function CoursePage({ params }: { params: Promise<{ id: string }>
   const [completedQuizIds, setCompletedQuizIds] = useState<string[]>([]);
   const [isFormationComplete, setIsFormationComplete] = useState(false);
   const [downloadingCert, setDownloadingCert] = useState(false);
+  const [downloadingPhaseCertId, setDownloadingPhaseCertId] = useState<string | null>(null);
   // useRef to avoid stale closure in markLessonComplete
   const formationIdRef = useRef<string>('');
 
@@ -241,6 +242,39 @@ export default function CoursePage({ params }: { params: Promise<{ id: string }>
       console.error('Error downloading certificate:', error);
     } finally {
       setDownloadingCert(false);
+    }
+  };
+
+  const downloadPhaseCertificate = async (quizId: string) => {
+    setDownloadingPhaseCertId(quizId);
+    try {
+      const token = localStorage.getItem('academy_token');
+      const response = await fetch(`/api/certificate/phase/${quizId}`, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+
+      if (response.status === 401) {
+        handleExpiredSession();
+        return;
+      }
+
+      if (response.ok) {
+        const blob = await response.blob();
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'Certificat_Phase_ResetClub.pdf';
+        a.click();
+        URL.revokeObjectURL(url);
+      } else {
+        const error = await response.json();
+        alert(error.error || 'Certificat non disponible');
+      }
+    } catch (error) {
+      console.error('Error downloading phase certificate:', error);
+      alert('Erreur lors du téléchargement du certificat');
+    } finally {
+      setDownloadingPhaseCertId(null);
     }
   };
 
@@ -535,15 +569,14 @@ export default function CoursePage({ params }: { params: Promise<{ id: string }>
 
                     {moduleCertificateUrl && (
                       moduleQuizComplete ? (
-                        <a
-                          href={moduleCertificateUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
+                        <button
+                          onClick={() => downloadPhaseCertificate(module.quizzes![0].id)}
+                          disabled={downloadingPhaseCertId === module.quizzes![0].id}
                           className="mx-10 mb-2 inline-flex items-center gap-2 rounded-full bg-amber-50 px-3 py-1.5 text-xs font-medium text-amber-800 transition-colors hover:bg-white"
                         >
                           <Award className="w-3.5 h-3.5 flex-shrink-0 text-amber-700" />
-                          Certificat disponible
-                        </a>
+                          {downloadingPhaseCertId === module.quizzes![0].id ? 'Génération...' : 'Certificat disponible'}
+                        </button>
                       ) : (
                         <div className="mx-10 mb-2 inline-flex items-center gap-2 rounded-full bg-amber-50/10 px-3 py-1.5 text-xs font-medium text-white/75">
                           <Award className="w-3.5 h-3.5 flex-shrink-0 text-white/55" />
@@ -872,16 +905,15 @@ export default function CoursePage({ params }: { params: Promise<{ id: string }>
                 </a>
               )}
 
-              {currentCertificateUrl && currentModuleQuizComplete && (
-                <a
-                  href={currentCertificateUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
+              {currentCertificateUrl && currentModuleQuizComplete && currentModule?.quizzes?.[0] && (
+                <button
+                  onClick={() => downloadPhaseCertificate(currentModule.quizzes![0].id)}
+                  disabled={downloadingPhaseCertId === currentModule.quizzes[0].id}
                   className="flex items-center gap-2 px-5 py-2 bg-amber-500 hover:bg-amber-600 text-white text-sm font-medium rounded-lg transition-colors"
                 >
                   <Award className="w-4 h-4" />
-                  Certificat de phase
-                </a>
+                  {downloadingPhaseCertId === currentModule.quizzes[0].id ? 'Génération...' : 'Certificat de phase'}
+                </button>
               )}
             </div>
 
