@@ -76,6 +76,11 @@ interface PhaseValidation {
   updatedAt: string | null;
 }
 
+const isCertificateValidationTitle = (title: string) => title.startsWith('PHASE 6');
+const isCompetencyMaintenanceTitle = (title: string) => title.startsWith('PHASE 7');
+const isValidationTitle = (title: string) =>
+  isCertificateValidationTitle(title) || isCompetencyMaintenanceTitle(title);
+
 export default function CoursePage({ params }: { params: Promise<{ id: string }> }) {
   const router = useRouter();
   const [sidebarOpen, setSidebarOpen] = useState(true);
@@ -115,14 +120,48 @@ export default function CoursePage({ params }: { params: Promise<{ id: string }>
     }
   }, []);
 
-  const fetchFormation = useCallback(async (id: string) => {
+  const fetchFormation = useCallback(async (id: string, initialModuleId?: string | null) => {
     try {
       const response = await fetch(`/api/formations/${id}`);
       if (response.ok) {
-        const { formation } = await response.json();
+        const { formation } = await response.json() as { formation: Formation };
         setFormation(formation);
-        if (formation.modules.length > 0 && formation.modules[0].lessons.length > 0) {
-          setCurrentLesson(formation.modules[0].lessons[0]);
+
+        const requestedModuleIndex = initialModuleId
+          ? formation.modules.findIndex((module) => module.id === initialModuleId)
+          : -1;
+        const firstOpenableModuleIndex = formation.modules.findIndex(
+          (module) =>
+            module.lessons.length > 0 ||
+            (module.quizzes?.length || 0) > 0 ||
+            isValidationTitle(module.title)
+        );
+        const selectedModuleIndex = requestedModuleIndex >= 0
+          ? requestedModuleIndex
+          : firstOpenableModuleIndex;
+        const selectedModule = formation.modules[selectedModuleIndex];
+
+        if (!selectedModule) {
+          return;
+        }
+
+        setExpandedModules((prev) =>
+          prev.includes(selectedModuleIndex) ? prev : [...prev, selectedModuleIndex]
+        );
+        setCurrentLesson(null);
+        setCurrentQuiz(null);
+        setCurrentValidationModule(null);
+        setQuizStarted(false);
+
+        if (selectedModule.lessons.length > 0) {
+          setCurrentLesson(selectedModule.lessons[0]);
+          setViewMode('lesson');
+        } else if (selectedModule.quizzes?.length) {
+          setCurrentQuiz({ moduleId: selectedModule.id, quiz: selectedModule.quizzes[0] });
+          setViewMode('quiz');
+        } else if (isValidationTitle(selectedModule.title)) {
+          setCurrentValidationModule(selectedModule);
+          setViewMode('validation');
         }
       }
     } catch (error) {
@@ -184,8 +223,9 @@ export default function CoursePage({ params }: { params: Promise<{ id: string }>
   useEffect(() => {
     const loadData = async () => {
       const resolvedParams = await params;
+      const initialModuleId = new URLSearchParams(window.location.search).get('module');
       formationIdRef.current = resolvedParams.id;
-      await fetchFormation(resolvedParams.id);
+      await fetchFormation(resolvedParams.id, initialModuleId);
       await fetchProgress(resolvedParams.id);
       await fetchPhaseValidations(resolvedParams.id);
     };
@@ -370,8 +410,23 @@ export default function CoursePage({ params }: { params: Promise<{ id: string }>
     }
   };
 
+  const expandModuleForLesson = (lessonId: string) => {
+    if (!formation) return;
+
+    const moduleIndex = formation.modules.findIndex((module) =>
+      module.lessons.some((lesson) => lesson.id === lessonId)
+    );
+
+    if (moduleIndex < 0) return;
+
+    setExpandedModules((prev) =>
+      prev.includes(moduleIndex) ? prev : [...prev, moduleIndex]
+    );
+  };
+
   const selectLesson = (lesson: Lesson) => {
     setCurrentLesson(lesson);
+    expandModuleForLesson(lesson.id);
     setViewMode('lesson');
     setCurrentQuiz(null);
     setCurrentValidationModule(null);
@@ -484,8 +539,8 @@ export default function CoursePage({ params }: { params: Promise<{ id: string }>
   const currentQuizCompleted = currentQuiz
     ? completedQuizIds.includes(currentQuiz.quiz.id)
     : false;
-  const isCertificateValidationModule = (module: Module) => module.title.startsWith('PHASE 6');
-  const isCompetencyMaintenanceModule = (module: Module) => module.title.startsWith('PHASE 7');
+  const isCertificateValidationModule = (module: Module) => isCertificateValidationTitle(module.title);
+  const isCompetencyMaintenanceModule = (module: Module) => isCompetencyMaintenanceTitle(module.title);
   const isValidationModule = (module: Module) =>
     isCertificateValidationModule(module) || isCompetencyMaintenanceModule(module);
   const getValidationStatus = (module: Module): PhaseValidationStatus =>

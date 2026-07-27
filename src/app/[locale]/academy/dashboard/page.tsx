@@ -628,7 +628,7 @@ export default function AcademyDashboard() {
                               return (
                                 <Link
                                   key={module.id}
-                                  href={`/fr/academy/formations/${formation.id}`}
+                                  href={`/fr/academy/formations/${formation.id}?module=${module.id}`}
                                   className="rounded-lg border border-gray-200 bg-white p-4 transition-colors hover:border-[#51b1aa] hover:bg-[#f5fbfa]"
                                 >
                                   <div className="flex items-start gap-3">
