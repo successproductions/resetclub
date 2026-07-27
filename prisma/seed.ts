@@ -542,13 +542,13 @@ const employeeModules: ModuleSeed[] = [
   {
     title: 'PHASE 2 · Module 3 - Les 3 types de protocoles RESET CLUB',
     description: 'Protocoles, résultats et machines RESET CLUB.',
-    durationMinutes: 35,
+    durationMinutes: 6,
     lessons: [
       buildEmployeeVideoLesson(
         'Les 3 types de protocoles RESET CLUB',
         'Comprendre Light & Sculpt, Burn & Sculpt et Total Reset.',
         3,
-        540,
+        345,
         phase2BadgeUrls[2]
       ),
     ],
@@ -612,13 +612,13 @@ const employeeModules: ModuleSeed[] = [
   {
     title: 'PHASE 2 · Module 4 - Accueil Client & Rituel RESET',
     description: 'Installer un accueil client aligné avec l’expérience RESET.',
-    durationMinutes: 35,
+    durationMinutes: 6,
     lessons: [
       buildEmployeeVideoLesson(
         'Accueil Client & Rituel RESET',
         'Incarner le rituel d’accueil et l’ambiance RESET CLUB.',
         4,
-        540,
+        354,
         phase2BadgeUrls[3]
       ),
     ],
@@ -712,13 +712,13 @@ const employeeModules: ModuleSeed[] = [
   {
     title: 'PHASE 2 · Module 5 - Éthique, Confidentialité & Posture de Thérapeute',
     description: 'Incarner l’éthique RESET CLUB, la confidentialité et la posture juste.',
-    durationMinutes: 35,
+    durationMinutes: 5,
     lessons: [
       buildEmployeeVideoLesson(
         'Éthique, Confidentialité & Posture de Thérapeute',
         'Comprendre la confidentialité, la posture et la responsabilité thérapeute.',
         5,
-        540,
+        286,
         phase2BadgeUrls[4]
       ),
     ],

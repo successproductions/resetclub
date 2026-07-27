@@ -13,6 +13,7 @@ import {
   Award,
   ClipboardCheck,
   Clock3,
+  FileDown,
   XCircle
 } from 'lucide-react';
 
@@ -518,6 +519,17 @@ export default function CoursePage({ params }: { params: Promise<{ id: string }>
     const match = quiz?.description?.match(/(?:^|\n)Certificat:\s*([^\n]+)/);
     return match?.[1]?.trim() || null;
   };
+  const getQuizDocumentUrl = (quiz?: Quiz) => {
+    const match = quiz?.description?.match(/(?:^|\n)Document:\s*([^\n]+)/);
+    return match?.[1]?.trim() || null;
+  };
+  const getFallbackPhaseDocumentUrl = (moduleTitle: string) => {
+    if (moduleTitle.startsWith('PHASE 3')) {
+      return '/pdf/PHASE-3/FORMATION%20PR%C3%89SENTIELLE.pdf';
+    }
+
+    return null;
+  };
   const getFallbackPhaseCertificateUrl = (moduleTitle: string) => {
     if (moduleTitle.startsWith('PHASE 3')) {
       return '/pdf/PHASE-3/CERTIFICATION%20FORMATION%20PRESENTIELLE%20%20THERAPEUTE%20RESET%20CLUB.pdf';
@@ -536,6 +548,8 @@ export default function CoursePage({ params }: { params: Promise<{ id: string }>
     getQuizBadgeUrl(module.quizzes?.[0]);
   const getModuleCertificateUrl = (module: Module) =>
     getQuizCertificateUrl(module.quizzes?.[0]) || getFallbackPhaseCertificateUrl(module.title);
+  const getModuleDocumentUrl = (module: Module) =>
+    getQuizDocumentUrl(module.quizzes?.[0]) || getFallbackPhaseDocumentUrl(module.title);
   const isModuleComplete = (module: Module) =>
     (isValidationModule(module) ? isValidationApproved(module) : true) &&
     module.lessons.every((lesson) => completedLessonIds.includes(lesson.id)) &&
@@ -545,6 +559,7 @@ export default function CoursePage({ params }: { params: Promise<{ id: string }>
     (module.quizzes || []).every((quiz) => completedQuizIds.includes(quiz.id));
   const currentBadgeUrl = currentModule ? getModuleBadgeUrl(currentModule) : null;
   const currentCertificateUrl = currentModule ? getModuleCertificateUrl(currentModule) : null;
+  const currentDocumentUrl = currentModule ? getModuleDocumentUrl(currentModule) : null;
   const currentModuleComplete = currentModule ? isModuleComplete(currentModule) : false;
   const currentModuleQuizComplete = currentModule ? isModuleQuizComplete(currentModule) : false;
   const isCurrentValidationModule = currentModule ? isValidationModule(currentModule) : false;
@@ -608,6 +623,7 @@ export default function CoursePage({ params }: { params: Promise<{ id: string }>
           {formation.modules.map((module, moduleIndex) => {
             const moduleBadgeUrl = getModuleBadgeUrl(module);
             const moduleCertificateUrl = getModuleCertificateUrl(module);
+            const moduleDocumentUrl = getModuleDocumentUrl(module);
             const moduleComplete = isModuleComplete(module);
             const moduleQuizComplete = isModuleQuizComplete(module);
             const validationModule = isValidationModule(module);
@@ -722,6 +738,17 @@ export default function CoursePage({ params }: { params: Promise<{ id: string }>
                           Badge après validation
                         </div>
                       )
+                    )}
+
+                    {moduleDocumentUrl && (
+                      <a
+                        href={moduleDocumentUrl}
+                        download
+                        className="mx-10 mb-2 inline-flex items-center gap-2 rounded-full bg-white/95 px-3 py-1.5 text-xs font-medium text-[#2d6d68] transition-colors hover:bg-white"
+                      >
+                        <FileDown className="w-3.5 h-3.5 flex-shrink-0 text-[#2d6d68]" />
+                        Formation présentielle
+                      </a>
                     )}
 
                     {moduleCertificateUrl && (
@@ -1148,6 +1175,17 @@ export default function CoursePage({ params }: { params: Promise<{ id: string }>
                 >
                   <Award className="w-4 h-4" />
                   Badge du module
+                </a>
+              )}
+
+              {currentDocumentUrl && (
+                <a
+                  href={currentDocumentUrl}
+                  download
+                  className="flex items-center gap-2 px-5 py-2 bg-white border border-[#50b1aa] text-[#2d6d68] text-sm font-medium rounded-lg transition-colors hover:bg-[#50b1aa]/10"
+                >
+                  <FileDown className="w-4 h-4" />
+                  Formation présentielle
                 </a>
               )}
 
