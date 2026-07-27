@@ -1,21 +1,40 @@
-import { NextResponse } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server';
+import { getCurrentAcademySession } from '@/lib/auth/academy-session';
 import prisma from '@/lib/prisma';
 
 // GET /api/admin/stats - Get dashboard statistics
-export async function GET() {
+export async function GET(request: NextRequest) {
   try {
-    // DEVELOPMENT: Authentication disabled
-    // TODO: Re-enable in production
+    const session = await getCurrentAcademySession(request);
+    if (!session.ok) {
+      return NextResponse.json({ error: session.error }, { status: session.status });
+    }
 
-    // Get stats - only query tables that exist
-    const [totalUsers, totalFormations] = await Promise.all([
+    if (session.user.role !== 'ADMIN') {
+      return NextResponse.json({ error: 'Accès admin requis' }, { status: 403 });
+    }
+
+    const [totalUsers, totalFormations, activeEnrollments, completedEnrollments, validCertificates] = await Promise.all([
       prisma.user.count(),
-      prisma.formation.count()
+      prisma.formation.count(),
+      prisma.enrollment.count({
+        where: {
+          status: { in: ['ENROLLED', 'IN_PROGRESS'] },
+        },
+      }),
+      prisma.enrollment.count({
+        where: {
+          status: 'COMPLETED',
+        },
+      }),
+      prisma.certificate.count({
+        where: {
+          isValid: true,
+        },
+      }),
     ]);
 
-    // For now, set enrollments to 0 until we implement the enrollment system
-    const activeEnrollments = 0;
-    const completedCourses = 0;
+    const completedCourses = Math.max(completedEnrollments, validCertificates);
 
     return NextResponse.json({
       totalUsers,
