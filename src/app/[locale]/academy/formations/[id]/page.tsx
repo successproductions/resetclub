@@ -397,8 +397,8 @@ export default function CoursePage({ params }: { params: Promise<{ id: string }>
   };
 
   const toggleModule = (index: number) => {
-    setExpandedModules(prev => 
-      prev.includes(index) 
+    setExpandedModules(prev =>
+      prev.includes(index)
         ? prev.filter(i => i !== index)
         : [...prev, index]
     );
@@ -454,7 +454,7 @@ export default function CoursePage({ params }: { params: Promise<{ id: string }>
 
   const startQuiz = async () => {
     if (!currentQuiz) return;
-    
+
     // Fetch quiz questions
     try {
       const response = await fetch(`/api/quizzes/${currentQuiz.quiz.id}/questions`);
@@ -476,7 +476,7 @@ export default function CoursePage({ params }: { params: Promise<{ id: string }>
     if (showFeedback) return; // Don't allow changing answer after selection
     setSelectedAnswer(optionId);
     setShowFeedback(true);
-    
+
     // Save answer
     const questionId = quizQuestions[currentQuestionIndex].id;
     setUserAnswers(prev => ({ ...prev, [questionId]: optionId }));
@@ -485,7 +485,7 @@ export default function CoursePage({ params }: { params: Promise<{ id: string }>
   const handleNextQuestion = () => {
     setShowFeedback(false);
     setSelectedAnswer(null);
-    
+
     if (currentQuestionIndex < quizQuestions.length - 1) {
       setCurrentQuestionIndex(prev => prev + 1);
     } else {
@@ -498,17 +498,17 @@ export default function CoursePage({ params }: { params: Promise<{ id: string }>
   const calculateScore = () => {
     let correct = 0;
     let total = 0;
-    
+
     quizQuestions.forEach(question => {
       const userAnswer = userAnswers[question.id];
       const correctOption = question.options.find(opt => opt.isCorrect);
-      
+
       if (userAnswer === correctOption?.id) {
         correct++;
       }
       total++;
     });
-    
+
     return { correct, total, percentage: total > 0 ? Math.round((correct / total) * 100) : 0 };
   };
 
@@ -898,7 +898,7 @@ export default function CoursePage({ params }: { params: Promise<{ id: string }>
                   allowFullScreen
                 ></iframe>
               ) : (
-                <video 
+                <video
                   className="w-full h-full"
                   controls
                   poster="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='450'%3E%3Crect fill='%23000' width='800' height='450'/%3E%3Ctext fill='%23fff' font-size='24' font-family='Arial' x='50%25' y='50%25' text-anchor='middle' dy='.3em'%3EChargement de la formation...%3C/text%3E%3C/svg%3E"
@@ -994,14 +994,14 @@ export default function CoursePage({ params }: { params: Promise<{ id: string }>
                       <h1 className="text-3xl font-normal text-gray-900 mb-2">Quiz du Module</h1>
                       <p className="text-gray-500">Testez vos connaissances</p>
                     </div>
-                    
+
                     <div className="bg-white rounded-2xl p-8 shadow-sm border border-gray-200">
                       <div className="text-center">
                         <h2 className="text-xl! md:text-3xl! font-normal text-gray-900 mb-2">{currentQuiz?.quiz.title}</h2>
                         <p className="text-gray-500 mb-8">
                           {currentQuiz?.quiz._count?.questions || 0} questions
                         </p>
-                        <button 
+                        <button
                           onClick={startQuiz}
                           className="px-10 py-4 bg-[#50b1aa] text-white rounded-xl hover:bg-[#449990] transition-all font-normal text-lg shadow-sm"
                         >
@@ -1020,7 +1020,7 @@ export default function CoursePage({ params }: { params: Promise<{ id: string }>
                       <h1 className="text-3xl font-normal text-gray-900 mb-2">Quiz Terminé</h1>
                       <p className="text-gray-500 mb-8">Voici vos résultats</p>
                     </div>
-                    
+
                     <div className="bg-white rounded-2xl p-8 shadow-sm border border-gray-200 text-center">
                       <div className="mb-8">
                         <div className="text-6xl font-normal text-gray-900 mb-2">
@@ -1030,7 +1030,7 @@ export default function CoursePage({ params }: { params: Promise<{ id: string }>
                           {calculateScore().correct} sur {calculateScore().total} bonnes réponses
                         </p>
                       </div>
-                      
+
                       {calculateScore().percentage >= (currentQuiz?.quiz.passingScore || 70) ? (
                         <div className="bg-emerald-50 border border-emerald-200 rounded-xl p-4 mb-8">
                           <p className="text-emerald-700 font-medium">🎉 Félicitations! Vous avez réussi le quiz!</p>
@@ -1042,7 +1042,7 @@ export default function CoursePage({ params }: { params: Promise<{ id: string }>
                           </p>
                         </div>
                       )}
-                      
+
                       <button
                         onClick={() => {
                           setQuizStarted(false);
@@ -1061,7 +1061,7 @@ export default function CoursePage({ params }: { params: Promise<{ id: string }>
                   <>
                     {(() => {
                       const currentQuestion = quizQuestions[currentQuestionIndex];
-                      
+
                       return (
                         <>
                           {/* Progress Header */}
@@ -1075,35 +1075,35 @@ export default function CoursePage({ params }: { params: Promise<{ id: string }>
                               </span>
                             </div>
                             <div className="w-full bg-gray-200 rounded-full h-1">
-                              <div 
+                              <div
                                 className="bg-[#50b1aa] h-1 rounded-full transition-all duration-500"
                                 style={{ width: `${((currentQuestionIndex + 1) / quizQuestions.length) * 100}%` }}
                               />
                             </div>
                           </div>
-                          
+
                           {/* Question Card */}
                           <div className="bg-white rounded-2xl p-8 shadow-sm border border-gray-200 mb-6">
                             <h2 className="text-xl! md:text-3xl! font-normal text-gray-900 leading-relaxed">
                               {currentQuestion.questionText}
                             </h2>
                           </div>
-                          
+
                           {/* Answer Options - Clean Style */}
                           <div className="space-y-3 mb-6">
                             {currentQuestion.options.map((option) => {
                               const isSelected = selectedAnswer === option.id;
                               const isCorrect = option.isCorrect;
                               const showResult = showFeedback;
-                              
+
                               let cardStyles = 'bg-white border-2 border-gray-200 hover:border-[#50b1aa] hover:bg-gray-50';
                               let checkStyles = 'border-2 border-gray-300';
-                              
+
                               if (isSelected && !showResult) {
                                 cardStyles = 'bg-[#50b1aa]/5 border-2 border-[#50b1aa]';
                                 checkStyles = 'bg-[#50b1aa] border-[#50b1aa]';
                               }
-                              
+
                               if (showResult) {
                                 if (isSelected && isCorrect) {
                                   cardStyles = 'bg-emerald-50 border-2 border-emerald-500';
@@ -1118,7 +1118,7 @@ export default function CoursePage({ params }: { params: Promise<{ id: string }>
                                   cardStyles = 'bg-gray-50 border-2 border-gray-200 opacity-50';
                                 }
                               }
-                              
+
                               return (
                                 <button
                                   key={option.id}
@@ -1138,7 +1138,7 @@ export default function CoursePage({ params }: { params: Promise<{ id: string }>
                               );
                             })}
                           </div>
-                          
+
                           {/* Feedback & Next Button */}
                           {showFeedback && (
                             <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-200">
@@ -1167,7 +1167,7 @@ export default function CoursePage({ params }: { params: Promise<{ id: string }>
                                   </div>
                                 </div>
                               )}
-                              
+
                               <button
                                 onClick={handleNextQuestion}
                                 className="w-full px-6 py-3 bg-[#50b1aa] text-white rounded-xl hover:bg-[#449990] transition-all font-medium"
@@ -1198,18 +1198,18 @@ export default function CoursePage({ params }: { params: Promise<{ id: string }>
               {viewMode === 'validation'
                 ? currentValidationModule?.title || 'PHASE 6 · Validation'
                 : viewMode === 'quiz'
-                ? currentQuiz?.quiz.title || 'Quiz du module'
-                : currentLesson?.title || 'Sélectionnez une leçon'}
+                  ? currentQuiz?.quiz.title || 'Quiz du module'
+                  : currentLesson?.title || 'Sélectionnez une leçon'}
             </h1>
             <p className="text-sm text-gray-600">
               {viewMode === 'validation'
                 ? `Statut: ${getValidationLabel(currentValidationStatus, currentValidationModule)}`
                 : viewMode === 'quiz'
-                ? currentQuizCompleted
-                  ? 'Quiz réussi'
-                  : `Score minimum: ${currentQuiz?.quiz.passingScore || 70}%`
-                : currentLesson &&
-                  `Module ${formation.modules.findIndex(m => m.lessons.some(l => l.id === currentLesson.id)) + 1} • ${currentLessonCompleted ? 'Regardée' : formatDuration(currentLesson.durationSeconds)}`}
+                  ? currentQuizCompleted
+                    ? 'Quiz réussi'
+                    : `Score minimum: ${currentQuiz?.quiz.passingScore || 70}%`
+                  : currentLesson &&
+                  `${formation.modules.findIndex(m => m.lessons.some(l => l.id === currentLesson.id)) + 1} • ${currentLessonCompleted ? 'Regardée' : formatDuration(currentLesson.durationSeconds)}`}
             </p>
           </div>
         </div>
@@ -1321,7 +1321,7 @@ export default function CoursePage({ params }: { params: Promise<{ id: string }>
 
       {/* Overlay for mobile sidebar */}
       {sidebarOpen && (
-        <div 
+        <div
           className="lg:hidden fixed inset-0 bg-black bg-opacity-50 z-30"
           onClick={() => setSidebarOpen(false)}
         />
