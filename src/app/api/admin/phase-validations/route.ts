@@ -6,6 +6,10 @@ import prisma from '@/lib/prisma';
 const ALLOWED_STATUSES = ['PENDING', 'VALIDATED', 'NOT_VALIDATED'] as const;
 type PhaseValidationStatusValue = (typeof ALLOWED_STATUSES)[number];
 
+function isTrackedValidationTitle(title: string) {
+  return title.startsWith('PHASE 6') || title.startsWith('PHASE 7');
+}
+
 async function requireAdmin(request: NextRequest) {
   const session = await getCurrentAcademySession(request);
 
@@ -20,7 +24,7 @@ async function requireAdmin(request: NextRequest) {
   return { ok: true as const, user: session.user };
 }
 
-// GET /api/admin/phase-validations - List employee Phase 7 validation rows
+// GET /api/admin/phase-validations - List employee phase validation rows
 export async function GET(request: NextRequest) {
   try {
     const admin = await requireAdmin(request);
@@ -30,7 +34,10 @@ export async function GET(request: NextRequest) {
 
     const modules = await prisma.module.findMany({
       where: {
-        title: { startsWith: 'PHASE 7' },
+        OR: [
+          { title: { startsWith: 'PHASE 6' } },
+          { title: { startsWith: 'PHASE 7' } },
+        ],
         formation: { targetRole: 'EMPLOYEE' },
       },
       select: {
@@ -45,12 +52,13 @@ export async function GET(request: NextRequest) {
       },
       orderBy: { orderIndex: 'asc' },
     });
+    const validationModules = modules.filter((module) => isTrackedValidationTitle(module.title));
 
-    if (modules.length === 0) {
+    if (validationModules.length === 0) {
       return NextResponse.json({ validations: [] });
     }
 
-    const formationIds = modules.map((module) => module.formationId);
+    const formationIds = validationModules.map((module) => module.formationId);
     const users = await prisma.user.findMany({
       where: {
         role: 'EMPLOYEE',
@@ -71,7 +79,7 @@ export async function GET(request: NextRequest) {
 
     const existingValidations = await prisma.phaseValidation.findMany({
       where: {
-        moduleId: { in: modules.map((module) => module.id) },
+        moduleId: { in: validationModules.map((module) => module.id) },
         userId: { in: users.map((user) => user.id) },
       },
       include: {
@@ -88,7 +96,7 @@ export async function GET(request: NextRequest) {
       existingValidations.map((validation) => [`${validation.userId}:${validation.moduleId}`, validation])
     );
 
-    const validations = modules.flatMap((module) =>
+    const validations = validationModules.flatMap((module) =>
       users.map((user) => {
         const validation = validationByKey.get(`${user.id}:${module.id}`);
         const reviewer = validation?.reviewedBy;
@@ -119,7 +127,7 @@ export async function GET(request: NextRequest) {
   }
 }
 
-// PATCH /api/admin/phase-validations - Update one employee Phase 7 validation status
+// PATCH /api/admin/phase-validations - Update one employee phase validation status
 export async function PATCH(request: NextRequest) {
   try {
     const admin = await requireAdmin(request);
@@ -139,7 +147,10 @@ export async function PATCH(request: NextRequest) {
     const validationModule = await prisma.module.findFirst({
       where: {
         id: moduleId,
-        title: { startsWith: 'PHASE 7' },
+        OR: [
+          { title: { startsWith: 'PHASE 6' } },
+          { title: { startsWith: 'PHASE 7' } },
+        ],
         formation: { targetRole: 'EMPLOYEE' },
       },
       select: {

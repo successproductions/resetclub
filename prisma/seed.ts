@@ -819,13 +819,7 @@ const employeeModules: ModuleSeed[] = [
     lessons: [],
   },
   {
-    title: 'PHASE 6 · Post-onboarding Thérapeute RESET CLUB',
-    description: 'Contenu à venir.',
-    durationMinutes: 0,
-    lessons: [],
-  },
-  {
-    title: 'PHASE 7 · Validation',
+    title: 'PHASE 6 · Validation',
     description: [
       'PRISE EN CHARGE CLIENTES RÉELLES',
       'Minimum :',
@@ -834,6 +828,18 @@ const employeeModules: ModuleSeed[] = [
       '1 cas stimulation forte',
       '1 cas stagnation ou fatigue',
       '1 cas gestion objection',
+    ].join('\n'),
+    durationMinutes: 0,
+    lessons: [],
+  },
+  {
+    title: 'PHASE 7 · Maintien des Compétences techniques & maîtrise des Machines',
+    description: [
+      'MAINTIEN DES COMPÉTENCES TECHNIQUES & MAÎTRISE DES MACHINES',
+      'Statuts possibles :',
+      'Compétences validées',
+      'Recyclage nécessaire',
+      'Suspendue en attente de validation',
     ].join('\n'),
     durationMinutes: 0,
     lessons: [],

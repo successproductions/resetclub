@@ -167,10 +167,34 @@ export default function AdminDashboardPage() {
     return 'border-amber-200 bg-amber-50 text-amber-700';
   };
 
-  const getValidationLabel = (status: PhaseValidationStatus) => {
+  const isCompetencyMaintenanceTitle = (title: string) => title.startsWith('PHASE 7');
+
+  const getValidationLabel = (status: PhaseValidationStatus, moduleTitle?: string) => {
+    if (moduleTitle && isCompetencyMaintenanceTitle(moduleTitle)) {
+      if (status === 'VALIDATED') return 'Compétences validées';
+      if (status === 'NOT_VALIDATED') return 'Recyclage nécessaire';
+      return 'Suspendue en attente de validation';
+    }
+
     if (status === 'VALIDATED') return 'Validé';
     if (status === 'NOT_VALIDATED') return 'Non validé';
     return 'En attente';
+  };
+
+  const getActionLabels = (moduleTitle: string) => {
+    if (isCompetencyMaintenanceTitle(moduleTitle)) {
+      return {
+        pending: 'Suspendre',
+        validated: 'Compétences validées',
+        notValidated: 'Recyclage nécessaire',
+      };
+    }
+
+    return {
+      pending: 'En attente',
+      validated: 'Valider',
+      notValidated: 'Non valide',
+    };
   };
 
   const statCards = [
@@ -267,10 +291,10 @@ export default function AdminDashboardPage() {
       <div className="bg-white rounded-lg border border-[#e7dfd6] p-6 shadow-sm">
         <div className="mb-5 flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
           <div>
-            <p className="text-xs uppercase tracking-[0.18em] text-[#8f7b68]">Validation terrain</p>
-            <h2 className="mt-1 text-xl! font-semibold text-[#151f2b]">Phase 7 · Validation</h2>
+            <p className="text-xs uppercase tracking-[0.18em] text-[#8f7b68]">Validation & compétences</p>
+            <h2 className="mt-1 text-xl! font-semibold text-[#151f2b]">Phases 6 et 7 · Suivi thérapeute</h2>
             <p className="mt-1 text-sm text-[#5d6672]">
-              Valide la prise en charge de clientes réelles avant de débloquer le certificat.
+              Valide la prise en charge terrain et le maintien des compétences techniques.
             </p>
           </div>
           <div className="inline-flex w-fit items-center gap-2 rounded-full border border-amber-200 bg-amber-50 px-3 py-1.5 text-xs font-medium text-amber-700">
@@ -287,13 +311,14 @@ export default function AdminDashboardPage() {
           </div>
         ) : phaseValidations.length === 0 ? (
           <div className="rounded-lg border border-dashed border-[#e7dfd6] p-6 text-sm text-[#5d6672]">
-            Aucune Phase 7 à valider pour le moment.
+            Aucune phase à valider pour le moment.
           </div>
         ) : (
           <div className="space-y-3">
             {phaseValidations.map((validation) => {
               const key = `${validation.userId}:${validation.moduleId}`;
               const isUpdating = updatingValidationKey === key;
+              const actionLabels = getActionLabels(validation.moduleTitle);
 
               return (
                 <div
@@ -311,7 +336,7 @@ export default function AdminDashboardPage() {
                         ) : (
                           <Clock3 className="h-3 w-3" />
                         )}
-                        {getValidationLabel(validation.status)}
+                        {getValidationLabel(validation.status, validation.moduleTitle)}
                       </span>
                     </div>
                     <p className="truncate text-sm text-[#5d6672]">{validation.employeeEmail}</p>
@@ -324,21 +349,21 @@ export default function AdminDashboardPage() {
                       disabled={isUpdating}
                       className="rounded-lg border border-[#e7dfd6] px-3 py-2 text-xs font-medium text-[#5d6672] transition-colors hover:border-amber-300 hover:bg-amber-50 disabled:opacity-50"
                     >
-                      En attente
+                      {actionLabels.pending}
                     </button>
                     <button
                       onClick={() => updatePhaseValidation(validation, 'VALIDATED')}
                       disabled={isUpdating}
                       className="rounded-lg border border-emerald-200 bg-emerald-50 px-3 py-2 text-xs font-medium text-emerald-700 transition-colors hover:bg-emerald-100 disabled:opacity-50"
                     >
-                      Valider
+                      {actionLabels.validated}
                     </button>
                     <button
                       onClick={() => updatePhaseValidation(validation, 'NOT_VALIDATED')}
                       disabled={isUpdating}
                       className="rounded-lg border border-red-200 bg-red-50 px-3 py-2 text-xs font-medium text-red-700 transition-colors hover:bg-red-100 disabled:opacity-50"
                     >
-                      Non valide
+                      {actionLabels.notValidated}
                     </button>
                   </div>
                 </div>

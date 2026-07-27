@@ -2,7 +2,11 @@ import { NextRequest, NextResponse } from 'next/server';
 import { getCurrentAcademySession } from '@/lib/auth/academy-session';
 import prisma from '@/lib/prisma';
 
-// GET /api/phase-validations?formationId=... - Current user's Phase 7 validation states
+function isTrackedValidationTitle(title: string) {
+  return title.startsWith('PHASE 6') || title.startsWith('PHASE 7');
+}
+
+// GET /api/phase-validations?formationId=... - Current user's phase validation states
 export async function GET(request: NextRequest) {
   try {
     const session = await getCurrentAcademySession(request);
@@ -20,7 +24,10 @@ export async function GET(request: NextRequest) {
     const modules = await prisma.module.findMany({
       where: {
         formationId,
-        title: { startsWith: 'PHASE 7' },
+        OR: [
+          { title: { startsWith: 'PHASE 6' } },
+          { title: { startsWith: 'PHASE 7' } },
+        ],
       },
       select: {
         id: true,
@@ -28,11 +35,12 @@ export async function GET(request: NextRequest) {
       },
       orderBy: { orderIndex: 'asc' },
     });
+    const validationModules = modules.filter((module) => isTrackedValidationTitle(module.title));
 
     const existingValidations = await prisma.phaseValidation.findMany({
       where: {
         userId: session.user.id,
-        moduleId: { in: modules.map((module) => module.id) },
+        moduleId: { in: validationModules.map((module) => module.id) },
       },
       select: {
         moduleId: true,
@@ -46,7 +54,7 @@ export async function GET(request: NextRequest) {
     );
 
     return NextResponse.json({
-      validations: modules.map((module) => {
+      validations: validationModules.map((module) => {
         const validation = validationByModuleId.get(module.id);
 
         return {

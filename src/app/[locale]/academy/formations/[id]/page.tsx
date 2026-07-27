@@ -484,11 +484,20 @@ export default function CoursePage({ params }: { params: Promise<{ id: string }>
   const currentQuizCompleted = currentQuiz
     ? completedQuizIds.includes(currentQuiz.quiz.id)
     : false;
-  const isValidationModule = (module: Module) => module.title.startsWith('PHASE 7');
+  const isCertificateValidationModule = (module: Module) => module.title.startsWith('PHASE 6');
+  const isCompetencyMaintenanceModule = (module: Module) => module.title.startsWith('PHASE 7');
+  const isValidationModule = (module: Module) =>
+    isCertificateValidationModule(module) || isCompetencyMaintenanceModule(module);
   const getValidationStatus = (module: Module): PhaseValidationStatus =>
     phaseValidations[module.id]?.status || 'PENDING';
   const isValidationApproved = (module: Module) => getValidationStatus(module) === 'VALIDATED';
-  const getValidationLabel = (status: PhaseValidationStatus) => {
+  const getValidationLabel = (status: PhaseValidationStatus, module?: Module | null) => {
+    if (module && isCompetencyMaintenanceModule(module)) {
+      if (status === 'VALIDATED') return 'Compétences validées';
+      if (status === 'NOT_VALIDATED') return 'Recyclage nécessaire';
+      return 'Suspendue en attente de validation';
+    }
+
     if (status === 'VALIDATED') return 'Validé';
     if (status === 'NOT_VALIDATED') return 'Non validé';
     return 'En attente';
@@ -551,7 +560,7 @@ export default function CoursePage({ params }: { params: Promise<{ id: string }>
   const getModuleDocumentUrl = (module: Module) =>
     getQuizDocumentUrl(module.quizzes?.[0]) || getFallbackPhaseDocumentUrl(module.title);
   const isModuleComplete = (module: Module) =>
-    (isValidationModule(module) ? isValidationApproved(module) : true) &&
+    (isCertificateValidationModule(module) ? isValidationApproved(module) : true) &&
     module.lessons.every((lesson) => completedLessonIds.includes(lesson.id)) &&
     (module.quizzes || []).every((quiz) => completedQuizIds.includes(quiz.id));
   const isModuleQuizComplete = (module: Module) =>
@@ -563,6 +572,9 @@ export default function CoursePage({ params }: { params: Promise<{ id: string }>
   const currentModuleComplete = currentModule ? isModuleComplete(currentModule) : false;
   const currentModuleQuizComplete = currentModule ? isModuleQuizComplete(currentModule) : false;
   const isCurrentValidationModule = currentModule ? isValidationModule(currentModule) : false;
+  const isCurrentCertificateValidationModule = currentModule
+    ? isCertificateValidationModule(currentModule)
+    : false;
   const currentValidationStatus = currentValidationModule
     ? getValidationStatus(currentValidationModule)
     : 'PENDING';
@@ -627,6 +639,7 @@ export default function CoursePage({ params }: { params: Promise<{ id: string }>
             const moduleComplete = isModuleComplete(module);
             const moduleQuizComplete = isModuleQuizComplete(module);
             const validationModule = isValidationModule(module);
+            const certificateValidationModule = isCertificateValidationModule(module);
             const validationStatus = getValidationStatus(module);
             const validationApproved = validationStatus === 'VALIDATED';
 
@@ -652,7 +665,7 @@ export default function CoursePage({ params }: { params: Promise<{ id: string }>
                   </div>
                   {validationModule && (
                     <span className="ml-2 rounded-full bg-white/15 px-2 py-1 text-[10px] font-medium text-white">
-                      {getValidationLabel(validationStatus)}
+                      {getValidationLabel(validationStatus, module)}
                     </span>
                   )}
                 </button>
@@ -673,8 +686,10 @@ export default function CoursePage({ params }: { params: Promise<{ id: string }>
                           <Clock3 className="w-4 h-4 text-amber-200 flex-shrink-0" />
                         )}
                         <div className="flex-1 min-w-0">
-                          <p className="text-sm text-gray-100">Validation admin</p>
-                          <p className="text-xs text-gray-200">{getValidationLabel(validationStatus)}</p>
+                          <p className="text-sm text-gray-100">
+                            {certificateValidationModule ? 'Validation admin' : 'Statut compétences'}
+                          </p>
+                          <p className="text-xs text-gray-200">{getValidationLabel(validationStatus, module)}</p>
                         </div>
                       </button>
                     )}
@@ -769,7 +784,7 @@ export default function CoursePage({ params }: { params: Promise<{ id: string }>
                       )
                     )}
 
-                    {validationModule && (
+                    {certificateValidationModule && (
                       validationApproved ? (
                         <button
                           onClick={() => downloadValidationCertificate(module.id)}
@@ -838,10 +853,10 @@ export default function CoursePage({ params }: { params: Promise<{ id: string }>
                     <ClipboardCheck className="w-10 h-10 text-[#50b1aa]" />
                   </div>
                   <h1 className="text-3xl font-normal text-gray-900 mb-3">
-                    {currentValidationModule?.title || 'PHASE 7 · Validation'}
+                    {currentValidationModule?.title || 'PHASE 6 · Validation'}
                   </h1>
                   <span className={`inline-flex rounded-full border px-4 py-1.5 text-sm font-medium ${getValidationStyles(currentValidationStatus)}`}>
-                    {getValidationLabel(currentValidationStatus)}
+                    {getValidationLabel(currentValidationStatus, currentValidationModule)}
                   </span>
                 </div>
 
@@ -857,7 +872,7 @@ export default function CoursePage({ params }: { params: Promise<{ id: string }>
                       <div className="space-y-6">
                         <div>
                           <p className="text-xs uppercase tracking-[0.18em] text-[#8f7b68]">
-                            Validation terrain
+                            {isCurrentCertificateValidationModule ? 'Validation terrain' : 'Maintien des compétences'}
                           </p>
                           <h2 className="mt-2 text-2xl! font-semibold text-[#151f2b]">
                             {title || 'PRISE EN CHARGE CLIENTES RÉELLES'}
@@ -880,15 +895,21 @@ export default function CoursePage({ params }: { params: Promise<{ id: string }>
 
                         {currentValidationStatus === 'VALIDATED' ? (
                           <div className="rounded-xl border border-emerald-200 bg-emerald-50 p-4 text-sm text-emerald-700">
-                            La validation admin est confirmée. Le certificat est disponible.
+                            {isCurrentCertificateValidationModule
+                              ? 'La validation admin est confirmée. Le certificat est disponible.'
+                              : 'Les compétences techniques sont validées.'}
                           </div>
                         ) : currentValidationStatus === 'NOT_VALIDATED' ? (
                           <div className="rounded-xl border border-red-200 bg-red-50 p-4 text-sm text-red-700">
-                            La validation admin n’est pas validée pour le moment.
+                            {isCurrentCertificateValidationModule
+                              ? 'La validation admin n’est pas validée pour le moment.'
+                              : 'Un recyclage est nécessaire avant nouvelle validation.'}
                           </div>
                         ) : (
                           <div className="rounded-xl border border-amber-200 bg-amber-50 p-4 text-sm text-amber-700">
-                            En attente de validation par un admin.
+                            {isCurrentCertificateValidationModule
+                              ? 'En attente de validation par un admin.'
+                              : 'Suspendue en attente de validation.'}
                           </div>
                         )}
                       </div>
@@ -1112,14 +1133,14 @@ export default function CoursePage({ params }: { params: Promise<{ id: string }>
           <div className="max-w-7xl mx-auto">
             <h1 className="text-lg font-normal text-gray-900 mb-1">
               {viewMode === 'validation'
-                ? currentValidationModule?.title || 'PHASE 7 · Validation'
+                ? currentValidationModule?.title || 'PHASE 6 · Validation'
                 : viewMode === 'quiz'
                 ? currentQuiz?.quiz.title || 'Quiz du module'
                 : currentLesson?.title || 'Sélectionnez une leçon'}
             </h1>
             <p className="text-sm text-gray-600">
               {viewMode === 'validation'
-                ? `Statut: ${getValidationLabel(currentValidationStatus)}`
+                ? `Statut: ${getValidationLabel(currentValidationStatus, currentValidationModule)}`
                 : viewMode === 'quiz'
                 ? currentQuizCompleted
                   ? 'Quiz réussi'
@@ -1189,7 +1210,7 @@ export default function CoursePage({ params }: { params: Promise<{ id: string }>
                 </a>
               )}
 
-              {isCurrentValidationModule && currentValidationModule && (
+              {isCurrentCertificateValidationModule && currentValidationModule && (
                 <button
                   onClick={() => downloadValidationCertificate(currentValidationModule.id)}
                   disabled={

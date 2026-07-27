@@ -8,6 +8,10 @@ function isMissingValidationTableError(error: unknown) {
   );
 }
 
+function isCertificateValidationModule(title: string) {
+  return title.startsWith('PHASE 6');
+}
+
 export async function getOrCreateEnrollment(userId: string, formationId: string) {
   const enrollment = await prisma.enrollment.findUnique({
     where: {
@@ -71,7 +75,7 @@ export async function getFormationCompletionTargets(formationId: string) {
     )
   );
   const validationModuleIds = formation.modules
-    .filter((module) => module.title.startsWith('PHASE 7'))
+    .filter((module) => isCertificateValidationModule(module.title))
     .map((module) => module.id);
 
   return {
@@ -162,7 +166,7 @@ export async function getFormationProgress(userId: string, formationId: string) 
       }
 
       console.warn(
-        'Phase validation table is not available yet. Run `npx prisma db push` on the server to enable Phase 7 validation.'
+        'Phase validation table is not available yet. Run `npx prisma db push` on the server to enable phase validation.'
       );
     }
   }

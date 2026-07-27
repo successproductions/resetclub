@@ -17,7 +17,7 @@ function getSafeFilename(value: string) {
   return value.replace(/[^a-zA-Z0-9]/g, '_');
 }
 
-// GET /api/certificate/validation/[moduleId] - Generate Phase 7 certificate after admin validation
+// GET /api/certificate/validation/[moduleId] - Generate Phase 6 certificate after admin validation
 export async function GET(
   request: NextRequest,
   { params }: { params: Promise<{ moduleId: string }> }
@@ -32,7 +32,7 @@ export async function GET(
     const validationModule = await prisma.module.findFirst({
       where: {
         id: moduleId,
-        title: { startsWith: 'PHASE 7' },
+        title: { startsWith: 'PHASE 6' },
       },
       select: {
         id: true,
@@ -71,7 +71,7 @@ export async function GET(
 
     if (validation?.status !== 'VALIDATED') {
       return NextResponse.json(
-        { error: 'La Phase 7 doit être validée par un admin pour obtenir ce certificat' },
+        { error: 'La Phase 6 doit être validée par un admin pour obtenir ce certificat' },
         { status: 403 }
       );
     }
