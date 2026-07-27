@@ -833,7 +833,7 @@ const employeeModules: ModuleSeed[] = [
     lessons: [],
   },
   {
-    title: 'PHASE 7 · Maintien des Compétences techniques & maîtrise des Machines',
+    title: 'PHASE 7 · Maintien des Compétences techniques & Maîtrise des Machines',
     description: [
       'MAINTIEN DES COMPÉTENCES TECHNIQUES & MAÎTRISE DES MACHINES',
       'Statuts possibles :',
@@ -973,32 +973,32 @@ async function createFormation(data: DemoFormation) {
             ? {
               quizzes: {
                 create: {
-              title: module.quiz.title,
-              description: [
-                module.quiz.description,
-                module.quiz.resourcesUrl ? `Badge: ${module.quiz.resourcesUrl}` : null,
-                module.quiz.certificateUrl ? `Certificat: ${module.quiz.certificateUrl}` : null,
-              ].filter(Boolean).join('\n'),
-              passingScore: 70,
-              maxAttempts: null,
-              orderIndex: 1,
-              questions: {
-                create: module.quiz.questions.map((question, questionIndex) => ({
-                  questionText: question.questionText,
-                  questionType: question.options.length === 2 ? 'TRUE_FALSE' : 'MULTIPLE_CHOICE',
-                  points: 1,
-                  orderIndex: questionIndex + 1,
-                  explanation: question.explanation,
-                  options: {
-                    create: question.options.map((option, optionIndex) => ({
-                      optionText: option.optionText,
-                      isCorrect: option.isCorrect,
-                      orderIndex: optionIndex + 1,
+                  title: module.quiz.title,
+                  description: [
+                    module.quiz.description,
+                    module.quiz.resourcesUrl ? `Badge: ${module.quiz.resourcesUrl}` : null,
+                    module.quiz.certificateUrl ? `Certificat: ${module.quiz.certificateUrl}` : null,
+                  ].filter(Boolean).join('\n'),
+                  passingScore: 70,
+                  maxAttempts: null,
+                  orderIndex: 1,
+                  questions: {
+                    create: module.quiz.questions.map((question, questionIndex) => ({
+                      questionText: question.questionText,
+                      questionType: question.options.length === 2 ? 'TRUE_FALSE' : 'MULTIPLE_CHOICE',
+                      points: 1,
+                      orderIndex: questionIndex + 1,
+                      explanation: question.explanation,
+                      options: {
+                        create: question.options.map((option, optionIndex) => ({
+                          optionText: option.optionText,
+                          isCorrect: option.isCorrect,
+                          orderIndex: optionIndex + 1,
+                        })),
+                      },
                     })),
                   },
-                })),
-              },
-            },
+                },
               },
             }
             : {}),

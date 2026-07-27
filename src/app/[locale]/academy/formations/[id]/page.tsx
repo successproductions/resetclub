@@ -935,7 +935,7 @@ export default function CoursePage({ params }: { params: Promise<{ id: string }>
                       <div className="space-y-6">
                         <div>
                           <p className="text-xs uppercase tracking-[0.18em] text-[#8f7b68]">
-                            {isCurrentCertificateValidationModule ? 'Validation terrain' : 'Maintien des compétences'}
+                            {isCurrentCertificateValidationModule ? 'Validation Terrain' : 'Maintien des compétences'}
                           </p>
                           <h2 className="mt-2 text-2xl! font-semibold text-[#151f2b]">
                             {title || 'PRISE EN CHARGE CLIENTES RÉELLES'}
