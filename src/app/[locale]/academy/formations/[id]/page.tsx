@@ -502,6 +502,14 @@ export default function CoursePage({ params }: { params: Promise<{ id: string }>
     if (status === 'NOT_VALIDATED') return 'Non validé';
     return 'En attente';
   };
+  const getValidationBadgeLabel = (status: PhaseValidationStatus, module?: Module | null) => {
+    if (module && isCompetencyMaintenanceModule(module)) {
+      if (status === 'PENDING') return 'Suspendue';
+      return getValidationLabel(status, module);
+    }
+
+    return getValidationLabel(status, module);
+  };
   const getValidationStyles = (status: PhaseValidationStatus) => {
     if (status === 'VALIDATED') return 'bg-emerald-50 text-emerald-700 border-emerald-200';
     if (status === 'NOT_VALIDATED') return 'bg-red-50 text-red-700 border-red-200';
@@ -664,8 +672,8 @@ export default function CoursePage({ params }: { params: Promise<{ id: string }>
                     <span className="text-sm font-medium text-left">{module.title}</span>
                   </div>
                   {validationModule && (
-                    <span className="ml-2 rounded-full bg-white/15 px-2 py-1 text-[10px] font-medium text-white">
-                      {getValidationLabel(validationStatus, module)}
+                    <span className="ml-2 shrink-0 rounded-full bg-white/15 px-2.5 py-1 text-[10px] font-medium text-white">
+                      {getValidationBadgeLabel(validationStatus, module)}
                     </span>
                   )}
                 </button>
