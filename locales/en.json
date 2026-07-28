@@ -130,26 +130,26 @@
     },
     "director": {
       "name": "Nahed Rachad",
-      "title": "À l’origine de Reset Club",
+      "title": "How Reset Club began",
       "subtitle": "Reset Club™",
-      "role": "Fondatrice de Reset Club · Coach en transformation féminine",
-      "imageAlt": "Nahed Rachad, fondatrice de Reset Club",
-      "bio1": "Life and business coach spécialisé en stratégie et leadership. Pendant des années, j’ai coaché des centaines d'entreprises et des milliers de personnes.",
-      "bio2": "Fondatrice du concept Prépare ton exam et accompagné plus de 2 700 000 jeunes au Maroc.",
-      "bio3": "J’étais partout  la télé, la radio, les réseaux sociaux, les scènes. Une communauté de 3.5 millions sur les réseaux sociaux. Une vie à plein régime.",
-      "bio4": "Et pendant ce temps-là, en silence, mon corps, lui, décrochait.",
-      "bio5": "La fatigue d’abord. Puis les douleurs articulaires. Puis 12 kilos que je ne comprenais pas. Un corps qui résistait à tout  le sport, les régimes, les centres. Un effet yoyo qui durait.",
-      "bio6": "Et une question qui revenait, de plus en plus fort : Pourquoi ça ne marche plus pour moi ?",
-      "bio7": "J’aurais pu baisser les bras. Au lieu de ça, j’ai fait ce que je fais toujours quand quelque chose me bloque : je me suis formée.",
-      "bio8": "J’ai découvert le biohacking. Je me suis entourée des meilleurs experts mondiaux. Et pour la première fois, j’ai compris ce qui se passait vraiment dans mon corps  l’inflammation, le cortisol, la résistance à l’insuline, le sommeil cassé. Ces paramètres invisibles qui bloquent tout, et que personne ne m’avait jamais expliqué.",
-      "bio9": "J’ai été mon propre cobaye. J’ai construit mes protocoles entoure des meilleurs experts internationals. Et mon corps a recommencé à coopérer.",
-      "bio10": "C’est là que j’ai su.",
-      "bio11": "Si moi  coach, formée, informée, entourée  je suis passée à côté de tout ça pendant des années… combien de femmes vivent exactement la même chose en ce moment, sans savoir que ce n’est pas leur faute ?",
-      "bio12": "Reset Club est né de cette conviction. Pas pour vous donner un programme de plus.",
-      "bio13": "Pour vous donner enfin ce que personne ne vous a donné : la compréhension de votre propre corps. La perte de poids ? Elle est arrivée. Mais comme une conséquence.",
-      "readMore": "Lire la suite",
-      "readLess": "Réduire",
-      "cta": "Réserver mon bilan RESET™"
+      "role": "Founder of Reset Club · Coach in women’s transformation",
+      "imageAlt": "Nahed Rachad, founder of Reset Club",
+      "bio1": "Life and business coach specializing in strategy and leadership. For years, I coached hundreds of companies and thousands of people.",
+      "bio2": "Founder of the Prépare ton exam concept, through which I have supported more than 2,700,000 young people across Morocco.",
+      "bio3": "I was everywhere: television, radio, social media, the stage. A community of 3.5 million followers. Life at full throttle.",
+      "bio4": "And all that time, quietly, my own body was giving out.",
+      "bio5": "Fatigue first. Then joint pain. Then 12 kilos I could not explain. A body that resisted everything — exercise, diets, clinics. A yo-yo effect that would not stop.",
+      "bio6": "And one question that kept coming back, louder and louder: why doesn’t this work for me any more?",
+      "bio7": "I could have given up. Instead, I did what I always do when something blocks me: I went and learned.",
+      "bio8": "I discovered biohacking. I surrounded myself with the best experts in the world. And for the first time, I understood what was really happening inside my body: inflammation, cortisol, insulin resistance, broken sleep. The invisible factors that block everything, and that no one had ever explained to me.",
+      "bio9": "I became my own test subject. I built my protocols around the best international experts. And my body started cooperating again.",
+      "bio10": "That was the moment I knew.",
+      "bio11": "If I — a coach, trained, informed, well surrounded — missed all of this for years… how many women are living exactly the same thing right now, without knowing that it is not their fault?",
+      "bio12": "Reset Club was born from that conviction. Not to give you one more program.",
+      "bio13": "But to finally give you what no one else has: an understanding of your own body. The weight loss? It came. But as a consequence.",
+      "readMore": "Read more",
+      "readLess": "Show less",
+      "cta": "Book my RESET™ assessment"
     },
     "team": {
       "title": "Our Expert Team",
@@ -412,10 +412,10 @@
     "cta": "Book my assessment"
   },
   "IntroSection": {
-    "hook": "LA MÉTHODE IN–OUT–RESET™",
-    "title": "La logique exclusive qui structure toute votre transformation",
-    "description": "Reset Club repose sur une approche exclusive : IN–OUT–RESET™. Une méthode globale qui agit simultanément à l’intérieur, à l’extérieur et en profondeur — pour rééquilibrer le métabolisme, le système nerveux et l’énergie du corps. Nos protocoles s’inspirent des approches développées dans les meilleurs centres internationaux spécialisés en longévité, optimisation métabolique, récupération nerveuse et performance humaine. IN–OUT–RESET™ n’est pas une méthode de contrôle. C’est une méthode de réconciliation avec votre corps. Et lorsque le corps recommence à coopérer, la perte de poids, l’énergie et la vitalité deviennent des conséquences naturelles.",
-    "cta": "Réserver mon bilan RESET™",
+    "hook": "THE IN–OUT–RESET™ METHOD",
+    "title": "The exclusive logic behind your entire transformation",
+    "description": "Reset Club is built on one exclusive approach: IN–OUT–RESET™. A complete method that works inside, outside and at depth all at once — to rebalance your metabolism, your nervous system and your body’s energy. Our protocols draw on the approaches developed in the world’s leading centers for longevity, metabolic optimization, nervous system recovery and human performance. IN–OUT–RESET™ is not a method of control. It is a method of reconciliation with your body. And once your body starts cooperating again, weight loss, energy and vitality follow naturally.",
+    "cta": "Book my RESET™ assessment",
     "trust": {
       "certified": "Certified experts",
       "proven": "Proven method",
@@ -424,18 +424,18 @@
     "cards": {
       "in": {
         "title": "IN",
-        "title2": "Ce que vous apportez à votre corps",
-        "subtitle": "IN regroupe tout ce qui nourrit réellement votre corps et soutient votre métabolisme : nutrition adaptée à votre réalité, jus et infusions fonctionnelles, compléments sélectionnés avec précision, routines simples applicables dans la vraie vie. Nous donnons à votre corps ce dont il a réellement besoin pour fonctionner, pas seulement pour tenir."
+        "title2": "What you give your body",
+        "subtitle": "IN brings together everything that genuinely nourishes your body and supports your metabolism: nutrition adapted to your real life, functional juices and infusions, precisely selected supplements, and simple routines you can actually keep up. We give your body what it truly needs to function — not just to hold on."
       },
       "out": {
         "title": "OUT",
-        "title2": "Ce que votre corps doit libérer",
-        "subtitle": "OUT correspond à tout ce que le corps doit relâcher pour retrouver son équilibre : surcharge inflammatoire, rétention et gonflements, stress accumulé et fatigue nerveuse, tensions corporelles et charge émotionnelle. Lorsque le corps libère, le métabolisme peut enfin se remettre en mouvement."
+        "title2": "What your body needs to release",
+        "subtitle": "OUT covers everything your body has to let go of to find its balance again: inflammatory overload, water retention and bloating, accumulated stress and nervous fatigue, physical tension and emotional weight. When the body releases, the metabolism can finally start moving again."
       },
       "reset": {
         "title": "RESET",
-        "title2": "Ce que vous transformez en profondeur",
-        "subtitle": "RESET est la dimension la plus durable — et la plus précieuse — de la transformation : relation au corps et à l’alimentation, gestion du stress et des émotions, qualité du sommeil et récupération profonde, confiance et rapport apaisé à son corps. Ce n’est pas seulement le corps qui change. C’est votre manière de l’habiter."
+        "title2": "What you transform at depth",
+        "subtitle": "RESET is the most lasting — and most valuable — dimension of the transformation: your relationship with your body and with food, how you handle stress and emotions, sleep quality and deep recovery, confidence and a calmer relationship with yourself. It is not only your body that changes. It is the way you inhabit it."
       }
     }
   },
