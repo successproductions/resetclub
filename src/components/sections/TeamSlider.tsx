@@ -77,7 +77,7 @@ const TeamSlider: React.FC = () => {
       <div className="md:max-w-7xl md:mx-auto md:px-6">
         {/* Header Section */}
         <div className="text-center mb-4 md:mb-12 px-6 md:px-0">
-          <h2 className="text-3xl md:text-5xl font-normal text-gray-900">
+          <h2 className="text-3xl md:text-3xl lg:text-[35px]! uppercase font-normal text-gray-900">
             {t('expertsTitle')}
           </h2>
         </div>

@@ -13,7 +13,7 @@ const ResetClaritySection: React.FC = () => {
   return (
     <section className="bg-white px-6 py-5 md:pb-10">
       <div className="mx-auto max-w-7xl">
-        <h2 className="mb-8 text-3xl! font-graphik font-normal leading-tight text-gray-900 md:mb-12 md:text-center md:text-3xl! lg:text-[45px]!">
+        <h2 className="mb-8 text-3xl! font-graphik font-normal leading-tight text-gray-900 md:mb-12 md:text-center md:text-3xl! lg:text-[32px]! uppercase">
           {t('title')}
         </h2>
 

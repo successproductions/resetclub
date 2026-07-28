@@ -13,7 +13,7 @@ const ResetFaqSection: React.FC = () => {
   return (
     <section className="bg-white px-6 py-6 md:py-7">
       <div className="mx-auto max-w-5xl">
-        <h2 className="mb-8 text-3xl! font-graphik font-normal leading-tight text-gray-900 md:mb-12 md:text-center md:text-3xl! lg:text-[45px]!">
+        <h2 className="mb-8 text-3xl! font-graphik font-normal leading-tight text-gray-900 md:mb-12 md:text-center md:text-3xl! lg:text-[35px]! uppercase">
           {t('title')}
         </h2>
 

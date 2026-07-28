@@ -29,7 +29,7 @@ const Director: React.FC = () => {
   return (
     <section className="bg-white px-6 py-10 md:py-10">
       <div className="mx-auto max-w-7xl">
-        <h2 className="mb-8 text-3xl! font-graphik font-normal leading-tight text-gray-900 md:mb-12 md:text-3xl! lg:text-[45px]! md:text-center">
+        <h2 className="mb-8 text-3xl! font-graphik font-normal leading-tight text-gray-900 md:mb-12 md:text-3xl! uppercase lg:text-[35px]! md:text-center">
           {t('title')}
         </h2>
 

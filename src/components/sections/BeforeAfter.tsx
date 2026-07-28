@@ -58,7 +58,7 @@ const BeforeAfter: React.FC = () => {
     <section id="temoignages-clients" className="md:py-8 py-4 bg-white">
       {/* Header Section */}
       <div className="max-w-7xl mx-auto px-6 mb-5 md:mb-10">
-        <h2 className="text-3xl md:text-4xl lg:text-4xl! uppercase text-gray-900 md:mb-6 md:text-center ">
+        <h2 className="text-3xl md:text-4xl lg:text-3xl! uppercase text-gray-900 md:mb-6 md:text-center ">
           {t('subtitle')}
         </h2>
         {/* <p className='text-gray-900 text-lg md:text-center font-graphik md:text-xl'>{t('description')}</p> */}
