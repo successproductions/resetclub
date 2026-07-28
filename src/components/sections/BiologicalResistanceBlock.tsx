@@ -19,10 +19,11 @@ const BiologicalResistanceBlock: React.FC = () => {
             loop
             muted
             playsInline
+            preload="metadata"
+            poster="/images/hero/hero6.jpeg"
             className="absolute inset-0 h-full w-full object-cover"
           >
-            <source src="/videos/website-banner-vdo2.mp4" type="video/mp4" />
-            <source src="/videos/website-banner-vdo.mp4" type="video/mp4" />
+            <source src="/videos/biohacking-red-light-therapy.mp4" type="video/mp4" />
           </video>
           <div className="absolute inset-0 bg-black/20"></div>
         </div>

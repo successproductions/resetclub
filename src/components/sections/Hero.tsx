@@ -12,9 +12,9 @@ const Hero: React.FC = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
 
   const images = [
-    '/images/hero/hero1.jpeg',
+    '/images/hero/hero6.jpeg',
     '/images/hero/hero2.jpeg',
-    '/images/hero/hero3.jpeg',
+    '/images/hero/hero8.jpeg',
     '/images/hero/hero4.jpeg'
   ];
 
@@ -28,18 +28,11 @@ const Hero: React.FC = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentImage((prev) => (prev + 1) % images.length);
+      setCurrentSlide((prev) => (prev + 1) % sliderTexts.length);
     }, 5000);
 
     return () => clearInterval(interval);
-  }, [images.length]);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % sliderTexts.length);
-    }, 2600);
-
-    return () => clearInterval(interval);
-  }, [sliderTexts.length]);
+  }, [images.length, sliderTexts.length]);
 
   return (
     <section className="relative h-[87vh] flex items-center justify-center lg:justify-start overflow-hidden">
@@ -66,7 +59,7 @@ const Hero: React.FC = () => {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 top-26 left-0 mx-2 w-[calc(100vw-2rem)] px-3 xl:px-1 pt-4 md:left-24 md:w-[calc(100vw-8rem)] lg:top-36 xl:top-0 xl:w-[min(88vw,2600px)]">
+      <div className="relative z-10 top-26 left-0 mx-2 w-[calc(100vw-2rem)] px-3 xl:px-1 pt-4 md:left-24 md:w-[calc(100vw-8rem)] lg:top-36 xl:top-28 xl:w-[min(88vw,2600px)]">
         <div className="relative w-full px-0 xl:px-0 py-5 md:px-4 md:py-7">
 
           <h1 className="relative mb-4 font-graphik font-normal md:mb-6">

@@ -7,6 +7,36 @@ import Image from 'next/image';
 import Link from 'next/link';
 import Swal from 'sweetalert2';
 
+const STORAGE_KEY = 'resetclub_popup_offer';
+const DISMISS_DURATION_MS = 24 * 60 * 60 * 1000;
+
+type PopupChoice = { subscribed: true } | { hiddenUntil: number };
+
+const shouldShowPopup = (): boolean => {
+  try {
+    const stored = localStorage.getItem(STORAGE_KEY);
+    if (!stored) return true;
+
+    const choice = JSON.parse(stored) as Partial<PopupChoice>;
+    if ('subscribed' in choice && choice.subscribed) return false;
+    if ('hiddenUntil' in choice && typeof choice.hiddenUntil === 'number') {
+      return Date.now() >= choice.hiddenUntil;
+    }
+    return true;
+  } catch {
+    // Storage unavailable or corrupted value: fall back to showing the popup.
+    return true;
+  }
+};
+
+const rememberChoice = (choice: PopupChoice) => {
+  try {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(choice));
+  } catch {
+    // Private browsing or storage disabled: nothing to persist.
+  }
+};
+
 export default function PopupOfferV2() {
   const [isOpen, setIsOpen] = useState(false);
   const [fullName, setFullName] = useState('');
@@ -16,6 +46,8 @@ export default function PopupOfferV2() {
   const popupRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    if (!shouldShowPopup()) return;
+
     // Show popup after 3 seconds
     const timer = setTimeout(() => {
       setIsOpen(true);
@@ -23,6 +55,11 @@ export default function PopupOfferV2() {
 
     return () => clearTimeout(timer);
   }, []);
+
+  const handleClose = () => {
+    rememberChoice({ hiddenUntil: Date.now() + DISMISS_DURATION_MS });
+    setIsOpen(false);
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -45,7 +82,8 @@ export default function PopupOfferV2() {
         throw new Error('Failed to submit form');
       }
 
-      // Close popup
+      // Close popup for good: this visitor has subscribed.
+      rememberChoice({ subscribed: true });
       setIsOpen(false);
 
       // Show success (alert)
@@ -87,7 +125,7 @@ export default function PopupOfferV2() {
 
   const handleBackdropClick = (e: React.MouseEvent<HTMLDivElement>) => {
     if (e.target === e.currentTarget) {
-      setIsOpen(false);
+      handleClose();
     }
   };
 
@@ -99,7 +137,7 @@ export default function PopupOfferV2() {
       <div ref={popupRef} className="relative bg-white max-w-4xl w-full shadow-2xl overflow-hidden max-h-[90vh] md:max-h-none overflow-y-auto">
         {/* Close Button */}
         <button
-          onClick={() => setIsOpen(false)}
+          onClick={handleClose}
           className="absolute top-2 right-2 md:top-4 md:right-4 z-10 text-gray-600 hover:text-gray-900 transition-colors bg-white/80 rounded-full p-1"
           aria-label="Close"
         >

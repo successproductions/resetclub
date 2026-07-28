@@ -2,9 +2,10 @@
 
 import { usePathname } from 'next/navigation';
 import WhatsAppButton from '../ui/WhatsAppButton';
-// PopupOffer removed - using PopupOfferV2
+
 import NotificationWidget from '../ui/NotificationWidget';
 import PopupOfferV2 from '../ui/PopupOfferV2';
+// import PopupOffer from '../ui/PopupOffer';
 
 export default function ConditionalComponents() {
   const pathname = usePathname();
@@ -29,7 +30,7 @@ export default function ConditionalComponents() {
     <>
       <WhatsAppButton phoneNumber="+212689464650" />
       {/* <PopupOffer /> */}
-      <PopupOfferV2/>
+      <PopupOfferV2 />
       <NotificationWidget />
     </>
   );

@@ -825,7 +825,7 @@ export default function CoursePage({ params }: { params: Promise<{ id: string }>
                         className="mx-10 mb-2 inline-flex items-center gap-2 rounded-full bg-white/95 px-3 py-1.5 text-xs font-medium text-[#2d6d68] transition-colors hover:bg-white"
                       >
                         <FileDown className="w-3.5 h-3.5 flex-shrink-0 text-[#2d6d68]" />
-                        Presentation de la Formation
+                        Présentation de la Formation
                       </a>
                     )}
 
