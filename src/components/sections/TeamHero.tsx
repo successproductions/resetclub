@@ -34,8 +34,8 @@ export default function TeamHero() {
       </div>
 
       {/* Background Pattern Overlay */}
-      <div className="absolute inset-0 z-5 opacity-10">
-        <div className="absolute inset-0 bg-gradient-to-br from-transparent via-amber-100/1 to-transparent" />
+      <div className="absolute inset-0 z-5 opacity-0">
+        {/* <div className="absolute inset-0 bg-gradient-to-br from-transparent via-amber-100/1 to-transparent" /> */}
       </div>
     </section>
   );
