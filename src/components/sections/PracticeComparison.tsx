@@ -25,14 +25,14 @@ const PracticeComparison: React.FC = () => {
   ];
 
   return (
-    <section className="md:pb-1 pb-4 pt-8 pt-3 bg-white">
+    <section className="md:pb-1 pb-4 pt-8 bg-white">
       <div className="max-w-7xl mx-auto px-6">
         {/* Header */}
-        <div className=" mb-4 md:mb-16">
+        <div className=" mb-4 md:mb-8">
           <h2 className="text-3xl md:text-center md:text-3xl lg:text-[45px]! text-gray-900 mb-2 md:mb-6 md:max-w-[1100px] md:mx-auto">
             {t('title')}
           </h2>
-          <p className="text-lg md:text-center md:text-lg font-graphik text-gray-900 md:mb-6 md:max-w-[1100px] md:mx-auto">
+          <p className="text-lg md:text-center md:text-lg font-graphik text-gray-900 md:mb-2 md:max-w-[1100px] md:mx-auto">
             {t('subtitle')}
           </p>
         </div>

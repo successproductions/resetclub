@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import Image from 'next/image';
 import Link from 'next/link';
 import { useLocale, useTranslations } from 'next-intl';
 
@@ -14,17 +15,13 @@ const BiologicalResistanceBlock: React.FC = () => {
     <section className="bg-white px-6 pb-10 md:bg-[#fbf8f4] md:pt-16 md:pb-0">
       <div className="mx-auto grid max-w-7xl items-stretch gap-8 md:grid-cols-[0.92fr_1.08fr] md:gap-12">
         <div className="relative min-h-[420px] overflow-hidden  bg-black md:min-h-[720px]">
-          <video
-            autoPlay
-            loop
-            muted
-            playsInline
-            preload="metadata"
-            poster="/images/hero/hero6.jpeg"
-            className="absolute inset-0 h-full w-full object-cover"
-          >
-            <source src="/videos/biohacking-red-light-therapy.mp4" type="video/mp4" />
-          </video>
+          <Image
+            src="/images/hero/hero9.jpeg"
+            alt={t('title')}
+            fill
+            className="object-cover"
+            sizes="(max-width: 768px) 100vw, 46vw"
+          />
           <div className="absolute inset-0 bg-black/20"></div>
         </div>
 
@@ -67,7 +64,7 @@ const BiologicalResistanceBlock: React.FC = () => {
           </div>
         </div>
       </div>
-    </section>
+    </section >
   );
 };
 

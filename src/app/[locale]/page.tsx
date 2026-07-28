@@ -8,7 +8,7 @@ import IntroSection from '@/components/sections/IntroSection';
 import WhyResetClub from '@/components/sections/WhyResetClub';
 import KeyFigures from '@/components/sections/KeyFigures';
 import ExperienceClient from '@/components/sections/ExperienceClient';
-import NotreHistoireSection from '@/components/sections/NotreHistoireSection';
+// import NotreHistoireSection from '@/components/sections/NotreHistoireSection';
 // import VideoCarousel from '@/components/sections/VideoCarousel';
 import BeforeAfter from '@/components/sections/BeforeAfter';
 import Trustpilot from '@/components/sections/Trustpilot';
@@ -81,7 +81,7 @@ export default function HomePage() {
         <KeyFigures />
         {/* <ExperienceClient /> */}
         <IntroSection />
-        <NotreHistoireSection />
+        {/* <NotreHistoireSection /> */}
         <ResetClaritySection />
         <ResetFaqSection />
         <TeamHero />
