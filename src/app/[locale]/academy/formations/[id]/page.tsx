@@ -599,6 +599,9 @@ export default function CoursePage({ params }: { params: Promise<{ id: string }>
     if (moduleTitle.startsWith('PHASE 3')) {
       return '/pdf/PHASE-3/FORMATION%20PR%C3%89SENTIELLE.pdf';
     }
+    if (moduleTitle.startsWith('PHASE 4')) {
+      return '/pdf/PHASE-4/FORMATION%20%20RESET%20CLUB.pdf';
+    }
 
     return null;
   };

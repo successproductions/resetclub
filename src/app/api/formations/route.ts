@@ -11,7 +11,8 @@ export async function GET() {
           include: {
             lessons: {
               select: {
-                id: true
+                id: true,
+                durationSeconds: true
               }
             },
             quizzes: {

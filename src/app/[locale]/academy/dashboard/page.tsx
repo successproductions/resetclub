@@ -41,7 +41,7 @@ interface Formation {
     title: string;
     description: string | null;
     durationMinutes: number | null;
-    lessons: Array<{ id: string }>;
+    lessons: Array<{ id: string; durationSeconds: number | null }>;
     quizzes?: Array<{ id: string }>;
   }>;
 }
@@ -59,6 +59,8 @@ interface Certificate {
   issuedDate: string;
   formation: { title: string; thumbnailUrl: string | null };
 }
+
+const QUIZ_DURATION_MINUTES = 2;
 
 export default function AcademyDashboard() {
   const router = useRouter();
@@ -282,6 +284,18 @@ export default function AcademyDashboard() {
       durationText,
     };
   };
+
+  const getModuleDurationMinutes = (module: Formation['modules'][number]) => {
+    const videoSeconds = module.lessons.reduce(
+      (total, lesson) => total + (lesson.durationSeconds || 0),
+      0
+    );
+    const videoMinutes = videoSeconds > 0 ? Math.ceil(videoSeconds / 60) : 0;
+    const quizMinutes = (module.quizzes?.length || 0) * QUIZ_DURATION_MINUTES;
+
+    return videoMinutes + quizMinutes;
+  };
+
   const completedModulesCount = formations.reduce((total, formation) => {
     const completedModuleCount = formation.modules.filter((module) =>
       isModuleComplete(module, formationProgress[formation.id])
@@ -624,6 +638,7 @@ export default function AcademyDashboard() {
                               const moduleComplete = isModuleComplete(module, progress);
                               const lessonCount = module.lessons.length;
                               const quizCount = module.quizzes?.length || 0;
+                              const moduleDurationMinutes = getModuleDurationMinutes(module);
 
                               return (
                                 <Link
@@ -653,10 +668,10 @@ export default function AcademyDashboard() {
                                             {quizCount} quiz
                                           </span>
                                         )}
-                                        {module.durationMinutes && (
+                                        {moduleDurationMinutes > 0 && (
                                           <span className="inline-flex items-center gap-1">
                                             <Clock className="w-3.5 h-3.5" />
-                                            {module.durationMinutes} min
+                                            {moduleDurationMinutes} min
                                           </span>
                                         )}
                                       </div>

@@ -105,6 +105,7 @@ type ModuleSeed = {
     description: string;
     resourcesUrl?: string;
     certificateUrl?: string;
+    documentUrl?: string;
     questions: QuizQuestionSeed[];
   };
 };
@@ -325,11 +326,15 @@ const phaseCertificateUrls = {
   phase5: '/pdf/PHASE-5/CERTIFICAT%20GLOBAL%20THERAPEUTE%20RESET%20CLUB%20.pdf',
 };
 
+const phaseDocumentUrls = {
+  phase4: '/pdf/PHASE-4/FORMATION%20%20RESET%20CLUB.pdf',
+};
+
 const employeeModules: ModuleSeed[] = [
   {
     title: 'PHASE 1 · Préonboarding Thérapeute RESET CLUB',
     description: 'Vidéo d’accueil thérapeute présentée par Nahed Rachad.',
-    durationMinutes: 12,
+    durationMinutes: 2,
     lessons: [
       buildEmployeeVideoLesson(
         'Vidéo accueil thérapeute - Nahed Rachad',
@@ -342,7 +347,7 @@ const employeeModules: ModuleSeed[] = [
   {
     title: 'PHASE 2 · Module 1 - Bienvenue chez RESET CLUB',
     description: 'Vision, mission, ADN et valeurs RESET CLUB.',
-    durationMinutes: 35,
+    durationMinutes: 7,
     lessons: [
       buildEmployeeVideoLesson(
         'Bienvenue chez RESET CLUB',
@@ -442,7 +447,7 @@ const employeeModules: ModuleSeed[] = [
   {
     title: 'PHASE 2 · Module 2 - La Méthode IN•OUT•RESET',
     description: 'Comprendre la méthode créée par Nahed Rachad et les 3 leviers de transformation.',
-    durationMinutes: 40,
+    durationMinutes: 11,
     lessons: [
       buildEmployeeVideoLesson(
         'La Méthode IN•OUT•RESET',
@@ -542,7 +547,7 @@ const employeeModules: ModuleSeed[] = [
   {
     title: 'PHASE 2 · Module 3 - Les 3 types de protocoles RESET CLUB',
     description: 'Protocoles, résultats et machines RESET CLUB.',
-    durationMinutes: 6,
+    durationMinutes: 8,
     lessons: [
       buildEmployeeVideoLesson(
         'Les 3 types de protocoles RESET CLUB',
@@ -612,7 +617,7 @@ const employeeModules: ModuleSeed[] = [
   {
     title: 'PHASE 2 · Module 4 - Accueil Client & Rituel RESET',
     description: 'Installer un accueil client aligné avec l’expérience RESET.',
-    durationMinutes: 6,
+    durationMinutes: 8,
     lessons: [
       buildEmployeeVideoLesson(
         'Accueil Client & Rituel RESET',
@@ -712,7 +717,7 @@ const employeeModules: ModuleSeed[] = [
   {
     title: 'PHASE 2 · Module 5 - Éthique, Confidentialité & Posture de Thérapeute',
     description: 'Incarner l’éthique RESET CLUB, la confidentialité et la posture juste.',
-    durationMinutes: 5,
+    durationMinutes: 7,
     lessons: [
       buildEmployeeVideoLesson(
         'Éthique, Confidentialité & Posture de Thérapeute',
@@ -853,7 +858,7 @@ const phaseTwoEthiqueQuiz = employeeModules[5].quiz;
 employeeModules[6] = {
   title: 'PHASE 3 · Formation présentielle coaching RESET CLUB',
   description: 'Approfondir les protocoles, résultats et machines avec une posture de coaching terrain.',
-  durationMinutes: 45,
+  durationMinutes: 2,
   lessons: [],
   quiz: phaseThreeProtocolQuiz
     ? {
@@ -869,7 +874,7 @@ employeeModules[6] = {
 employeeModules[7] = {
   title: 'PHASE 4 · Formation présentielle machine RESET CLUB',
   description: 'Maîtriser l’accueil, le rituel RESET et l’utilisation terrain des machines.',
-  durationMinutes: 45,
+  durationMinutes: 2,
   lessons: [],
   quiz: phaseTwoAccueilQuiz
     ? {
@@ -878,6 +883,7 @@ employeeModules[7] = {
       description: 'Valide le badge digital : Gardienne de l’Accueil RESET.',
       resourcesUrl: phaseBadgeUrls.phase4,
       certificateUrl: phaseCertificateUrls.phase4,
+      documentUrl: phaseDocumentUrls.phase4,
     }
     : undefined,
 };
@@ -885,7 +891,7 @@ employeeModules[7] = {
 employeeModules[8] = {
   title: 'PHASE 5 · Certification et intégration RESET CLUB',
   description: 'Valider la posture, l’éthique et la confidentialité avant intégration complète.',
-  durationMinutes: 45,
+  durationMinutes: 2,
   lessons: [],
   quiz: phaseTwoEthiqueQuiz
     ? {
@@ -978,6 +984,7 @@ async function createFormation(data: DemoFormation) {
                     module.quiz.description,
                     module.quiz.resourcesUrl ? `Badge: ${module.quiz.resourcesUrl}` : null,
                     module.quiz.certificateUrl ? `Certificat: ${module.quiz.certificateUrl}` : null,
+                    module.quiz.documentUrl ? `Document: ${module.quiz.documentUrl}` : null,
                   ].filter(Boolean).join('\n'),
                   passingScore: 70,
                   maxAttempts: null,
