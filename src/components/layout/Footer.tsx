@@ -115,7 +115,7 @@ const Footer: React.FC = () => {
                   </svg>
                 </Link>
                 <Link
-                  href="https://www.linkedin.com/feed/"
+                  href="https://www.linkedin.com/in/reset-club-34b5573b5/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-12 h-12 bg-gray-950 rounded-full flex items-center justify-center transition-all duration-300 hover:bg-[#f5efe8] hover:transform hover:scale-110"
