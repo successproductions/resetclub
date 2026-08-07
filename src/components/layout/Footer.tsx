@@ -80,12 +80,12 @@ const Footer: React.FC = () => {
                   </svg>
                   + 212 689 464 650 / 05 375 705 21
                 </div>
-                <div className="flex items-center text-gray-950">
+                <a href="https://www.google.com/maps?ll=33.952661,-6.877653&z=13&t=m&hl=en&gl=MA&mapclient=embed&cid=17155663660440778754" target="_blank" rel="noopener noreferrer" className="flex items-center text-gray-950 hover:underline">
                   <svg className="w-5 h-5 mr-3 text-gray-950" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" />
                   </svg>
                   Hay Riad 10000 Rabat, Maroc
-                </div>
+                </a>
               </div>
 
               {/* Social Media Icons */}
