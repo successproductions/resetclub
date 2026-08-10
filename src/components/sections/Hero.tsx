@@ -63,7 +63,7 @@ const Hero: React.FC = () => {
         <div className="relative w-full px-0 xl:px-0 py-5 md:px-4 md:py-7">
 
           <h1 className="relative mb-4 font-graphik font-normal md:mb-6">
-            <div className="relative mb-2 min-h-[2rem] overflow-hidden text-[18px] tracking-wide text-white md:mb-4 md:min-h-[3.5rem] md:text-2xl lg:min-h-[4.9rem] lg:text-6xl xl:text-7xl">
+            <div className="relative mb-2 min-h-[2rem] overflow-hidden text-[20px] tracking-wide text-white md:mb-4 md:min-h-[3.5rem] md:text-2xl lg:min-h-[4.9rem] lg:text-6xl xl:text-7xl">
               {sliderTexts.map((text, index) => (
                 <span
                   key={text}
@@ -76,19 +76,22 @@ const Hero: React.FC = () => {
                 </span>
               ))}
             </div>
-            <div className="text-lg font-normal tracking-tight text-white md:text-xl xl:text-1xl">
+            <div className="text-lg font-normal tracking-tight text-white md:text-xl xl:text-2xl">
               {t('subtitle')}
             </div>
           </h1>
-
-          {/* CTA Button */}
-          <Link href="/payment" className="relative inline-block">
-            <button className="whitespace-nowrap border-2  px-3 py-2 font-graphik text-lg font-normal text-white shadow-lg transition-all duration-300 hover:scale-105 hover:border-gray-200  hover:text-white hover:shadow-xl md:px-5 md:text-xl">
-              {t('cta')}
-            </button>
-          </Link>
         </div>
       </div>
+
+      {/* CTA Button */}
+      <Link
+        href="/payment"
+        className="absolute bottom-10 left-1/2 z-20 inline-block -translate-x-1/2 md:bottom-16"
+      >
+        <button className="whitespace-nowrap border-2  px-3 py-2 font-graphik text-lg font-semibold text-white shadow-lg transition-all duration-300 hover:scale-105 hover:border-gray-200  hover:text-white hover:shadow-xl md:px-5 md:text-xl">
+          {t('cta')}
+        </button>
+      </Link>
 
       {/* Background Pattern Overlay */}
       <div className="absolute inset-0 z-5 opacity-10">
