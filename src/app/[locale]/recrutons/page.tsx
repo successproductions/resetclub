@@ -6,6 +6,7 @@ import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import RecruitmentsHero from '@/components/sections/RecruitmentsHero';
 import CVUploadForm from '@/components/forms/CVUploadForm';
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema';
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
@@ -18,12 +19,12 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
       title: t('title'),
       description: t('description'),
       url: `https://www.resetclub.ma/${locale}/recrutons`,
-      siteName: 'ResetClub™️',
+      siteName: 'Reset Club',
       images: [
         {
-          url: '/LOGO.png',
+          url: '/og-image.jpg',
           width: 1200,
-          height: 630,
+          height: 600,
           alt: 'ResetClub™️',
         },
       ],
@@ -34,11 +35,12 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
       card: 'summary_large_image',
       title: t('title'),
       description: t('description'),
-      images: ['/LOGO.png'],
+      images: ['/og-image.jpg'],
     },
     alternates: {
       canonical: `https://www.resetclub.ma/${locale}/recrutons`,
       languages: {
+        'x-default': 'https://www.resetclub.ma/fr/recrutons',
         'en': 'https://www.resetclub.ma/en/recrutons',
         'fr': 'https://www.resetclub.ma/fr/recrutons',
       },
@@ -51,6 +53,7 @@ export default function RecrutonsPage() {
 
   return (
     <>
+      <BreadcrumbSchema items={[{ name: 'Nous Recrutons', path: '/recrutons' }]} />
       <Header />
       <RecruitmentsHero />
 

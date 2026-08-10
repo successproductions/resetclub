@@ -11,13 +11,13 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     openGraph: {
       title: t('title'),
       description: t('description'),
-      url: `https://www.resetclub.ma/${locale}/membership`,
-      siteName: 'ResetClub™️',
+      url: `https://www.resetclub.ma/${locale}/bilan-gratuit`,
+      siteName: 'Reset Club',
       images: [
         {
-          url: '/LOGO.png',
+          url: '/og-image.jpg',
           width: 1200,
-          height: 630,
+          height: 600,
           alt: 'ResetClub™️',
         },
       ],
@@ -28,13 +28,14 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
       card: 'summary_large_image',
       title: t('title'),
       description: t('description'),
-      images: ['/LOGO.png'],
+      images: ['/og-image.jpg'],
     },
     alternates: {
-      canonical: `https://www.resetclub.ma/${locale}/membership`,
+      canonical: `https://www.resetclub.ma/${locale}/bilan-gratuit`,
       languages: {
-        'en': 'https://www.resetclub.ma/en/membership',
-        'fr': 'https://www.resetclub.ma/fr/membership',
+        'x-default': 'https://www.resetclub.ma/fr/bilan-gratuit',
+        'en': 'https://www.resetclub.ma/en/bilan-gratuit',
+        'fr': 'https://www.resetclub.ma/fr/bilan-gratuit',
       },
     },
   };

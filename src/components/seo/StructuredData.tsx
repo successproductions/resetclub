@@ -1,124 +1,137 @@
-import Script from 'next/script';
+import { BUSINESS, BUSINESS_SAME_AS } from '@/constants/business';
 
 interface StructuredDataProps {
   locale: string;
 }
 
+const BASE = BUSINESS.url;
+const ORG_ID = `${BASE}/#organization`;
+const WEBSITE_ID = `${BASE}/#website`;
+
+/**
+ * Site-wide JSON-LD. Emitted once per page as a single @graph so Google resolves
+ * ONE entity for resetclub.ma instead of several competing ones.
+ *
+ * The business is modelled as a single HealthAndBeautyBusiness node (a subtype of
+ * LocalBusiness, itself a subtype of Organization) rather than as separate
+ * Organization + LocalBusiness nodes — duplicate nodes are what makes Google
+ * hesitate to bind the site to the Google Business Profile.
+ */
 export default function StructuredData({ locale }: StructuredDataProps) {
-  const organizationSchema = {
-    '@context': 'https://schema.org',
-    '@type': 'HealthAndBeautyBusiness',
-    name: 'ResetClub™️',
-    alternateName: 'Reset Club',
-    description: locale === 'fr'
-      ? 'Le premier centre premium de transformation holistique au Maroc. Coaching sportif, nutrition, biohacking et bien-être.'
-      : 'Morocco\'s first premium holistic transformation center. Sports coaching, nutrition, biohacking, and wellness.',
-    url: `https://www.resetclub.ma/${locale}`,
-    logo: 'https://www.resetclub.ma/LOGO.png',
-    image: 'https://www.resetclub.ma/LOGO.png',
-    telephone: '+ 212 689 464 650',
-    email: 'contact@resetclub.ma',
-    address: {
-      '@type': 'PostalAddress',
-      addressLocality: 'Rabat',
-      addressRegion: 'Rabat-Settat',
-      addressCountry: 'MA',
-    },
-    geo: {
-      '@type': 'GeoCoordinates',
-      latitude: '33.5731',
-      longitude: '-7.5898',
-    },
-    openingHoursSpecification: [
-      {
-        '@type': 'OpeningHoursSpecification',
-        dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
-        opens: '08:00',
-        closes: '20:00',
-      },
-      {
-        '@type': 'OpeningHoursSpecification',
-        dayOfWeek: 'Saturday',
-        opens: '09:00',
-        closes: '18:00',
-      },
-    ],
-    sameAs: [
-      'https://www.facebook.com/resetclub',
-      'https://www.instagram.com/resetclub',
-      'https://www.linkedin.com/company/resetclub',
-    ],
-    priceRange: '$$',
-    currenciesAccepted: 'MAD',
-    paymentAccepted: 'Cash, Credit Card',
-    founder: {
-      '@type': 'Person',
-      name: 'Nahed Rachad',
-      jobTitle: locale === 'fr' ? 'Fondatrice & Directrice' : 'Founder & Director',
-    },
-    makesOffer: [
-      {
-        '@type': 'Offer',
-        itemOffered: {
-          '@type': 'Service',
-          name: locale === 'fr' ? 'Bilan Reset™' : 'Reset™ Assessment',
-          description: locale === 'fr'
-            ? 'Bilan personnalisé complet de transformation holistique'
-            : 'Complete personalized holistic transformation assessment',
-        },
-      },
-      {
-        '@type': 'Offer',
-        itemOffered: {
-          '@type': 'Service',
-          name: locale === 'fr' ? 'Coaching Sportif' : 'Sports Coaching',
-          description: locale === 'fr'
-            ? 'Programme de coaching sportif personnalisé'
-            : 'Personalized sports coaching program',
-        },
-      },
-      {
-        '@type': 'Offer',
-        itemOffered: {
-          '@type': 'Service',
-          name: locale === 'fr' ? 'Nutrition & Biohacking' : 'Nutrition & Biohacking',
-          description: locale === 'fr'
-            ? 'Programme de nutrition et biohacking personnalisé'
-            : 'Personalized nutrition and biohacking program',
-        },
-      },
-    ],
-  };
+  const isFr = locale === 'fr';
 
-  const websiteSchema = {
-    '@context': 'https://schema.org',
-    '@type': 'WebSite',
-    name: 'ResetClub™️',
-    url: 'https://www.resetclub.ma',
-    potentialAction: {
-      '@type': 'SearchAction',
-      target: 'https://www.resetclub.ma/search?q={search_term_string}',
-      'query-input': 'required name=search_term_string',
-    },
-    inLanguage: [locale === 'fr' ? 'fr-FR' : 'en-US'],
-  };
+  const description = isFr
+    ? 'Reset Club est un centre premium de transformation holistique et de biohacking à Hay Riad, Rabat. Bilan personnalisé, coaching sportif, nutrition et rééquilibrage du système nerveux.'
+    : 'Reset Club is a premium holistic transformation and biohacking center in Hay Riad, Rabat. Personalized assessment, sports coaching, nutrition and nervous-system rebalancing.';
 
+  const services = isFr
+    ? [
+      { name: 'Bilan Reset™', description: 'Bilan personnalisé complet de transformation holistique' },
+      { name: 'Coaching Sportif', description: 'Programme de coaching sportif personnalisé' },
+      { name: 'Nutrition & Biohacking', description: 'Programme de nutrition et biohacking personnalisé' },
+    ]
+    : [
+      { name: 'Reset™ Assessment', description: 'Complete personalized holistic transformation assessment' },
+      { name: 'Sports Coaching', description: 'Personalized sports coaching program' },
+      { name: 'Nutrition & Biohacking', description: 'Personalized nutrition and biohacking program' },
+    ];
+
+  const graph = [
+    {
+      '@type': 'HealthAndBeautyBusiness',
+      '@id': ORG_ID,
+      name: BUSINESS.name,
+      alternateName: [...BUSINESS.alternateNames],
+      legalName: BUSINESS.name,
+      description,
+      url: `${BASE}/${locale}`,
+      logo: {
+        '@type': 'ImageObject',
+        '@id': `${BASE}/#logo`,
+        url: BUSINESS.logo,
+        contentUrl: BUSINESS.logo,
+        caption: BUSINESS.name,
+      },
+      image: [BUSINESS.ogImage, BUSINESS.logo],
+      telephone: BUSINESS.phone,
+      email: BUSINESS.email,
+      address: {
+        '@type': 'PostalAddress',
+        streetAddress: BUSINESS.address.street,
+        addressLocality: BUSINESS.address.locality,
+        addressRegion: BUSINESS.address.region,
+        postalCode: BUSINESS.address.postalCode,
+        addressCountry: BUSINESS.address.country,
+      },
+      geo: {
+        '@type': 'GeoCoordinates',
+        latitude: BUSINESS.geo.latitude,
+        longitude: BUSINESS.geo.longitude,
+      },
+      hasMap: BUSINESS.googleMapsUrl,
+      areaServed: {
+        '@type': 'City',
+        name: 'Rabat',
+      },
+      openingHoursSpecification: [
+        {
+          '@type': 'OpeningHoursSpecification',
+          dayOfWeek: [...BUSINESS.openingHours.dayOfWeek],
+          opens: BUSINESS.openingHours.opens,
+          closes: BUSINESS.openingHours.closes,
+        },
+      ],
+      contactPoint: [
+        {
+          '@type': 'ContactPoint',
+          telephone: BUSINESS.phone,
+          email: BUSINESS.email,
+          contactType: 'customer service',
+          areaServed: 'MA',
+          availableLanguage: ['fr', 'en', 'ar'],
+        },
+      ],
+      sameAs: BUSINESS_SAME_AS,
+      priceRange: '$$',
+      currenciesAccepted: 'MAD',
+      paymentAccepted: 'Cash, Credit Card',
+      knowsLanguage: ['fr', 'en', 'ar'],
+      founder: {
+        '@type': 'Person',
+        name: 'Nahed Rachad',
+        jobTitle: isFr ? 'Fondatrice & Directrice' : 'Founder & Director',
+      },
+      makesOffer: services.map((service) => ({
+        '@type': 'Offer',
+        itemOffered: {
+          '@type': 'Service',
+          name: service.name,
+          description: service.description,
+          provider: { '@id': ORG_ID },
+        },
+      })),
+    },
+    {
+      '@type': 'WebSite',
+      '@id': WEBSITE_ID,
+      url: BASE,
+      name: BUSINESS.name,
+      alternateName: [...BUSINESS.alternateNames],
+      description,
+      publisher: { '@id': ORG_ID },
+      inLanguage: isFr ? 'fr-MA' : 'en-US',
+    },
+  ];
+
+  // A plain <script> (not next/script) so the JSON-LD is in the server-rendered
+  // HTML. next/script injects it client-side, where crawlers only see it after
+  // executing JS.
   return (
-    <>
-      <Script
-        id="organization-schema"
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(organizationSchema),
-        }}
-      />
-      <Script
-        id="website-schema"
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(websiteSchema),
-        }}
-      />
-    </>
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{
+        __html: JSON.stringify({ '@context': 'https://schema.org', '@graph': graph }),
+      }}
+    />
   );
 }

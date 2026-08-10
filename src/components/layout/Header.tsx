@@ -7,6 +7,7 @@ import Link from 'next/link';
 import Button from '@/components/ui/Button';
 import LanguageSwitcher from '@/components/ui/LanguageSwitcher';
 import { NAV_ITEMS } from '@/constants';
+import { BUSINESS } from '@/constants/business';
 import { Phone, Menu } from 'lucide-react';
 
 const Header: React.FC = () => {
@@ -99,7 +100,7 @@ const Header: React.FC = () => {
           {/* Call Icon - Right on mobile, Hidden on desktop */}
           <div className="md:hidden">
             <a
-              href="tel:+212000000000"
+              href={`tel:${BUSINESS.phone}`}
               className={`p-2 rounded-md transition-colors duration-300 ${isScrolled || isMobileMenuOpen ? 'text-gray-900' : 'text-white'
                 }`}
               aria-label="Call us"

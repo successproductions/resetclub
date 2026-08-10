@@ -12,8 +12,8 @@ export const metadata: Metadata = {
     images: [
       {
         url: '/images/master/NAHED.png',
-        width: 1200,
-        height: 630,
+        width: 1135,
+        height: 1038,
         alt: 'Nahed Rachad - Masterclass Biohacking Féminin',
       },
     ],

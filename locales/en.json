@@ -665,40 +665,44 @@
   },
   "SEO": {
     "home": {
-      "title": "ResetClub™️ - Premium Holistic & Biohacking Center in Morocco",
+      "title": "Reset Club™ — Holistic & Biohacking Center in Rabat",
       "description": "Transform your body, mind, and emotions with the In-Out-Reset™ protocol. Sports coaching, nutrition, biohacking, and wellness in Rabat."
     },
     "about": {
-      "title": "About ResetClub™️ - Our Mission and Vision",
+      "title": "About Us",
       "description": "Discover ResetClub, Morocco's first premium holistic transformation center. Our unique approach combines neuroscience, biohacking, and coaching."
     },
     "contact": {
-      "title": "Contact ResetClub™️ - Book Your Free Assessment",
+      "title": "Contact & Booking",
       "description": "Ready to start your transformation? Contact us to book your personalized assessment or get more information about our programs."
     },
     "membership": {
-      "title": "ResetClub™️ Membership - Free Reset Assessment (50 Spots)",
+      "title": "Free Reset™ Assessment",
       "description": "To celebrate our opening, enjoy a free personalized assessment worth 1500 DH. Limited offer for the first 50 clients."
     },
     "notreHistoire": {
-      "title": "Our Story - The ResetClub™️ Team",
+      "title": "Our Story",
       "description": "Meet the passionate team behind ResetClub. Our experts in coaching, nutrition, and biohacking are here to guide you through your transformation."
     },
     "recrutons": {
-      "title": "We're Hiring - Join the ResetClub™️ Team",
+      "title": "Careers",
       "description": "Join ResetClub and be part of holistic transformation in Morocco. Discover our career opportunities in coaching, nutrition, and wellness."
     },
     "legal": {
-      "title": "Legal Notice - ResetClub™️",
+      "title": "Legal Notice",
       "description": "View the legal information for ResetClub, holistic transformation and biohacking center in Rabat, Morocco."
     },
     "privacy": {
-      "title": "Privacy Policy - ResetClub™️",
+      "title": "Privacy Policy",
       "description": "Learn how ResetClub protects and uses your personal data in compliance with GDPR and Moroccan laws."
     },
     "cookies": {
-      "title": "Cookie Policy - ResetClub™️",
+      "title": "Cookie Policy",
       "description": "Information about cookie usage on ResetClub's website to enhance your browsing experience."
+    },
+    "cgv": {
+      "title": "Terms and Conditions of Sale",
+      "description": "Terms and conditions of sale for ResetClub, a holistic transformation and biohacking center in Hay Riad, Rabat."
     }
   },
   "cgv": {

@@ -14,12 +14,12 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
       title: t('title'),
       description: t('description'),
       url: `https://www.resetclub.ma/${locale}/cookies`,
-      siteName: 'ResetClub™️',
+      siteName: 'Reset Club',
       images: [
         {
-          url: '/LOGO.png',
+          url: '/og-image.jpg',
           width: 1200,
-          height: 630,
+          height: 600,
           alt: 'ResetClub™️',
         },
       ],
@@ -29,6 +29,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     alternates: {
       canonical: `https://www.resetclub.ma/${locale}/cookies`,
       languages: {
+        'x-default': 'https://www.resetclub.ma/fr/cookies',
         'en': 'https://www.resetclub.ma/en/cookies',
         'fr': 'https://www.resetclub.ma/fr/cookies',
       },

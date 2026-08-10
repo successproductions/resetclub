@@ -5,6 +5,7 @@ import Footer from '@/components/layout/Footer';
 import ContactHero from '@/components/sections/ContactHero';
 import ContactForm from '@/components/forms/ContactForm';
 import ContactInfo from '@/components/sections/ContactInfo';
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema';
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
@@ -17,12 +18,12 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
       title: t('title'),
       description: t('description'),
       url: `https://www.resetclub.ma/${locale}/contact`,
-      siteName: 'ResetClub™️',
+      siteName: 'Reset Club',
       images: [
         {
-          url: '/LOGO.png',
+          url: '/og-image.jpg',
           width: 1200,
-          height: 630,
+          height: 600,
           alt: 'ResetClub™️',
         },
       ],
@@ -33,11 +34,12 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
       card: 'summary_large_image',
       title: t('title'),
       description: t('description'),
-      images: ['/LOGO.png'],
+      images: ['/og-image.jpg'],
     },
     alternates: {
       canonical: `https://www.resetclub.ma/${locale}/contact`,
       languages: {
+        'x-default': 'https://www.resetclub.ma/fr/contact',
         'en': 'https://www.resetclub.ma/en/contact',
         'fr': 'https://www.resetclub.ma/fr/contact',
       },
@@ -48,6 +50,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
 export default function ContactPage() {
   return (
     <>
+      <BreadcrumbSchema items={[{ name: 'Contact', path: '/contact' }]} />
       <Header />
       <ContactHero />
       <div className="bg-gray-50 py-4 md:py-16 overflow-x-hidden">

@@ -13,12 +13,12 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
       title: t('title'),
       description: t('description'),
       url: `https://www.resetclub.ma/${locale}/about`,
-      siteName: 'ResetClub™️',
+      siteName: 'Reset Club',
       images: [
         {
-          url: '/LOGO.png',
+          url: '/og-image.jpg',
           width: 1200,
-          height: 630,
+          height: 600,
           alt: 'ResetClub™️',
         },
       ],
@@ -29,11 +29,12 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
       card: 'summary_large_image',
       title: t('title'),
       description: t('description'),
-      images: ['/LOGO.png'],
+      images: ['/og-image.jpg'],
     },
     alternates: {
       canonical: `https://www.resetclub.ma/${locale}/about`,
       languages: {
+        'x-default': 'https://www.resetclub.ma/fr/about',
         'en': 'https://www.resetclub.ma/en/about',
         'fr': 'https://www.resetclub.ma/fr/about',
       },

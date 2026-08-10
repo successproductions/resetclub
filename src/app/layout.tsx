@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import './globals.css';
-import JsonLd from "@/components/JsonLd";
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://www.resetclub.ma'),
@@ -31,7 +30,7 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: "/images/logograstab.png",
-    apple: "/LOGO.png",
+    apple: "/apple-icon.png",
     shortcut: "/images/logograstab.png",
   },
   manifest: "/manifest.json",
@@ -40,14 +39,15 @@ export const metadata: Metadata = {
     locale: "fr_FR",
     alternateLocale: ["en_US"],
     url: "https://www.resetclub.ma",
-    siteName: "ResetClub™️",
+    // Matches the Google Business Profile name so Google shows the brand, not the domain.
+    siteName: "Reset Club",
     title: "ResetClub™️ - Holistic & Biohacking Center",
     description: "Le premier centre premium de transformation holistique au Maroc. Coaching sportif, nutrition, biohacking et bien-être.",
     images: [
       {
-        url: "/LOGO.png",
+        url: "/og-image.jpg",
         width: 1200,
-        height: 630,
+        height: 600,
         alt: "ResetClub™️ - Holistic & Biohacking Center",
       },
     ],
@@ -56,7 +56,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "ResetClub™️ - Holistic & Biohacking Center",
     description: "Le premier centre premium de transformation holistique au Maroc.",
-    images: ["/LOGO.png"],
+    images: ["/og-image.jpg"],
     creator: "@resetclub",
     site: "@resetclub",
   },
@@ -76,17 +76,12 @@ export const metadata: Metadata = {
   // },
 };
 
+// Pass-through: `app/[locale]/layout.tsx` owns <html lang> and <body>. Rendering
+// them here too produced nested <html>/<body> tags in every response.
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  return (
-    <html>
-      <body>
-        <JsonLd />
-        {children}
-      </body>
-    </html>
-  );
+  return children;
 }

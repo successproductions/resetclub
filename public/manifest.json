@@ -1,0 +1,24 @@
+{
+  "name": "Reset Club — Centre Holistique & Biohacking, Rabat",
+  "short_name": "Reset Club",
+  "description": "Centre premium de transformation holistique et de biohacking à Hay Riad, Rabat.",
+  "start_url": "/fr",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#f5efe8",
+  "theme_color": "#f5efe8",
+  "lang": "fr",
+  "icons": [
+    {
+      "src": "/images/logograstab.png",
+      "sizes": "680x700",
+      "type": "image/png"
+    },
+    {
+      "src": "/apple-icon.png",
+      "sizes": "180x180",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}
