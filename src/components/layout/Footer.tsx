@@ -41,7 +41,7 @@ const Footer: React.FC = () => {
     support: {
       titleKey: 'support.title',
       links: [
-        { labelKey: 'support.faq', href: '/contact' },
+        { labelKey: 'support.faq', href: '/#faq-1' },
         { labelKey: 'support.bookings', href: '/contact' },
         { labelKey: 'support.testimonials', href: '/#temoignages-clients' }
       ],

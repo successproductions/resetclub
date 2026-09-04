@@ -18,6 +18,17 @@ export default function WhatsAppButton({
   const [isOpen, setIsOpen] = useState(false);
   const hasInteracted = useRef(false);
 
+  useEffect(() => {
+    if (!isOpen) return;
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') setIsOpen(false);
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [isOpen]);
+
   // useEffect(() => {
   //   const timer = window.setTimeout(() => {
   //     if (!hasInteracted.current) {
@@ -37,7 +48,7 @@ export default function WhatsAppButton({
     <div className={`fixed bottom-5 right-4 z-50 flex flex-col items-end gap-3 sm:bottom-6 sm:right-6 ${className}`}>
       {isOpen && (
         <div
-          className="chatbot-panel w-[calc(100vw-2rem)] max-w-[390px] overflow-hidden rounded-md border border-black/10 bg-white shadow-2xl animate-fade-in"
+          className="chatbot-panel w-[calc(100vw-2rem)] max-w-[410px] overflow-hidden rounded-md border border-black/10 bg-white shadow-2xl animate-fade-in"
         >
           <ChatBot
             onClose={() => setIsOpen(false)}
@@ -46,7 +57,7 @@ export default function WhatsAppButton({
         </div>
       )}
 
-      <div className="relative">
+      {!isOpen && <div className="relative">
         <div className="absolute -inset-1 rounded-full bg-[#cbb9a7]/40 blur-md" />
         <button
           onClick={toggleWidget}
@@ -67,7 +78,7 @@ export default function WhatsAppButton({
             <span className="block truncate text-[11px] text-white/70">{t('subtitle')}</span>
           </span>
         </button>
-      </div>
+      </div>}
 
       <style jsx>{`
         @keyframes fade-in {
@@ -85,13 +96,12 @@ export default function WhatsAppButton({
         }
 
         .chatbot-panel {
-          height: min(620px, calc(100vh - 7rem));
+          height: min(660px, calc(100dvh - 3rem));
         }
 
         @media (max-width: 640px) {
           .chatbot-panel {
-            height: min(78svh, calc(100vh - 5.5rem));
-            max-height: 720px;
+            height: min(760px, calc(100dvh - 2rem));
           }
         }
       `}</style>

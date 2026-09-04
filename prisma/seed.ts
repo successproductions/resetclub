@@ -1,5 +1,6 @@
 import { PrismaClient, TargetRole } from '@prisma/client';
 import bcrypt from 'bcryptjs';
+import { MODULE_THREE_CONTENT } from './module-three-content';
 
 const prisma = new PrismaClient();
 
@@ -48,6 +49,8 @@ const EMPLOYEE_CLOUDINARY_VIDEO_URLS: Record<string, string> = {
     'https://res.cloudinary.com/clo5dy7d/video/upload/v1784731951/PHASE_2_MODULE_2_ELEARNING_THERAPEUTE_us1eo7.mp4',
   'Les 3 types de protocoles RESET CLUB':
     'https://res.cloudinary.com/clo5dy7d/video/upload/v1784907652/PHASE_2_Module_3_nxdhcz.mp4',
+  [MODULE_THREE_CONTENT.lessonTitle]:
+    'https://res.cloudinary.com/clo5dy7d/video/upload/v1788336907/PHASE_2_Module_3_Sept_Edit_gnq1o7.mp4',
   'Accueil Client & Rituel RESET':
     'https://res.cloudinary.com/clo5dy7d/video/upload/v1784908142/PHASE_2_Module_4_rswo5p.mp4',
   'Éthique, Confidentialité & Posture de Thérapeute':
@@ -855,6 +858,27 @@ const phaseThreeProtocolQuiz = employeeModules[3].quiz;
 const phaseTwoAccueilQuiz = employeeModules[4].quiz;
 const phaseTwoEthiqueQuiz = employeeModules[5].quiz;
 
+// Keep the Phase 3 certification quiz independent from the updated e-learning Module 3 quiz.
+employeeModules[3] = {
+  title: MODULE_THREE_CONTENT.moduleTitle,
+  description: MODULE_THREE_CONTENT.moduleDescription,
+  durationMinutes: 8,
+  lessons: [
+    buildEmployeeVideoLesson(
+      MODULE_THREE_CONTENT.lessonTitle,
+      MODULE_THREE_CONTENT.lessonDescription,
+      3,
+      345,
+      phase2BadgeUrls[2]
+    ),
+  ],
+  quiz: {
+    title: MODULE_THREE_CONTENT.quizTitle,
+    description: MODULE_THREE_CONTENT.quizDescription,
+    questions: MODULE_THREE_CONTENT.questions,
+  },
+};
+
 employeeModules[6] = {
   title: 'PHASE 3 · Formation présentielle coaching RESET CLUB',
   description: 'Approfondir les protocoles, résultats et machines avec une posture de coaching terrain.',
@@ -1016,6 +1040,12 @@ async function createFormation(data: DemoFormation) {
 }
 
 async function main() {
+  if (process.env.CONFIRM_ACADEMY_SEED_RESET !== 'YES') {
+    throw new Error(
+      'Academy seed blocked: set CONFIRM_ACADEMY_SEED_RESET=YES only when you intentionally want to replace demo academy data.'
+    );
+  }
+
   console.log('Seeding Reset Club Academy demo data...');
 
   await prisma.user.deleteMany({

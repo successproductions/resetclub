@@ -81,6 +81,37 @@ const isCompetencyMaintenanceTitle = (title: string) => title.startsWith('PHASE 
 const isValidationTitle = (title: string) =>
   isCertificateValidationTitle(title) || isCompetencyMaintenanceTitle(title);
 
+/**
+ * A vimeo.com link is a web page, not a media file — it can never play inside a
+ * <video> tag. Some lessons store one in `videoUrl`, so only treat that column
+ * as a direct file when it isn't a Vimeo page.
+ */
+function getDirectVideoUrl(lesson: Lesson | null | undefined): string | null {
+  const url = lesson?.videoUrl;
+  if (!url) return null;
+  try {
+    return /(^|\.)vimeo\.com$/i.test(new URL(url).hostname) ? null : url;
+  } catch {
+    return url;
+  }
+}
+
+/**
+ * Vimeo id ready for the player URL, i.e. `<id>?h=<hash>`. Prefers the
+ * `vimeoVideoId` column, and otherwise parses a vimeo.com link out of
+ * `videoUrl` (format: vimeo.com/<id>/<privacy hash>).
+ */
+function getVimeoEmbedId(lesson: Lesson | null | undefined): string | null {
+  const stored = lesson?.vimeoVideoId;
+  if (stored) return stored.includes('?') ? stored : `${stored}?h=0`;
+
+  const url = lesson?.videoUrl;
+  if (!url) return null;
+  const match = url.match(/vimeo\.com\/(\d+)(?:\/([0-9a-zA-Z]+))?/);
+  if (!match) return null;
+  return match[2] ? `${match[1]}?h=${match[2]}` : `${match[1]}?h=0`;
+}
+
 export default function CoursePage({ params }: { params: Promise<{ id: string }> }) {
   const router = useRouter();
   const [sidebarOpen, setSidebarOpen] = useState(true);
@@ -881,20 +912,20 @@ export default function CoursePage({ params }: { params: Promise<{ id: string }>
         <div className="flex-1 bg-gray-50 flex items-center justify-center">
           {viewMode === 'lesson' ? (
             <div className="w-full h-full max-w-7xl">
-              {currentLesson?.videoUrl ? (
+              {getDirectVideoUrl(currentLesson) ? (
                 <video
-                  key={currentLesson.id}
+                  key={currentLesson!.id}
                   className="w-full h-full bg-black"
                   controls
                   playsInline
                   preload="metadata"
                 >
-                  <source src={currentLesson.videoUrl} type="video/mp4" />
+                  <source src={getDirectVideoUrl(currentLesson)!} type="video/mp4" />
                   Votre navigateur ne supporte pas la lecture vidéo.
                 </video>
-              ) : currentLesson?.vimeoVideoId ? (
+              ) : getVimeoEmbedId(currentLesson) ? (
                 <iframe
-                  src={`https://player.vimeo.com/video/${currentLesson.vimeoVideoId.includes('?') ? currentLesson.vimeoVideoId : currentLesson.vimeoVideoId + '?h=0'}&title=0&byline=0&portrait=0`}
+                  src={`https://player.vimeo.com/video/${getVimeoEmbedId(currentLesson)}&title=0&byline=0&portrait=0`}
                   className="w-full h-full"
                   frameBorder="0"
                   allow="autoplay; fullscreen; picture-in-picture"

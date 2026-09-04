@@ -1,14 +1,19 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { writeFile } from 'fs/promises';
-import path from 'path';
+import { uploadToCloudinary } from '@/lib/cloudinary';
+
+const MAX_FILE_SIZE = 5 * 1024 * 1024;
+
+const VALID_TYPES = [
+  'application/pdf',
+  'application/msword',
+  'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+];
 
 export async function POST(request: NextRequest) {
   console.log('=== CV Upload API Called ===');
   try {
-    // Parse form data
-    console.log('Parsing form data...');
     const formData = await request.formData();
-    
+
     const cvFile = formData.get('cvFile') as File | null;
     const fullName = formData.get('fullName') as string;
     const phone = formData.get('phone') as string;
@@ -16,7 +21,6 @@ export async function POST(request: NextRequest) {
     const position = formData.get('position') as string;
     const description = formData.get('description') as string;
 
-    // Validate required fields
     if (!cvFile || !fullName || !phone || !email || !position || !description) {
       return NextResponse.json(
         { error: 'Missing required fields' },
@@ -24,58 +28,44 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Validate file type
-    const validTypes = [
-      'application/pdf',
-      'application/msword',
-      'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
-    ];
-    if (!validTypes.includes(cvFile.type)) {
+    if (!VALID_TYPES.includes(cvFile.type)) {
       return NextResponse.json(
         { error: 'Invalid file type. Only PDF and DOC/DOCX are allowed' },
         { status: 400 }
       );
     }
 
-    // Validate file size (5MB max)
-    const maxSize = 5 * 1024 * 1024;
-    if (cvFile.size > maxSize) {
+    if (cvFile.size > MAX_FILE_SIZE) {
       return NextResponse.json(
         { error: 'File size exceeds 5MB limit' },
         { status: 400 }
       );
     }
 
-    // Convert file to buffer
     const arrayBuffer = await cvFile.arrayBuffer();
     const buffer = Buffer.from(arrayBuffer);
 
-    // Generate unique filename
-    const timestamp = Date.now();
+    // Raw uploads keep the extension in the public_id, so the delivered URL
+    // ends in .pdf / .docx and opens correctly from the spreadsheet.
     const sanitizedName = fullName.replace(/[^a-zA-Z0-9]/g, '_');
-    const fileExtension = cvFile.name.split('.').pop();
-    const fileName = `CV_${sanitizedName}_${timestamp}.${fileExtension}`;
+    const fileExtension = cvFile.name.split('.').pop() ?? 'pdf';
+    const publicId = `CV_${sanitizedName}_${Date.now()}.${fileExtension}`;
 
-    // Save file to server
-    console.log('Saving file to server...');
-    const uploadsDir = path.join(process.cwd(), 'public', 'uploads', 'cvs');
-    const filePath = path.join(uploadsDir, fileName);
-    
-    await writeFile(filePath, buffer);
-    console.log('File saved:', fileName);
+    console.log('Uploading CV to Cloudinary...');
+    const upload = await uploadToCloudinary({
+      buffer,
+      publicId,
+      folder: 'resetclub/cvs',
+    });
+    console.log('CV uploaded:', upload.secureUrl);
 
-    // Generate public URL for the CV
-    const cvUrl = `/uploads/cvs/${fileName}`;
-    const fullCvUrl = `${request.nextUrl.origin}${cvUrl}`;
-
-    // Send data to Google Apps Script
-    console.log('Sending data to Google Sheets...');
     const scriptUrl = process.env.NEXT_PUBLIC_GOOGLE_SHEETS_URL;
-    
+
     if (!scriptUrl) {
       throw new Error('NEXT_PUBLIC_GOOGLE_SHEETS_URL is not configured');
     }
 
+    console.log('Sending data to Google Sheets...');
     const scriptResponse = await fetch(scriptUrl, {
       method: 'POST',
       headers: {
@@ -89,7 +79,7 @@ export async function POST(request: NextRequest) {
         email,
         position,
         description,
-        cvLink: fullCvUrl,
+        cvLink: upload.secureUrl,
       }),
     });
 
@@ -97,13 +87,23 @@ export async function POST(request: NextRequest) {
     console.log('Google Sheets response:', scriptResult);
 
     if (scriptResult.status !== 'success') {
+      // The CV is already in Cloudinary — log everything so the application can
+      // be recovered by hand rather than being silently lost.
+      console.error('Google Sheets rejected the application:', {
+        fullName,
+        phone,
+        email,
+        position,
+        cvLink: upload.secureUrl,
+        sheetsResponse: scriptResult,
+      });
       throw new Error('Failed to save to Google Sheets: ' + scriptResult.message);
     }
 
     return NextResponse.json({
       success: true,
       message: 'CV uploaded successfully',
-      cvLink: fullCvUrl,
+      cvLink: upload.secureUrl,
     });
   } catch (error) {
     console.error('=== ERROR uploading CV ===');

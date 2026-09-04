@@ -2,6 +2,49 @@ import { NextRequest, NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
 import { ContactFormData } from '@/types';
 
+/**
+ * Appends the submission to the "CONTACT" tab of the shared spreadsheet, using
+ * the same Apps Script endpoint as the popup form. Returns false instead of
+ * throwing: a Sheets outage must not cost us the email notification.
+ */
+async function saveToGoogleSheet(formData: ContactFormData): Promise<boolean> {
+  const sheetsUrl = process.env.NEXT_PUBLIC_GOOGLE_SHEETS_URL;
+
+  if (!sheetsUrl) {
+    console.error('Contact form: NEXT_PUBLIC_GOOGLE_SHEETS_URL is not configured');
+    return false;
+  }
+
+  try {
+    const response = await fetch(sheetsUrl, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        formType: 'contact',
+        timestamp: new Date().toISOString(),
+        firstName: formData.firstName,
+        lastName: formData.lastName,
+        email: formData.email,
+        phone: [formData.countryCode, formData.phone].filter(Boolean).join(' '),
+        subject: formData.subject || '',
+        message: formData.message,
+      }),
+    });
+
+    const result = await response.json();
+
+    if (result.status !== 'success') {
+      console.error('Contact form: Google Sheets rejected the row:', result);
+      return false;
+    }
+
+    return true;
+  } catch (error) {
+    console.error('Contact form: Google Sheets request failed:', error);
+    return false;
+  }
+}
+
 export async function POST(request: NextRequest) {
   try {
     const formData: ContactFormData = await request.json();
@@ -89,11 +132,30 @@ ${formData.message}
       `,
     };
 
-    // Send email
-    await transporter.sendMail(emailContent);
+    // Store the lead and notify by email in parallel. Either one succeeding is
+    // enough to consider the submission handled — failing the request when the
+    // row is already written would only invite a duplicate resubmission.
+    const [sheetOutcome, mailOutcome] = await Promise.allSettled([
+      saveToGoogleSheet(formData),
+      transporter.sendMail(emailContent),
+    ]);
+
+    const savedToSheet = sheetOutcome.status === 'fulfilled' && sheetOutcome.value;
+    const emailSent = mailOutcome.status === 'fulfilled';
+
+    if (mailOutcome.status === 'rejected') {
+      console.error('Contact form: email delivery failed:', mailOutcome.reason);
+    }
+
+    if (!savedToSheet && !emailSent) {
+      return NextResponse.json(
+        { error: 'Failed to submit form' },
+        { status: 500 }
+      );
+    }
 
     return NextResponse.json(
-      { message: 'Email sent successfully' },
+      { message: 'Contact form submitted successfully', savedToSheet, emailSent },
       { status: 200 }
     );
 

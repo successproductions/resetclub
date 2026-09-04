@@ -6,41 +6,51 @@ import Image from 'next/image';
 const Trustpilot: React.FC = () => {
   const trustScore = 4.8;
   const totalReviews = 147;
+  const trustpilotReviewUrl = 'https://www.trustpilot.com/review/resetclub.ma';
 
   return (
     <section className="py-3 pb-4 md:py-0 md:pb-6 bg-white">
       <div className="container mx-auto px-4">
         <div className="max-w-xl mx-auto text-center">
-          {/* Trustpilot Logo */}
-          <div className="flex items-center justify-center gap-1 mb-1">
-            <Image
-              src="/images/trustpilot-2.svg"
-              alt="Trustpilot"
-              width={32}
-              height={32}
-              className="w-7 h-7 md:w-8 md:h-8"
-            />
-            <span className="text-xl md:text-2xl font-graphik text-gray-700">Trustpilot</span>
-          </div>
+          <a
+            href={trustpilotReviewUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Lire ou écrire un avis sur Trustpilot"
+            title="Voir les avis Trustpilot"
+            className="inline-block rounded-[5px] transition-opacity hover:opacity-75 focus:outline-none focus:ring-2 focus:ring-[#00b67a] focus:ring-offset-4"
+          >
+            {/* Trustpilot Logo */}
+            <div className="flex items-center justify-center gap-1 mb-1">
+              <Image
+                src="/images/trustpilot-2.svg"
+                alt="Trustpilot"
+                width={32}
+                height={32}
+                className="w-7 h-7 md:w-8 md:h-8"
+              />
+              <span className="text-xl md:text-2xl font-graphik text-gray-700">Trustpilot</span>
+            </div>
 
-          {/* Trustpilot Rating Image */}
-          <div className="flex justify-center">
-            <Image
-              src="/images/trustpilot-stars.png"
-              alt="Trustpilot 5 Stars"
-              width={180}
-              height={45}
-              className="w-auto h-8 md:h-12"
-            />
-          </div>
+            {/* Trustpilot Rating Image */}
+            <div className="flex justify-center">
+              <Image
+                src="/images/trustpilot-stars.png"
+                alt="Trustpilot 5 Stars"
+                width={180}
+                height={45}
+                className="w-auto h-8 md:h-12"
+              />
+            </div>
 
-          {/* TrustScore */}
-          <div className="text-sm md:text-lg font-graphik text-gray-500">
-            TrustScore <span className="text-gray-800">{trustScore}</span> |{' '}
-            <span className="text-gray-800">
-              {totalReviews} reviews
-            </span>
-          </div>
+            {/* TrustScore */}
+            <div className="text-sm md:text-lg font-graphik text-gray-500">
+              TrustScore <span className="text-gray-800">{trustScore}</span> |{' '}
+              <span className="text-gray-800">
+                {totalReviews} reviews
+              </span>
+            </div>
+          </a>
         </div>
 
         {/*
