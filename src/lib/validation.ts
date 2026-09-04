@@ -28,10 +28,6 @@ export const validateContactForm = (
     errors.phone = t('form.errors.required');
   }
 
-  if (!formData.subject.trim()) {
-    errors.subject = t('form.errors.required');
-  }
-
   if (!formData.message.trim()) {
     errors.message = t('form.errors.required');
   }

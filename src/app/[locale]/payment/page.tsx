@@ -6,9 +6,10 @@ import { useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
+import { getBasePriceMad } from '@/lib/pricing';
 
-// CMI fee: 2.97% — applied server-side but declared here for reference
-const RESET_CLUB_AMOUNT_MAD = 1500; // Base price in MAD — adjust as needed
+// Display only — the amount actually charged is recomputed in the API route.
+const RESET_CLUB_AMOUNT_MAD = getBasePriceMad();
 
 const TOP_COUNTRIES = [
   { code: '+212', label: '🇲🇦 +212' },
@@ -67,9 +68,6 @@ export default function PaymentPage() {
       // Generate unique order ID
       const orderId = `RC-${Date.now().toString(36)}${Math.random().toString(36).substring(2, 7)}`.toUpperCase();
 
-      // Apply 2.97% CMI fee
-      const totalAmount = Math.ceil(RESET_CLUB_AMOUNT_MAD * 1.0297 * 100) / 100;
-
       const res = await fetch('/api/payment/initiate', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -79,7 +77,6 @@ export default function PaymentPage() {
           phone:     `${formData.countryCode} ${formData.phone}`,
           address:   formData.address,
           city:      formData.city,
-          amount:    totalAmount,
           orderId:   orderId,
           pageSlug:  'fr/payment',
         }),

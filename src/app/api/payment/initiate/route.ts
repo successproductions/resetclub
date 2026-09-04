@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import crypto from 'crypto';
+import { getTotalAmountMad } from '@/lib/pricing';
 
 const CMI_CONFIG = {
   clientId:   process.env.CMI_CLIENT_ID_PROD || process.env.CMI_CLIENT_ID || process.env.CMI_CLIENT_ID_TEST || '',
@@ -14,7 +15,6 @@ interface PaymentRequest {
   phone:     string;
   address:   string;
   city:      string;
-  amount:    number;
   orderId:   string;
   pageSlug?: string;
 }
@@ -75,7 +75,11 @@ export async function POST(request: NextRequest) {
     }
 
     const body: PaymentRequest = await request.json();
-    const { fullName, email, phone, address, city, amount, orderId, pageSlug } = body;
+    const { fullName, email, phone, address, city, orderId, pageSlug } = body;
+
+    // Priced server-side on purpose. Anything the browser sends is ignored —
+    // otherwise the amount could simply be edited before submitting.
+    const amount = getTotalAmountMad();
 
     let baseUrl = process.env.CMI_PUBLIC_BASE_URL || process.env.NEXT_PUBLIC_BASE_URL || 'https://www.resetclub.ma';
     if (process.env.NODE_ENV === 'development' && process.env.CMI_USE_LOCAL_URLS === 'true') {
