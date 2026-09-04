@@ -1,15 +1,3 @@
-/**
- * Single source of truth for what a Reset Club membership costs.
- *
- * The page renders the price and the API charges it, but only the API's copy is
- * authoritative: the browser can rewrite anything it POSTs, so the amount sent
- * to the CMI gateway is always recomputed server-side and the client's figure
- * is ignored.
- *
- * Both sides read the same variable. `NEXT_PUBLIC_` is inlined into the client
- * bundle at build time and read from the environment at runtime on the server,
- * so displayed and charged prices cannot drift apart.
- */
 
 /** CMI transaction fee passed on to the customer. */
 export const CMI_FEE_MULTIPLIER = 1.0297;
