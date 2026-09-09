@@ -1,0 +1,108 @@
+/**
+ * Échelle typographique propre au questionnaire.
+ *
+ * `globals.css` impose une taille aux h2/h3 par un sélecteur d'élément non
+ * calqué (`h2 { font-size: 3rem }` au-delà de 1024px). Les utilitaires Tailwind v4
+ * vivent dans `@layer utilities` et perdent donc face à cette règle : un
+ * `text-[1.7rem]` sur un h2 est ignoré. Plutôt que de modifier une règle globale
+ * qui porte tout le site, le quiz déclare ici sa propre échelle, sous `.rc-quiz`,
+ * dont la spécificité (0,1,1) l'emporte sur le sélecteur d'élément.
+ */
+
+.rc-quiz h1,
+.rc-quiz h2,
+.rc-quiz h3 {
+  font-family: var(--font-graphik);
+  font-weight: 400;
+  letter-spacing: -0.01em;
+}
+
+.rc-quiz h1 {
+  font-size: 1.9rem;
+  line-height: 1.14;
+}
+
+/* Titre de l'écran de fin */
+.rc-quiz .rc-fin-carte h1 {
+  font-size: 1.8rem;
+  line-height: 1.12;
+}
+
+/* Nom du terrain — la place qu'occuperait un score dans un quiz classique */
+.rc-quiz .rc-fin-terrain {
+  font-size: 1.6rem;
+  line-height: 1.16;
+  letter-spacing: -0.015em;
+}
+
+/* Titre du hero d'accueil : plus ample que les autres h1 du parcours. */
+.rc-quiz .rc-hero-title {
+  font-size: clamp(2.6rem, 9vw, 5.4rem);
+  line-height: 0.98;
+  letter-spacing: -0.03em;
+}
+
+/* Énoncé de question */
+.rc-quiz h2 {
+  font-size: 1.35rem;
+  line-height: 1.32;
+}
+
+/* Intitulé de section dans la restitution */
+.rc-quiz h3 {
+  font-size: 0.8125rem;
+  line-height: 1.4;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+@media (min-width: 640px) {
+  .rc-quiz h1 {
+    font-size: 2.4rem;
+  }
+  .rc-quiz .rc-fin-carte h1 {
+    font-size: 2.15rem;
+  }
+  .rc-quiz .rc-fin-terrain {
+    font-size: 1.95rem;
+  }
+  .rc-quiz h2 {
+    font-size: 1.7rem;
+  }
+}
+
+/* Écran d'identité et titres de restitution : un cran au-dessus des énoncés. */
+.rc-quiz h2.rc-h2-lead {
+  font-size: 1.6rem;
+}
+
+@media (min-width: 640px) {
+  .rc-quiz h2.rc-h2-lead {
+    font-size: 2rem;
+  }
+}
+
+/* Apparition du libellé d'étape dans l'écran de calcul. */
+@keyframes rc-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(9px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.rc-fade-up {
+  animation: rc-fade-up 0.42s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rc-quiz *,
+  .rc-fade-up {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}

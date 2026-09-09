@@ -20,9 +20,10 @@ export default function ConditionalComponents() {
   const isLegalPage = pathname.includes('/legal');
   const isCookiesPage = pathname.includes('/cookies');
   const isCGVPage = pathname.includes('/cgv');
+  const isQuestionnairePage = pathname.includes('/questionnaire-profil');
 
 
-  if (isLinktreePage || isMembershipPage || isPaymentPage || isConfirmationPage || isMasterClassPage || isAcademyPage || isLegalPage || isCookiesPage || isCGVPage) {
+  if (isLinktreePage || isMembershipPage || isPaymentPage || isConfirmationPage || isMasterClassPage || isAcademyPage || isLegalPage || isCookiesPage || isCGVPage || isQuestionnairePage) {
     return null;
   }
 
