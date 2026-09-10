@@ -162,11 +162,9 @@
           "specialty": "Metabolism & Weight Loss",
           "description": "Specialist in metabolic optimization and personalized nutrition for lasting results. After completing her masters in nutritional medicine,  Sarah has practiced for over 12 years in renowned hospitals and wellness retreats."
         },
-        "marc": {
-          "name": "Anissa Dubois",
-          "role": "Elite Sports Coach",
-          "specialty": "Physical Transformation",
-          "description": "Anissa is a dynamic professional with over 10 years of rich multicultural experience encompassing resorts and wellness retreats. She specializes in personalized training programs."
+        "nahed": {
+          "name": "Nahed Rachad",
+          "role": "Coaching transformationnel féminin · Fondatrice Club"
         },
         "amina": {
           "name": "Amina Hassan",
@@ -174,11 +172,11 @@
           "specialty": "Behavior & Habits",
           "description": " Amina has over 8 years of diverse experience in psychological support for life transformations. She specializes in the art of guiding sustainable behavioral changes."
         },
-        "thomas": {
-          "name": "Thomas Laurent",
-          "role": "Wellness Chef",
-          "specialty": "Health Cuisine",
-          "description": "Chef Thomas has over 15 years of experience in wellness culinary arts. He is well-versed in modern European cuisines, with a strong focus on health and prepares simple yet sophisticated dishes."
+        "salima": {
+          "name": "Salima El Boussoun",
+          "role": "Physiotherapist",
+          "specialty": "Laser Touch",
+          "description": "As a physiotherapist, I support my patients throughout their course of care with personalized treatment adapted to their needs."
         },
         "fatima": {
           "name": " Fatima Al-Zahra",
@@ -191,6 +189,30 @@
           "role": "Holistic Therapist",
           "specialty": "Global Wellness",
           "description": "Practitioner in alternative therapies and holistic wellness support. Alexandre combines different therapeutic approaches to create personalized healing programs."
+        },
+        "yasmine": {
+          "name": "Yasmine Benali",
+          "role": "Nutritionist",
+          "specialty": "Nutrition & Micronutrition",
+          "description": "Yasmine builds tailored eating plans around your lab results and your daily rhythm, to settle habits that last."
+        },
+        "rim": {
+          "name": "Rim Tazi",
+          "role": "Sports Coach",
+          "specialty": "Physical conditioning",
+          "description": "Rim designs progressive programmes that respect your starting condition and your goals, in the gym or at home."
+        },
+        "youssef": {
+          "name": "Youssef Alami",
+          "role": "Cryotherapy Specialist",
+          "specialty": "Recovery & Performance",
+          "description": "Youssef runs the cryotherapy and recovery protocols, reducing inflammation and speeding up muscle regeneration."
+        },
+        "sofia": {
+          "name": "Sofia Bennani",
+          "role": "Wellness Practitioner",
+          "specialty": "Massage & Drainage",
+          "description": "Sofia practises lymphatic drainage and deep-tissue massage, to restart circulation and release accumulated tension."
         }
       }
     }

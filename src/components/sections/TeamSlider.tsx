@@ -1,202 +1,199 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
 import { useTranslations } from 'next-intl';
+import { X } from 'lucide-react';
+
+type TeamMember = {
+  id: number;
+  key: string;
+  image: string;
+  /** Mosaic placement: mobile spans first, desktop placement from `lg:`. */
+  tileClassName: string;
+};
+
+const teamMembers: TeamMember[] = [
+  {
+    id: 1,
+    key: 'fatima',
+    image: 'https://media.sixsenses.com/B60H3R33/at/59kb6f3rfrq76gn8fb9gng7/Alphinah_Ashinai.jpg?format=webp&width=680&height=900&fit=crop',
+    tileClassName: 'col-span-2 row-span-2 lg:col-start-3 lg:col-span-2 lg:row-start-1 lg:row-span-1',
+  },
+  {
+    id: 2,
+    key: 'nahed',
+    image: '/images/nahed1.png',
+    tileClassName: 'col-span-1 row-span-3 lg:col-start-5 lg:col-span-1 lg:row-start-1 lg:row-span-2',
+  },
+  {
+    id: 3,
+    key: 'amina',
+    image: 'https://media.sixsenses.com/B60H3R33/at/59kb6f3rfrq76gn8fb9gng7/Alphinah_Ashinai.jpg?format=webp&width=680&height=900&fit=crop',
+    tileClassName: 'col-span-1 row-span-3 lg:col-start-3 lg:col-span-1 lg:row-start-2 lg:row-span-1',
+  },
+  {
+    id: 4,
+    key: 'salima',
+    image: 'https://media.sixsenses.com/B60H3R33/at/3cfgp7953pj9t9f3tbqj9p6/Wellness_Acupuncture.jpg?format=webp&width=680&height=900&fit=crop',
+    tileClassName: 'col-span-1 row-span-2 lg:col-start-4 lg:col-span-1 lg:row-start-2 lg:row-span-3',
+  },
+  {
+    id: 5,
+    key: 'yasmine',
+    image: '/images/hero/hero7.jpeg',
+    tileClassName: 'col-span-1 row-span-2 lg:col-start-2 lg:col-span-1 lg:row-start-3 lg:row-span-1',
+  },
+  {
+    id: 6,
+    key: 'rim',
+    image: '/images/hero/hero8.jpeg',
+    tileClassName: 'col-span-1 row-span-3 lg:col-start-3 lg:col-span-1 lg:row-start-3 lg:row-span-2',
+  },
+  {
+    id: 7,
+    key: 'Siham',
+    image: '/images/siam.jpeg',
+    tileClassName: 'col-span-1 row-span-3 lg:col-start-5 lg:col-span-1 lg:row-start-3 lg:row-span-2',
+  },
+  {
+    id: 8,
+    key: 'alexandre',
+    image: 'https://media.sixsenses.com/B60H3R33/at/3cfgp7953pj9t9f3tbqj9p6/Wellness_Acupuncture.jpg?format=webp&width=680&height=900&fit=crop',
+    tileClassName: 'col-span-2 row-span-2 lg:col-start-1 lg:col-span-2 lg:row-start-4 lg:row-span-2',
+  },
+  {
+    id: 9,
+    key: 'youssef',
+    image: '/images/hero/hero5.jpeg',
+    tileClassName: 'col-span-1 row-span-3 lg:col-start-3 lg:col-span-2 lg:row-start-5 lg:row-span-1',
+  },
+  {
+    id: 10,
+    key: 'sofia',
+    image: '/images/woman-put.jpg',
+    tileClassName: 'col-span-1 row-span-3 lg:col-start-5 lg:col-span-1 lg:row-start-5 lg:row-span-1',
+  },
+];
 
 const TeamSlider: React.FC = () => {
   const t = useTranslations('TeamPage.team');
-  const [currentIndex, setCurrentIndex] = useState(0);
+  const [selected, setSelected] = useState<TeamMember | null>(null);
 
-  const teamMembers = [
-    {
-      id: 1,
-      key: 'Siham',
-      image: "/images/siam.jpeg"
-    },
-    {
-      id: 2,
-      key: 'marc',
-      image: "https://media.sixsenses.com/B60H3R33/at/3cfgp7953pj9t9f3tbqj9p6/Wellness_Acupuncture.jpg?format=webp&width=680&height=900&fit=crop"
-    },
-    {
-      id: 3,
-      key: 'amina',
-      image: "https://media.sixsenses.com/B60H3R33/at/59kb6f3rfrq76gn8fb9gng7/Alphinah_Ashinai.jpg?format=webp&width=680&height=900&fit=crop"
-    },
-    {
-      id: 4,
-      key: 'thomas',
-      image: "https://media.sixsenses.com/B60H3R33/at/3cfgp7953pj9t9f3tbqj9p6/Wellness_Acupuncture.jpg?format=webp&width=680&height=900&fit=crop"
-    },
-    {
-      id: 5,
-      key: 'fatima',
-      image: "https://media.sixsenses.com/B60H3R33/at/59kb6f3rfrq76gn8fb9gng7/Alphinah_Ashinai.jpg?format=webp&width=680&height=900&fit=crop"
-    },
-    {
-      id: 6,
-      key: 'alexandre',
-      image: "https://media.sixsenses.com/B60H3R33/at/3cfgp7953pj9t9f3tbqj9p6/Wellness_Acupuncture.jpg?format=webp&width=680&height=900&fit=crop"
-    }
-  ];
+  // Close on Escape and freeze the page behind the lightbox.
+  useEffect(() => {
+    if (!selected) return;
 
-  const itemsPerPageDesktop = 3;
-  const itemsPerPageMobile = 1;
-  const [isMobile, setIsMobile] = React.useState(false);
-
-  React.useEffect(() => {
-    const checkIsMobile = () => {
-      setIsMobile(window.innerWidth < 768);
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') setSelected(null);
     };
 
-    checkIsMobile();
-    window.addEventListener('resize', checkIsMobile);
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    window.addEventListener('keydown', onKeyDown);
 
-    return () => window.removeEventListener('resize', checkIsMobile);
-  }, []);
-
-  const itemsPerPage = isMobile ? itemsPerPageMobile : itemsPerPageDesktop;
-  const totalPages = Math.ceil(teamMembers.length / itemsPerPage);
-
-  const scroll = (direction: 'left' | 'right') => {
-    if (direction === 'left' && currentIndex > 0) {
-      setCurrentIndex(currentIndex - 1);
-    } else if (direction === 'right' && currentIndex < totalPages - 1) {
-      setCurrentIndex(currentIndex + 1);
-    }
-  };
-
-  const getCurrentPageMembers = () => {
-    const startIndex = currentIndex * itemsPerPage;
-    return teamMembers.slice(startIndex, startIndex + itemsPerPage);
-  };
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      window.removeEventListener('keydown', onKeyDown);
+    };
+  }, [selected]);
 
   return (
-    <section id="notre-equipe" className="py-6 md:pb-12 bg-white">
-      <div className="md:max-w-7xl md:mx-auto md:px-6">
-        {/* Header Section */}
-        <div className="text-center mb-4 md:mb-12 px-6 md:px-0">
-          <h2 className="text-3xl md:text-3xl lg:text-[35px]! uppercase font-normal text-gray-900">
-            {t('expertsTitle')}
-          </h2>
-        </div>
-
-        {/* Navigation Buttons - Mobile */}
-        <div className="flex justify-center gap-4 mb-2 md:hidden px-6">
-          <button
-            onClick={() => scroll('left')}
-            className="w-12 h-12 rounded-full border border-[#524029] bg-white flex items-center justify-center hover:bg-gray-50 transition-colors disabled:opacity-50 shadow-lg"
-            disabled={currentIndex === 0}
-          >
-            <svg className="w-5 h-5 text-gray-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-            </svg>
-          </button>
-          <button
-            onClick={() => scroll('right')}
-            className="w-12 h-12 rounded-full border border-[#524029] bg-white flex items-center justify-center hover:bg-gray-50 transition-colors disabled:opacity-50 shadow-lg"
-            disabled={currentIndex === totalPages - 1}
-          >
-            <svg className="w-5 h-5 text-[#ccbaa8]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-            </svg>
-          </button>
-        </div>
-
-        {/* Navigation and Team Grid - Desktop */}
-        <div className="hidden md:flex items-center gap-8">
-          {/* Left Navigation Button */}
-          <button
-            onClick={() => scroll('left')}
-            className="flex-shrink-0 w-12 h-12 rounded-full border border-[#524029] bg-white flex items-center justify-center hover:bg-gray-50 transition-colors disabled:opacity-50 shadow-lg"
-            disabled={currentIndex === 0}
-          >
-            <svg className="w-5 h-5 text-gray-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-            </svg>
-          </button>
-
-          {/* Team Grid */}
-          <div className="grid grid-cols-3 gap-8 flex-1">
-            {getCurrentPageMembers().map((member) => (
-              <div key={member.id} className="text-center space-y-6">
-                {/* Image */}
-                <div className="relative h-96 w-full overflow-hidden mx-auto">
-                  <Image
-                    src={member.image}
-                    alt={t(`members.${member.key}.name`)}
-                    fill
-                    className="object-cover"
-                    sizes="33vw"
-                  />
-                </div>
-
-                {/* Name */}
-                <h3 className="text-xl font-semibold font-graphik text-gray-900 m-2">
-                  {t(`members.${member.key}.name`)}
-                </h3>
-
-                {/* Role */}
-                <div className="text-gray-900 font-graphik font-medium m-2">
-                  {t(`members.${member.key}.role`)}
-                </div>
-
-                {/* Description */}
-                <p className="text-gray-800! font-graphik text-lg leading-relaxed">
-                  {t(`members.${member.key}.description`)}
-                </p>
-              </div>
-            ))}
+    <section id="notre-equipe" className="py-5 bg-white md:py-10">
+      <div className="mx-auto max-w-[1520px] px-5 md:px-10">
+        <div className="lg:grid lg:grid-cols-5 lg:auto-rows-[132px] lg:gap-4 xl:auto-rows-[152px]">
+          {/* Heading */}
+          <div className="mb-8 lg:mb-0 lg:col-start-1 lg:col-span-2 lg:row-start-1 lg:row-span-2 lg:pr-8">
+            <h2 className="font-inter text-[26px]! font-normal! italic leading-[1.25]! text-gray-900 md:text-[34px]!">
+              <span className="mr-5 hidden h-px w-[76px] translate-y-[-9px] bg-gray-400 align-middle lg:inline-block" aria-hidden="true"></span>
+              {t('expertsTitle')}
+            </h2>
+            <p className="mt-5 font-graphik text-base leading-[1.55] text-gray-800 md:mt-6 md:text-[17px]">
+              {t('subtitle')}
+            </p>
           </div>
 
-          {/* Right Navigation Button */}
-          <button
-            onClick={() => scroll('right')}
-            className="flex-shrink-0 w-12 h-12 rounded-full border border-[#524029] bg-white flex items-center justify-center hover:bg-gray-50 transition-colors disabled:opacity-50 shadow-lg"
-            disabled={currentIndex === totalPages - 1}
-          >
-            <svg className="w-5 h-5 text-gray-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-            </svg>
-          </button>
-        </div>
-
-        {/* Team Grid - Mobile - Full Width */}
-        <div className="md:hidden">
-          <div className="space-y-8">
-            {getCurrentPageMembers().map((member) => (
-              <div key={member.id} className="text-center space-y-1 md:space-y-4">
-                {/* Image - Full Width */}
-                <div className="relative h-96 w-full overflow-hidden">
-                  <Image
-                    src={member.image}
-                    alt={t(`members.${member.key}.name`)}
-                    fill
-                    className="object-cover"
-                    sizes="100vw"
-                  />
+          {/* Mosaic: its own grid on mobile, dissolved into the outer grid from lg. */}
+          <div className="grid grid-flow-row-dense grid-cols-2 auto-rows-[110px] gap-3 md:auto-rows-[140px] md:gap-4 lg:contents">
+            {teamMembers.map((member) => (
+              <button
+                key={member.id}
+                type="button"
+                onClick={() => setSelected(member)}
+                aria-label={t(`members.${member.key}.name`)}
+                className={`group relative block overflow-hidden bg-gray-200 text-left ${member.tileClassName}`}
+              >
+                <Image
+                  src={member.image}
+                  alt={t(`members.${member.key}.name`)}
+                  fill
+                  sizes="(max-width: 1024px) 50vw, 40vw"
+                  className="object-cover transition-transform duration-700 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-linear-to-t from-black/60 via-black/15 to-transparent"></div>
+                <div className="absolute inset-x-0 bottom-0 px-4 pb-3.5 md:px-5 md:pb-4">
+                  <p className="font-graphik text-[15px] font-normal leading-tight text-white">
+                    {t(`members.${member.key}.name`)}
+                  </p>
+                  <p className="mt-1 font-graphik text-[12px] leading-[1.3] text-white/80">
+                    {t(`members.${member.key}.role`)}
+                  </p>
                 </div>
-
-                {/* Name */}
-                <h3 className="text-lg font-bold text-gray-900 px-6">
-                  {t(`members.${member.key}.name`)}
-                </h3>
-
-                {/* Role */}
-                <div className="text-gray-900 font-medium px-6">
-                  {t(`members.${member.key}.role`)}
-                </div>
-
-                {/* Description */}
-                {/* <p className="text-gray-900 text-sm leading-relaxed px-4">
-                  {t(`members.${member.key}.description`)}
-                </p> */}
-              </div>
+              </button>
             ))}
           </div>
         </div>
       </div>
+
+      {/* Lightbox */}
+      {selected && (
+        <div
+          onClick={(event) => {
+            if (event.target === event.currentTarget) setSelected(null);
+          }}
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4 md:p-8"
+          role="dialog"
+          aria-modal="true"
+          aria-label={t(`members.${selected.key}.name`)}
+        >
+          <div className="relative max-h-full w-full max-w-3xl overflow-hidden bg-black">
+            <div className="relative aspect-4/5 w-full md:aspect-3/2">
+              <Image
+                src={selected.image}
+                alt={t(`members.${selected.key}.name`)}
+                fill
+                sizes="(max-width: 768px) 100vw, 768px"
+                className="object-cover"
+                priority
+              />
+              <div className="absolute inset-0 bg-linear-to-t from-black/85 via-black/25 to-black/10"></div>
+
+              <button
+                type="button"
+                onClick={() => setSelected(null)}
+                aria-label="Close"
+                className="absolute right-4 top-4 text-white/90 transition-colors hover:text-white md:right-6 md:top-6"
+              >
+                <X size={28} />
+              </button>
+
+              <div className="absolute inset-x-0 bottom-0 p-6 md:p-8">
+                <p className="font-graphik text-lg leading-tight text-white md:text-xl">
+                  {t(`members.${selected.key}.name`)}
+                </p>
+                <p className="mt-1 font-graphik text-base leading-tight text-white/90 md:text-lg">
+                  {t(`members.${selected.key}.role`)}
+                </p>
+                {t.has(`members.${selected.key}.description`) && (
+                  <p className="mt-5 max-w-2xl font-graphik text-sm leading-relaxed text-white/80 md:text-base">
+                    {t(`members.${selected.key}.description`)}
+                  </p>
+                )}
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   );
 };
