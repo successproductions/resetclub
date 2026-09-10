@@ -164,8 +164,13 @@ export default function PopupOfferV2() {
             </h3>
 
             {/* Subtitle */}
-            <p className="text-gray-900 font-graphik mb-3 md:mb-6 text-sm md:text-lg">
+            <p className="text-gray-900 font-graphik mb-3 md:mb-4 text-sm md:text-lg whitespace-pre-line">
               {t('subtitle')}
+            </p>
+
+            {/* Offer details */}
+            <p className="text-gray-600 font-graphik mb-3 md:mb-6 text-xs md:text-sm">
+              {t('details')}
             </p>
 
             {/* Form */}

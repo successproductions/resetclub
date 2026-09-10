@@ -15,7 +15,7 @@
       "energy": "RETROUVER ÉNERGIE ET VITALITÉ",
       "body": "TRANSFORMER DURABLEMENT VOTRE CORPS"
     },
-    "cta": "Réserver mon bilan"
+    "cta": "Je veux comprendre mon crops"
   },
   "HomePage": {
     "title": "",
@@ -141,15 +141,15 @@
       "bio5": "La fatigue d’abord. Puis les douleurs articulaires. Puis 12 kilos que je ne comprenais pas. Un corps qui résistait à tout le sport, les régimes, les centres. Un effet yoyo qui durait.",
       "bio6": "Et une question qui revenait, de plus en plus fort : Pourquoi ça ne marche plus pour moi ?",
       "bio7": "J’aurais pu baisser les bras. Au lieu de ça, j’ai fait ce que je fais toujours quand quelque chose me bloque : je me suis formée.",
-      "bio8": "J’ai découvert le biohacking. Je me suis entourée des meilleurs experts mondiaux. Et pour la première fois, j’ai compris ce qui se passait vraiment dans mon corps l’inflammation, le cortisol, la résistance à l’insuline, le sommeil cassé. Ces paramètres invisibles qui bloquent tout, et que personne ne m’avait jamais expliqué.",
-      "bio9": "J’ai été mon propre cobaye. J’ai construit mes protocoles autour des meilleurs experts internationaux. Et mon corps a recommencé à coopérer.",
+      "bio8": "J’ai découvert le biohacking. Je me suis entourée des meilleurs experts mondiaux. Et pour la première fois, j’ai compris ce qui se passait vraiment dans mon corps l’inflammation, le cortisol, la résistance à l’insuline, le sommeil cassé. Ces paramètres invisibles qui bloquent tout, et que personne ne m’avait jamais expliqués.",
+      "bio9": "J’ai été mon propre cobaye. J'ai construit mes protocoles entourée des meilleurs experts internationaux. Et mon corps a recommencé à coopérer.",
       "bio10": "C’est là que j’ai su.",
       "bio11": "Si moi coach, formée, informée, entourée je suis passée à côté de tout ça pendant des années… combien de femmes vivent exactement la même chose en ce moment, sans savoir que ce n’est pas leur faute ?",
       "bio12": "Reset Club est né de cette conviction. Pas pour vous donner un programme de plus.",
       "bio13": "Pour vous donner enfin ce que personne ne vous a donné : la compréhension de votre propre corps. La perte de poids ? Elle est arrivée. Mais comme une conséquence. ''",
       "readMore": "Lire la suite",
       "readLess": "Réduire",
-      "cta": "Réserver mon bilan RESET™"
+      "cta": "Réserver mon bilan "
     },
     "team": {
       "title": "Notre Équipe d'Experts",
@@ -200,12 +200,12 @@
     "description": "Elles ont osé dire oui à leur transformation. Et vous ?",
     "subtitle": "Elles ont vécu Reset Club. Voici ce qu’elles en disent",
     "quote": "Chaque transformation commence par une décision. Rejoignez-nous et découvrez votre potentiel.",
-    "cta": "Réserver mon bilan"
+    "cta": " Je veux comprendre mon crops"
   },
   "KeyFigures": {
     "title": "Des résultats mesurables. Pas des promesses.",
     "description": "Ces résultats commencent par un bilan. ",
-    "cta": "Réserver le mien",
+    "cta": "Réserver mon bilan ",
     "stats": {
       "sleep": {
         "number": "30",
@@ -421,7 +421,7 @@
     "hook": "LA MÉTHODE IN–OUT–RESET™",
     "title": "La logique exclusive qui structure toute votre transformation",
     "description": "Reset Club repose sur une approche exclusive : IN–OUT–RESET™. Une méthode globale qui agit simultanément à l’intérieur, à l’extérieur et en profondeur — pour rééquilibrer le métabolisme, le système nerveux et l’énergie du corps. Nos protocoles s’inspirent des approches développées dans les meilleurs centres internationaux spécialisés en longévité, optimisation métabolique, récupération nerveuse et performance humaine. IN–OUT–RESET™ n’est pas une méthode de contrôle. C’est une méthode de réconciliation avec votre corps. Et lorsque le corps recommence à coopérer, la perte de poids, l’énergie et la vitalité deviennent des conséquences naturelles.",
-    "cta": "Réserver mon bilan RESET™",
+    "cta": "Réserver mon bilan ",
     "trust": {
       "certified": "Experts certifiés",
       "proven": "Méthode éprouvée",
@@ -551,9 +551,9 @@
     "socialProof": "Rejoignez plus de 500+ personnes qui ont transformé leur vie avec RESET Club"
   },
   "PopupOffer": {
-    "title": "Et si ta transformation commençait maintenant?",
+    "title": "Et si votre corps n'était pas le problème ?",
     "imageAlt": "Reset Club",
-    "subtitle": "À l’occasion de notre ouverture, nous vous offrons un Bilan Transformationnel RESET™   ( valeur : 1500 DH) pour découvrir exactement ce dont ton corps a besoin pour perdre du poids, affiner ta silhouette et retrouver ton énergie.",
+    "subtitle": "Le sport, le jeûne, les régimes vous avez tout testé. Sans résultat.\nVotre corps résiste pour une raison que personne ne vous a jamais expliquée.\nEn 45 minutes, nous vous la donnons.",
     "description": "Grattez pour découvrir votre réduction exclusive sur votre bilan personnalisé",
     "cardInstruction": "Grattez les 3 cartes pour révéler votre réduction !",
     "cardsScratched": "cartes grattées",
@@ -562,9 +562,10 @@
     "discount": "de réduction",
     "enterEmail": "Entrez votre email pour réserver votre bilan personnalisé",
     "emailPlaceholder": "VOTRE E-MAIL",
-    "ctaButton": "JE RÉSERVE MON RESET",
+    "ctaButton": "JE RÉSERVE MON BILAN",
     "privacyText": "En réservant, j’accepte de recevoir mes instructions de prise de rendez-vous et les informations de suivi Reset Club™ (selon la politique de confidentialité).",
-    "privacyLink": "Politique de confidentialité"
+    "privacyLink": "Politique de confidentialité",
+    "details": "Bilan Transformationnel RESET™ · 45 minutes · 1 500 dh · Rapport remis le jour même"
   },
   "NotificationWidget": {
     "message1": "Il y a 3 minutes, Laila a réservé son Bilan Transformationnel",
@@ -589,7 +590,7 @@
     },
     "bilan": {
       "presentation": "Quel que soit votre objectif,\ntout commence par la même étape.\nLe Bilan Reset™.\nEn 30 minutes, notre équipe analyse\nles signaux de votre corps :\ncomposition corporelle, carences,\nstress oxydatif, freins métaboliques invisibles.\nL’idée est simple :\ncomprendre avant d’agir.\nNos créneaux sont volontairement limités chaque semaine\npour garantir un accompagnement entièrement personnalisé.",
-      "book": "Réserver mon Bilan Reset™",
+      "book": "Réserver mon bilan ",
       "talk": "Parler à une conseillère",
       "question": "J’ai encore une question"
     },
@@ -643,11 +644,10 @@
     "cta": "Je veux comprendre mon corps"
   },
   "PaymentPage": {
-    "warning": "Ne fermez pas cette page — votre réservation n'est pas encore finalisée.",
-    "step": "Étape 2 sur 3 — Paiement sécurisé",
-    "title": "Vous êtes à un clic de votre transformation.",
-    "subtitle": "Finalisez votre réservation pour confirmer votre bilan personnalisé RESET™.",
-    "availableSlots": "Il ne reste que deux créneaux cette semaine",
+    "warning": "Ne fermez pas cette page votre réservation n'est pas encore finalisée.",
+    "step": "Étape 2 sur 3  Réservation",
+    "title": "Il ne reste qu'à confirmer.",
+    "subtitle": "Votre créneau est en attente. Complétez vos informations pour le sécuriser.",
     "form": {
       "fullName": "Nom complet",
       "email": "E-mail",
@@ -656,7 +656,22 @@
       "city": "Ville",
       "submit": "Je réserve ce créneau"
     },
-    "securePayment": "PAIEMENT SÉCURISÉ"
+    "securePayment": "PAIEMENT SÉCURISÉ",
+    "nextStepsTitle": "Ce qui se passe ensuite",
+    "nextStepsBody": "Vous recevez la confirmation par e-mail et par WhatsApp, avec l'adresse du centre et les quelques recommandations à suivre avant votre venue.",
+    "summary": "⏱ 45 minutes · {price} dh · Bilan Transformationnel RESET™",
+    "step1": {
+      "step": "Étape 1 sur 3  Votre bilan",
+      "title": "45 minutes pour comprendre pourquoi votre corps résiste",
+      "intro": "Le Bilan Transformationnel RESET™ est une lecture complète de votre corps.",
+      "body": "Vous allez comprendre ce qui l'enflamme, ce qui le met sous tension, ce qui ralentit votre métabolisme  et pourquoi vous ne perdez pas de poids malgré vos efforts.",
+      "secret": "Votre corps n'aura plus de secret pour vous.",
+      "report": "Vous repartez avec votre rapport personnalisé, remis le jour même.",
+      "summary": "⏱ 45 minutes · {price} dh",
+      "reassurance": "Aucun engagement. Vous repartez avec votre bilan, que vous décidiez de poursuivre ou non.",
+      "cta": "Je réserve mon bilan",
+      "imageAlt": "Bilan Transformationnel RESET™"
+    }
   },
   "ConfirmationPage": {
     "title": "Bravo. Votre transformation commence maintenant.",

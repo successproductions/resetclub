@@ -524,9 +524,9 @@
     }
   },
   "PopupOffer": {
-    "title": "What if your transformation started here?",
+    "title": "What if your body wasn't the problem?",
     "imageAlt": "Reset Club",
-    "subtitle": "Reset Club – Morocco's first premium holistic transformation center",
+    "subtitle": "Exercise, fasting, diets — you have tried it all. With no results.\nYour body is resisting for a reason no one has ever explained to you.\nIn 45 minutes, we give it to you.",
     "description": "Scratch to discover your exclusive discount on your personalized assessment",
     "cardInstruction": "Scratch all 3 cards to reveal your discount!",
     "cardsScratched": "cards scratched",
@@ -535,9 +535,10 @@
     "discount": "discount",
     "enterEmail": "Enter your email to book your personalized assessment",
     "emailPlaceholder": "YOUR EMAIL",
-    "ctaButton": "BOOK MY ASSESSMENT",
+    "ctaButton": "I BOOK MY ASSESSMENT",
     "privacyText": "By participating, you agree to receive our communications by email, in accordance with our",
-    "privacyLink": "Privacy Policy"
+    "privacyLink": "Privacy Policy",
+    "details": "RESET™ Transformational Assessment · 45 minutes · 1,500 dh · Report delivered the same day"
   },
   "NotificationWidget": {
     "message1": "3 minutes ago, Laila booked her Transformational Assessment.",
@@ -562,7 +563,7 @@
     },
     "bilan": {
       "presentation": "Quel que soit votre objectif,\ntout commence par la même étape.\nLe Bilan Reset™.\nEn 30 minutes, notre équipe analyse\nles signaux de votre corps :\ncomposition corporelle, carences,\nstress oxydatif, freins métaboliques invisibles.\nL’idée est simple :\ncomprendre avant d’agir.\nNos créneaux sont volontairement limités chaque semaine\npour garantir un accompagnement entièrement personnalisé.",
-      "book": "Réserver mon Bilan Reset™",
+      "book": "Réserver mon bilan ",
       "talk": "Parler à une conseillère",
       "question": "J’ai encore une question"
     },
@@ -617,10 +618,9 @@
   },
   "PaymentPage": {
     "warning": "Do not close this page — your reservation is not yet finalized.",
-    "step": "Step 2 of 3 — Secure Payment",
-    "title": "You are one click away from your transformation.",
-    "subtitle": "Finalize your reservation to confirm your personalized RESET™ assessment.",
-    "availableSlots": "Only two slots left this week",
+    "step": "Step 2 of 3 — Booking",
+    "title": "All that's left is to confirm.",
+    "subtitle": "Your slot is on hold. Complete your details to secure it.",
     "form": {
       "fullName": "Full Name",
       "email": "Email",
@@ -629,7 +629,22 @@
       "city": "City",
       "submit": "I book this slot"
     },
-    "securePayment": "SECURE PAYMENT"
+    "securePayment": "SECURE PAYMENT",
+    "nextStepsTitle": "What happens next",
+    "nextStepsBody": "You will receive the confirmation by email and WhatsApp, with the address of the centre and a few recommendations to follow before your visit.",
+    "summary": "⏱ 45 minutes · {price} dh · RESET™ Transformational Assessment",
+    "step1": {
+      "step": "Step 1 of 3 — Your assessment",
+      "title": "45 minutes to understand why your body resists",
+      "intro": "The RESET™ Transformational Assessment is a complete reading of your body.",
+      "body": "You will understand what inflames it, what puts it under strain, what slows your metabolism down — and why you are not losing weight despite your efforts.",
+      "secret": "Your body will no longer hold any secrets from you.",
+      "report": "You leave with your personalized report, delivered the same day.",
+      "summary": "⏱ 45 minutes · {price} dh",
+      "reassurance": "No commitment. You leave with your assessment, whether you decide to continue or not.",
+      "cta": "I book my assessment",
+      "imageAlt": "RESET™ Transformational Assessment"
+    }
   },
   "ConfirmationPage": {
     "title": "Bravo — your transformation starts now.",
