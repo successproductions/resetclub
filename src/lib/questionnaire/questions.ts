@@ -7,16 +7,6 @@ import type { ItemEligibilite, ItemScore, Profil } from '@/types/questionnaire';
 
 export const DUREE_ESTIMEE_MINUTES = 5;
 
-export const INTRO = {
-  titre: 'Questionnaire Profil',
-  paragraphes: [
-    "Ce questionnaire nous permet de comprendre comment votre corps fonctionne aujourd'hui : circulation, récupération, énergie, digestion. Il nous sert à construire un protocole adapté à vous, plutôt que de vous proposer un programme standard.",
-    "Durée : environ 5 minutes. Répondez spontanément, en pensant aux trois derniers mois. Il n'existe pas de bonne ou de mauvaise réponse.",
-  ],
-  cadre:
-    "Ce questionnaire est un outil d'orientation bien-être. Il ne constitue ni un diagnostic, ni un avis médical.",
-} as const;
-
 /** Échelle de réponse — identique pour les 29 questions scorées. */
 export const ECHELLE = [
   { label: 'Jamais', valeur: 0 },

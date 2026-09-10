@@ -262,7 +262,9 @@ console.log('\nVérifications de langage — sorties cliente');
 {
   // La mention finale et le rappel de cadre contiennent « diagnostic » par
   // obligation réglementaire : ils sont exclus du contrôle des mots proscrits.
-  const exclus = new Set([copy.MENTION_FINALE]);
+  // La mention finale et le rappel de cadre de l'accueil contiennent
+  // « diagnostic » par obligation réglementaire : ils sont exclus du contrôle.
+  const exclus = new Set<string>([copy.MENTION_FINALE, copy.ACCUEIL.cadre]);
   const textesCliente = Object.entries(copy)
     .filter(([k]) => k !== 'MOTS_PROSCRITS')
     .flatMap(([, v]) =>
