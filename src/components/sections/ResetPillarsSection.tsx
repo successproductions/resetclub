@@ -31,7 +31,7 @@ const ResetPillarsSection: React.FC = () => {
         <div className="bg-white">
           <div className="grid grid-cols-1 md:grid-cols-3">
             {pillars.map((pillar, index) => (
-              <div key={pillar.key} className="relative h-[420px] overflow-hidden md:h-[520px]">
+              <div key={pillar.key} className="rc-bleed-mobile relative h-[420px] overflow-hidden md:h-[520px]">
                 <Image
                   src={pillar.image}
                   alt={t(`pillars.${pillar.key}.title`)}

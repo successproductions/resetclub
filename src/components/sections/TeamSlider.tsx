@@ -114,7 +114,7 @@ const TeamSlider: React.FC = () => {
           </div>
 
           {/* Mosaic: its own grid on mobile, dissolved into the outer grid from lg. */}
-          <div className="grid grid-flow-row-dense grid-cols-2 auto-rows-[110px] gap-3 md:auto-rows-[140px] md:gap-4 lg:contents">
+          <div className="rc-bleed-mobile grid grid-flow-row-dense grid-cols-2 auto-rows-[110px] gap-3 md:auto-rows-[140px] md:gap-4 lg:contents">
             {teamMembers.map((member) => (
               <button
                 key={member.id}

@@ -14,7 +14,7 @@ const BiologicalResistanceBlock: React.FC = () => {
   return (
     <section className="bg-white px-6 pb-10 md:bg-[#fbf8f4] md:pt-16 md:pb-0">
       <div className="mx-auto grid max-w-7xl items-stretch gap-8 md:grid-cols-[0.92fr_1.08fr] md:gap-12">
-        <div className="relative min-h-[420px] overflow-hidden  bg-black md:min-h-[720px]">
+        <div className="rc-bleed-mobile relative min-h-[420px] overflow-hidden bg-black md:min-h-[720px]">
           <Image
             src="/images/hero/hero9.jpeg"
             alt={t('title')}

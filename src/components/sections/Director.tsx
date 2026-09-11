@@ -35,7 +35,7 @@ const Director: React.FC = () => {
 
         <div className="grid gap-8 lg:grid-cols-[0.85fr_1.15fr] lg:gap-14">
           <div>
-            <div className="relative h-[520px] w-full overflow-hidden md:h-[680px] lg:h-[760px]">
+            <div className="rc-bleed-mobile relative h-[520px] w-full overflow-hidden md:h-[680px] lg:h-[760px]">
               <Image
                 src="/images/nahed2.png"
                 alt={t('imageAlt')}
