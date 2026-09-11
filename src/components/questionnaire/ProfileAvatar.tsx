@@ -13,11 +13,22 @@ import type { Profil } from '@/types/questionnaire';
  * il est désactivé proprement pour `prefers-reduced-motion`.
  */
 
-export const NUANCE: Record<Profil, { de: string; a: string; halo: string }> = {
-  DRAIN: { de: '#91DBD3', a: '#51B1AA', halo: 'rgba(81,177,170,0.28)' },
-  CORTISOL: { de: '#7FCFC7', a: '#2D6D68', halo: 'rgba(81,177,170,0.26)' },
-  METABOLIQUE: { de: '#E3BD93', a: '#CBB9A7', halo: 'rgba(203,185,167,0.34)' },
-  DIGEST: { de: '#91DBD3', a: '#2D6D68', halo: 'rgba(145,219,211,0.30)' },
+/**
+ * Nuance de chaque terrain.
+ *
+ * `de` et `a` composent le dégradé de l'emblème ; `texte` sert partout où la
+ * couleur porte du texte ou reçoit du blanc. Les deux ne peuvent pas être
+ * confondues : le sable de MÉTABOLIQUE™ atteint 1,9:1 sur blanc, illisible, alors
+ * qu'il fait un très bon dégradé. `texte` garantit au moins 4,5:1 sur blanc.
+ */
+export const NUANCE: Record<
+  Profil,
+  { de: string; a: string; texte: string; halo: string }
+> = {
+  DRAIN: { de: '#91DBD3', a: '#51B1AA', texte: '#2D6D68', halo: 'rgba(81,177,170,0.28)' },
+  CORTISOL: { de: '#7FCFC7', a: '#2D6D68', texte: '#1A4D47', halo: 'rgba(81,177,170,0.26)' },
+  METABOLIQUE: { de: '#E3BD93', a: '#CBB9A7', texte: '#7A6754', halo: 'rgba(203,185,167,0.34)' },
+  DIGEST: { de: '#91DBD3', a: '#2D6D68', texte: '#2D6D68', halo: 'rgba(145,219,211,0.30)' },
 };
 
 interface Props {

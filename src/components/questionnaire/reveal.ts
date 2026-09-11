@@ -1,7 +1,7 @@
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
-/** Révélation des sections du rapport au défilement, partagée par les variantes. */
+/** Révélation des sections du rapport au défilement. */
 export function revelerSections() {
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
     gsap.set('.rc-sect', { opacity: 1, y: 0 });
