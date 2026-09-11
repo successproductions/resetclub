@@ -15,9 +15,12 @@ export const RC = {
 
 /** Une image d'ambiance par chapitre — placeholders Unsplash, à remplacer. */
 export const IMAGES = {
-  /** Visuel d'accueil du questionnaire. Chemin absolu depuis `public/` :
-   *  next/image refuse un chemin relatif (« ./images/… » lève Invalid URL). */
+  /** Visuels d'accueil du questionnaire. Chemin absolu depuis `public/` :
+   *  next/image refuse un chemin relatif (« ./images/… » lève Invalid URL).
+   *  Deux cadrages distincts — le paysage se recadre mal sur un écran de
+   *  téléphone, d'où une version portrait dédiée. */
   intro: '/images/REDLIGHT.png',
+  introMobile: '/images/REDLIGHTPHONE.png',
   introAlt:
     'https://images.unsplash.com/photo-1620916566398-39f1143ab7be?auto=format&fit=crop&w=1600&q=80',
   DRAIN:

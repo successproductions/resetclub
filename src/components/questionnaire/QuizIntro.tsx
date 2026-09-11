@@ -59,14 +59,25 @@ export default function QuizIntro({ onStart }: { onStart: () => void }) {
 
   return (
     <div ref={root} className="relative min-h-[100dvh] overflow-hidden bg-[#0D2623]">
-      {/* Image plein écran, légèrement surdimensionnée pour absorber la parallaxe */}
+      {/* Image plein écran, légèrement surdimensionnée pour absorber la parallaxe.
+          Deux cadrages : le paysage se recadre mal en portrait, donc un visuel
+          dédié sous 768 px. Les deux sont servis optimisés par next/image. */}
       <div ref={fond} className="rc-hero-media absolute -inset-8">
-        <Image src={IMAGES.intro} alt="" fill priority sizes="100vw" className="object-cover" />
+        <Image
+          src={IMAGES.introMobile}
+          alt=""
+          fill
+          sizes="100vw"
+          className="object-cover md:hidden"
+        />
+        <Image
+          src={IMAGES.intro}
+          alt=""
+          fill
+          sizes="100vw"
+          className="hidden object-cover md:block"
+        />
       </div>
-
-      {/* Voile de lisibilité — indispensable, quelle que soit l'image */}
-      <div className="absolute inset-0 bg-gradient-to-t from-[#0D2623] via-[#0D2623]/74 to-[#0D2623]/40" />
-      <div className="absolute inset-0 bg-gradient-to-r from-[#0D2623]/80 via-transparent to-transparent" />
 
       <div className="relative flex min-h-[100dvh] flex-col justify-end px-6 pb-14 pt-20 sm:px-12 sm:pb-20 lg:px-20 lg:pb-24">
         <div className="mx-auto w-full max-w-5xl">
@@ -79,7 +90,7 @@ export default function QuizIntro({ onStart }: { onStart: () => void }) {
             className="rc-hero-logo h-auto w-[64px] sm:w-[76px]"
           />
 
-          <p className="rc-hero-eyebrow mt-6 text-[11px] font-medium uppercase tracking-[0.36em] text-[#91DBD3]">
+          <p className="rc-hero-eyebrow mt-6 text-[11px] font-medium uppercase tracking-[0.36em] text-white">
             {ACCUEIL.eyebrow}
           </p>
 
@@ -89,16 +100,15 @@ export default function QuizIntro({ onStart }: { onStart: () => void }) {
             {ACCUEIL.bascule.map((l, i) => (
               <p
                 key={l}
-                className={`rc-hero-bascule max-w-2xl text-[17px] leading-snug sm:text-[19px] ${
-                  i === 0 ? 'font-medium text-[#91DBD3]' : 'text-[#91DBD3]/80'
-                }`}
+                className={`rc-hero-bascule max-w-2xl text-[17px] leading-snug sm:text-[19px] ${i === 0 ? 'font-medium text-white' : 'text-white'
+                  }`}
               >
                 {l}
               </p>
             ))}
           </div>
 
-          <p className="rc-hero-texte mt-7 max-w-xl text-[14.5px] leading-relaxed text-white/75 sm:text-[16px]">
+          <p className="rc-hero-texte mt-7 max-w-xl text-[14.5px] leading-relaxed text-white sm:text-[16px]">
             {ACCUEIL.mecanismes}
           </p>
 
