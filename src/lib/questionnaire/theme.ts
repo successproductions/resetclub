@@ -15,10 +15,9 @@ export const RC = {
 
 /** Une image d'ambiance par chapitre — placeholders Unsplash, à remplacer. */
 export const IMAGES = {
-  /** Eau turquoise en mouvement : abstrait, aux couleurs de la marque, et sans
-   *  le travers des photos de personnes — un visuel d'attente qui ne date pas. */
-  intro:
-    'https://images.unsplash.com/photo-1540206395-68808572332f?auto=format&fit=crop&w=1800&q=80',
+  /** Visuel d'accueil du questionnaire. Chemin absolu depuis `public/` :
+   *  next/image refuse un chemin relatif (« ./images/… » lève Invalid URL). */
+  intro: '/images/REDLIGHT.png',
   introAlt:
     'https://images.unsplash.com/photo-1620916566398-39f1143ab7be?auto=format&fit=crop&w=1600&q=80',
   DRAIN:
