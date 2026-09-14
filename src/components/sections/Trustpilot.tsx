@@ -1,21 +1,26 @@
 'use client';
 
-import React, { useCallback, useRef } from 'react';
+import React, { useCallback, useEffect, useRef } from 'react';
 import Script from 'next/script';
 
 /**
  * TrustBox Trustpilot.
  *
- * Les identifiants viennent du tableau de bord Trustpilot :
- * Integrations → TrustBox → choisir un modèle → copier le code.
- * Tant qu'ils ne sont pas renseignés, le composant affiche le lien de repli
- * ci-dessous : aucune note, aucun chiffre inventé.
+ * Identifiants relevés dans le tableau de bord :
+ * Share & promote → Website widgets → Collect reviews.
  *
- * ⚠️ Avec 0 avis, n'utiliser qu'un modèle « Review Collector » : les modèles
- * qui affichent la note rendraient « 0,0 ★ · 0 avis » en pleine page d'accueil.
+ * ⚠️ Ne pas basculer sur un modèle « Essentials » avant d'avoir une dizaine
+ * d'avis : ceux-là affichent la note, et rendraient « 0,0 ★ · 0 avis » en
+ * pleine page d'accueil. Il suffira alors de changer TEMPLATE_ID.
+ *
+ * Si les identifiants sont vidés, le composant retombe sur l'invitation
+ * ci-dessous : aucune note, aucun chiffre inventé.
  */
-const BUSINESS_UNIT_ID = ''; // ex. « 5f2a3b4c5d6e7f8a9b0c1d2e »
-const TEMPLATE_ID = ''; // ex. Review Collector « 56278e9abfbbba0bdcd568bc »
+const BUSINESS_UNIT_ID = '6a101a14bcabb859c867bde3';
+/** Modèle « Review Collector » : invite à déposer un avis, n'affiche aucune note. */
+const TEMPLATE_ID = '56278e9abfbbba0bdcd568bc';
+/** Jeton propre au Review Collector — public, il figure dans le HTML du site. */
+const TOKEN = 'c2db1ebd-7ef4-4801-8fbe-500b3d0132f2';
 
 const PROFIL_URL = 'https://fr.trustpilot.com/review/resetclub.ma';
 const EVALUER_URL = 'https://fr.trustpilot.com/evaluate/resetclub.ma';
@@ -32,6 +37,13 @@ const Trustpilot: React.FC = () => {
       window.Trustpilot.loadFromElement(widget.current, true);
     }
   }, []);
+
+  // Deux ordres possibles, et il faut couvrir les deux : le script arrive après
+  // le montage (onLoad s'en charge), ou il est déjà en cache depuis une page
+  // précédente et onLoad ne rejouera pas — d'où ce rappel au montage.
+  useEffect(() => {
+    initialiser();
+  }, [initialiser]);
 
   return (
     <section className="py-3 pb-4 md:py-0 md:pb-6 bg-white">
@@ -52,6 +64,7 @@ const Trustpilot: React.FC = () => {
                 data-businessunit-id={BUSINESS_UNIT_ID}
                 data-style-height="52px"
                 data-style-width="100%"
+                data-token={TOKEN}
               >
                 {/* Remplacé par Trustpilot une fois le script chargé. Reste
                     visible si un bloqueur de publicité l'empêche. */}
