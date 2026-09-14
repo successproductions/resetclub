@@ -196,22 +196,25 @@ const Footer: React.FC = () => {
           <Image
             src="/images/LOGORESETCLUBNOIR.png"
             alt="Reset Club™"
-            width={100}
-            height={100}
-            className="mx-auto mb-2"
+            width={180}
+            height={248}
+            sizes="90px"
+            className="mx-auto mb-3 h-auto w-[90px]"
           />
-          <p className="text-gray-950 text-sm tracking-wide font-poppins">
+          <p className="mx-auto max-w-[19rem] text-[15px] leading-snug text-gray-950 font-poppins">
             {t('tagline')}
           </p>
         </div>
 
         {/* Contact Information */}
         <div className="space-y-4 mb-8">
-          <a href="https://www.google.com/maps?ll=33.952661,-6.877653&z=13&t=m&hl=en&gl=MA&mapclient=embed&cid=17155663660440778754" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center text-gray-950 mt-2 hover:underline">
-            <svg className="w-5 h-5 mr-3" fill="currentColor" viewBox="0 0 20 20">
+          <a href="https://www.google.com/maps?ll=33.952661,-6.877653&z=13&t=m&hl=en&gl=MA&mapclient=embed&cid=17155663660440778754" target="_blank" rel="noopener noreferrer" className="mt-2 flex items-start justify-center gap-3 text-gray-950 hover:underline">
+            <svg className="mt-1 h-5 w-5 shrink-0" fill="currentColor" viewBox="0 0 20 20">
               <path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" />
             </svg>
-            Rabat, Maroc
+            <span className="max-w-[16rem] text-left">
+              Reset Club™ — 87 Glaive, Hay Riad, Rabat, Maroc
+            </span>
           </a>
           <div className="flex items-center justify-center text-gray-950">
             <svg className="w-5 h-5 mr-3" fill="currentColor" viewBox="0 0 20 20">
@@ -280,10 +283,32 @@ const Footer: React.FC = () => {
 
         <PaymentSecurityLogos className="justify-center mb-8" />
 
-        {/* Copyright and Rights */}
-        <div className="mb-6">
-          <p className="text-sm text-gray-950 font-medium mb-2">© {currentYear} RESET CLUB™</p>
-          <p className="text-sm text-gray-950">{t('rights')}</p>
+        {/* Liens légaux — une seule ligne, séparés par des barres */}
+        <nav
+          aria-label="Liens légaux"
+          className="mb-5 flex flex-wrap items-center justify-center gap-x-2 gap-y-1 text-[12px] text-gray-700"
+        >
+          <Link href="/legal" className="hover:text-gray-950 hover:underline">
+            Mentions légales
+          </Link>
+          <span aria-hidden="true" className="text-gray-400">|</span>
+          <Link href="/privacy" className="hover:text-gray-950 hover:underline">
+            Politique de confidentialité
+          </Link>
+          <span aria-hidden="true" className="text-gray-400">|</span>
+          <Link href="/cgv" className="hover:text-gray-950 hover:underline">
+            Conditions générales de vente
+          </Link>
+        </nav>
+
+        {/* Société puis copyright */}
+        <div className="mb-6 space-y-1">
+          <p className="text-[12px] tracking-wide text-gray-700">
+            NEXT BODY SARL AU — RC 190925 — Rabat
+          </p>
+          <p className="text-[12.5px] text-gray-950">
+            © {currentYear} RESET CLUB™ — {t('rights')}
+          </p>
         </div>
 
         {/* Tagline */}
