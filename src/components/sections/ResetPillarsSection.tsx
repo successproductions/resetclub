@@ -31,46 +31,46 @@ const ResetPillarsSection: React.FC = () => {
         <div className="bg-white">
           <div className="grid grid-cols-1 md:grid-cols-3">
             {pillars.map((pillar, index) => (
-              <div key={pillar.key} className="rc-bleed-mobile relative h-[420px] overflow-hidden md:h-[520px]">
-                <Image
-                  src={pillar.image}
-                  alt={t(`pillars.${pillar.key}.title`)}
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 768px) 100vw, 33vw"
-                  priority={index === 0}
-                />
-                <div className="absolute inset-0 bg-black/10" />
-                <div className="absolute inset-0 flex flex-col items-center justify-center px-8 text-center">
-                  <h3 className="font-graphik text-2xl! font-normal leading-tight text-white md:text-3xl!">
-                    {t(`pillars.${pillar.key}.title`)}
-                  </h3>
-                  {t.has(`pillars.${pillar.key}.title2`) && (
+              <div key={pillar.key} className="flex flex-col">
+                <div className="rc-bleed-mobile relative h-[420px] overflow-hidden md:h-[520px]">
+                  <Image
+                    src={pillar.image}
+                    alt={t(`pillars.${pillar.key}.title`)}
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 768px) 100vw, 33vw"
+                    priority={index === 0}
+                  />
+                  <div className="absolute inset-0 bg-black/10" />
+                  <div className="absolute inset-0 flex flex-col items-center justify-center px-8 text-center">
                     <h3 className="font-graphik text-2xl! font-normal leading-tight text-white md:text-3xl!">
-                      {t(`pillars.${pillar.key}.title2`)}
+                      {t(`pillars.${pillar.key}.title`)}
                     </h3>
-                  )}
-                  {t.has(`pillars.${pillar.key}.title3`) && (
-                    <h3 className="font-graphik text-2xl! font-normal leading-tight text-white md:text-3xl!">
-                      {t(`pillars.${pillar.key}.title3`)}
-                    </h3>
-                  )}
+                    {t.has(`pillars.${pillar.key}.title2`) && (
+                      <h3 className="font-graphik text-2xl! font-normal leading-tight text-white md:text-3xl!">
+                        {t(`pillars.${pillar.key}.title2`)}
+                      </h3>
+                    )}
+                    {t.has(`pillars.${pillar.key}.title3`) && (
+                      <h3 className="font-graphik text-2xl! font-normal leading-tight text-white md:text-3xl!">
+                        {t(`pillars.${pillar.key}.title3`)}
+                      </h3>
+                    )}
+                  </div>
                 </div>
-              </div>
-            ))}
-          </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3">
-            {pillars.map((pillar) => (
-              <div
-                key={pillar.key}
-                className="border-t border-[#ded8d0] px-7 py-8 md:min-h-[190px] md:border-t-0 md:px-10 md:py-10 md:[&:not(:last-child)]:border-r"
-              >
-                <p className="mb-4 font-graphik text-lg! font-normal leading-relaxed text-gray-950 md:text-lg! md:text-center">
-                  {t(`pillars.${pillar.key}.description`)}
-                  {t(`pillars.${pillar.key}.tools`)}
-                </p>
-
+                {/* Le filet vertical ne porte que sur le texte : posé sur la
+                    colonne entière, il traverserait aussi l'image. */}
+                <div
+                  className={`flex-1 border-t border-[#ded8d0] px-7 py-8 md:min-h-[190px] md:border-t-0 md:px-10 md:py-10 ${
+                    index < pillars.length - 1 ? 'md:border-r md:border-[#ded8d0]' : ''
+                  }`}
+                >
+                  <p className="font-graphik text-lg! font-normal leading-relaxed text-gray-950 md:text-lg! md:text-center">
+                    {t(`pillars.${pillar.key}.description`)}
+                    {t(`pillars.${pillar.key}.tools`)}
+                  </p>
+                </div>
               </div>
             ))}
           </div>
