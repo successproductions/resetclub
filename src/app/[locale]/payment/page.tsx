@@ -107,7 +107,7 @@ export default function PaymentPage() {
         });
 
         document.body.appendChild(form);
-        form.submit(); // User redirected to CMI payment page
+        form.submit(); // redirected to CMI payment page
       } else {
         setErrorMsg('Erreur lors de l\'initialisation du paiement. Veuillez réessayer.');
         setIsLoading(false);
