@@ -189,7 +189,7 @@ const TeamSlider: React.FC = () => {
                   if (naturalWidth && naturalHeight) setRatio(naturalWidth / naturalHeight);
                 }}
               />
-              <div className="absolute inset-0 bg-linear-to-t from-black/90 from-10% via-black/65 via-55% to-black/10"></div>
+              <div className="absolute inset-0 bg-linear-to-t from-black/90 from-10% via-black/35 via-25% to-black/10"></div>
 
               <button
                 type="button"

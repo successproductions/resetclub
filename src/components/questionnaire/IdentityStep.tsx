@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { ArrowRight } from 'lucide-react';
+import { INDICATIFS, separerIndicatif } from '@/lib/countries';
 
 export interface Identite {
   prenom: string;
@@ -14,8 +15,10 @@ const CHAMPS = [
   { cle: 'prenom', label: 'Prénom', type: 'text', autoComplete: 'given-name' },
   { cle: 'nom', label: 'Nom', type: 'text', autoComplete: 'family-name' },
   { cle: 'email', label: 'Email', type: 'email', autoComplete: 'email' },
-  { cle: 'telephone', label: 'Téléphone', type: 'tel', autoComplete: 'tel' },
 ] as const;
+
+const CHAMP_CLASSES =
+  'w-full rounded-xl border bg-white px-4 py-3 text-[15px] text-[#0D2623] outline-none transition-colors duration-200 placeholder:text-[#B8AEA4] focus:border-[#51B1AA] focus:ring-4 focus:ring-[#51B1AA]/12';
 
 export default function IdentityStep({
   valeur,
@@ -26,6 +29,10 @@ export default function IdentityStep({
 }) {
   const [form, setForm] = useState<Identite>(valeur);
   const [touche, setTouche] = useState(false);
+  // `telephone` reste stocké en un seul morceau : on ne sépare que pour l'affichage.
+  const depart = separerIndicatif(valeur.telephone);
+  const [indicatif, setIndicatif] = useState(depart.indicatif);
+  const [numero, setNumero] = useState(depart.numero);
 
   const emailValide = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email.trim());
   const complet =
@@ -36,7 +43,9 @@ export default function IdentityStep({
       onSubmit={(e) => {
         e.preventDefault();
         setTouche(true);
-        if (complet) onSubmit(form);
+        if (!complet) return;
+        const tel = numero.trim();
+        onSubmit({ ...form, telephone: tel ? `${indicatif} ${tel}` : '' });
       }}
       className="mx-auto w-full max-w-lg"
     >
@@ -55,32 +64,52 @@ export default function IdentityStep({
         {CHAMPS.map((c) => {
           const v = form[c.cle];
           const enFaute =
-            touche &&
-            (c.cle === 'email'
-              ? !emailValide
-              : c.cle !== 'telephone' && v.trim().length <= 1);
+            touche && (c.cle === 'email' ? !emailValide : v.trim().length <= 1);
           return (
-            <label
-              key={c.cle}
-              className={c.cle === 'email' || c.cle === 'telephone' ? 'sm:col-span-2' : ''}
-            >
+            <label key={c.cle} className={c.cle === 'email' ? 'sm:col-span-2' : ''}>
               <span className="mb-2 block text-[13px] font-medium text-[#5B5148]">
                 {c.label}
-                {c.cle !== 'telephone' && <span className="ml-1 text-[#51B1AA]">*</span>}
+                <span className="ml-1 text-[#51B1AA]">*</span>
               </span>
               <input
                 type={c.type}
                 value={v}
                 autoComplete={c.autoComplete}
                 onChange={(e) => setForm({ ...form, [c.cle]: e.target.value })}
-                className={`w-full rounded-xl border bg-white px-4 py-3 text-[15px] text-[#0D2623] outline-none transition-colors duration-200 placeholder:text-[#B8AEA4] focus:border-[#51B1AA] focus:ring-4 focus:ring-[#51B1AA]/12 ${
+                className={`${CHAMP_CLASSES} ${
                   enFaute ? 'border-[#C26D4C]' : 'border-[#E7DFD6]'
                 }`}
-                placeholder={c.cle === 'telephone' ? '+212 6 …' : ''}
               />
             </label>
           );
         })}
+
+        {/* Téléphone : indicatif au choix, puis le numéro national. */}
+        <label className="sm:col-span-2">
+          <span className="mb-2 block text-[13px] font-medium text-[#5B5148]">Téléphone</span>
+          <div className="flex gap-3">
+            <select
+              value={indicatif}
+              onChange={(e) => setIndicatif(e.target.value)}
+              aria-label="Indicatif pays"
+              className={`${CHAMP_CLASSES} w-[116px] flex-none border-[#E7DFD6] sm:w-[132px]`}
+            >
+              {INDICATIFS.map((i) => (
+                <option key={i.code} value={i.code}>
+                  {i.label}
+                </option>
+              ))}
+            </select>
+            <input
+              type="tel"
+              value={numero}
+              autoComplete="tel-national"
+              onChange={(e) => setNumero(e.target.value)}
+              className={`${CHAMP_CLASSES} flex-1 border-[#E7DFD6]`}
+              placeholder="6 12 34 56 78"
+            />
+          </div>
+        </label>
       </div>
 
       <button

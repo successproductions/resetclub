@@ -142,7 +142,7 @@ const WhyResetClub: React.FC = () => {
                   <div className="absolute inset-0 bg-black opacity-5"></div>
                   {/* Voile sombre sur le bas : le texte blanc passait mal sur les
                       images claires, surtout en mobile. */}
-                  <div className="absolute inset-x-0 bottom-0 h-3/4 bg-linear-to-t from-black/85 from-5% via-black/55 via-45% to-transparent"></div>
+                  {/* <div className="absolute inset-x-0 bottom-0 h-3/4 bg-linear-to-t from-black/85 from-5% via-black/55 via-45% to-transparent"></div> */}
                 </div>
 
                 {/* Content */}
@@ -180,7 +180,7 @@ const WhyResetClub: React.FC = () => {
                     draggable={false}
                   />
                   {/* Overlay */}
-                  <div className="absolute inset-0 bg-black opacity-15"></div>
+                  <div className="absolute inset-0 opacity-15"></div>
                   {/* Voile sombre sur le bas : le texte blanc passait mal sur les
                       images claires, surtout en mobile. */}
                   <div className="absolute inset-x-0 bottom-0 h-3/4 bg-linear-to-t from-black/85 from-5% via-black/55 via-45% to-transparent"></div>
@@ -203,7 +203,7 @@ const WhyResetClub: React.FC = () => {
           </div>
         </div>
       </div>
-    </section>
+    </section >
   );
 };
 
