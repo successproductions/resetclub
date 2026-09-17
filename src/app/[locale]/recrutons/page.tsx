@@ -60,10 +60,10 @@ export default function RecrutonsPage() {
 
       <div className="bg-white pb-8 md:py-20 overflow-x-hidden">
         <div className="container mx-auto md:px-6 max-w-7xl">
-          
+
           {/* Top Section: Text Left, Image Right */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-start mb-0 lg:mb-0">
-            
+
             {/* Left Side - Text Content */}
             <div className="order-2 lg:order-1 px-6 lg:px-0">
               {/* Subtitle */}
@@ -74,7 +74,7 @@ export default function RecrutonsPage() {
               {/* Intro Text */}
               <p
                 className="text-lg md:text-xl text-gray-900 font-graphik leading-relaxed mb-8"
-                dangerouslySetInnerHTML={{__html: t('qualities.intro')}}
+                dangerouslySetInnerHTML={{ __html: t('qualities.intro') }}
               />
 
               {/* Upload Section Titles */}
@@ -92,7 +92,7 @@ export default function RecrutonsPage() {
             <div className="order-1 lg:order-2">
               <div className="relative w-full h-full min-h-[400px] lg:min-h-[600px]">
                 <Image
-                  src="/images/nahed_with_team.png"
+                  src="/images/nahed_with_team1.png"
                   alt="Nahed with Reset Club Team"
                   fill
                   className="object-cover shadow-lg"
