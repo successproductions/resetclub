@@ -25,7 +25,7 @@ const ResetPillarsSection: React.FC = () => {
   return (
     <section className="bg-white md:bg-[#f4f3f1] px-6 py-8 md:py-5">
       <div className="mx-auto max-w-6xl">
-        <h2 className="mx-auto mb-5 max-w-5xl md:text-center text-[25px]! font-graphik font-normal leading-tight text-gray-950 md:text-2xl! lg:text-[30px]! uppercase">
+        <h2 className="mx-auto mb-5 max-w-5xl md:text-center text-[25px]! font-graphik font-normal leading-tight text-gray-950 md:text-2xl! lg:text-[30px]! ">
           {t('title')}
         </h2>
         <div className="bg-white">

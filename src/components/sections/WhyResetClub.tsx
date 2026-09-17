@@ -142,7 +142,7 @@ const WhyResetClub: React.FC = () => {
                   <div className="absolute inset-0 bg-black opacity-5"></div>
                   {/* Voile sombre sur le bas : le texte blanc passait mal sur les
                       images claires, surtout en mobile. */}
-                  {/* <div className="absolute inset-x-0 bottom-0 h-3/4 bg-linear-to-t from-black/85 from-5% via-black/55 via-45% to-transparent"></div> */}
+                  <div className="absolute inset-x-0 bottom-0 h-3/4 bg-linear-to-t from-black/35 md:from-black/15 from-2% md:from-2% via-black/25 md:via-black/15 via-45% to-transparent"></div>
                 </div>
 
                 {/* Content */}
