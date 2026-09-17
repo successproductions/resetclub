@@ -11,11 +11,13 @@ const Hero: React.FC = () => {
   const [currentImage, setCurrentImage] = useState(0);
   const [currentSlide, setCurrentSlide] = useState(0);
 
+  // `mobile` : variante servie sous `md`, pour les visuels dont le cadrage
+  // paysage ne tient pas sur un écran de téléphone.
   const images = [
-    '/images/hero/hero6.png',
-    '/images/REDLIGHT.png',
-    '/images/hero/hero8.jpeg',
-    '/images/hero/hero4.jpeg'
+    { src: '/images/hero/hero6.png', mobile: '/images/hero/hero6mobile.png' },
+    { src: '/images/REDLIGHT.png', mobile: '/images/hero/hero2mobile.png' },
+    { src: '/images/hero/hero8.jpeg' },
+    { src: '/images/hero/hero4.jpeg' },
   ];
 
   const sliderTexts = [
@@ -40,16 +42,26 @@ const Hero: React.FC = () => {
       <div className="absolute inset-0 z-0">
         {images.map((image, index) => (
           <div
-            key={image}
+            key={image.src}
             className={`absolute inset-0 transition-opacity duration-1000 ${index === currentImage ? 'opacity-100' : 'opacity-0'
               }`}
           >
+            {image.mobile && (
+              <Image
+                src={image.mobile}
+                alt={`Hero image ${index + 1}`}
+                fill
+                priority={index === 0}
+                className="object-cover md:hidden"
+                sizes="100vw"
+              />
+            )}
             <Image
-              src={image}
+              src={image.src}
               alt={`Hero image ${index + 1}`}
               fill
               priority={index === 0}
-              className="object-cover"
+              className={`object-cover ${image.mobile ? 'hidden md:block' : ''}`}
               sizes="100vw"
             />
           </div>
