@@ -23,19 +23,19 @@ const teamMembers: TeamMember[] = [
   {
     id: 2,
     key: 'nahed',
-    image: '/images/nahed1.png',
+    image: '/images/NAHED02.png',
     tileClassName: 'col-span-1 row-span-3 lg:col-start-5 lg:col-span-1 lg:row-start-1 lg:row-span-2',
   },
   {
     id: 3,
-    key: 'amina',
-    image: 'https://media.sixsenses.com/B60H3R33/at/59kb6f3rfrq76gn8fb9gng7/Alphinah_Ashinai.jpg?format=webp&width=680&height=900&fit=crop',
+    key: 'youssef',
+    image: '/images/ALAMI02.png',
     tileClassName: 'col-span-1 row-span-3 lg:col-start-3 lg:col-span-1 lg:row-start-2 lg:row-span-1',
   },
   {
     id: 4,
     key: 'salima',
-    image: 'https://media.sixsenses.com/B60H3R33/at/3cfgp7953pj9t9f3tbqj9p6/Wellness_Acupuncture.jpg?format=webp&width=680&height=900&fit=crop',
+    image: '/images/SALIMA02.png',
     tileClassName: 'col-span-1 row-span-2 lg:col-start-4 lg:col-span-1 lg:row-start-2 lg:row-span-3',
   },
   {
@@ -46,8 +46,8 @@ const teamMembers: TeamMember[] = [
   },
   {
     id: 6,
-    key: 'rim',
-    image: '/images/hero/hero8.jpeg',
+    key: 'hicham',
+    image: '/images/HICHAM02.png',
     tileClassName: 'col-span-1 row-span-3 lg:col-start-3 lg:col-span-1 lg:row-start-3 lg:row-span-2',
   },
   {
@@ -58,27 +58,34 @@ const teamMembers: TeamMember[] = [
   },
   {
     id: 8,
-    key: 'alexandre',
-    image: 'https://media.sixsenses.com/B60H3R33/at/3cfgp7953pj9t9f3tbqj9p6/Wellness_Acupuncture.jpg?format=webp&width=680&height=900&fit=crop',
-    tileClassName: 'col-span-2 row-span-2 lg:col-start-1 lg:col-span-2 lg:row-start-4 lg:row-span-2',
+    key: 'sofia',
+    image: '/images/woman-put.jpg',
+    tileClassName: 'col-span-1 row-span-3 lg:col-start-5 lg:col-span-1 lg:row-start-5 lg:row-span-1',
   },
   {
     id: 9,
     key: 'youssef',
-    image: '/images/hero/hero5.jpeg',
-    tileClassName: 'col-span-1 row-span-3 lg:col-start-3 lg:col-span-2 lg:row-start-5 lg:row-span-1',
+    image: '/images/ALAMI02.png',
+    tileClassName: 'col-span-2 row-span-2 lg:col-start-1 lg:col-span-2 lg:row-start-4 lg:row-span-2',
   },
   {
     id: 10,
-    key: 'sofia',
-    image: '/images/woman-put.jpg',
-    tileClassName: 'col-span-1 row-span-3 lg:col-start-5 lg:col-span-1 lg:row-start-5 lg:row-span-1',
+    key: 'youssef',
+    image: '/images/ALAMI02.png',
+    tileClassName: 'col-span-1 row-span-3 lg:col-start-3 lg:col-span-2 lg:row-start-5 lg:row-span-1',
   },
 ];
 
 const TeamSlider: React.FC = () => {
   const t = useTranslations('TeamPage.team');
   const [selected, setSelected] = useState<TeamMember | null>(null);
+  // Proportions réelles de l'image ouverte : mesurées au chargement, pour que la
+  // lightbox épouse l'original au lieu de le recadrer.
+  const [ratio, setRatio] = useState<number | null>(null);
+
+  useEffect(() => {
+    setRatio(null);
+  }, [selected]);
 
   // Close on Escape and freeze the page behind the lightbox.
   useEffect(() => {
@@ -156,17 +163,33 @@ const TeamSlider: React.FC = () => {
           aria-modal="true"
           aria-label={t(`members.${selected.key}.name`)}
         >
-          <div className="relative max-h-full w-full max-w-3xl overflow-hidden bg-black">
-            <div className="relative aspect-4/5 w-full md:aspect-3/2">
+          <div
+            className="relative max-h-[86vh] overflow-hidden bg-black"
+            style={{
+              // Largeur déduite du ratio, hauteur laissée à `aspect-ratio` : une
+              // hauteur fixe empêcherait le rapport d'agir quand la largeur est bridée.
+              aspectRatio: ratio ?? 3 / 4,
+              width: `calc(86vh * ${ratio ?? 3 / 4})`,
+              maxWidth: '100%',
+              // Plancher : une image très large deviendrait trop basse pour porter
+              // la légende. Le noir qui reste encadre l'image, sans jamais la rogner.
+              minHeight: '45vh',
+            }}
+          >
+            <div className="relative h-full w-full">
               <Image
                 src={selected.image}
                 alt={t(`members.${selected.key}.name`)}
                 fill
-                sizes="(max-width: 768px) 100vw, 768px"
-                className="object-cover"
+                sizes="92vw"
+                className="object-contain"
                 priority
+                onLoad={(event) => {
+                  const { naturalWidth, naturalHeight } = event.currentTarget;
+                  if (naturalWidth && naturalHeight) setRatio(naturalWidth / naturalHeight);
+                }}
               />
-              <div className="absolute inset-0 bg-linear-to-t from-black/85 via-black/25 to-black/10"></div>
+              <div className="absolute inset-0 bg-linear-to-t from-black/90 from-10% via-black/65 via-55% to-black/10"></div>
 
               <button
                 type="button"
@@ -188,6 +211,18 @@ const TeamSlider: React.FC = () => {
                   <p className="mt-5 max-w-2xl font-graphik text-sm leading-relaxed text-white/80 md:text-base">
                     {t(`members.${selected.key}.description`)}
                   </p>
+                )}
+                {t.has(`members.${selected.key}.credentials`) && (
+                  <ul className="mt-5 max-w-2xl space-y-1.5">
+                    {(t.raw(`members.${selected.key}.credentials`) as string[]).map((credential) => (
+                      <li
+                        key={credential}
+                        className="relative pl-4 font-graphik text-sm leading-relaxed text-white/80 before:absolute before:left-0 before:content-['—']"
+                      >
+                        {credential}
+                      </li>
+                    ))}
+                  </ul>
                 )}
               </div>
             </div>

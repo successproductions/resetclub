@@ -132,12 +132,12 @@ const KeyFigures: React.FC = () => {
           </h2>
         </div>
 
-        <div className="grid grid-cols-1 gap-y-12 md:grid-cols-2 md:gap-x-20 md:gap-y-20">
+        <div className="grid grid-cols-1 gap-y-12 md:grid-cols-2 md:gap-x-16 md:gap-y-4">
           {stats.map(({ Icon, ...stat }) => (
             <div key={stat.key}>
               <div className="flex items-center gap-5">
                 <Icon className="h-12 w-12 shrink-0 text-[#7b7066] md:h-10 md:w-10" strokeWidth={1} />
-                <div className="font-graphik text-4xl! font-normal leading-none text-gray-950 md:text-5xl!">
+                <div className="font-graphik text-3xl! font-normal leading-none text-gray-950 md:text-4xl!">
                   <span>{stat.prefix}</span>
                   <AnimatedCounter
                     end={stat.value}
@@ -154,7 +154,7 @@ const KeyFigures: React.FC = () => {
           ))}
         </div>
       </div>
-      <h2 className="text-center mt-7 md:font-semibold! text-gray-700  md:text-gray-950 text-lg! md:text-3xl! lg:text-[18px]! 
+      <h2 className="text-center mt-7 md:mt-4 md:font-semibold! text-gray-700  md:text-gray-950 text-lg! md:text-3xl! lg:text-[18px]! 
        ">
         {t('description')}
       </h2>

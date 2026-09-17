@@ -12,8 +12,8 @@ const Hero: React.FC = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
 
   const images = [
-    '/images/hero/hero6.jpeg',
-    '/images/hero/hero2.jpeg',
+    '/images/hero/hero6.png',
+    '/images/REDLIGHT.png',
     '/images/hero/hero8.jpeg',
     '/images/hero/hero4.jpeg'
   ];

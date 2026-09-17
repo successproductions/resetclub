@@ -11,56 +11,50 @@ import { useLocale, useTranslations } from 'next-intl';
  * à droite, texte à gauche.
  */
 const RANGEES = [
-  { cle: 'training', image: '/images/hero/hero8.jpeg' },
-  { cle: 'nutrition', image: '/images/hero/hero4.jpeg' },
-  { cle: 'nervousSystem', image: '/images/hero/hero6.jpeg' },
-  { cle: 'imbalances', image: '/images/hero/hero9.jpeg' },
+  { cle: 'training', image: '/images/nourrir.png' },
+  { cle: 'nutrition', image: '/images/adapte.png' },
+  { cle: 'nervousSystem', image: '/images/hero/hero60.jpeg' },
+  { cle: 'imbalances', image: '/images/hero/hero40.jpeg' },
 ] as const;
 
-/** Rangée de conclusion : « ce n'est pas votre faute », puis l'appel à l'action. */
-const IMAGE_CONCLUSION = '/images/hero/hero7.jpeg';
+/** Ombre portée légère, mobile uniquement : le texte garde sa couleur et sa place. */
+const OMBRE_TEXTE_MOBILE = '[text-shadow:0_1px_1px_rgb(0_0_0/0.2)] md:[text-shadow:none]';
 
 const BiologicalResistanceBlock: React.FC = () => {
   const t = useTranslations('BiologicalResistanceBlock');
   const locale = useLocale();
 
   return (
-    <section className="bg-white px-6 py-10 md:bg-[#fbf8f4] md:py-16">
+    <section className="bg-white px-6 py-2 md:bg-[#fbf8f4] md:py-16">
       <div className="mx-auto max-w-6xl">
-        <h2 className="mb-10 max-w-4xl text-3xl! leading-tight text-gray-950 md:mb-14 md:text-3xl! lg:text-[29px]!">
+        <h2 className={`mb-8 max-w-4xl text-3xl! leading-tight text-gray-950 md:mb-14 md:text-3xl! lg:text-[29px]! ${OMBRE_TEXTE_MOBILE}`}>
           {t('title')}
         </h2>
 
-        <div className="space-y-12 md:space-y-16">
+        <div className="space-y-4 md:space-y-4">
           {RANGEES.map((r, i) => (
             <Rangee key={r.cle} image={r.image} alt={t(`causes.${r.cle}.title`)} imageADroite={i % 2 === 0}>
-              <h3 className="font-graphik text-lg! font-normal text-gray-950 md:text-lg!">
+              <h3 className={`font-graphik text-lg! font-normal text-gray-950 md:text-2xl! ${OMBRE_TEXTE_MOBILE}`}>
                 {t(`causes.${r.cle}.title`)}
               </h3>
-              <p className="mt-3 font-graphik text-lg! leading-relaxed text-gray-700 md:text-lg!">
+              <p className={`mt-3 font-graphik text-lg! leading-relaxed text-gray-700 md:text-lg! ${OMBRE_TEXTE_MOBILE}`}>
                 {t(`causes.${r.cle}.description`)}
               </p>
-              <p className="mt-3 font-graphik text-lg! font-normal leading-relaxed text-gray-950 md:text-lg!">
+              <p className={`mt-3 font-graphik text-lg! font-normal leading-relaxed text-gray-950 md:text-lg! ${OMBRE_TEXTE_MOBILE}`}>
                 {t(`causes.${r.cle}.result`)}
               </p>
             </Rangee>
           ))}
 
-          {/* Cinquième rangée : l'image repasse à droite, la suite d'une alternance à quatre. */}
-          <Rangee image={IMAGE_CONCLUSION} alt={t('fault')} imageADroite>
-            <p className="font-graphik text-lg! font-normal text-gray-950 md:text-lg!">
-              {t('fault')}
-            </p>
-            <p className="mt-3 font-graphik text-lg! leading-relaxed text-gray-700 md:text-lg!">
-              {t('closing')}
-            </p>
+          {/* Conclusion : plus de texte ni d'image, seulement l'appel à l'action. */}
+          <div className="flex justify-center pt-6 md:pt-10">
             <Link
               href={`/${locale}/payment`}
-              className="mt-6 inline-block cursor-pointer border border-[#524029] bg-transparent px-8 py-4 font-graphik text-lg! font-normal text-gray-900 shadow-lg transition-all duration-300 hover:scale-105 hover:bg-gray-950 hover:text-white hover:shadow-xl md:text-lg!"
+              className="inline-block cursor-pointer border border-[#524029] bg-transparent px-8 py-4 font-graphik text-lg! font-normal text-gray-900 shadow-lg transition-all duration-300 hover:scale-105 hover:bg-gray-950 hover:text-white hover:shadow-xl md:text-lg!"
             >
               {t('cta')}
             </Link>
-          </Rangee>
+          </div>
         </div>
       </div>
     </section>
@@ -87,11 +81,10 @@ function Rangee({
   children: React.ReactNode;
 }) {
   return (
-    <div className="grid items-center gap-6 md:grid-cols-2 md:gap-12 lg:gap-16">
+    <div className="grid items-center gap-4 md:grid-cols-2 md:gap-12 lg:gap-16">
       <div
-        className={`rc-bleed-mobile relative aspect-[4/3] overflow-hidden bg-black md:aspect-[5/4] ${
-          imageADroite ? 'md:order-2' : 'md:order-1'
-        }`}
+        className={`rc-bleed-mobile relative aspect-[3/2] overflow-hidden bg-black md:aspect-[5/4] ${imageADroite ? 'md:order-2' : 'md:order-1'
+          }`}
       >
         <Image
           src={image}

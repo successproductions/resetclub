@@ -196,11 +196,17 @@
           "specialty": "Nutrition & Micronutrition",
           "description": "Yasmine builds tailored eating plans around your lab results and your daily rhythm, to settle habits that last."
         },
-        "rim": {
-          "name": "Rim Tazi",
-          "role": "Sports Coach",
-          "specialty": "Physical conditioning",
-          "description": "Rim designs progressive programmes that respect your starting condition and your goals, in the gym or at home."
+        "hicham": {
+          "name": "Hicham Sbay",
+          "role": "Clinical Psychologist · Neurofeedback trainer",
+          "credentials": [
+            "Former head of department at the Ibn Sina University Hospital Center, Rabat",
+            "Postgraduate degree in clinical psychology and psychotherapy",
+            "Certified by the Freudian Institute of Psychoanalysis, Paris",
+            "Certified by Neuroptimal Zenger Canada as a Neurofeedback trainer",
+            "Advanced postgraduate degree in Public Law",
+            "Artist"
+          ]
         },
         "youssef": {
           "name": "Youssef Alami",
@@ -336,7 +342,7 @@
     "items": {
       "paid": {
         "question": "Is the assessment paid?",
-        "answer": "As part of our opening, the Reset Assessment™ is offered to the first 50 clients. Its value is 1,500 DH and spots are limited."
+        "answer": "Yes, the assessment is not free, it lasts 45 minutes, and its price is 1,500 dirhams. It allows you to leave with a personalized report to help you better understand your body and better understand your body and its functioning. To gain energy, health and weight loss."
       },
       "menopause": {
         "question": "Does Reset Club work for women in perimenopause or menopause?",

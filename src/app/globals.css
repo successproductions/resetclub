@@ -204,42 +204,64 @@ body {
 }
 
 /* Base text styles for all text elements - Mobile first */
-p span, td, th, label, input, textarea, button {
-  font-size: 1.125rem; /* text-lg - 18px */
+p span,
+td,
+th,
+label,
+input,
+textarea,
+button {
+  font-size: 1.125rem;
+  /* text-lg - 18px */
   line-height: 1.75rem;
 }
 
 /* Headings - Mobile: text-3xl, MD: text-4xl, LG: text-5xl */
- h2, h4, h5, h6 {
+h2,
+h4,
+h5,
+h6 {
   font-family: var(--font-graphik);
   font-weight: 400;
-  font-size: 1.995rem; /* text-3xl - 30px */
+  font-size: 1.995rem;
+  /* text-3xl - 30px */
   line-height: 2.25rem;
 
 }
-h3{
-    font-family: var(--font-graphik);
+
+h3 {
+  font-family: var(--font-graphik);
   font-weight: 400;
-  font-size: 1.575rem; 
+  font-size: 1.575rem;
   line-height: 2.25rem;
 }
 
 @media (min-width: 768px) {
- h2, h3, h4, h5, h6 {
-    font-size: 2.10rem; /* text-4xl - 36px */
+
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-size: 2.10rem;
+    /* text-4xl - 36px */
     line-height: 2.2rem;
   }
 
 }
 
 @media (min-width: 1024px) {
- h2, h4, h5, h6 {
-    font-size: 3rem; 
+
+  h2,
+  h4,
+  h5,
+  h6 {
+    font-size: 3rem;
     line-height: 1;
 
   }
 
-  h3{
+  h3 {
     font-size: 2rem;
   }
 }
@@ -324,6 +346,7 @@ h3{
     opacity: 0;
     transform: translateY(30px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -339,6 +362,7 @@ h3{
   0% {
     transform: translateX(0);
   }
+
   100% {
     transform: translateX(-50%);
   }
@@ -351,10 +375,48 @@ h3{
   will-change: transform;
 }
 
+/* Bandeau de cartes « Why Reset Club » : les règles vivaient dans un <style jsx>
+   dont le CSS n'était jamais injecté, l'animation ne tournait donc pas. */
+@keyframes scroll-banner {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-scroll-banner {
+  animation: scroll-banner 40s linear infinite;
+  will-change: transform;
+}
+
+/* Mobile : défilement quatre fois plus rapide qu'en desktop. */
+@media (max-width: 767px) {
+  .animate-scroll-banner {
+    animation-duration: 10s;
+  }
+}
+
+.animate-scroll-banner:hover {
+  animation-play-state: paused;
+}
+
+.scrollbar-hide {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
 @keyframes spin-slow {
   0% {
     transform: rotate(0deg);
   }
+
   100% {
     transform: rotate(360deg);
   }
@@ -366,10 +428,13 @@ h3{
 
 /* Border pulse animation for CTA button */
 @keyframes border-pulse {
-  0%, 100% {
+
+  0%,
+  100% {
     opacity: 0.1;
     transform: scale(1);
   }
+
   50% {
     opacity: 1;
     transform: scale(1.02);

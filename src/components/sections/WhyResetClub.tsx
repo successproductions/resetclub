@@ -139,7 +139,10 @@ const WhyResetClub: React.FC = () => {
                     draggable={false}
                   />
                   {/* Overlay */}
-                  <div className="absolute inset-0 bg-black opacity-15"></div>
+                  <div className="absolute inset-0 bg-black opacity-5"></div>
+                  {/* Voile sombre sur le bas : le texte blanc passait mal sur les
+                      images claires, surtout en mobile. */}
+                  <div className="absolute inset-x-0 bottom-0 h-3/4 bg-linear-to-t from-black/85 from-5% via-black/55 via-45% to-transparent"></div>
                 </div>
 
                 {/* Content */}
@@ -178,6 +181,9 @@ const WhyResetClub: React.FC = () => {
                   />
                   {/* Overlay */}
                   <div className="absolute inset-0 bg-black opacity-15"></div>
+                  {/* Voile sombre sur le bas : le texte blanc passait mal sur les
+                      images claires, surtout en mobile. */}
+                  <div className="absolute inset-x-0 bottom-0 h-3/4 bg-linear-to-t from-black/85 from-5% via-black/55 via-45% to-transparent"></div>
                 </div>
 
                 {/* Content */}
@@ -197,30 +203,6 @@ const WhyResetClub: React.FC = () => {
           </div>
         </div>
       </div>
-
-      <style jsx>{`
-        .scrollbar-hide {
-          scrollbar-width: none;
-          -ms-overflow-style: none;
-        }
-        .scrollbar-hide::-webkit-scrollbar {
-          display: none;
-        }
-        @keyframes scroll-banner {
-          0% {
-            transform: translateX(0);
-          }
-          100% {
-            transform: translateX(-50%);
-          }
-        }
-        .animate-scroll-banner {
-          animation: scroll-banner 40s linear infinite;
-        }
-        .animate-scroll-banner:hover {
-          animation-play-state: paused;
-        }
-      `}</style>
     </section>
   );
 };

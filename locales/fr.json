@@ -196,11 +196,17 @@
           "specialty": "Nutrition & Micronutrition",
           "description": "Yasmine construit des plans alimentaires sur mesure, fondés sur vos analyses et votre rythme de vie, pour installer des habitudes qui tiennent dans la durée."
         },
-        "rim": {
-          "name": "Rim Tazi",
-          "role": "Coach Sportive",
-          "specialty": "Préparation physique",
-          "description": "Rim conçoit des programmes progressifs qui respectent votre condition de départ et vos objectifs, en salle comme à domicile."
+        "hicham": {
+          "name": "Hicham Sbay",
+          "role": "Psychologue clinicien · Neurofeedback trainer",
+          "credentials": [
+            "Ex chef du service au Centre Hospitalier Universitaire Ibn Sina de Rabat",
+            "Diplôme des études supérieures en psychologie clinique et psychothérapie",
+            "Certifié de l’institut freudienne de psychanalyse de Paris",
+            "Certifié de Neuroptimal Zenger Canada en tant que Neurofeedback trainer",
+            "Diplôme des études supérieures approfondies en Droit public",
+            "Artiste"
+          ]
         },
         "youssef": {
           "name": "Youssef Alami",
@@ -342,7 +348,7 @@
     "items": {
       "paid": {
         "question": "Le bilan est-il payant ?",
-        "answer": "Dans le cadre de notre ouverture, le Bilan Reset™ est offert aux 50 premières clientes. Sa valeur est de 1 500 DH et les places sont limitées."
+        "answer": "Oui, le bilan est payant, il dure 45 minutes, son prix est de 1 500 dirhams. Il vous permet de repartir avec un rapport personnalisé pour vous aider à mieux comprendre votre corps et à mieux comprendre votre corps et son fonctionnement. Afin de gagner en énergie, en santé et en perte de poids."
       },
       "menopause": {
         "question": "Reset Club fonctionne-t-il pour les femmes en préménopause ou ménopause ?",
@@ -458,7 +464,7 @@
       "out": {
         "title": "OUT ",
         "title2": "Ce que votre corps doit libérer",
-        "subtitle": "OUT correspond à tout ce que le corps doit relâcher pour retrouver son équilibre : Surcharge inflammatoire, rétention et gonflements, stress accumulé et fatigue nerveuse, tensions corporelles et charge émotionnelle. Lorsque le corps libère, le métabolisme peut enfin se remettre en mouvement."
+        "subtitle": "OUT correspond à tout ce que le corps doit relâcher pour retrouver son équilibre : La surcharge que le corps accumule, rétention et gonflements, stress accumulé et fatigue nerveuse, tensions corporelles et charge émotionnelle. Lorsque le corps libère, le métabolisme peut enfin se remettre en mouvement."
       },
       "reset": {
         "title": "RESET ",

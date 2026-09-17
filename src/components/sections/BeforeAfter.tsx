@@ -12,7 +12,7 @@ const BeforeAfter: React.FC = () => {
   const testimonials = [
     {
       id: 1,
-      beforeImage: "/images/w_b_f.jpeg",
+      beforeImage: "/images/temoignage client1.png",
       beforeWeight: "95 kg",
       afterWeight: "68 kg",
       weightLoss: "27 kg",
@@ -22,7 +22,7 @@ const BeforeAfter: React.FC = () => {
     },
     {
       id: 2,
-      beforeImage: "/images/w_b_f_2.jpeg",
+      beforeImage: "/images/temoignage client2.png",
       beforeWeight: "88 kg",
       afterWeight: "63 kg",
       weightLoss: "25 kg",
@@ -32,7 +32,7 @@ const BeforeAfter: React.FC = () => {
     },
     {
       id: 3,
-      beforeImage: "/images/w_b_f_3.jpeg",
+      beforeImage: "/images/temoignage client2.png",
       beforeWeight: "102 kg",
       afterWeight: "72 kg",
       weightLoss: "30 kg",

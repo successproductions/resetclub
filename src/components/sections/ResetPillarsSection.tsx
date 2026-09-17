@@ -7,15 +7,15 @@ import { useTranslations } from 'next-intl';
 const pillars = [
   {
     key: 'movement',
-    image: '/images/IN2.png',
+    image: '/images/MOUVEMENT.png',
   },
   {
     key: 'neuro',
-    image: '/images/RESET2.png',
+    image: '/images/NEURO.png',
   },
   {
     key: 'coaching',
-    image: '/images/OUT2.png',
+    image: '/images/COACHING.png',
   },
 ] as const;
 
@@ -23,7 +23,7 @@ const ResetPillarsSection: React.FC = () => {
   const t = useTranslations('ResetPillarsSection');
 
   return (
-    <section className="bg-[#f4f3f1] px-6 py-8 md:py-5">
+    <section className="bg-white md:bg-[#f4f3f1] px-6 py-8 md:py-5">
       <div className="mx-auto max-w-6xl">
         <h2 className="mx-auto mb-5 max-w-5xl md:text-center text-[25px]! font-graphik font-normal leading-tight text-gray-950 md:text-2xl! lg:text-[30px]! uppercase">
           {t('title')}
@@ -62,9 +62,8 @@ const ResetPillarsSection: React.FC = () => {
                 {/* Le filet vertical ne porte que sur le texte : posé sur la
                     colonne entière, il traverserait aussi l'image. */}
                 <div
-                  className={`flex-1 border-t border-[#ded8d0] px-7 py-8 md:min-h-[190px] md:border-t-0 md:px-10 md:py-10 ${
-                    index < pillars.length - 1 ? 'md:border-r md:border-[#ded8d0]' : ''
-                  }`}
+                  className={`flex-1 border-t border-[#ded8d0] py-8 md:min-h-[190px] md:border-t-0 md:px-10 md:py-10 ${index < pillars.length - 1 ? 'md:border-r md:border-[#ded8d0]' : ''
+                    }`}
                 >
                   <p className="font-graphik text-lg! font-normal leading-relaxed text-gray-950 md:text-lg! md:text-center">
                     {t(`pillars.${pillar.key}.description`)}
