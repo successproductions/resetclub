@@ -65,13 +65,13 @@ const teamMembers: TeamMember[] = [
   {
     id: 9,
     key: 'youssef',
-    image: '/images/ALAMI02.png',
+    image: '/images/ALAMI01.png',
     tileClassName: 'col-span-2 row-span-2 lg:col-start-1 lg:col-span-2 lg:row-start-4 lg:row-span-2',
   },
   {
     id: 10,
     key: 'youssef',
-    image: '/images/ALAMI02.png',
+    image: '/images/ALAMI01.png',
     tileClassName: 'col-span-1 row-span-3 lg:col-start-3 lg:col-span-2 lg:row-start-5 lg:row-span-1',
   },
 ];
