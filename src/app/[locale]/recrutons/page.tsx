@@ -92,7 +92,7 @@ export default function RecrutonsPage() {
             <div className="order-1 lg:order-2">
               <div className="relative w-full h-full min-h-[400px] lg:min-h-[600px]">
                 <Image
-                  src="/images/nahed_with_team1.png"
+                  src="/images/nahed_with_team2.png"
                   alt="Nahed with Reset Club Team"
                   fill
                   className="object-cover shadow-lg"
