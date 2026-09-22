@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
-import { ArrowRight, Award, BookOpen, CheckCircle2, Clock3, TrendingUp, Users, XCircle } from 'lucide-react';
+import { ArrowRight, Award, BookOpen, CheckCircle2, ChevronDown, Clock3, TrendingUp, Users, XCircle } from 'lucide-react';
 
 interface DashboardStats {
   totalUsers: number;
@@ -26,6 +26,13 @@ interface PhaseValidationItem {
   reviewerName: string | null;
 }
 
+interface PhaseValidationGroup {
+  userId: string;
+  employeeName: string;
+  employeeEmail: string;
+  validations: PhaseValidationItem[];
+}
+
 export default function AdminDashboardPage() {
   const [stats, setStats] = useState<DashboardStats>({
     totalUsers: 0,
@@ -37,6 +44,7 @@ export default function AdminDashboardPage() {
   const [loading, setLoading] = useState(true);
   const [validationsLoading, setValidationsLoading] = useState(true);
   const [updatingValidationKey, setUpdatingValidationKey] = useState<string | null>(null);
+  const [expandedValidationUserId, setExpandedValidationUserId] = useState<string | null>(null);
   const router = useRouter(); // Initialize useRouter
 
   useEffect(() => {
@@ -230,6 +238,30 @@ export default function AdminDashboardPage() {
     }
   ];
 
+  const validationGroups = Object.values(
+    phaseValidations.reduce<Record<string, PhaseValidationGroup>>((groups, validation) => {
+      const existingGroup = groups[validation.userId];
+
+      if (existingGroup) {
+        existingGroup.validations.push(validation);
+      } else {
+        groups[validation.userId] = {
+          userId: validation.userId,
+          employeeName: validation.employeeName,
+          employeeEmail: validation.employeeEmail,
+          validations: [validation]
+        };
+      }
+
+      return groups;
+    }, {})
+  ).map((group) => ({
+    ...group,
+    validations: [...group.validations].sort((first, second) =>
+      first.moduleTitle.localeCompare(second.moduleTitle, 'fr')
+    )
+  }));
+
   return (
     <div className="space-y-8">
       <div className="flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
@@ -315,57 +347,104 @@ export default function AdminDashboardPage() {
           </div>
         ) : (
           <div className="space-y-3">
-            {phaseValidations.map((validation) => {
-              const key = `${validation.userId}:${validation.moduleId}`;
-              const isUpdating = updatingValidationKey === key;
-              const actionLabels = getActionLabels(validation.moduleTitle);
+            {validationGroups.map((group) => {
+              const isExpanded = expandedValidationUserId === group.userId;
+              const pendingCount = group.validations.filter((validation) => validation.status === 'PENDING').length;
 
               return (
                 <div
-                  key={key}
-                  className="flex flex-col gap-4 rounded-lg border border-[#e7dfd6] p-4 md:flex-row md:items-center md:justify-between"
+                  key={group.userId}
+                  className="overflow-hidden rounded-lg border border-[#e7dfd6]"
                 >
-                  <div className="min-w-0">
-                    <div className="mb-2 flex flex-wrap items-center gap-2">
-                      <p className="font-medium text-[#151f2b]">{validation.employeeName}</p>
-                      <span className={`inline-flex items-center gap-1 rounded-full border px-2.5 py-1 text-xs font-medium ${getValidationBadge(validation.status)}`}>
-                        {validation.status === 'VALIDATED' ? (
-                          <CheckCircle2 className="h-3 w-3" />
-                        ) : validation.status === 'NOT_VALIDATED' ? (
-                          <XCircle className="h-3 w-3" />
-                        ) : (
-                          <Clock3 className="h-3 w-3" />
-                        )}
-                        {getValidationLabel(validation.status, validation.moduleTitle)}
-                      </span>
+                  <button
+                    type="button"
+                    onClick={() => setExpandedValidationUserId(isExpanded ? null : group.userId)}
+                    aria-expanded={isExpanded}
+                    aria-controls={`validation-details-${group.userId}`}
+                    className="flex w-full flex-col gap-3 p-4 text-left transition-colors hover:bg-[#fdfbf9] md:flex-row md:items-center md:justify-between"
+                  >
+                    <div className="min-w-0">
+                      <p className="font-medium text-[#151f2b]">{group.employeeName}</p>
+                      <p className="mt-1 truncate text-sm text-[#5d6672]">{group.employeeEmail}</p>
                     </div>
-                    <p className="truncate text-sm text-[#5d6672]">{validation.employeeEmail}</p>
-                    <p className="mt-1 text-xs text-[#8f7b68]">{validation.moduleTitle}</p>
-                  </div>
 
-                  <div className="flex flex-wrap gap-2">
-                    <button
-                      onClick={() => updatePhaseValidation(validation, 'PENDING')}
-                      disabled={isUpdating}
-                      className="rounded-lg border border-[#e7dfd6] px-3 py-2 text-xs font-medium text-[#5d6672] transition-colors hover:border-amber-300 hover:bg-amber-50 disabled:opacity-50"
-                    >
-                      {actionLabels.pending}
-                    </button>
-                    <button
-                      onClick={() => updatePhaseValidation(validation, 'VALIDATED')}
-                      disabled={isUpdating}
-                      className="rounded-lg border border-emerald-200 bg-emerald-50 px-3 py-2 text-xs font-medium text-emerald-700 transition-colors hover:bg-emerald-100 disabled:opacity-50"
-                    >
-                      {actionLabels.validated}
-                    </button>
-                    <button
-                      onClick={() => updatePhaseValidation(validation, 'NOT_VALIDATED')}
-                      disabled={isUpdating}
-                      className="rounded-lg border border-red-200 bg-red-50 px-3 py-2 text-xs font-medium text-red-700 transition-colors hover:bg-red-100 disabled:opacity-50"
-                    >
-                      {actionLabels.notValidated}
-                    </button>
-                  </div>
+                    <div className="flex flex-wrap items-center gap-2 md:justify-end">
+                      {group.validations.map((validation) => (
+                        <span
+                          key={validation.moduleId}
+                          className={`inline-flex items-center gap-1 rounded-full border px-2.5 py-1 text-xs font-medium ${getValidationBadge(validation.status)}`}
+                        >
+                          {validation.status === 'VALIDATED' ? (
+                            <CheckCircle2 className="h-3 w-3" />
+                          ) : validation.status === 'NOT_VALIDATED' ? (
+                            <XCircle className="h-3 w-3" />
+                          ) : (
+                            <Clock3 className="h-3 w-3" />
+                          )}
+                          {isCompetencyMaintenanceTitle(validation.moduleTitle) ? 'Phase 7' : 'Phase 6'} · {getValidationLabel(validation.status, validation.moduleTitle)}
+                        </span>
+                      ))}
+                      {pendingCount > 0 && (
+                        <span className="text-xs font-medium text-amber-700">
+                          {pendingCount} en attente
+                        </span>
+                      )}
+                      <ChevronDown
+                        className={`h-5 w-5 shrink-0 text-[#8f7b68] transition-transform ${isExpanded ? 'rotate-180' : ''}`}
+                        aria-hidden="true"
+                      />
+                    </div>
+                  </button>
+
+                  {isExpanded && (
+                    <div id={`validation-details-${group.userId}`} className="border-t border-[#e7dfd6] bg-[#fdfbf9] p-4">
+                      <div className="space-y-3">
+                        {group.validations.map((validation) => {
+                          const key = `${validation.userId}:${validation.moduleId}`;
+                          const isUpdating = updatingValidationKey === key;
+                          const actionLabels = getActionLabels(validation.moduleTitle);
+
+                          return (
+                            <div
+                              key={key}
+                              className="flex flex-col gap-3 rounded-lg border border-[#e7dfd6] bg-white p-4 md:flex-row md:items-center md:justify-between"
+                            >
+                              <div className="min-w-0">
+                                <p className="text-sm font-medium text-[#151f2b]">{validation.moduleTitle}</p>
+                                <p className="mt-1 text-xs text-[#8f7b68]">
+                                  Statut actuel : {getValidationLabel(validation.status, validation.moduleTitle)}
+                                </p>
+                              </div>
+
+                              <div className="flex flex-wrap gap-2">
+                                <button
+                                  onClick={() => updatePhaseValidation(validation, 'PENDING')}
+                                  disabled={isUpdating}
+                                  className="rounded-lg border border-[#e7dfd6] px-3 py-2 text-xs font-medium text-[#5d6672] transition-colors hover:border-amber-300 hover:bg-amber-50 disabled:opacity-50"
+                                >
+                                  {actionLabels.pending}
+                                </button>
+                                <button
+                                  onClick={() => updatePhaseValidation(validation, 'VALIDATED')}
+                                  disabled={isUpdating}
+                                  className="rounded-lg border border-emerald-200 bg-emerald-50 px-3 py-2 text-xs font-medium text-emerald-700 transition-colors hover:bg-emerald-100 disabled:opacity-50"
+                                >
+                                  {actionLabels.validated}
+                                </button>
+                                <button
+                                  onClick={() => updatePhaseValidation(validation, 'NOT_VALIDATED')}
+                                  disabled={isUpdating}
+                                  className="rounded-lg border border-red-200 bg-red-50 px-3 py-2 text-xs font-medium text-red-700 transition-colors hover:bg-red-100 disabled:opacity-50"
+                                >
+                                  {actionLabels.notValidated}
+                                </button>
+                              </div>
+                            </div>
+                          );
+                        })}
+                      </div>
+                    </div>
+                  )}
                 </div>
               );
             })}
