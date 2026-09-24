@@ -167,7 +167,7 @@ export default function PaymentPage() {
                 {ts('step')}
               </p>
               {progressBar}
-              <h2 className="mb-2 font-serif text-3xl font-normal leading-[1.05] text-gray-950 md:text-4xl!">
+              <h2 className="mb-2 md:mb-4 font-serif text-2xl! font-normal leading-[1.05] text-gray-950 md:text-3xl!">
                 {ts('title')}
               </h2>
               <p className="mb-2 font-graphik text-base leading-relaxed text-gray-700 md:text-lg">
@@ -176,7 +176,7 @@ export default function PaymentPage() {
               <p className="mb-2 font-graphik text-base leading-relaxed text-gray-700 md:text-lg">
                 {ts('body')}
               </p>
-              <p className="mb-2 font-graphik text-base leading-relaxed text-gray-950 md:text-lg">
+              <p className="mb-2 font-graphik text-base leading-relaxed text-gray-700 md:text-lg">
                 {ts('secret')}
               </p>
               <p className="mb-2 font-graphik text-base leading-relaxed text-gray-700 md:text-lg">
@@ -217,17 +217,17 @@ export default function PaymentPage() {
                 {t('step')}
               </p>
               {progressBar}
-              <h2 className="mb-6 font-serif text-3xl font-normal leading-[1.05] text-gray-950 md:text-4xl!">
+              <h2 className="mb-2 md:mb-4 font-serif text-2xl! font-normal leading-[1.05] text-gray-950 md:text-3xl!">
                 {t('title')}
               </h2>
-              <p className="mb-8 font-graphik text-base leading-relaxed text-gray-700 md:text-lg">
+              <p className="mb-2 md:mb-4 font-graphik text-base leading-relaxed text-gray-700 md:text-lg">
                 {t('subtitle')}
               </p>
 
-              <p className="mb-3 font-graphik text-xs uppercase tracking-[0.22em] text-[#7b7066]">
+              <p className="mb-3 font-graphik text-xs md:text-[18px] uppercase tracking-[0.22em] text-[#7b7066]">
                 {t('nextStepsTitle')}
               </p>
-              <p className="mb-8 font-graphik text-base leading-relaxed text-gray-700 md:text-lg">
+              <p className="mb-2 font-graphik text-base leading-relaxed text-gray-700 md:text-lg">
                 {t('nextStepsBody')}
               </p>
 
