@@ -219,6 +219,17 @@
           "role": "Wellness Practitioner",
           "specialty": "Massage & Drainage",
           "description": "Sofia practises lymphatic drainage and deep-tissue massage, to restart circulation and release accumulated tension."
+        },
+        "michel": {
+          "name": "Michel Gagné",
+          "role": "Professional hypnotherapist · Psychotherapist",
+          "specialty": "Hypnosis & transformation",
+          "description": "A professional hypnotherapist since 1999, Michel Gagné has spent more than 25 years exploring the deep mechanisms of the human mind and of transformation. Trained in psychology, philosophy, hypnosis and many therapeutic approaches, he has developed a unique approach, at once comprehensive and systemic. A certified hypnosis teacher, he has trained hypnotherapists in Canada, the United States, Europe and Morocco.",
+          "credentials": [
+            "Professional hypnotherapist, psychotherapist, hypnosis teacher, author and speaker",
+            "Creator of the Matrice Originelle, a model for understanding the psychological and emotional structure behind suffering, fears and survival mechanisms",
+            "Creator of ShiftBreath, an innovative approach combining breathwork, hypnosis and quantum psychology to bring about deep altered states of consciousness and transformation"
+          ]
         }
       }
     }

@@ -132,7 +132,7 @@ export default function PaymentPage() {
     </div>
   );
 
-  const inputClassName = 'w-full rounded-[4px] border border-[#d8cec4] bg-white px-5 py-4 font-graphik text-base text-gray-950 placeholder:text-gray-500 transition-colors focus:border-[#5b5148] focus:outline-none focus:ring-2 focus:ring-[#cbb9a7]/30 disabled:opacity-60';
+  const inputClassName = 'w-full rounded-[2px] border border-[#d8cec4] bg-white px-5 py-4 font-graphik text-base text-gray-950 placeholder:text-gray-500 transition-colors focus:border-[#5b5148] focus:outline-none focus:ring-2 focus:ring-[#cbb9a7]/30 disabled:opacity-60';
 
   return (
     <>
@@ -161,7 +161,7 @@ export default function PaymentPage() {
 
       <main className="bg-[#f7f3ee] px-5 py-10 md:px-8 md:py-16">
         {step === 1 ? (
-          <section className="mx-auto grid max-w-6xl overflow-hidden rounded-[8px] border border-[#ded4ca] bg-white shadow-2xl shadow-black/10 md:grid-cols-2">
+          <section className="mx-auto grid max-w-6xl overflow-hidden rounded-[2px] border border-[#ded4ca] bg-white shadow-2xl shadow-black/10 md:grid-cols-2">
             <div className="order-2 p-6 md:order-1 md:p-10 lg:p-9">
               <p className="mb-1 font-graphik text-base text-[#5b5148] md:text-lg">
                 {ts('step')}
@@ -201,7 +201,7 @@ export default function PaymentPage() {
 
             <div className="relative order-1 h-56 md:order-2 md:h-auto md:min-h-[560px]">
               <Image
-                src="/images/POPUP.jpg"
+                src="/images/image5.jpeg"
                 alt={ts('imageAlt')}
                 fill
                 sizes="(max-width: 768px) 100vw, 50vw"
@@ -211,7 +211,7 @@ export default function PaymentPage() {
             </div>
           </section>
         ) : (
-          <section className="mx-auto grid max-w-6xl overflow-hidden rounded-[8px] border border-[#ded4ca] bg-white shadow-2xl shadow-black/10 md:grid-cols-[0.95fr_1.05fr]">
+          <section className="mx-auto grid max-w-6xl overflow-hidden rounded-[2px] border border-[#ded4ca] bg-white shadow-2xl shadow-black/10 md:grid-cols-[0.95fr_1.05fr]">
             <div className="bg-[#fbf8f4] p-6 md:p-10 lg:p-12">
               <p className="mb-5 font-graphik text-base text-[#5b5148] md:text-lg">
                 {t('step')}

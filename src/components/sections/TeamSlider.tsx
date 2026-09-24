@@ -70,8 +70,8 @@ const teamMembers: TeamMember[] = [
   },
   {
     id: 10,
-    key: 'youssef',
-    image: '/images/ALAMI01.png',
+    key: 'michel',
+    image: '/images/MICHEL_GAGNE.jpeg',
     tileClassName: 'col-span-1 row-span-3 lg:col-start-3 lg:col-span-2 lg:row-start-5 lg:row-span-1',
   },
 ];
