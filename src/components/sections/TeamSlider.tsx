@@ -29,8 +29,8 @@ const teamMembers: TeamMember[] = [
   {
     id: 3,
     key: 'youssef',
-    image: '/images/ALAMI02.png',
-    tileClassName: 'col-span-1 row-span-3 lg:col-start-3 lg:col-span-1 lg:row-start-2 lg:row-span-1',
+    image: '/images/ALAMI01.png',
+    tileClassName: 'col-span-1 row-span-3 lg:col-start-5 lg:col-span-1 lg:row-start-3 lg:row-span-2',
   },
   {
     id: 4,
@@ -52,9 +52,9 @@ const teamMembers: TeamMember[] = [
   },
   {
     id: 7,
-    key: 'Siham',
-    image: '/images/siam.jpeg',
-    tileClassName: 'col-span-1 row-span-3 lg:col-start-5 lg:col-span-1 lg:row-start-3 lg:row-span-2',
+    key: 'leila',
+    image: '/images/hero/hero8.jpeg',
+    tileClassName: 'col-span-1 row-span-3 lg:col-start-3 lg:col-span-1 lg:row-start-2 lg:row-span-1',
   },
   {
     id: 8,

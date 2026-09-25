@@ -156,11 +156,11 @@
       "subtitle": "Une équipe pluridisciplinaire de spécialistes dédiés à votre transformation",
       "expertsTitle": "Vous êtes entourée d’experts",
       "members": {
-        "Siham": {
-          "name": "Siham Idrissi",
-          "role": "Directrice",
-          "specialty": "Métabolisme & Perte de Poids",
-          "description": "Spécialiste en optimisation métabolique et nutrition personnalisée pour des résultats durables. Après avoir terminé ses masters en médecine nutritionnelle, Siham a pratiqué pendant plus de 12 ans dans des hôpitaux renommés et des retraites de bien-être."
+        "leila": {
+          "name": "Leila Amrani",
+          "role": "Naturopathe",
+          "specialty": "Détox & Immunité",
+          "description": "Leila accompagne le terrain : digestion, immunité et rythmes de vie. Elle ajuste ses protocoles au fil des saisons et de vos analyses, pour des changements que le corps accepte durablement."
         },
         "nahed": {
           "name": "Nahed Rachad",
@@ -226,9 +226,8 @@
           "specialty": "Hypnose & transformation",
           "description": "Hypnothérapeute professionnel depuis 1999, Michel Gagné explore depuis plus de 25 ans les mécanismes profonds de l’esprit humain et de la transformation. Formé en psychologie, philosophie, hypnose et dans de nombreuses approches thérapeutiques, il a développé une approche unique, à la fois compréhensive et systémique. Enseignant certifié en hypnose, il a formé des hypnothérapeutes au Canada, aux États-Unis, en Europe et au Maroc.",
           "credentials": [
-            "Hypnothérapeute professionnel, psychothérapeute, enseignant en hypnose, auteur et conférencier",
-            "Créateur de la Matrice Originelle, un modèle qui permet de comprendre la structure psychologique et émotionnelle derrière les souffrances, les peurs et les mécanismes de survie",
-            "Créateur de ShiftBreath, une approche novatrice combinant respiration, hypnose et psychologie quantique pour faciliter de profonds états modifiés de conscience et de transformation"
+            "Il est le créateur de la Matrice Originelle, un modèle qui permet de comprendre la structure psychologique et émotionnelle derrière les souffrances, les peurs et les mécanismes de survie",
+            "Il a également créé ShiftBreath, une approche novatrice combinant respiration, hypnose et psychologie quantique pour faciliter de profonds états modifiés de conscience et de transformation."
           ]
         }
       }

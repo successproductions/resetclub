@@ -156,11 +156,11 @@
       "subtitle": "A multidisciplinary team of specialists dedicated to your transformation",
       "expertsTitle": "Our Experts",
       "members": {
-        "Siham": {
-          "name": "Siham",
-          "role": "Director ",
-          "specialty": "Metabolism & Weight Loss",
-          "description": "Specialist in metabolic optimization and personalized nutrition for lasting results. After completing her masters in nutritional medicine,  Sarah has practiced for over 12 years in renowned hospitals and wellness retreats."
+        "leila": {
+          "name": "Leila Amrani",
+          "role": "Naturopath",
+          "specialty": "Detox & Immunity",
+          "description": "Leila works on the ground level: digestion, immunity and daily rhythms. She adjusts her protocols with the seasons and with your lab results, for changes the body accepts for the long run."
         },
         "nahed": {
           "name": "Nahed Rachad",
@@ -226,9 +226,8 @@
           "specialty": "Hypnosis & transformation",
           "description": "A professional hypnotherapist since 1999, Michel Gagné has spent more than 25 years exploring the deep mechanisms of the human mind and of transformation. Trained in psychology, philosophy, hypnosis and many therapeutic approaches, he has developed a unique approach, at once comprehensive and systemic. A certified hypnosis teacher, he has trained hypnotherapists in Canada, the United States, Europe and Morocco.",
           "credentials": [
-            "Professional hypnotherapist, psychotherapist, hypnosis teacher, author and speaker",
-            "Creator of the Matrice Originelle, a model for understanding the psychological and emotional structure behind suffering, fears and survival mechanisms",
-            "Creator of ShiftBreath, an innovative approach combining breathwork, hypnosis and quantum psychology to bring about deep altered states of consciousness and transformation"
+            "He is the creator of the Original Matrix, a model that allows us to understand the psychological and emotional structure behind suffering, fears, and survival mechanisms.",
+            "He also created ShiftBreath, an innovative approach combining breathing, hypnosis and quantum psychology to facilitate deeply modified states of consciousness and transformation."
           ]
         }
       }
