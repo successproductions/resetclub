@@ -98,6 +98,10 @@ export default function QuizRunner() {
   const [restaure, setRestaure] = useState(false);
   const carte = useRef<HTMLDivElement>(null);
   const enTransition = useRef(false);
+  // Une fois le questionnaire terminé, plus rien n'est persisté : sans ce
+  // verrou, le `setBrouillon` final réécrirait aussitôt le brouillon effacé et
+  // le rechargement suivant rouvrirait la dernière question au lieu du début.
+  const fini = useRef(false);
 
   const curseur = brouillon.curseur;
   const ecran = ecrans[Math.min(curseur, ecrans.length - 1)];
@@ -109,16 +113,22 @@ export default function QuizRunner() {
       const brut = localStorage.getItem(CLE_BROUILLON);
       if (brut) {
         const sauve = JSON.parse(brut) as Brouillon;
-        if (sauve && typeof sauve.curseur === 'number') setBrouillon(sauve);
+        // Un brouillon déjà arrivé au bout n'est plus un brouillon : on le jette
+        // pour que la visite suivante reparte d'un questionnaire vierge.
+        if (sauve && typeof sauve.curseur === 'number' && sauve.curseur < ecrans.length) {
+          setBrouillon(sauve);
+        } else {
+          localStorage.removeItem(CLE_BROUILLON);
+        }
       }
     } catch {
       /* stockage indisponible : on repart d'un questionnaire vierge */
     }
     setRestaure(true);
-  }, []);
+  }, [ecrans.length]);
 
   useEffect(() => {
-    if (!restaure) return;
+    if (!restaure || fini.current) return;
     try {
       localStorage.setItem(CLE_BROUILLON, JSON.stringify(brouillon));
     } catch {
@@ -203,6 +213,7 @@ export default function QuizRunner() {
     (maj: Partial<Brouillon>) => {
       const suivant = { ...brouillon, ...maj, curseur: curseur + 1 };
       if (curseur + 1 >= ecrans.length) {
+        fini.current = true;
         try {
           localStorage.removeItem(CLE_BROUILLON);
         } catch {
